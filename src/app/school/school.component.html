@@ -376,9 +376,13 @@
                                     </div>
                                 </div>
                             </div><!-- .modal -->
-
+<div *ngFor="let school of schoolsData">{{school.longName}}</div>
                         </div><!-- .col-* -->
-                       
+
+
+
+                  <p-paginator rows="10" totalRecords="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
+
                     </div><!-- .list-schools -->
 
 
