@@ -16,6 +16,7 @@ import {AutoCompleteModule, PaginatorModule} from 'primeng/primeng';
 export class SchoolComponent{
 showFilter:boolean;
 schoolData;
+totalSchools: number;
 
 text: string;    
 country: any;    
@@ -27,8 +28,8 @@ this.showFilter=false;
 
 this.schoolService.getData().subscribe((data) => {
   console.log(data.schools);
+  this.totalSchools=data.schools.length;
   this.schoolsData= data.schools;
-// alert(data.school.[0].addresses.city);
   this.schoolData=data;
 });
 }
