@@ -23,12 +23,7 @@ export class BookingAppointmentComponent implements OnInit {
 
 
 handleEventClick(e) {
-  console.log(e);
- 
-  //e.click=$('#appointment').modal('show');
-        //e.event = Selected event
-        //e.jsEvent = Browser click event
-        //e.view = Current view object
+  this.showDialog(); 
     }
 
 
@@ -40,16 +35,16 @@ handleEventClick(e) {
             },
             {
                 "title": "Long Event",
-                "start": "2016-01-07",
-                "end": "2016-01-10"
+                "start": "2017-01-07",
+                "end": "2017-01-10"
             },
             {
                 "title": "Repeating Event",
-                "start": "2016-01-09T16:00:00"
+                "start": "2017-05-09T16:00:00"
             },
             {
                 "title": "Repeating Event",
-                "start": "2016-01-16T16:00:00"
+                "start": "2017-01-16T16:00:00"
             },
             {
                 "title": "Conference",
@@ -58,7 +53,7 @@ handleEventClick(e) {
             }
         ];
 
-this.headerConfig = {		
+    this.headerConfig = {		
 			left: '',
 			center: 'prev title next',
 			right: 'today agendaDay,agendaWeek,month'

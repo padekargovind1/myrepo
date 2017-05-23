@@ -79,7 +79,7 @@
                     <div class="calendar-wrap">
                         <h4>Calendar</h4>
                         <!--<div id="calendar"></div>-->
-<p-schedule [events]="events" [header]="headerConfig" (onEventClick)="handleEventClick($event)"></p-schedule>
+<p-schedule [events]="events" [header]="headerConfig" (onDayClick)="handleEventClick($event)"></p-schedule>
                     </div>
 
                 </section><!-- .col-* -->
@@ -89,13 +89,12 @@
         </div><!-- .container-fluid -->
 
     </main>
-<button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show">Sho Dialog</button>
-<p-dialog header="Title" [(visible)]="display">
-    <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="title-confirm-modal">Rendez-vous</h3>
+
+<p-dialog header="Rendez-vous" class="modal-content" [(visible)]="display">   
+           
+                
+                    
+                  
                     <input type="text" value="Mme Sophie Dupond" class="form-control" />
 
                     <span class="muted">When</span><br>
@@ -105,9 +104,9 @@
 
                     <a href="wizard.html" class="btn btn-confirm pull-right">Je Confirme</a>
                     <div class="clearfix"></div>
-                </div>
-            </div><!-- .modal-content -->
-        </div><!-- .modal-dialog -->
+                
+           
+       
 </p-dialog>
     <!-- Modal -->
     <p-dialog [(visible)]="display" class="modal fade" id="appointment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -19,40 +19,44 @@ schoolData;
 totalSchools: number;
 
 text: string;    
-country: any;    
-countries: any[];        
-filteredCountriesSingle: any[];
+city: any;    
+cities: any[];        
+filteredCitiesSingle: any[];
 schoolsData: any[];
 constructor(private schoolService : SchoolService) {
 this.showFilter=false;
 
-this.schoolService.getData().subscribe((data) => {
-  console.log(data.schools);
-  this.totalSchools=data.schools.length;
-  this.schoolsData= data.schools;
-  this.schoolData=data;
+this.schoolService.getData().subscribe((data) => { 
+  this.totalSchools=data.total;
+  this.schoolsData= data.data;
+  //this.schoolData=data;
+  //console.log(data);
+  console.log(this.schoolsData);
 });
 }
 
 
-filterCountrySingle(event) {
+filterCitySingle(event) {
         let query = event.query;        
-        this.schoolService.getCities().then(countries => {
-            this.filteredCountriesSingle = this.filterCountry(query, countries);
+        this.schoolService.getCities(query).then(cities => {
+            this.filteredCitiesSingle = this.filterCity(cities);
+            //console.log(cities);
         });
     }
     
    
     
-    filterCountry(query, countries: any[]):any[] {
-        
+    filterCity(cities: any[]):any[] {        
         let filtered : any[] = [];
-        for(let i = 0; i < countries.length; i++) {
-            let country = countries[i];
-            if(country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-                filtered.push(country);
+        for(let i = 0; i < cities.length; i++) {
+            let city = cities[i];           
+             
+             if(city.cityName.toLowerCase().indexOf(city.cityName.toLowerCase()) == 0) {
+                 filtered.push(city);
             }
+
         }
+        console.log(filtered);
         return filtered;
     }
 
@@ -70,12 +74,9 @@ toggleFilter()
    }
 }
 
-paginate(onPageChange) {
-    console.log("Page changed");
-        //event.first = Index of the first record
-        //event.rows = Number of rows to display in new page
-        //event.page = Index of the new page
-        //event.pageCount = Total number of pages
+paginate(event) {
+    console.log(event);
+        
     }
 
 

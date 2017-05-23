@@ -14,6 +14,8 @@ import { UnConseilComponent } from './un-conseil/un-conseil.component';
 import { BookingAppointmentComponent } from './booking-appointment/booking-appointment.component';
 import {ScheduleModule} from 'primeng/primeng';
 import {DialogModule,AutoCompleteModule} from 'primeng/primeng';
+import { WizardComponent } from './wizard/wizard.component';
+import { SchoolDetailComponent } from './school-detail/school-detail.component';
 //import {SchoolService} from './services/school.service';
 
 
@@ -28,6 +30,8 @@ export function createTranslateLoader(http: Http) {
     HomePageComponent,
     UnConseilComponent,
     BookingAppointmentComponent,
+    WizardComponent,
+    SchoolDetailComponent,
   ],
   imports: [
     DialogModule,

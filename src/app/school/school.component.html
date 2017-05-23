@@ -205,8 +205,8 @@
                                 </div>
 
                                  <div class="form-group">
-<p-autoComplete [(ngModel)]="country" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-   placeholder="Lieu" [minLength]="1"></p-autoComplete>
+<p-autoComplete [(ngModel)]="city" [suggestions]="filteredCitiesSingle" (completeMethod)="filterCitySingle($event)" field="cityName" [size]="30"
+   placeholder="Lieu" [minLength]="3"></p-autoComplete>
                                 </div>
 
                                 <div class="form-group">
@@ -376,15 +376,42 @@
                                     </div>
                                 </div>
                             </div><!-- .modal -->
-<div *ngFor="let school of schoolsData">{{school.longName}}</div>
+
                         </div><!-- .col-* -->
+<!--<<div *ngFor="let school of schoolsData">{{school.longName}}</div>-->
+ <div *ngFor="let school of schoolsData" class="col-md-3">
+                            
+                            <div class="card  school-item">
+                                <div class="checkbox-custom">
+                                    <input type="checkbox" class="checkbox filled-in" id="school-1" />
+                                    <label for="school-1">&nbsp;</label>
+                                </div>
 
+                                <ul class="school-action">
+                                    <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+                                </ul>
+                                
+                                <img src="assets/img/school-1.jpg" alt="School 1" />
+                                
+                                <div class="card-content">
+                                    <h3>{{school.longName}}</h3>
+                                    <p>Lycee d'enseignement <br /> general Prive Catholique <br />Sous contrat d'association</p>
+                                    <address>1 rue du Brouage<br /> 02300 Chauny<br /> Tel: 03 23 52 10 50</address>
 
+                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted">School Detail</a>
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button>
+                                    <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button> -->
+                                </div><!-- .card-content -->
 
-                  <p-paginator rows="20" totalRecords="{{totalSchools}}" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
+                            </div><!-- .card -->
+
+                 
 
                     </div><!-- .list-schools -->
-
+<!--<p-paginator rows="20" totalRecords="{{totalSchools}}" [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator>-->
 
                     <div class="footer-ads">
                         <div class="container">
@@ -398,6 +425,8 @@
 
                 </div></div><!-- .row .col-* -->
 
+
+                        </div><!-- .col-* -->
             </div><!-- .container -->
 
             <div class="ad-holder">
