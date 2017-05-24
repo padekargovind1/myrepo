@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {SchoolService} from '../services/school.service';
 import {AutoCompleteModule, PaginatorModule} from 'primeng/primeng';
+import { Router } from '@angular/router';
+
 
 
 
@@ -15,36 +17,57 @@ import {AutoCompleteModule, PaginatorModule} from 'primeng/primeng';
 
 export class SchoolComponent{
 showFilter:boolean;
+
+
 schoolData;
 totalSchools: number;
 
-text: string;    
-city: any;    
-cities: any[];        
+city: any;
+cities: any[];
 filteredCitiesSingle: any[];
+
 schoolsData: any[];
+
+school: any;
+schools: any[];
+filteredSchoolSingle: any[];
+
+cycles;
+
+
 constructor(private schoolService : SchoolService) {
+
 this.showFilter=false;
 
-this.schoolService.getData().subscribe((data) => { 
-  this.totalSchools=data.total;
-  this.schoolsData= data.data;
-  //this.schoolData=data;
-  //console.log(data);
-  console.log(this.schoolsData);
+
+/* Get School Data on page Load */
+
+this.schoolService.getData().subscribe((data) => {
+//this.totalSchools=data.total;
+this.schoolsData= data.data;  
 });
+
+
+this.schoolService.getCycles().subscribe((data) => {
+
+  this.cycles=data;
+
+});
+
+
+
+
 }
 
+/* City Auto Complete */
 
-filterCitySingle(event) {
+ filterCitySingle(event) {
         let query = event.query;        
         this.schoolService.getCities(query).then(cities => {
             this.filteredCitiesSingle = this.filterCity(cities);
             //console.log(cities);
         });
-    }
-    
-   
+    }   
     
     filterCity(cities: any[]):any[] {        
         let filtered : any[] = [];
@@ -55,10 +78,30 @@ filterCitySingle(event) {
                  filtered.push(city);
             }
 
-        }
-        console.log(filtered);
+        }        
         return filtered;
     }
+
+filterSchoolSingle(event) {
+        let query = event.query;        
+        this.schoolService.getSchoolsAutoComplete(query).then(schools => {
+            this.filteredSchoolSingle = this.filterSchool(schools);
+          //  console.log(cities);
+        });
+    }   
+    
+    filterSchool(schools: any[]):any[] {
+        let filtered : any[] = [];
+        for(let i = 0; i < schools.length; i++) {
+            let school = schools[i];           
+               filtered.push(school);
+        }
+        return filtered;
+    }
+
+
+
+
 
 
 

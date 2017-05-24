@@ -15,7 +15,7 @@
                             <ul>
                                 <li><a><span class="caret"></span> Specialités</a>
                                     <ul>
-                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li>
+                                        <li><input type="checkbox" name="handicappedHome" class="checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li>
                                         <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
                                         <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
                                         <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-4" /><label for="filter-4">Enfant Precoces</label></li>
@@ -210,7 +210,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nom d'etablissement" />
+<p-autoComplete [(ngModel)]="school" [suggestions]="filteredSchoolSingle" (completeMethod)="filterSchoolSingle($event)" field="longName" [size]="30"
+placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
+                                    
                                 </div>
 
                                 <!-- <div class="form-group"> -->
@@ -379,12 +381,12 @@
 
                         </div><!-- .col-* -->
 <!--<<div *ngFor="let school of schoolsData">{{school.longName}}</div>-->
- <div *ngFor="let school of schoolsData" class="col-md-3">
+ <div *ngFor="let school of schoolsData; let i=index" class="col-md-3"  >
                             
                             <div class="card  school-item">
                                 <div class="checkbox-custom">
-                                    <input type="checkbox" class="checkbox filled-in" id="school-1" />
-                                    <label for="school-1">&nbsp;</label>
+                                    <input type="checkbox" class="checkbox filled-in" id="school-{{i}}" />
+                                    <label for="school-{{i}}">&nbsp;</label>
                                 </div>
 
                                 <ul class="school-action">
@@ -399,9 +401,10 @@
                                 <div class="card-content">
                                     <h3>{{school.longName}}</h3>
                                     <p>Lycee d'enseignement <br /> general Prive Catholique <br />Sous contrat d'association</p>
-                                    <address>1 rue du Brouage<br /> 02300 Chauny<br /> Tel: 03 23 52 10 50</address>
-
-                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted">School Detail</a>
+ 
+                                    <a [routerLink]="['/school-details', school._id]"  class="btn btn-highlighted">School Detail</a>
+                                     
+  
                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button>
                                     <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button> -->
                                 </div><!-- .card-content -->

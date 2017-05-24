@@ -27,10 +27,10 @@ jQuery(document).ready(function($) {
 	//     } 
 	// });
 
-	// $('.school-item').lazyload({
-	//     threshold : 200,
-	//     effect: "fadeIn"
-	// });
+	 $('.school-item').lazyload({
+	     threshold : 200,
+	     effect: "fadeIn"
+	 });
 
 	$('#filter-popup').on('hide.bs.modal', function (e) {
 	  $('.link-btn').removeClass('hide');
@@ -43,7 +43,7 @@ jQuery(document).ready(function($) {
 		$(this).siblings('ul').toggleClass('fadeIn open');
 	});
 
-	$('#test1').click(function() { 
+	/*$('#test1').click(function() { 
 		
 		if($(this).is(':checked')){ console.log('checked');
 	        for (var i = 1; i <= 13; i++) { 
@@ -54,7 +54,7 @@ jQuery(document).ready(function($) {
 	        	$('#school-' + i).removeAttr('checked');
 	        }
 	    } 
-	});
+	});*/
 
 	$('.close-class').on('click', function() {
 		$('#apply-popup').modal('hide');

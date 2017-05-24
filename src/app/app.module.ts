@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { HttpModule, Http } from '@angular/http';
+import { HttpModule, Http , URLSearchParams} from '@angular/http';
 
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 import { AppRoutes } from './app.routing';
@@ -40,7 +40,7 @@ export function createTranslateLoader(http: Http) {
     BrowserModule,
     BrowserAnimationsModule,    
     RouterModule.forRoot(AppRoutes),    
-    HttpModule,
+    HttpModule,   
     SchoolModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
