@@ -16,7 +16,7 @@ import {ScheduleModule} from 'primeng/primeng';
 import {DialogModule,AutoCompleteModule} from 'primeng/primeng';
 import { WizardComponent } from './wizard/wizard.component';
 import { SchoolDetailComponent } from './school-detail/school-detail.component';
-//import {SchoolService} from './services/school.service';
+import {UnConseilService} from './services/un-conseil.service';
 
 
 
@@ -48,7 +48,7 @@ export function createTranslateLoader(http: Http) {
       deps: [Http]
     }),    
   ],
-  providers: [],
+  providers: [UnConseilService],
  // entryComponents: [ AdminLayoutComponent],
   bootstrap: [AppComponent]
 })

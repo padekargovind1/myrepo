@@ -4,9 +4,6 @@ import {AutoCompleteModule, PaginatorModule} from 'primeng/primeng';
 import { Router } from '@angular/router';
 
 
-
-
-
 @Component({
   selector: 'app-school',
   templateUrl: './school.component.html',
@@ -14,10 +11,11 @@ import { Router } from '@angular/router';
   providers: [SchoolService]
 })
 
-
 export class SchoolComponent{
 showFilter:boolean;
 
+
+handicappedHome:boolean=true;
 
 schoolData;
 totalSchools: number;
@@ -39,7 +37,6 @@ constructor(private schoolService : SchoolService) {
 
 this.showFilter=false;
 
-
 /* Get School Data on page Load */
 
 this.schoolService.getData().subscribe((data) => {
@@ -49,14 +46,8 @@ this.schoolsData= data.data;
 
 
 this.schoolService.getCycles().subscribe((data) => {
-
   this.cycles=data;
-
 });
-
-
-
-
 }
 
 /* City Auto Complete */
@@ -101,8 +92,13 @@ filterSchoolSingle(event) {
 
 
 
+search()
+{
 
+    
+console.log(this.handicappedHome);
 
+}
 
 
 toggleFilter()

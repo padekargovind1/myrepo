@@ -15,7 +15,9 @@
                             <ul>
                                 <li><a><span class="caret"></span> Specialités</a>
                                     <ul>
-                                        <li><input type="checkbox" name="handicappedHome" class="checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li>
+                                        <li>
+                                        <input type="checkbox" [(ngModel)]="handicappedHome" name="handicappedHome" class="checkbox filled-in" id="filter-1" />
+                                        <label for="filter-1">Accueil Handicapé, Dyslexie</label></li>
                                         <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
                                         <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
                                         <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-4" /><label for="filter-4">Enfant Precoces</label></li>
@@ -216,7 +218,7 @@ placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
                                 </div>
 
                                 <!-- <div class="form-group"> -->
-                                    <button class="btn btn-search"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-search" (click)="search()"><i class="fa fa-search"></i></button>
                                 <!-- </div> -->
 
 
