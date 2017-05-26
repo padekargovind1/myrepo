@@ -26,12 +26,41 @@ getSchoolsFilter(query)
   }
 
 
-/*getSchools() {
-    return this.http.get('http://54.254.203.172/cideapi/search/schools')
+getSchools(query) {
+
+
+let params: URLSearchParams = this.objToSearchParams(query);
+
+ return this.http.get(Constants.SERVER_HOST +"/search/schools", {
+   search: params
+ })
+ .map((res:Response) => res.json());
+ 
+
+ 
+}
+
+  objToSearchParams(obj): URLSearchParams{
+    let params: URLSearchParams = new URLSearchParams();
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key))
+            params.set(key, obj[key]);
+    }
+    return params;
+
+
+
+
+    /*let params: URLSearchParams = new URLSearchParams();
+    params.set('', query);
+    return this.http.get(Constants.SERVER_HOST +'/search/schools')
                     .toPromise()
                     .then(res => <any[]> res.json().data)
                     .then(data => { return data; });
-    }*/
+                    */
+    }
+
+
 
  getCities(query) {
         return this.http.get(Constants.SERVER_HOST +'autocomplete/cities?keyword='+ query)
@@ -60,5 +89,4 @@ getCycles() {
       .then(data => { return data; });
   }
 
-  
 }

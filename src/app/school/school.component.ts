@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import {SchoolService} from '../services/school.service';
 import {AutoCompleteModule, PaginatorModule} from 'primeng/primeng';
 import { Router } from '@angular/router';
+import {FilterModal} from '../models/schools.modal';
 
 
 @Component({
@@ -12,38 +13,38 @@ import { Router } from '@angular/router';
 })
 
 export class SchoolComponent{
+
 showFilter:boolean;
-
-
-handicappedHome:boolean=true;
-
 schoolData;
 totalSchools: number;
-
-city: any;
+city?:any;
 cities: any[];
 filteredCitiesSingle: any[];
 
 schoolsData: any[];
 
-school: any;
+school?: any;
 schools: any[];
 filteredSchoolSingle: any[];
 
 cycles;
-
+filterModal;
 
 constructor(private schoolService : SchoolService) {
-
 this.showFilter=false;
+this.filterModal= new FilterModal();
+}
 
+
+
+
+ ngOnInit()
+{
 /* Get School Data on page Load */
-
 this.schoolService.getData().subscribe((data) => {
 //this.totalSchools=data.total;
 this.schoolsData= data.data;  
 });
-
 
 this.schoolService.getCycles().subscribe((data) => {
   this.cycles=data;
@@ -56,14 +57,14 @@ this.schoolService.getCycles().subscribe((data) => {
         let query = event.query;        
         this.schoolService.getCities(query).then(cities => {
             this.filteredCitiesSingle = this.filterCity(cities);
-            //console.log(cities);
+            
         });
     }   
     
-    filterCity(cities: any[]):any[] {        
+filterCity(cities: any[]):any[] {        
         let filtered : any[] = [];
         for(let i = 0; i < cities.length; i++) {
-            let city = cities[i];           
+            let city = cities[i];
              
              if(city.cityName.toLowerCase().indexOf(city.cityName.toLowerCase()) == 0) {
                  filtered.push(city);
@@ -76,8 +77,7 @@ this.schoolService.getCycles().subscribe((data) => {
 filterSchoolSingle(event) {
         let query = event.query;        
         this.schoolService.getSchoolsAutoComplete(query).then(schools => {
-            this.filteredSchoolSingle = this.filterSchool(schools);
-          //  console.log(cities);
+            this.filteredSchoolSingle = this.filterSchool(schools);          
         });
     }   
     
@@ -92,12 +92,17 @@ filterSchoolSingle(event) {
 
 
 
+
+
 search()
-{
+{  
+this.filterModal.city=this.city.cityName;
+this.filterModal.keyword=this.school.longName;
+let query= this.filterModal;
 
-    
-console.log(this.handicappedHome);
-
+this.schoolService.getSchools(query).subscribe((data) => {
+  this.schoolsData=data.data;
+});
 }
 
 
@@ -112,11 +117,6 @@ toggleFilter()
   this.showFilter=true;
    }
 }
-
-paginate(event) {
-    console.log(event);
-        
-    }
 
 
 }

@@ -12,13 +12,11 @@ export class UnConseilComponent implements OnInit {
 packageData;
 
 
-  constructor(private UnConseilService : UnConseilService) {} 
+  constructor(private UnConseilService : UnConseilService) {}
  
  ngOnInit(){
   this.UnConseilService.getData().subscribe((data) => {
-  this.packageData=data.data; 
-  console.log(data.data);
+  this.packageData=data.data;   
 });
 }
-
 }
