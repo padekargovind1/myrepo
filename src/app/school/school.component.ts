@@ -20,13 +20,10 @@ totalSchools: number;
 city?:any;
 cities: any[];
 filteredCitiesSingle: any[];
-
 schoolsData: any[];
-
 school?: any;
 schools: any[];
 filteredSchoolSingle: any[];
-
 cycles;
 filterModal;
 
@@ -34,9 +31,6 @@ constructor(private schoolService : SchoolService) {
 this.showFilter=false;
 this.filterModal= new FilterModal();
 }
-
-
-
 
  ngOnInit()
 {
@@ -89,10 +83,6 @@ filterSchoolSingle(event) {
         }
         return filtered;
     }
-
-
-
-
 
 search()
 {  
