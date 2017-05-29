@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import {ScheduleModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
+import { ActivatedRoute } from '@angular/router';
+import {EventService} from '../services/event.service';
 
 @Component({
   selector: 'app-booking-appointment',
   templateUrl: './booking-appointment.component.html',
-  styleUrls: ['./booking-appointment.component.scss']
+  styleUrls: ['./booking-appointment.component.scss'],
+  providers: [EventService]
 })
 export class BookingAppointmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private eventService : EventService) { }
+
+
+ packegId: number;
+ private sub: any;
+  advisors:any[];
 
   events: any[];
   headerConfig: any;
@@ -28,39 +36,30 @@ handleEventClick(e) {
 
 
     ngOnInit() {
-        this.events = [
-            {
-                "title": "All Day Event",
-                "start": "2017-05-01"
-            },
-            {
-                "title": "Long Event",
-                "start": "2017-01-07",
-                "end": "2017-01-10"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2017-05-09T16:00:00"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2017-01-16T16:00:00"
-            },
-            {
-                "title": "Conference",
-                "start": "2016-01-11",
-                "end": "2016-01-13"
-            }
-        ];
+
+    this.sub = this.route.params.subscribe(params => {
+       this.packegId = params['id'];
+       console.log(this.packegId);
+            
+        this.eventService.getAdvisor(this.packegId).then(advisors => {
+             this.advisors= advisors;
+             console.log( this.advisors)
+        });
+
+});    
 
     this.headerConfig = {		
 			left: '',
 			center: 'prev title next',
 			right: 'today agendaDay,agendaWeek,month'
 		}
+}
 
+advisorClick(advisorID)
+{
+  console.log(advisorID);
+  
+}
 
-
-    }
 
 }

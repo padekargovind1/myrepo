@@ -27,8 +27,10 @@
                     <div class="conseil-info"><span class="conseil-label">Public:</span><br />{{package.audience}}</div>
 
                     <div class="conseil-price">{{package.cost}}<sup>€</sup></div>
+   
+                     <a [routerLink]="['/booking-appointment', package._id]"  class="btn  btn-conseil  btn-block  color-1">Je Reserve Maintenant</a>
+ 
 
-                     <a routerLink="/booking-appointment"  class="btn  btn-conseil  btn-block  color-1">Je Reserve Maintenant</a>
                 </div>
 
             </div><!-- .conseil-item -->

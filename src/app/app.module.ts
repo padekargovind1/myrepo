@@ -9,14 +9,14 @@ import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-tra
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './layouts/home/home-page.component';
-import {SchoolModule} from './school/school.module';
+import { SchoolModule} from './school/school.module';
 import { UnConseilComponent } from './un-conseil/un-conseil.component';
 import { BookingAppointmentComponent } from './booking-appointment/booking-appointment.component';
-import {ScheduleModule} from 'primeng/primeng';
-import {DialogModule,AutoCompleteModule} from 'primeng/primeng';
+import { ScheduleModule} from 'primeng/primeng';
+import { DialogModule,AutoCompleteModule} from 'primeng/primeng';
 import { WizardComponent } from './wizard/wizard.component';
 import { SchoolDetailComponent } from './school-detail/school-detail.component';
-import {UnConseilService} from './services/un-conseil.service';
+import { UnConseilService} from './services/un-conseil.service';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
 
 

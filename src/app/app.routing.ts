@@ -24,7 +24,7 @@ export const AppRoutes: Routes = [{
   component: UnConseilComponent,  
 },
 {
-  path: 'booking-appointment',
+  path: 'booking-appointment/:id',
   component: BookingAppointmentComponent,  
 },
 { path: 'school-details/:id',

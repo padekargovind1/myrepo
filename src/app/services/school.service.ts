@@ -48,16 +48,7 @@ let params: URLSearchParams = this.objToSearchParams(query);
     }
     return params;
 
-
-
-
-    /*let params: URLSearchParams = new URLSearchParams();
-    params.set('', query);
-    return this.http.get(Constants.SERVER_HOST +'/search/schools')
-                    .toPromise()
-                    .then(res => <any[]> res.json().data)
-                    .then(data => { return data; });
-                    */
+ 
     }
 
 

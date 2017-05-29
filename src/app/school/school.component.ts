@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import {SchoolService} from '../services/school.service';
 import {AutoCompleteModule, PaginatorModule} from 'primeng/primeng';
-import { Router } from '@angular/router';
 import {FilterModal} from '../models/schools.modal';
 
 
