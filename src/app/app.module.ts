@@ -17,6 +17,7 @@ import {DialogModule,AutoCompleteModule} from 'primeng/primeng';
 import { WizardComponent } from './wizard/wizard.component';
 import { SchoolDetailComponent } from './school-detail/school-detail.component';
 import {UnConseilService} from './services/un-conseil.service';
+import { CompareModeComponent } from './compare-mode/compare-mode.component';
 
 
 
@@ -32,6 +33,7 @@ export function createTranslateLoader(http: Http) {
     BookingAppointmentComponent,
     WizardComponent,
     SchoolDetailComponent,
+    CompareModeComponent,
   ],
   imports: [
     DialogModule,
