@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-wizard',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WizardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
+
+   private sub: any;
 
   ngOnInit() {
-  }
+
+      this.sub = this.route.params.subscribe(params => {
+      console.log(params);
+      
+
+
+      })
 
 }
+}
+

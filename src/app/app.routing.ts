@@ -31,6 +31,6 @@ export const AppRoutes: Routes = [{
 { path: 'school-details/:id',
  component: SchoolDetailComponent },
 
- { path: 'wizard',
+ { path: 'wizard/:id/:id2',
  component: WizardComponent }
 ];
