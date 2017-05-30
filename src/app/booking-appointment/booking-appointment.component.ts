@@ -24,37 +24,13 @@ export class BookingAppointmentComponent implements OnInit {
   selectedDate;
 
 
-
-  showDialog() {
-    this.display = true;
-  }
-
-
-
-  handleEventClick(e) {
-
-
-    //e.changeView("agendaDay");
-    //this.showDialog();
-    this.display = true;
-    this.selectedDate = new Date(e.date._d);
-
-
-
-
-
-  }
-
-
   ngOnInit() {
 
     this.sub = this.route.params.subscribe(params => {
-      this.packegId = params['id'];      
-
+      this.packegId = params['id'];
       this.eventService.getAdvisor(this.packegId).then(advisors => {
-        this.advisors = advisors;
-        
-       this.advisorClick(this.advisors[0]._id,this.advisors[0].fullName);
+      this.advisors = advisors;
+      this.advisorClick(this.advisors[0]._id, this.advisors[0].fullName);
       });
 
     });
@@ -64,9 +40,21 @@ export class BookingAppointmentComponent implements OnInit {
       center: 'prev title next',
       right: 'today agendaDay,agendaWeek,month'
     }
+  }
 
-    
 
+
+
+  showDialog() {
+    this.display = true;
+  }
+
+  handleEventClick(e) {
+
+    //e.changeView("agendaDay");
+    //this.showDialog();
+    this.display = true;
+    this.selectedDate = new Date(e.date._d);
 
   }
 
