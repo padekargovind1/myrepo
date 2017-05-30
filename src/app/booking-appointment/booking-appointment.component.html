@@ -16,7 +16,7 @@
                     <h3 class="advisor-title">Conseillers d'oreintation</h3>
 
                     <ul class="advisors">
-                        <li *ngFor="let advisor of advisors" class="active">
+                        <li *ngFor="let advisor of advisors" [class.active]="selectedAdvisor === advisor.fullName" >
                             <a href="javascript:void(0);" (click)="advisorClick(advisor._id,advisor.fullName)">
                                 <div class="row">
                                     <section class="col-md-5">

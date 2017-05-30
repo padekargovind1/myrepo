@@ -63,7 +63,10 @@ h1 { font-weight: 300; }
 /**
  *  Filter  
  */
-.filter-form-holder { background: url('../img/primary-school.jpg') no-repeat; background-size: cover; height: 492px; position: relative;}
+.filter-form-holder { background-repeat: no-repeat; background-size: cover; height: 492px; position: relative;}
+    .filter-form-holder.ecole { background-image: url('../img/primary-school.jpg');}
+    .filter-form-holder.lycee { background-image: url('../img/high-school.jpg');}
+    .filter-form-holder.college { background-image: url('../img/secondary-school.jpg');}
     .filter-form-holder .searchform { background: rgba( 0, 0, 0, .6); width: 100%; position: absolute; bottom: 0; padding: 10px 0 35px;}
     .form-wrap { background: #393645; border-radius: 5px; padding: 13px;}
     
@@ -82,8 +85,8 @@ h1 { font-weight: 300; }
   .advance-filter.open { right: auto; }
   .advance-filter ul { padding-left: 0; list-style: none; }
   .advance-filter > ul > li { display: inline-block; vertical-align: top; margin: 0 5px 13px; position: relative;}
-  .advance-filter a { padding: 20px 13px; color: #fff; height: 80px; width: 150px; border-radius: 5px; border: 1px solid #7BC673; display: block; position: relative; font-size: 16px; }
-  .advance-filter ul.open a:after { width: 100%; height: 5px; position: absolute; bottom: 1px; left : 0; display: block; content: ""; background: #32352F; z-index: 10;}
+  .advance-filter a { padding: 20px 13px; color: #fff; height: 80px; width: 150px; border-radius: 5px; border: 1px solid #7BC673; display: block; position: relative; font-size: 16px; cursor: pointer;}
+  .advance-filter a.open:after { width: 100%; height: 5px; position: absolute; bottom: 1px; left : 0; display: block; content: ""; background: #32352F; z-index: 10;}
   .advance-filter ul ul { width: 340px; position: absolute; left: 0; top: 92%; border: 1px solid #7BC673; border-radius: 0 5px 0 0; background: #32352F; display: none; z-index: 9;}
   .advance-filter ul ul.open { display: block; }
   .advance-filter ul ul li { padding: 10px; }
@@ -177,7 +180,9 @@ h1 { font-weight: 300; }
  * Brochure
  */
 .brochure {}
+  .brochure .form-wrap { background: #748187; }
   .brochure .searchform { color: #fff; }
+  .brochure .btn-download { background: #748187;   }
   .brochure-title { font-weight: 100; text-align: center; }
   .brochure-content { margin-top: 30px; }
   .brochure-item { text-align: center; position: relative; margin-bottom: 30px;}
@@ -185,6 +190,7 @@ h1 { font-weight: 300; }
   .brochure-item .image-wrap .vertical-helper { height: 100%; display: inline-block; vertical-align: middle; }
   .brochure-item img { vertical-align: middle; max-width: 90%; max-height: 90%; }
   .brochure-item .checkbox-custom { position: absolute; top: 5px; left: 5px; }
+  .brochure .select-custom select { background-image: url('../img/dropdown-grey.png'); }
 
   #download-popup .btn { width: 46%; margin: 0 1%;}
     #download-popup .tab-pane { padding: 0; }
@@ -192,14 +198,16 @@ h1 { font-weight: 300; }
   
 .modal-download { width: 384px; }
   .modal-download .nav-tabs { border-bottom: #343741 solid 2px;}
+  .modal-download .nav-tabs>li { width: 50%; text-align: center; }
   .modal-download .nav-tabs>li>a { color: #343741; border-radius: 0; border: none;}
   .modal-download .nav-tabs>li.active>a, 
   .modal-download .nav-tabs>li.active>a:focus, 
   .modal-download .nav-tabs>li.active>a:hover {
     border: none;
     color: #fff;
-    background: #343741;
+    background: #C8D409;
   }
+  .nav-tabs>li { margin-bottom: 0; }
   .modal-download .nav>li>a:focus, .modal-download .nav>li>a:hover { background: none; border: none; }
 .note { font-style: italic; font-size: 12px; text-align: center;}
 
@@ -209,11 +217,37 @@ h1 { font-weight: 300; }
 
 
 /**
+ * Job Group
+ */
+.job-group-content { width: 30%; display: inline-block; vertical-align: top;  margin-bottom: 40px;}
+.job-group-list { list-style: none; padding-left: 0; }
+  .job-group-list li { padding: 7px 0; position: relative; width: 85%;}
+
+label.custom-radio.face { font-size: 28px;}
+label.custom-radio.happy:before { border: none;}
+.custom-radio.happy span:before { content: "\f118"; font-family: FontAwesome; border: none; color: #999;}
+.custom-radio.happy input[type="radio"]:checked + span:before { color: #00bc50; background: none;}
+
+label.custom-radio.sad:before { border: none;}
+.custom-radio.sad span:before { content: "\f119"; font-family: FontAwesome; border: none; color: #999;}
+.custom-radio.sad input[type="radio"]:checked + span:before { color: #FF6347; background: none;}
+
+.checkbox-job-group { position: absolute; top: -10px; right: 10px;}
+
+
+.save-button-holder { width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: #c5c7c6;
+    padding: 10px 20px; }
+
+/**
  * Booking appointment 
  */
 .advisors-wrap { background: #343434; padding: 20px 7px;}
     .advisors { list-style: none; padding-left: 0; }
-    .advisors li { border-radius: 5px; background: #444444; padding: 10px; margin-bottom: 10px;}
+    .advisors li { border-radius: 5px; background: #444444; padding: 10px; margin-bottom: 10px; opacity: .2;}
+    .advisors li.active { opacity: 1;}
     .advisor-name { font-size: 18px; display: block; margin-top: 20px}
     .advisors li a { color: #fff;}
     .advisor-title { margin: 0; font-size: 22px; font-weight: 100; margin-bottom: 13px;}
@@ -248,11 +282,20 @@ h1 { font-weight: 300; }
 .appointment-title { font-weight: 100; }
 
 #rootwizard { margin-top: 40px;}
-    #rootwizard .nav { background: #2F2F2C; }
-        #rootwizard .nav-pills>li.active>a { background: transparent;}
-        #rootwizard .nav-pills>li>a { background: #393645; color: #fff; margin: 3px 2px; width: 140px;} 
+    #rootwizard .nav { background: #c5c7c6; }
+        #rootwizard .nav-pills>li.active>a { background: #00bc50; color: #fff;}
+        #rootwizard .nav-pills>li>a { background: transparent; color: #2B2A28; margin: 3px 2px; width: 140px; height: 56px; text-align: center;}
+        #rootwizard .nav-pills>li>a span { display: inline-block; vertical-align: middle;}
+        #rootwizard .nav-pills>li>a span.helper { height: 100%; }
 
-.tab-pane { padding: 20px 20px 40px; }
+.tab-pane { padding: 0 20px 40px; }
+
+
+.gap-for-radio { margin: 10px 0 5px; }
+.col-for-radio { width: 28%; float: left; margin-left: 15px;}
+.select2-results__option { color: #333; }
+.wrap-enfant { margin-left: 30px; }
+.different-gap { margin-top: 40px; }
 
 /** 
  * Survey
@@ -276,6 +319,7 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
 
 .horizontal-radio label { float: left; margin-right: 25px;}
     .horizontal-radio label.custom-radio:before { border: 2px solid #fff; }
+    .white-background .horizontal-radio label.custom-radio:before { border-color: #2B2A28; }
     .horizontal-radio label.custom-radio span:before { top: 7px; }
 
 #download-popup label.custom-radio:before { border-color: #333; }
@@ -288,6 +332,7 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
     .btn-highlighted:hover, .btn-secondary:hover { color: #fff;}
 
 .brochure .btn-download { font-size: 30px; padding: 16px 50px;}
+.brochure .btn-download:focus { color: #fff; }
 .btn-secondary.disabled { opacity: .3; }
 
 .back-button { color: #fff; font-size: 20px; position: absolute; top: 30px;}
@@ -305,6 +350,9 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
 .select-custom { position: relative; margin-right: 15px;}
    /* .select-custom:after { content: "\f078"; display: block; position: absolute; font-family: 'FontAwesome'; background: #393649; padding: 0 4px; border-radius: 4px; right: 10px; top: 10px;}*/
     .select-custom select { background: #fff url(../img/cide-dropbox-arrow.png) no-repeat 97% 48%; -webkit-appearance: none; padding-right: 30px; font-weight: 700;}
+  .select2-container { width: 100% !important; }
+
+  .select2-results__option[aria-selected] { color: #333; }
 
 .btn-appointment { background: #00BC50; color: #fff; }
     .btn-appointment:hover { color: #fff; }
@@ -564,6 +612,12 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
   border-color: #BDBDBD;
 }
 
+
+.datepicker-holder .datepicker { background-image: url('../img/calendar.png'); background-repeat: no-repeat; background-position: 0 0; background-position: 96% 47%; background-size: 20px; cursor: pointer;}
+
+.hidden { display: none; }
+
+.select2-container--default .select2-search--inline .select2-search__field { width: 106% !important; }
 
 /**
  * Content holder
