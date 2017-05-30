@@ -1,82 +1,80 @@
-import {Injectable} from '@angular/core';
-import {Http, Response, URLSearchParams} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Response, URLSearchParams } from '@angular/http';
 import 'rxjs/Rx';
-import {Constants} from "../utilities/constants";
+import { Constants } from "../utilities/constants";
 
 @Injectable()
 export class SchoolService {
 
-   constructor(public http:Http) {}
+  constructor(public http: Http) { }
 
-   getData() {
-    return this.http.get(Constants.SERVER_HOST +"/search/schools")
-        .map((res:Response) => res.json());
+  getData() {
+    return this.http.get(Constants.SERVER_HOST + "/search/schools")
+      .map((res: Response) => res.json());
   }
 
-getSchoolsFilter(query)
-  {
+  getSchoolsFilter(query) {
     let params: URLSearchParams = new URLSearchParams();
     params.set('keyword', query);
-    return this.http.get(Constants.SERVER_HOST + '/autocomplete/schools',{
-          search:params
-      })
+    return this.http.get(Constants.SERVER_HOST + '/autocomplete/schools', {
+      search: params
+    })
       .toPromise()
-      .then(res => <any[]> res.json().data)
+      .then(res => <any[]>res.json().data)
       .then(data => { return data; });
   }
 
 
-getSchools(query) {
+  getSchools(query) {
 
 
-let params: URLSearchParams = this.objToSearchParams(query);
+    let params: URLSearchParams = this.objToSearchParams(query);
 
- return this.http.get(Constants.SERVER_HOST +"/search/schools", {
-   search: params
- })
- .map((res:Response) => res.json());
- 
+    return this.http.get(Constants.SERVER_HOST + "/search/schools", {
+      search: params
+    })
+      .map((res: Response) => res.json());
 
- 
-}
 
-  objToSearchParams(obj): URLSearchParams{
+
+  }
+
+  objToSearchParams(obj): URLSearchParams {
     let params: URLSearchParams = new URLSearchParams();
     for (var key in obj) {
-        if (obj.hasOwnProperty(key))
-            params.set(key, obj[key]);
+      if (obj.hasOwnProperty(key))
+        params.set(key, obj[key]);
     }
     return params;
 
- 
-    }
 
-
-
- getCities(query) {
-        return this.http.get(Constants.SERVER_HOST +'autocomplete/cities?keyword='+ query)
-                    .toPromise()
-                    .then(res => <any[]> res.json().data)
-                    .then(data => { return data; });
-    }
-
-
-
-getCycles() {
-    return this.http.get(Constants.SERVER_HOST + "/autocomplete/cycles")
-        .map((res:Response) => res.json());
   }
 
 
-  getSchoolsAutoComplete(query)
-  {
+
+  getCities(query) {
+    return this.http.get(Constants.SERVER_HOST + 'autocomplete/cities?keyword=' + query)
+      .toPromise()
+      .then(res => <any[]>res.json().data)
+      .then(data => { return data; });
+  }
+
+
+
+  getCycles() {
+    return this.http.get(Constants.SERVER_HOST + "/autocomplete/cycles")
+      .map((res: Response) => res.json());
+  }
+
+
+  getSchoolsAutoComplete(query) {
     let params: URLSearchParams = new URLSearchParams();
     params.set('keyword', query);
-    return this.http.get(Constants.SERVER_HOST + '/autocomplete/schools',{
-          search:params
-      })
+    return this.http.get(Constants.SERVER_HOST + '/autocomplete/schools', {
+      search: params
+    })
       .toPromise()
-      .then(res => <any[]> res.json().data)
+      .then(res => <any[]>res.json().data)
       .then(data => { return data; });
   }
 

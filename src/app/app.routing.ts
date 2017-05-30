@@ -5,6 +5,7 @@ import { SchoolComponent } from './school/school.component';
 import { UnConseilComponent } from './un-conseil/un-conseil.component';
 import { BookingAppointmentComponent } from './booking-appointment/booking-appointment.component';
 import { SchoolDetailComponent } from './school-detail/school-detail.component';
+import { WizardComponent } from './wizard/wizard.component';
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -28,5 +29,8 @@ export const AppRoutes: Routes = [{
   component: BookingAppointmentComponent,  
 },
 { path: 'school-details/:id',
- component: SchoolDetailComponent }
+ component: SchoolDetailComponent },
+
+ { path: 'wizard',
+ component: WizardComponent }
 ];

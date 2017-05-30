@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-school-detail',
   templateUrl: './school-detail.component.html',
   styleUrls: [
-'school-detail.component.scss',
+    'school-detail.component.scss',
 
-  ]  
+  ]
 })
 export class SchoolDetailComponent implements OnInit {
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UnConseilService} from '../services/un-conseil.service';
+import { UnConseilService } from '../services/un-conseil.service';
 
 
 @Component({
@@ -10,14 +10,14 @@ import {UnConseilService} from '../services/un-conseil.service';
 })
 export class UnConseilComponent implements OnInit {
 
-packageData;
+  packageData;
 
 
-  constructor(private UnConseilService : UnConseilService) {}
- 
- ngOnInit(){
-  this.UnConseilService.getData().subscribe((data) => {
-  this.packageData=data.data;   
-});
-}
+  constructor(private UnConseilService: UnConseilService) { }
+
+  ngOnInit() {
+    this.UnConseilService.getData().subscribe((data) => {
+      this.packageData = data.data;
+    });
+  }
 }

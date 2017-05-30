@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ScheduleModule} from 'primeng/primeng';
-import {DialogModule} from 'primeng/primeng';
+import { ScheduleModule, DialogModule } from 'primeng/primeng';
 import { ActivatedRoute } from '@angular/router';
-import {EventService} from '../services/event.service';
+import { EventService } from '../services/event.service';
 
 @Component({
   selector: 'app-booking-appointment',
@@ -12,54 +11,75 @@ import {EventService} from '../services/event.service';
 })
 export class BookingAppointmentComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private eventService : EventService) { }
+  constructor(private route: ActivatedRoute, private eventService: EventService) { }
 
-
- packegId: number;
- private sub: any;
-  advisors:any[];
-
+  packegId: number;
+  private sub: any;
+  advisors: any[];
   events: any[];
   headerConfig: any;
-
+  eventsData;
   display: boolean = false;
+  selectedAdvisor;
+  selectedDate;
+
+
 
   showDialog() {
-        this.display = true;
-    }
+    this.display = true;
+  }
 
 
 
-handleEventClick(e) {
-  this.showDialog(); 
-    }
+  handleEventClick(e) {    
+   
+ 
+   //e.changeView("agendaDay");
+   //this.showDialog();
+   this.display = true;
+   this.selectedDate=new Date(e.date._d);
+
+   
+   
+   
+   
+  }
 
 
-    ngOnInit() {
+  ngOnInit() {
 
     this.sub = this.route.params.subscribe(params => {
-       this.packegId = params['id'];
-       console.log(this.packegId);
-            
-        this.eventService.getAdvisor(this.packegId).then(advisors => {
-             this.advisors= advisors;
-             console.log( this.advisors)
-        });
+      this.packegId = params['id'];
+      //console.log(this.packegId);
 
-});    
+      this.eventService.getAdvisor(this.packegId).then(advisors => {
+        this.advisors = advisors;
+        //console.log(this.advisors)
+      });
 
-    this.headerConfig = {		
-			left: '',
-			center: 'prev title next',
-			right: 'today agendaDay,agendaWeek,month'
-		}
-}
+    });
 
-advisorClick(advisorID)
-{
-  console.log(advisorID);
-  
-}
+    this.headerConfig = {
+      left: '',
+      center: 'prev title next',
+      right: 'today agendaDay,agendaWeek,month'
+    }
 
 
+    
+
+
+
+
+  }
+
+  advisorClick(advisorID,advisorName) {
+    this.eventService.getAdvisorData(advisorID).then(events => {
+      var str = JSON.stringify(events);
+      str = str.replace(/from/g, 'start');
+      str = str.replace(/to/g, 'end');
+      this.events = JSON.parse(str);
+      this.selectedAdvisor=advisorName;
+    });
+  }
 }

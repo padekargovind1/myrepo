@@ -65,4 +65,32 @@ jQuery(document).ready(function($) {
 		$('#download-popup').modal('hide');
 		$('#download-file').modal('show');
 	});
+
+
+	$('#scolaire-filter').on('click', function() {
+		if($(this).is(':checked')) { console.log('clicked');
+			$('.dans-quelles').toggleClass('hidden');
+		} else {
+			$('.dans-quelles').toggleClass('hidden');
+		}
+	});
+
+	$('.multiselect').select2({
+		placeholder: 'Dans quelles matières'
+	});
+	$('.strong').select2({
+		placeholder: 'Matières fortes'
+	});
+	$('.low').select2({
+		placeholder: 'Matières faibles'
+	});
+	$('.matery').select2({
+		placeholder: 'Votre goût pour les matières'
+	});
+
+
+	$('.datepicker').datetimepicker({		
+		format: 'DD/MM/YYYY'
+	});
+
 });
