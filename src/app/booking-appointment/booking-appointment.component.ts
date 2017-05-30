@@ -26,7 +26,7 @@ export class BookingAppointmentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.sub = this.route.params.subscribe(params => {
+      this.sub = this.route.params.subscribe(params => {
       this.packegId = params['id'];
       this.eventService.getAdvisor(this.packegId).then(advisors => {
       this.advisors = advisors;
