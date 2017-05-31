@@ -13,8 +13,8 @@ import { FilterModal, CompareModal } from '../models/schools.modal';
 
 export class SchoolComponent {
 
-    schoolCheckboxes:string;
-    facilityCheckboxes:string;
+    schoolCheckboxes: string;
+    facilityCheckboxes: string;
 
     showFilter: boolean;
     schoolData;
@@ -29,20 +29,18 @@ export class SchoolComponent {
     cycles;
     filterModal;
     compareModal;
-    schoolsToCompare:any[];
-    compareCriteria:any[];
-
-
+    schoolsToCompare: any[];
+    compareCriteria: any[];
 
 
     constructor(private schoolService: SchoolService) {
         this.showFilter = false;
         this.filterModal = new FilterModal();
-        this.compareModal=new CompareModal;
-        this.schoolCheckboxes='';
-        this.facilityCheckboxes='';
-        
-        
+        this.compareModal = new CompareModal;
+        this.schoolCheckboxes = '';
+        this.facilityCheckboxes = '';
+
+
     }
 
     ngOnInit() {
@@ -116,35 +114,20 @@ export class SchoolComponent {
         }
     }
 
-Checkboxes(id,id2)
-{
-if(id2)
-{
-    //console.log(id[0]);
-this.schoolCheckboxes=(this.schoolCheckboxes + id[0]+',');
+    Checkboxes(id, id2) {
+        if (id2) {
+            this.schoolCheckboxes = (this.schoolCheckboxes + id[0] + ',');
+        }
+    }
 
-}
+    getFacilityCheckboxes(id, id2) {
+        if (id2) {
+            this.facilityCheckboxes = (this.facilityCheckboxes + id[0] + ',');
+        }
+    }
 
-}
-
-getFacilityCheckboxes(id,id2)
-{
-if(id2)
-{
-    //console.log(id[0]);
-this.facilityCheckboxes=(this.facilityCheckboxes + id[0]+',');
-
-}
-
-}
-
-
-
-
-selectedSchools()
-{
-    console.log(this.schoolCheckboxes);
-    console.log(this.compareModal);
-}
-
+    selectedSchools() {
+        console.log(this.schoolCheckboxes);
+        console.log(this.compareModal);
+    }
 }

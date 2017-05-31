@@ -78,4 +78,26 @@ export class SchoolService {
       .then(data => { return data; });
   }
 
+
+
+
+
+compareSchools(idsToCompare,fieldsToCompare)
+{
+
+let params: URLSearchParams = new URLSearchParams();
+    params.set('idsToCompare', idsToCompare);
+    params.set('fieldsToCompare', fieldsToCompare);
+
+    return this.http.get(Constants.SERVER_HOST + '/compare/schools', {
+      search: params
+    })
+      .toPromise()
+      .then(res => <any[]>res.json().data)
+      .then(data => { return data; });
+  }
+
 }
+
+
+
