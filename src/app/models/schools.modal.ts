@@ -30,13 +30,28 @@ halfBoardMixed:boolean;
 halfBoardBoys:boolean;
 halfBoardGirls:boolean;
 city?:any;
-keyword?:any;
-
-
-
-    
+keyword?:any;    
     
     constructor() { 
         
     }
 }
+
+
+export class CompareModal
+{
+specialties:boolean;
+Internet:boolean;
+Period:boolean;
+Restauration:boolean;
+Externat:boolean;
+Statut:boolean;
+confessional:boolean;
+Langues:boolean;
+Sections:boolean;
+graduates:boolean;
+Options:boolean;
+Places_disponibles:boolean;
+}
+
+

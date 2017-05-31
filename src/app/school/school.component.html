@@ -324,7 +324,7 @@ placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
                             
                             <div class="compare-holder">
                                
-                                <a href="compare-mode.html#compare" class="btn btn-appointment pull-right hide link-btn">Je Compare</a>
+                                <!--<a href="compare-mode.html#compare" class="btn btn-appointment pull-right hide link-btn">Je Compare</a>-->
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-appointment pull-right popup-btn" data-toggle="modal" data-target="#filter-popup">Je Compare</button>
                             </div>
@@ -337,45 +337,45 @@ placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
                                             <h3>Ce que vous voulez compare?</h3>
 
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-1" /><label for="compare-1">Spécialités</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.specialties" class="checkbox filled-in" id="compare-1" value="specialties" /><label for="compare-1">Spécialités</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-2" /><label for="compare-2">Internat</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Internet" class="checkbox filled-in" id="compare-2" value="Internet" /><label for="compare-2">Internat</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-3" /><label for="compare-3">Période</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Period" class="checkbox filled-in" id="compare-3" value="Period" /><label for="compare-3">Période</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-4" /><label for="compare-4">Restauration</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Restauration" class="checkbox filled-in" id="compare-4" value="Restauration" /><label for="compare-4">Restauration</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-5" /><label for="compare-5">Externat</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Externat" class="checkbox filled-in" id="compare-5" value="Externat" /><label for="compare-5">Externat</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-6" /><label for="compare-6">Statut</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Statut" class="checkbox filled-in" id="compare-6" value="Statut" /><label for="compare-6">Statut</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-7" /><label for="compare-7">Ens. confessionel</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.confessional" class="checkbox filled-in" id="compare-7" value="confessional" /><label for="compare-7">Ens. confessionel</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-8" /><label for="compare-8">Langues</label>
+                                                <input type="checkbox" name=""  (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Langues" class="checkbox filled-in" id="compare-8" value="Langues" /><label for="compare-8">Langues</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-9" /><label for="compare-9">Sections</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Sections" class="checkbox filled-in" id="compare-9" value="Sections" /><label for="compare-9">Sections</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-10" /><label for="compare-10">Diplômés</label>
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.graduates" class="checkbox filled-in" id="compare-10" value="graduates" /><label for="compare-10">Diplômés</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-11" /><label for="compare-11">Options</label>
+                                                <input type="checkbox" name=""  (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Options" class="checkbox filled-in" id="compare-11" value="Options" /><label for="compare-11">Options</label>
                                             </div><!-- .filter-option -->
                                             <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-12" /><label for="compare-12">Places disponibles</label>
+                                                <input type="checkbox"  name=""  (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Places_disponibles" class="checkbox filled-in" id="compare-12" value="Places_disponibles" /><label for="compare-12">Places disponibles</label>
                                             </div><!-- .filter-option -->
 
-                                            <button class="btn btn-filter-pop-up btn-block btn-lg" data-dismiss="modal">Je Compare</button>
+                                            <!--<button class="btn btn-filter-pop-up btn-block btn-lg" (click)="selectedSchools()" data-dismiss="modal">Je Compare</button>-->
 
-                                            <!-- <a href="compare-mode.html#compare" class="btn btn-filter-pop-up btn-block btn-lg ">Je Comparer</a> -->
+                                             <a [routerLink]="['/compare-mode',schoolCheckboxes,facilityCheckboxes]" class="btn btn-filter-pop-up btn-block btn-lg">Je Comparer</a> 
                                         </div>
                                     </div>
                                 </div>
@@ -387,10 +387,9 @@ placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
                             
                             <div class="card  school-item">
                                 <div class="checkbox-custom">
-                                    <input type="checkbox" class="checkbox filled-in" id="school-{{i}}" />
-                                    <label for="school-{{i}}">&nbsp;</label>
+                                    <input type="checkbox" (change)="Checkboxes([$event.target.getAttribute('value')],$event.target.checked)" class="checkbox filled-in"  value ="{{school._id}}" id="{{school._id}}" />
+                                    <label for="{{school._id}}">&nbsp;</label>
                                 </div>
-
                                 <ul class="school-action">
                                     <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>

@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
 
 	$('#filter-popup').on('hide.bs.modal', function (e) {
 	  $('.link-btn').removeClass('hide');
-	  $('.popup-btn').addClass('hide');
+	 // $('.popup-btn').addClass('hide');
 	});
 
 	$('.advance-filter a').on('click', function(e) {
