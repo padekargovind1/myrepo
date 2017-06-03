@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { ScheduleModule, DialogModule } from 'primeng/primeng';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
+import { SharedService } from '../services/shared.service';
+
 
 @Component({
   selector: 'app-booking-appointment',
@@ -11,7 +13,7 @@ import { EventService } from '../services/event.service';
 })
 export class BookingAppointmentComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private eventService: EventService) { }
+  constructor(private route: ActivatedRoute, private eventService: EventService, private sharedService: SharedService, private cd: ChangeDetectorRef) { }
 
   packegId: number;
   private sub: any;
@@ -27,6 +29,7 @@ export class BookingAppointmentComponent implements OnInit {
   ngOnInit() {
       this.sub = this.route.params.subscribe(params => {
       this.packegId = params['id'];
+      this.sharedService.selectedPackageID=params['id'];
       this.eventService.getAdvisor(this.packegId).then(advisors => {
       this.advisors = advisors;
       this.advisorClick(this.advisors[0]._id, this.advisors[0].fullName);
@@ -38,6 +41,7 @@ export class BookingAppointmentComponent implements OnInit {
       center: 'prev title next',
       right: 'today agendaDay,agendaWeek,month'
     }
+     
   }
 
 
@@ -45,10 +49,23 @@ export class BookingAppointmentComponent implements OnInit {
   this.display = true;
   }
 
-  handleEventClick(e) {
+  handleEventClick(e,fc ) {
+  
   
     this.display = true;
-    this.selectedDate = + e.date._d;
+    //this.selectedDate = + e.date._d;
+    console.log(fc);
+
+    fc.changeView("agendaDay");
+    
+    //e.changeView("agendaDay");
+      this.cd.detectChanges();
+        
+       
+
+
+    //e("changeView","agendaDay");
+    //e.view.changeView("agendaDay");
 
   }  
 

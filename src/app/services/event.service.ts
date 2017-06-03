@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, URLSearchParams } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Constants } from "../utilities/constants";
 
 import 'rxjs/Rx';
@@ -29,6 +29,15 @@ export class EventService {
             .then(res => <any[]>res.json().data)
             .then(data => { return data; });
     }
+
+ getAdvisorInfo(advisorId) {       
+        
+        return this.http.get(Constants.SERVER_HOST + 'consultation/advisors/' + advisorId)
+            .toPromise()
+            .then(res => <any[]>res.json().data)
+            .then(data => { return data; });
+    }
+
 
 
 
@@ -63,5 +72,14 @@ export class EventService {
             .then(res => <any[]>res.json().data)
             .then(data => { return data; });
 
-    }
+}
+
+
+createEvent(eventData) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(eventData);
+    return this.http.post(Constants.SERVER_HOST +'consultation/appointments', body, headers).map((res: Response) => res.json());
+  }
+
 }

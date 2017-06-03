@@ -18,6 +18,9 @@ import { WizardComponent } from './wizard/wizard.component';
 import { SchoolDetailComponent } from './school-detail/school-detail.component';
 import { UnConseilService} from './services/un-conseil.service';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
+import {FormsModule} from '@angular/forms';
+
+import { SharedService } from './services/shared.service';
 
 
 
@@ -42,7 +45,8 @@ export function createTranslateLoader(http: Http) {
     BrowserModule,
     BrowserAnimationsModule,    
     RouterModule.forRoot(AppRoutes),    
-    HttpModule,   
+    HttpModule,
+    FormsModule,   
     SchoolModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
@@ -50,7 +54,7 @@ export function createTranslateLoader(http: Http) {
       deps: [Http]
     }),    
   ],
-  providers: [UnConseilService],
+  providers: [UnConseilService,SharedService],
  // entryComponents: [ AdminLayoutComponent],
   bootstrap: [AppComponent]
 })
