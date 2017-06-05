@@ -51,7 +51,6 @@ export class BookingAppointmentComponent implements OnInit {
   handleEventClick(e,fc ) {
 
 
-
 if (e.view.name === "month") {
     fc.gotoDate(e.date);
     fc.changeView("agendaDay");
@@ -60,8 +59,9 @@ if (e.view.name === "month") {
 }
 
 if (e.view.name === "agendaDay") {
-
-      this.selectedDate = + e.date._d;
+//console.log(e.date.format());
+      this.selectedDate = e.date.format();
+      console.log(this.selectedDate);
        this.display = true;
   } 
   this.cd.detectChanges();
