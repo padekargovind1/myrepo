@@ -63,7 +63,7 @@
     <input type="text" value="{{selectedAdvisor}}" class="form-control" />
 
     <span class="muted">When</span><br>
-    <time class="appointment-date">{{selectedDate | date: 'yMMMMEEEEd'}} , {{selectedDate | date: 'j'}}</time><br>
+    <time class="appointment-date">{{selectedDate | date: 'yMMMMEEEEd'}}  {{selectedDate | date: 'j'}}</time><br>
     <p>Orientation College<br /> Que Faire Apres Une Classe De Troisieme?</p>
 
   <a [routerLink]="['/wizard', selectedAdvisorID,selectedDate]" class="btn btn-confirm pull-right">Je Confirme</a>

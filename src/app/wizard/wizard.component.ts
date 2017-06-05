@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {  ViewChild, Directive, ElementRef,Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { EventModal} from '../models/events.modal';
 import { SharedService } from '../services/shared.service';
 import {Observable} from 'rxjs/Rx';
 
+declare var $: any;
 
 
 @Component({
@@ -13,7 +14,16 @@ import {Observable} from 'rxjs/Rx';
   styleUrls: ['./wizard.component.scss'],
   providers: [EventService]
 })
-export class WizardComponent implements OnInit {
+
+  
+@Directive({
+    selector: '#rootwizard'
+})
+
+export class WizardComponent implements OnInit, AfterViewInit {
+
+@ViewChild('rootwizard') el:ElementRef;
+
 
   constructor(private route: ActivatedRoute, private eventService: EventService,private sharedService: SharedService)   
   {   
@@ -25,10 +35,16 @@ export class WizardComponent implements OnInit {
   selectedAdvisorID;
   advisorData;
   eventModal;
-  
+   
+
+ngAfterViewInit() {
+        $(this.el.nativeElement).bootstrapWizard();
+    }
+ 
 
   
   ngOnInit() {
+      
 
       this.sub = this.route.params.subscribe(params => {
       this.selectedAdvisorID = params['id'];
@@ -38,14 +54,14 @@ export class WizardComponent implements OnInit {
      
     });
     
-  });  
+  });      
 
-        
-
-  ///console.log(this.sharedService.selectedPackageID);
-
+  
 
 }
+
+
+
 
 createEvent()
 {
