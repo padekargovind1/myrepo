@@ -246,8 +246,7 @@ label.custom-radio.sad:before { border: none;}
  */
 .advisors-wrap { background: #343434; padding: 20px 7px;}
     .advisors { list-style: none; padding-left: 0; }
-    .advisors li { border-radius: 5px; background: #444444; padding: 10px; margin-bottom: 10px; opacity: .2;}
-    .advisors li.active { opacity: 1;}
+    .advisors li { border-radius: 5px; background: #444444; padding: 10px; margin-bottom: 10px;}
     .advisor-name { font-size: 18px; display: block; margin-top: 20px}
     .advisors li a { color: #fff;}
     .advisor-title { margin: 0; font-size: 22px; font-weight: 100; margin-bottom: 13px;}

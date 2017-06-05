@@ -44,30 +44,28 @@ export class BookingAppointmentComponent implements OnInit {
      
   }
 
-
   showDialog() {
   this.display = true;
   }
 
   handleEventClick(e,fc ) {
-  
-  
-    this.display = true;
-    //this.selectedDate = + e.date._d;
-    console.log(fc);
 
+
+
+if (e.view.name === "month") {
+    fc.gotoDate(e.date);
     fc.changeView("agendaDay");
-    
-    //e.changeView("agendaDay");
-      this.cd.detectChanges();
-        
+    console.log(e.view.name);
        
+}
 
+if (e.view.name === "agendaDay") {
 
-    //e("changeView","agendaDay");
-    //e.view.changeView("agendaDay");
-
-  }  
+      this.selectedDate = + e.date._d;
+       this.display = true;
+  } 
+  this.cd.detectChanges();
+  } 
 
   advisorClick(advisorID, advisorName) {
       this.eventService.getAdvisorData(advisorID).then(events => {
