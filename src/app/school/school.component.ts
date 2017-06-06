@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SchoolService } from '../services/school.service';
 import { AutoCompleteModule, PaginatorModule } from 'primeng/primeng';
 import { FilterModal, CompareModal } from '../models/schools.modal';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -31,14 +32,40 @@ export class SchoolComponent {
     compareModal;
     schoolsToCompare: any[];
     compareCriteria: any[];
+    currentUrl:string;
 
 
-    constructor(private schoolService: SchoolService) {
+    constructor(private schoolService: SchoolService, private _router:Router) {
         this.showFilter = false;
         this.filterModal = new FilterModal();
         this.compareModal = new CompareModal;
         this.schoolCheckboxes = '';
         this.facilityCheckboxes = '';
+        this.currentUrl =  (this._router.url).substr(1); 
+        
+        
+        switch(this.currentUrl) { 
+
+
+   case "une-ecole": { 
+     this.currentUrl="ecole";
+      break; 
+   } 
+   case "un-college": { 
+     this.currentUrl="college";
+      break; 
+   } 
+   case "un-lycee": {
+     this.currentUrl="lycee";
+      break;    
+   }    
+   default: { 
+      console.log("Invalid choice"); 
+      break;              
+   } 
+}
+
+
 
 
     }

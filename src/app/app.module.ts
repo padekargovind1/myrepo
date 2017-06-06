@@ -22,9 +22,6 @@ import {FormsModule} from '@angular/forms';
 
 import { SharedService } from './services/shared.service';
 
-
-
-
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
 }
@@ -36,7 +33,7 @@ export function createTranslateLoader(http: Http) {
     BookingAppointmentComponent,
     WizardComponent,
     SchoolDetailComponent,
-    CompareModeComponent,
+    CompareModeComponent,    
   ],
   imports: [
     DialogModule,

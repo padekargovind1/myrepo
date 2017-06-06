@@ -14,11 +14,18 @@ export const AppRoutes: Routes = [{
   pathMatch: 'full',
 }, {
   path: '',
-  component: HomePageComponent,
-  
+  component: HomePageComponent,  
 },
 {
-  path: 'school',
+  path: 'une-ecole',
+  component: SchoolComponent,  
+},
+{
+  path: 'un-lycee',
+  component: SchoolComponent,  
+},
+{
+  path: 'un-college',
   component: SchoolComponent,  
 },
 {
