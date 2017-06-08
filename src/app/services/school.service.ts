@@ -8,11 +8,15 @@ export class SchoolService {
 
   constructor(public http: Http) { }
 
+
+/* Load schools data on page Load */
   getData() {
     return this.http.get(Constants.SERVER_HOST + "/search/schools")
       .map((res: Response) => res.json());
   }
 
+
+/* School Auto Compalte*/
   getSchoolsFilter(query) {
     let params: URLSearchParams = new URLSearchParams();
     params.set('keyword', query);
@@ -25,8 +29,9 @@ export class SchoolService {
   }
 
 
-  getSchools(query) {
 
+/* Search School */
+  getSchools(query) {
 
     let params: URLSearchParams = this.objToSearchParams(query);
 
@@ -79,9 +84,6 @@ export class SchoolService {
   }
 
 
-
-
-
 compareSchools(idsToCompare,fieldsToCompare)
 {
 
@@ -95,6 +97,19 @@ let params: URLSearchParams = new URLSearchParams();
       .toPromise()
       .then(res => <any[]>res.json().data)
       .then(data => { return data; });
+  }
+
+
+
+
+
+  getSchoolDetailByID(schoolId)
+  {
+        return this.http.get(Constants.SERVER_HOST + 'school/'+schoolId)
+            .toPromise()
+            .then(res => <any[]>res.json().data)
+            .then(data => { return data; });
+            
   }
 
 }
