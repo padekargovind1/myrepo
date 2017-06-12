@@ -5,11 +5,13 @@ import { FilterModal, CompareModal } from '../models/schools.modal';
 import { Router } from '@angular/router';
 
 
+
 @Component({
-    selector: 'app-school',
+    selector: 'app-school',    
     templateUrl: './school.component.html',
     styleUrls: ['./school.component.scss'],
-    providers: [SchoolService]
+    providers: [SchoolService],
+    
 })
 
 export class SchoolComponent {
@@ -64,9 +66,6 @@ export class SchoolComponent {
       break;              
    } 
 }
-
-
-
 
     }
 
@@ -154,7 +153,7 @@ export class SchoolComponent {
     }
 
     selectedSchools() {
-        console.log(this.schoolCheckboxes);
-        console.log(this.compareModal);
+       /* console.log(this.schoolCheckboxes);
+        console.log(this.compareModal);*/
     }
 }

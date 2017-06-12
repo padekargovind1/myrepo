@@ -4,6 +4,8 @@ import { SchoolComponent } from './school.component';
 import {DialogModule,AutoCompleteModule,PaginatorModule} from 'primeng/primeng';
 import {FormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import {HeaderComponent} from '../layouts/header/header.component';
+
 
 
 @NgModule({
@@ -12,8 +14,10 @@ import { RouterModule } from '@angular/router';
     AutoCompleteModule,
     FormsModule,
     PaginatorModule,
-    RouterModule
+    RouterModule,   
+    /*HeaderModule,*/
   ],
-  declarations: [SchoolComponent]
+  declarations: [SchoolComponent,HeaderComponent],
+  
 })
 export class SchoolModule { }

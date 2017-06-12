@@ -33,7 +33,7 @@ export function createTranslateLoader(http: Http) {
     BookingAppointmentComponent,
     WizardComponent,
     SchoolDetailComponent,
-    CompareModeComponent,    
+    CompareModeComponent,        
   ],
   imports: [
     DialogModule,
@@ -44,7 +44,7 @@ export function createTranslateLoader(http: Http) {
     RouterModule.forRoot(AppRoutes),    
     HttpModule,
     FormsModule,   
-    SchoolModule,
+    SchoolModule,    
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: (createTranslateLoader),
