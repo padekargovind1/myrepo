@@ -21,6 +21,7 @@ import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import {FormsModule} from '@angular/forms';
 
 import { SharedService } from './services/shared.service';
+import { LinguisticComponent } from './linguistic/linguistic.component';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -33,7 +34,8 @@ export function createTranslateLoader(http: Http) {
     BookingAppointmentComponent,
     WizardComponent,
     SchoolDetailComponent,
-    CompareModeComponent,        
+    CompareModeComponent,
+    LinguisticComponent,        
   ],
   imports: [
     DialogModule,

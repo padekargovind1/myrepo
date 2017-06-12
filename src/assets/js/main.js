@@ -56,6 +56,18 @@ jQuery(document).ready(function($) {
 	    } 
 	});*/
 
+$('.slickjs').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        // centerMode: true
+    });
+
+
+
 	$('.close-class').on('click', function() {
 		$('#apply-popup').modal('hide');
 		$('#confirm-popup').modal('show');

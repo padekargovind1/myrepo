@@ -7,6 +7,7 @@ import { BookingAppointmentComponent } from './booking-appointment/booking-appoi
 import { SchoolDetailComponent } from './school-detail/school-detail.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
+import { LinguisticComponent } from './linguistic/linguistic.component';
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -43,5 +44,9 @@ export const AppRoutes: Routes = [{
  component: WizardComponent },
 
  { path: 'compare-mode/:id/:id2',
- component: CompareModeComponent }
+ component: CompareModeComponent },
+
+{ path: 'linguistic',
+ component: LinguisticComponent }
+ 
 ];
