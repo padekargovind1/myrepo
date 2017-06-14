@@ -23,6 +23,21 @@ import {FormsModule} from '@angular/forms';
 import { SharedService } from './services/shared.service';
 import { LinguisticComponent } from './linguistic/linguistic.component';
 
+import { reducer } from './app.reducers';
+
+import { SharedModule } from './shared/index';
+import { CoreModule } from './core/index';
+import { StoreModule } from '@ngrx/store';
+
+
+
+
+
+
+
+
+
+
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
 }
@@ -35,7 +50,8 @@ export function createTranslateLoader(http: Http) {
     WizardComponent,
     SchoolDetailComponent,
     CompareModeComponent,
-    LinguisticComponent,        
+    LinguisticComponent,   
+    
   ],
   imports: [
     DialogModule,
@@ -46,7 +62,10 @@ export function createTranslateLoader(http: Http) {
     RouterModule.forRoot(AppRoutes),    
     HttpModule,
     FormsModule,   
-    SchoolModule,    
+    SchoolModule,
+    StoreModule.provideStore(reducer),    
+    CoreModule,
+    SharedModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: (createTranslateLoader),

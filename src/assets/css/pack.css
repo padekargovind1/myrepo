@@ -7396,7 +7396,9 @@ body {
   overflow-x: hidden;
 }
 html,
-
+body {
+  height: 100%;
+}
 body.full-height-layout #wrapper,
 body.full-height-layout #page-wrapper {
   height: 100%;

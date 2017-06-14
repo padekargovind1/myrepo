@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+    <main class="main" role="main">
+        
+        <div class="white-background">
+
+            <section class="login-page fadeInDown-animation">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="login-form register">
+  <form class="register-register-form" novalidate="" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                                
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            
+                                                
+
+  <div class="input">
+               <input type="text" class="register-user-input-mobile register-user-input" name="username"
+                  formControlName="username" placeholder="First Name">
+                <div *ngIf="signUpForm.get('username').errors && signUpForm.get('username').touched">
+                  <span class="register-error-icon">!</span>
+                  <p class="register-error-message"></p>
+                </div> 
+              </div>
+
+
+                                        </div><!-- end username -->
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="input">
+                                                 <input type="email" class="register-user-input-email register-user-input" name="email" formControlName="email" autocomplete="off" placeholder="Nom d'utilisateur" >
+                <div *ngIf="signUpForm.get('email').errors && signUpForm.get('email').touched">
+                  <span class="register-error-icon">!</span>
+                  <p class="register-error-message">{{signUpForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
+                </div>
+                                            </div>
+                                        </div><!-- end email -->
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="input">
+                   <input type="password" class="register-user-input-password register-user-input" name="password" formControlName="password"
+                  placeholder="Choose Password" autocomplete="off">
+                <div *ngIf="signUpForm.get('password').errors && signUpForm.get('password').touched">
+                  <span class="register-error-icon">!</span>
+                  <p class="register-error-message">{{signUpForm.get('password').errors.msg || 'Password must be at least 6 characters'}}</p>
+                </div>
+                                            </div>
+                                        </div><!-- end password -->
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="input">
+                                                 <input type="password" class="register-user-input-password register-user-input" name="password_confirmation" formControlName="password_confirmation"
+                  placeholder="Confirm Password" autocomplete="off">
+                <div *ngIf="signUpForm.get('password_confirmation').errors && signUpForm.get('password_confirmation').touched">
+                  <span class="register-error-icon">!</span>
+                  <p class="register-error-message">{{signUpForm.get('password_confirmation').errors.msg || 'Password must match'}}</p>
+                </div>
+                                            </div>
+                                        </div><!-- end confirm password -->
+                                        <div class="col-md-12">
+                                            <div class="input clearfix">
+                                                <input type="submit" id="reg_submit" class="submit-input grad-btn ln-tr" value="S'enregistrer">
+                                            </div>
+                                        </div><!-- end submit -->
+                                    </div><!-- end row -->
+                                </form><!-- End form -->
+                            </div><!-- end login form -->
+                        </div><!-- end col-md-8/offset -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </section><!-- End Register Page -->
+        
+        </div><!-- .white-background -->
+
+</main><!-- .main -->

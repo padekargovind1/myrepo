@@ -3,6 +3,7 @@ import { SchoolService } from '../services/school.service';
 import { AutoCompleteModule, PaginatorModule } from 'primeng/primeng';
 import { FilterModal, CompareModal } from '../models/schools.modal';
 import { Router } from '@angular/router';
+import {HeaderComponent} from '../layouts/header/header.component';
 
 
 
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
     selector: 'app-school',    
     templateUrl: './school.component.html',
     styleUrls: ['./school.component.scss'],
-    providers: [SchoolService],
+    providers: [SchoolService],   
     
 })
 

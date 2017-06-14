@@ -1,15 +1,32 @@
 jQuery(document).ready(function($) {
 
-	 /* $('#calendar').fullCalendar({
-        dayClick: function() {
-            $('#appointment').modal('show');
-        },
-		header: {
-			left: '',
-			center: 'prev title next',
-			right: 'today agendaDay,agendaWeek,month'
-		}
-	});*/
+	window.setTimeout(hideAd, 3000);
+
+    function hideAd() {
+        // console.log('time is up');
+        // $('body').hover(function() {
+            $('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
+            $('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');//.delay(16000).removeClass('fadeInDown').addClass('fadeOutDown');
+        // });
+    }
+
+    window.setTimeout(hideSideAd, 13000);
+
+    function hideSideAd() {
+        $('.from-popup').delay(13000).removeClass('fadeInDown').addClass('fadeOutDown');
+        $('.fixed-ad').delay(26000).removeClass('hidden').addClass('fadeIn animated');
+    }
+
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+        if (y > 500) {
+            $('.footer-ads').removeClass('fadeOutDown hidden').addClass('fadeInUp');
+        } else {
+            $('.footer-ads').removeClass('fadeInUp').addClass('fadeOutDown');
+        }
+    });
+
+
 
 	$('#rootwizard').bootstrapWizard();
 

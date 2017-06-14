@@ -1,0 +1,455 @@
+<app-header></app-header> 
+
+    <div [ngClass]="currentUrl" class="filter-form-holder">
+
+            <div class="form-inline searchform  school-page">
+
+                    <div class="filter-wrapper">
+                        <i class="fa fa-filter filter-holder"></i>
+
+                        <div class="advance-filter">
+                            <ul>
+                                <li><a><span class="caret"></span> Specialités</a>
+                                    <ul>
+                                        <li>
+                                        <input type="checkbox" [(ngModel)]="filterModal.handicappedHome" name="handicappedHome" class="checkbox filled-in" id="filter-1" />
+                                        <label for="filter-1">Accueil Handicapé, Dyslexie</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-4" /><label for="filter-4">Enfant Precoces</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-5" /><label for="filter-5">Horaires Aménagés</label></li>
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Internat</a>
+                                    <ul>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-6" /><label for="filter-6">si case Internat est cochée</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-7" /><label for="filter-7">Capacité</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-8" /><label for="filter-8">Internat sur Place</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-9" /><label for="filter-9">Internat externe</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-10" /><label for="filter-10">Résidence Etudiante</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-11" /><label for="filter-11">Internat de semaine</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-12" /><label for="filter-12">Internat Permanent</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-13" /><label for="filter-13">Internat Certains Weekend</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-14" /><label for="filter-14">Internat mixte</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-15" /><label for="filter-15">Internat filles</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-16" /><label for="filter-16">Internat garcon</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-17" /><label for="filter-17">Chambres individuelles</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-18" /><label for="filter-18">Chambres 2 a 4 lits</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-19" /><label for="filter-19">chambres 5 a 8 lits</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-20" /><label for="filter-20">Dortoirs</label></li>
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Stages</a>
+                                    <ul>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-21" /><label for="filter-21">stage pre-rentree</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-22" /><label for="filter-22">stages petites vacances</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-23" /><label for="filter-23">stages de grandes vacances</label></li> 
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Resturation</a>
+                                    <ul>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-24" /><label for="filter-24">self-service</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Externat</a>
+                                    <ul>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-27" /><label for="filter-27">demi-pension mixte</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-28" /><label for="filter-28">demi-pension garcons</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-29" /><label for="filter-29">demi-pension filles</label></li> 
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Statut</a>
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-30" />
+                                            <label for="filter-30">Section Européenne</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-31" />
+                                            <label for="filter-31">Section bilingue</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-32" />
+                                            <label for="filter-32">Section Sportive</label>
+                                        <li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-33" />
+                                            <label for="filter-33">Public</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-34" />
+                                            <label for="filter-34">Prive</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-35" />
+                                            <label for="filter-35">CCI</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-36" />
+                                            <label for="filter-36">Sous Contrat D'association</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-37" />
+                                            <label for="filter-37">Hors contrat</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-38" />
+                                            <label for="filter-38">CFA</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-39" />
+                                            <label for="filter-40">UFA</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-40" />
+                                            <label for="filter-40">Reconnue par l'Etat</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-41" />
+                                            <label for="filter-41">en convention avec l'Etat</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-42" />
+                                            <label for="filter-42">Enseignement supérieur Libre</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-43" />
+                                            <label for="filter-43">Enseignement supérieur</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-44" />
+                                            <label for="filter-44">Enseignement supérieur technique</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-45" />
+                                            <label for="filter-45">Sous contrat simple</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Ens. Confessionel</a>
+                                    <ul>
+                                        <li>a</li>
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Langues</a>
+                                    <ul>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-46" /><label for="filter-46">LV1</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-47" /><label for="filter-47">LV2</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-48" /><label for="filter-48">LV3</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-49" /><label for="filter-49">LA - Langues Anciennes</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-50" /><label for="filter-50">LR - Langues Regionales</label></li>
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Sections</a>
+                                    <ul>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-52" /><label for="filter-52">Section bilingue</label></li>
+                                        <li><input type="checkbox" name="" class="checkbox filled-in" id="filter-53" /><label for="filter-53">Section Sportive</label></li>
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Diplomes</a>
+                                    <ul>
+                                       <li></li> 
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Options</a>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                </li>
+                                <li><a><span class="caret"></span> Places Disponibles</a>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                <h2 class="featured-title">Une école Maternelle / Primaire</h2>
+                
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-md-10 col-md-offset-1">
+                            
+                            <div class="form-wrap">
+
+                                <div class="form-group">
+                                    <label class="select-custom" for="class">
+                                        <select name="class" class="form-control" id="class">
+                                            <option value="" disabled selected hidden>Class</option>
+                                            <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                            </optgroup>
+                                            <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                            </optgroup>
+                                            <optgroup label="Cycle 3 : Consolidation">
+                                                <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                            </optgroup>
+                                        </select>
+                                    </label>
+                                </div>
+
+                                 <div class="form-group">
+<p-autoComplete [(ngModel)]="city" [suggestions]="filteredCitiesSingle" (completeMethod)="filterCitySingle($event)" field="cityName" [size]="30"
+   placeholder="Lieu" [minLength]="3"></p-autoComplete>
+                                </div>
+
+                                <div class="form-group">
+<p-autoComplete [(ngModel)]="school" [suggestions]="filteredSchoolSingle" (completeMethod)="filterSchoolSingle($event)" field="longName" [size]="30"
+placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
+                                    
+                                </div>
+
+                                <!-- <div class="form-group"> -->
+                                    <button class="btn btn-search" (click)="search()"><i class="fa fa-search"></i></button>
+                                <!-- </div> -->
+
+
+                            </div><!-- .form-wrap -->
+                        
+                        </div><!-- .col-* -->
+                
+                    </div><!-- .row -->
+
+                </div><!-- .container -->
+
+            </div>
+
+    </div><!-- .filter-form-holder -->
+
+    <main class="main" role="main">
+        
+    <!--<div class="white-background">-->
+
+        <div class="modal fade" id="apply-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CLASSE</th>
+                                    <th>Lv1</th>
+                                    <th>Lv2</th>
+                                    <th>Lv3</th>
+                                    <th>OPTION</th>
+                                    <th>JE CHOISIS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PS</td>
+                                    <td>Anglais</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>Pâte à modeler</td>
+                                    <td><input type="checkbox" name="" class="checkbox filled-in" id="choose-1" /><label for="choose-1">&nbsp;</label></td>
+                                </tr>
+                                <tr>
+                                    <td>MS</td>
+                                    <td>Anglais</td>
+                                    <td>Espagnol</td>
+                                    <td>-</td>
+                                    <td>Piano</td>
+                                    <td><input type="checkbox" name="" class="checkbox filled-in" id="choose-2" /><label for="choose-2">&nbsp;</label></td>
+                                </tr>
+                                <tr>
+                                    <td>GS</td>
+                                    <td>Anglais</td>
+                                    <td>Espagnol</td>
+                                    <td>Allemand</td>
+                                    <td>-</td>
+                                    <td><input type="checkbox" name="" class="checkbox filled-in" id="choose-3" /><label for="choose-3">&nbsp;</label></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <section class="col-md-6"><button class="btn btn-lg btn-block btn-register" data-dismiss="modal">J'ENREGISTRE POUR PLUS TARD</button></section>
+                            <section class="col-md-6"><button class="btn btn-lg btn-block btn-appointment close-class">J'INCRIS MON ENFANT</button></section>
+                        </div><!-- .row --> 
+                    </div><!-- .modal-body -->
+                </div><!-- .modal-content -->
+            </div><!-- .modal-dialog -->
+        </div><!-- modal -->
+
+        <div class="modal fade" id="confirm-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="assets/img/cide-vote.png" class="icon" alt="Vote" width="140" />
+                        <p><strong>Nous transmettons votre dossier au lycee Excellensia Sa direction vous contactera dans les meilliuers delais</strong></p>
+                        <p>Nous venons de vous envoyer un mel de confimation</p>
+                        <button class="btn btn-lg btn-block btn-appointment" data-dismiss="modal">J'AI COMPRIS</button>
+                    </div><!-- .modal-body -->
+                </div><!-- .modal-content -->
+            </div><!-- .modal-dialog -->
+        </div><!-- modal -->
+
+            <div class="container">
+
+                <div class="row"><div class="col-md-10 col-md-offset-1">
+                
+                    <div class="list-schools  row  white-background">
+
+                        <div class="col-md-12">
+                            
+                            <div class="result-text">
+                                <h3>Mon résultat pour: Classe PS - <span class="fa fa-map-marker"></span> Lyon</h3>
+                                <p>Recherche Affine: Aides Financieres - Bourse / Lv1 Anglais / Place Disponibles <a href="#"><span class="fa fa-times"></span></a></p>
+                                
+                                
+                                <input type="checkbox" class="checkbox filled-in" id="test1" />
+                                <label for="test1" class="">Tout sélectionner</label>
+                            </div>
+
+                            
+                            
+                            <div class="compare-holder">
+                               
+                                <!--<a href="compare-mode.html#compare" class="btn btn-appointment pull-right hide link-btn">Je Compare</a>-->
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-appointment pull-right popup-btn" data-toggle="modal" data-target="#filter-popup">Je Compare</button>
+                            </div>
+ 
+                            
+                            <div class="modal fade" id="filter-popup" tabindex="-1" role="dialog" aria-labelledby="filter-popup">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <h3>Ce que vous voulez compare?</h3>
+
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.specialties" class="checkbox filled-in" id="compare-1" value="specialties" /><label for="compare-1">Spécialités</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Internet" class="checkbox filled-in" id="compare-2" value="Internet" /><label for="compare-2">Internat</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Period" class="checkbox filled-in" id="compare-3" value="Period" /><label for="compare-3">Période</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Restauration" class="checkbox filled-in" id="compare-4" value="Restauration" /><label for="compare-4">Restauration</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Externat" class="checkbox filled-in" id="compare-5" value="Externat" /><label for="compare-5">Externat</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Statut" class="checkbox filled-in" id="compare-6" value="Statut" /><label for="compare-6">Statut</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.confessional" class="checkbox filled-in" id="compare-7" value="confessional" /><label for="compare-7">Ens. confessionel</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name=""  (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Langues" class="checkbox filled-in" id="compare-8" value="Langues" /><label for="compare-8">Langues</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Sections" class="checkbox filled-in" id="compare-9" value="Sections" /><label for="compare-9">Sections</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name="" (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.graduates" class="checkbox filled-in" id="compare-10" value="graduates" /><label for="compare-10">Diplômés</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox" name=""  (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Options" class="checkbox filled-in" id="compare-11" value="Options" /><label for="compare-11">Options</label>
+                                            </div><!-- .filter-option -->
+                                            <div class="filter-option">
+                                                <input type="checkbox"  name=""  (change)="getFacilityCheckboxes([$event.target.getAttribute('value')],$event.target.checked)" [(ngModel)]="compareModal.Places_disponibles" class="checkbox filled-in" id="compare-12" value="Places_disponibles" /><label for="compare-12">Places disponibles</label>
+                                            </div><!-- .filter-option -->
+
+                                            <!--<button class="btn btn-filter-pop-up btn-block btn-lg" (click)="selectedSchools()" data-dismiss="modal">Je Compare</button>-->
+
+                                             <a [routerLink]="['/compare-mode',schoolCheckboxes,facilityCheckboxes]" class="btn btn-filter-pop-up btn-block btn-lg">Je Comparer</a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- .modal -->
+
+                        </div><!-- .col-* -->
+<!--<<div *ngFor="let school of schoolsData">{{school.longName}}</div>-->
+ <div *ngFor="let school of schoolsData; let i=index" class="col-md-3"  >
+                            
+                            <div class="card  school-item">
+                                <div class="checkbox-custom">
+                                    <input type="checkbox" (change)="Checkboxes([$event.target.getAttribute('value')],$event.target.checked)" class="checkbox filled-in"  value ="{{school._id}}" id="{{school._id}}" />
+                                    <label for="{{school._id}}">&nbsp;</label>
+                                </div>
+                                <ul class="school-action">
+                                    <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+                                </ul>
+                                
+                                <img src="assets/img/school-1.jpg" alt="School 1" />
+                                
+                                <div class="card-content">
+                                    <h3>{{school.longName}}</h3>
+                                    <p>Lycee d'enseignement <br /> general Prive Catholique <br />Sous contrat d'association</p>
+ 
+                                    <a [routerLink]="['/school-details', school._id]"  class="btn btn-highlighted">School Detail</a>
+                                     
+  
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button>
+                                    <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button> -->
+                                </div><!-- .card-content -->
+
+                            </div><!-- .card -->
+
+                 
+
+                    </div><!-- .list-schools -->
+<!--<p-paginator rows="20" totalRecords="{{totalSchools}}" [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator>-->
+
+                    <div class="footer-ads">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1  wrapper">
+                                    <img src="assets/img/ads-footer.png" alt="ads" />
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- footer-ads -->
+
+                </div></div><!-- .row .col-* -->
+
+
+                        </div><!-- .col-* -->
+            </div><!-- .container -->
+
+            <div class="ad-holder">
+                <img src="assets/img/ad.jpg" alt="Ad" />
+            </div>
+
+            <div class="survey-holder">
+
+                <h4 class="survey-title">Sondage</h4>
+                
+                <p>Comment avez-vousconnu enseignement-prive.fr?</p>
+
+                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Le guide pratique des ecole privees</span></label></p>
+                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un moteur de recherche sur internet</span></label></p>
+                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un etablissement scolaire</span></label></p>
+                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un centre d'information et d'orientation</span></label></p>
+                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Des amis</span></label></p>
+                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Une publication</span></label></p>
+
+                <button type="button" class="btn btn-vote  btn-xs  btn-block">VOTE</button>
+
+            </div>
+
+        <!--</div><!-- .white-background -->
+
+    </main>

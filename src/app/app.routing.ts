@@ -47,6 +47,8 @@ export const AppRoutes: Routes = [{
  component: CompareModeComponent },
 
 { path: 'linguistic',
- component: LinguisticComponent }
+ component: LinguisticComponent },
+
+{ path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
  
 ];
