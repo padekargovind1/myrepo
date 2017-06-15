@@ -36,9 +36,7 @@ export class AuthService {
    */
   login(data): Observable<any> {
     return this.http.post(
-      'spree/login.json',
-      { spree_user: data }
-    ).map((res: Response) => {
+      'api/auth/log',data).map((res: Response) => {
       data = res.json();
       if (!data.error) {
         // Setting token after login
@@ -69,9 +67,7 @@ export class AuthService {
    */
   register(data): Observable<any> {
     return this.http.post(
-      'api/account',
-      { spree_user: data }
-    ).map((res: Response) => {
+      'api/auth/register',data).map((res: Response) => {
       data = res.json();
       if (!data.errors) {
         // Setting token after login
@@ -86,10 +82,7 @@ export class AuthService {
       }
       return res.json();
     });
-    // catch should be handled here with the http observable
-    // so that only the inner obs dies and not the effect Observable
-    // otherwise no further login requests will be fired
-    // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
+    
   }
 
   /**
@@ -103,10 +96,7 @@ export class AuthService {
     return this.http
       .get('spree/api/v1/users')
       .map((res: Response) => res.json());
-    // catch should be handled here with the http observable
-    // so that only the inner obs dies and not the effect Observable
-    // otherwise no further login requests will be fired
-    // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
+    
   }
 
   /**

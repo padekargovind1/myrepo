@@ -1,59 +1,92 @@
-<div class="row login-container" data-hook="">
-  <div id="content" class="col-sm-12" data-hook="">
-    <div class="col-md-5 col-centered">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Login to {{title}}</h3>
-        </div>
-        <div id="existing-customer" class="panel-body" data-hook="login">
-          <div class="login-third-party-login">
-            <p class="login-button-info-text login-info-text">EASILY USING</p>
-            <div class="login-button-container">
-              <button class="login-facebook login-button coming-soon">
-                <span class="header-sprite login-fb-logo"></span>
-                FACEBOOK
-              </button>
-              <button class="login-google login-button coming-soon" id="gPlusLogin">
-                <span class="header-sprite login-gplus-logo"></span>
-                GOOGLE
-              </button>
-            </div>
-          </div>
-          <p class="login-info-text">- OR USING EMAIL -</p>
-          <form class="login-login-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-            <fieldset class="login-input-container">
-              <div class="login-input-item">
-                <input type="email" class="login-user-input-email login-user-input" name="email" placeholder="Your Email Address" formControlName="email"
+<app-header></app-header>
+ <main class="main" role="main">
+        
+        <div class="white-background">
+
+            <section class="login-page fadeInDown-animation">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="login-form">                                
+                                <form class="login-login-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()" id="login-form">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="input">
+                                             <input type="email" class="login-user-input-email login-user-input" name="email" placeholder="Your Email Address" formControlName="email"
                   autocomplete="off">
                 <div *ngIf="signInForm.get('email').errors && signInForm.get('email').touched">
-                  <span class="login-error-icon text-danger">!</span>
+                  <!--<span class="login-error-icon text-danger">!</span>-->
                   <p class="login-error-message text-danger">{{signInForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
                 </div>
-              </div>
-              <div class="login-input-item">
-                <input type="password" class="login-user-input-password login-user-input" name="password" placeholder="Enter Password" formControlName="password"
+                </div>
+                </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="input">
+                                              <input type="password" class="login-user-input-password login-user-input" name="password" placeholder="Enter Password" formControlName="password"
                   autocomplete="off">
                 <div *ngIf="signInForm.get('password').errors && signInForm.get('password').touched">
-                  <span class="login-error-icon text-danger">!</span>
+                  <!--<span class="login-error-icon text-danger">!</span>-->
                   <p class="login-error-message text-danger">{{signInForm.get('password').errors.msg || 'Password must be at least 6 characters'}}</p>
                 </div>
-              </div>
-            </fieldset>
-            <fieldset class="login-login-button-container">
-              <button type="submit" class="btn btn-danger login-login-button">Log in</button>
-            </fieldset>
-          </form>
-          <div class="login-link-container">
-            <small>
-              <a class="login-link text-danger" routerLink="/">Recover password</a>
-              <div class="login-right-links">
-                <span class="text-default">New to {{title}}?</span>
-                <a class="login-create-account-link login-link text-danger" [routerLink]="['/auth']">Create Account</a>
-              </div>
-            </small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="input clearfix">
+                                                <input type="submit" id="login_submit" class="submit-input grad-btn ln-tr" value="Se connecter">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 clearfix">
+                                            <div class="custom-checkbox fl">
+                                                <input type="checkbox" id="login_remember" class="checkbox-input" checked>
+                                                <label for="login_remember">Se souvenir du mot de passe</label>
+                                            </div>
+                                        </div><!-- end remember -->
+                                        <div class="col-md-6 col-sm-6 clearfix">
+                                            <div class="forgot fr">
+                                                <a href="#" class="new-user">Créer un nouveau compte</a> / <a href="#" class="reset">Mot de passe oublié ?</a>
+                                            </div>
+                                        </div><!-- end forgot password -->
+                                    </div><!-- end row -->
+                                </form><!-- End form -->
+                            </div><!-- end login form -->
+
+                            <h3 class="text-center">Connectez-vous avec</h3>
+
+                            <div class="login-options">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                    </div><!-- end FB login -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr in"><i class="fa fa-instagram"></i> Instagram</a>
+                                    </div><!-- end GP login -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                    </div><!-- end TW login -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr gp"><i class="fa fa-google-plus"> Google +</i></a>
+                                    </div><!-- end YA login -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr li"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                                    </div><!-- end YA login -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr vim"><i class="fa fa-vimeo"></i> Vimeo</a>
+                                    </div><!-- end YA login -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr yo"><i class="fa fa-youtube"></i> Youtube</a>
+                                    </div><!-- end YA login -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr via"><i class="fa fa-viadeo"></i> Viadeo</a>
+                                    </div><!-- end YA login -->
+
+                                </div>
+                            </div><!-- end login optionss -->
+
+                        </div><!-- end col-md-8/offset -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </section><!-- End Login Page -->
+        
+        </div><!-- .white-background -->
+
+    </main><!-- .main -->

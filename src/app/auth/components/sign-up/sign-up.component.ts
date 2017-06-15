@@ -65,16 +65,18 @@ export class SignUpComponent implements OnInit, OnDestroy {
   initForm() {
     const email = '';
     const password = '';
-    const password_confirmation = '';
-    const mobile = '';
-    const gender = '';
+    const repeated = '';
+    const name = '';
+    const type='candidate';
+    
 
     this.signUpForm = this.fb.group({
       'email': [email, Validators.required],
       'password': [password, Validators.required],
-      'password_confirmation': [password_confirmation, Validators.required],
-      'mobile': [mobile, Validators.required],
-      'gender': [gender, Validators.required],
+      'repeated': [repeated, Validators.required],
+      'name': [name, Validators.required],
+      'type': [type],
+      
     });
   }
 

@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     const keys = Object.keys(values);
 
     if (this.signInForm.valid) {
-      this.loginSubs = this.authService.login(values).subscribe(data => {
-        const error = data.error;
+      this.loginSubs = this.authService.login(values).subscribe(message => {
+        const error = message;
         if (error) {
           keys.forEach(val => {
             this.pushErrorFor(val, error);
@@ -75,8 +75,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   redirectIfUserLoggedIn() {
     this.store.select(getAuthStatus).subscribe(
-      data => {
-        if (data === true) { this.router.navigate([this.returnUrl]); }
+      data => {        
+        if (data === true) { 
+          console.log(data);
+          this.router.navigate([this.returnUrl]); }
       }
     );
   }

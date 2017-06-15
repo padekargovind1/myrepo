@@ -17,9 +17,9 @@
                                                 
 
   <div class="input">
-               <input type="text" class="register-user-input-mobile register-user-input" name="username"
-                  formControlName="username" placeholder="First Name">
-                <div *ngIf="signUpForm.get('username').errors && signUpForm.get('username').touched">
+               <input type="text" class="register-user-input-mobile register-user-input" name="name"
+                  formControlName="name" placeholder="First Name">
+                <div *ngIf="signUpForm.get('name').errors && signUpForm.get('name').touched">
                   <span class="register-error-icon">!</span>
                   <p class="register-error-message"></p>
                 </div> 
@@ -29,7 +29,7 @@
                                         </div><!-- end username -->
                                         <div class="col-md-6 col-sm-6">
                                             <div class="input">
-                                                 <input type="email" class="register-user-input-email register-user-input" name="email" formControlName="email" autocomplete="off" placeholder="Nom d'utilisateur" >
+                                                 <input type="email" class="register-user-input-email register-user-input" name="email" formControlName="email" autocomplete="off" placeholder="Email" >
                 <div *ngIf="signUpForm.get('email').errors && signUpForm.get('email').touched">
                   <span class="register-error-icon">!</span>
                   <p class="register-error-message">{{signUpForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
@@ -48,11 +48,11 @@
                                         </div><!-- end password -->
                                         <div class="col-md-6 col-sm-6">
                                             <div class="input">
-                                                 <input type="password" class="register-user-input-password register-user-input" name="password_confirmation" formControlName="password_confirmation"
+                                                 <input type="password" class="register-user-input-password register-user-input" name="repeated" formControlName="repeated"
                   placeholder="Confirm Password" autocomplete="off">
-                <div *ngIf="signUpForm.get('password_confirmation').errors && signUpForm.get('password_confirmation').touched">
+                <div *ngIf="signUpForm.get('repeated').errors && signUpForm.get('repeated').touched">
                   <span class="register-error-icon">!</span>
-                  <p class="register-error-message">{{signUpForm.get('password_confirmation').errors.msg || 'Password must match'}}</p>
+                  <p class="register-error-message">{{signUpForm.get('repeated').errors.msg || 'Password must match'}}</p>
                 </div>
                                             </div>
                                         </div><!-- end confirm password -->
