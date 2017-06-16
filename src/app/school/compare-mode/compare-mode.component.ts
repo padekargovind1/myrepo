@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SchoolService } from '../services/school.service';
+import { SchoolService } from '../../core/services/school.service';
 
 @Component({
   selector: 'app-compare-mode',

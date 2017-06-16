@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import { Constants } from "../utilities/constants";
+import { Constants } from "../../utilities/constants";
 
 import 'rxjs/Rx';
 

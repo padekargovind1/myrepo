@@ -1,54 +1,13 @@
-import { Routes } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './layouts/home/home-page.component';
-import { SchoolComponent } from './school/school.component';
-import { UnConseilComponent } from './un-conseil/un-conseil.component';
-import { BookingAppointmentComponent } from './booking-appointment/booking-appointment.component';
-import { SchoolDetailComponent } from './school-detail/school-detail.component';
-import { WizardComponent } from './wizard/wizard.component';
-import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import { LinguisticComponent } from './linguistic/linguistic.component';
 
-export const AppRoutes: Routes = [{
-  path: '',
-  redirectTo: 'home',
-  pathMatch: 'full',
-}, {
-  path: '',
-  component: HomePageComponent,  
-},
-{
-  path: 'une-ecole',
-  component: SchoolComponent,  
-},
-{
-  path: 'un-lycee',
-  component: SchoolComponent,  
-},
-{
-  path: 'un-college',
-  component: SchoolComponent,  
-},
-{
-  path: 'un-conseil',
-  component: UnConseilComponent,  
-},
-{
-  path: 'booking-appointment/:id',
-  component: BookingAppointmentComponent,  
-},
-{ path: 'school-details/:id',
- component: SchoolDetailComponent },
-
- { path: 'wizard/:id/:id2',
- component: WizardComponent },
-
- { path: 'compare-mode/:id/:id2',
- component: CompareModeComponent },
-
-{ path: 'linguistic',
- component: LinguisticComponent },
-
-{ path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
- 
+export const AppRoutes: Routes = [
+{ path: '', component: HomePageComponent},
+{ path: 'linguistic', component: LinguisticComponent },
+{ path: 'un-conseil', loadChildren: './un-conseil/un-conseil.module#UnConseilModule' },
+{ path: 'un-lycee', loadChildren: './school/school.module#SchoolModule' },
+{ path: 'une-ecole', loadChildren: './school/school.module#SchoolModule' },
+{ path: 'un-college', loadChildren: './school/school.module#SchoolModule' },
+{ path: 'auth', loadChildren: './auth/auth.module#AuthModule' } 
 ];

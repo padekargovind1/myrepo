@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component } from '@angular/core';
+//import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-layout',

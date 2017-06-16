@@ -1,8 +1,8 @@
 import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { ScheduleModule, DialogModule } from 'primeng/primeng';
 import { ActivatedRoute } from '@angular/router';
-import { EventService } from '../services/event.service';
-import { SharedService } from '../services/shared.service';
+import { EventService } from '../../core/services/event.service';
+import { SharedService } from '../../core/services/shared.service';
 
 
 @Component({

@@ -1,8 +1,8 @@
 import { ViewChild, Directive, ElementRef, Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventService } from '../services/event.service';
-import { EventModal } from '../models/events.modal';
-import { SharedService } from '../services/shared.service';
+import { EventService } from '../../core/services/event.service';
+import { EventModal } from '../../core/models/events.modal';
+import { SharedService } from '../../core/services/shared.service';
 import { Observable } from 'rxjs/Rx';
 
 declare var $: any;

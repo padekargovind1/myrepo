@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import 'rxjs/Rx';
-import { Constants } from "../utilities/constants";
+import { Constants } from "../../utilities/constants";
 
 @Injectable()
 export class SchoolService {

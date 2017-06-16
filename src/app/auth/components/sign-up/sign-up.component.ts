@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,AbstractControl } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
@@ -71,14 +71,17 @@ export class SignUpComponent implements OnInit, OnDestroy {
     
 
     this.signUpForm = this.fb.group({
-      'email': [email, Validators.required],
-      'password': [password, Validators.required],
+      'email': [email, [Validators.required,Validators.email]],
+      'password': [password, [Validators.required,Validators.minLength(6)]],
       'repeated': [repeated, Validators.required],
       'name': [name, Validators.required],
       'type': [type],
       
     });
   }
+
+
+  
 
   redirectIfUserLoggedIn() {
     this.store.select(getAuthStatus).subscribe(

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SchoolService } from '../services/school.service';
+import { SchoolService } from '../../core/services/school.service';
 import { ActivatedRoute } from '@angular/router';
 
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SchoolService } from '../services/school.service';
+import { SchoolService } from '../../core/services/school.service';
 import { AutoCompleteModule, PaginatorModule } from 'primeng/primeng';
-import { FilterModal, CompareModal } from '../models/schools.modal';
+import { FilterModal, CompareModal } from '../../core/models/schools.modal';
 import { Router } from '@angular/router';
-import {HeaderComponent} from '../layouts/header/header.component';
+import {HeaderComponent} from '../../layouts/header/header.component';
 
 
 

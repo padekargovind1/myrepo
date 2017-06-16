@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UnConseilService } from '../services/un-conseil.service';
+import { UnConseilService } from '../../core/services/un-conseil.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { UnConseilService } from '../services/un-conseil.service';
 })
 export class UnConseilComponent implements OnInit {
 
-  packageData;
+  packageData:any;
 
 
   constructor(private UnConseilService: UnConseilService) { }
