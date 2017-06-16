@@ -13,7 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffects } from '../auth/effects/auth.effects';
 
 import { CanActivateViaAuthGuard } from './guards/auth.guard';
-
+import 'rxjs';
 
 export function httpInterceptor(
   backend: XHRBackend,

@@ -7,10 +7,10 @@ import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './layouts/home/home-page.component';
 import { LinguisticComponent } from './linguistic/linguistic.component';
-/*import { reducer } from './app.reducers';
+import { reducer } from './app.reducers';
 import { SharedModule } from './shared/index';
 import { CoreModule } from './core/index';
-import { StoreModule } from '@ngrx/store';*/
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -24,10 +24,10 @@ import { StoreModule } from '@ngrx/store';*/
     BrowserModule,
     BrowserAnimationsModule,    
     RouterModule.forRoot(AppRoutes),
-    HttpModule,       
-    /*StoreModule.provideStore(reducer),    
+    HttpModule,
+    StoreModule.provideStore(reducer),    
     CoreModule,
-    SharedModule  */
+    SharedModule,
   ],
   providers: [], 
   bootstrap: [AppComponent]
