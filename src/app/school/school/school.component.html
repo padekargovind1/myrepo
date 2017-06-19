@@ -1,20 +1,16 @@
-<app-header></app-header> 
+<div class="school">
+   <app-header></app-header> 
+    <div class="popup-ad-holder fadeInDown animated">
+        <img src="assets/img/ad-336x280-st.jpg" alt="" />
+    </div>
 
-    <div [ngClass]="currentUrl" class="filter-form-holder">
-
- <div class="form-inline searchform  school-page">
-
-
-
-                <h2 class="featured-title">Une école Maternelle / Primaire</h2>
-                
+     <div [ngClass]="currentUrl" class="filter-form-holder">
+            <div  class="form-inline searchform  school-page">
+                <h2 class="featured-title">Une école Maternelle / Primaire</h2>                
 
                 <div class="container">
-
                     <div class="row">
-
-                        <div class="col-md-11">
-                            
+                        <div class="col-md-11">                            
                             <div class="form-wrap row">
 
                                 <div class="col-md-11">
@@ -44,7 +40,8 @@
                                             </div>
                                         </div><!-- .col-* -->
 
-                                       <div class="col-md-4">
+                                   
+                                      <div class="col-md-4">
 <p-autoComplete [(ngModel)]="city" [suggestions]="filteredCitiesSingle" (completeMethod)="filterCitySingle($event)" field="cityName" [size]="30"
    placeholder="Lieu" [minLength]="3"></p-autoComplete>
                                 </div>
@@ -54,6 +51,10 @@
 placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
                                     
                                 </div>
+
+
+
+
                                     </div><!-- .row -->
                                 </div><!-- .col-* -->
                                 
@@ -69,10 +70,10 @@ placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
                         </div><!-- .col-* -->
 
                         <div class="col-md-1">
-                            <div>
-                                <i class="fa fa-filter filter-holder" data-toggle="tooltip" data-placement="right" title="Affinez votre recherche avec plus de critères"></i>
+                            <div class="filter-wrapper"  >
+                                <i (click)=toggleFilter() #tooltip class="fa fa-filter filter-holder " data-toggle="tooltip" data-placement="right" title="Affinez votre recherche avec plus de critères"></i>
                                 <!-- <img src="assets/img/filter-open.jpg" class="filters" /> -->
-                                <div class="advance-filter">
+                                <div class="advance-filter {{showFilter}}"  >
                                     <ul>
                                         <li><a><span class="caret"></span> Specialités</a>
                                             <ul>
@@ -285,10 +286,9 @@ placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
 
             </div>
 
-
     </div><!-- .filter-form-holder -->
 
-     <main class="main" role="main">
+    <main class="main" role="main">
         
     <!--<div class="white-background">-->
 
@@ -864,7 +864,7 @@ placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
                      <div class="footer-ads hidden animated">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-10 col-md-offset-1  wrapper  slickjs">
+                                <div class="col-md-10 col-md-offset-1  wrapper  slickjs" #slickjs >
                                     <div><img src="assets/img/ads-footer_r1_c1.jpg" alt="ads" /></div>
                                     <div><img src="assets/img/ads-footer_r1_c2.jpg" alt="ads" /></div>
                                     <div><img src="assets/img/ads-footer_r1_c3.jpg" alt="ads" /></div>
@@ -881,8 +881,7 @@ placeholder="Nom d'etablissement" [minLength]="3"></p-autoComplete>
 
                 </div></div><!-- .row .col-* -->
 
-            </div><!-- .container -->
-
-            
+            </div><!-- .container -->          
 
     </main>
+</div>   

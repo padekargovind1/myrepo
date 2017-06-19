@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
 
+
 	window.setTimeout(hideAd, 3000);
 
     function hideAd() {
@@ -26,43 +27,37 @@ jQuery(document).ready(function($) {
         }
     });
 
-
-
+	
 	$('#rootwizard').bootstrapWizard();
 
-	$('.filter-holder').on('click', function() {
+	/*$('.filter-holder').on('click', function() {
 		$('.advance-filter').toggleClass('open');
-		$('.main').toggleClass('open');
-		$('.ad-holder').toggleClass('hide');
-		$('.survey-holder').toggleClass('hide');
-	});
-
-	// $('#cmn-toggle-1').change(function() {
 		
-	// 	if($(this).is(':checked')){
-	//         $('#filter-popup').modal('show');
-	//     } 
-	// });
+	});*/
 
-	 $('.school-item').lazyload({
-	     threshold : 200,
-	     effect: "fadeIn"
-	 });
 
-	$('#filter-popup').on('hide.bs.modal', function (e) {
-	  $('.link-btn').removeClass('hide');
-	 // $('.popup-btn').addClass('hide');
+	$('[data-toggle="tooltip"]').tooltip();
+
+	$('.compare-holder').hover(function() {
+		$(this).find('.popup-compare').toggleClass('fadeIn fadeOut');
 	});
+
+	
 
 	$('.advance-filter a').on('click', function(e) {
-		e.preventDefault();
-
-		$(this).siblings('ul').toggleClass('fadeIn open');
+		if ($(this).hasClass('open')) {
+			$(this).siblings('ul').toggleClass('fadeIn open');
+			$(this).removeClass('open');
+		} else {
+			$('.advance-filter a.open').removeClass('open').siblings('ul').removeClass('fadeIn open');
+			$(this).siblings('ul').toggleClass('fadeIn open');
+			$(this).addClass('open');
+		}
 	});
 
-	/*$('#test1').click(function() { 
+	$('#test1').click(function() { 
 		
-		if($(this).is(':checked')){ console.log('checked');
+		if($(this).is(':checked')){
 	        for (var i = 1; i <= 13; i++) { 
 	        	$('#school-' + i).attr('checked', 'checked');
 	        }
@@ -71,19 +66,7 @@ jQuery(document).ready(function($) {
 	        	$('#school-' + i).removeAttr('checked');
 	        }
 	    } 
-	});*/
-
-$('.slickjs').slick({
-        infinite: true,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        arrows: false,
-        // centerMode: true
-    });
-
-
+	});
 
 	$('.close-class').on('click', function() {
 		$('#apply-popup').modal('hide');
@@ -95,7 +78,6 @@ $('.slickjs').slick({
 		$('#download-file').modal('show');
 	});
 
-
 	$('#scolaire-filter').on('click', function() {
 		if($(this).is(':checked')) { console.log('clicked');
 			$('.dans-quelles').toggleClass('hidden');
@@ -104,7 +86,7 @@ $('.slickjs').slick({
 		}
 	});
 
-	$('.multiselect').select2({
+	/*$('.multiselect').select2({
 		placeholder: 'Dans quelles matières'
 	});
 	$('.strong').select2({
@@ -115,11 +97,140 @@ $('.slickjs').slick({
 	});
 	$('.matery').select2({
 		placeholder: 'Votre goût pour les matières'
-	});
+	});*/
 
 
-	$('.datepicker').datetimepicker({		
+	/*$('.datepicker').datetimepicker({
+		locale: 'fr',
 		format: 'DD/MM/YYYY'
-	});
+	});*/
 
+
+	$('.slickjs').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        // centerMode: true
+    });
+
+  /*$('.school-carousel').slick({
+    	infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: false,
+        autoplaySpeed: 2000,
+        arrows: true,
+        variableWidth: true
+    });*/
+
+    $('.upload-button').on('click', function() {
+    	$('.school-mark').click();
+    });
+
+
+    $('#applyInstitution, #wizard').on('submit', function(e) {
+    	e.preventDefault();
+
+    	swal({
+    		title: '',
+    		html: "Votre dossier vient d'être envoyé au Lycee Saint-Charles - Lycee d'enseignement general Prive Catholique Sous contrat d'association. <br /> Lycee Saint-Charles reviendra vers vous très prochainement.",
+    	});
+    });
+
+
+    $('.top-compare-table .close').on('click', function() {
+    	$(this).parent().parent().remove();
+    });
+
+
+   /* $('.select-all-advisor').on('click', function(e) {
+    	e.preventDefault();
+
+    	$('.checkbox.filled-in').prop('checked', function(idx, oldProp) {
+            return true
+        });
+
+    });*/
+
+   /* $('.deselect-all-advisor').on('click', function(e) {
+    	e.preventDefault();
+
+    	$('.checkbox.filled-in').prop('checked', function(idx, oldProp) {
+            return false
+        });
+
+    });*/
+
+
+    // Responsive tabs
+   // fakewaffle.responsiveTabs( [ 'xs', 'sm' ] );
+
+    cube = $('.cube-wrapper');
+
+    var arrayCube = [];
+    
+    for (var i = 1; i <= cube.length; i++) {
+
+        arrayCube[i] = $('.cube-' + i).cubeBox({
+            'speed':400,
+            'width': 300,
+            'height': 400,
+            'opacity': 1,
+            'activeOpacity':1,
+            'drag':false,
+            'autoPlay':false
+        });
+
+    }
+
+    var goto='';
+    $('.btns a').on('click', function(event) {
+
+        var el = $(this).parent().parent();
+        var page = el.data('page');
+        var cubeNumber = el.data('cube');
+
+        if ($(this).hasClass('next')) {
+            var showPage = page;
+            if (page === 4) {
+                showPage = 1;
+                el.data('page', showPage);
+            } else {
+                showPage = page + 1;
+                el.data('page', page + 1);
+            }
+
+            switch (showPage) {
+                case 1 : goto = 'show-front'; break;
+                case 2 : goto = 'show-right'; break;
+                case 3 : goto = 'show-back'; break;
+                case 4 : goto = 'show-left'; break;
+            }
+            arrayCube[cubeNumber].goTo(goto);
+
+        } else if ($(this).hasClass('prev')) {
+            var showPage = page;
+            if (page === 1) {
+                showPage = 4;
+                el.data('page', showPage);
+            } else {
+                showPage = page - 1;
+                el.data('page', showPage);
+            }
+
+            switch (showPage) {
+                case 1 : goto = 'show-front'; break;
+                case 2 : goto = 'show-right'; break;
+                case 3 : goto = 'show-back'; break;
+                case 4 : goto = 'show-left'; break;
+            }
+            arrayCube[cubeNumber].goTo(goto);
+        }
+    }); // button click
+
+
+    
 });

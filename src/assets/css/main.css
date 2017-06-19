@@ -3,10 +3,9 @@
  *
  */
 body { background: #444; color: #fff; font-family: "Roboto", Arial, sans-serif;}
-    body.school { background: #393645;}    
+    .school { background: #393645;}    
 
 h1 { font-weight: 300; }
-
 
 
 
@@ -32,7 +31,7 @@ h1 { font-weight: 300; }
 
     .bar { width: 100%; height: 20px; text-align: left; padding-top: 14px;}
         .bar span { background: #747F87; animation-name: move; animation-duration: 5s; animation-iteration-count: 1; display: inline-table; height: 100%; width: 0; }
-    .menu-holder { float: left; font-size: 34px !important; margin: 25px 40px 10px 0; }
+    .menu-holder { float: left; font-size: 34px!important; margin: 25px 40px 10px 0; }
 
 
 
@@ -389,7 +388,7 @@ header .main-navigation li.courses-menu li .single-item .courses-num {
     .form-wrap { background: #393645; border-radius: 5px; padding: 13px;}
     
 /*.filter-wrapper { position: absolute; display: table; bottom: 35px;}*/
-    .filter-holder { font-size: 42px !important; background: #393645; padding: 16px 14px; border-radius: 0 ; }
+    .filter-holder { font-size: 42px!important; background: #393645; padding: 16px 14px; border-radius: 0 ; }
     .filters { left: -99999px; position: absolute; top: 100%;}
     .filters.open { left: 0; z-index: 10;}
 

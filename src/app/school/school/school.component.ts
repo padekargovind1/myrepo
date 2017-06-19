@@ -1,26 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewChild, Directive, ElementRef, Component, OnInit, AfterViewInit } from '@angular/core';
 import { SchoolService } from '../../core/services/school.service';
 import { AutoCompleteModule, PaginatorModule } from 'primeng/primeng';
 import { FilterModal, CompareModal } from '../../core/models/schools.modal';
 import { Router } from '@angular/router';
-import {HeaderComponent} from '../../layouts/header/header.component';
-
+import { HeaderComponent } from '../../layouts/header/header.component';
+declare var $: any;
 
 
 @Component({
-    selector: 'app-school',    
+    selector: 'app-school',
     templateUrl: './school.component.html',
     styleUrls: ['./school.component.scss'],
-    providers: [SchoolService],   
-    
+    providers: [SchoolService],
+
 })
 
-export class SchoolComponent {
+export class SchoolComponent implements OnInit, AfterViewInit {
+
+    @ViewChild('tooltip') el: ElementRef;
+    @ViewChild('slickjs') slickjs: ElementRef;
+
+    ngAfterViewInit() {
+        $(this.el.nativeElement).tooltip();
+        $(this.slickjs.nativeElement).slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: false,
+            variableWidth: true
+        });
+
+
+
+        $('.advance-filter a').on('click', function (e) {
+            if ($(this).hasClass('open')) {
+                $(this).siblings('ul').toggleClass('fadeIn open');
+                $(this).removeClass('open');
+            } else {
+                $('.advance-filter a.open').removeClass('open').siblings('ul').removeClass('fadeIn open');
+                $(this).siblings('ul').toggleClass('fadeIn open');
+                $(this).addClass('open');
+            }
+        });
+
+
+
+    }
+
 
     schoolCheckboxes: string;
     facilityCheckboxes: string;
-
-    showFilter: boolean;
+    showFilter: string;
     schoolData;
     totalSchools: number;
     city?: any;
@@ -35,40 +67,39 @@ export class SchoolComponent {
     compareModal;
     schoolsToCompare: any[];
     compareCriteria: any[];
-    currentUrl:any;
+    currentUrl: any;
 
-
-    constructor(private schoolService: SchoolService, private _router:Router) {
-        this.showFilter = false;
+    constructor(private schoolService: SchoolService, private _router: Router) {
+        this.showFilter = "";
         this.filterModal = new FilterModal();
         this.compareModal = new CompareModal;
         this.schoolCheckboxes = '';
         this.facilityCheckboxes = '';
-        this.currentUrl =  (this._router.url).split("/"); 
+        this.currentUrl = (this._router.url).split("/");
 
         //this.currentUrl=this.currentUrl.split("/");
-        console.log(this.currentUrl);
-        
-        switch(this.currentUrl[1]) { 
+        //console.log(this.currentUrl);
+
+        switch (this.currentUrl[1]) {
 
 
-   case "une-ecole": { 
-     this.currentUrl="ecole";
-      break; 
-   } 
-   case "un-college": { 
-     this.currentUrl="college";
-      break; 
-   } 
-   case "un-lycee": {
-     this.currentUrl="lycee";
-      break;    
-   }    
-   default: { 
-      console.log("Invalid choice"); 
-      break;              
-   } 
-}
+            case "une-ecole": {
+                this.currentUrl = "ecole";
+                break;
+            }
+            case "un-college": {
+                this.currentUrl = "college";
+                break;
+            }
+            case "un-lycee": {
+                this.currentUrl = "lycee";
+                break;
+            }
+            default: {
+                console.log("Invalid choice");
+                break;
+            }
+        }
 
     }
 
@@ -135,11 +166,11 @@ export class SchoolComponent {
 
 
     toggleFilter() {
-        if (this.showFilter == true) {
-            this.showFilter = false;
+        if (this.showFilter == "") {
+            this.showFilter = "open";
         }
         else {
-            this.showFilter = true;
+            this.showFilter = "";
         }
     }
 
@@ -156,7 +187,7 @@ export class SchoolComponent {
     }
 
     selectedSchools() {
-       /* console.log(this.schoolCheckboxes);
-        console.log(this.compareModal);*/
+        /* console.log(this.schoolCheckboxes);
+         console.log(this.compareModal);*/
     }
 }
