@@ -35,7 +35,7 @@ export class SchoolComponent {
     compareModal;
     schoolsToCompare: any[];
     compareCriteria: any[];
-    currentUrl:string;
+    currentUrl:any;
 
 
     constructor(private schoolService: SchoolService, private _router:Router) {
@@ -44,10 +44,12 @@ export class SchoolComponent {
         this.compareModal = new CompareModal;
         this.schoolCheckboxes = '';
         this.facilityCheckboxes = '';
-        this.currentUrl =  (this._router.url).substr(1); 
+        this.currentUrl =  (this._router.url).split("/"); 
+
+        //this.currentUrl=this.currentUrl.split("/");
+        console.log(this.currentUrl);
         
-        
-        switch(this.currentUrl) { 
+        switch(this.currentUrl[1]) { 
 
 
    case "une-ecole": { 
