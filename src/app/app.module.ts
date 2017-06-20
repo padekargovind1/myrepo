@@ -11,6 +11,7 @@ import { reducer } from './app.reducers';
 import { SharedModule } from './shared/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
+import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 
 
 
@@ -18,7 +19,7 @@ import { StoreModule } from '@ngrx/store';
   declarations: [
     AppComponent,
     HomePageComponent,   
-    LinguisticComponent,    
+    LinguisticComponent, SchoolCalendarComponent,    
   ],
   imports: [
     RouterModule,    

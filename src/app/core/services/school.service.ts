@@ -75,7 +75,7 @@ export class SchoolService {
   getSchoolsAutoComplete(query) {
     let params: URLSearchParams = new URLSearchParams();
     params.set('keyword', query);
-    return this.http.get(Constants.SERVER_HOST + '/autocomplete/schools', {
+    return this.http.get(Constants.SERVER_HOST + '/api/public/schools/autocomplete', {
       search: params
     })
       .toPromise()

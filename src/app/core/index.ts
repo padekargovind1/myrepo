@@ -27,8 +27,7 @@ export function httpInterceptor(
   exports: [ ],
   imports: [
     
-    EffectsModule.run(AuthenticationEffects),
-    
+    EffectsModule.run(AuthenticationEffects),    
   ],
   providers: [    
     AuthService,

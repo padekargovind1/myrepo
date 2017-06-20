@@ -33,6 +33,17 @@ export class SchoolComponent implements OnInit, AfterViewInit {
         });
 
 
+         setTimeout(function(){
+       $('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
+      $('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');
+    },3000);
+
+         setTimeout(function(){
+        $('.from-popup').delay(13000).removeClass('fadeInDown').addClass('fadeOutDown');
+        $('.fixed-ad').delay(26000).removeClass('hidden').addClass('fadeIn animated');
+    },13000);
+
+ 
 
         $('.advance-filter a').on('click', function (e) {
             if ($(this).hasClass('open')) {
