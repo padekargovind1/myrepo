@@ -20,7 +20,8 @@ import { StoreModule } from '@ngrx/store';
     HomePageComponent,   
     LinguisticComponent,    
   ],
-  imports: [    
+  imports: [
+    RouterModule,    
     BrowserModule,
     BrowserAnimationsModule,    
     RouterModule.forRoot(AppRoutes),

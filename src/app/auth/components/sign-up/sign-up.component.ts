@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { getAuthStatus } from '../../reducers/selectors';
 import { Subscription } from 'rxjs/Subscription';
-
+import { PasswordValidation } from './password-validation';
 
 @Component({
   selector: 'app-sign-up',
@@ -72,14 +72,30 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
     this.signUpForm = this.fb.group({
       'email': [email, [Validators.required,Validators.email]],
-      'password': [password, [Validators.required,Validators.minLength(6)]],
+      'password': [password, [Validators.required,Validators.minLength(6),]],
       'repeated': [repeated, Validators.required],
       'name': [name, Validators.required],
       'type': [type],
       
+    }, {
+      validator: PasswordValidation.MatchPassword // your validation method
     });
   }
 
+  
+
+/*static MatchPassword(AC: AbstractControl) {
+       let password = AC.get('password').value; // to get value in input tag
+       let confirmPassword = AC.get('confirmPassword').value; // to get value in input tag
+        if(password != confirmPassword) {
+            console.log('false');
+            AC.get('confirmPassword').setErrors( {MatchPassword: true} )
+        } else {
+            console.log('true');
+            return null
+        }
+    }
+*/
 
   
 
