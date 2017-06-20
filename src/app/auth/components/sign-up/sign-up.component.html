@@ -21,7 +21,7 @@
                   formControlName="name" placeholder="First Name">
                 <div *ngIf="signUpForm.get('name').errors && signUpForm.get('name').touched">
                   <span class="register-error-icon"></span>
-                  <p class="register-error-message">{{signUpForm.get('name').errors.msg}}</p>
+                  <p class="register-error-message">{{signUpForm.get('name').errors.msg}} || Name is rquired</p>
                 </div> 
               </div>
 
