@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, URLSearchParams } from '@angular/http';
+import { Http, Response, URLSearchParams,RequestOptions,Headers  } from '@angular/http';
 import 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Constants } from "../../utilities/constants";
 
 @Injectable()
@@ -72,15 +73,11 @@ export class SchoolService {
   }
 
 
-  getSchoolsAutoComplete(query) {
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('keyword', query);
-    return this.http.get(Constants.SERVER_HOST + '/api/public/schools/autocomplete', {
-      search: params
-    })
-      .toPromise()
-      .then(res => <any[]>res.json().data)
-      .then(data => { return data; });
+  getSchoolsAutoComplete(data):Observable<any> {
+    let body = new FormData();
+    body.append("keyword",data);   
+    return this.http.post(Constants.SERVER_HOST + 'api/public/schools/autocomplete', body)
+            .map((res: Response) => res.json());   
   }
 
 

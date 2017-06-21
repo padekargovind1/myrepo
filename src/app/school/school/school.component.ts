@@ -33,7 +33,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
         });
 
 
-         setTimeout(function(){
+        setTimeout(function(){
        $('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
       $('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');
     },3000);
@@ -151,8 +151,8 @@ export class SchoolComponent implements OnInit, AfterViewInit {
 
     filterSchoolSingle(event) {
         let query = event.query;
-        this.schoolService.getSchoolsAutoComplete(query).then(schools => {
-            this.filteredSchoolSingle = this.filterSchool(schools);
+        this.schoolService.getSchoolsAutoComplete(query).subscribe(schools => {
+            this.filteredSchoolSingle = this.filterSchool(schools.data);            
         });
     }
 

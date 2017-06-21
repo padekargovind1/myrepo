@@ -51,10 +51,8 @@ export class AuthService {
       }
       return data;
     });
-    // catch should be handled here with the http observable
-    // so that only the inner obs dies and not the effect Observable
-    // otherwise no further login requests will be fired
-    // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
+    
+    
   }
 
   /**
