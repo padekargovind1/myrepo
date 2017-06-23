@@ -12,8 +12,10 @@ export class SchoolService {
 
 /* Load schools data on page Load */
   getData() {
-    return this.http.get(Constants.SERVER_HOST + "/search/schools")
+     let body = new FormData();
+    return this.http.post(Constants.SERVER_HOST + "api/public/schools/schools",body)
       .map((res: Response) => res.json());
+
   }
 
 
