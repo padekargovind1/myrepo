@@ -1,5 +1,8 @@
 import { ViewChild, Directive, ElementRef, Component, OnInit, AfterViewInit } from '@angular/core';
 import { SchoolService } from '../../core/services/school.service';
+import { getAuthStatus } from '../../auth/reducers/selectors';
+import { AppState } from '../../interfaces';
+import { Store } from '@ngrx/store';
 import { AutoCompleteModule, PaginatorModule } from 'primeng/primeng';
 import { FilterModal, CompareModal } from '../../core/models/schools.modal';
 import { Router } from '@angular/router';
@@ -12,7 +15,6 @@ declare var $: any;
     templateUrl: './school.component.html',
     styleUrls: ['./school.component.scss'],
     providers: [SchoolService],
-
 })
 
 export class SchoolComponent implements OnInit, AfterViewInit {
@@ -33,17 +35,17 @@ export class SchoolComponent implements OnInit, AfterViewInit {
         });
 
 
-        setTimeout(function(){
-       $('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
-      $('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');
-    },3000);
+        setTimeout(function () {
+            $('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
+            $('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');
+        }, 3000);
 
-         setTimeout(function(){
-        $('.from-popup').delay(13000).removeClass('fadeInDown').addClass('fadeOutDown');
-        $('.fixed-ad').delay(26000).removeClass('hidden').addClass('fadeIn animated');
-    },13000);
+        setTimeout(function () {
+            $('.from-popup').delay(13000).removeClass('fadeInDown').addClass('fadeOutDown');
+            $('.fixed-ad').delay(26000).removeClass('hidden').addClass('fadeIn animated');
+        }, 13000);
 
- 
+
 
         $('.advance-filter a').on('click', function (e) {
             if ($(this).hasClass('open')) {
@@ -55,9 +57,6 @@ export class SchoolComponent implements OnInit, AfterViewInit {
                 $(this).addClass('open');
             }
         });
-
-
-
     }
 
 
@@ -80,7 +79,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
     compareCriteria: any[];
     currentUrl: any;
 
-    constructor(private schoolService: SchoolService, private _router: Router) {
+    constructor(private schoolService: SchoolService, private _router: Router, private store: Store<AppState>) {
         this.showFilter = "";
         this.filterModal = new FilterModal();
         this.compareModal = new CompareModal;
@@ -92,8 +91,6 @@ export class SchoolComponent implements OnInit, AfterViewInit {
         //console.log(this.currentUrl);
 
         switch (this.currentUrl[1]) {
-
-
             case "une-ecole": {
                 this.currentUrl = "ecole";
                 break;
@@ -111,10 +108,12 @@ export class SchoolComponent implements OnInit, AfterViewInit {
                 break;
             }
         }
-
     }
 
     ngOnInit() {
+        console.log(this.store.select(getAuthStatus));
+           
+
         /* Get School Data on page Load */
         this.schoolService.getData().subscribe((data) => {
             //this.totalSchools=data.total;
@@ -152,7 +151,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
     filterSchoolSingle(event) {
         let query = event.query;
         this.schoolService.getSchoolsAutoComplete(query).subscribe(schools => {
-            this.filteredSchoolSingle = this.filterSchool(schools.data);            
+            this.filteredSchoolSingle = this.filterSchool(schools.data);
         });
     }
 

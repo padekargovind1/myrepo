@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './layouts/home/home-page.component';
 import { LinguisticComponent } from './linguistic/linguistic.component';
 
+
 export const AppRoutes: Routes = [
 { path: '', component: HomePageComponent},
 { path: 'linguistic', component: LinguisticComponent },

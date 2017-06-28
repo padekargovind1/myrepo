@@ -104,7 +104,7 @@ let params: URLSearchParams = new URLSearchParams();
 
   getSchoolDetailByID(schoolId)
   {
-        return this.http.get(Constants.SERVER_HOST + 'school/'+schoolId)
+        return this.http.get(Constants.SERVER_HOST + '/api/public/schools/schools/'+schoolId)
             .toPromise()
             .then(res => <any[]>res.json().data)
             .then(data => { return data; });

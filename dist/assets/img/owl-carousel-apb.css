@@ -1,0 +1,8 @@
+#owl-apb-school .item{
+    margin: 3px;
+}
+#owl-apb-school .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}

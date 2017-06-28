@@ -7,7 +7,16 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-school-detail',
   templateUrl: './school-detail.component.html',
   styleUrls: [
-    'school-detail.component.scss',
+    './school-detail.component.scss',
+    '../../../assets/APB PRIVE - ETABLISSEMENT_files/owl.carousel.css',
+    '../../../assets/APB PRIVE - ETABLISSEMENT_files/owl.theme.css',
+    '../../../assets/APB PRIVE - ETABLISSEMENT_files/owl-carousel-apb.css',
+    '../../../assets/APB PRIVE - ETABLISSEMENT_files/bootstrap-social.css',
+    '../../../assets/APB PRIVE - ETABLISSEMENT_files/animate.css',
+    '../../../assets/APB PRIVE - ETABLISSEMENT_files/style.css',
+    '../../../assets/APB PRIVE - ETABLISSEMENT_files/box-shadow.css',
+
+
   ],
   providers: [SchoolService]
 })
@@ -24,10 +33,7 @@ this.route.params.subscribe(params => {
 
    }
 
-  ngOnInit() {
-
-
-      
+  ngOnInit() {      
 
    this.schoolService.getSchoolDetailByID(this.schoolID).then((data) => {
             //this.totalSchools=data.total;

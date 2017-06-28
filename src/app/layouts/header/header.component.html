@@ -57,5 +57,37 @@
             </ul>
         </nav>
         <a href=""><img class="cide-logo" src="assets/img/cide-white.png" alt="CIDE Logo" /></a>
-        <h1 class="sitename">Avec le CIDE, je trouve</h1>
+        <!--<h1 class="sitename">Avec le CIDE, je trouve</h1>-->
+         
+
+        <ul class="mobile-login">
+            <li><i class=" fa fa-file-text"></i></li>
+            <li><i class="fa fa-bookmark"></i></li>
+            <li><i class="fa fa-user"></i>
+                <ul class="login">
+                    <li><a routerLink="/auth/login"><i class="fa fa-sign-in"></i> S'inscrire</a></li>
+                    <li><a routerLink="/auth/signup"><i class="fa fa-unlock-alt"></i> S'identifier / Fermer la Session</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="right-top-menu pull-right">
+            <li><i class=" fa fa-file-text"></i></li>
+            <li><i class="fa fa-bookmark"></i></li>
+            <ng-template *ngIf="!isAuthenticated; else elseBlock">            
+            <li class="login-text" > <a  routerLink="/auth/login"><i class="fa fa-sign-in"></i> S'inscrire</a> |<a routerLink="/auth/login"><i class="fa fa-unlock-alt"></i> S'identifier</a></li>
+             </ng-template>
+            <ng-template #elseBlock>
+            <li class="login-text"><a href="#"><!--<img src="img/a1.jpg" alt="" class="top-picture  img-circle  img-responsive" />--> Antoine Griezmann</a> | <a (click)="logout()" ><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+            </ng-template>
+        </ul>
+        <ul class="social-media-list in-header">
+            <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-viadeo"></i></a></li>
+        </ul>
     </header>
