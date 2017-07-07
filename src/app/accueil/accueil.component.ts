@@ -38,25 +38,25 @@ export class AccueilComponent implements OnInit {
       let contentName :String;
       switch ($(this).attr('id').charAt(24)){
         case '0' : 
-          contentName='.ecole-content';
+          contentName='ecole';
           break;
         case '1' : 
-          contentName='.college-content';
+          contentName='college';
           break;
         case '2' : 
-          contentName='.lycee-content';
+          contentName='lycee';
           break;
         case '3' : 
-          contentName='.internat-content';
+          contentName='internat';
           break;
         case '4' : 
-          contentName='.enseignement-content';
+          contentName='enseignement';
           break;
         case '5' : 
-          contentName='.linguistic-content';
+          contentName='linguistic';
           break;
         case '6' : 
-          contentName='.orientation-content';
+          contentName='orientation';
           break;
       }
       console.log(contentName)
@@ -64,26 +64,28 @@ export class AccueilComponent implements OnInit {
     });
 
     $('#wheelnav-tabwheel-spreadertitle').mousedown(function(e){
-      self.navigate();
-    })
+      self.navigate('conseil');
+    });
 
   }
 
   switchWheelComponent(wheelNavId: String, contentName: String){
+    var self = this;
     $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').removeClass('open');                
     $('#'+wheelNavId).addClass('open');
-    if ($(contentName).hasClass('fadeIn')) {
-        // window.location.href = "une-ecole.html"; 
+    if ($('.'+contentName+'-content').hasClass('fadeIn')) {
+        console.log("Need to navigate");
+        self.navigate(contentName);
     }
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
-    $(contentName).removeClass('fadeOut').addClass('fadeIn');
-    var image = $(contentName).data('image');
+    $('.'+contentName+'-content').removeClass('fadeOut').addClass('fadeIn');
+    var image = $('.'+contentName+'-content').data('image');
     $('.main').css('background-image', 'url(../../../images/new-landing-page-2/' + image + ')');
   }
 
-  navigate(){
-    console.log("routing work!!");
-    this.router.navigate(['conseil'], {relativeTo: this.route});
+  navigate(componentName : String){
+    // console.log("routing work!!", componentName);
+    this.router.navigate([componentName], {relativeTo: this.route});
   }
 
 }

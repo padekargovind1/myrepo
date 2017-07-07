@@ -1,0 +1,105 @@
+.white-background .title-page {
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-size: 26px;
+    color: #333;
+    padding-left: 0; 
+}
+
+.white-background .horizontal-radio label.custom-radio:before {
+    border-color: #2B2A28; 
+}
+
+.white-background {
+    background: #EBECEC;
+    min-height: 350px;
+    padding: 20px 0 70px;
+    color: #333; 
+}
+
+.brochure-title {
+    font-weight: 100;
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+.searchform .select-custom select {
+  height: 40px;
+  width: 100%;
+  font-size: 18px; }
+
+.searchform .select-custom {
+  width: 100%; }
+
+.searchform input[type="text"] {
+  height: 40px;
+  width: 100%;
+  font-size: 18px;
+  margin-right: 15px; }
+
+.searchform .select-custom {
+  margin-bottom: 0; }
+
+.searchform .form-group {
+  width: 100%; }
+
+.searchform.school-page .btn-search {
+  margin: 0 20px; }
+
+.searchform .form-wrap {
+    background: none;
+    border-radius: 0;
+    padding: 0; }
+  .searchform .form-wrap .form-control {
+    border-radius: 0;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4); }
+  .searchform .select-custom select, .searchform input[type="text"] {
+    height: auto;
+    font-size: 14px;
+    font-weight: 400; }
+  .searchform .btn-download {
+    width: 100%; }
+  .searchform .btn-search {
+    font-size: 14px;
+    margin: 0;
+    color: #fff;
+    position: absolute;
+    right: -5px;
+    background: #393649;
+    top: -49px;
+    border-radius: 0; }
+  .documentation .searchform .btn-search {
+    right: 15px; }
+  .searchform input[type="text"], .searchform .select-custom select {
+    width: 100%; }
+
+    .form-wrap {
+  background: #393645;
+  border-radius: 5px;
+  padding: 13px; }
+
+  .select-custom {
+  position: relative;
+  margin-right: 15px; }
+
+/* .select-custom:after { content: "\f078"; display: block; position: absolute; font-family: 'FontAwesome'; background: #393649; padding: 0 4px; border-radius: 4px; right: 10px; top: 10px;}*/
+.select-custom select {
+  background: #fff url('../images/linguistic/cide-dropbox-arrow.png') no-repeat 97% 48%;
+  -webkit-appearance: none;
+  padding-right: 30px;
+  font-weight: 700; }
+
+.form-control.wide {
+  width: 242px; }
+
+.form-control.normal {
+  width: 156px; }
+
+.form-control.medium {
+  width: 73px; }
+
+.form-control.small {
+  width: 50px; }
+
+.form-control.half {
+  width: 58px; }

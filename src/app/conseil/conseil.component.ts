@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-conseil',
@@ -8,9 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ConseilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router,
+              private route : ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  navigateToBooking(){
+    console.log("Navigate to booking")
+    this.router.navigate( ['booking']);
   }
 
 }

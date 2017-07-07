@@ -18,6 +18,9 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConseilComponent } from './conseil/conseil.component';
 import { AppRoutes } from './app.routing';
 import { HeaderComponent } from './header/header.component';
+import { BookingComponent } from './booking/booking.component';
+import { LinguisticComponent } from './linguistic/linguistic.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { HeaderComponent } from './header/header.component';
     AccueilComponent,
     ConseilComponent,
     HeaderComponent,
+    BookingComponent,
+    LinguisticComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
