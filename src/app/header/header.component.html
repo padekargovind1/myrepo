@@ -1,9 +1,12 @@
 <div fxFlex fxLayout class="header">
   <div fxFlex="33">
-    <img class="cide-logo" src="../../assets/images/cide-logo.png" alt="cide logo">
+    <img class="cide-logo" 
+        src="../../assets/images/cide-white.png" 
+        alt="cide logo"
+        (click)="onNavigateHome()">
   </div>
   <div fxLayoutAlign="center" fxFlex="33">
-    <h1 class="sitename">Ma Recherche</h1>
+    <h1 class="sitename">{{ Title }}</h1>
   </div>
   <div fxFlex="33" id="header-right">
     <ul class="mobile-login">

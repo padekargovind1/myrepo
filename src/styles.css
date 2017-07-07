@@ -3,4 +3,6 @@
 @import url("./assets/css/wheelizate.tab.min.css");
 @import url("./assets/css/accueil.css");
 @import url("./assets/css/header.css");
+@import url("./assets/css/main.css");
+@import url("./assets/css/conseil.css");  
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';

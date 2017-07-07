@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ConseilComponent implements OnInit {
 
-  constructor(private route : ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
   }

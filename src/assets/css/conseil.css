@@ -1,0 +1,161 @@
+.title-page {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 40px;
+  font-weight: 100;
+  color: #fff; 
+}
+
+.conseil-centering .title-page {
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 0; 
+}
+
+.conseil-centering {
+  text-align: center; 
+}
+
+.text-after-title {
+    font-size: 14px; 
+}
+
+.text-after-title p + p {
+    padding-left: 24px;
+    position: relative; 
+}
+
+.text-after-title .fa {
+    position: absolute;
+    left: 0;
+    top: 4px; 
+}
+
+.conseil-item {
+  width: 17%;
+  display: inline-block;
+  margin: 0 1% 90px;
+  text-align: left;
+  vertical-align: top;
+  position: relative; }
+
+.conseil-item:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  box-shadow: 0px 79px 0px rgba(53, 50, 64, 0.8);
+  height: 40px;
+  bottom: 0;
+  border-radius: 50%;
+  z-index: -1; }
+
+.conseil-item > .hover-holder:hover .conseil-hover {
+  visibility: visible;
+  height: auto; }
+
+  .conseil-hover {
+  background: #C4C6C5;
+  padding: 10px 10px 20px;
+  position: absolute;
+  width: 500px;
+  color: #2E2E2E;
+  top: 0;
+  left: 100%;
+  font-size: 14px;
+  line-height: 26px;
+  z-index: 10;
+  visibility: hidden;
+  border-radius: 0 5px 5px 0;
+  letter-spacing: .6px;
+  height: 0;
+  overflow: hidden;
+  box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.7); }
+
+.conseil-hover.left {
+  left: auto;
+  right: 100%;
+  border-radius: 5px 0 0 5px; }
+
+.conseil-hover h4 {
+  font-size: 16px;
+  font-weight: 700; }
+
+.conseil-item img {
+  width: 100%;
+  height: auto; }
+
+  .conseil-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 16px 10px;
+  text-align: center;
+  font-weight: 700;
+  margin: 0;
+  height: 77px; }
+
+.color-1, .color-1:after, .color-1:before {
+  background: #F7C200; }
+  .color-2, .color-2:after, .color-2:before {
+  background: #51A897; }
+  .color-3, .color-3:after, .color-3:before {
+  background: #61D771; }
+
+.color-4, .color-4:after, .color-4:before {
+  background: #466FF6; }
+
+.color-5, .color-5:after, .color-5:before {
+  background: #DE6D00; }
+
+  .overload {
+  position: relative; }
+
+.overload:before {
+  content: "";
+  display: block;
+  width: 3px;
+  position: absolute;
+  right: -3px;
+  top: 0;
+  height: 100%; }
+
+.overload:after {
+  content: "";
+  display: block;
+  width: 3px;
+  position: absolute;
+  left: -3px;
+  top: 0;
+  height: 100%; }
+
+  .conseil-content {
+  background: #C4C6C5;
+  padding: 20px;
+  color: #666;
+  border-radius: 0 0 5px 5px; }
+
+  .conseil-info {
+  margin-bottom: 20px;
+  font-size: 12px; }
+
+.conseil-info .conseil-label {
+  font-size: 16px;
+  font-weight: 700; }
+
+  .conseil-price {
+  font-size: 64px;
+  font-weight: 700;
+  text-align: center;
+  color: #666; }
+
+.conseil-price sup {
+  font-size: 58%; }
+
+  .btn-conseil {
+  text-transform: uppercase;
+  border-radius: 50px; }
+
+.conseil-hover.left {
+  left: auto;
+  right: 100%;
+  border-radius: 5px 0 0 5px; }
