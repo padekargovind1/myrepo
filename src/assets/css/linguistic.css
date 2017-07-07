@@ -116,3 +116,18 @@
   margin-bottom: 5px;
   display: inline-table;
   font-weight: 700; }
+
+  .school-item .content-detail {
+  text-align: left;
+  background: #4B4858;
+  padding: 10px; }
+
+.school-item .content-detail h3 {
+  margin: 0 0 10px;
+  font-size: 18px; }
+
+.school-item .content-detail p {
+  font-size: 12px; }
+
+.school-item .content-detail .checkbox[type="checkbox"].filled-in:not(:checked) + label:after {
+  border-color: #fff; }

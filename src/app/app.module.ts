@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
+import { HttpModule } from '@angular/http';
 import {
   MdCardModule, MdButtonModule, MdListModule,
   MdProgressBarModule, MdMenuModule, MdInputModule, MdRadioModule,
@@ -21,6 +22,8 @@ import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
 import { LinguisticComponent } from './linguistic/linguistic.component';
 import { MenuComponent } from './menu/menu.component';
+import { LinguisticTripsComponent } from './linguistic/linguistic-trips/linguistic-trips.component';
+import { SchoolService } from './services/school.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { MenuComponent } from './menu/menu.component';
     BookingComponent,
     LinguisticComponent,
     MenuComponent,
+    LinguisticTripsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,9 +53,10 @@ import { MenuComponent } from './menu/menu.component';
     MdNativeDateModule, 
     MdSelectModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    HttpModule
   ],
-  providers: [],
+  providers: [SchoolService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

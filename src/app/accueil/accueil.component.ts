@@ -84,7 +84,7 @@ export class AccueilComponent implements OnInit {
   }
 
   navigate(componentName : String){
-    // console.log("routing work!!", componentName);
+    console.log("routing work!!");
     this.router.navigate([componentName], {relativeTo: this.route});
   }
 
