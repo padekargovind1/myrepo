@@ -127,15 +127,19 @@ content holder
 }
 
 .landing-page-2 .content-holder {
-    /*position: absolute; */
+    position: absolute;
     bottom: 20px;
     padding: 15px 30px;
     margin-left: 20px;
     background: rgba(0, 0, 0, 0.4);
     height: auto;
     border-radius: 3px;
-    opacity: 0; 
+    opacity: 0;
+    display: none; 
 }
+
+.landing-page-2 .content-holder.fadeIn {
+    display: block; }
 
 .landing-page-2 .content-holder h2 {
     font-size: 24px;

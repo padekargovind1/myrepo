@@ -103,3 +103,16 @@
 
 .form-control.half {
   width: 58px; }
+
+  .holder-refine-search {
+  margin-bottom: 30px; }
+
+.checkbox-one-line {
+  display: inline-block; }
+
+.checkbox-one-line label {
+  margin-right: 15px; }
+.label-holder {
+  margin-bottom: 5px;
+  display: inline-table;
+  font-weight: 700; }
