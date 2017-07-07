@@ -1,0 +1,82 @@
+.mobile-login {
+    display: block;
+    list-style: none;
+    padding-left: 0;
+    float: right;
+    margin-bottom: 0; }
+  .mobile-login li {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 2em;
+    margin: 0 8px; }
+  .mobile-login li .login {
+    position: absolute;
+    width: 100%;
+    background: #393645;
+    left: 0;
+    z-index: 10;
+    padding-left: 0;
+    display: none; }
+  .mobile-login li .login li {
+    width: 100%;
+    margin: 0;
+    float: left;
+    text-align: left;
+    border-top: 1px solid #aaa;
+    padding: 0 15px; }
+  .mobile-login li .login a {
+    color: #fff;
+    font-size: 14px;
+    display: block; }
+
+.right-top-menu {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px; }
+
+.right-top-menu li {
+  display: inline-block;
+  font-size: 22px;
+  margin: 0 10px;
+  position: relative; }
+
+.right-top-menu .login-text {
+  margin-left: 20px; }
+
+.right-top-menu li a {
+  color: #fff;
+  font-size: 14px; }
+
+.right-top-menu .fa-bookmark {
+  font-size: 24px; }
+
+.right-top-menu .fa-bookmark:after {
+  content: "2";
+  font-size: 12px;
+  background: #F1001C;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding-top: 3px; }
+
+  #header-right ul{
+      margin: 0px;
+  }
+
+  .right-top-menu {
+    margin: 0; }
+    .right-top-menu li {
+      font-size: 18px; }
+    .right-top-menu a {
+      font-size: 14px; }
+    .right-top-menu .fa-bookmark {
+      font-size: 20px; }
+    .right-top-menu .fa-bookmark:after {
+      width: 16px;
+      height: 16px;
+      font-size: 12px; }
