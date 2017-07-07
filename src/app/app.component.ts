@@ -8,16 +8,10 @@ import { ActivatedRoute } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit{
+
   constructor(private route: ActivatedRoute){}
   
   ngOnInit(){
-    console.log(this.route.url.subscribe(
-      (data) =>{
-        console.log(data);
-      }
-    ));
-    // if (this.route.url==''){
-
-    // }
   }
+
 }

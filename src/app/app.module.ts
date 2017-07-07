@@ -15,7 +15,6 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
-import { AccueilHeaderComponent } from './accueil/accueil-header/accueil-header.component';
 import { ConseilComponent } from './conseil/conseil.component';
 import { AppRoutes } from './app.routing';
 import { HeaderComponent } from './header/header.component';
@@ -24,7 +23,6 @@ import { HeaderComponent } from './header/header.component';
   declarations: [
     AppComponent,
     AccueilComponent,
-    AccueilHeaderComponent,
     ConseilComponent,
     HeaderComponent,
   ],
