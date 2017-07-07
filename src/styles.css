@@ -1,0 +1,5 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("./assets/css/animate.css");
+@import url("./assets/css/wheelizate.tab.min.css");
+@import url("./assets/css/accueil.css");
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
