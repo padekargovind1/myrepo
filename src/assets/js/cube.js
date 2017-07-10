@@ -1,6 +1,6 @@
 ;
 (function($) {
-    (function() {
+    $(function() {
         // cstart
         $.fn.cubeBox = function(opt) {
             var defaultO={
