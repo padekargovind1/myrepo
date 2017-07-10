@@ -59,12 +59,13 @@
                     <div id="tabwheel"></div>
                     <div class="wheel-content">
                         <div class="ecole-content  content-holder   animated "  data-image="../../assets/images/new-landing-page-2/ecole.jpg">
+                            
                             <h2>ÉCOLE</h2>
                             <h3>Maternelle / Primaire</h3>
-                            <div>
+                            
+                            <div class="form-wrap">
 
-                                <div>
-                                    <div fxFlex>
+                                    <div fxLayout="row" fxLayoutGap="10px">
                                         <div fxFlex="30">
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
@@ -91,41 +92,39 @@
                                         </div>
 
                                         <div fxFlex="30">
-                                            <md-input-container>
-                                                <input mdInput placeholder="Lieu">
-                                            </md-input-container>
+                                            <!-- <md-input-container> -->
+                                                <input placeholder="Lieu" class="form-control">
+                                            <!-- </md-input-container> -->
                                         </div>
 
                                         <div fxFlex="30">
-                                            <md-input-container>
-                                                <input mdInput placeholder="Nom d'établissement">
-                                            </md-input-container>
+                                            <!-- <md-input-container> -->
+                                                <input placeholder="Nom d'établissement" class="form-control">
+                                            <!-- </md-input-container> -->
                                         </div>
                                         <div fxFlex="10">
-                                            <button md-raised-button 
-                                            color="green"
-                                            type="submit">
-                                            <!--<i class="fa fa-search"></i>-->
-                                            Search
+                                            <button class="btn btn-search" type="submit">
+                                            <i class="fa fa-search"></i>
+                                            <!-- Search -->
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                            </div><!-- .form-wrap -->
+                        </div><!-- .content-holder -->
+
                         <div class="college-content content-holder  animated" data-image="../../assets/images/new-landing-page-2/college.jpg">
                             
                             <h2>COLLEGE</h2>
                             <h3>6ème-3ème</h3>
-                            <div>
+                            
+                            <div class="form-wrap">
 
-                                <div>
-                                    <div fxFlex>
+                                    <div fxLayout="row" fxLayoutGap="10px">
                                         <div fxFlex="30">
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <md-select placeholder="Classe" class="form-control" id="class">
-                                                        <md-option value="" disabled selected hidden>Classe</md-option>
+                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
                                                         <md-optgroup label="Cycle 1 : Apprentissages Premiers">
                                                             <md-option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</md-option>
                                                             <md-option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</md-option>
@@ -144,49 +143,44 @@
                                                     </md-select>
                                                 </label>
                                             </div>
-                                        </div><!-- .col-* -->
-
-                                        <div fxFlex="30">
-                                            <md-input-container>
-                                                <input mdInput placeholder="Lieu">
-                                            </md-input-container>
                                         </div>
 
                                         <div fxFlex="30">
-                                            <md-input-container>
-                                                <input mdInput placeholder="Nom d'établissement">
-                                            </md-input-container>
+                                            <!-- <md-input-container> -->
+                                                <input placeholder="Lieu" class="form-control">
+                                            <!-- </md-input-container> -->
                                         </div>
 
+                                        <div fxFlex="30">
+                                            <!-- <md-input-container> -->
+                                                <input placeholder="Nom d'établissement" class="form-control">
+                                            <!-- </md-input-container> -->
+                                        </div>
                                         <div fxFlex="10">
-                                            <button md-raised-button 
-                                            color="green"
-                                            type="submit">
-                                            <!--<i class="fa fa-search"></i>-->
-                                            Search
+                                            <button class="btn btn-search" type="submit">
+                                            <i class="fa fa-search"></i>
+                                            <!-- Search -->
                                             </button>
                                         </div>
-                                    </div>
-                                </div>
+                                    
+                                    </div><!-- flex-layout -->
                                 
-                                
+                            </div><!-- .form-wrap -->
 
+                        </div><!-- .content-holder -->
 
-                            </div>
-
-                        </div>
                         <div class="lycee-content  content-holder   animated" data-image="../../assets/images/new-landing-page-2/lycee.jpg">
                             <h2>UN LYCÉE</h2>
                             <h3>2nde-Terminale</h3>
-                            <div>
 
-                                <div>
-                                    <div fxFlex>
+                            <div class="form-wrap">
+
+                                    <div fxLayout="row" fxLayoutGap="10px">
                                         <div fxFlex="30">
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <md-select placeholder="Classe" class="form-control" id="class">
-                                                        <md-option value="" disabled selected hidden>Classe</md-option>
+                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
                                                         <md-optgroup label="Cycle 1 : Apprentissages Premiers">
                                                             <md-option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</md-option>
                                                             <md-option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</md-option>
@@ -208,28 +202,27 @@
                                         </div>
 
                                         <div fxFlex="30">
-                                            <md-input-container>
-                                                <input mdInput placeholder="Lieu">
-                                            </md-input-container>
+                                            <!-- <md-input-container> -->
+                                                <input placeholder="Lieu" class="form-control">
+                                            <!-- </md-input-container> -->
                                         </div>
 
                                         <div fxFlex="30">
-                                            <md-input-container>
-                                                <input mdInput placeholder="Nom d'établissement">
-                                            </md-input-container>
+                                            <!-- <md-input-container> -->
+                                                <input placeholder="Nom d'établissement" class="form-control">
+                                            <!-- </md-input-container> -->
                                         </div>
                                         <div fxFlex="10">
-                                            <button md-raised-button 
-                                            color="green"
-                                            type="submit">
-                                            <!--<i class="fa fa-search"></i>-->
-                                            Search
+                                            <button class="btn btn-search" type="submit">
+                                            <i class="fa fa-search"></i>
+                                            <!-- Search -->
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                
+                            </div><!-- .form-wrap -->
+                        </div><!-- .content-holder -->
+
                         <div class="internat-content" data-image="../../assets/images/new-landing-page-2/internat.jpg"></div>
                         <div class="enseignement-content" data-image="../../assets/images/new-landing-page-2/enseignement.jpg"></div>
                         <div class="linguistic-content" data-image="../../assets/images/new-landing-page-2/sejour.jpg"></div>
