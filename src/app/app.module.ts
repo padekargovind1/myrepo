@@ -11,6 +11,8 @@ import {
   MdIconModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
 import 'hammerjs';
 
@@ -24,6 +26,10 @@ import { LinguisticComponent } from './linguistic/linguistic.component';
 import { MenuComponent } from './menu/menu.component';
 import { LinguisticTripsComponent } from './linguistic/linguistic-trips/linguistic-trips.component';
 import { SchoolService } from './services/school.service';
+import { RegisterComponent } from './register/register.component';
+import { AuthService } from './services/auth.service';
+import { LoginComponent } from './login/login.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +41,9 @@ import { SchoolService } from './services/school.service';
     LinguisticComponent,
     MenuComponent,
     LinguisticTripsComponent,
+    RegisterComponent,
+    LoginComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,9 +63,16 @@ import { SchoolService } from './services/school.service';
     MdSelectModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes),
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CustomFormsModule
   ],
-  providers: [SchoolService],
+  providers: [
+    SchoolService,
+    RegisterComponent,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

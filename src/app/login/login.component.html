@@ -1,0 +1,111 @@
+<div class="white-background">
+  <section class="login-page fadeInDown-animation">
+    <div class="container">
+      <div fxLayout fxLayoutAlign="center" >
+        <div fxFlex="66%">
+          <h2 class="brochure-title">Je me conecte</h2>
+          <div class="login-form register">
+            <!--<div class="login-title">
+              <span class="icon"><i class="fa fa-group"></i></span>
+              <span class="text">Register</span>
+            </div> -->
+            <form [formGroup]="loginForm"  (ngSubmit)="logIn()">
+              <div fxLayout="row" fxLayoutGap="5%">
+                <div fxFlex>
+                  <md-input-container style="width: 100%">
+                    <input [formControl]="loginForm.controls['email']" 
+                      mdInput 
+                      placeholder="Adresse mail" >
+                  </md-input-container>
+                  <small 
+                    *ngIf="loginForm.controls['email'].hasError('required') && 
+                    loginForm.controls['email'].touched" 
+                    class="mat-text-warn"> 
+                    Email required
+                  </small>
+                  <small *ngIf="loginForm.controls['email'].errors?.email && 
+                    loginForm.controls['email'].touched" 
+                    class="mat-text-warn"> 
+                    Must be valid Email
+                  </small>
+                </div>
+                <div fxFlex>
+                  <md-input-container style="width: 100%">
+                    <input [formControl]="loginForm.controls['password']"
+                      mdInput 
+                      placeholder="Mot de passe" 
+                      type="password">
+                  </md-input-container>
+                  <small *ngIf="loginForm.controls['password'].hasError('required') && 
+                    loginForm.controls['password'].touched" 
+                    class="mat-text-warn"> 
+                    Password required
+                  </small>
+                </div>
+              </div>
+              <div fxLayout>
+                <div fxFlex>
+                  <div class="input">
+                    <input type="submit" 
+                      id="reg_submit" 
+                      class="submit-input" 
+                      value="Se connecter"
+                      [disabled]="!loginForm.valid">
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="row">
+                <div fxFlex>
+                  <div>
+                    <md-checkbox checked>Se souvenir du mot de passe</md-checkbox>
+                      <!--<input type="checkbox" id="login_remember" checked>
+                      <label for="login_remember">Se souvenir du mot de passe</label>-->
+                  </div>
+                </div>
+                <div fxFlex>
+                  <div style="float:right">
+                    <span (click)="onNewAccount()"
+                      style="cursor:pointer;">Créer un nouveau compte</span> / 
+                    <span (click)="onForgotPassword()"
+                      style="cursor:pointer;">Mot de passe oublié ?</span>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <h3 class="brochure-title">Je peux aussi me connecter avec :</h3>
+          <div class="login-options">
+            <div fxLayout="row" fxLayoutGap="5%">
+              <div fxFlex>
+                <a href="#" class="login-op-btn grad-btn ln-tr fb"><i class="fa fa-facebook"></i> Facebook</a>
+              </div>
+              <div fxFlex>
+                <a href="#" class="login-op-btn grad-btn ln-tr in"><i class="fa fa-instagram"></i> Instagram</a>
+              </div>
+              <div fxFlex>
+                <a href="#" class="login-op-btn grad-btn ln-tr tw"><i class="fa fa-twitter"></i> Twitter</a>
+              </div>
+              <div fxFlex>
+                <a href="#" class="login-op-btn grad-btn ln-tr gp"><i class="fa fa-google-plus"> Google +</i></a>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5%">
+              <div fxFlex>
+                <a href="#" class="login-op-btn grad-btn ln-tr li"><i class="fa fa-linkedin"></i> LinkedIn</a>
+              </div>
+              <div fxFlex>
+                <a href="#" class="login-op-btn grad-btn ln-tr vim"><i class="fa fa-vimeo"></i> Vimeo</a>
+              </div>
+              <div fxFlex>
+                <a href="#" class="login-op-btn grad-btn ln-tr yo"><i class="fa fa-youtube"></i> Youtube</a>
+              </div>
+              <div fxFlex>
+                <a href="#" class="login-op-btn grad-btn ln-tr via"><i class="fa fa-viadeo"></i> Viadeo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

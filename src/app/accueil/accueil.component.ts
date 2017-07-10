@@ -27,6 +27,7 @@ export class AccueilComponent implements OnInit {
     this.wheel.clockwise = false;
     this.wheel.clickModeRotate = false;
     this.wheel.createWheel(["", "", "", "", "", "", ""]);
+    // this.wheel.sliceSelectedTransformFunction = sliceTransform().MoveMiddleTransform;
     this.wheelNavigation();
   }
 
