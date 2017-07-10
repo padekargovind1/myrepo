@@ -35,6 +35,8 @@ import { MyaccountParentsComponent } from './myaccount/myaccount-parents/myaccou
 import { MyaccountChildrenComponent } from './myaccount/myaccount-children/myaccount-children.component';
 import { MyaccountDocumentationsComponent } from './myaccount/myaccount-documentations/myaccount-documentations.component';
 import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myaccount-mysearch.component';
+import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
+import { CubeComponent } from './school-calendar/cube/cube.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myacc
     MyaccountChildrenComponent,
     MyaccountDocumentationsComponent,
     MyaccountMysearchComponent,
+    SchoolCalendarComponent,
+    CubeComponent,
   ],
   imports: [
     BrowserModule,
