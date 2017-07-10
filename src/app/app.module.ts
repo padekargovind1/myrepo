@@ -30,6 +30,11 @@ import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { MyaccountComponent } from './myaccount/myaccount.component';
+import { MyaccountParentsComponent } from './myaccount/myaccount-parents/myaccount-parents.component';
+import { MyaccountChildrenComponent } from './myaccount/myaccount-children/myaccount-children.component';
+import { MyaccountDocumentationsComponent } from './myaccount/myaccount-documentations/myaccount-documentations.component';
+import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myaccount-mysearch.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,11 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     RegisterComponent,
     LoginComponent,
     ForgotpasswordComponent,
+    MyaccountComponent,
+    MyaccountParentsComponent,
+    MyaccountChildrenComponent,
+    MyaccountDocumentationsComponent,
+    MyaccountMysearchComponent,
   ],
   imports: [
     BrowserModule,

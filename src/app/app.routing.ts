@@ -6,6 +6,7 @@ import { LinguisticComponent } from './linguistic/linguistic.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { MyaccountComponent } from './myaccount/myaccount.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: AccueilComponent},
@@ -15,5 +16,6 @@ export const AppRoutes: Routes = [
     { path: 'register' , component: RegisterComponent },
     { path: 'login' , component: LoginComponent },
     { path: 'forgotpassword' , component: ForgotpasswordComponent },
+    { path: 'myaccount' , component: MyaccountComponent },
     { path: '**', redirectTo: ''}
 ]

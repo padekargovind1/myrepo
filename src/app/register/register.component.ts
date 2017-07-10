@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
@@ -11,10 +12,11 @@ import { AuthService } from '../services/auth.service';
 export class RegisterComponent implements OnInit {
 
   public registerForm : FormGroup;
-  errorMessage: string;
+  errorMessage: string='';
 
   constructor(private fb: FormBuilder,
-              private authService : AuthService) { 
+              private authService : AuthService,
+              private location : Location) { 
     this.buildFormGroup();
   }
 
@@ -50,13 +52,15 @@ export class RegisterComponent implements OnInit {
           (data)=>{
             let response = data;
             console.log(response);
-            if (response.code == 401) {
+            if (response.code == 400) {
               let msg = response.message;
               this.errorMessage = msg;
               console.log('message: ', this.errorMessage);
             }
             else {
               console.log(response);
+              alert("Un email de confirmation à été envoyé.");
+              this.location.back();
             }
           }
         )
