@@ -1,3 +1,92 @@
-<p>
-  booking works!
-</p>
+<main class="main" role="main">
+
+        <div class="container-fluid">
+
+            <div class="row  booking-appointment">
+
+                <section class="col-md-3">
+                    
+                    <div class="advisors-wrap">
+                        
+                        <h3 class="advisor-title">Conseillers d’orientation</h3>
+
+                        <button class="btn btn-appointment btn-block select-all-advisor">Sélectionnez tous les conseillers <i class="fa fa-check"></i></button>
+                        <button class="btn btn-danger btn-block deselect-all-advisor">Désélectionnez tous les conseillers <i class="fa fa-times"></i></button>
+
+                        <ul class="advisors">
+
+                            <li class="active">
+                                <a href="#">
+                                    <div class="row">
+                                        <section class="col-md-5 col-xs-3">
+                                            <img src="../../assets/images/advisor-1.jpg"  alt="" class="img-circle img-responsive" />    
+                                        </section>
+                                        <section class="col-md-7">
+                                            <div class="advisor-name">Anita Lubies</div>    
+                                            <div class="checkbox-wrap">
+                                                <!-- <input type="checkbox" class="checkbox filled-in" id="anita-lubies" /> -->
+                                                <!-- <md-checkbox> -->
+                                                <label for="anita-lubies" class="">&nbsp;</label>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div><!-- .advisors-wrap -->
+
+                </section>
+
+                <section class="col-md-9  calendar-content">
+
+                    <h2 class="title-page">Choisissez votre date et heure de rendez-vous en fonction des plages horaires disponibles.</h2>
+
+                    <div class="calendar-wrap">
+                        <h4>Calendrier</h4>
+                    </div>
+
+                </section><!-- .col-* -->
+
+            </div><!-- .row -->
+        
+        </div><!-- .container-fluid -->
+
+    </main>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="appointment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <!-- <h3 class="title-confirm-modal">Rendez-vous</h3>
+                    <input type="text" value="Mme Sophie Dupond" class="form-control" />
+
+                    <span class="muted">Quand</span><br>
+                    <time class="appointment-date">Lundi 8 Mai - 10h a 12h</time><br>
+                    <p>Orientation College<br />
+                    Que Faire Apres Une Classe De Troisieme?</p> -->
+
+                    <h3 class="title-confirm-modal">Vous avez rendez-vous</h3>
+                    <p class="appointment-date"><strong>avec Mme Anita Lubies</strong></p>
+
+                    <time class="appointment-date">Lundi 8 Mai - 10h à 12h</time><br>
+                
+                    <p>
+                    pour un entretien :<br />
+                    Orientation Collège<br />
+                    Que faire après une classe de troisième</p>
+
+                    <section class="pull-right">
+                        <a href="un-conseil.html" class="btn btn-danger" >J'annule</a>
+                        <button class="btn btn-warning" data-dismiss="modal" type="button">Je préfère un autre rendez-vous</button>
+                        <a href="wizard.html#wizard" class="btn btn-appointment">Je Confirme</a>
+                    </section>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- .modal -->
