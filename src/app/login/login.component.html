@@ -21,12 +21,12 @@
                     *ngIf="loginForm.controls['email'].hasError('required') && 
                     loginForm.controls['email'].touched" 
                     class="mat-text-warn"> 
-                    Email required
+                    Email Obligatoire
                   </small>
                   <small *ngIf="loginForm.controls['email'].errors?.email && 
                     loginForm.controls['email'].touched" 
                     class="mat-text-warn"> 
-                    Must be valid Email
+                    Email Invalide
                   </small>
                 </div>
                 <div fxFlex>
@@ -39,7 +39,7 @@
                   <small *ngIf="loginForm.controls['password'].hasError('required') && 
                     loginForm.controls['password'].touched" 
                     class="mat-text-warn"> 
-                    Password required
+                    Mot de Passe Obligatoire
                   </small>
                 </div>
               </div>

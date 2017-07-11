@@ -25,9 +25,7 @@ import { BookingComponent } from './booking/booking.component';
 import { LinguisticComponent } from './linguistic/linguistic.component';
 import { MenuComponent } from './menu/menu.component';
 import { LinguisticTripsComponent } from './linguistic/linguistic-trips/linguistic-trips.component';
-import { SchoolService } from './services/school.service';
 import { RegisterComponent } from './register/register.component';
-import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
@@ -37,6 +35,10 @@ import { MyaccountDocumentationsComponent } from './myaccount/myaccount-document
 import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myaccount-mysearch.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { CubeComponent } from './school-calendar/cube/cube.component';
+
+import { SchoolService } from './services/school.service';
+import { AuthService } from './services/auth.service';
+import { UsersService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,8 @@ import { CubeComponent } from './school-calendar/cube/cube.component';
   providers: [
     SchoolService,
     RegisterComponent,
-    AuthService
+    AuthService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

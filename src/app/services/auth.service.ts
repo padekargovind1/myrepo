@@ -4,6 +4,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 
 const REGISTER_API: string = "http://54.254.203.172/cideapi/api/auth/register";
 const FORGOT_API : string = "http://54.254.203.172/cideapi/api/auth/password";
@@ -13,6 +14,7 @@ const LOGIN_API : string ="http://54.254.203.172/cideapi/api/auth/log";
 export class AuthService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
+  private token : string ='';
 
   constructor(private http : Http) { }
 
@@ -31,9 +33,24 @@ export class AuthService {
       .map((response: Response) => response.json());
   }
 
-  postLogin(data): Observable<any>{
+  postLogin(data): Promise<any>{
     return this.http.post(LOGIN_API, data, {headers: this.headers})
-      .map((response: Response) => response.json());
+    .toPromise()
+    .then(
+      (response)=>{
+        console.log(response.json());
+        this.token=response.json().data.token;
+        console.log(this.token);
+        return response.json();
+      })
+  }
+
+  logout(){
+    this.token='';
+  }
+
+  getToken(){
+    return this.token;
   }
 
 }

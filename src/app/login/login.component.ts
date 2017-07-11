@@ -38,10 +38,10 @@ export class LoginComponent implements OnInit {
       const data = ({ email, password });
 
       this.authService.postLogin(data)
-        .subscribe(
-          (data) => {
+        .then(
+          data => {
             let response = data;
-            console.log(response);  
+            // console.log(response);  
             if (response.code == 400) {
               let msg = response.message;
               this.errorMessage = msg;
@@ -51,7 +51,8 @@ export class LoginComponent implements OnInit {
               console.log(response);
             }        
           }
-        )
+        );
+      this.router.navigate(['/myaccount'])
     }
   }
 

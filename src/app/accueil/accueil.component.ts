@@ -17,7 +17,7 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit() {
     this.wheel = new wheelnav("tabwheel");
-    this.wheel.spreaderInTitle =  'imgsrc:/../../../assets/images/new-landing-page-2/cide-french.png';
+    this.wheel.spreaderInTitle = 'imgsrc:/../../../assets/images/new-landing-page-2/cide-french.png';
     this.wheel.spreaderOutTitle = 'imgsrc:/../../../assets/images/new-landing-page-2/cide-french.png';
     this.wheel.spreaderInTitleWidth = 130;
     this.wheel.spreaderOutTitleWidth = 130;
