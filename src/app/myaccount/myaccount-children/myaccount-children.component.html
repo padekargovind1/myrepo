@@ -11,12 +11,22 @@
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Nom"
                   [formControl]="childrenForm.controls['nom']">
+                <small *ngIf="childrenForm.controls['nom'].hasError('required') && 
+                  childrenForm.controls['nom'].touched" 
+                  class="mat-text-warn"> 
+                  Nom Obligatoire
+                </small>
               </div>
             </div>
             <div class="col-sm-6  col-xs-6">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Prénom"
                   [formControl]="childrenForm.controls['prenom']">
+                <small *ngIf="childrenForm.controls['nom'].hasError('required') && 
+                  childrenForm.controls['nom'].touched" 
+                  class="mat-text-warn"> 
+                  Prénom Obligatoire
+                </small>
               </div>
             </div>
           </div>
@@ -26,6 +36,16 @@
                 <input type="number" class="form-control" max="100" min="1" placeholder="Age"
                   [formControl]="childrenForm.controls['age']"
                   pattern="[0-9]+">
+                <small *ngIf="childrenForm.controls['age'].hasError('required') && 
+                  childrenForm.controls['age'].touched" 
+                  class="mat-text-warn"> 
+                  Age Obligatoire
+                </small>
+                <small *ngIf="childrenForm.controls['nom'].hasError('pattern') && 
+                  childrenForm.controls['nom'].touched" 
+                  class="mat-text-warn"> 
+                  Seulement des chiffres
+                </small>
               </div>
             </div>
             <div class="col-sm-3  hidden-xs">&nbsp;</div>
@@ -41,6 +61,11 @@
                 <md-radio-button value="garçon">Garçon</md-radio-button>
                 <md-radio-button value="fille">Fille</md-radio-button>
               </md-radio-group>
+              <small *ngIf="childrenForm.controls['gender'].hasError('required') && 
+                childrenForm.controls['gender'].touched" 
+                class="mat-text-warn"> 
+                Gender Obligatoire
+              </small>
             </div>
           </div>
           <div class="row">
@@ -48,6 +73,16 @@
               <div class="form-group">
                 <input type="email" class="form-control" placeholder="Mel"
                   [formControl]="childrenForm.controls['email']">
+                  <small *ngIf="childrenForm.controls['nom'].hasError('required') && 
+                    childrenForm.controls['email'].touched" 
+                    class="mat-text-warn"> 
+                    Email Obligatoire
+                  </small>
+                  <small *ngIf="childrenForm.controls['email'].errors?.email && 
+                    childrenForm.controls['email'].touched" 
+                    class="mat-text-warn"> 
+                    Email Invalide
+                  </small>
               </div>
             </div>
             <div class="col-sm-6">
@@ -55,6 +90,21 @@
                 <input type="text" class="form-control" placeholder="Portable"
                   [formControl]="childrenForm.controls['portable']"
                   pattern="[0-9]+">
+                  <small *ngIf="childrenForm.controls['portable'].hasError('required') && 
+                    childrenForm.controls['portable'].touched" 
+                    class="mat-text-warn"> 
+                    Numéro de Portable Obligatoire
+                  </small>
+                  <small *ngIf="childrenForm.controls['portable'].hasError('maxLength') && 
+                    childrenForm.controls['portable'].touched" 
+                    class="mat-text-warn"> 
+                    Numéro de Portable Invalide (max 10)
+                  </small>
+                  <small *ngIf="childrenForm.controls['portable'].hasError('pattern') && 
+                    childrenForm.controls['portable'].touched" 
+                    class="mat-text-warn"> 
+                    Numéro de Portable Invalide (Doit être des chiffres)
+                  </small>
               </div>
             </div>
           </div>
@@ -63,6 +113,11 @@
               <div class="col-sm-12">
                 <textarea class="form-control" placeholder="Adresse"
                   [formControl]="childrenForm.controls['adresse']"></textarea>
+                <small *ngIf="childrenForm.controls['adresse'].hasError('required') && 
+                  childrenForm.controls['adresse'].touched" 
+                  class="mat-text-warn"> 
+                  Adresse Obligatoire
+                </small>
               </div>
             </div>
           </div>
@@ -71,12 +126,27 @@
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Code postal"
                   [formControl]="childrenForm.controls['codepostal']">
+                <small *ngIf="childrenForm.controls['codepostal'].hasError('required') && 
+                  childrenForm.controls['codepostal'].touched" 
+                  class="mat-text-warn"> 
+                  Code Postal Obligatoire
+                </small>
+                <small *ngIf="childrenForm.controls['codepostal'].hasError('pattern') && 
+                  childrenForm.controls['codepostal'].touched" 
+                  class="mat-text-warn"> 
+                  Code Postal Invalide (Doit être des chiffres)
+                </small>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Ville"
                   [formControl]="childrenForm.controls['ville']">
+                <small *ngIf="childrenForm.controls['ville'].hasError('required') && 
+                  childrenForm.controls['ville'].touched" 
+                  class="mat-text-warn"> 
+                  Ville Obligatoire
+                </small>
               </div>
             </div>
           </div>
@@ -87,6 +157,16 @@
                   <input type="text" class="form-control datepicker" 
                     placeholder="Date de naissance"
                     [formControl]="childrenForm.controls['datenaissance']">
+                  <small *ngIf="childrenForm.controls['datenaissance'].hasError('required') && 
+                    childrenForm.controls['datenaissance'].touched" 
+                    class="mat-text-warn"> 
+                    Date de Naissance Obligatoire
+                  </small>
+                  <small *ngIf="childrenForm.controls['datenaissance'].hasError('date') && 
+                    childrenForm.controls['datenaissance'].touched" 
+                    class="mat-text-warn"> 
+                    Date de Naissance invalide
+                  </small>
                 </div>
               </div>
             </div>
@@ -94,6 +174,11 @@
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Lieu"
                   [formControl]="childrenForm.controls['lieu']">
+                <small *ngIf="childrenForm.controls['lieu'].hasError('required') && 
+                  childrenForm.controls['lieu'].touched" 
+                  class="mat-text-warn"> 
+                  Lieu Obligatoire
+                </small>
               </div>
             </div>
           </div>
