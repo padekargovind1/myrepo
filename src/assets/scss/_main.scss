@@ -10,3 +10,27 @@ body{
  */
 .main { position: relative; min-height: 590px;}
 .main:after { content: ""; display: table; clear: both;}
+
+.featured-title { font-size: 36px; text-align: center; font-weight: 700;}
+
+
+.social-media-list { list-style: none; padding-left: 0;}
+  .social-media-list li { display: inline-block; margin: 0 7px;}
+  .social-media-list a { color: #fff; font-size: 18px;}
+
+
+// Searchform
+.searchform {
+	.select-custom select { height: 40px; width: 100% ; font-size: 18px;}
+	.select-custom { width: 100%; }
+	input[ type="text" ] { height: 40px; width: 100% ; font-size: 18px; margin-right: 15px;}
+	.select-custom { margin-bottom: 0; }
+	.form-group { width: 100%; }
+	&.school-page .btn-search { margin: 0 20px; }
+}
+.btn-search { background: transparent; font-size: 24px; margin: 0; color: #fff;
+    &:hover { color: #fff;}
+}
+
+
+.white-background { background: #EBECEC; min-height: 350px; padding: 20px 0 70px; color: #333;}

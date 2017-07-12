@@ -1,3 +1,6 @@
+
+<app-filter></app-filter>
+
 <main class="main" role="main">
         
         <div class="modal fade" id="apply-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
@@ -73,24 +76,8 @@
 
                         <div class="col-md-12">
                             
-                            <div class="result-text">
-                                <h3>Mon résultat pour: Classe PS - <span class="fa fa-map-marker"></span> Lyon</h3>
-                                <p>Recherche Affine: Aides Financieres - Bourse / Lv1 Anglais / Place Disponibles <a href="#"><span class="fa fa-times"></span></a></p>
-                                
-                                
-                                <!-- <input type="checkbox" class="checkbox filled-in" id="test1" />
-                                <label for="test1" class="">Tout sélectionner</label> -->
-                            </div>
-
-                            <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->
                             
                             <div class="compare-holder">
-                                <!-- Mode de Comparaison
-                                <div class="switch">
-                                    <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
-                                    <label for="cmn-toggle-1"></label>
-                                </div><br /> -->
-                                <!-- <a href="compare-mode.html#compare" class="btn btn-appointment pull-right hide link-btn">Je Compare</a> -->
                                 <!-- Button trigger modal -->
                                 <button type="button" disabled class="btn btn-appointment pull-right popup-btn btn-compare" data-toggle="modal" data-target="#filter-popup">Je Compare</button>
 
@@ -158,7 +145,9 @@
                         </div><!-- .col-* -->
                         
                         
+                        <app-school-card></app-school-card>
                         
+                        <app-school-card></app-school-card>
                         
 
                     </div><!-- .list-schools -->
