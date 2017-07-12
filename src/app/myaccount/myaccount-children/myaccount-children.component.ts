@@ -20,7 +20,7 @@ export class MyaccountChildrenComponent implements OnInit {
 
   myProfile : MyAccountMdl = new MyAccountMdl();
 
-  parentData : MyAccountParentMdl;
+  parentData : MyAccountParentMdl = new MyAccountParentMdl();;
 
   public childrenForm : FormGroup;
   children = ["Frère / Sœur 1"];
