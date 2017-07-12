@@ -13,10 +13,13 @@ import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
 import { LyceeComponent } from './lycee/lycee.component';
+import { EtablissementComponent } from './etablissement/etablissement.component';
+import { CompareModeComponent } from './compare-mode/compare-mode.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: AccueilComponent},
     { path: 'conseil', component: ConseilComponent},
+    { path: 'internat', component: ConseilComponent},
     { path: 'booking' , component: BookingComponent },
     { path: 'linguistic' , component: LinguisticComponent },
     { path: 'register' , component: RegisterComponent },
@@ -29,5 +32,7 @@ export const AppRoutes: Routes = [
     { path: 'ecole', component: EcoleComponent },
     { path: 'college', component: CollegeComponent },
     { path: 'lycee', component: LyceeComponent },
+    { path: 'etablissement', component: EtablissementComponent },
+    { path: 'compare-mode', component: CompareModeComponent },
     { path: '**', redirectTo: ''}
 ]

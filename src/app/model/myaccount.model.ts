@@ -41,8 +41,8 @@ export class MyAccountSocialAdrMdl{
 }
 
 export class MyAccountHistoryMdl{
-    fromYear="01/01/80";
-    toYear="01/01/80";
+    fromYear="01/01/01";
+    toYear="01/01/01";
     class: string="A compléter";
     classType: string="A compléter";
     languages: [string] = [null];

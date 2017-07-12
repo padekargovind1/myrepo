@@ -45,6 +45,8 @@ import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
 import { LyceeComponent } from './lycee/lycee.component';
+import { EtablissementComponent } from './etablissement/etablissement.component';
+import { CompareModeComponent } from './compare-mode/compare-mode.component';
 
 
 
@@ -76,6 +78,8 @@ import { LyceeComponent } from './lycee/lycee.component';
     EcoleComponent,
     CollegeComponent,
     LyceeComponent,
+    EtablissementComponent,
+    CompareModeComponent,
   ],
   imports: [
     BrowserModule,
