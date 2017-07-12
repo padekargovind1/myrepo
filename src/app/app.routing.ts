@@ -15,6 +15,7 @@ import { CollegeComponent } from './college/college.component';
 import { LyceeComponent } from './lycee/lycee.component';
 import { EtablissementComponent } from './etablissement/etablissement.component';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
+import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: AccueilComponent},
@@ -34,5 +35,6 @@ export const AppRoutes: Routes = [
     { path: 'lycee', component: LyceeComponent },
     { path: 'etablissement', component: EtablissementComponent },
     { path: 'compare-mode', component: CompareModeComponent },
+    { path: 'detail-appointment', component: DetailAppointmentComponent },
     { path: '**', redirectTo: ''}
 ]

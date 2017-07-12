@@ -47,6 +47,7 @@ import { CollegeComponent } from './college/college.component';
 import { LyceeComponent } from './lycee/lycee.component';
 import { EtablissementComponent } from './etablissement/etablissement.component';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
+import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
 
 
 
@@ -80,6 +81,7 @@ import { CompareModeComponent } from './compare-mode/compare-mode.component';
     LyceeComponent,
     EtablissementComponent,
     CompareModeComponent,
+    DetailAppointmentComponent,
   ],
   imports: [
     BrowserModule,
