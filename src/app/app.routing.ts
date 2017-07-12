@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
+import { SchoolsComponent } from './schools/schools.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: AccueilComponent},
@@ -19,5 +20,6 @@ export const AppRoutes: Routes = [
     { path: 'forgotpassword' , component: ForgotpasswordComponent },
     { path: 'myaccount' , component: MyaccountComponent },
     { path: 'schoolcalendar' , component: SchoolCalendarComponent },
-    { path: '**', redirectTo: ''}
+    { path: 'schools', component: SchoolsComponent }
+    // { path: '**', redirectTo: ''}
 ]
