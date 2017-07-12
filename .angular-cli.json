@@ -30,7 +30,7 @@
         "../node_modules/wheelnav/js/dist/raphael.icons.min.js",
         "../node_modules/moment/min/moment.min.js",
         "../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js",
-        "./assets/js/cube.js"
+        "assets/js/cube.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

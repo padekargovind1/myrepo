@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,16 @@ export class HeaderComponent implements OnInit {
 
   Title : String = "Ma Recherche";
 
-  constructor(private router : Router) { }
+  userLogin : boolean = false;
+
+  constructor(private router : Router,
+              private authService : AuthService) { 
+    if(this.authService.getToken()!=""){
+      this.userLogin=true;
+    } else {
+      this.userLogin=false;
+    }
+  }
 
   ngOnInit() {
   }
@@ -25,6 +35,11 @@ export class HeaderComponent implements OnInit {
 
   onSignIn(){
     this.router.navigate(['/login']);
+  }
+
+  onSignOut(){
+    this.authService.logout();
+    this.userLogin=false;
   }
 
 }

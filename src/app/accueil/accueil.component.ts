@@ -17,8 +17,8 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit() {
     this.wheel = new wheelnav("tabwheel");
-    this.wheel.spreaderInTitle = 'imgsrc:/../../../assets/images/new-landing-page-2/cide-french.png';
-    this.wheel.spreaderOutTitle = 'imgsrc:/../../../assets/images/new-landing-page-2/cide-french.png';
+    this.wheel.spreaderInTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
+    this.wheel.spreaderOutTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
     this.wheel.spreaderInTitleWidth = 130;
     this.wheel.spreaderOutTitleWidth = 130;
     this.wheel.spreaderEnable = true;
@@ -80,8 +80,9 @@ export class AccueilComponent implements OnInit {
     }
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
     $('.'+contentName+'-content').removeClass('fadeOut').addClass('fadeIn');
+    console.log($('.'+contentName+'-content'));
     var image = $('.'+contentName+'-content').data('image');
-    $('.main').css('background-image', 'url(../../../images/new-landing-page-2/' + image + ')');
+    $('.main').css('background-image', 'url('+ image +')');
   }
 
   navigate(componentName : String){

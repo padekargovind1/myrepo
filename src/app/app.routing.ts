@@ -9,10 +9,18 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { SchoolsComponent } from './schools/schools.component';
+import { BrochureComponent } from './brochure/brochure.component';
+import { EcoleComponent } from './ecole/ecole.component';
+import { CollegeComponent } from './college/college.component';
+import { LyceeComponent } from './lycee/lycee.component';
+import { EtablissementComponent } from './etablissement/etablissement.component';
+import { CompareModeComponent } from './compare-mode/compare-mode.component';
+import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: AccueilComponent},
     { path: 'conseil', component: ConseilComponent},
+    { path: 'internat', component: ConseilComponent},
     { path: 'booking' , component: BookingComponent },
     { path: 'linguistic' , component: LinguisticComponent },
     { path: 'register' , component: RegisterComponent },
@@ -20,6 +28,13 @@ export const AppRoutes: Routes = [
     { path: 'forgot-password' , component: ForgotpasswordComponent },
     { path: 'my-account' , component: MyaccountComponent },
     { path: 'school-calendar' , component: SchoolCalendarComponent },
-    { path: 'schools', component: SchoolsComponent }
-    // { path: '**', redirectTo: ''}
+    { path: 'schools', component: SchoolsComponent },
+    { path: 'brochure', component: BrochureComponent },
+    { path: 'ecole', component: EcoleComponent },
+    { path: 'college', component: CollegeComponent },
+    { path: 'lycee', component: LyceeComponent },
+    { path: 'etablissement', component: EtablissementComponent },
+    { path: 'compare-mode', component: CompareModeComponent },
+    { path: 'detail-appointment', component: DetailAppointmentComponent },
+    { path: '**', redirectTo: ''}
 ]
