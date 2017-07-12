@@ -13,7 +13,7 @@
                         <li class="course-menu-item col-md-3 col-sm-4">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-download"></i></span>
-                                <a href="brochure.html" class="ln-tr link">Les documentations des écoles</a>
+                                <a routerLink="/brochure" class="ln-tr link">Les documentations des écoles</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-3 col-sm-4">
@@ -37,7 +37,7 @@
                         <li class="course-menu-item col-md-3 col-sm-4">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-inbox"></i></span>
-                                <a href="#" class="ln-tr link">Commande du Guide des écoles privées</a>
+                                <a routerLink="/brochure" class="ln-tr link">Commande du Guide des écoles privées</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-3 col-sm-4">
@@ -81,10 +81,15 @@
     <ul class="right-top-menu pull-right">
         <li><i class=" fa fa-file-text"></i></li>
         <li><i class="fa fa-bookmark"></i></li>
-        <li class="login-text">
+        <li class="login-text" *ngIf="!userLogin; else log">
             <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
             <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
         </li>
+        <ng-template #log>
+            <li class="login-text" *ngIf="!userLogin">
+                <a (click)="onSignOut()"><i class="fa fa-sign-in"></i> Se déconnecter</a> 
+            </li>
+        </ng-template>
     </ul>
     <ul class="social-media-list in-header">
         <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>

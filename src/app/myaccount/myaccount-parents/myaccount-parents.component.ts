@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
 
 import {MyAccountMdl, 
         MyAccountParentMdl, 
@@ -30,12 +32,19 @@ export class MyaccountParentsComponent implements OnInit {
                   "Tutrice"];
 
   constructor(private fb : FormBuilder,
-              private usersService : UsersService) { 
-    this.buildFormGroup();
-    this.createProfile();
-    setTimeout(()=>{
-      this.getUserProfile();
-    }, 500);
+              private usersService : UsersService,
+              private route : Router,
+              private authService : AuthService) { 
+    if(this.authService.getToken() != ""){
+      this.buildFormGroup();
+      this.createProfile();
+      setTimeout(()=>{
+        this.getUserProfile();
+      }, 500);
+    } else {
+      console.log("navigate back");
+      this.route.navigate(['/login']);
+    }
   }
 
   ngOnInit() {
@@ -120,7 +129,7 @@ export class MyaccountParentsComponent implements OnInit {
     this.myParentProfile.phoneNumber = this.parentAccountForm.controls.portable.value;
     this.myParentProfile.email = this.parentAccountForm.controls.email.value;
     this.myParentProfile.address.address1 = this.parentAccountForm.controls.adresse.value;
-    this.myParentProfile.address.postCode = this.parentAccountForm.controls.codepostal.value;
+    this.myParentProfile.address.postCode = JSON.stringify(this.parentAccountForm.controls.codepostal.value);
     this.myParentProfile.address.country = this.parentAccountForm.controls.pays.value;
     this.myParentProfile.address.city = this.parentAccountForm.controls.ville.value;
     this.usersService.storeParentData(this.myParentProfile);

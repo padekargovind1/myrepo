@@ -41,6 +41,10 @@ import { SchoolCardComponent } from './schools/school-card/school-card.component
 import { SchoolService } from './services/school.service';
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
+import { BrochureComponent } from './brochure/brochure.component';
+import { EcoleComponent } from './ecole/ecole.component';
+import { CollegeComponent } from './college/college.component';
+import { LyceeComponent } from './lycee/lycee.component';
 
 
 
@@ -68,6 +72,10 @@ import { UsersService } from './services/users.service';
     SchoolsComponent,
     FilterComponent,
     SchoolCardComponent,
+    BrochureComponent,
+    EcoleComponent,
+    CollegeComponent,
+    LyceeComponent,
   ],
   imports: [
     BrowserModule,

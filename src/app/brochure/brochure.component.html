@@ -1,0 +1,653 @@
+<div class="white-background">
+
+            <div class="container  documentation">
+
+                <div class="row">
+                    <section class="col-md-12">
+                        <h2 class="brochure-title">Je télécharge une ou plusieurs documentations d'école</h2>
+                    </section>
+                    <section class="col-md-12">
+
+                        <form class="form-inline searchform">
+                            <div class="form-wrap row">
+                                
+                                <section class="col-md-10">
+
+                                    <div class="row">
+
+                                        <div class="col-md-11">
+                                            <div class="row">
+
+                                                <div class="col-md-4  col-xs-6">
+                                                    <div class="form-group">
+                                                        <label class="select-custom" for="class">
+                                                            <select name="class" class="form-control" id="class">
+                                                                <option value="" disabled selected hidden>Classe</option>
+                                                                <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                                    <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                    <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                    <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                                </optgroup>
+                                                                <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                                    <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                    <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                    <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                                </optgroup>
+                                                                <optgroup label="Cycle 3 : Consolidation">
+                                                                    <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                    <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                    <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                                </optgroup>
+                                                            </select>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-4  col-xs-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Lieu" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4  col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Nom d'etablissement" />
+                                                    </div>
+                                                </div>
+                                            </div><!-- .row -->
+                                        </div><!-- .col-* -->
+                                        
+                                        <div class="col-md-1">
+                                            <button class="btn btn-search"><i class="fa fa-search"></i></button>
+                                        </div><!-- -->
+
+                                    </div><!-- .row -->
+
+                                </section><!-- .col-* -->
+
+                                <section class="col-md-2">
+                                    <button type="button" class="btn btn-secondary btn-lg  pull-right btn-download btn-block" data-toggle="modal" data-target="#download-popup"><i class="fa fa-download"></i></button>
+                                </section><!-- .col-* -->
+
+                            </div><!-- .form-wrap -->
+                        </form><!-- .col-* -->
+
+                    </section>
+                    <section class="holder-modal">
+                        <!-- <button type="button" class="btn btn-secondary btn-lg  pull-right btn-download" data-toggle="modal" data-target="#download-popup"><i class="fa fa-download"></i></button> -->
+
+                        <div class="modal fade" id="download-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
+                            <div class="modal-dialog modal-download" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li class="active"><a href="#tab1" data-toggle="tab">Formulaire</a></li>
+                                            <li><a href="#tab2" data-toggle="tab">Profil Scolaire</a></li>
+                                        </ul>
+
+                                          <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="tab1">
+                                                <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
+
+                                                <!-- <h5>Je Suis</h5> -->
+
+
+                                                <!-- <div class="form-group horizontal-radio clearfix">
+                                                    <label class="custom-radio">
+                                                        <input type="radio" name="parent">
+                                                        <span>Parent</span>
+                                                    </label>
+                                                    <label class="custom-radio"><input type="radio" name="parent"><span>Eleve</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="parent"><span>Etudiant</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="parent"><span>Conseiller(e) d'oreintation</span></label>
+                                                </div>
+
+                                                <div class="form-group horizontal-radio clearfix">
+                                                    <label class="custom-radio"><input type="radio" name="sex"><span>Mme</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="sex"><span>Mlle</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="sex"><span>M.</span></label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Nom">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Prénom">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Mel">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Portable">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Adresse">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" placeholder="Code Postal">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" placeholder="Ville">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Pays" />
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+
+                                                <h3>Parents</h3>
+
+                                                <div class="form-group">
+                                                    <div class="select-custom">
+                                                        <select name="" class="form-control">
+                                                            <option value="" disabled selected hidden>Lien de Parenté</option>
+                                                            <option value="">Père</option>
+                                                            <option value="">Mère</option>
+                                                            <option value="">Oncle</option>
+                                                            <option value="">Tante</option>
+                                                            <option value="">Grand-Père</option>
+                                                            <option value="">Grand-Mère</option>
+                                                            <option value="">Tuteur</option>
+                                                            <option value="">Tutric</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group horizontal-radio clearfix">
+                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>
+                                                </div>
+
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-6  col-xs-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Nom">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6  col-xs-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Prénom">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="Email">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <h3>Enfant</h3>
+                                                <div class="row">
+                                                    <div class="col-sm-6  col-xs-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Nom">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6  col-xs-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Prénom">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <!-- <div class="col-sm-12">
+                                                        <div class="row"> -->
+                                                            <div class="col-sm-3  col-xs-6">
+                                                                <div class="form-group">
+                                                                    <input type="number" class="form-control" max="120" min="1" placeholder="Age">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3  hidden-xs">&nbsp;</div>
+                                                        
+                                                            <div class="col-sm-6  col-xs-6">
+                                                                <div class="form-group">
+                                                                    <div class="horizontal-radio">
+                                                                        <label class="custom-radio"><input type="radio" name="gender"> <span>Garçon</span></label>
+                                                                        <label class="custom-radio"><input type="radio" name="gender"> <span>Fille</span></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <!-- </div>
+                                                    </div> -->
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Nom Etablissement Actuel">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="form-group  col-sm-12  col-xs-6">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <input type="text" class="form-control" placeholder="Ville">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group  col-sm-12  col-xs-6">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="select-custom">
+                                                                    <select name="" class="form-control">
+                                                                        <option value="" disabled selected hidden>Classe</option>
+                                                                        <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                                            <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                            <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                            <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                                            <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                            <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                            <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Cycle 3 : Consolidation">
+                                                                            <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                            <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                            <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="checkbox" id="school-1" class="checkbox" /><label for="school-1">Je souhaite recevoir un copie de votre message</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <button type="button" data-dismiss="modal" class="btn btn-highlighted">Annuler</button>
+                                                <a href="#tab2" data-toggle="tab" class="btn btn-secondary">Suivant</a>
+
+                                            </div><!-- .tab-pane -->
+
+                                            <div role="tabpanel" class="tab-pane" id="tab2">
+                                                <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
+
+                                                <div class="form-group horizontal-radio clearfix">
+                                                    <label class="custom-radio"><input type="radio" name="public"><span>Privé</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="public"><span>Public</span></label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Niveau Actuel">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Niveau concerné par la demande">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <textarea placeholder="Information précise, pour mieux traiter votre demande" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="g-recaptcha" data-sitekey="6LdkaCIUAAAAAOHbgd3nOACP2g0gQLMJVv93CBpp"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="row">-->
+                                                        <!--<div class="col-sm-12">-->
+                                                            <!--<input type="text" class="form-control" placeholder="Veuillez saisir le code dans l’image">-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+
+                                                <p class="note">
+Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires des informations communiquées. Vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données qui vous concernent (art. 34 de la loi "informatique et libertés" - Numéro de déclaration CNIL 1271917). Formulez votre demande par écrit au CIDE, 84, boulevard Saint-Michel 75006 Paris.
+</p>
+
+                                                <button type="button" data-dismiss="modal" class="btn btn-highlighted">Annuler</button>
+                                                <button class="btn btn-secondary close-download">Valider</button>
+
+                                            </div><!-- .tab-pane -->
+
+                                        </div><!-- .tab-content -->
+
+                                    </div><!-- .modal-body -->
+                                </div><!-- .modal-content -->
+                            </div><!-- .modal-dialog -->
+                        </div><!-- modal -->
+
+
+                        <div class="modal fade" id="download-file" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
+                            <div class="modal-dialog modal-download" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+
+                                        <h3>Je confirme ma demande de téléchargement des documentations suivantes:</h3>
+
+                                        <ul class="files-to-download">
+                                            <li>
+                                                <img src="assets/images/school-logo/lycee-francois-d-estaing.png" alt="" width="20" />
+                                                <span>FDE - Nom de la documentation.pdf</span>
+                                                <a class="remove">x</a>
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/school-logo/montplaisir.jpeg" alt="" width="20" />
+                                                <span>MNT - Nom de la documentation.pdf</span>
+                                                <a class="remove">x</a>
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/school-logo/renasup-scalia-person.png" alt="" width="20" />
+                                                <span>RSE - Nom de la documentation.pdf</span>
+                                                <a class="remove">x</a>
+                                            </li>
+                                        </ul>
+
+                                        <button type="button" data-dismiss="modal" class="btn btn-highlighted">Annuler</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Télécharger</button>
+
+                                    </div><!-- .modal-body -->
+                                </div><!-- .modal-content -->
+                            </div><!-- .modal-dialog -->
+                        </div><!-- modal -->
+                    </section>
+                </div><!-- .row -->
+
+                <div class="row brochure-content">
+
+                    <div id="js-filters-juicy-projects" class="cbp-l-filters-button">
+                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item btn dark btn-outline uppercase"> Tous
+                            <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".identity" class="cbp-filter-item btn dark btn-outline uppercase"> École
+                            <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".graphic" class="cbp-filter-item btn dark btn-outline uppercase"> Collège
+                            <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".web-design" class="cbp-filter-item btn dark btn-outline uppercase"> Lycée
+                            <div class="cbp-filter-counter"></div>
+                        </div>
+                    </div>
+
+                    <div id="js-grid-juicy-projects" class="cbp">
+                        <div class="cbp-item graphic brochure-item">
+                            <div class="checkbox-custom">
+                                <input type="checkbox" id="download-1" name="school-1" class="checkbox filled-in" /><label for="download-1">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/lycee-francois-d-estaing.png" alt="" />
+                                    </div>
+                                    <!-- <img src="../assets/global/img/portfolio/600x600/013.jpg" alt="">  -->
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="#" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                            <!-- <a href="../img/school-logo/lycee-francois-d-estaing.png" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Agrandir l'image</a> -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">FDE - François D'estaing</div>
+                            <!-- <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">FDE - Nom de la documentation.pdf</div> -->
+                        </div><!-- -->
+
+
+                        <div class="cbp-item web-design logos brochure-item">
+                            <div class="checkbox-custom">
+                                <input type="checkbox" id="download-2" name="school-2" class="checkbox filled-in" /><label for="download-2">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/montplaisir.jpeg" alt="" />
+                                    </div>
+                                    <!-- <img src="../assets/global/img/portfolio/600x600/013.jpg" alt="">  -->
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="#" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                            <!-- <a href="../img/school-logo/lycee-francois-d-estaing.png" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Agrandir l'image</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">MNT - Montplaisir</div>
+                            <!-- <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">MNT - Nom de la documentation.pdf</div> -->
+                        </div>
+
+
+                        <div class="cbp-item web-design identity brochure-item">
+                            <div class="checkbox-custom">
+                                <input type="checkbox" id="download-3" name="school-3" class="checkbox filled-in" /><label for="download-3">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/renasup-scalia-person.png" alt="" />
+                                    </div>
+                                    <!-- <img src="../assets/global/img/portfolio/600x600/013.jpg" alt="">  -->
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="#" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                            <!-- <a href="../img/school-logo/lycee-francois-d-estaing.png" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Agrandir l'image</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">RSE - Rena Sup</div>
+                            <!-- <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">RSE - Nom de la documentation.pdf</div> -->
+                        </div>
+
+                        
+
+                        <div class="cbp-item identity logos brochure-item">
+                            <div class="checkbox-custom">
+                                <input type="checkbox" id="download-4" name="school-4" class="checkbox filled-in" /><label for="download-4">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/default-school.png" alt="" />
+                                    </div>
+                                    <!-- <img src="../assets/global/img/portfolio/600x600/013.jpg" alt="">  -->
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="#" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                            <!-- <a href="../img/school-logo/default-school.png" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Agrandir l'image</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">DDE - District d'école</div>
+                            <!-- <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">DDE - Nom de la documentation.pdf</div> -->
+                        </div>
+
+                        
+                        <div class="cbp-item web-design logos brochure-item">
+                            <div class="checkbox-custom">
+                                <input type="checkbox" id="download-5" name="school-5" class="checkbox filled-in" /><label for="download-5">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/logo.png" alt="" />
+                                    </div>
+                                    <!-- <img src="../assets/global/img/portfolio/600x600/013.jpg" alt="">  -->
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="#" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                            <!-- <a href="../img/school-logo/logo.png" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Agrandir l'image</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">LSC - Lycee Saint-Charles</div>
+                            <!-- <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">LSC - Nom de la documentation.pdf</div> -->
+                        </div>
+
+                        <div class="cbp-item web-design logos brochure-item">
+                            <div class="checkbox-custom">
+                                <input type="checkbox" id="download-6" name="school-6" class="checkbox filled-in" /><label for="download-6">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/lycee-st-maur.png" alt="" />
+                                    </div>
+                                    <!-- <img src="../assets/global/img/portfolio/600x600/013.jpg" alt="">  -->
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="#" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                            <!-- <a href="../img/school-logo/lycee-st-maur.png" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Agrandir l'image</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">LSM - Lycée st maura</div>
+                            <!-- <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">LSM - Nom de la documentation.pdf</div> -->
+                        </div>
+
+
+                        <div class="cbp-item web-design logos brochure-item">
+                            <div class="checkbox-custom">
+                                <input type="checkbox" id="download-7" name="school-7" class="checkbox filled-in" /><label for="download-7">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/lycee-rogne-reduit.jpg" alt="" />
+                                    </div>
+                                    <!-- <img src="../assets/global/img/portfolio/600x600/013.jpg" alt="">  -->
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="#" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                            <!-- <a href="../img/school-logo/lycee-rogne-reduit.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Agrandir l'image</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">LRR - Lycée rogne reduit</div>
+                            <!-- <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">LRR - Nom de la documentation.pdf</div> -->
+                        </div>
+
+
+                        <div class="cbp-item web-design logos brochure-item">
+                            <div class="checkbox-custom">
+                                <input type="checkbox" id="download-7" name="school-7" class="checkbox filled-in" /><label for="download-7">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/lycee-jules-verne-logo-edited-01-footer.png" alt="" />
+                                    </div>
+                                    <!-- <img src="../assets/global/img/portfolio/600x600/013.jpg" alt="">  -->
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="#" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                            <!-- <a href="../img/school-logo/lycee-jules-verne-logo-edited-01-footer.png" class="cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Agrandir l'image</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">LJV - Lycée jules verne</div>
+                            <!-- <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">LJV - Nom de la documentation.pdf</div> -->
+                        </div>
+                    </div><!-- js-grid-juicy-projects -->
+
+
+
+                </div><!-- .row -->
+            
+            </div><!-- .container-fluid -->
+
+        </div>

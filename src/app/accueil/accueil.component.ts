@@ -80,8 +80,9 @@ export class AccueilComponent implements OnInit {
     }
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
     $('.'+contentName+'-content').removeClass('fadeOut').addClass('fadeIn');
+    console.log($('.'+contentName+'-content'));
     var image = $('.'+contentName+'-content').data('image');
-    $('.main').css('background-image', 'url(images/new-landing-page-2/' + image + ')');
+    $('.main').css('background-image', 'url('+ image +')');
   }
 
   navigate(componentName : String){

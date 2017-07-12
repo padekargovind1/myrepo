@@ -46,13 +46,14 @@ export class LoginComponent implements OnInit {
               let msg = response.message;
               this.errorMessage = msg;
               console.log('message: ', this.errorMessage);
+              alert("L'identifiant ou le mot de passe est incorrecte");
             }
             else {
               console.log(response);
+              this.router.navigate(['/my-account'])
             }        
           }
         );
-      this.router.navigate(['/my-account'])
     }
   }
 
