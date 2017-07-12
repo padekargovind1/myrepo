@@ -39,10 +39,13 @@ import { SchoolsComponent } from './schools/schools.component';
 import { FilterComponent } from './filter/filter.component';
 import { SchoolCardComponent } from './schools/school-card/school-card.component';
 
+<<<<<<< HEAD
 
 import { SchoolService } from './services/school.service';
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
+=======
+>>>>>>> dc531289f6099cf78e301b6038785f1be0a3278f
 
 @NgModule({
   declarations: [
