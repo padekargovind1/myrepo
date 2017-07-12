@@ -35,7 +35,9 @@ import { MyaccountDocumentationsComponent } from './myaccount/myaccount-document
 import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myaccount-mysearch.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { CubeComponent } from './school-calendar/cube/cube.component';
-
+import { SchoolsComponent } from './schools/schools.component';
+import { FilterComponent } from './filter/filter.component';
+import { SchoolCardComponent } from './schools/school-card/school-card.component';
 import { SchoolService } from './services/school.service';
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
@@ -60,6 +62,9 @@ import { UsersService } from './services/users.service';
     MyaccountMysearchComponent,
     SchoolCalendarComponent,
     CubeComponent,
+    SchoolsComponent,
+    FilterComponent,
+    SchoolCardComponent,
   ],
   imports: [
     BrowserModule,

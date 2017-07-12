@@ -1,38 +1,99 @@
-<div fxFlex fxLayout class="header">
-  <div fxFlex="33">
-    <img class="cide-logo" 
-        src="../../assets/images/cide-white.png" 
-        alt="cide logo"
-        (click)="onNavigateHome()">
-  </div>
-  <div fxLayoutAlign="center" fxFlex="33">
-    <h1 class="sitename">{{ Title }}</h1>
-  </div>
-  <div fxFlex="33" id="header-right">
+<header class="header">
+    <nav class="main-navigation">
+            <ul class="clearfix">
+                <li class="parent-item haschild courses-menu">
+                    <a href="#" class="ln-tr"><i class="fa fa-bars menu-holder"></i></a>
+                    <ul class="clearfix">
+                        <!-- <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-user"></i></span>
+                                <a href="login.html" class="ln-tr link">Connexion</a>
+                            </div>
+                        </li> --><!-- end course menu item -->
+                        <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-download"></i></span>
+                                <a href="brochure.html" class="ln-tr link">Les documentations des écoles</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-calendar-check-o"></i></span>
+                                <a href="un-conseil.html" class="ln-tr link">Orientation</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-bullhorn"></i></span>
+                                <a href="school-calendar.html" class="ln-tr link">Agenda des écoles</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-bookmark"></i></span>
+                                <a href="#" class="ln-tr link">Mes voeux / Inscriptions</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-inbox"></i></span>
+                                <a href="#" class="ln-tr link">Commande du Guide des écoles privées</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-inbox"></i></span>
+                                <a href="http://www.guide-des-ecoles-privees.info/2016_2017" class="ln-tr link">Guide interactif des écoles privées</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-suitcase"></i></span>
+                                <a href="linguistic.html" class="ln-tr link">Guide Sejours Linguistiques</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <!-- <li class="course-menu-item col-md-3 col-sm-4">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-sign-out"></i></span>
+                                <a href="#" class="ln-tr link">Déconnexion</a>
+                            </div>
+                        </li> --><!-- end course menu item -->
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    <!-- <a href="index.html"> -->
+        <img class="cide-logo" src="../../assets/images/cide-white.png" alt="cide logo" (click)="onNavigateHome()"/>
+        <!-- <img class="cide-logo-mobile" src="img/cide-white-just-logo.png" alt=""> -->
+    <!-- </a> -->
+    <!-- <h1 class="sitename">Avec le CIDE, je trouve</h1> -->
+
     <ul class="mobile-login">
-      <li><i class=" fa fa-file-text"></i></li>
-      <li><i class="fa fa-bookmark"></i></li>
-      <li><i class="fa fa-user"></i>
-        <ul class="login">
-          <li><a href="login.html"><i class="fa fa-sign-in"></i> S'inscrire</a></li>
-          <li><a href="register.html"><i class="fa fa-unlock-alt"></i> S'identifier / Fermer la Session</a></li>
-        </ul>
-      </li>
+        <li><i class=" fa fa-file-text"></i></li>
+        <li><i class="fa fa-bookmark"></i></li>
+        <li><i class="fa fa-user"></i>
+            <ul class="login">
+                <li><a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a></li>
+                <li><a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier / Fermer la Session</a></li>
+            </ul>
+        </li>
     </ul>
-    <!--<ul class="right-top-menu pull-right">
-      <li><i class=" fa fa-file-text"></i></li>
-      <li><i class="fa fa-bookmark"></i></li>
-      <li class="login-text"><a href="login.html"><i class="fa fa-sign-in"></i> S'inscrire</a> | <a href="register.html"><i class="fa fa-unlock-alt"></i> S'identifier</a></li>
-    </ul>-->
-    <ul class="social-media-list">
-      <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-      <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-      <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-      <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      <li><a href="#"><i class="fa fa-viadeo"></i></a></li>
+    <ul class="right-top-menu pull-right">
+        <li><i class=" fa fa-file-text"></i></li>
+        <li><i class="fa fa-bookmark"></i></li>
+        <li class="login-text">
+            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
+            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
+        </li>
     </ul>
-  </div>
-</div>
+    <ul class="social-media-list in-header">
+        <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="#"><i class="fa fa-viadeo"></i></a></li>
+    </ul>
+</header>

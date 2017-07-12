@@ -1,0 +1,15 @@
+/**
+ * Responsive
+ *
+ */
+@media (min-width: 1201px) {
+    
+    .landing-page-2 .main { min-height: 900px;}
+}
+
+@media (max-width: 1200px) {
+    .school-item .btn { width: 100%; margin: 0 1% 10px;}
+    .searchform input[ type="text" ], .searchform .select-custom select { width: 200px;}
+    .job-group-content { width: 100%; }
+
+}
