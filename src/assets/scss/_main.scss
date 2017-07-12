@@ -5,6 +5,8 @@ body{
     font-family: $font-family;
 }
 
+h1 { font-weight: 300; }
+
 /** 
  * Main  
  */
@@ -34,3 +36,11 @@ body{
 
 
 .white-background { background: #EBECEC; min-height: 350px; padding: 20px 0 70px; color: #333;}
+
+
+/**
+ * Card 
+ */
+.card { border-radius: 3px; overflow: hidden; position: relative; margin-bottom: 20px;
+    &:hover .school-action { visibility: visible;}
+}

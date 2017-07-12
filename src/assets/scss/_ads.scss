@@ -1,0 +1,17 @@
+/**
+ * Ads Area
+ *
+ */
+.ads-area { position: relative;}
+
+.universities-container { position: relative;}
+.ads-after-search-form { margin: 20px auto; display: table;}
+.ads-left { position: absolute; left: 10px; top: 0;}
+.ads-right { position: absolute; right: 10px; top: 0;}
+
+.popup-ad-holder, .popup-ad-holder-mobile { position: absolute; width: 100%; text-align: center; top: 120px; z-index: 10;}
+.popup-ad-holder.fadeOutDown { z-index: -1; }
+.popup-ad-holder img { box-shadow: 1px 1px 3px rgba(0,0,0,.6);}
+
+.from-popup button.close { opacity: 1; color: #fff; position: absolute; top: 10px; right: 10px;}
+.popup-ad-holder-mobile button.close { opacity: 1; color: #fff; position: absolute; top: 0px; right: 21px; font-size: 34px;}
