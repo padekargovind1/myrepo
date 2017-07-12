@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
@@ -17,10 +17,11 @@ import {MyAccountMdl,
 })
 export class MyaccountParentsComponent implements OnInit {
 
+  myParentProfile : MyAccountParentMdl = new MyAccountParentMdl();
   myProfile : MyAccountMdl = new MyAccountMdl();
-
   public parentAccountForm : FormGroup;
   lienparents = ["Père", "Mère", "Oncle", "Tante", "Grand-Père", "Grand-Mère", "Tuteur", "Tutrice"];
+  @Output() parentData = new EventEmitter<{parentData : MyAccountParentMdl}>();
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService) { 
@@ -39,7 +40,7 @@ export class MyaccountParentsComponent implements OnInit {
       .subscribe(
         (data)=>{
           let response = data;
-          console.log(response);
+          // console.log(response);
           this.patchValue(response.data[0].parents[0]);
         }
       )
@@ -78,42 +79,36 @@ export class MyaccountParentsComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("Click on submit", this.parentAccountForm.value);
+    // console.log("Click on submit", this.parentAccountForm.value);
+    // this.completeProfile();
+    // console.log(this.myProfile);
+    // this.usersService.putProfile(this.myProfile)
+    //   .subscribe(
+    //     (data)=>{
+    //       let response = data;
+    //       console.log(response);
+    //       this.getUserProfile();
+    //     }
+    //   )
     this.completeProfile();
-    console.log(this.myProfile);
-    this.usersService.putProfile(this.myProfile)
-      .subscribe(
-        (data)=>{
-          let response = data;
-          console.log(response);
-          this.getUserProfile();
-        }
-      )
+    this.parentData.emit({parentData : this.myParentProfile})
   }
 
   createProfile(){
-    this.myProfile.parents[0]= new MyAccountParentMdl();
-    this.myProfile.parents[0].address = new MyAccountAdresse();
-    this.myProfile.address= new MyAccountAdresse();
-    this.myProfile.socialAddresses = new MyAccountSocialAdrMdl();
-    this.myProfile.academicHistories[0] = new MyAccountHistoryMdl(); 
-    this.myProfile.bulletins[0] = new MyAccountBulletin();
-    this.myProfile.academicHistories[0].fromYear = "2000";
-    this.myProfile.academicHistories[0].toYear = "2001";
-    this.myProfile.birthDate = "02/02/1999";
+    this.myParentProfile.address = new MyAccountAdresse();
   }
 
   completeProfile(){
-    this.myProfile.parents[0].relationship = this.parentAccountForm.controls.lienParent.value;
-    this.myProfile.parents[0].firstName = this.parentAccountForm.controls.prenom.value;
-    this.myProfile.parents[0].lastName = this.parentAccountForm.controls.nom.value;
-    this.myProfile.parents[0].gender = this.parentAccountForm.controls.titre.value;
-    this.myProfile.parents[0].phoneNumber = this.parentAccountForm.controls.portable.value;
-    this.myProfile.parents[0].email = this.parentAccountForm.controls.email.value;
-    this.myProfile.parents[0].address.address1 = this.parentAccountForm.controls.adresse.value;
-    this.myProfile.parents[0].address.postCode = JSON.stringify(this.parentAccountForm.controls.codepostal.value);
-    this.myProfile.parents[0].address.country = this.parentAccountForm.controls.pays.value;
-    this.myProfile.parents[0].address.city = this.parentAccountForm.controls.ville.value;
+    this.myParentProfile.relationship = this.parentAccountForm.controls.lienParent.value;
+    this.myParentProfile.firstName = this.parentAccountForm.controls.prenom.value;
+    this.myParentProfile.lastName = this.parentAccountForm.controls.nom.value;
+    this.myParentProfile.gender = this.parentAccountForm.controls.titre.value;
+    this.myParentProfile.phoneNumber = this.parentAccountForm.controls.portable.value;
+    this.myParentProfile.email = this.parentAccountForm.controls.email.value;
+    this.myParentProfile.address.address1 = this.parentAccountForm.controls.adresse.value;
+    this.myParentProfile.address.postCode = this.parentAccountForm.controls.codepostal.value;
+    this.myParentProfile.address.country = this.parentAccountForm.controls.pays.value;
+    this.myParentProfile.address.city = this.parentAccountForm.controls.ville.value;
   }
 
 }

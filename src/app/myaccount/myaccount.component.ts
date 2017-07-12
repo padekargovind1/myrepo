@@ -12,4 +12,8 @@ export class MyaccountComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmitParent(event){
+    console.log(event);
+  }
+
 }
