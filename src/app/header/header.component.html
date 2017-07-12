@@ -73,15 +73,18 @@
         <li><i class="fa fa-bookmark"></i></li>
         <li><i class="fa fa-user"></i>
             <ul class="login">
-                <li><a href="login.html"><i class="fa fa-sign-in"></i> S'inscrire</a></li>
-                <li><a href="register.html"><i class="fa fa-unlock-alt"></i> S'identifier / Fermer la Session</a></li>
+                <li><a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a></li>
+                <li><a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier / Fermer la Session</a></li>
             </ul>
         </li>
     </ul>
     <ul class="right-top-menu pull-right">
         <li><i class=" fa fa-file-text"></i></li>
         <li><i class="fa fa-bookmark"></i></li>
-        <li class="login-text"><a href="login.html"><i class="fa fa-sign-in"></i> S'inscrire</a> | <a href="register.html"><i class="fa fa-unlock-alt"></i> S'identifier</a></li>
+        <li class="login-text">
+            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
+            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
+        </li>
     </ul>
     <ul class="social-media-list in-header">
         <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>

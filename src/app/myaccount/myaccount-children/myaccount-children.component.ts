@@ -20,6 +20,8 @@ export class MyaccountChildrenComponent implements OnInit {
 
   myProfile : MyAccountMdl = new MyAccountMdl();
 
+  parentData : MyAccountParentMdl = new MyAccountParentMdl();;
+
   public childrenForm : FormGroup;
   children = ["Frère / Sœur 1"];
   nbChild : number = 1;
@@ -117,7 +119,7 @@ export class MyaccountChildrenComponent implements OnInit {
       .subscribe(
         (data)=>{
           let response = data;
-          console.log(response);
+          // console.log(response);
           this.patchValue(response.data[0]);
         }
       )

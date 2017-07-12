@@ -17,9 +17,9 @@ export const AppRoutes: Routes = [
     { path: 'linguistic' , component: LinguisticComponent },
     { path: 'register' , component: RegisterComponent },
     { path: 'login' , component: LoginComponent },
-    { path: 'forgotpassword' , component: ForgotpasswordComponent },
-    { path: 'myaccount' , component: MyaccountComponent },
-    { path: 'schoolcalendar' , component: SchoolCalendarComponent },
+    { path: 'forgot-password' , component: ForgotpasswordComponent },
+    { path: 'my-account' , component: MyaccountComponent },
+    { path: 'school-calendar' , component: SchoolCalendarComponent },
     { path: 'schools', component: SchoolsComponent }
     // { path: '**', redirectTo: ''}
 ]
