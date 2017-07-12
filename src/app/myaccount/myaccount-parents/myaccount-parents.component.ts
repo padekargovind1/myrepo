@@ -20,8 +20,14 @@ export class MyaccountParentsComponent implements OnInit {
   myParentProfile : MyAccountParentMdl = new MyAccountParentMdl();
   myProfile : MyAccountMdl = new MyAccountMdl();
   public parentAccountForm : FormGroup;
-  lienparents = ["Père", "Mère", "Oncle", "Tante", "Grand-Père", "Grand-Mère", "Tuteur", "Tutrice"];
-  @Output() parentData = new EventEmitter<{parentData : MyAccountParentMdl}>();
+  lienparents = [ "Père", 
+                  "Mère", 
+                  "Oncle", 
+                  "Tante", 
+                  "Grand-Père", 
+                  "Grand-Mère", 
+                  "Tuteur", 
+                  "Tutrice"];
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService) { 
@@ -41,12 +47,16 @@ export class MyaccountParentsComponent implements OnInit {
         (data)=>{
           let response = data;
           // console.log(response);
-          this.patchValue(response.data[0].parents[0]);
+          if (response.data[0].parents.length!=0){
+            this.patchValue(response.data[0].parents[0]);
+            this.completeProfile();
+          }
         }
       )
   }
 
   patchValue(parentData: any){
+    console.log(parentData);
     this.parentAccountForm.patchValue({
       lienParent : parentData.relationship,
       titre : parentData.gender,
@@ -79,19 +89,23 @@ export class MyaccountParentsComponent implements OnInit {
   }
 
   onSubmit(){
-    // console.log("Click on submit", this.parentAccountForm.value);
-    // this.completeProfile();
-    // console.log(this.myProfile);
-    // this.usersService.putProfile(this.myProfile)
-    //   .subscribe(
-    //     (data)=>{
-    //       let response = data;
-    //       console.log(response);
-    //       this.getUserProfile();
-    //     }
-    //   )
+    console.log("On submit button");
     this.completeProfile();
-    this.parentData.emit({parentData : this.myParentProfile})
+  }
+
+  save(){
+    this.myProfile=this.usersService.getChildData();
+    this.myProfile.parents[0] = this.myParentProfile;
+    console.log("Click on submit", this.myProfile);
+    this.completeProfile();
+    // console.log(this.myProfile);
+    this.usersService.putProfile(this.myProfile)
+      .subscribe(
+        (data)=>{
+          let response = data;
+          console.log(response);
+        }
+      )
   }
 
   createProfile(){
@@ -109,6 +123,7 @@ export class MyaccountParentsComponent implements OnInit {
     this.myParentProfile.address.postCode = this.parentAccountForm.controls.codepostal.value;
     this.myParentProfile.address.country = this.parentAccountForm.controls.pays.value;
     this.myParentProfile.address.city = this.parentAccountForm.controls.ville.value;
+    this.usersService.storeParentData(this.myParentProfile);
   }
 
 }

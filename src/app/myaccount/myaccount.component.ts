@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Output, EventEmitter} from '@angular/core';
+
+import { MyAccountParentMdl, 
+        MyAccountAdresse } from '../model/myaccount.model';
 
 @Component({
   selector: 'app-myaccount',
@@ -7,13 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyaccountComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }
-
-  onSubmitParent(event){
-    console.log(event);
-  }
-
 }

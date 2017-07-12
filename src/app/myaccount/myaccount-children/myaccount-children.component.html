@@ -4,7 +4,7 @@
       <section class="col-md-12">
         <h3>Enfant</h3>
       </section>
-      <form [formGroup]="childrenForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="childrenForm">
         <section class="col-md-4">
           <div class="row">
             <div class="col-sm-6  col-xs-6">
@@ -184,23 +184,36 @@
           </div>
           <div class="form-group">
             <button class="btn  btn-appointment" type="submit"
-              [disabled]="!childrenForm.valid">
+              [disabled]="!childrenForm.valid"
+              (click)="onSubmit()">
               Terminer</button>
           </div>
         </section><!-- .col-* -->
-        <section class="col-md-6">
-          <div class="wrap-enfant" *ngFor="let child of children">
-            <h4>{{ child }}</h4>
+        <section class="col-md-6" formArrayName="freresoeur">
+          <div class="wrap-enfant" 
+            *ngFor="let fs of childrenForm.controls.freresoeur.controls; let i=index">
+            <h4>Frère / Soeur {{ i + 1 }}</h4>
             <div class="form-group">
               <div class="row">
                 <div class="col-for-radio">
-                  <div class="gap-for-radio horizontal-radio clearfix">
+                  <!--<div class="gap-for-radio horizontal-radio clearfix">
                     <label class="custom-radio"><input type="radio" name="gender"> <span>Frère</span></label>
                     <label class="custom-radio"><input type="radio" name="gender"> <span>Sœur</span></label>
-                  </div>
+                  </div>-->
+                  <md-radio-group [formControl]="fs.controls['gender']"
+                    style="border-color:white">
+                    <md-radio-button value="Frère">Frère</md-radio-button>
+                    <md-radio-button value="Soeur">Soeur</md-radio-button>
+                  </md-radio-group>
                 </div>
                 <div class="col-sm-2">
-                  <input type="number" max="120" min="1" class="form-control gap-for-radio" placeholder="Age" />
+                  <input type="number" 
+                    max="120" 
+                    min="1" 
+                    class="form-control gap-for-radio" 
+                    placeholder="Age" 
+                    [formControl]="fs.controls['age']"
+                    />
                   <!-- <div class="select-custom">
                       <select name="" class="form-control">
                           <option value="">Âge</option>
@@ -208,7 +221,10 @@
                   </div> -->
                 </div>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control gap-for-radio" placeholder="Niveau d'étude">
+                  <input type="text" 
+                    class="form-control gap-for-radio" 
+                    placeholder="Niveau d'étude"
+                    [formControl]="fs.controls['niveau']">
                 </div>
               </div>
             </div>

@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
             }        
           }
         );
-      this.router.navigate(['/myaccount'])
+      this.router.navigate(['/my-account'])
     }
   }
 
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
   }
 
   onForgotPassword(){
-    this.router.navigate(['/forgotpassword']);
+    this.router.navigate(['/forgot-password']);
   }
 
 }

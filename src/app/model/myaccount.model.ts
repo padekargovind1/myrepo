@@ -1,31 +1,33 @@
 export class MyAccountMdl{
   firstName: string = "";
   lastName: string = "";
-  firstName1: string = "";
-  firstName2: string = "";
+//   firstName1: string = "";
+//   firstName2: string = "";
   gender: string = "";
   birthDate : string = "";
   birthPlace : string = "";
-  nationality : string = "";
+//   nationality : string = "";
   disabilityStatus : boolean=true;
-  studiesFinancedBy: [string] = [null];
+//   studiesFinancedBy: [string] = [null];
   photo: boolean = true;
-  landlinePhone: string = "";
+//   landlinePhone: string = "";
   mobilePhone: string = "";
   email: string = "";
-  emailValidationCode: string = "";
-  currentClass: string = "";
-  currentClassType: string = "";
+//   emailValidationCode: string = "";
+//   currentClass: string = "";
+//   currentClassType: string = "";
+  age : string ="";
   parents : [any] = [null];
   address : any;
-  socialAddresses : any;
-  academicHistories: [any] = [null];
-  bulletins :[any] = [null]
+//   socialAddresses : any;
+//   academicHistories: [any] = [null];
+//   bulletins :[any] = [null];
+  siblings :[MyAccountSiblingsMdl] = [null];
 }
 
 export class MyAccountAdresse{
     address1: string="";
-    address2: string="";
+    // address2: string="";
     postCode: string="";
     city: string="";
     country: string=""
@@ -62,4 +64,10 @@ export class MyAccountParentMdl{
     phoneNumber: string="";
     email: string="";
     address: any
+}
+
+export class MyAccountSiblingsMdl{
+    age : string ="";
+    gender : string ="";
+    stydy : string =""
 }

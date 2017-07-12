@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 
@@ -9,7 +9,8 @@ import {MyAccountMdl,
         MyAccountAdresse,
         MyAccountSocialAdrMdl,
         MyAccountHistoryMdl,
-        MyAccountBulletin } from '../../model/myaccount.model';
+        MyAccountBulletin,
+        MyAccountSiblingsMdl } from '../../model/myaccount.model';
 
 @Component({
   selector: 'app-myaccount-children',
@@ -31,11 +32,12 @@ export class MyaccountChildrenComponent implements OnInit {
     this.buildFormGroup();
     this.createProfile();
     setTimeout(()=>{
-      this.getUserProfile()
+      this.getUserProfile();
     }, 500);
   }
 
   ngOnInit() {
+    this.parentData.address = new MyAccountAdresse();
   }
 
   buildFormGroup(){
@@ -50,7 +52,24 @@ export class MyaccountChildrenComponent implements OnInit {
       codepostal : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
       ville : ['', Validators.required],
       datenaissance : ['', Validators.compose([Validators.required, CustomValidators.date])],
-      lieu : ['', Validators.required]
+      lieu : ['', Validators.required],
+      freresoeur : this.fb.array([])
+    })
+    this.addFS();
+  }
+
+  addFS(){
+    const control = <FormArray>this.childrenForm.controls['freresoeur'];
+    const addrCtrl = this.initfs();
+
+    control.push(addrCtrl);
+  }
+
+  initfs(){
+    return this.fb.group({
+      gender : ['', Validators.required],
+      age : ['', Validators.required],
+      niveau : ['', Validators.required]
     })
   }
 
@@ -58,16 +77,20 @@ export class MyaccountChildrenComponent implements OnInit {
     this.childrenForm.patchValue({
       nom : data.lastName,
       prenom : data.firstName,
-      age : "5",
+      age : data.age,
       gender : data.gender,
       email : data.email,
       portable : data.mobilePhone,
-      adresse : data.address.address1,
+      // adresse : data.address.address1,
       codepostal : data.address.postCode,
       ville : data.address.city,
       datenaissance : data.birthDate,
-      lieu : data.birthPlace
+      lieu : data.birthPlace,
+      // freresoeur : data.siblings
     })
+    for(let fs of data.siblings){
+      console.log(fs);
+    }
   }
 
   completeProfile(){
@@ -82,33 +105,42 @@ export class MyaccountChildrenComponent implements OnInit {
     this.myProfile.address.city = this.childrenForm.controls.ville.value;
     this.myProfile.birthDate = this.childrenForm.controls.datenaissance.value;
     this.myProfile.birthPlace = this.childrenForm.controls.lieu.value;
+    console.log(this.myProfile);
+    this.usersService.storeChildData(this.myProfile);
   }
 
   onSubmit(){
     console.log("Click on submit", this.childrenForm.value);
     this.completeProfile();
+    // this.save();
+  }
+
+  save(){
+    this.myProfile.parents[0] = this.usersService.getParentData();
     console.log(this.myProfile);
     this.usersService.putProfile(this.myProfile)
       .subscribe(
         (data)=>{
           let response = data;
           console.log(response);
-          this.getUserProfile();
         }
       )
   }
 
   onAddChild(){
-    this.nbChild++;
-    console.log("Child number " + this.nbChild + " added!");
-    this.children.push("Frère / Sœur " + this.nbChild);
+    // this.nbChild++;
+    // console.log("Child number " + this.nbChild + " added!");
+    // this.children.push("Frère / Sœur " + this.nbChild);
+    this.addFS();
   }
 
   onRemoveChild(){
     if(this.nbChild>0){
-      this.nbChild--;
-      this.children.pop();
-      console.log("Child removed!")
+      // this.nbChild--;
+      // this.children.pop();
+      // console.log("Child removed!")
+      const control = <FormArray>this.childrenForm.controls['freresoeur'];
+      control.removeAt(control.length-1);
     } else {
       console.log("Can't remove 0 child");
     }
@@ -119,8 +151,9 @@ export class MyaccountChildrenComponent implements OnInit {
       .subscribe(
         (data)=>{
           let response = data;
-          // console.log(response);
+          console.log(response);
           this.patchValue(response.data[0]);
+          this.completeProfile();
         }
       )
   }
@@ -129,12 +162,10 @@ export class MyaccountChildrenComponent implements OnInit {
     this.myProfile.parents[0]= new MyAccountParentMdl();
     this.myProfile.parents[0].address = new MyAccountAdresse();
     this.myProfile.address= new MyAccountAdresse();
-    this.myProfile.socialAddresses = new MyAccountSocialAdrMdl();
-    this.myProfile.academicHistories[0] = new MyAccountHistoryMdl(); 
-    this.myProfile.bulletins[0] = new MyAccountBulletin();
-    this.myProfile.academicHistories[0].fromYear = "2000";
-    this.myProfile.academicHistories[0].toYear = "2001";
-    this.myProfile.birthDate = "02/02/1999";
+    // this.myProfile.socialAddresses = new MyAccountSocialAdrMdl();
+    // this.myProfile.academicHistories[0] = new MyAccountHistoryMdl(); 
+    // this.myProfile.bulletins[0] = new MyAccountBulletin();
+    this.myProfile.siblings[0] = new MyAccountSiblingsMdl();
     console.log(this.myProfile);
   }
 
