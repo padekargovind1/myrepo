@@ -6,21 +6,28 @@
 @import './assets/scss/var';
 
 @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../node_modules/slick-carousel/slick/slick.scss";
+@import "../node_modules/slick-carousel/slick/slick-theme.scss";
+@import "../node_modules/fullcalendar/dist/fullcalendar.min.css";
 
-@import "./assets/scss/header";
-@import "./assets/scss/main";
-@import "./assets/scss/accueil";
-@import "./assets/scss/button";
-@import "./assets/scss/booking-calendar";
-@import "./assets/scss/schools";
+// @import "./assets/scss/header";
+// @import "./assets/scss/main";
+// @import "./assets/scss/accueil";
+// @import "./assets/scss/button";
+// @import "./assets/scss/booking-calendar";
+// @import "./assets/scss/schools";
 
 @import url("./assets/css/animate.css");
 @import url("./assets/css/wheelizate.tab.min.css");
+@import url("./assets/css/cubeportfolio.css");
 // @import url("./assets/css/accueil.css");
 // @import url("./assets/css/header.css");
-@import url("./assets/css/conseil.css");  
+// @import url("./assets/css/conseil.css");  
 // @import url("./assets/css/linguistic.css");
-@import url("./assets/css/register.css");
+// @import url("./assets/css/register.css");
 @import url("./assets/css/cube.css");
 
-@import "./assets/scss/responsive";
+
+@import './assets/scss/all';
+
+// @import "./assets/scss/responsive";

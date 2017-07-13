@@ -30,6 +30,10 @@
         "../node_modules/wheelnav/js/dist/raphael.icons.min.js",
         "../node_modules/moment/min/moment.min.js",
         "../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js",
+        "../node_modules/slick-carousel/slick/slick.min.js",
+        "../node_modules/fullcalendar/dist/fullcalendar.min.js",
+        "assets/js/prettify.js",
+        "assets/js/jquery.cubeportfolio.min.js",
         "assets/js/cube.js"
       ],
       "environmentSource": "environments/environment.ts",

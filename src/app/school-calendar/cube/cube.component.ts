@@ -18,15 +18,15 @@ export class CubeComponent implements OnInit {
   cube;
   constructor() {
     this.createCube();
-      (<any> $('.cube-1')).cubeBox({
-          'speed':400,
-          'width': 300,
-          'height': 400,
-          'opacity': 1,
-          'activeOpacity':1,
-          'drag':false,
-          'autoPlay':false
-      });
+      // (<any> $('.cube-1')).cubeBox({
+      //     'speed':400,
+      //     'width': 300,
+      //     'height': 400,
+      //     'opacity': 1,
+      //     'activeOpacity':1,
+      //     'drag':false,
+      //     'autoPlay':false
+      // });
   }
 
   ngOnInit() {
