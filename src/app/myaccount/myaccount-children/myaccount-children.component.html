@@ -189,22 +189,23 @@
               Terminer</button>
           </div>
         </section><!-- .col-* -->
-        <section class="col-md-6" formArrayName="freresoeur">
+        <!--<section class="col-md-6" formArrayName="freresoeur">
           <div class="wrap-enfant" 
             *ngFor="let fs of childrenForm.controls.freresoeur.controls; let i=index">
             <h4>Frère / Soeur {{ i + 1 }}</h4>
             <div class="form-group">
               <div class="row">
                 <div class="col-for-radio">
-                  <!--<div class="gap-for-radio horizontal-radio clearfix">
-                    <label class="custom-radio"><input type="radio" name="gender"> <span>Frère</span></label>
-                    <label class="custom-radio"><input type="radio" name="gender"> <span>Sœur</span></label>
-                  </div>-->
                   <md-radio-group [formControl]="fs.controls['gender']"
                     style="border-color:white">
                     <md-radio-button value="Frère">Frère</md-radio-button>
                     <md-radio-button value="Soeur">Soeur</md-radio-button>
                   </md-radio-group>
+                  <small *ngIf="fs.controls['gender'].hasError('required') && 
+                    fs.controls['gender'].touched" 
+                    class="mat-text-warn"> 
+                    Gender Obligatoire
+                  </small>
                 </div>
                 <div class="col-sm-2">
                   <input type="number" 
@@ -213,29 +214,40 @@
                     class="form-control gap-for-radio" 
                     placeholder="Age" 
                     [formControl]="fs.controls['age']"
+                    pattern="[0-9]+"
                     />
-                  <!-- <div class="select-custom">
-                      <select name="" class="form-control">
-                          <option value="">Âge</option>
-                      </select>
-                  </div> -->
+                  <small *ngIf="fs.controls['age'].hasError('required') && 
+                    fs.controls['age'].touched" 
+                    class="mat-text-warn"> 
+                    Age Obligatoire
+                  </small>
+                  <small *ngIf="fs.controls['age'].hasError('pattern') && 
+                    fs.controls['age'].touched" 
+                    class="mat-text-warn"> 
+                    Seulement des chiffres
+                  </small>
                 </div>
                 <div class="col-sm-3">
                   <input type="text" 
                     class="form-control gap-for-radio" 
                     placeholder="Niveau d'étude"
                     [formControl]="fs.controls['niveau']">
+                  <small *ngIf="fs.controls['niveau'].hasError('required') && 
+                    fs.controls['niveau'].touched" 
+                    class="mat-text-warn"> 
+                    Niveau d'étude Obligatoire
+                  </small>
                 </div>
               </div>
             </div>
-          </div><!-- wrap-enfant -->
-        </section><!-- .col-* -->
+          </div>
+        </section>
         <section class="col-md-4">
           <div class="form-group clearfix">
             <button class="btn  btn-appointment" (click)="onAddChild()">Ajouter</button>
             <button class="btn  btn-appointment" (click)="onRemoveChild()">Retirer</button>
           </div>
-        </section>
+        </section>-->
       </form>
     </div><!-- .row -->
   </div><!-- .container-fluid -->

@@ -35,12 +35,11 @@ import { MyaccountDocumentationsComponent } from './myaccount/myaccount-document
 import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myaccount-mysearch.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { CubeComponent } from './school-calendar/cube/cube.component';
-import { SchoolsComponent } from './schools/schools.component';
 import { FilterComponent } from './filter/filter.component';
-import { SchoolCardComponent } from './schools/school-card/school-card.component';
 import { SchoolService } from './services/school.service';
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
+import { PublicService } from './services/public.service';
 import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
@@ -48,9 +47,7 @@ import { LyceeComponent } from './lycee/lycee.component';
 import { EtablissementComponent } from './etablissement/etablissement.component';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
-
-
-
+import { SchoolCardComponent } from './shared/school-card/school-card.component';
 
 @NgModule({
   declarations: [
@@ -72,9 +69,7 @@ import { DetailAppointmentComponent } from './detail-appointment/detail-appointm
     MyaccountMysearchComponent,
     SchoolCalendarComponent,
     CubeComponent,
-    SchoolsComponent,
     FilterComponent,
-    SchoolCardComponent,
     BrochureComponent,
     EcoleComponent,
     CollegeComponent,
@@ -82,6 +77,7 @@ import { DetailAppointmentComponent } from './detail-appointment/detail-appointm
     EtablissementComponent,
     CompareModeComponent,
     DetailAppointmentComponent,
+    SchoolCardComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +106,8 @@ import { DetailAppointmentComponent } from './detail-appointment/detail-appointm
     SchoolService,
     RegisterComponent,
     AuthService,
-    UsersService
+    UsersService,
+    PublicService
   ],
   bootstrap: [AppComponent]
 })

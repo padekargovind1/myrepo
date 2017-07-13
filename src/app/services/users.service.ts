@@ -17,7 +17,7 @@ export class UsersService {
 
   private parentData : MyAccountParentMdl;
   private childData : MyAccountMdl;
-  private token : string='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NjVjZmEyZTJkMjBlNTJmZGFkODBlMCIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk2NWNmYTJlMmQyMGU1MmZkYWQ4MGUxIiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NjVjZmEyZTJkMjBlNTJmZGFkODBlMiIsImlhdCI6MTQ5OTg0NDUxNCwiZXhwIjoxNDk5ODUzMTU0LCJhdWQiOiIxIiwiaXNzIjoiMSJ9.oaVUuDWO5X4TUxx4rZye7wX-OhEa6QmCFqqg-4w1GV4'
+  private token : string='';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 

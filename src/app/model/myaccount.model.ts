@@ -41,11 +41,11 @@ export class MyAccountSocialAdrMdl{
 }
 
 export class MyAccountHistoryMdl{
-    fromYear="01/01/01";
-    toYear="01/01/01";
+    fromYear= "2000";
+    toYear="2001";
     class: string="A compléter";
     classType: string="A compléter";
-    languages: [string] = [null];
+    languages: [string]=["A compléter"];
     schoolName: string="A compléter";
     schoolType: string="A compléter";
     city: string="A compléter"
@@ -67,7 +67,7 @@ export class MyAccountParentMdl{
 }
 
 export class MyAccountSiblingsMdl{
-    age = "01/01/1980T00:00:00+00:00";
+    age : string ="0";
     gender : string ="A compléter";
     study : string ="A compléter"
 }

@@ -1,0 +1,26 @@
+<div class="checkbox-custom">
+    <input type="checkbox" class="checkbox filled-in" id="school-1" />
+    <label for="school-1">&nbsp;</label>
+</div>
+
+<ul class="school-action">
+    <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+</ul>
+
+<img src="assets/images/ad/school-1.jpg" alt="School 1" />
+
+<div class="card-content">
+    <h3>{{ SchoolData.longName }}</h3>
+    <p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
+        {{ SchoolData.cycles[0].cycle.status2 }} <br />
+        {{ SchoolData.cycles[0].cycle.status3 }}</p>
+    <address> {{ SchoolData.address.ad1 }} <br /> 
+        {{ SchoolData.address.postCode }} {{ SchoolData.address.city }}<br /> 
+        Tel: {{ SchoolData.address.phoneNumber }}</address>
+
+    <a routerLink="/etablissement" class="btn btn-highlighted">Détail du collège</a>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button> 
+</div>
