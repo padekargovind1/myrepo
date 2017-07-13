@@ -33,3 +33,8 @@
 #confirm-popup { color: #333; font-size: 16px; clear: both; text-align: center;}
   #confirm-popup .modal-dialog { width: 486px; }
   #confirm-popup .icon { margin: 0 auto 20px; display: table; }
+
+#disponibles { font-weight: 400 !important; padding-left: 0; }
+#disponibles:after { border: none;}
+.checkbox[type="checkbox"].filled-in:checked + #disponibles:after { top: 5px; left: 38%; }
+.checkbox[type="checkbox"].filled-in:checked + #disponibles:before { top: 5px; left: 38%; }
