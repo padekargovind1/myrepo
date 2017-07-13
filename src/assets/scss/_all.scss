@@ -856,6 +856,10 @@ label.custom-radio.sad:before { border: none;}
         #rootwizard .nav-pills>li>a span { display: inline-block; vertical-align: middle;}
         #rootwizard .nav-pills>li>a span.helper { height: 100%; }
 
+.mat-tab-label-container { background: #c5c7c6; padding: 3px;}
+.mat-tab-label:focus, .mat-tab-label-active { background: #00bc50; color: #fff; opacity: 1;}
+.mat-ink-bar { background-color: transparent;}
+
 .tab-pane { padding: 0 20px 40px; }
 
 .appointment-text h3 { margin-top: 0; }
