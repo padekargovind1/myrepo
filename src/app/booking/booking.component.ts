@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
+declare var $:any;
+declare var fullCalendar: any;
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css']
 })
-export class BookingComponent implements OnInit {
+export class BookingComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
   ngOnInit() {
-  	// $('#calendar').fullCalendar();
+  }
+
+  ngAfterViewInit() {
+  	(<any> $('#calendar')).fullCalendar();
   }
 
 }

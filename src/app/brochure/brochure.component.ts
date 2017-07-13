@@ -1,7 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
-import '../../assets/js/portfolio-1.min.js';
-
 @Component({
   selector: 'app-brochure',
   templateUrl: './brochure.component.html',
@@ -16,7 +14,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
-  	$('#js-grid-juicy-projects').cubeportfolio({
+  	(<any> $('#js-grid-juicy-projects')).cubeportfolio({
         filters: '#js-filters-juicy-projects',
         loadMore: '#js-loadMore-juicy-projects',
         loadMoreAction: 'click',
