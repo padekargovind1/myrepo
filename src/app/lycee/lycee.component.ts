@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PublicService } from '../services/public.service'; 
+
 @Component({
   selector: 'app-lycee',
   templateUrl: './lycee.component.html',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LyceeComponent implements OnInit {
 
-  constructor() { }
+  schoolList : any;
+
+  constructor(private publicService : PublicService) { }
 
   ngOnInit() {
+    this.publicService.getSchoolsList()
+      .subscribe(
+        (response)=>{
+          console.log(response);
+          this.schoolList = response.data;
+        }
+      )
   }
 
 }

@@ -8,7 +8,6 @@ import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
-import { SchoolsComponent } from './schools/schools.component';
 import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
@@ -28,7 +27,6 @@ export const AppRoutes: Routes = [
     { path: 'forgot-password' , component: ForgotpasswordComponent },
     { path: 'my-account' , component: MyaccountComponent },
     { path: 'school-calendar' , component: SchoolCalendarComponent },
-    { path: 'schools', component: SchoolsComponent },
     { path: 'brochure', component: BrochureComponent },
     { path: 'ecole', component: EcoleComponent },
     { path: 'college', component: CollegeComponent },

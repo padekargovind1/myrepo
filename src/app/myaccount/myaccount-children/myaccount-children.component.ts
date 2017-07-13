@@ -35,10 +35,7 @@ export class MyaccountChildrenComponent implements OnInit {
               private authService : AuthService) { 
     if(this.authService.getToken() != "") {
       this.buildFormGroup();
-      this.createProfile();
-      setTimeout(()=>{
-        this.getUserProfile();
-      }, 500);
+      this.getUserProfile();
       this.parentData.address = new MyAccountAdresse();
     } else {
       console.log("navigate back");
@@ -78,9 +75,9 @@ export class MyaccountChildrenComponent implements OnInit {
 
   initfs(){
     return this.fb.group({
-      gender : ['', Validators.required],
-      age : ['', Validators.required],
-      niveau : ['', Validators.required]
+      // gender : ['', Validators.required],
+      // age : ['', Validators.required],
+      // niveau : ['', Validators.required]
     })
   }
 
@@ -102,6 +99,9 @@ export class MyaccountChildrenComponent implements OnInit {
         codepostal : data.address.postCode,
         ville : data.address.city,
       })
+    // this.childrenForm.controls['freresoeur'].patchValue({
+    //   age : data.siblings
+    // })
     }
   }
 
@@ -113,10 +113,18 @@ export class MyaccountChildrenComponent implements OnInit {
     this.myProfile.email = this.childrenForm.controls.email.value;
     this.myProfile.mobilePhone = this.childrenForm.controls.portable.value;
     this.myProfile.address.address1 = this.childrenForm.controls.adresse.value;
-    this.myProfile.address.postCode = JSON.stringify(this.childrenForm.controls.codepostal.value);
+    this.myProfile.address.postCode = this.childrenForm.controls.codepostal.value;
     this.myProfile.address.city = this.childrenForm.controls.ville.value;
     this.myProfile.birthDate = this.childrenForm.controls.datenaissance.value;
     this.myProfile.birthPlace = this.childrenForm.controls.lieu.value;
+    // let i=0;
+    // console.log(this.childrenForm.controls.freresoeur.value)
+    // for (let sibling of this.childrenForm.controls.freresoeur.value){
+    //   this.myProfile.siblings[i].age = sibling[i].age.value;
+    //   this.myProfile.siblings[i].gender = sibling[i].gender.value;
+    //   this.myProfile.siblings[i].study = sibling[i].niveau.value;
+    //   i++;
+    // }
     console.log(this.myProfile);
     this.usersService.storeChildData(this.myProfile);
   }
@@ -144,6 +152,7 @@ export class MyaccountChildrenComponent implements OnInit {
     // console.log("Child number " + this.nbChild + " added!");
     // this.children.push("Frère / Sœur " + this.nbChild);
     this.addFS();
+    this.myProfile.siblings.push(new MyAccountSiblingsMdl());
   }
 
   onRemoveChild(){
@@ -153,6 +162,7 @@ export class MyaccountChildrenComponent implements OnInit {
       // console.log("Child removed!")
       const control = <FormArray>this.childrenForm.controls['freresoeur'];
       control.removeAt(control.length-1);
+      this.myProfile.siblings.pop();
     } else {
       console.log("Can't remove 0 child");
     }
@@ -164,13 +174,14 @@ export class MyaccountChildrenComponent implements OnInit {
         (data)=>{
           let response = data;
           console.log(response);
+          this.createProfile(response.data[0]);
           this.patchValue(response.data[0]);
           this.completeProfile();
         }
       )
   }
 
-  createProfile(){
+  createProfile(data){
     this.myProfile.parents[0]= new MyAccountParentMdl();
     this.myProfile.parents[0].address = new MyAccountAdresse();
     this.myProfile.address= new MyAccountAdresse();
@@ -178,7 +189,10 @@ export class MyaccountChildrenComponent implements OnInit {
     this.myProfile.academicHistories[0]={};
     this.myProfile.academicHistories[0] = new MyAccountHistoryMdl(); 
     this.myProfile.bulletins[0] = new MyAccountBulletin();
-    this.myProfile.siblings[0] = new MyAccountSiblingsMdl();
+    this.myProfile.siblings[0]=new MyAccountSiblingsMdl();
+    // for(let sibling of data.siblings){
+    //   this.myProfile.siblings.push(new MyAccountSiblingsMdl());
+    // }
     console.log(this.myProfile);
   }
 

@@ -189,17 +189,13 @@
               Terminer</button>
           </div>
         </section><!-- .col-* -->
-        <section class="col-md-6" formArrayName="freresoeur">
+        <!--<section class="col-md-6" formArrayName="freresoeur">
           <div class="wrap-enfant" 
             *ngFor="let fs of childrenForm.controls.freresoeur.controls; let i=index">
             <h4>Frère / Soeur {{ i + 1 }}</h4>
             <div class="form-group">
               <div class="row">
                 <div class="col-for-radio">
-                  <!--<div class="gap-for-radio horizontal-radio clearfix">
-                    <label class="custom-radio"><input type="radio" name="gender"> <span>Frère</span></label>
-                    <label class="custom-radio"><input type="radio" name="gender"> <span>Sœur</span></label>
-                  </div>-->
                   <md-radio-group [formControl]="fs.controls['gender']"
                     style="border-color:white">
                     <md-radio-button value="Frère">Frère</md-radio-button>
@@ -218,23 +214,18 @@
                     class="form-control gap-for-radio" 
                     placeholder="Age" 
                     [formControl]="fs.controls['age']"
-                    pattern="[0-9]"
+                    pattern="[0-9]+"
                     />
                   <small *ngIf="fs.controls['age'].hasError('required') && 
-                    childrenForm.controls['age'].touched" 
+                    fs.controls['age'].touched" 
                     class="mat-text-warn"> 
                     Age Obligatoire
                   </small>
                   <small *ngIf="fs.controls['age'].hasError('pattern') && 
-                    childrenForm.controls['nom'].touched" 
+                    fs.controls['age'].touched" 
                     class="mat-text-warn"> 
                     Seulement des chiffres
                   </small>
-                  <!-- <div class="select-custom">
-                      <select name="" class="form-control">
-                          <option value="">Âge</option>
-                      </select>
-                  </div> -->
                 </div>
                 <div class="col-sm-3">
                   <input type="text" 
@@ -249,14 +240,14 @@
                 </div>
               </div>
             </div>
-          </div><!-- wrap-enfant -->
-        </section><!-- .col-* -->
+          </div>
+        </section>
         <section class="col-md-4">
           <div class="form-group clearfix">
             <button class="btn  btn-appointment" (click)="onAddChild()">Ajouter</button>
             <button class="btn  btn-appointment" (click)="onRemoveChild()">Retirer</button>
           </div>
-        </section>
+        </section>-->
       </form>
     </div><!-- .row -->
   </div><!-- .container-fluid -->
