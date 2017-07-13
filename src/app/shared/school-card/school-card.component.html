@@ -14,7 +14,7 @@
 
 <div class="card-content">
     <h3>{{ SchoolData.longName }}</h3>
-    <p>Lycee d'enseignement <br /> general Prive Catholique <br />Sous contrat d'association</p>
+    <p> {{ SchoolData.sycles[0].cycle.status1 }} <br /> {{ SchoolData.sycles[0].cycle.status2 }} <br />{{ SchoolData.sycles[0].cycle.status3 }}</p>
     <address> {{ SchoolData.address.ad1 }} <br /> 
         {{ SchoolData.address.postCode }} {{ SchoolData.address.city }}<br /> 
         Tel: {{ SchoolData.address.phoneNumber }}</address>
