@@ -26,7 +26,7 @@ export class MyaccountChildrenComponent implements OnInit {
   parentData : MyAccountParentMdl = new MyAccountParentMdl();;
 
   public childrenForm : FormGroup;
-  children = ["Frère / Sœur 1"];
+  // children = ["Frère / Sœur 1"];
   nbChild : number = 1;
 
   constructor(private fb : FormBuilder,
@@ -47,7 +47,8 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    let date = new Date().toISOString();
+    console.log(date);
   }
 
   buildFormGroup(){
