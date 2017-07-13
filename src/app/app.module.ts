@@ -23,7 +23,6 @@ import { AppRoutes } from './app.routing';
 import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
 import { LinguisticComponent } from './linguistic/linguistic.component';
-import { MenuComponent } from './menu/menu.component';
 import { LinguisticTripsComponent } from './linguistic/linguistic-trips/linguistic-trips.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -57,6 +56,7 @@ import { EtablissementAssoComponent } from './etablissement/etablissement-asso/e
 import { EtablissementInfoComponent } from './etablissement/etablissement-info/etablissement-info.component';
 import { EtablissementArticlesComponent } from './etablissement/etablissement-articles/etablissement-articles.component';
 import { EtablissementMediaComponent } from './etablissement/etablissement-media/etablissement-media.component';
+import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,6 @@ import { EtablissementMediaComponent } from './etablissement/etablissement-media
     HeaderComponent,
     BookingComponent,
     LinguisticComponent,
-    MenuComponent,
     LinguisticTripsComponent,
     RegisterComponent,
     LoginComponent,
@@ -95,7 +94,8 @@ import { EtablissementMediaComponent } from './etablissement/etablissement-media
     EtablissementAssoComponent,
     EtablissementInfoComponent,
     EtablissementArticlesComponent,
-    EtablissementMediaComponent
+    EtablissementMediaComponent,
+    BrochureCardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { SchoolService } from '../../services/school.service';
 
@@ -8,8 +8,16 @@ import { SchoolService } from '../../services/school.service';
   styleUrls: ['./linguistic-trips.component.css']
 })
 export class LinguisticTripsComponent implements OnInit {
+  @Input() tripData : any;
 
-  constructor(private schoolService : SchoolService) { }
+  constructor(private schoolService : SchoolService) { 
+    setTimeout(
+      ()=>{
+        console.log(this.tripData);
+      }, 500
+    )
+    
+  }
 
   ngOnInit() {
     // this.schoolService.getTrips()

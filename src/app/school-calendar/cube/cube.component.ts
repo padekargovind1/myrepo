@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
 
 //import * as $ from 'jquery';
 // declare var cube: any;
@@ -15,6 +16,8 @@ declare var cubeBox: any;
 })
 export class CubeComponent implements OnInit {
 
+  @Input() eventData: any;
+
   cube;
   constructor() {
     this.createCube();
@@ -29,7 +32,7 @@ export class CubeComponent implements OnInit {
       // });
   }
 
-  ngOnInit() {
+  ngOnInit() {    
   }
 
   createCube(){

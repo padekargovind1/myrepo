@@ -1,3 +1,5 @@
 
 <h2 class="title-page">Agenda des écoles</h2>
-<app-cube></app-cube>
+<div *ngFor="let event of events">
+    <app-cube [eventData]="event"></app-cube>
+</div>

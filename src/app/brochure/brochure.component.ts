@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { PublicService } from '../services/public.service';
 
 @Component({
   selector: 'app-brochure',
@@ -7,7 +8,9 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class BrochureComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(private publicService : PublicService) { 
+      this.getBrochure();
+  }
 
   ngOnInit() {
   }
@@ -75,6 +78,16 @@ export class BrochureComponent implements OnInit, AfterViewInit {
             //     });
         },
     });
+  }
+
+  getBrochure(){
+    this.publicService.getBrochure()
+        .subscribe(
+            (response)=>{
+                let data = response.data;
+                console.log(data);
+            }
+        )
   }
 
 }
