@@ -48,6 +48,15 @@ import { EtablissementComponent } from './etablissement/etablissement.component'
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
 import { SchoolCardComponent } from './shared/school-card/school-card.component';
+import { EtablissementEssentielComponent } from './etablissement/etablissement-essentiel/etablissement-essentiel.component';
+import { EtablissementFormationComponent } from './etablissement/etablissement-formation/etablissement-formation.component';
+import { EtablissementEvenementComponent } from './etablissement/etablissement-evenement/etablissement-evenement.component';
+import { EtablissementFaqComponent } from './etablissement/etablissement-faq/etablissement-faq.component';
+import { EtablissementVideoComponent } from './etablissement/etablissement-video/etablissement-video.component';
+import { EtablissementAssoComponent } from './etablissement/etablissement-asso/etablissement-asso.component';
+import { EtablissementInfoComponent } from './etablissement/etablissement-info/etablissement-info.component';
+import { EtablissementArticlesComponent } from './etablissement/etablissement-articles/etablissement-articles.component';
+import { EtablissementMediaComponent } from './etablissement/etablissement-media/etablissement-media.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +86,16 @@ import { SchoolCardComponent } from './shared/school-card/school-card.component'
     EtablissementComponent,
     CompareModeComponent,
     DetailAppointmentComponent,
-    SchoolCardComponent
+    SchoolCardComponent,
+    EtablissementEssentielComponent,
+    EtablissementFormationComponent,
+    EtablissementEvenementComponent,
+    EtablissementFaqComponent,
+    EtablissementVideoComponent,
+    EtablissementAssoComponent,
+    EtablissementInfoComponent,
+    EtablissementArticlesComponent,
+    EtablissementMediaComponent
   ],
   imports: [
     BrowserModule,

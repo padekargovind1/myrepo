@@ -21,6 +21,8 @@
         {{ SchoolData.address.postCode }} {{ SchoolData.address.city }}<br /> 
         Tel: {{ SchoolData.address.phoneNumber }}</address>
 
-    <a routerLink="/etablissement" class="btn btn-highlighted">Détail du collège</a>
+    <button class="btn btn-highlighted"
+        (click)="onSchoolDetail()">Détail de l'école</button>
+    
     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button> 
 </div>

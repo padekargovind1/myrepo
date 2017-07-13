@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-school-card',
@@ -9,10 +10,15 @@ export class SchoolCardComponent implements OnInit {
 
   @Input() SchoolData : any;
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
-    console.log(this.SchoolData);
+    console.log(this.SchoolData, this.SchoolData._id);
+  }
+
+  onSchoolDetail(){
+    console.log("Click on school detail")
+    this.router.navigate(['etablissement', this.SchoolData._id]);
   }
 
 }

@@ -16,4 +16,9 @@ export class PublicService {
     return this.http.post(SCHOOLS_API+"schools", {headers: this.headers})
       .map((response)=>response.json());
   }
+
+  getSchoolById(schoolId : string){
+    return this.http.get(SCHOOLS_API+"schools/"+schoolId)
+      .map((response)=>response.json());
+  }
 }
