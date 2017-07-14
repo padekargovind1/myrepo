@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { PublicService } from '../services/public.service';
 declare var $:any;
 
-import '../../assets/js/main.js';
-
 @Component({
   selector: 'app-ecole',
   templateUrl: './ecole.component.html',

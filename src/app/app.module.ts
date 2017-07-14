@@ -47,6 +47,7 @@ import { EtablissementComponent } from './etablissement/etablissement.component'
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
 import { SchoolCardComponent } from './shared/school-card/school-card.component';
+import { LandingPage1Component } from './landing-page-1/landing-page-1.component';
 import { EtablissementEssentielComponent } from './etablissement/etablissement-essentiel/etablissement-essentiel.component';
 import { EtablissementFormationComponent } from './etablissement/etablissement-formation/etablissement-formation.component';
 import { EtablissementEvenementComponent } from './etablissement/etablissement-evenement/etablissement-evenement.component';
@@ -87,6 +88,7 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     CompareModeComponent,
     DetailAppointmentComponent,
     SchoolCardComponent,
+    LandingPage1Component
     EtablissementEssentielComponent,
     EtablissementFormationComponent,
     EtablissementEvenementComponent,
