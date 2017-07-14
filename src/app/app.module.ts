@@ -8,7 +8,7 @@ import {
   MdCardModule, MdButtonModule, MdListModule,
   MdProgressBarModule, MdMenuModule, MdInputModule, MdRadioModule,
   MdToolbarModule, MdDatepickerModule, MdNativeDateModule, MdSelectModule, 
-  MdIconModule
+  MdIconModule, MdAutocompleteModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -57,6 +57,7 @@ import { EtablissementInfoComponent } from './etablissement/etablissement-info/e
 import { EtablissementArticlesComponent } from './etablissement/etablissement-articles/etablissement-articles.component';
 import { EtablissementMediaComponent } from './etablissement/etablissement-media/etablissement-media.component';
 import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.component';
+import { CompareBlockComponent } from './compare-mode/compare-block/compare-block.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.co
     EtablissementInfoComponent,
     EtablissementArticlesComponent,
     EtablissementMediaComponent,
-    BrochureCardComponent
+    BrochureCardComponent,
+    CompareBlockComponent
   ],
   imports: [
     BrowserModule,
