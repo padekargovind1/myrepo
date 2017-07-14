@@ -589,7 +589,7 @@ text { fill: #fff !important; font-size: 20px !important; font-family: Roboto !i
 /** 
  * Main  
  */
-.main { position: relative; min-height: 590px;}
+.main { position: relative; min-height: 590px !important;}
 .main:after { content: ""; display: table; clear: both;}
 
 
@@ -1332,6 +1332,11 @@ span.label { font-size: 10px;  }
 
 .select2-container--default .select2-search--inline .select2-search__field { width: 106% !important; }
 
+
+// Slick components
+.slick-next { right: 5px;}
+.slick-prev { left: 5px; z-index: 10;}
+
 /**
  * Content holder
  */
@@ -1404,7 +1409,7 @@ span.label { font-size: 10px;  }
 .col-6 { width: 50%; float: left;}
 
 
-.white-background { background: #EBECEC; min-height: 350px; padding: 20px 0 70px; color: #333;}
+.white-background { background: #EBECEC; padding: 20px 0 70px; color: #333;}
 
 
 .do-animate { animation-duration: .7s; animation-fill-mode: both; animation-name: fadeInDown;}
@@ -1577,23 +1582,4 @@ a:hover { text-decoration: none;}
 .offcanvas-link { display: none; }
 .mobile-close { display: none;}
 .mobile { display: none;}
-
-
-
-/**
- * Responsive
- *
- */
-@media (min-width: 1201px) {
-    
-    .landing-page-2 .main { min-height: 900px;}
-}
-
-@media (max-width: 1200px) {
-    .school-item .btn { width: 100%; margin: 0 1% 10px;}
-    .searchform input[ type="text" ], .searchform .select-custom select { width: 200px;}
-    .job-group-content { width: 100%; }
-
-}
-
 

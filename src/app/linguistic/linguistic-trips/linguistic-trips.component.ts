@@ -61,8 +61,7 @@ export class LinguisticTripsComponent implements OnInit, AfterViewInit {
             slidesToScroll: 1,
             autoplay: false,
             autoplaySpeed: 2000,
-            arrows: true,
-            variableWidth: true
+            arrows: true
         });
     }
 

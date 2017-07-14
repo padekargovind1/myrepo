@@ -58,6 +58,7 @@ import { EtablissementInfoComponent } from './etablissement/etablissement-info/e
 import { EtablissementArticlesComponent } from './etablissement/etablissement-articles/etablissement-articles.component';
 import { EtablissementMediaComponent } from './etablissement/etablissement-media/etablissement-media.component';
 import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.component';
+import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 import { CompareBlockComponent } from './compare-mode/compare-block/compare-block.component';
 
 @NgModule({
@@ -99,6 +100,7 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     EtablissementArticlesComponent,
     EtablissementMediaComponent,
     BrochureCardComponent,
+    LandingPage3Component,
     CompareBlockComponent
   ],
   imports: [
