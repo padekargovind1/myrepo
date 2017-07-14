@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+
 import { SchoolService } from '../../services/school.service';
 
 
@@ -12,8 +13,7 @@ declare var $:any;
   styleUrls: ['./linguistic-trips.component.css']
 })
 export class LinguisticTripsComponent implements OnInit, AfterViewInit {
-  @Input() tripData : any;
-
+  @Input() tripData;
   constructor(private schoolService : SchoolService) { 
     setTimeout(
       ()=>{
