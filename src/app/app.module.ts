@@ -58,6 +58,7 @@ import { EtablissementInfoComponent } from './etablissement/etablissement-info/e
 import { EtablissementArticlesComponent } from './etablissement/etablissement-articles/etablissement-articles.component';
 import { EtablissementMediaComponent } from './etablissement/etablissement-media/etablissement-media.component';
 import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.component';
+import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,7 @@ import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.co
     CompareModeComponent,
     DetailAppointmentComponent,
     SchoolCardComponent,
-    LandingPage1Component
+    LandingPage1Component,
     EtablissementEssentielComponent,
     EtablissementFormationComponent,
     EtablissementEvenementComponent,
@@ -97,7 +98,8 @@ import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.co
     EtablissementInfoComponent,
     EtablissementArticlesComponent,
     EtablissementMediaComponent,
-    BrochureCardComponent
+    BrochureCardComponent,
+    LandingPage3Component
   ],
   imports: [
     BrowserModule,

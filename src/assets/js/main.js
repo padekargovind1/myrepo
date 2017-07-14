@@ -481,33 +481,33 @@ jQuery(document).ready(function($) {
 
 
     // Reset landing page form showing
-    // $('html').click(function() {
+    $('html').click(function() {
 
-    //     $('.landingpage__additional-content').css('z-index', 0);
-    //     $('.landingpage__additional-content .form-wrap').removeClass('fadeIn').addClass('fadeOut');
-    //     $('body .main').css({'background-image':''});
+        $('.landingpage__additional-content').css('z-index', 0);
+        $('.landingpage__additional-content .form-wrap').removeClass('fadeIn').addClass('fadeOut');
+        $('body .main').css({'background-image':''});
 
-    //     // $('.login').hide();
-    // });
+        // $('.login').hide();
+    });
 
-    // Show search form when the box hover
-    // $('.landingpage__additional-content').on('mouseover', function() {
+    //Show search form when the box hover
+    $('.landingpage__additional-content').on('mouseover', function() {
 
-    //     $('.landingpage__additional-content .form-wrap').removeClass('fadeIn').addClass('fadeOut');
-    //     $('.landingpage__additional-content').css('z-index', 0);
+        $('.landingpage__additional-content .form-wrap').removeClass('fadeIn').addClass('fadeOut');
+        $('.landingpage__additional-content').css('z-index', 0);
         
-    //     $(this).css('z-index', 10);
-    //     $(this).find('.form-wrap').removeClass('fadeOut').addClass('fadeIn');
-    //     var img = $(this).data('background'); console.log(img);
+        $(this).css('z-index', 10);
+        $(this).find('.form-wrap').removeClass('fadeOut').addClass('fadeIn');
+        var img = $(this).data('background'); console.log(img);
 
-    //     $('body .main').css({ 'background-image': 'url(' + img + ')', 'background-size': 'cover'});
-    // });
+        $('body .main').css({ 'background-image': 'url(' + img + ')', 'background-size': 'cover'});
+    });
 
 
     // $('.mobile-login .fa-user').on('click', function() {
     //     $('.login').toggle('slow');
     // });
-
+-
 
     // $('.booking-appointment .offcanvas-link').on('click', function(e) {
     //     e.preventDefault();
