@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { PublicService } from '../services/public.service';
 
 @Component({
   selector: 'app-compare-mode',
@@ -9,22 +10,50 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CompareModeComponent implements OnInit {
 
-  schoolToCompare=[];
+  schoolToCompare =[];
+  schoolDataToDisplay : [any]=[null];
 
   constructor(private location : Location,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              private publicService : PublicService) { }
 
   ngOnInit() {
     console.log(this.route.snapshot.params);
-    let param = this.route.snapshot.params;
-    console.log(param);
-    this.schoolToCompare[0]=param[0];
-    this.schoolToCompare[1]=param[1];
-    // console.log(this.schoolToCompare);
+    this.schoolToCompare.push(this.route.snapshot.params[0]);
+    this.schoolToCompare.push(this.route.snapshot.params[1]);
+    if(this.route.snapshot.params[2]){
+      this.schoolToCompare.push(this.route.snapshot.params[2]);
+    }
+    if (this.route.snapshot.params[3]){
+      this.schoolToCompare.push(this.route.snapshot.params[3]);
+    }
+    this.getSchoolData();
+  }
+
+  getSchoolData(){
+    this.schoolDataToDisplay.pop()
+    for(let school of this.schoolToCompare){
+      this.publicService.getSchoolById(school)
+        .subscribe(
+          (response)=>{
+            let data = response.data;
+            // console.log(data);
+            this.schoolDataToDisplay.push(data);
+            console.log(this.schoolDataToDisplay);
+          }
+        )
+    }
   }
 
   onNavigateBack(){
     this.location.back();
+  }
+
+  onDeleteCompare(school){
+    console.log("click on delete");
+    // console.log(this.schoolDataToDisplay);
+    this.schoolDataToDisplay.splice(school, 1);
+    // console.log(this.schoolDataToDisplay);
   }
 
 }

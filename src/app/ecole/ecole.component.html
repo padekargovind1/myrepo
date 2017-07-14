@@ -577,7 +577,9 @@
                                                 <input type="checkbox" name="" class="checkbox filled-in compare-checkbox" id="compare-12" /><label for="compare-12">Places disponibles</label>
                                             </div><!-- .filter-option -->
 
-                                            <a href="compare-mode.html" disabled class="btn btn-appointment btn-compare-popup btn-block btn-lg">Je Compare</a>
+                                            <button class="btn btn-filter-pop-up btn-block btn-lg" 
+                                                data-dismiss="modal"
+                                                (click)="onCompare()">Je Compare</button>
 
                                             <!-- <a href="compare-mode.html#compare" class="btn btn-filter-pop-up btn-block btn-lg ">Je Comparer</a> -->
                                         </div>

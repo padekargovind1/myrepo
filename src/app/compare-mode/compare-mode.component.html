@@ -94,7 +94,14 @@
                                                     </ul>
                                                 </div>
                                             </li>
-                                            <li><span class="subtitle">Lycée</span></li>
+                                            <li><a class="subtitle" role="button" data-toggle="collapse" href=".college" aria-expanded="false" aria-controls="collapseExample">Lycée<span class="caret"></span></a>
+                                                <div class="collapse in college">
+                                                    <ul class="compare-item">
+                                                        <li>Cycle 3: Apprentissage Premier</li>
+                                                        <li>Cycle 4: Apprentissages Fondamentaux</li>
+                                                    </ul>
+                                                </div>
+                                            </li>
                                         </ul>
 
                                         <ul class="compare-item class-cycle">
@@ -250,9 +257,51 @@
                                 </div>
 
                                 <div class="content-compare-table"
-                                    *ngFor="let school of schoolToCompare">
-                                    
-                                    <app-compare-block></app-compare-block>
+                                    *ngFor="let school of schoolDataToDisplay">
+                                   <div class="top-compare-table">
+                                        <button type="button" 
+                                            class="close" 
+                                            data-dismiss="modal" 
+                                            aria-label="Close"
+                                            (click)="onDeleteCompare(school)">
+                                            <img src="assets/images/cide-remove.png" width="16" />
+                                        </button>
+                                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="assets/images/cide-remove.png" width="16" /></button>
+                                        <img src="assets/images/school-1.jpg" alt="" width="60" height="60" />    
+                                        <h4 title="Lycée Saint-Charles">Lycée Saint-Charles</h4>
+                                        
+                                        <ul class="school-action">
+                                            <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <button class="btn btn-appointment btn-block">Je Postuler</button>
+                                        </div> -->
+                                        <div class="card  school-item">
+                                            <ul class="school-action">
+                                                <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                            
+                                            <img src="assets/images/school-1.jpg" alt="School 1" />
+                                            
+                                            <div class="card-content">
+                                                <h3>Lycee Saint-Charles</h3>
+                                                <p>Lycee d'enseignement <br /> general Prive Catholique <br />Sous contrat d'association</p>
+                                                <address>1 rue du Brouage<br /> 02300 Chauny<br /> Tel: 03 23 52 10 50</address>
+
+                                                <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
+                                                <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button>
+                                                <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button> -->
+                                            </div><!-- .card-content -->
+
+                                        </div><!-- .card -->
+                                    </div>
+                                    <app-compare-block [schoolDataToDisplay]="school"></app-compare-block>
 
                                 </div>
 

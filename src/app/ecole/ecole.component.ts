@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PublicService } from '../services/public.service';
 declare var $:any;
@@ -15,7 +16,8 @@ export class EcoleComponent implements OnInit {
   four : boolean = false;
   canCompare : boolean = false;
 
-  constructor(private publicService : PublicService) { }
+  constructor(private publicService : PublicService,
+              private router : Router) { }
 
   ngOnInit() {
     this.publicService.getSchoolsList()
@@ -47,6 +49,12 @@ export class EcoleComponent implements OnInit {
         this.canCompare=true;
       }
     }
+  }
+
+  onCompare(){
+    let schoolList = this.compareList;
+    console.log(schoolList);
+    this.router.navigate(['/compare-mode/', schoolList]);
   }
 
 }
