@@ -31,7 +31,7 @@ export const AppRoutes: Routes = [
     { path: 'ecole', component: EcoleComponent },
     { path: 'college', component: CollegeComponent },
     { path: 'lycee', component: LyceeComponent },
-    { path: 'etablissement', component: EtablissementComponent },
+    { path: 'etablissement/:schoolId', component: EtablissementComponent },
     { path: 'compare-mode', component: CompareModeComponent },
     { path: 'detail-appointment', component: DetailAppointmentComponent },
     { path: '**', redirectTo: ''}

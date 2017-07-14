@@ -444,9 +444,16 @@
                                     <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
                                     <label for="cmn-toggle-1"></label>
                                 </div><br /> -->
-                                <a href="compare-mode.html#compare" class="btn btn-appointment pull-right hide link-btn">Je Compare</a>
+                                <a href="compare-mode.html#compare" 
+                                    class="btn btn-appointment pull-right hide link-btn">
+                                    Je Compare
+                                </a>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-appointment pull-right popup-btn" data-toggle="modal" data-target="#filter-popup">Je Compare</button>
+                                <button type="button" 
+                                    class="btn btn-appointment pull-right popup-btn" 
+                                    data-toggle="modal" 
+                                    data-target="#filter-popup"
+                                    [disabled]="!canCompare">Je Compare</button>
                             </div>
  
                             
@@ -493,7 +500,9 @@
                                                 <input type="checkbox" name="" class="checkbox filled-in" id="compare-12" /><label for="compare-12">Places disponibles</label>
                                             </div><!-- .filter-option -->
 
-                                            <button class="btn btn-filter-pop-up btn-block btn-lg" data-dismiss="modal">Je Compare</button>
+                                            <button class="btn btn-filter-pop-up btn-block btn-lg" 
+                                                data-dismiss="modal"
+                                                >Je Compare</button>
 
                                             <!-- <a href="compare-mode.html#compare" class="btn btn-filter-pop-up btn-block btn-lg ">Je Comparer</a> -->
                                         </div>
@@ -503,9 +512,16 @@
 
                         </div><!-- .col-* -->
                         
-                        <div class="col-md-3" *ngFor="let school of schoolList">
+                        <div class="col-md-3" *ngFor="let school of schoolList; let i=index">
                             
                             <div class="card  school-item">
+                                <!--<div class="checkbox-custom">
+                                    <input type="checkbox" class="checkbox filled-in" id="school-1" />
+                                    <label for="school-1">&nbsp;</label>
+                                </div>-->
+                                <div class="checkbox-custom">
+                                    <md-checkbox [disabled]="four" (click)="onCheckbox(school._id)"></md-checkbox>
+                                </div>
                                 <app-school-card [SchoolData]="school"></app-school-card>
                             </div>
 

@@ -1,7 +1,3 @@
-<div class="checkbox-custom">
-    <input type="checkbox" class="checkbox filled-in" id="school-1" />
-    <label for="school-1">&nbsp;</label>
-</div>
 
 <ul class="school-action">
     <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
@@ -21,6 +17,8 @@
         {{ SchoolData.address.postCode }} {{ SchoolData.address.city }}<br /> 
         Tel: {{ SchoolData.address.phoneNumber }}</address>
 
-    <a routerLink="/etablissement" class="btn btn-highlighted">Détail du collège</a>
+    <button class="btn btn-highlighted"
+        (click)="onSchoolDetail()">Détail de l'école</button>
+    
     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-popup">Postuler</button> 
 </div>

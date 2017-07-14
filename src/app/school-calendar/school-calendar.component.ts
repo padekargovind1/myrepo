@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PublicService } from '../services/public.service';
 
 @Component({
   selector: 'app-school-calendar',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchoolCalendarComponent implements OnInit {
 
-  constructor() { }
+  events : any;
+  constructor(private publicService : PublicService) { }
 
   ngOnInit() {
+    this.getEvents();
+  }
+  getEvents(){
+    this.publicService.getEvent()
+      .subscribe(
+        (data)=>{
+          let response = data;
+          console.log(response);
+          this.events=response.data;
+        }
+      )
   }
 
 }

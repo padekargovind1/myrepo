@@ -13,12 +13,14 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class CubeComponent implements OnInit, AfterViewInit {
 
+  @Input() eventData: any;
+
   cube;
   constructor() {
     this.createCube();
   }
 
-  ngOnInit() {
+  ngOnInit() {    
   }
 
   ngAfterViewInit() {

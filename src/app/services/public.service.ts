@@ -16,4 +16,19 @@ export class PublicService {
     return this.http.post(SCHOOLS_API+"schools", {headers: this.headers})
       .map((response)=>response.json());
   }
+
+  getSchoolById(schoolId : string){
+    return this.http.get(SCHOOLS_API+"schools/"+schoolId)
+      .map((response)=>response.json());
+  }
+
+  getEvent() : Observable<any>{
+    return this.http.get(SCHOOLS_API+'/events')
+      .map((response)=>response.json());
+  }
+
+  getBrochure(): Observable<any>{
+    return this.http.get(SCHOOLS_API+'/brochures')
+      .map((response)=>response.json());
+  }
 }

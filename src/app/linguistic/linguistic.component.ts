@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SchoolService } from '../services/school.service';
 
 @Component({
   selector: 'app-linguistic',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinguisticComponent implements OnInit {
 
-  constructor() { }
+  listTrips : any;
+
+  constructor(private schoolService : SchoolService) { 
+    this.getTrips();
+  }
 
   ngOnInit() {
+  }
+
+  getTrips(){
+    this.schoolService.getTrips()
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          if(data.code==400){
+            console.log(data.message);
+          } else {
+            this.listTrips = data;
+            // console.log(this.listTrips);
+          }
+        }
+      )
   }
 
 }
