@@ -13,7 +13,7 @@ export class SchoolCardComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit() {
-    console.log(this.SchoolData, this.SchoolData._id);
+    // console.log(this.SchoolData, this.SchoolData._id);
   }
 
   onSchoolDetail(){

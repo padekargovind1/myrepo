@@ -447,7 +447,11 @@
                                 </div><br /> -->
                                 <a href="compare-mode.html#compare" class="btn btn-appointment pull-right hide link-btn">Je Compare</a>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-appointment pull-right popup-btn" data-toggle="modal" data-target="#filter-popup">Je Compare</button>
+                                <button type="button" 
+                                    class="btn btn-appointment pull-right popup-btn" 
+                                    data-toggle="modal" 
+                                    data-target="#filter-popup"
+                                    [disabled]="!canCompare">Je Compare</button>
                             </div>
  
                             
@@ -504,9 +508,16 @@
 
                         </div><!-- .col-* -->
                         
-                        <div class="col-md-3" *ngFor="let school of schoolList">
+                        <div class="col-md-3" *ngFor="let school of schoolList; let i=index">
         
                             <div class="card  school-item">
+                                <div class="checkbox-custom">
+                                    <md-checkbox [disabled]="four" (click)="onCheckbox(school._id)"></md-checkbox>
+                                </div>
+                                <!--<div class="checkbox-custom">
+                                    <input type="checkbox" class="checkbox filled-in" id="school-1" />
+                                    <label for="school-1">&nbsp;</label>
+                                </div>-->
                                 <app-school-card [SchoolData]="school"></app-school-card>
                             </div>
 
