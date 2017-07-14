@@ -8,6 +8,7 @@ import { PublicService } from '../services/public.service';
 })
 export class BrochureComponent implements OnInit, AfterViewInit {
 
+    listBrochures =[];
   constructor(private publicService : PublicService) { 
       this.getBrochure();
   }
@@ -83,9 +84,15 @@ export class BrochureComponent implements OnInit, AfterViewInit {
   getBrochure(){
     this.publicService.getBrochure()
         .subscribe(
-            (response)=>{
-                let data = response.data;
-                console.log(data);
+            (data)=>{
+                let response = data;
+                // console.log(response.data);
+                if(response.code==400){
+                    console.log(response.message);
+                } else {
+                    this.listBrochures=response.data;
+                    console.log(this.listBrochures);
+                }
             }
         )
   }
