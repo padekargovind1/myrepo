@@ -34,7 +34,9 @@
         "../node_modules/fullcalendar/dist/fullcalendar.min.js",
         "assets/js/prettify.js",
         "assets/js/jquery.cubeportfolio.min.js",
-        "assets/js/cube.js"
+        "assets/js/cube.js",
+        "assets/js/owl.carousel.js",
+        "assets/js/main.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

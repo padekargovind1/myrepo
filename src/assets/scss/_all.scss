@@ -856,10 +856,6 @@ label.custom-radio.sad:before { border: none;}
         #rootwizard .nav-pills>li>a span { display: inline-block; vertical-align: middle;}
         #rootwizard .nav-pills>li>a span.helper { height: 100%; }
 
-.mat-tab-label-container { background: #c5c7c6; padding: 3px;}
-.mat-tab-label:focus, .mat-tab-label-active { background: #00bc50; color: #fff; opacity: 1;}
-.mat-ink-bar { background-color: transparent;}
-
 .tab-pane { padding: 0 20px 40px; }
 
 .appointment-text h3 { margin-top: 0; }
@@ -875,6 +871,19 @@ label.custom-radio.sad:before { border: none;}
 
 .second-title { margin-bottom: 0; }
 .advisor-img { width: 100px; }
+
+
+
+/**
+ * Material design custom
+ */
+.mat-tab-label-container { background: #c5c7c6; padding: 3px;}
+.mat-tab-label:focus, .mat-tab-label-active { background: #00bc50; color: #fff; opacity: 1;}
+.mat-ink-bar { background-color: transparent;}
+.mat-select-underline, .mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-underline { background-color: transparent;}
+.mat-select-arrow { display: none;}
+.mat-select-placeholder.mat-floating-placeholder { display: none;}
+
 
 
 
@@ -992,6 +1001,9 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
 .select-custom { position: relative; margin-right: 15px;}
    /* .select-custom:after { content: "\f078"; display: block; position: absolute; font-family: 'FontAwesome'; background: #393649; padding: 0 4px; border-radius: 4px; right: 10px; top: 10px;}*/
     .select-custom select { background: #fff url(./assets/images/cide-dropbox-arrow.png) no-repeat 97% 48%; -webkit-appearance: none; padding-right: 30px; font-weight: 700;}
+    .select-custom .form-control { width: 100%;}
+
+    .searchform .select-custom .form-control { height: 40px;}
   .select2-container { width: 100% !important; }
 
   .select2-results__option[aria-selected] { color: #333; }

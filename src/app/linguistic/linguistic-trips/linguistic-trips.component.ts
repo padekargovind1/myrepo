@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { SchoolService } from '../../services/school.service';
+
+
+declare var $:any;
+
+// import '../../../assets/js/main.js';
 
 @Component({
   selector: 'app-linguistic-trips',
   templateUrl: './linguistic-trips.component.html',
   styleUrls: ['./linguistic-trips.component.css']
 })
-export class LinguisticTripsComponent implements OnInit {
+export class LinguisticTripsComponent implements OnInit, AfterViewInit {
 
   constructor(private schoolService : SchoolService) { }
 
@@ -37,5 +42,21 @@ export class LinguisticTripsComponent implements OnInit {
     //   }
     // )
   }
+
+
+    ngAfterViewInit() { 
+
+        // console.log('test');
+
+        (<any> $('.school-carousel')).slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: false,
+            autoplaySpeed: 2000,
+            arrows: true,
+            variableWidth: true
+        });
+    }
 
 }

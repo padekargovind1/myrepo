@@ -48,6 +48,7 @@ import { EtablissementComponent } from './etablissement/etablissement.component'
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
 import { SchoolCardComponent } from './shared/school-card/school-card.component';
+import { LandingPage1Component } from './landing-page-1/landing-page-1.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { SchoolCardComponent } from './shared/school-card/school-card.component'
     EtablissementComponent,
     CompareModeComponent,
     DetailAppointmentComponent,
-    SchoolCardComponent
+    SchoolCardComponent,
+    LandingPage1Component
   ],
   imports: [
     BrowserModule,

@@ -1,40 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 //import * as $ from 'jquery';
 // declare var cube: any;
 
 //import 'assets/js/cube.js';
 
-declare var $:any;
-declare var cubeBox: any;
 
 @Component({
   selector: 'app-cube',
   templateUrl: './cube.component.html',
   styleUrls: ['./cube.component.scss']
 })
-export class CubeComponent implements OnInit {
+export class CubeComponent implements OnInit, AfterViewInit {
 
   cube;
   constructor() {
     this.createCube();
-      // (<any> $('.cube-1')).cubeBox({
-      //     'speed':400,
-      //     'width': 300,
-      //     'height': 400,
-      //     'opacity': 1,
-      //     'activeOpacity':1,
-      //     'drag':false,
-      //     'autoPlay':false
-      // });
   }
 
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+      this.createCube();
+  }
+
   createCube(){
     // this.cube = $('.cube-wrapper');
-      
+      (<any> $('.cube-1')).cubeBox({
+          'speed':400,
+          'width': 300,
+          'height': 400,
+          'opacity': 1,
+          'activeOpacity':1,
+          'drag':false,
+          'autoPlay':false
+      }); 
 
       
       // if(this.cube.length !== 0) {
