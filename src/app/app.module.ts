@@ -88,7 +88,7 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     CompareModeComponent,
     DetailAppointmentComponent,
     SchoolCardComponent,
-    LandingPage1Component
+    LandingPage1Component,
     EtablissementEssentielComponent,
     EtablissementFormationComponent,
     EtablissementEvenementComponent,

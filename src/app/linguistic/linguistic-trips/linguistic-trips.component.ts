@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-=======
-import { Component, OnInit, Input } from '@angular/core';
->>>>>>> 22d066a2a529834c1e6faa5da8ef8850af536cf5
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 
 import { SchoolService } from '../../services/school.service';
 
@@ -16,13 +12,8 @@ declare var $:any;
   templateUrl: './linguistic-trips.component.html',
   styleUrls: ['./linguistic-trips.component.css']
 })
-<<<<<<< HEAD
 export class LinguisticTripsComponent implements OnInit, AfterViewInit {
-=======
-export class LinguisticTripsComponent implements OnInit {
-  @Input() tripData : any;
->>>>>>> 22d066a2a529834c1e6faa5da8ef8850af536cf5
-
+  @Input() tripData;
   constructor(private schoolService : SchoolService) { 
     setTimeout(
       ()=>{
