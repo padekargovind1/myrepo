@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PublicService } from '../services/public.service';
+import { CompareService } from '../services/compare.service';
 
 @Component({
   selector: 'app-college',
@@ -9,14 +10,20 @@ import { PublicService } from '../services/public.service';
   styleUrls: ['./college.component.scss']
 })
 export class CollegeComponent implements OnInit {
-
   schoolList : any;
   compareList= [];
+  compareListFilter = [];
+  filterList = ["Cycles & Classes", "Langues", "Spécialités", 
+                "Internat", "Stages", "Restauration", 
+                "Externat", "Status", "Ens. Confessionel", 
+                "Sections", "Diplôme", "Options", "Places Disponible"]
   four : boolean = false;
   canCompare : boolean = false;
+  canFilter : boolean = false;
 
   constructor(private publicService : PublicService,
-              private router : Router) { }
+              private router : Router,
+              private compareService : CompareService) { }
 
   ngOnInit() {
     this.publicService.getSchoolsList()
@@ -27,6 +34,9 @@ export class CollegeComponent implements OnInit {
           console.log(this.schoolList);
         }
       )
+    for (let list of this.filterList){
+      this.compareListFilter.push(false);
+    }
   }
 
   onCheckbox(schoolId){
@@ -51,9 +61,29 @@ export class CollegeComponent implements OnInit {
     }
   }
 
+  onFilterCheckbox(index){
+    // console.log(index, this.compareListFilter[index]);
+    this.compareListFilter[index] = !this.compareListFilter[index];
+    this.canFilter = this.checkFilterBox();
+    console.log(this.canFilter);
+  }
+
+  checkFilterBox(){
+    let i = 0;
+    for(let filter of this.compareListFilter){
+      console.log(filter);
+      if(filter==true){
+        return true;
+      }
+      i++;
+    }
+    return false;
+  }
+
   onCompare(){
     let schoolList = this.compareList;
-    console.log(schoolList);
+    console.log(schoolList, this.compareListFilter);
+    this.compareService.storeCompareFilter(this.compareListFilter);
     this.router.navigate(['/compare-mode/', schoolList]);
   }
 

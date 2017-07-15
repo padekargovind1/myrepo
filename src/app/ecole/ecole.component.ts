@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { PublicService } from '../services/public.service';
+import { CompareService } from '../services/compare.service';
 declare var $:any;
 
 @Component({
@@ -15,9 +16,16 @@ export class EcoleComponent implements OnInit, AfterViewInit {
   compareList= [];
   four : boolean = false;
   canCompare : boolean = false;
+  canFilter : boolean = false;
+  compareListFilter = [];
+  filterList = ["Cycles & Classes", "Langues", "Spécialités", 
+                "Internat", "Stages", "Restauration", 
+                "Externat", "Status", "Ens. Confessionel", 
+                "Sections", "Diplôme", "Options", "Places Disponible"]
 
   constructor(private publicService : PublicService,
-              private router : Router) { }
+              private router : Router,
+              private compareService : CompareService) { }
 
   ngOnInit() {
     this.publicService.getSchoolsList()
@@ -27,6 +35,9 @@ export class EcoleComponent implements OnInit, AfterViewInit {
           this.schoolList=response.data;
         }
       )
+    for (let list of this.filterList){
+      this.compareListFilter.push(false);
+    }
   }
 
   ngAfterViewInit() {
@@ -129,9 +140,29 @@ export class EcoleComponent implements OnInit, AfterViewInit {
     }
   }
 
+  onFilterCheckbox(index){
+    // console.log(index, this.compareListFilter[index]);
+    this.compareListFilter[index] = !this.compareListFilter[index];
+    this.canFilter = this.checkFilterBox();
+  }
+
+  checkFilterBox(){
+    let i = 0;
+    for(let filter of this.compareListFilter){
+      console.log(filter);
+      if(filter==true){
+        return true;
+      }
+      i++;
+    }
+    return false;
+  }
+
+
   onCompare(){
     let schoolList = this.compareList;
     console.log(schoolList);
+    this.compareService.storeCompareFilter(this.compareListFilter);
     this.router.navigate(['/compare-mode/', schoolList]);
   }
 

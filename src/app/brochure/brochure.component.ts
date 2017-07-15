@@ -8,7 +8,7 @@ import { PublicService } from '../services/public.service';
 })
 export class BrochureComponent implements OnInit, AfterViewInit {
 
-    listBrochures =[];
+    listBrochures = [];
   constructor(private publicService : PublicService) { 
       this.getBrochure();
   }

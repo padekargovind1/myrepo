@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { PublicService } from '../services/public.service';
+import { CompareService } from '../services/compare.service';
 
 @Component({
   selector: 'app-compare-mode',
@@ -12,12 +13,19 @@ export class CompareModeComponent implements OnInit {
 
   schoolToCompare =[];
   schoolDataToDisplay : [any]=[null];
+  compareListFilter : any;
 
   constructor(private location : Location,
               private route : ActivatedRoute,
-              private publicService : PublicService) { }
+              private publicService : PublicService,
+              private compareService : CompareService) { }
 
   ngOnInit() {
+    this.compareListFilter = this.compareService.getCompareFilter();
+    if(this.compareListFilter[0]==null){
+      this.location.back();
+    }
+    // console.log(this.compareListFilter);
     console.log(this.route.snapshot.params);
     this.schoolToCompare.push(this.route.snapshot.params[0]);
     this.schoolToCompare.push(this.route.snapshot.params[1]);
