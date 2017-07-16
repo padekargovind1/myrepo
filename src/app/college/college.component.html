@@ -429,7 +429,12 @@
                         <div class="col-md-12">
                             
                             <div class="result-text">
-                                <h3>Mon résultat pour: Classe PS - <span class="fa fa-map-marker"></span> Lyon</h3>
+                                <h3 *ngIf="searchFilter[0]!='' || searchFilter[2]!=''">Mon résultat pour: 
+                                    <span *ngIf="searchFilter[0]!=''">{{ 'Classe ' + searchFilter[0] }}</span> 
+                                    <span class="fa fa-map-marker"
+                                        *ngIf="searchFilter[1]!=''"></span> 
+                                    <span *ngIf="searchFilter[1]!=''">{{ ' - ' + searchFilter[1] }}</span>
+                                    <span *ngIf="searchFilter[2]!=''">{{ searchFilter[2] }}</span></h3>
                                 <p>Recherche Affine: Aides Financieres - Bourse / Lv1 Anglais / Place Disponibles <a href="#"><span class="fa fa-times"></span></a></p>
                                 
                                 

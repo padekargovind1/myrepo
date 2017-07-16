@@ -20,12 +20,14 @@ export class CollegeComponent implements OnInit {
   four : boolean = false;
   canCompare : boolean = false;
   canFilter : boolean = false;
+  searchFilter = [];
 
   constructor(private publicService : PublicService,
               private router : Router,
               private compareService : CompareService) { }
 
   ngOnInit() {
+    this.getSearchFilter();
     this.publicService.getSchoolsList()
       .subscribe(
         (response)=>{
@@ -37,6 +39,11 @@ export class CollegeComponent implements OnInit {
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
+  }
+
+  getSearchFilter(){
+    this.searchFilter = this.publicService.getSearchSchool();
+    console.log(this.searchFilter);
   }
 
   onCheckbox(schoolId){

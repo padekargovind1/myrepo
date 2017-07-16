@@ -18,6 +18,7 @@ export class EcoleComponent implements OnInit, AfterViewInit {
   canCompare : boolean = false;
   canFilter : boolean = false;
   compareListFilter = [];
+  searchFilter = [];
   filterList = ["Cycles & Classes", "Langues", "Spécialités", 
                 "Internat", "Stages", "Restauration", 
                 "Externat", "Status", "Ens. Confessionel", 
@@ -28,6 +29,7 @@ export class EcoleComponent implements OnInit, AfterViewInit {
               private compareService : CompareService) { }
 
   ngOnInit() {
+    this.getSearchFilter();
     this.publicService.getSchoolsList()
       .subscribe(
         (response)=>{
@@ -116,6 +118,11 @@ export class EcoleComponent implements OnInit, AfterViewInit {
                   },
               ]
           });
+  }
+
+  getSearchFilter(){
+    this.searchFilter = this.publicService.getSearchSchool();
+    console.log(this.searchFilter);
   }
 
   onCheckbox(schoolId){
