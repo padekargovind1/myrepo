@@ -46,7 +46,6 @@ export class LyceeComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    this.getSearchFilter();
     this.getSchoolList();
     for (let list of this.filterList){
       this.compareListFilter.push(false);
@@ -65,6 +64,7 @@ export class LyceeComponent implements OnInit {
           this.schoolList = response.data;
           this.schoolListFilter = response.data;
           console.log(this.schoolList);
+          this.getSearchFilter();
         }
       )
   }
@@ -72,6 +72,35 @@ export class LyceeComponent implements OnInit {
   getSearchFilter(){
     this.searchFilter = this.publicService.getSearchSchool();
     console.log(this.searchFilter);
+    this.patchValue();
+    if(this.searchFilter[0]!="" && this.searchFilter[1]!="" && this.searchFilter[2]==""){
+      this.schoolListFilter = this.schoolList.filter(
+      school => {
+        return school.cycles[0].cycle.classes[0].className == this.searchFilter[0] &&
+          school.address.city == this.searchFilter[1];
+      })
+    } else if (this.searchFilter[0]=="" && this.searchFilter[1]=="" && this.searchFilter[2]!=""){
+      this.schoolListFilter = this.schoolList.filter(
+      school => {
+        return school.longName==this.searchFilter[2] || school.shortName==this.searchFilter[2]
+      })
+    } else if (this.searchFilter[0]!="" && this.searchFilter[1]!="" && this.searchFilter[2]!=""){
+      this.schoolListFilter = this.schoolList.filter(
+      school => {
+        return school.longName==this.searchFilter[2] || school.shortName==this.searchFilter[2] &&
+          school.cycles[0].cycle.classes[0].className == this.searchFilter[0] && school.address.city == this.searchFilter[1]
+      })
+    } else {
+      this.schoolListFilter=this.schoolList;
+    }
+  }
+
+  patchValue(){
+    this.searchForm.patchValue({
+      classe : this.searchFilter[0],
+      lieu : this.searchFilter[1],
+      etablissement : this.searchFilter[2]
+    })
   }
 
   onCheckbox(schoolId){
@@ -136,7 +165,7 @@ export class LyceeComponent implements OnInit {
       this.searchForm.controls.etablissement.value
     ]
     this.publicService.storeSearchSchool(data);
-    this.searchFilter = this.publicService.getSearchSchool();
+    this.getSearchFilter();
   }
 
   filterLieu(event){
@@ -287,7 +316,12 @@ export class LyceeComponent implements OnInit {
     console.log("clean search")
     this.languageAdvancedSearch=["", "", "", "", "", "", "", "", "", ""];
     this.advancedSearch=[];
-    this.advancedSearchToDisplay=[]
+    this.advancedSearchToDisplay=[];
+    this.searchForm.reset();
+    this.buildForm();
+    this.searchFilter = ["", "", ""];
+    this.publicService.storeSearchSchool(this.searchFilter);
+    this.getSearchFilter();
   }
 
   cleanAdvancedSearch(){
