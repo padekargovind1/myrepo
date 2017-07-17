@@ -36,7 +36,6 @@ export class CollegeComponent implements OnInit {
   langues = [];
   languesRegio = [];
   diplomes = [];
-  test=false;
   optionValue: string="";
 
   constructor(private publicService : PublicService,
