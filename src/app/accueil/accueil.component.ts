@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
 
 declare var wheelnav: any;
+declare var sliceTransform: any;
 
 @Component({
   selector: 'app-accueil',
