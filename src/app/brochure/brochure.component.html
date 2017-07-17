@@ -437,11 +437,11 @@ Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires 
                             <div class="cbp-filter-counter"></div>
                         </div>
                     </div>
-                    <div *ngFor="let brochure of listBrochures">   
-                        <div class="cbp-item graphic brochure-item">
-                            <app-brochure-card [brochureData]="brochure"></app-brochure-card>
-                        </div>
-                    </div> 
+                    
+                    <div id="js-grid-juicy-projects" class="cbp">
+                        
+                            <app-brochure-card [brochureData]="brochure" *ngFor="let brochure of listBrochures"></app-brochure-card>
+                    </div>
 <!--
                     <div id="js-grid-juicy-projects" class="cbp"
                         *ngFor="let brochure of listBrochures">

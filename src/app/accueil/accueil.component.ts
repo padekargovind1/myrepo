@@ -5,6 +5,7 @@ import { PublicService } from '../services/public.service';
 import * as $ from 'jquery';
 
 declare var wheelnav: any;
+declare var sliceTransform: any;
 
 @Component({
   selector: 'app-accueil',
