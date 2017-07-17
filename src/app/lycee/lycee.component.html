@@ -15,48 +15,75 @@
 
                                 <div class="col-md-11">
                                     <div class="row">
-                                        <div class="col-md-4  col-xs-6">
-                                            <div class="form-group">
-                                                <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="class">
-                                                        <option value="" disabled selected hidden>Classe</option>
-                                                        <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                            <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                                            <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                                            <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
-                                                        </optgroup>
-                                                        <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                            <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                                            <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                                            <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
-                                                        </optgroup>
-                                                        <optgroup label="Cycle 3 : Consolidation">
-                                                            <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                                            <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                                            <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </label>
-                                            </div>
-                                        </div><!-- .col-* -->
+                                        <form [formGroup]="searchForm">
+                                            <div class="col-md-4  col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="select-custom" for="class">
+                                                        <select name="class" class="form-control" id="class"
+                                                            [formControl]="searchForm.controls['classe']">
+                                                            <option value="" disabled selected hidden>Classe</option>
+                                                            <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                                <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                                <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 3 : Consolidation">
+                                                                <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                            </div><!-- .col-* -->
 
-                                        <div class="col-md-4  col-xs-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Lieu" />
+                                            <div class="col-md-4  col-xs-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Lieu"
+                                                        [formControl]="searchForm.controls['lieu']" 
+                                                        [mdAutocomplete]="auto"
+                                                        (keyup)="filterLieu($event)"/>
+                                                    <md-autocomplete #auto="mdAutocomplete">
+                                                        <md-option *ngFor="let option of options" [value]="option.cityName">
+                                                            {{ option.cityName }}
+                                                        </md-option>
+                                                    </md-autocomplete>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-md-4  col-xs-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Nom d'etablissement" />
+                                            <div class="col-md-4  col-xs-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" 
+                                                        placeholder="Nom d'etablissement" 
+                                                        [formControl]="searchForm.controls['etablissement']"
+                                                        [mdAutocomplete]="autoSchool"
+                                                        (keyup)="filterSchool($event)"/>
+                                                    <md-autocomplete #autoSchool="mdAutocomplete">
+                                                        <md-option *ngFor="let school of schoolsOptions" 
+                                                            [value]="school.longName">
+                                                            {{ school.longName }}
+                                                        </md-option>
+                                                    </md-autocomplete>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div><!-- .row -->
                                 </div><!-- .col-* -->
                                 
                                 <div class="col-md-1">
                                 <!-- <div class="form-group"> -->
-                                    <button class="btn btn-search"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-search" type="submit"
+                                        [disabled]="searchForm.controls['etablissement'].value.length==0 && 
+                                        (searchForm.controls['lieu'].value.length==0 || 
+                                        searchForm.controls['classe'].value.length==0)"
+                                        (click)="onSubmitSearch()">
+                                        <i class="fa fa-search"></i>
+                                    </button>
                                 <!-- </div> -->
                                 </div>
 
@@ -428,7 +455,12 @@
                         <div class="col-md-12">
                             
                             <div class="result-text">
-                                <h3>Mon résultat pour: Classe PS - <span class="fa fa-map-marker"></span> Lyon</h3>
+                                <h3 *ngIf="searchFilter[0]!='' || searchFilter[2]!=''">Mon résultat pour: 
+                                    <span *ngIf="searchFilter[0]!=''">{{ 'Classe ' + searchFilter[0] }}</span> 
+                                    <span class="fa fa-map-marker"
+                                        *ngIf="searchFilter[1]!=''"></span> 
+                                    <span *ngIf="searchFilter[1]!=''">{{ ' - ' + searchFilter[1] }}</span>
+                                    <span *ngIf="searchFilter[2]!=''">{{ searchFilter[2] }}</span></h3>
                                 <p>Recherche Affine: Aides Financieres - Bourse / Lv1 Anglais / Place Disponibles <a href="#"><span class="fa fa-times"></span></a></p>
                                 
                                 
@@ -463,46 +495,20 @@
                                         <div class="modal-body">
                                             <h3>Ce que vous voulez compare?</h3>
 
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-1" /><label for="compare-1">Spécialités</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-2" /><label for="compare-2">Internat</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-3" /><label for="compare-3">Période</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-4" /><label for="compare-4">Restauration</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-5" /><label for="compare-5">Externat</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-6" /><label for="compare-6">Statut</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-7" /><label for="compare-7">Ens. confessionel</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-8" /><label for="compare-8">Langues</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-9" /><label for="compare-9">Sections</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-10" /><label for="compare-10">Diplômés</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-11" /><label for="compare-11">Options</label>
-                                            </div><!-- .filter-option -->
-                                            <div class="filter-option">
-                                                <input type="checkbox" name="" class="checkbox filled-in" id="compare-12" /><label for="compare-12">Places disponibles</label>
-                                            </div><!-- .filter-option -->
+                                            <div *ngFor="let filter of filterList; let i=index">
+                                                <div class="filter-option">
+                                                    <md-checkbox  name="" 
+                                                        class="checkbox filled-in"
+                                                        (click)="onFilterCheckbox(i)">
+                                                    <label>{{ filter }}</label>
+                                                    </md-checkbox>
+                                                </div><!-- .filter-option -->
+                                            </div>
 
                                             <button class="btn btn-filter-pop-up btn-block btn-lg" 
                                                 data-dismiss="modal"
-                                                >Je Compare</button>
+                                                (click)="onCompare()"
+                                                [disabled]="!canFilter">Je Compare</button>
 
                                             <!-- <a href="compare-mode.html#compare" class="btn btn-filter-pop-up btn-block btn-lg ">Je Comparer</a> -->
                                         </div>
@@ -546,21 +552,4 @@
 
             <div class="ad-holder">
                 <img src="assets/images/ad/ad.jpg" alt="Ad" />
-            </div>
-
-            <div class="survey-holder">
-
-                <h4 class="survey-title">Sondage</h4>
-                
-                <p>Comment avez-vousconnu enseignement-prive.fr?</p>
-
-                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Le guide pratique des ecole privees</span></label></p>
-                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un moteur de recherche sur internet</span></label></p>
-                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un etablissement scolaire</span></label></p>
-                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un centre d'information et d'orientation</span></label></p>
-                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Des amis</span></label></p>
-                <p><label class="custom-radio"><input type="radio" name="survey"> <span>Une publication</span></label></p>
-
-                <button type="button" class="btn btn-vote  btn-xs  btn-block">VOTE</button>
-
             </div>

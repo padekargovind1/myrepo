@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-brochure-card',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brochure-card.component.scss']
 })
 export class BrochureCardComponent implements OnInit {
-
+  @Input() brochureData : any;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.brochureData);
   }
 
 }

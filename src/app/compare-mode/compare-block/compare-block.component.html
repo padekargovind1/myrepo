@@ -1,140 +1,238 @@
-<div class="top-compare-table">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="assets/images/cide-remove.png" width="16" /></button>
-    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="assets/images/cide-remove.png" width="16" /></button>
-    <img src="assets/images/school-1.jpg" alt="" width="60" height="60" />    
-    <h4 title="Lycée Saint-Charles">Lycée Saint-Charles</h4>
-    
-    <ul class="school-action">
-        <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
-    </ul>
-    <div class="col-md-10 col-md-offset-1">
-        <button class="btn btn-appointment btn-block">Je Postuler</button>
-    </div> -->
-    <div class="card  school-item">
-        <ul class="school-action">
-            <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
-        </ul>
-        
-        <img src="assets/images/school-1.jpg" alt="School 1" />
-        
-        <div class="card-content">
-            <h3>Lycee Saint-Charles</h3>
-            <p>Lycee d'enseignement <br /> general Prive Catholique <br />Sous contrat d'association</p>
-            <address>1 rue du Brouage<br /> 02300 Chauny<br /> Tel: 03 23 52 10 50</address>
 
-            <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
-            <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button>
-            <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button> -->
-        </div><!-- .card-content -->
-
-    </div><!-- .card -->
-</div>
 
 <div class="item-compare-table">
 
-    <ul class="compare-item class-cycle center">
+    <ul class="compare-item class-cycle center"
+        *ngIf="compareListFilter[0]">
         <li class="title"><h5>&nbsp;</h5></li>
         <li><span class="subtitle">&nbsp;</span>
             <div class="collapse in ecole">
                 <ul class="compare-item">
-                    <li>PS - MS - GS</li>
-                    <li></li>
+                    <li>{{ schoolDataToDisplay.cycles[0].cycle.classes[0].className }}</li>
+                    <li>{{ schoolDataToDisplay.cycles[1].cycle.classes[0].className }}</li>
                 </ul>
             </div>
         </li>
         <li><span class="subtitle">&nbsp;</span>
             <div class="collapse in college">
                 <ul class="compare-item">
-                    <li>PS - MS - GS</li>
-                    <li></li>
+                    <li>{{ schoolDataToDisplay.cycles[2].cycle.classes[0].className }}</li>
+                    <li>{{ schoolDataToDisplay.cycles[3].cycle.classes[0].className }}</li>
                 </ul>
             </div>
         </li>
-        <li><span class="subtitle">&nbsp;</span></li>
+        <li><span class="subtitle">&nbsp;</span>
+            <div class="collapse in college">
+                <ul class="compare-item">
+                    <li>{{ schoolDataToDisplay.cycles[4].cycle.classes[0].className }}</li>
+                    <li>{{ schoolDataToDisplay.cycles[5].cycle.classes[0].className }}</li>
+                </ul>
+            </div>
+        </li>
     </ul>
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[1]">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in language">
                 <ul class="compare-item">
-                    <li>English</li>
-                    <li>Germany</li>
-                    <li>Italian</li>
+                    <li>{{ schoolDataToDisplay.cycles[0].cycle.language.lv1.comment }}</li>
+                    <li>{{ schoolDataToDisplay.cycles[0].cycle.language.lv2.comment }}</li>
+                    <li>{{ schoolDataToDisplay.cycles[0].cycle.language.lv3.comment }}</li>
                 </ul>
             </div>
         </li>
     </ul>
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[2]">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in specialities">
                 <ul class="compare-item">
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.specifications.handicaped.value; else field1">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field1>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.specifications.finance.value; else field2">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field2>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.specifications.foreignFrench.value; else field3">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field3>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.specifications.advanced.value; else field4">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field4>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.specifications.flexibleTimeframe.value; else field5">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field5>
+                        <li >&nbsp;</li>
+                    </ng-template>
                 </ul>
             </div>
         </li>
     </ul>
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[3]">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in internat">
                 <ul class="compare-item">
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li>&nbsp;</li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.onSite.value; else field6">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field6>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.notOnSite.value; else field7">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field7>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.residence.value; else field8">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field8>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.weekdays.value; else field9">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field9>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.fulltime.value; else field10">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field10>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.someWeekEnds.value; else field11">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field11>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.mixed.value; else field12">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field12>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.girls.value; else field13">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field13>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.boys.value; else field14">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field14>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.individual.value; else field15">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field15>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding['2to4'].value; else field16">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field16>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding['5to8'].value; else field17">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field17>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.boarding.dormitories.value; else field18">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field18>
+                        <li >&nbsp;</li>
+                    </ng-template>
                 </ul>
             </div>
         </li>
     </ul>
 
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[4]">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in stages">
                 <ul class="compare-item">
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.extraCuriculumn.preIntakeTraining.value; else field19">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field19>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.extraCuriculumn.smallHolidaysTraining.value; else field20">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field20>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.extraCuriculumn.bigHolidaysTraining.value; else field21">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field21>
+                        <li >&nbsp;</li>
+                    </ng-template>
                 </ul>
             </div>
         </li>
     </ul>
 
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[5]">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in restauration">
                 <ul class="compare-item">
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li>&nbsp;</li>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.canteen.selfService.value; else field22">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field22>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.canteen.serviceAtTable.value; else field23">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field23>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.canteen.cafetaria.value; else field24">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field24>
+                        <li >&nbsp;</li>
+                    </ng-template>
                 </ul>
             </div>
         </li>
     </ul>
 
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[6]">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in externat">
                 <ul class="compare-item">
@@ -146,7 +244,8 @@
         </li>
     </ul>
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[7]">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in status">
                 <ul class="compare-item">
@@ -169,31 +268,36 @@
     </ul>
 
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[8]">
         <li class="title"><h5>Laic</h5></li>
     </ul>
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[9]">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in section">
                 <ul class="compare-item">
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li><img width="20" src="assets/images/cide-true.png"></li>
-                    <li>&nbsp;</li>
+                    <li>{{ schoolDataToDisplay.cycles[0].cycle.sections.europieanSections[0] }}</li>
+                    <li>{{ schoolDataToDisplay.cycles[0].cycle.sections.bilangualSections[0] }}</li>
+                    <li>{{ schoolDataToDisplay.cycles[0].cycle.sections.sportSections[0] }}</li>    
                 </ul>
             </div>
         </li>
     </ul>
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[10]">
         <li class="title"><h5>&nbsp;</h5></li>
     </ul>
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[11]">
         <li class="title"><h5>&nbsp;</h5></li>
     </ul>
 
-    <ul class="compare-item center class-cycle">
+    <ul class="compare-item center class-cycle"
+        *ngIf="compareListFilter[12]">
         <li class="title"><h5>&nbsp;</h5></li>
     </ul>
 

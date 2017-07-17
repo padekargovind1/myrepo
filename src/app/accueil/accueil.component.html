@@ -55,180 +55,270 @@
           </defs>
         </svg>
         
-            <div fxFlex>
+            <div class="container-fluid">
+        
+            <div class="row">
+                <!-- <section class="col-md-6 col-lg-5"> -->
                     <div id="tabwheel"></div>
+                <!-- </section> -->
+                <!-- <section class="col-md-6 col-lg-7"> -->
                     <div class="wheel-content">
-                        <div class="ecole-content  content-holder   animated "  data-image="assets/images/new-landing-page-2/ecole.jpg">
-                            
+                        <div class="ecole-content  content-holder   animated "  
+                            data-image="assets/images/new-landing-page-2/ecole.jpg">
                             <h2>ÉCOLE</h2>
                             <h3>Maternelle / Primaire</h3>
-                            
-                            <div class="form-wrap">
+                            <div class="form-wrap row  ">
+                                <form [formGroup]="searchForm" 
+                                    (ngSubmit)="onSubmitSearch('ecole')">
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="select-custom" for="class">
+                                                        <select name="class" class="form-control" id="class"
+                                                            [formControl]="searchForm.controls['classe']">
+                                                            <option value="" disabled selected hidden>Classe</option>
+                                                            <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                                <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                                <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 3 : Consolidation">
+                                                                <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                            </div><!-- .col-* -->
 
-                                    <div fxLayout="row" fxLayoutGap="10px">
-                                        <div fxFlex="30">
-                                            <div class="form-group">
-                                                <label class="select-custom" for="class">
-                                                    <md-select placeholder="Classe" class="form-control" id="class">
-                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <md-optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                            <md-option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</md-option>
-                                                            <md-option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</md-option>
-                                                            <md-option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</md-option>
-                                                        </md-optgroup>
-                                                        <md-optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                            <md-option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</md-option>
-                                                            <md-option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</md-option>
-                                                            <md-option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</md-option>
-                                                        </md-optgroup>
-                                                        <md-optgroup label="Cycle 3 : Consolidation">
-                                                            <md-option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</md-option>
-                                                            <md-option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</md-option>
-                                                            <md-option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</md-option>
-                                                        </md-optgroup>
-                                                    </md-select>
-                                                </label>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Lieu" 
+                                                    (keyup)="filterLieu($event)"
+                                                    [mdAutocomplete]="auto"
+                                                    [formControl]="searchForm.controls['lieu']"/>
+
+                                                    <md-autocomplete #auto="mdAutocomplete">
+                                                        <md-option *ngFor="let option of options" [value]="option.cityName">
+                                                            {{ option.cityName }}
+                                                        </md-option>
+                                                    </md-autocomplete>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div fxFlex="30">
-                                            <!-- <md-input-container> -->
-                                                <input placeholder="Lieu" class="form-control">
-                                            <!-- </md-input-container> -->
-                                        </div>
-
-                                        <div fxFlex="30">
-                                            <!-- <md-input-container> -->
-                                                <input placeholder="Nom d'établissement" class="form-control">
-                                            <!-- </md-input-container> -->
-                                        </div>
-                                        <div fxFlex="10">
-                                            <button class="btn btn-search" type="submit">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" 
+                                                        placeholder="Nom d'etablissement" 
+                                                        [mdAutocomplete]="autoSchool"
+                                                        (keyup)="filterSchool($event)"
+                                                        [formControl]="searchForm.controls['etablissement']"/>
+                                                    
+                                                    <md-autocomplete #autoSchool="mdAutocomplete">
+                                                        <md-option *ngFor="let school of schoolsOptions" 
+                                                            [value]="school.longName">
+                                                            {{ school.longName }}
+                                                        </md-option>
+                                                    </md-autocomplete>
+                                                </div>
+                                            </div>
+                                        </div><!-- .row -->
+                                    </div><!-- .col-* -->
+                                    
+                                    <div class="col-md-1">
+                                    <!-- <div class="form-group"> -->
+                                        <button class="btn btn-search" type="submit"
+                                            [disabled]="searchForm.controls['etablissement'].value.length==0 && 
+                                            (searchForm.controls['lieu'].value.length==0 || 
+                                            searchForm.controls['classe'].value.length==0)">
                                             <i class="fa fa-search"></i>
-                                            <!-- Search -->
-                                            </button>
-                                        </div>
+                                        </button>
+                                    <!-- </div> -->
                                     </div>
-                            </div><!-- .form-wrap -->
-                        </div><!-- .content-holder -->
+                                </form>
 
-                        <div class="college-content content-holder  animated" data-image="assets/images/new-landing-page-2/college.jpg">
+                            </div><!-- .form-wrap -->
+                        </div>
+                        <div class="college-content  content-holder   animated" 
+                            data-image="assets/images/new-landing-page-2/college.jpg">
                             
                             <h2>COLLEGE</h2>
                             <h3>6ème-3ème</h3>
-                            
-                            <div class="form-wrap">
+                            <div class="form-wrap row  ">
+                                <form [formGroup]="searchForm" 
+                                            (ngSubmit)="onSubmitSearch('college')">
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="select-custom" for="class">
+                                                        <select name="class" class="form-control" id="class"
+                                                            [formControl]="searchForm.controls['classe']">
+                                                            <option value="" disabled selected hidden>Classe</option>
+                                                            <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                                <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                                <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 3 : Consolidation">
+                                                                <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                            </div><!-- .col-* -->
 
-                                    <div fxLayout="row" fxLayoutGap="10px">
-                                        <div fxFlex="30">
-                                            <div class="form-group">
-                                                <label class="select-custom" for="class">
-                                                    <md-select placeholder="Classe" class="form-control" id="class">
-                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <md-optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                            <md-option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</md-option>
-                                                            <md-option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</md-option>
-                                                            <md-option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</md-option>
-                                                        </md-optgroup>
-                                                        <md-optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                            <md-option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</md-option>
-                                                            <md-option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</md-option>
-                                                            <md-option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</md-option>
-                                                        </md-optgroup>
-                                                        <md-optgroup label="Cycle 3 : Consolidation">
-                                                            <md-option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</md-option>
-                                                            <md-option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</md-option>
-                                                            <md-option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</md-option>
-                                                        </md-optgroup>
-                                                    </md-select>
-                                                </label>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Lieu" 
+                                                        (keyup)="filterLieu($event)"
+                                                        [mdAutocomplete]="auto"
+                                                        [formControl]="searchForm.controls['lieu']"/>
+                                                    
+                                                    <md-autocomplete #auto="mdAutocomplete">
+                                                    <md-option *ngFor="let option of options" [value]="option.cityName">
+                                                        {{ option.cityName }}
+                                                    </md-option>
+                                                    </md-autocomplete>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div fxFlex="30">
-                                            <!-- <md-input-container> -->
-                                                <input placeholder="Lieu" class="form-control">
-                                            <!-- </md-input-container> -->
-                                        </div>
-
-                                        <div fxFlex="30">
-                                            <!-- <md-input-container> -->
-                                                <input placeholder="Nom d'établissement" class="form-control">
-                                            <!-- </md-input-container> -->
-                                        </div>
-                                        <div fxFlex="10">
-                                            <button class="btn btn-search" type="submit">
-                                            <i class="fa fa-search"></i>
-                                            <!-- Search -->
-                                            </button>
-                                        </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Nom d'etablissement" 
+                                                        [mdAutocomplete]="autoSchool"
+                                                        (keyup)="filterSchool($event)"
+                                                        [formControl]="searchForm.controls['etablissement']"/>
+                                                    
+                                                    <md-autocomplete #autoSchool="mdAutocomplete">
+                                                    <md-option *ngFor="let school of schoolsOptions" [value]="school.longName">
+                                                        {{ school.longName }}
+                                                    </md-option>
+                                                    </md-autocomplete>
+                                                </div>
+                                            </div>
+                                        </div><!-- .row -->
+                                    </div><!-- .col-* -->
                                     
-                                    </div><!-- flex-layout -->
-                                
+                                    <div class="col-md-1">
+                                    <!-- <div class="form-group"> -->
+                                        <button class="btn btn-search" type="submit"
+                                            [disabled]="searchForm.controls['etablissement'].value.length==0 && 
+                                            (searchForm.controls['lieu'].value.length==0 || 
+                                            searchForm.controls['classe'].value.length==0)">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    <!-- </div> -->
+                                    </div>
+                                </form>
+
                             </div><!-- .form-wrap -->
 
-                        </div><!-- .content-holder -->
-
-                        <div class="lycee-content  content-holder   animated" data-image="assets/images/new-landing-page-2/lycee.jpg">
+                        </div>
+                        <div class="lycee-content  content-holder   animated" 
+                            data-image="assets/images/new-landing-page-2/lycee.jpg">
                             <h2>UN LYCÉE</h2>
                             <h3>2nde-Terminale</h3>
+                            <div class="form-wrap row  ">
+                                <form [formGroup]="searchForm" 
+                                    (ngSubmit)="onSubmitSearch('lycee')">
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="select-custom" for="class">
+                                                        <select name="class" class="form-control" id="class"
+                                                            [formControl]="searchForm.controls['classe']">
+                                                            <option value="" disabled selected hidden>Classe</option>
+                                                            <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                                <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                                <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 3 : Consolidation">
+                                                                <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                            </div><!-- .col-* -->
 
-                            <div class="form-wrap">
-
-                                    <div fxLayout="row" fxLayoutGap="10px">
-                                        <div fxFlex="30">
-                                            <div class="form-group">
-                                                <label class="select-custom" for="class">
-                                                    <md-select placeholder="Classe" class="form-control" id="class">
-                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <md-optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                            <md-option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</md-option>
-                                                            <md-option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</md-option>
-                                                            <md-option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</md-option>
-                                                        </md-optgroup>
-                                                        <md-optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                            <md-option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</md-option>
-                                                            <md-option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</md-option>
-                                                            <md-option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</md-option>
-                                                        </md-optgroup>
-                                                        <md-optgroup label="Cycle 3 : Consolidation">
-                                                            <md-option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</md-option>
-                                                            <md-option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</md-option>
-                                                            <md-option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</md-option>
-                                                        </md-optgroup>
-                                                    </md-select>
-                                                </label>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Lieu" 
+                                                        (keyup)="filterLieu($event)"
+                                                        [mdAutocomplete]="auto"
+                                                        [formControl]="searchForm.controls['lieu']"/>
+                                                    
+                                                    <md-autocomplete #auto="mdAutocomplete">
+                                                        <md-option *ngFor="let option of options" [value]="option.cityName">
+                                                            {{ option.cityName }}
+                                                        </md-option>
+                                                    </md-autocomplete>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div fxFlex="30">
-                                            <!-- <md-input-container> -->
-                                                <input placeholder="Lieu" class="form-control">
-                                            <!-- </md-input-container> -->
-                                        </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Nom d'etablissement" 
+                                                        [mdAutocomplete]="autoSchool"
+                                                        (keyup)="filterSchool($event)"
+                                                        [formControl]="searchForm.controls['etablissement']"/>
 
-                                        <div fxFlex="30">
-                                            <!-- <md-input-container> -->
-                                                <input placeholder="Nom d'établissement" class="form-control">
-                                            <!-- </md-input-container> -->
-                                        </div>
-                                        <div fxFlex="10">
-                                            <button class="btn btn-search" type="submit">
+                                                    <md-autocomplete #autoSchool="mdAutocomplete">
+                                                        <md-option *ngFor="let school of schoolsOptions" [value]="school.longName">
+                                                            {{ school.longName }}
+                                                        </md-option>
+                                                    </md-autocomplete>
+                                                </div>
+                                            </div>
+                                        </div><!-- .row -->
+                                    </div><!-- .col-* -->
+                                    
+                                    <div class="col-md-1">
+                                    <!-- <div class="form-group"> -->
+                                        <button class="btn btn-search" type="submit"
+                                            [disabled]="searchForm.controls['etablissement'].value.length==0 && 
+                                            (searchForm.controls['lieu'].value.length==0 || 
+                                            searchForm.controls['classe'].value.length==0)">
                                             <i class="fa fa-search"></i>
-                                            <!-- Search -->
-                                            </button>
-                                        </div>
+                                        </button>
+                                    <!-- </div> -->
                                     </div>
-                                
-                            </div><!-- .form-wrap -->
-                        </div><!-- .content-holder -->
+                                </form>
 
-                        <div class="internat-content" data-image="assets/images/new-landing-page-2/internat.jpg"></div>
-                        <div class="enseignement-content" data-image="assets/images/new-landing-page-2/enseignement.jpg"></div>
-                        <div class="linguistic-content" data-image="assets/images/new-landing-page-2/sejour.jpg"></div>
-                        <div class="orientation-content" data-image="assets/images/new-landing-page-2/orientation.jpg"></div>
+                            </div><!-- .form-wrap -->
+                        </div>
+                        <div class="internat-content" data-image="img/new-landing-page-2/internat.jpg"></div>
+                        <div class="enseignement-content" data-image="img/new-landing-page-2/enseignement.jpg"></div>
+                        <div class="linguistic-content" data-image="img/new-landing-page-2/sejour.jpg"></div>
+                        <div class="orientation-content" data-image="img/new-landing-page-2/orientation.jpg"></div>
                     </div>
-            </div>
+                <!-- </section>.col-* -->
+            </div><!-- .row -->
+
+        </div><!-- .container -->
 
         </div>
 </div>

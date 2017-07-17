@@ -39,6 +39,7 @@ import { SchoolService } from './services/school.service';
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
 import { PublicService } from './services/public.service';
+import { CompareService } from './services/compare.service';
 import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
@@ -131,7 +132,8 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     RegisterComponent,
     AuthService,
     UsersService,
-    PublicService
+    PublicService,
+    CompareService
   ],
   bootstrap: [AppComponent]
 })
