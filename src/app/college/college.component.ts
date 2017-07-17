@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
@@ -21,12 +22,17 @@ export class CollegeComponent implements OnInit {
   canCompare : boolean = false;
   canFilter : boolean = false;
   searchFilter = [];
+  searchForm : FormGroup;
+  options: any;
+  schoolsOptions: any;
 
   constructor(private publicService : PublicService,
               private router : Router,
-              private compareService : CompareService) { }
+              private compareService : CompareService,
+              private fb : FormBuilder) { }
 
   ngOnInit() {
+    this.buildForm();
     this.getSearchFilter();
     this.publicService.getSchoolsList()
       .subscribe(
@@ -92,6 +98,72 @@ export class CollegeComponent implements OnInit {
     console.log(schoolList, this.compareListFilter);
     this.compareService.storeCompareFilter(this.compareListFilter);
     this.router.navigate(['/compare-mode/', schoolList]);
+  }
+
+  buildForm(){
+    this.searchForm = this.fb.group({
+      classe : [''],
+      lieu : [''],
+      etablissement : ['']
+    })
+  }
+
+  onSubmitSearch(){
+    let data = [
+      this.searchForm.controls.classe.value,
+      this.searchForm.controls.lieu.value,
+      this.searchForm.controls.etablissement.value
+    ]
+    this.publicService.storeSearchSchool(data);
+    this.searchFilter = this.publicService.getSearchSchool();
+  }
+
+  filterLieu(event){
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=2){
+      this.getLieuFilter(filter)
+    }else {
+      this.options=null;
+    }
+  }
+
+  filterSchool(event){
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+      this.getSchoolFilter(filter)
+    }else {
+      this.schoolsOptions=null;
+    }
+  }
+
+  getLieuFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutoCompleteLieu(data)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          this.options=data
+        }
+      )
+  }
+
+  getSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutocompleteSchool(data)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          this.schoolsOptions=data
+        }
+      )
   }
 
 }
