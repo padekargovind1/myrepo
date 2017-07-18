@@ -734,9 +734,20 @@ z-index: 10;
   .brochure-item .image-wrap { height: 250px; width: 100%; background: #fff; white-space: nowrap; }
   .brochure-item .image-wrap .vertical-helper { height: 100%; display: inline-block; vertical-align: middle; }
   .brochure-item img { vertical-align: middle; max-width: 90%; max-height: 90%; }
-  .brochure-item .checkbox-custom { position: absolute; top: 5px; left: 5px; z-index: 10;}
+  .brochure-item .checkbox-custom { position: absolute; top: 5px; left: 20px; z-index: 10;}
   .brochure .select-custom select { background-image: url('./assets/images/dropdown-grey.png'); }
   .cbp .brochure-item img { display: inline-block; }
+  
+
+  .cbp-caption:hover {
+    .cbp-caption-defaultWrap .image-wrap { position: relative; top: -50px;}
+  }
+  
+  .cbp-caption { position: relative; overflow: hidden;}
+  .cbp-caption-defaultWrap { position: relative; z-index: 1;
+    .image-wrap { transition: .3s ease all; position: relative; top: 0;}
+  }
+  .cbp-caption-activeWrap { position: absolute; bottom: 0; width: 100%; z-index: 0;}
 
   #download-popup .btn { width: 46%; margin: 0 1%;}
     #download-popup .tab-pane { padding: 0; }

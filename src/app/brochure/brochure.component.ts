@@ -11,6 +11,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
     listBrochures = [];
   constructor(private publicService : PublicService) { 
       this.getBrochure();
+      // this.doBrochure();
   }
 
   ngOnInit() {
@@ -18,7 +19,11 @@ export class BrochureComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
-  	(<any> $('#js-grid-juicy-projects')).cubeportfolio({
+  	// this.doBrochure();
+  }
+
+  doBrochure() {
+    (<any> $('#js-grid-juicy-projects')).cubeportfolio({
         filters: '#js-filters-juicy-projects',
         loadMore: '#js-loadMore-juicy-projects',
         loadMoreAction: 'click',
@@ -78,7 +83,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
             //         t.updateSinglePage('AJAX Error! Please refresh the page!');
             //     });
         },
-    });
+    });  
   }
 
   getBrochure(){

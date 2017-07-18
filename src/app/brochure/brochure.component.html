@@ -423,7 +423,7 @@ Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires 
                 </div><!-- .row -->
 
                 <div class="row brochure-content">
-                    <div id="js-filters-juicy-projects" class="cbp-l-filters-button">
+<!--                     <div id="js-filters-juicy-projects" class="cbp-l-filters-button">
                         <div data-filter="*" class="cbp-filter-item-active cbp-filter-item btn dark btn-outline uppercase"> Tous
                             <div class="cbp-filter-counter"></div>
                         </div>
@@ -437,10 +437,13 @@ Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires 
                             <div class="cbp-filter-counter"></div>
                         </div>
                     </div>
-                    
-                    <div id="js-grid-juicy-projects" class="cbp">
+ -->                    
+                    <div id="js-grid-juicy-projects" class="row">
                         
-                            <app-brochure-card [brochureData]="brochure" *ngFor="let brochure of listBrochures"></app-brochure-card>
+                        <div *ngFor="let brochure of listBrochures" class="graphic brochure-item col-md-3">
+                            <app-brochure-card  [brochureData]="brochure" ></app-brochure-card>
+                        </div>
+
                     </div>
 <!--
                     <div id="js-grid-juicy-projects" class="cbp"
