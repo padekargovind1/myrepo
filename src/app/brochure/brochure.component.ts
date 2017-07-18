@@ -82,7 +82,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
             // to update singlePage content use the following method: this.updateSinglePage(yourContent)
             var t = this;
 
-            // console.log('Hi');
+            console.log('Hi');
 
             // $.ajax({
             //         url: url,

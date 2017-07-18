@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { PublicService } from '../services/public.service'; 
 import { CompareService } from '../services/compare.service';
+import { SchoolService } from '../services/school.service';
 
 @Component({
   selector: 'app-lycee',
@@ -13,6 +14,7 @@ import { CompareService } from '../services/compare.service';
 export class LyceeComponent implements OnInit {
 
   schoolList : any;
+  schoolListFilter : any;
   compareList= [];
   four : boolean = false;
   canCompare : boolean = false;
@@ -26,30 +28,79 @@ export class LyceeComponent implements OnInit {
   searchForm : FormGroup;
   options: any;
   schoolsOptions: any;
+  advancedSearch=[];
+  advancedSearchToDisplay=[];
+  languageAdvancedSearch=["", "", "", "", "", 
+                          "", "", "", "", ""];
+  religiousChecked : boolean = false;
+  langues = [];
+  languesRegio = [];
+  diplomes = [];
+  optionValue: string="";
 
   constructor(private publicService : PublicService,
               private router : Router,
               private compareService : CompareService,
-              private fb : FormBuilder) { }
+              private fb : FormBuilder,
+              private schoolService : SchoolService) { }
 
   ngOnInit() {
     this.buildForm();
-    this.getSearchFilter();
-    this.publicService.getSchoolsList()
-      .subscribe(
-        (response)=>{
-          console.log(response);
-          this.schoolList = response.data;
-        }
-      )
+    this.getSchoolList();
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
+    console.log(this.advancedSearch);
+    this.langues=this.schoolService.getLangues();
+    this.languesRegio=this.schoolService.getLanguesRegio();
+    this.diplomes=this.schoolService.getDiplomes();
+  }
+
+  getSchoolList(){
+    this.publicService.getSchoolsList()
+      .subscribe(
+        (response)=>{
+          // console.log(response);
+          this.schoolList = response.data;
+          this.schoolListFilter = response.data;
+          console.log(this.schoolList);
+          this.getSearchFilter();
+        }
+      )
   }
 
   getSearchFilter(){
     this.searchFilter = this.publicService.getSearchSchool();
     console.log(this.searchFilter);
+    this.patchValue();
+    if(this.searchFilter[0]!="" && this.searchFilter[1]!="" && this.searchFilter[2]==""){
+      this.schoolListFilter = this.schoolList.filter(
+      school => {
+        return school.cycles[0].cycle.classes[0].className == this.searchFilter[0] &&
+          school.address.city == this.searchFilter[1];
+      })
+    } else if (this.searchFilter[0]=="" && this.searchFilter[1]=="" && this.searchFilter[2]!=""){
+      this.schoolListFilter = this.schoolList.filter(
+      school => {
+        return school.longName==this.searchFilter[2] || school.shortName==this.searchFilter[2]
+      })
+    } else if (this.searchFilter[0]!="" && this.searchFilter[1]!="" && this.searchFilter[2]!=""){
+      this.schoolListFilter = this.schoolList.filter(
+      school => {
+        return school.longName==this.searchFilter[2] || school.shortName==this.searchFilter[2] &&
+          school.cycles[0].cycle.classes[0].className == this.searchFilter[0] && school.address.city == this.searchFilter[1]
+      })
+    } else {
+      this.schoolListFilter=this.schoolList;
+    }
+  }
+
+  patchValue(){
+    this.searchForm.patchValue({
+      classe : this.searchFilter[0],
+      lieu : this.searchFilter[1],
+      etablissement : this.searchFilter[2]
+    })
   }
 
   onCheckbox(schoolId){
@@ -114,7 +165,7 @@ export class LyceeComponent implements OnInit {
       this.searchForm.controls.etablissement.value
     ]
     this.publicService.storeSearchSchool(data);
-    this.searchFilter = this.publicService.getSearchSchool();
+    this.getSearchFilter();
   }
 
   filterLieu(event){
@@ -163,6 +214,122 @@ export class LyceeComponent implements OnInit {
           this.schoolsOptions=data
         }
       )
+  }
+
+  onAdvancedClick(event, category){
+    console.log(event);
+    if(event.srcElement.localName=="input"){
+      if(event.srcElement.checked){
+        console.log("checked!")
+        this.advancedSearch.push(category);
+        this.advancedSearch.push(event.srcElement.name);
+        this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
+        console.log(this.advancedSearch);
+        this.updateSchoolList();
+      } else{
+        console.log("unchecked!");
+        let index = this.advancedSearch.indexOf(category, 0);
+        this.advancedSearch.splice(index, 2);
+        this.updateSchoolList();
+        index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
+        this.advancedSearchToDisplay.splice(index, 1);
+      }
+    }
+  }
+
+  updateSchoolList(){
+    console.log(this.advancedSearch.length);
+    if(this.advancedSearch.length!=0){
+      console.log("test");
+      this.schoolListFilter = this.schoolList.filter(
+        school => {
+          for(let i=0; i<this.advancedSearch.length; i=+2){
+            console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
+            return school.cycles[0].cycle[this.advancedSearch[i]][this.advancedSearch[i+1]].value
+          }
+        }
+      )
+    } else {
+      this.schoolListFilter=this.schoolList;
+    }
+    console.log(this.schoolListFilter)
+  }
+
+  filterLanguage(event, category){
+    console.log(event);
+    if(category == 'lv1'){
+      this.putFilterLanguage(0, 1, category, event);
+    } else if (category == 'lv2'){
+      this.putFilterLanguage(2, 3, category, event);
+    } else if (category == 'lv3'){
+      this.putFilterLanguage(4, 5, category, event);
+    } else if (category == 'ancient'){
+      this.putFilterLanguage(6, 7, category, event);
+    } else {
+      this.putFilterLanguage(8, 9, category, event);
+    }
+    this.updateSchoolListByLanguage();
+  }
+
+  updateSchoolListByLanguage(){
+    for(let i=0; i<10; i+=2){
+      if(this.languageAdvancedSearch[i]!=""){
+        this.schoolListFilter = this.schoolList.filter(
+          school => {
+            if(school.cycles[0].cycle.language[this.languageAdvancedSearch[i]].value.length==0){
+              return false;
+            } else {
+              if(school.cycles[0].cycle.language[this.languageAdvancedSearch[i]].value.indexOf(this.languageAdvancedSearch[i])==-1){
+                return false;
+              }else{
+                return true;
+              }
+            }
+          }
+        )
+      }
+    }
+  }
+
+  putFilterLanguage(arg1, arg2, category, event){
+    this.languageAdvancedSearch[arg1]=category;
+    this.languageAdvancedSearch[arg2]=event.srcElement.value;
+    console.log(this.languageAdvancedSearch);
+  }
+
+  addOptionFilter(event){
+    console.log(event.srcElement.value);  
+    this.cleanSearch();
+    this.schoolListFilter = this.schoolList.filter(
+      school => {
+        this.optionValue = event.srcElement.value;
+        let size = this.optionValue.length;
+        if(school.cycles[0].cycle.classes[0].options[0].name.substr(0, size) == this.optionValue){
+          return true;
+        } else {
+          return false;
+        }
+      })
+  }
+
+  cleanSearch(){
+    console.log("clean search")
+    this.languageAdvancedSearch=["", "", "", "", "", "", "", "", "", ""];
+    this.advancedSearch=[];
+    this.advancedSearchToDisplay=[];
+    this.searchForm.reset();
+    this.buildForm();
+    this.searchFilter = ["", "", ""];
+    this.publicService.storeSearchSchool(this.searchFilter);
+    this.getSearchFilter();
+  }
+
+  cleanAdvancedSearch(){
+    console.log("Clean all search");
+    this.cleanSearch();
+    this.optionValue="";
+    console.log($('.checkbox'));
+    $('.checkbox :checked').removeAttr('checked')
   }
 
 }

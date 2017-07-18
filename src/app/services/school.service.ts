@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
+import { AdvancedSearchMdl, SpecialityMdl,
+        BoardingMdl, CurriculumMdl,
+        CanteenMdl, ExternalMdl,
+        StatusMdl, ReligiousMdl,
+        LanguageMdl, SectionMdl,
+        DiplomaMdl, OptionMdl, SeatsMdl } from '../model/advanced-search.model';
 
 const TRIPS_API: string = "http://54.254.203.172/cideapi/api/schools/trips";
 const LINGUISTIC_API: string = "http://54.254.203.172/cideapi/api/schools/linguistic";
@@ -10,6 +16,14 @@ const STATISTICS_API: string = "http://54.254.203.172/cideapi/api/schools/static
 
 @Injectable()
 export class SchoolService {
+
+  langues = ["Allemand", "Anglais", "Arabe", "Chinois", "Coréen", "Danois", "Espagnol", "Grec Moderne",
+            "Hébreu", "Italien", "Japonais", "Néerlandais", "Persan", "Polonais", "Portugais", "Russe",
+            "Suédois", "Vietnamien"];
+  
+  languesRegio = ["Alsacien", "Auvergnat", "Basque", "Breton", "Catalan", "Corse", "Nicois", "Occitan", "Pays Mosel", "Provencal"]
+
+  diplomes = [];
 
   constructor(private http: Http) { }
 
@@ -31,5 +45,34 @@ export class SchoolService {
   getStatistics() : Observable<any> {
     return this.http.get(STATISTICS_API)
       .map((response)=>response.json());
+  }
+
+  buildAdvancedSearch(){
+    let advancedSearch : AdvancedSearchMdl = new AdvancedSearchMdl();
+    advancedSearch.speciality = new SpecialityMdl();
+    advancedSearch.boarding = new BoardingMdl();
+    advancedSearch.curriculum = new CurriculumMdl();
+    advancedSearch.canteen = new CanteenMdl();
+    advancedSearch.external = new ExternalMdl();
+    advancedSearch.status = new StatusMdl();
+    advancedSearch.religious = new ReligiousMdl();
+    advancedSearch.language = new LanguageMdl();
+    advancedSearch.sections = new SectionMdl();
+    advancedSearch.diplomas = new DiplomaMdl();
+    advancedSearch.options = new OptionMdl();
+    advancedSearch.seats = new SeatsMdl();
+    return advancedSearch;
+  }
+  
+  getLangues(){
+    return this.langues;
+  }
+
+  getLanguesRegio(){
+    return this.languesRegio;
+  }
+
+  getDiplomes(){
+    return this.diplomes;
   }
 }
