@@ -148,6 +148,11 @@ export class EcoleComponent implements OnInit, AfterViewInit {
           });
   }
 
+  openAdvance() {
+    console.log('clicked');
+    $('.advance-filter').toggleClass('open');
+  }
+
   getSearchFilter(){
     this.searchFilter = this.publicService.getSearchSchool();
     console.log(this.searchFilter);

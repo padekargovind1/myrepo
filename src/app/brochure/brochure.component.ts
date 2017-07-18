@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PublicService } from '../services/public.service';
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import {BrochpopupComponent} from './brochpopup/brochpopup.component'
 
 @Component({
   selector: 'app-brochure',
@@ -8,17 +10,39 @@ import { PublicService } from '../services/public.service';
 })
 export class BrochureComponent implements OnInit, AfterViewInit {
 
-    listBrochures = [];
-  constructor(private publicService : PublicService) { 
+ listBrochures = [];
+  lastCloseResult: string;
+ config: MdDialogConfig = {
+    disableClose: true,
+    width: '300',
+    height: '450',
+    position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+    }
+  };
+  
+
+  constructor(private publicService : PublicService,
+              public dialog:MdDialog) { 
       this.getBrochure();
+      // this.doBrochure();
   }
+  
+  
 
   ngOnInit() {
   }
 
 
   ngAfterViewInit() {
-  	(<any> $('#js-grid-juicy-projects')).cubeportfolio({
+  	// this.doBrochure();
+  }
+
+  doBrochure() {
+    (<any> $('#js-grid-juicy-projects')).cubeportfolio({
         filters: '#js-filters-juicy-projects',
         loadMore: '#js-loadMore-juicy-projects',
         loadMoreAction: 'click',
@@ -78,7 +102,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
             //         t.updateSinglePage('AJAX Error! Please refresh the page!');
             //     });
         },
-    });
+    });  
   }
 
   getBrochure(){
@@ -97,4 +121,13 @@ export class BrochureComponent implements OnInit, AfterViewInit {
         )
   }
 
+  brochDialog(){  
+      let dialogref = this.dialog.open(BrochpopupComponent,this.config);
+     
+        dialogref.afterClosed().subscribe(result => {
+        this.lastCloseResult = result;
+        dialogref = null;
+      });
+
+}
 }
