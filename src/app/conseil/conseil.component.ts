@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BookingService } from '../services/booking.service';
 
 @Component({
   selector: 'app-conseil',
@@ -8,14 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ConseilComponent implements OnInit {
 
+
+
   constructor(private router : Router,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
   }
 
-  navigateToBooking(){
-    console.log("Navigate to booking")
+  navigateToBooking(time, concernPeople, price){
+    console.log("Navigate to booking");
+    this.bookingService.storeBookingData([time, concernPeople, price]);
     this.router.navigate( ['booking']);
   }
 

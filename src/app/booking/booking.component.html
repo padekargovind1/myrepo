@@ -30,6 +30,19 @@
                                         </div>
                                     </section>
                                 </div>
+                                <div class="row" *ngFor="let adviser of adviserList; let i=index">
+                                    <section class="col-md-5 col-xs-3">
+                                        <img src="{{adviser.photo}}"  alt="" class="img-circle img-responsive" />    
+                                    </section>
+                                    <section class="col-md-7">
+                                        <div class="advisor-name">{{adviser.firstName}} {{adviser.lastName}}</div>    
+                                        <div class="checkbox-wrap">
+                                            <!-- <input type="checkbox" class="checkbox filled-in" id="anita-lubies" /> -->
+                                            <!-- <md-checkbox> -->
+                                            <label for="anita-lubies" class="">&nbsp;</label>
+                                        </div>
+                                    </section>
+                                </div>
                             </a>
                         </li>
 
@@ -71,20 +84,29 @@
                 <p>Orientation College<br />
                 Que Faire Apres Une Classe De Troisieme?</p> -->
 
-                <h3 class="title-confirm-modal">Vous avez rendez-vous</h3>
+                <h3 class="title-confirm-modal">Rendez-vous</h3>
                 <p class="appointment-date"><strong>avec Mme Anita Lubies</strong></p>
 
-                <time class="appointment-date">Lundi 8 Mai - 10h à 12h</time><br>
+                <time class="appointment-date">{{bookingDate}}</time><br>
             
                 <p>
-                pour un entretien :<br />
-                Orientation Collège<br />
-                Que faire après une classe de troisième</p>
+                pour un entretien : {{bookingDate}}<br />
+                {{bookingData[1]}}<br />
+                {{bookingData[2]}}</p>
 
                 <section class="pull-right">
-                    <a href="un-conseil.html" class="btn btn-danger" >J'annule</a>
-                    <button class="btn btn-warning" data-dismiss="modal" type="button">Je préfère un autre rendez-vous</button>
-                    <a href="wizard.html#wizard" class="btn btn-appointment">Je Confirme</a>
+                    <a (click)="onCancelAppointment()" 
+                        data-dismiss="modal" 
+                        class="btn btn-danger" >J'annule
+                    </a>
+                    <button class="btn btn-warning" 
+                        data-dismiss="modal" 
+                        type="button">Je préfère un autre rendez-vous
+                    </button>
+                    <a (click)="onConfirmAppointment()"  
+                        data-dismiss="modal" 
+                        class="btn btn-appointment">Je Confirme
+                    </a>
                 </section>
                 <div class="clearfix"></div>
             </div>

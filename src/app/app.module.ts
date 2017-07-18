@@ -40,6 +40,7 @@ import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
 import { PublicService } from './services/public.service';
 import { CompareService } from './services/compare.service';
+import { BookingService } from './services/booking.service';
 import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
@@ -61,6 +62,7 @@ import { EtablissementMediaComponent } from './etablissement/etablissement-media
 import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.component';
 import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 import { CompareBlockComponent } from './compare-mode/compare-block/compare-block.component';
+import { WizardComponent } from './wizard/wizard.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +104,8 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     EtablissementMediaComponent,
     BrochureCardComponent,
     LandingPage3Component,
-    CompareBlockComponent
+    CompareBlockComponent,
+    WizardComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +136,8 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     AuthService,
     UsersService,
     PublicService,
-    CompareService
+    CompareService,
+    BookingService
   ],
   bootstrap: [AppComponent]
 })

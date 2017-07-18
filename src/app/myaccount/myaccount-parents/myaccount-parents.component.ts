@@ -22,14 +22,14 @@ export class MyaccountParentsComponent implements OnInit {
   myParentProfile : MyAccountParentMdl = new MyAccountParentMdl();
   myProfile : MyAccountMdl = new MyAccountMdl();
   public parentAccountForm : FormGroup;
-  lienparents = [ "Père", 
-                  "Mère", 
-                  "Oncle", 
-                  "Tante", 
-                  "Grand-Père", 
-                  "Grand-Mère", 
-                  "Tuteur", 
-                  "Tutrice"];
+lienparents = [ "Père", 
+                "Mère", 
+                "Oncle", 
+                "Tante", 
+                "Grand-Père", 
+                "Grand-Mère", 
+                "Tuteur", 
+                "Tutrice"];
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
