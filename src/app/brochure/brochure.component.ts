@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PublicService } from '../services/public.service';
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import {BrochpopupComponent} from './brochpopup/brochpopup.component'
 
 @Component({
   selector: 'app-brochure',
@@ -8,10 +10,27 @@ import { PublicService } from '../services/public.service';
 })
 export class BrochureComponent implements OnInit, AfterViewInit {
 
-    listBrochures = [];
-  constructor(private publicService : PublicService) { 
+ listBrochures = [];
+  lastCloseResult: string;
+ config: MdDialogConfig = {
+    disableClose: true,
+    width: '300',
+    height: '450',
+    position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+    }
+  };
+  
+
+  constructor(private publicService : PublicService,
+              public dialog:MdDialog) { 
       this.getBrochure();
   }
+  
+  
 
   ngOnInit() {
   }
@@ -97,4 +116,13 @@ export class BrochureComponent implements OnInit, AfterViewInit {
         )
   }
 
+  brochDialog(){  
+      let dialogref = this.dialog.open(BrochpopupComponent,this.config);
+     
+        dialogref.afterClosed().subscribe(result => {
+        this.lastCloseResult = result;
+        dialogref = null;
+      });
+
+}
 }

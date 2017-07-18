@@ -8,7 +8,7 @@ import {
   MdCardModule, MdButtonModule, MdListModule,
   MdProgressBarModule, MdMenuModule, MdInputModule, MdRadioModule,
   MdToolbarModule, MdDatepickerModule, MdNativeDateModule, MdSelectModule, 
-  MdIconModule, MdAutocompleteModule
+  MdIconModule, MdAutocompleteModule,MdTabsModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -61,6 +61,7 @@ import { EtablissementMediaComponent } from './etablissement/etablissement-media
 import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.component';
 import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 import { CompareBlockComponent } from './compare-mode/compare-block/compare-block.component';
+import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     EtablissementMediaComponent,
     BrochureCardComponent,
     LandingPage3Component,
-    CompareBlockComponent
+    CompareBlockComponent,
+    BrochpopupComponent
   ],
   imports: [
     BrowserModule,
@@ -120,12 +122,14 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     MdDatepickerModule, 
     MdNativeDateModule, 
     MdSelectModule,
+    MdTabsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes),
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    
   ],
   providers: [
     SchoolService,
@@ -135,6 +139,9 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
     PublicService,
     CompareService
   ],
+    entryComponents: [
+       BrochpopupComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
