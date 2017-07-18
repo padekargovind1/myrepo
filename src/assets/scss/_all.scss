@@ -566,7 +566,10 @@ text { fill: #fff !important; font-size: 20px !important; font-family: Roboto !i
 #filter-popup { color: #333; }
 #filter-popup h3 { margin: 0 0 13px; }
 
-.filter-option { border: 1px solid #666; padding: 20px 13px; width: 176px; border-radius: 5px; display: inline-block; margin: 0 5px 13px; font-size: 16px; height: 80px; vertical-align: top;}
+
+.utility-top { margin-bottom: 20px;}
+
+.filter-option { border: 1px solid #666; padding: 6px 4px; width: 176px; border-radius: 5px; display: inline-block; margin: 0 5px 13px; font-size: 16px; height: 80px; vertical-align: top;}
 
 .advance-filter { background: #32352F; width: 185px; height: auto; padding: 20px 0; position: absolute; z-index: 10; opacity: 0; transition: 1s ease all; left: 0px; top: 100%;}
   .advance-filter.open { opacity: 1;}
@@ -753,7 +756,7 @@ z-index: 10;
     #download-popup .tab-pane { padding: 0; }
     #download-popup h5 { font-weight: 700; }
   
-.modal-download { width: 445px; }
+.modal-download { width: 445px;  height: 500px; overflow-y: scroll; overflow-x: hidden;}
   .modal-download .nav-tabs { border-bottom: #343741 solid 2px;}
   .modal-download .nav-tabs>li { width: 50%; text-align: center; }
   .modal-download .nav-tabs>li>a { color: #343741; border-radius: 0; border: none;}
@@ -775,6 +778,8 @@ z-index: 10;
 
 .school-mark { display: none !important; }
 .upload-button:focus { color: #fff !important; }
+
+.compare-modal .modal-body { padding: 20px 20px 30px;}
 
 /**
  * Linguistic
@@ -895,6 +900,11 @@ label.custom-radio.sad:before { border: none;}
 .mat-select-arrow { display: none;}
 .mat-select-placeholder.mat-floating-placeholder { display: none;}
 
+.download-modal {
+  .mat-tab-label-container { background: transparent;}
+  .mat-tab-label:focus, .mat-tab-label-active { border: none; color: #fff; background: #C8D409; opacity: 1;}
+  .mat-tab-label { width: 50%;}
+}
 
 
 
@@ -964,7 +974,7 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
 .brochure .btn-download:focus { color: #fff; }
 .btn-secondary.disabled { opacity: .3; }
 
-.btn.disabled, .btn[disabled], fieldset[disabled] .btn { background: #a0f8c6; opacity: 1; }
+.btn.btn-appointment.disabled, .btn.btn-appointment[disabled], fieldset[disabled] .btn { background: #a0f8c6; opacity: 1; }
 
 .back-button { color: #fff; font-size: 20px; position: absolute; top: 30px;}
     .back-button:hover { color: #fff; }
