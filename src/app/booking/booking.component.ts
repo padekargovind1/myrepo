@@ -125,7 +125,10 @@ export class BookingComponent implements OnInit, AfterViewInit {
   	(<any> $('#calendar')).fullCalendar({
       locale:'fr', 
       eventClick: function(calEvent) {
+        console.log(calEvent);
         $('#appointment').modal('show');
+        // var self = this;
+        // self.usersService.
       }, 
       events:this.getData()
     });
@@ -136,7 +139,8 @@ export class BookingComponent implements OnInit, AfterViewInit {
       {
 				title: 'Disponible',
 				start: '2017-07-01 10:00:00',
-				end: '2017-07-01 11:00:00'
+				end: '2017-07-01 11:00:00',
+        adviserId: 'example'
 			},
 			{
 				title: 'Disponible',

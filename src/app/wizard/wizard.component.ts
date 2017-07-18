@@ -180,7 +180,7 @@ export class WizardComponent implements OnInit {
 
   createAppointement(){
     const data = {
-      "adviser": ,
+      "adviser": "",
       "from": "09/09/2017",
       "to": "10/09/2017"
     }
