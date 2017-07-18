@@ -28,7 +28,8 @@ export class WizardComponent implements OnInit {
                 "Tutrice"];
   langues = ["Français", "Anglais", "Espagnol", "Allemand", "Italien"];
   primarySchool = ["CP", "CE1", "CE2", "CM1", "CM2"];
-  secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"]
+  secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"];
+  userId ="";
 
 
   constructor(private usersService: UsersService,
@@ -63,7 +64,7 @@ export class WizardComponent implements OnInit {
       email : ['', Validators.compose([Validators.required, CustomValidators.email])],
       tel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
       horaireJoingnable : ['', Validators.required],
-      childLastName : ['', Validators.required],
+      childLastName: ['', Validators.required],
       childFirstName : ['', Validators.required],
       childAge : ['', Validators.required],
       childTitle : ['', Validators.required],
@@ -74,7 +75,7 @@ export class WizardComponent implements OnInit {
       childCity : ['', Validators.required],
       childBirthDay : ['', Validators.required],
       childBirthPlace : ['', Validators.required],
-      childSisBroTitle : [''],
+      childSisBroTitle : ['', Validators.required],
       childSisBroAge:[''],
       childSisBroStudy:[''],
       schoolName:['', Validators.required],
@@ -82,10 +83,10 @@ export class WizardComponent implements OnInit {
       schoolClasse : ['', Validators.required],
       schoolOption : ['', Validators.required],
       schoolLv1 : ['', Validators.required],
-      schoolLv2 : [''],
-      schoolLv3 : [''],
+      schoolLv2: [''],
+      schoolLv3: [''],
       schoolHelp : [false],
-      schoolHelpSubject : [''],
+      schoolHelpSubject : ['', Validators.required],
       bestSubject : ['', Validators.required],
       weakSubject : ['', Validators.required],
       interestJob : ['', Validators.required],
@@ -105,6 +106,57 @@ export class WizardComponent implements OnInit {
 
   onSubmit(){
     console.log(this.wizardForm.value);
+
+    const lienParent = this.wizardForm.controls.lienParent.value;
+    const title = this.wizardForm.controls.title.value;
+    const lastName = this.wizardForm.controls.lastName.value;
+    const firstName = this.wizardForm.controls.firstName.value;
+    const job = this.wizardForm.controls.job.value;
+    const email = this.wizardForm.controls.email.value;
+    const tel = this.wizardForm.controls.tel.value;
+    const horaireJoingnable = this.wizardForm.controls.horaireJoingnable.value;
+    const childLastName =this.wizardForm.controls.childFirstName.value;
+    const childFirstName = this.wizardForm.controls.childFirstName.value;
+    const childAge = this.wizardForm.controls.childAge.value;
+    const childTitle= this.wizardForm.controls.childTitle.value;
+    const childMel = this.wizardForm.controls.childMel.value;
+    const childTel = this.wizardForm.controls.childTel.value;
+    const childAddr = this.wizardForm.controls.childAddr.value;
+    const childPostalCode = this.wizardForm.controls.childPostalCode.value;
+    const childCity = this.wizardForm.controls.childCity.value;
+    const childBirthDay = this.wizardForm.controls.childBirthDay.value;
+    const childBirthPlace = this.wizardForm.controls.childBirthPlace.value;
+    const childSisBroTitle = this.wizardForm.controls.childSisBroTitle.value;
+    const childSisBroAge = this.wizardForm.controls.childSisBroAge.value;
+    const childSisBroStudy = this.wizardForm.controls.childSisBroStudy.value;
+    const schoolName = this.wizardForm.controls.schoolName.value;
+    const schoolCity = this.wizardForm.controls.schoolCity.value;
+    const schoolClasse = this.wizardForm.controls.schoolClasse.value;
+    const schoolOption = this.wizardForm.controls.schoolOption.value;
+    const schoolLv1 = this.wizardForm.controls.schoolLv1.value;
+    const schoolLv2 = this.wizardForm.controls.schoolLv2.value;
+    const schoolLv3 = this.wizardForm.controls.schoolLv3.value;
+    const schoolHelp = this.wizardForm.controls.schoolHelp.value;
+    const schoolHelpSubject = this.wizardForm.controls.schoolHelpSubject.value;
+    const bestSubject = this.wizardForm.controls.bestSubject.value;
+    const weakSubject = this.wizardForm.controls.weakSubject.value;
+    const interestJob = this.wizardForm.controls.interestJob.value;
+    const interestAge = this.wizardForm.controls.interestAge.value;
+    const yourInterest = this.wizardForm.controls.yourInterest.value;
+    const practiceInterest = this.wizardForm.controls.practiceInterest.value;
+    const primarySchoolName = this.wizardForm.controls.primarySchoolName.value;
+    const primarySchoolRepeat = this.wizardForm.controls.primarySchoolRepeat.value;
+    const causeOfRepeatPrimary = this.wizardForm.controls.causeOfRepeatPrimary.value;
+    const secondarySchoolName = this.wizardForm.controls.secondarySchoolName.value;
+    const secondarySchoolRepeat = this.wizardForm.controls.secondarySchoolRepeat.value;
+    const causeOfRepeatSecondary = this.wizardForm.controls.causeOfRepeatSecondary.value;
+    const reasonDiagnostic = this.wizardForm.controls.reasonDiagnostic.value;
+    const note = this.wizardForm.controls.note.value;
+
+    const data = ({
+
+    })
   }
+
 
 }

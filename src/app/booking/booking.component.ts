@@ -54,7 +54,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
         (response)=>{
           let data = response.data;
           console.log(response);
-          if(response.code==400 || response.code==401){
+          if(response.code==400 || response.code==401 || response.code==404){
             console.log(response.message);
           } else {
             this.appointmentPackage=data;
