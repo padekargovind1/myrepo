@@ -81,4 +81,14 @@ export class UsersService {
     return this.http.get(APPOINTMENTS_API+'/adviser?token='+this.token+'&id='+adviserId, {headers: this.headers})
       .map((response)=>response.json());
   }
+
+  postDataAppointments(data): Observable<any>{
+    return this.http.post(APPOINTMENTS_API, data)
+      .map((response)=>response.json());
+  }
+
+  postCreateNewAppointment(data, packageId): Observable<any>{
+    return this.http.post(APPOINTMENTS_API+'/adviser?id='+packageId, data)
+      .map((response)=>response.json());
+  }
 }

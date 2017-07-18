@@ -154,9 +154,36 @@ export class WizardComponent implements OnInit {
     const note = this.wizardForm.controls.note.value;
 
     const data = ({
+      lienParent, title, lastName, firstName, job, email, tel, horaireJoingnable, childLastName,
+      childFirstName, childAge, childTitle, childMel, childTel, childAddr, childPostalCode, 
+      childCity, childBirthDay, childBirthPlace, childSisBroAge, childSisBroStudy, childSisBroTitle,
+      schoolName, schoolCity, schoolClasse, schoolOption, schoolLv1, schoolLv2, schoolLv3, schoolHelp,
+      schoolHelpSubject, bestSubject, weakSubject, interestJob, interestAge, yourInterest, practiceInterest,
+      primarySchoolName, primarySchoolRepeat, causeOfRepeatPrimary, secondarySchoolName, secondarySchoolRepeat,
+      causeOfRepeatSecondary, reasonDiagnostic, note 
+    });
 
-    })
+    // this.usersService.postDataAppointments(data)
+    //   .subscribe(
+    //     (response)=>{
+    //       let data = response.data;
+    //       console.log(data);
+    //       if(response.code==400){
+    //         console.log(response.message);
+    //       } else {
+    //         console.log('Appointement register')
+    //       }
+    //     }
+    //   )
+    this.createAppointement();
   }
 
+  createAppointement(){
+    const data = {
+      "adviser": ,
+      "from": "09/09/2017",
+      "to": "10/09/2017"
+    }
+  }
 
 }
