@@ -67,6 +67,7 @@ import { WizardComponent } from './wizard/wizard.component';
 import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component';
 import { ApplytoComponent } from './applyto/applyto.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     CompareBlockComponent,
     WizardComponent,
     BrochpopupComponent,
-    ApplytoComponent
+    ApplytoComponent,
+    EditorialContComponent
   ],
   imports: [
     BrowserModule,
