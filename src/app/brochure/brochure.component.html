@@ -95,7 +95,8 @@
                                     <button type="button" 
                                         class="btn btn-secondary btn-lg  pull-right btn-download btn-block" 
                                         data-toggle="modal" 
-                                        (click)="brochDialog()">
+                                        (click)="brochDialog()"
+                                        [disabled]="downloadList.length==0">
                                         <i class="fa fa-download"></i>
                                     </button>
                                 </section><!-- .col-* -->
@@ -467,9 +468,9 @@ Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires 
                     <div id="js-grid-juicy-projects" class="row">
                         
                         <div *ngFor="let brochure of listBrochuresFiltered" class="graphic brochure-item col-md-3">
-                            <!--<app-brochure-card  [brochureData]="brochure" ></app-brochure-card>-->
                             <div class="checkbox-custom">
-                                <md-checkbox (click)="onCheckbox(brochure._id)" class="download"></md-checkbox><label for="download">&nbsp;</label>
+                                <md-checkbox (click)="onCheckbox(brochure._id)" class="download"></md-checkbox>
+                                <label for="download">&nbsp;</label>
                             </div>
                             <div class="cbp-caption">
                                 <div class="cbp-caption-defaultWrap">

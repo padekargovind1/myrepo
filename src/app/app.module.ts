@@ -66,7 +66,11 @@ import { WizardComponent } from './wizard/wizard.component';
 import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component';
 import { ApplytoComponent } from './applyto/applyto.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+<<<<<<< HEAD
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
+=======
+import { BrochureDownloadComponent } from './brochure/brochure-download/brochure-download.component';
+>>>>>>> 8a527dd4cbaaa61e17deed5d8469e05efd7482d6
 
 @NgModule({
   declarations: [
@@ -111,7 +115,11 @@ import { EditorialContComponent } from './editorial-cont/editorial-cont.componen
     WizardComponent,
     BrochpopupComponent,
     ApplytoComponent,
+<<<<<<< HEAD
     EditorialContComponent
+=======
+    BrochureDownloadComponent
+>>>>>>> 8a527dd4cbaaa61e17deed5d8469e05efd7482d6
   ],
   imports: [
     BrowserModule,
@@ -150,7 +158,8 @@ import { EditorialContComponent } from './editorial-cont/editorial-cont.componen
     BookingService
   ],
     entryComponents: [
-       BrochpopupComponent
+       BrochpopupComponent,
+       BrochureDownloadComponent
     ],
   bootstrap: [AppComponent]
 })

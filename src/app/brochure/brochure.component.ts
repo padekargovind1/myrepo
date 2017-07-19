@@ -3,6 +3,7 @@ import { PublicService } from '../services/public.service';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {BrochpopupComponent} from './brochpopup/brochpopup.component'
+import { BrochureDownloadComponent } from './brochure-download/brochure-download.component';
 
 @Component({
   selector: 'app-brochure',
@@ -15,7 +16,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
     listBrochuresFiltered = [];
     lastCloseResult: string;
     config: MdDialogConfig = {
-        disableClose: true,
+        disableClose: false,
         width: '300',
         height: '450',
         position: {
@@ -25,15 +26,18 @@ export class BrochureComponent implements OnInit, AfterViewInit {
         right: ''
         }
     };
+    config2: MdDialogConfig;
     searchForm : FormGroup;
     options: any;
     schoolsOptions: any;
+    downloadList = [];
 
   constructor(private publicService : PublicService,
               public dialog:MdDialog,
               private fb : FormBuilder) { 
       this.getBrochure();
       this.buildForm();
+      this.makeProfile()
       // this.doBrochure();
   }
   ngOnInit() {
@@ -126,8 +130,34 @@ export class BrochureComponent implements OnInit, AfterViewInit {
 
     brochDialog(){  
         let dialogref = this.dialog.open(BrochpopupComponent,this.config);
-        
-            dialogref.afterClosed().subscribe(result => {
+        dialogref.afterClosed().subscribe(result => {
+            this.lastCloseResult = result;
+            dialogref = null;
+            this.downloadDialog();
+        });
+    }
+
+    makeProfile(){
+        this.config2 = {
+            data:{
+                brochureList : this.downloadList
+            },
+            disableClose: false,
+            width: '',
+            height: '',
+            position: {
+                top: '',
+                bottom: '',
+                left: '',
+                right: ''
+            }
+        }
+    }
+
+    downloadDialog(){
+        let dialogref : MdDialogRef<BrochureDownloadComponent>;
+        dialogref = this.dialog.open(BrochureDownloadComponent, this.config2);
+        dialogref.afterClosed().subscribe(result => {
             this.lastCloseResult = result;
             dialogref = null;
         });
@@ -222,7 +252,16 @@ export class BrochureComponent implements OnInit, AfterViewInit {
     }
 
     onCheckbox(brochureId){
-        console.log(brochureId);
+        // console.log(brochureId);
+        if(this.downloadList.includes(brochureId)){
+            // console.log("remove checkbox");
+            let i = this.downloadList.indexOf(brochureId, 0);
+            // console.log(i);
+            this.downloadList.splice(i, 1);
+            } else {
+            this.downloadList.push(brochureId);
+        }
+        console.log(this.downloadList);
     }
 
 }

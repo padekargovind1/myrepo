@@ -1,165 +1,191 @@
 <md-tab-group class="download-modal">
   <md-tab label="Formulaire">
      <div role="tabpanel"  id="Formulaire" class="modal-download">
-        <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
-        <h3>Parents</h3>
-        <div class="form-group">
-            <div class="select-custom">
-                <select name="" class="form-control">
-                    <option value="" disabled selected hidden>Lien de Parenté</option>
-                    <option value="">Père</option>
-                    <option value="">Mère</option>
-                    <option value="">Oncle</option>
-                    <option value="">Tante</option>
-                    <option value="">Grand-Père</option>
-                    <option value="">Grand-Mère</option>
-                    <option value="">Tuteur</option>
-                    <option value="">Tutric</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group horizontal-radio clearfix">
-            <label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
-            <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
-            <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>
-        </div>
-
-        
-        <div class="row">
-            <div class="col-sm-6  col-xs-6">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nom">
+         <form [formGroup]="brochureForm">
+            <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
+            <h3>Parents</h3>
+            <div class="form-group">
+                <div class="select-custom">
+                    <select name="" class="form-control"
+                        [formControl]="brochureForm.controls['lienParent']">
+                        <option value="" disabled selected hidden>Lien de Parenté</option>
+                        <option value="Père">Père</option>
+                        <option value="Mère">Mère</option>
+                        <option value="Oncle">Oncle</option>
+                        <option value="Tante">Tante</option>
+                        <option value="Grand-Père">Grand-Père</option>
+                        <option value="Grand-Mère">Grand-Mère</option>
+                        <option value="Tuteur">Tuteur</option>
+                        <option value="Tutrice">Tutrice</option>
+                    </select>
                 </div>
             </div>
-            <div class="col-sm-6  col-xs-6">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Prénom">
-                </div>
+
+            <div class="form-group horizontal-radio clearfix">
+                <md-radio-group [formControl]="brochureForm.controls['title']"
+              style="border-color:white">
+                    <md-radio-button value="M" class="rdmark">M</md-radio-button>
+                    <md-radio-button value="Mlle" class="rdmark">Mlle</md-radio-button>
+                    <md-radio-button value="Mme" class="rdmark">Mme</md-radio-button>
+                </md-radio-group>
             </div>
-        </div>
 
-        <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email">
-        </div>
-
-        <div class="form-group">
+            
             <div class="row">
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable">
+                <div class="col-sm-6  col-xs-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nom"
+                            [formControl]="brochureForm.controls['lastName']">
+                    </div>
+                </div>
+                <div class="col-sm-6  col-xs-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Prénom"
+                            [formControl]="brochureForm.controls['firstName']">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <h3>Enfant</h3>
-        <div class="row">
-            <div class="col-sm-6  col-xs-6">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nom">
-                </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email"
+                    [formControl]="brochureForm.controls['mel']">
             </div>
-            <div class="col-sm-6  col-xs-6">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Prénom">
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <!-- <div class="col-sm-12">
-                <div class="row"> -->
-                    <div class="col-sm-3  col-xs-6">
-                        <div class="form-group">
-                            <input type="number" class="form-control" max="120" min="1" placeholder="Age">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" 
+                            placeholder="Téléphone auquel je suis joignable"
+                            [formControl]="brochureForm.controls['tel']">
+                    </div>
+                </div>
+            </div>
+
+            <h3>Enfant</h3>
+            <div class="row">
+                <div class="col-sm-6  col-xs-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nom"
+                            [formControl]="brochureForm.controls['childLastName']">
+                    </div>
+                </div>
+                <div class="col-sm-6  col-xs-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Prénom"
+                            [formControl]="brochureForm.controls['childFirstName']">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- <div class="col-sm-12">
+                    <div class="row"> -->
+                        <div class="col-sm-3  col-xs-6">
+                            <div class="form-group">
+                                <input type="number" class="form-control" max="120" min="1" placeholder="Age"
+                                    [formControl]="brochureForm.controls['childAge']">
+                            </div>
+                        </div>
+                        <div class="col-sm-3  hidden-xs">&nbsp;</div>
+                    
+                        <div class="col-sm-6  col-xs-6">
+                            <div class="form-group">
+                                <div class="horizontal-radio">
+                                    <md-radio-group [formControl]="brochureForm.controls['childTitle']"
+                                        style="border-color:white">
+                                        <md-radio-button value="Garçon" class="rdmark">Garçon</md-radio-button>
+                                        <md-radio-button value="Fille" class="rdmark">Fille</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </div>
+                </div> -->
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
+                            [formControl]="brochureForm.controls['etablissement']">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group  col-sm-12  col-xs-6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" placeholder="Ville"
+                                [formControl]="brochureForm.controls['city']">
                         </div>
                     </div>
-                    <div class="col-sm-3  hidden-xs">&nbsp;</div>
-                
-                    <div class="col-sm-6  col-xs-6">
-                        <div class="form-group">
-                            <div class="horizontal-radio">
-                                <label class="custom-radio"><input type="radio" name="gender"> <span>Garçon</span></label>
-                                <label class="custom-radio"><input type="radio" name="gender"> <span>Fille</span></label>
+                </div>
+
+                <div class="form-group  col-sm-12  col-xs-6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="select-custom">
+                                <select name="" class="form-control"
+                                    [formControl]="brochureForm.controls['classe']">
+                                    <option value="" disabled selected hidden>Classe</option>
+                                    <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                        <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                        <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                        <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                    </optgroup>
+                                    <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                        <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                        <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                        <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                    </optgroup>
+                                    <optgroup label="Cycle 3 : Consolidation">
+                                        <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                        <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                        <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                    </optgroup>
+                                </select>
                             </div>
                         </div>
                     </div>
-                <!-- </div>
-            </div> -->
-        </div>
-
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" placeholder="Nom Etablissement Actuel">
                 </div>
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="form-group  col-sm-12  col-xs-6">
+
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" placeholder="Ville">
+                        <md-checkbox [formControl]="brochureForm.controls['copy']" >
+                            Je souhaite recevoir un copie de votre message
+                        </md-checkbox>
                     </div>
                 </div>
             </div>
 
-            <div class="form-group  col-sm-12  col-xs-6">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="select-custom">
-                            <select name="" class="form-control">
-                                <option value="" disabled selected hidden>Classe</option>
-                                <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                    <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                    <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                    <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
-                                </optgroup>
-                                <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                    <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                    <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                    <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
-                                </optgroup>
-                                <optgroup label="Cycle 3 : Consolidation">
-                                    <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                    <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                    <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <input type="checkbox" id="school-1" class="checkbox" /><label for="school-1">Je souhaite recevoir un copie de votre message</label>
-                </div>
-            </div>
-        </div>
-
-        <button type="button" data-dismiss="modal" class="btn btn-highlighted"
-            (click)="onCancel()">Annuler</button>
-        <a href="#tab2" data-toggle="tab" class="btn btn-secondary">Suivant</a>
+            <button type="button" data-dismiss="modal" class="btn btn-highlighted"
+                (click)="onCancel()">Annuler</button>
+            <a href="#ProfilScolaire" data-toggle="tab" class="btn btn-secondary">Suivant</a>
+         </form>
     </div>
   </md-tab>
 
-  <md-tab label="ProfilScolaire">
+  <md-tab label="ProfilScolaire" id="tab2">
     <div role="tabpanel"  id="ProfilScolaire" class="modal-download">
         <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
 
         <div class="form-group horizontal-radio clearfix">
-            <label class="custom-radio"><input type="radio" name="public"><span>Privé</span></label>
-            <label class="custom-radio"><input type="radio" name="public"><span>Public</span></label>
+            <md-radio-group [formControl]="brochureForm.controls['status']"
+                style="border-color:white">
+                <md-radio-button value="Privé" class="rdmark">Privé</md-radio-button>
+                <md-radio-button value="Public" class="rdmark">Public</md-radio-button>
+            </md-radio-group>
         </div>
 
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" placeholder="Niveau Actuel">
+                    <input type="text" class="form-control" placeholder="Niveau Actuel"
+                        [formControl]="brochureForm.controls['niveauActuel']">
                 </div>
             </div>
         </div>
@@ -167,7 +193,9 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" placeholder="Niveau concerné par la demande">
+                    <input type="text" class="form-control" 
+                        placeholder="Niveau concerné par la demande"
+                        [formControl]="brochureForm.controls['niveauConcern']">
                 </div>
             </div>
         </div>
@@ -175,7 +203,8 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-12">
-                    <textarea placeholder="Information précise, pour mieux traiter votre demande" class="form-control"></textarea>
+                    <textarea placeholder="Information précise, pour mieux traiter votre demande" 
+                        class="form-control" [formControl]="brochureForm.controls['info']"></textarea>
                 </div>
             </div>
         </div>
@@ -187,13 +216,21 @@
                 </div>
             </div>
         </div>
-           <p class="note">
+            <p class="note">
               Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires des informations communiquées. 
               Vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données qui vous concernent 
               (art. 34 de la loi "informatique et libertés" - Numéro de déclaration CNIL 1271917).
                Formulez votre demande par écrit au CIDE, 84, boulevard Saint-Michel 75006 Paris.
-</p>
-    </div>
-  </md-tab>
+            </p>
+            <button type="button" data-dismiss="modal" 
+                class="btn btn-highlighted"
+                (click)="onCancel()">Annuler</button>
+            <button class="btn btn-secondary 
+                close-download"
+                (click)="onSubmit()">Valider</button>
+
+                <!--[disabled]="!brochureForm.valid"-->
+        </div>
+    </md-tab>
 </md-tab-group>
 
