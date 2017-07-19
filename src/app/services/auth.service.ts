@@ -15,7 +15,7 @@ export class AuthService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private token : string ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NjcxMWExZDdjM2ZmMDRmMTM3MTM2OCIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk2NzExYTFkN2MzZmYwNGYxMzcxMzY5IiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NjcxMWExZDdjM2ZmMDRmMTM3MTM2YSIsImlhdCI6MTQ5OTkyNjk0NSwiZXhwIjoxNDk5OTM1NTg1LCJhdWQiOiIxIiwiaXNzIjoiMSJ9.6XhNmu51C25k8llpLSAjvp9Z0KRUnkxPRgj-wY8WJ14";
-
+  // private token : string = "";
   constructor(private http : Http) { }
 
   postRegister(data) : Observable<any>{

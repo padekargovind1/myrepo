@@ -47,22 +47,22 @@ export class SchoolService {
       .map((response)=>response.json());
   }
 
-  buildAdvancedSearch(){
-    let advancedSearch : AdvancedSearchMdl = new AdvancedSearchMdl();
-    advancedSearch.speciality = new SpecialityMdl();
-    advancedSearch.boarding = new BoardingMdl();
-    advancedSearch.curriculum = new CurriculumMdl();
-    advancedSearch.canteen = new CanteenMdl();
-    advancedSearch.external = new ExternalMdl();
-    advancedSearch.status = new StatusMdl();
-    advancedSearch.religious = new ReligiousMdl();
-    advancedSearch.language = new LanguageMdl();
-    advancedSearch.sections = new SectionMdl();
-    advancedSearch.diplomas = new DiplomaMdl();
-    advancedSearch.options = new OptionMdl();
-    advancedSearch.seats = new SeatsMdl();
-    return advancedSearch;
-  }
+  // buildAdvancedSearch(){
+  //   let advancedSearch : AdvancedSearchMdl = new AdvancedSearchMdl();
+  //   advancedSearch.speciality = new SpecialityMdl();
+  //   advancedSearch.boarding = new BoardingMdl();
+  //   advancedSearch.curriculum = new CurriculumMdl();
+  //   advancedSearch.canteen = new CanteenMdl();
+  //   advancedSearch.external = new ExternalMdl();
+  //   advancedSearch.status = new StatusMdl();
+  //   advancedSearch.religious = new ReligiousMdl();
+  //   advancedSearch.language = new LanguageMdl();
+  //   advancedSearch.sections = new SectionMdl();
+  //   advancedSearch.diplomas = new DiplomaMdl();
+  //   advancedSearch.options = new OptionMdl();
+  //   advancedSearch.seats = new SeatsMdl();
+  //   return advancedSearch;
+  // }
   
   getLangues(){
     return this.langues;

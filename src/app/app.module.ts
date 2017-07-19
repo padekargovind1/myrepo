@@ -13,6 +13,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 
 import 'hammerjs';
 
@@ -40,6 +41,7 @@ import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
 import { PublicService } from './services/public.service';
 import { CompareService } from './services/compare.service';
+import { BookingService } from './services/booking.service';
 import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
@@ -61,7 +63,10 @@ import { EtablissementMediaComponent } from './etablissement/etablissement-media
 import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.component';
 import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 import { CompareBlockComponent } from './compare-mode/compare-block/compare-block.component';
+import { WizardComponent } from './wizard/wizard.component';
 import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component';
+import { ApplytoComponent } from './applyto/applyto.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -104,7 +109,9 @@ import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component'
     BrochureCardComponent,
     LandingPage3Component,
     CompareBlockComponent,
-    BrochpopupComponent
+    WizardComponent,
+    BrochpopupComponent,
+    ApplytoComponent
   ],
   imports: [
     BrowserModule,
@@ -129,6 +136,8 @@ import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component'
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
+    FileUploadModule,
+    NgxDatatableModule
     
   ],
   providers: [
@@ -137,7 +146,8 @@ import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component'
     AuthService,
     UsersService,
     PublicService,
-    CompareService
+    CompareService,
+    BookingService
   ],
     entryComponents: [
        BrochpopupComponent

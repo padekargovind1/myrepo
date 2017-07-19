@@ -20,5 +20,9 @@ export class SchoolCardComponent implements OnInit {
     console.log("Click on school detail")
     this.router.navigate(['etablissement', this.SchoolData._id]);
   }
-
+   
+  applyToSchool(){
+    this.router.navigate(['applyto']);
+  }
+  
 }
