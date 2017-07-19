@@ -5,9 +5,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { BookingService } from '../services/booking.service';
-
+import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { CustomValidators } from 'ng2-validation';
 
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
   selector: 'app-applyto',
@@ -15,7 +16,8 @@ import { CustomValidators } from 'ng2-validation';
   styleUrls: ['./applyto.component.scss']
 })
 export class ApplytoComponent implements OnInit {
-
+  
+  schoolTitle = "School Title";
   tokenLog : string ="";
   bookingData=["","",""];
   wizardForm : FormGroup;
@@ -175,6 +177,20 @@ export class ApplytoComponent implements OnInit {
     //     }
     //   )
 }
+  uploader: FileUploader = new FileUploader({
+    url: URL,
+    isHTML5: true
+  });
+  hasBaseDropZoneOver = false;
+  hasAnotherDropZoneOver = false;
+
+  fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  fileOverAnother(e: any): void {
+    this.hasAnotherDropZoneOver = e;
+  }
 
 
 }
