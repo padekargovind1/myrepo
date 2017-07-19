@@ -52,9 +52,6 @@ export class WizardComponent implements OnInit {
     } else {
       this.bookingData = this.bookingService.getBookingData();
       console.log(this.bookingData);
-      if(this.bookingData[0]==""){
-        this.route.navigate(['/conseil']);
-      }
     }
   }
 

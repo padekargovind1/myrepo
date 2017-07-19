@@ -17,7 +17,7 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 })
 export class ApplytoComponent implements OnInit {
   
-  schoolTitle = "School Title";
+  schoolTitle = "Nom de l'école";
   tokenLog : string ="";
   bookingData=["","",""];
   wizardForm : FormGroup;

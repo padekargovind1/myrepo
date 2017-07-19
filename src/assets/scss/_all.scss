@@ -906,6 +906,12 @@ label.custom-radio.sad:before { border: none;}
   .mat-tab-label { width: 50%;}
 }
 
+.apply-to-tabs {
+  // .mat-tab-label-container { background: transparent;}
+  // .mat-tab-label:focus, .mat-tab-label-active { border: none; color: #fff; background: #C8D409; opacity: 1;}
+  .mat-tab-label { width: 20%;}
+}
+
 
 
 /**
@@ -1000,7 +1006,7 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
     &:hover, &:focus { color: #fff; }
 }
 
-.btn-inverse { background: #fff; color: #00BC50 !important; border: #00BC50 solid 1px;
+.btn-inverse { background: transparent; color: #00BC50 !important; border: #00BC50 solid 1px;
     &:hover, &:focus { color: #00BC50; }
 }
 

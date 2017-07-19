@@ -40,9 +40,6 @@ export class BookingComponent implements OnInit, AfterViewInit {
 
   checkBooking(){
     this.getBookingData();
-    if(this.bookingData[0]==""){
-      this.route.navigate(['/conseil']);
-    }
     this.getAppointmentPackage();
   }
 
