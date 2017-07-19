@@ -15,4 +15,8 @@ export class BrochpopupComponent implements OnInit {
     
   }
 
+  onCancel(){
+    this.dialogref.close();
+  }
+
 }

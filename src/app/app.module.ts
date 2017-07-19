@@ -60,7 +60,6 @@ import { EtablissementAssoComponent } from './etablissement/etablissement-asso/e
 import { EtablissementInfoComponent } from './etablissement/etablissement-info/etablissement-info.component';
 import { EtablissementArticlesComponent } from './etablissement/etablissement-articles/etablissement-articles.component';
 import { EtablissementMediaComponent } from './etablissement/etablissement-media/etablissement-media.component';
-import { BrochureCardComponent } from './brochure/brochure-card/brochure-card.component';
 import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 import { CompareBlockComponent } from './compare-mode/compare-block/compare-block.component';
 import { WizardComponent } from './wizard/wizard.component';
@@ -107,7 +106,6 @@ import { EditorialContComponent } from './editorial-cont/editorial-cont.componen
     EtablissementInfoComponent,
     EtablissementArticlesComponent,
     EtablissementMediaComponent,
-    BrochureCardComponent,
     LandingPage3Component,
     CompareBlockComponent,
     WizardComponent,

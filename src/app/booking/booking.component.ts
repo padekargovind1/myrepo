@@ -14,12 +14,14 @@ declare var fullCalendar: any;
 })
 export class BookingComponent implements OnInit, AfterViewInit {
   tokenLog = "";
-  bookingData = ["", "", ""];
+  bookingData = ["", "", "", ""];
   appointmentPackage : any;
+  appointmentPackageId ="";
   adviserList:any;
   adviserFreeTime:any;
   adviserData:any;
   bookingDate="";
+  public storing="";
 
   constructor(private bookingService : BookingService,
               private route : Router,
@@ -35,11 +37,9 @@ export class BookingComponent implements OnInit, AfterViewInit {
       this.checkBooking();
     }
   }
+
   checkBooking(){
     this.getBookingData();
-    if(this.bookingData[0]==""){
-      this.route.navigate(['/conseil']);
-    }
     this.getAppointmentPackage();
   }
 
@@ -55,9 +55,10 @@ export class BookingComponent implements OnInit, AfterViewInit {
           let data = response.data;
           console.log(response);
           if(response.code==400 || response.code==401 || response.code==404){
-            console.log(response.message);
+            console.log(response.message, this.appointmentPackage);
           } else {
             this.appointmentPackage=data;
+            this.appointmentPackageId=data.id;
             this.getListAdviser();
           }
         }
@@ -65,20 +66,19 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   getListAdviser(){
-    this.usersService.getAppointmentsAdviserList(this.appointmentPackage[0].id)
+    this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]].id)
       .subscribe(
         (response)=>{
           let data = response.data;
           console.log(data);
-          // if(response.code==400){
-          //   console.log(response.message);
-          // } else {
-          //   this.adviserList = data;
-          //   for(let adviser of this.adviserList){
-          //     this.getAdviserFreeTime(adviser.id);
-          //     this.getAdviserFreeTime(adviser.id);
-          //   }
-          // }
+          if(response.code==400){
+            console.log(response.message);
+          } else {
+            this.adviserList = data;
+            for(let adviser of this.adviserList){
+              this.getAdviserFreeTime(adviser.id);
+            }
+          }
         }
       )
   }
@@ -122,33 +122,81 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    const self = this;
   	(<any> $('#calendar')).fullCalendar({
       locale:'fr', 
       eventClick: function(calEvent) {
         console.log(calEvent);
         $('#appointment').modal('show');
-        // var self = this;
-        // self.usersService.
+        self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
       }, 
       events:this.getData()
     });
   }
 
+  storeData(adviserId, start, end){
+    // console.log(adviserId, start, end)
+    const date = start.substr(0, 10);
+    const debut = start.substr(11, 5);
+    const fin = end.substr(11, 5);
+    console.log(date, debut, fin)
+    this.bookingService.storeAdviserData(adviserId, date, debut, fin, this.appointmentPackageId);
+  }
+
   getData(){
-    let data = [
-      {
-				title: 'Disponible',
-				start: '2017-07-01 10:00:00',
-				end: '2017-07-01 11:00:00',
-        adviserId: 'example'
-			},
-			{
-				title: 'Disponible',
-				start: '2017-07-07 08:00:00',
-				end: '2017-07-07 09:00:00'
-			}
-    ]
-    return data;
+    
+    let data = [];
+
+    if(typeof this.appointmentPackage=='undefined'){
+      let data = [
+        {
+          title: 'Disponible',
+          start: '2017-07-01 10:00:00',
+          end: '2017-07-01 11:00:00',
+          adviserId: '123'
+        },
+        {
+          title: 'Disponible',
+          start: '2017-07-07 08:00:00',
+          end: '2017-07-07 09:00:00',
+          adviserId: '123'
+        }
+      ]
+      return data;
+    } else {
+      for(let adviser of this.adviserList){
+        for(let day of adviser.calendar){
+          if(this.bookingData[0]=='1'){
+            for(let i=day.hour.start; i<day.hour.start+7; i++){
+              data.push({title:'Disponible', 
+                        start: '2017-07-07 '+ i + ':00:00',
+                        end: '2017-07-07 '+ i+1 + ':00:00',
+                        adviserId: adviser.id});
+            }
+          } else if (this.bookingData[0]=='2') {
+            for(let i=day.hour.start; i<day.hour.start+8; i+=2){
+            data.push({title:'Disponible', 
+                        start: '2017-07-07 '+ i + ':00:00',
+                        end: '2017-07-07 '+ i+2 + ':00:00',
+                        adviserId: adviser.id});
+            }
+          } else if (this.bookingData[0]=='3'){
+            for(let i=day.hour.start; i<day.hour.start+6; i+=3){
+            data.push({title:'Disponible', 
+                        start: '2017-07-07 '+ i + ':00:00',
+                        end: '2017-07-07 '+ i+3 + ':00:00',
+                        adviserId: adviser.id});
+            }
+          } else {
+            data.push({title:'Disponible', 
+                      start: '2017-07-07 '+ day.hour.start + ':00:00',
+                      end: '2017-07-07 '+ day.hour.start+7 + ':00:00',
+                      adviserId: adviser.id});
+          }
+        }
+      }
+      return data
+    }
   }
 
 }

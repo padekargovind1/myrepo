@@ -14,7 +14,7 @@ const LOGIN_API : string ="http://54.254.203.172/cideapi/api/auth/log";
 export class AuthService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private token : string ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NjcxMWExZDdjM2ZmMDRmMTM3MTM2OCIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk2NzExYTFkN2MzZmYwNGYxMzcxMzY5IiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NjcxMWExZDdjM2ZmMDRmMTM3MTM2YSIsImlhdCI6MTQ5OTkyNjk0NSwiZXhwIjoxNDk5OTM1NTg1LCJhdWQiOiIxIiwiaXNzIjoiMSJ9.6XhNmu51C25k8llpLSAjvp9Z0KRUnkxPRgj-wY8WJ14";
+  private token : string ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NjMzYWJjODBkYzNlMjEyYzJlZTFlMiIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk2MzNhYmM4MGRjM2UyMTJjMmVlMWUzIiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NjMzYWJjODBkYzNlMjEyYzJlZTFlNCIsImlhdCI6MTUwMDQ0Mzk5MywiZXhwIjoxNTAwNDUyNjMzLCJhdWQiOiIxIiwiaXNzIjoiMSJ9.W0N9fsLJhW_fbU0rqqs_lYjOvf0qMGG86UgDQLU8P8k";
   // private token : string = "";
   constructor(private http : Http) { }
 

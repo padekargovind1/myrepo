@@ -30,16 +30,16 @@
 
                     <section class="col-md-2 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
                         
-                        <img src="assets/images/advisor-1.jpg" alt="" class="img-circle img-responsive advisor-img" />    
+                        <img src="{{adviserData.photo}}" alt="" class="img-circle img-responsive advisor-img" />    
                     </section>
                     
                     <div class="col-sm-4 col-xs-12">
                         <div class="text-with-icon">
                             <i class="fa fa-calendar big-calendar"></i>
                             <h3>Vous avez rendez-vous</h3>
-                            <p class="appointment-date"><strong>avec Mme Anita Lubies</strong></p>
+                            <p class="appointment-date"><strong>avec {{adviserData.title}} {{ adviserData.firstName }} {{ adviserData.lastName }}</strong></p>
 
-                            <time class="appointment-date">Lundi 8 Mai - 10h a 12h</time>
+                            <time class="appointment-date">{{ appointmentData[1] | date:'fullDate' }} - {{ appointmentData[2] }} à {{ appointmentData[3] }}</time>
                         </div>                        
                     </div>
                     <div class="col-sm-4 col-xs-12">
@@ -59,7 +59,7 @@
 
             <div class="row">
 
-                <div id="rootwizard"><form id="wizard">
+                <div id="rootwizard"><form id="wizard" [formGroup]="wizardForm">
 
                     <div class="container-fluid">
 
@@ -69,7 +69,7 @@
 
                         <!-- <div class="container-fluid"> -->
 
-                            <ul class="nav nav-tabs responsive">
+                            <!-- <ul class="nav nav-tabs responsive">
                                 <li><a href="#tab1" data-toggle="tab" title="Parents"><span class="helper"></span><span>Parents</span></a></li>
                                 <li><a href="#tab2" data-toggle="tab" title="Enfant"><span class="helper"></span><span>Enfant</span></a></li>
                                 <li><a href="#tab3" data-toggle="tab" title="Etablissement actuel"><span class="helper"></span><span>Etablissement actuel</span></a></li>
@@ -79,16 +79,18 @@
                                 <li><a href="#tab7" data-toggle="tab" title="Classes Precedentes"><span class="helper"></span><span>Classes précédentes</span></a></li>
                                 <li><a href="#tab8" data-toggle="tab" title="Vos Professions favorites"><span class="helper"></span><span>Vos professions favorites</span></a></li>
                                 <li><a href="#tab9" data-toggle="tab" title="Diagnostic"><span class="helper"></span><span>Diagnostic</span></a></li>
-                            </ul>
+                            </ul> -->
 
                         <!--</div><!-- .container -->
 
                       <!--</div><!-- .navar-inner -->
 
                     <!--</div><!-- .navbar -->
-                      <form [formGroup]="wizardForm">
-                        <div class="tab-content">
-                          
+                      <!-- <form > -->
+
+                      <md-tab-group md-dynamic-height [(selectedIndex)]="activeTabIndex"  class="wizard-tabs">
+                        <!-- <div class="tab-content"> -->
+                          <md-tab label="Parents">
                             <div class="tab-pane" id="tab1">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -194,7 +196,9 @@
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab1 -->
-
+                        </md-tab>
+                        
+                        <md-tab label="Enfant">
                             <div class="tab-pane" id="tab2">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -384,7 +388,9 @@
 
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab2 -->
+                        </md-tab>
 
+                        <md-tab label="Etablissement Actuel">
                             <div class="tab-pane" id="tab3">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -496,6 +502,9 @@
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab3 -->
+                        </md-tab>
+
+                        <md-tab label="Aide Scolaire">
                             <div class="tab-pane" id="tab4">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -531,6 +540,9 @@
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab4 -->
+                        </md-tab>
+
+                        <md-tab label="Les matières et vous">
                             <div class="tab-pane" id="tab5">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -586,6 +598,9 @@
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab5 -->
+                        </md-tab>
+
+                        <md-tab label="Les matières et vous">
                             <div class="tab-pane" id="tab6">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -640,6 +655,9 @@
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab6 -->
+                        </md-tab>
+
+                        <md-tab label="Les matières et vous">
                             <div class="tab-pane" id="tab7">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -719,6 +737,9 @@
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab7 -->
+                        </md-tab>
+
+                        <md-tab label="Les matières et vous">
                             <div class="tab-pane" id="tab8">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -1174,6 +1195,9 @@
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab8 -->
+                        </md-tab>
+
+                        <md-tab label="Les matières et vous">
                             <div class="tab-pane" id="tab9">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -1213,9 +1237,12 @@
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab9 -->
-                          
-                        </div><!-- .tab-content -->
-                      </form>
+                        </md-tab>
+
+                    </md-tab-group>
+                        <!-- </div> -->
+                        <!-- .tab-content -->
+                      <!-- </form> -->
 
                     </div><!-- .container-fluid -->
 
