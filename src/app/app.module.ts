@@ -68,6 +68,7 @@ import { ApplytoComponent } from './applyto/applyto.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
 import {BrochureDownloadComponent} from './brochure/brochure-download/brochure-download.component';
+import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import {BrochureDownloadComponent} from './brochure/brochure-download/brochure-d
     BrochpopupComponent,
     BrochureDownloadComponent,
     ApplytoComponent,
-    EditorialContComponent
+    EditorialContComponent,
+    EditorialDetComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,7 @@ import { LandingPage3Component } from './landing-page-3/landing-page-3.component
 import { WizardComponent } from './wizard/wizard.component';
 import {ApplytoComponent} from './applyto/applyto.component';
 import {EditorialContComponent} from './editorial-cont/editorial-cont.component';
+import {EditorialDetComponent} from './editorial-cont/editorial-det/editorial-det.component';
 
 
 export const AppRoutes: Routes = [
@@ -45,5 +46,6 @@ export const AppRoutes: Routes = [
     { path: 'wizard', component: WizardComponent},
     { path: 'applyto', component: ApplytoComponent},
     { path: 'editorial', component: EditorialContComponent},
+    {path:'editorial-detail',component:EditorialDetComponent},
     { path: '**', redirectTo: ''}
 ]
