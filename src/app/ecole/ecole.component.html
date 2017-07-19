@@ -131,7 +131,7 @@
                                     title="Affinez votre recherche avec plus de critères"></i>
                                 
                                 
-                                <div class="advance-filter">
+                                <div class="advance-filter" [ngClass]="{ 'open': opened }">
                                     <ul>
                                         <li><a>Specialités</a> 
                                             <ul (click)="onAdvancedClick($event, 'specifications')">

@@ -39,6 +39,8 @@ export class EcoleComponent implements OnInit, AfterViewInit {
   diplomes = [];
   optionValue: string="";
 
+  opened = false;
+
   constructor(private publicService : PublicService,
               private router : Router,
               private compareService : CompareService,
@@ -150,7 +152,13 @@ export class EcoleComponent implements OnInit, AfterViewInit {
 
   openAdvance() {
     console.log('clicked');
-    $('.advance-filter').toggleClass('open');
+    // (<any> $('.advance-filter')).toggleClass('open');
+
+    if (this.opened) { 
+      this.opened = false;
+    } else {
+      this.opened = true;
+    }
   }
 
   getSearchFilter(){
