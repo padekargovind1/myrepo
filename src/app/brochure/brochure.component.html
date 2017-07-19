@@ -17,48 +17,74 @@
 
                                         <div class="col-md-11">
                                             <div class="row">
+                                                <form [formGroup]="searchForm">
+                                                    <div class="col-md-4  col-xs-6">
+                                                        <div class="form-group">
+                                                            <label class="select-custom" for="class">
+                                                                <select name="class" class="form-control" id="class"
+                                                                    [formControl]="searchForm.controls['classe']">
+                                                                    <option value="" disabled selected hidden>Classe</option>
+                                                                    <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                                        <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                        <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                        <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                                        <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                        <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                        <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Cycle 3 : Consolidation">
+                                                                        <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                        <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                        <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4  col-xs-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Lieu" 
+                                                                [formControl]="searchForm.controls['lieu']" 
+                                                                [mdAutocomplete]="auto"
+                                                                (keyup)="filterLieu($event)"/>
+                                                            <md-autocomplete #auto="mdAutocomplete">
+                                                                <md-option *ngFor="let option of options" [value]="option.cityName">
+                                                                    {{ option.cityName }}
+                                                                </md-option>
+                                                            </md-autocomplete>
+                                                        </div>
+                                                    </div>
 
-                                                <div class="col-md-4  col-xs-6">
-                                                    <div class="form-group">
-                                                        <label class="select-custom" for="class">
-                                                            <select name="class" class="form-control" id="class">
-                                                                <option value="" disabled selected hidden>Classe</option>
-                                                                <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                                    <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                                                    <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                                                    <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
-                                                                </optgroup>
-                                                                <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                                    <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                                                    <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                                                    <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
-                                                                </optgroup>
-                                                                <optgroup label="Cycle 3 : Consolidation">
-                                                                    <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                                                    <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                                                    <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
-                                                                </optgroup>
-                                                            </select>
-                                                        </label>
+                                                    <div class="col-md-4  col-xs-12">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Nom d'etablissement" 
+                                                                [formControl]="searchForm.controls['etablissement']"
+                                                                [mdAutocomplete]="autoSchool"
+                                                                (keyup)="filterSchool($event)"/>
+                                                            
+                                                            <md-autocomplete #autoSchool="mdAutocomplete">
+                                                            <md-option *ngFor="let school of schoolsOptions" 
+                                                                    [value]="school.longName">
+                                                                    {{ school.longName }}
+                                                                </md-option>
+                                                            </md-autocomplete>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                
-                                                <div class="col-md-4  col-xs-6">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Lieu" />
-                                                    </div>
-                                                </div>
 
-                                                <div class="col-md-4  col-xs-12">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Nom d'etablissement" />
-                                                    </div>
-                                                </div>
+                                                </form>
                                             </div><!-- .row -->
                                         </div><!-- .col-* -->
                                         
                                         <div class="col-md-1">
-                                            <button class="btn btn-search"><i class="fa fa-search"></i></button>
+                                            <button class="btn btn-search" (click)="onSubmitSearch()"
+                                                [disabled]="searchForm.controls['etablissement'].value.length==0 && 
+                                                (searchForm.controls['lieu'].value.length==0 || 
+                                                searchForm.controls['classe'].value.length==0)">
+                                                <i class="fa fa-search"></i>
+                                            </button>
                                         </div><!-- -->
 
                                     </div><!-- .row -->
@@ -440,8 +466,28 @@ Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires 
  -->                    
                     <div id="js-grid-juicy-projects" class="row">
                         
-                        <div *ngFor="let brochure of listBrochures" class="graphic brochure-item col-md-3">
-                            <app-brochure-card  [brochureData]="brochure" ></app-brochure-card>
+                        <div *ngFor="let brochure of listBrochuresFiltered" class="graphic brochure-item col-md-3">
+                            <!--<app-brochure-card  [brochureData]="brochure" ></app-brochure-card>-->
+                            <div class="checkbox-custom">
+                                <md-checkbox (click)="onCheckbox(brochure._id)" class="download"></md-checkbox><label for="download">&nbsp;</label>
+                            </div>
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <div class="image-wrap">
+                                        <span class="vertical-helper"></span>
+                                        <img src="assets/images/school-logo/lycee-francois-d-estaing.png" alt="" />
+                                    </div>
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="'brochure.brochure'" class="btn-appointment btn red uppercase btn red uppercase" rel="nofollow"><i class="fa fa-download"></i> Télécharger</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">FDE - François D'estaing</div>
+
                         </div>
 
                     </div>
