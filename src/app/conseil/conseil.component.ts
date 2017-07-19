@@ -18,9 +18,9 @@ export class ConseilComponent implements OnInit {
   ngOnInit() {
   }
 
-  navigateToBooking(time, concernPeople, price){
+  navigateToBooking(time, concernPeople, price, index){
     console.log("Navigate to booking");
-    this.bookingService.storeBookingData([time, concernPeople, price]);
+    this.bookingService.storeBookingData([time, concernPeople, price, index]);
     this.router.navigate( ['booking']);
   }
 

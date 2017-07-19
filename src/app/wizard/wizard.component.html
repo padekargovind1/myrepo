@@ -30,16 +30,16 @@
 
                     <section class="col-md-2 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
                         
-                        <img src="assets/images/advisor-1.jpg" alt="" class="img-circle img-responsive advisor-img" />    
+                        <img src="{{adviserData.photo}}" alt="" class="img-circle img-responsive advisor-img" />    
                     </section>
                     
                     <div class="col-sm-4 col-xs-12">
                         <div class="text-with-icon">
                             <i class="fa fa-calendar big-calendar"></i>
                             <h3>Vous avez rendez-vous</h3>
-                            <p class="appointment-date"><strong>avec Mme Anita Lubies</strong></p>
+                            <p class="appointment-date"><strong>avec {{adviserData.title}} {{ adviserData.firstName }} {{ adviserData.lastName }}</strong></p>
 
-                            <time class="appointment-date">Lundi 8 Mai - 10h a 12h</time>
+                            <time class="appointment-date">{{ appointmentData[1] | date:'fullDate' }} - {{ appointmentData[2] }} à {{ appointmentData[3] }}</time>
                         </div>                        
                     </div>
                     <div class="col-sm-4 col-xs-12">

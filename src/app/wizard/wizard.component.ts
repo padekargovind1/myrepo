@@ -29,18 +29,22 @@ export class WizardComponent implements OnInit {
   langues = ["Français", "Anglais", "Espagnol", "Allemand", "Italien"];
   primarySchool = ["CP", "CE1", "CE2", "CM1", "CM2"];
   secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"];
-  userId ="";
-
+  userData : any;
+  appointmentData=["", "", "", "", ""];
+  adviserData: any;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
               private bookingService : BookingService,
               private route : Router,
               private fb : FormBuilder) { 
+                this.initAdviserData();
                 this.buildForm();
+                this.getUserProfile();
               }
 
   ngOnInit() {
+    this.getAdviserId();
     this.tokenLog=this.authService.getToken();
     if(this.tokenLog==""){
       alert("Vous devez être connecté afin de prendre un rendez-vous.");
@@ -49,6 +53,83 @@ export class WizardComponent implements OnInit {
       this.bookingData = this.bookingService.getBookingData();
       console.log(this.bookingData);
     }
+  }
+
+  /*
+  Remove this method if the api work
+  */
+  initAdviserData(){
+    this.adviserData={
+      title : "",
+      firstName : "",
+      lastName : "",
+      photo : ""
+    }
+  }
+
+  getUserProfile(){
+    this.usersService.getProfile()
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          if(response.code==400){
+            console.log(response.message);
+          } else {
+            this.userData=data[0];
+            this.patchValue(this.userData);
+          }
+        }
+      )
+  }
+
+  patchValue(userData){
+    this.wizardForm.patchValue({
+      lienParent : userData.parents[0].relationship,
+      title : userData.parents[0].gender,
+      lastName : userData.parents[0].lastName,
+      firstName : userData.parents[0].firstName,
+      email: userData.parents[0].email,
+      tel : userData.parents[0].phoneNumber,
+      childLastName : userData.lastName,
+      childFirstName : userData.firstName,
+      childAge : userData.age,
+      childTitle : userData.gender,
+      childMel : userData.email,
+      childTel : userData.mobilePhone,
+      childAddr : userData.address.address1,
+      childPostalCode : userData.address.postCode,
+      childCity : userData.address.city,
+      childBirthDay : userData.birthDate,
+      childBirthPlace : userData.birthPlace
+    });
+  }
+
+  getAdviserId(){
+    this.appointmentData=this.bookingService.getAdviserId()
+    console.log(this.appointmentData);
+    this.getAdviserData();
+  }
+
+  getAdviserData(){
+    this.usersService.getAdviserData(this.appointmentData[0])
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          if(response.code==400){
+            console.log(response.message);
+            this.adviserData={
+              title : "Mme",
+              firstName : "Anita",
+              lastName : "Lubies",
+              photo : "assets/images/advisor-1.jpg"
+            }
+          } else {
+            this.adviserData=data;
+          }
+        }
+      )
   }
 
   buildForm(){
@@ -177,10 +258,12 @@ export class WizardComponent implements OnInit {
 
   createAppointement(){
     const data = {
-      "adviser": "",
-      "from": "09/09/2017",
-      "to": "10/09/2017"
+      "adviser": this.appointmentData[0],
+      "from": this.appointmentData[1],
+      "to": this.appointmentData[2]
     }
+
+    this.usersService.postCreateNewAppointment(data, this.appointmentData[4]);
   }
 
 }

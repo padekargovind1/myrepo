@@ -10,7 +10,7 @@ export class BrochureCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.brochureData);
+    // console.log(this.brochureData);
   }
 
 }
