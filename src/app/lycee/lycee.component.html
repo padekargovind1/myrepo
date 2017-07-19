@@ -465,21 +465,19 @@
                             </div>
  
                             
-                            <div class="modal fade" id="filter-popup" tabindex="-1" role="dialog" aria-labelledby="filter-popup">
+                            <div class="modal fade compare-modal" id="filter-popup" tabindex="-1" role="dialog" aria-labelledby="filter-popup">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <h3>Ce que vous voulez compare?</h3>
 
-                                            <div *ngFor="let filter of filterList; let i=index">
-                                                <div class="filter-option">
+                                                <div class="filter-option" *ngFor="let filter of filterList; let i=index">
                                                     <md-checkbox  name="" 
                                                         class="checkbox filled-in"
                                                         (click)="onFilterCheckbox(i)">
                                                     <label>{{ filter }}</label>
                                                     </md-checkbox>
                                                 </div><!-- .filter-option -->
-                                            </div>
 
                                             <button class="btn btn-filter-pop-up btn-block btn-lg" 
                                                 data-dismiss="modal"
