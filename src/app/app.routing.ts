@@ -18,6 +18,7 @@ import { DetailAppointmentComponent } from './detail-appointment/detail-appointm
 import { LandingPage1Component } from './landing-page-1/landing-page-1.component';
 import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 import { WizardComponent } from './wizard/wizard.component';
+import {ApplytoComponent} from './applyto/applyto.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: AccueilComponent},
@@ -40,5 +41,6 @@ export const AppRoutes: Routes = [
     { path: 'landing-page-1', component: LandingPage1Component },
     { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'wizard', component: WizardComponent},
+    { path: 'applyto', component: ApplytoComponent},
     { path: '**', redirectTo: ''}
 ]

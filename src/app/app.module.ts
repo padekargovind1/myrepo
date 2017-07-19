@@ -64,6 +64,7 @@ import { LandingPage3Component } from './landing-page-3/landing-page-3.component
 import { CompareBlockComponent } from './compare-mode/compare-block/compare-block.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component';
+import { ApplytoComponent } from './applyto/applyto.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component'
     LandingPage3Component,
     CompareBlockComponent,
     WizardComponent,
-    BrochpopupComponent
+    BrochpopupComponent,
+    ApplytoComponent
   ],
   imports: [
     BrowserModule,
