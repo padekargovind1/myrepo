@@ -12,6 +12,7 @@ import {MyAccountMdl,
 
 const PROFILE_API : string = "http://54.254.203.172/cideapi/api/users/profile";
 const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/users/appointments";
+const PACKAGE_API : string = "http://54.254.203.172/cideapi/api/users/package";
 
 @Injectable()
 export class UsersService {
@@ -39,6 +40,7 @@ export class UsersService {
 
   getToken(){
     this.token = this.authService.getToken();
+    return this.token;
     // console.log(this.token);
   }
 
@@ -63,7 +65,12 @@ export class UsersService {
   }
 
   getAppointmentsPackage() : Observable<any>{
-    return this.http.get(APPOINTMENTS_API+'/package?token='+this.token, {headers: this.headers})
+    return this.http.get(PACKAGE_API+'s?token='+this.token, {headers: this.headers})
+      .map((response)=>response.json());
+  }
+
+  getAppointmentsPackageById(packageId): Observable<any>{
+    return this.http.get(PACKAGE_API+'/packageId?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }
 

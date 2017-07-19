@@ -66,6 +66,7 @@ import { WizardComponent } from './wizard/wizard.component';
 import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component';
 import { ApplytoComponent } from './applyto/applyto.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { BrochureDownloadComponent } from './brochure/brochure-download/brochure-download.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     CompareBlockComponent,
     WizardComponent,
     BrochpopupComponent,
-    ApplytoComponent
+    ApplytoComponent,
+    BrochureDownloadComponent
   ],
   imports: [
     BrowserModule,
@@ -148,7 +150,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     BookingService
   ],
     entryComponents: [
-       BrochpopupComponent
+       BrochpopupComponent,
+       BrochureDownloadComponent
     ],
   bootstrap: [AppComponent]
 })
