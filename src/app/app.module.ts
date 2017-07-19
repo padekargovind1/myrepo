@@ -13,6 +13,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 
 import 'hammerjs';
 
@@ -65,6 +66,7 @@ import { CompareBlockComponent } from './compare-mode/compare-block/compare-bloc
 import { WizardComponent } from './wizard/wizard.component';
 import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component';
 import { ApplytoComponent } from './applyto/applyto.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -134,6 +136,8 @@ import { ApplytoComponent } from './applyto/applyto.component';
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
+    FileUploadModule,
+    NgxDatatableModule
     
   ],
   providers: [
