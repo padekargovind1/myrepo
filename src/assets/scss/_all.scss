@@ -34,7 +34,7 @@ h1 { font-weight: 300; }
         .bar span { background: #747F87; animation-name: move; animation-duration: 5s; animation-iteration-count: 1; display: inline-table; height: 100%; width: 0; }
     .menu-holder { float: left; font-size: 34px; margin: 18px 40px 10px 0; }
 
-
+.btn span.glyphicon { opacity: 1 !important;}
 
 
 /** 
@@ -1744,3 +1744,5 @@ a:hover { text-decoration: none;}
   img { width: 100%;}
 }
 .full-width { width: 100%; img { width: 100%;} margin-bottom: 30px;}
+
+.fc button { color: #333;}
