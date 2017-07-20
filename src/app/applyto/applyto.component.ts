@@ -33,6 +33,7 @@ export class ApplytoComponent implements OnInit {
   primarySchool = ["CP", "CE1", "CE2", "CM1", "CM2"];
   secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"];
   userId ="";
+  activeTabIndex = 0;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,

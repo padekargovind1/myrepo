@@ -1,0 +1,40 @@
+/**
+ * Booking appointment 
+ */
+.advisors-wrap { background: #343434; padding: 20px 7px;}
+    .advisors { list-style: none; padding-left: 0; }
+    .advisors li { border-radius: 5px; background: #444444; padding: 10px; margin-bottom: 10px; opacity: .4;}
+    // .advisors li .checkbox-wrap { z-index:10; opacity:1;}
+    .advisors li.active { opacity: 1;}
+    .advisor-name { font-size: 20px; display: block; margin-top: 20px}
+    .advisors li a { color: #fff;}
+    .advisor-title { margin: 0; font-size: 22px; font-weight: 100; margin-bottom: 13px;}
+    .advisors .checkbox-wrap { position: absolute; top: 0; right: 0; }
+.calendar-wrap { background: #444444; border: #333333 solid 9px; padding: 16px;}
+#calendar h2 { font-size: 20px;}
+.fc-event { background: #00bc50; border-color: #00bc50; }
+
+#appointment { color: #343332; }
+    #appointment .modal-sm { width: 420px; }
+    #appointment .close { font-size: 24px; opacity: 1; font-weight: 400; }
+    .title-confirm-modal { font-size: 18px; font-weight: 700;}
+    #appointment .form-control { margin-bottom: 20px; }
+    .muted { font-size: 12px; color: #999; }
+    .appointment-date { font-size: 20px;}
+    .btn-confirm { background: #00786D; color: #fff;}
+    .btn-confirm:hover { color: #fff; }
+
+
+#apply-popup { color: #333;}
+  #apply-popup table {width: 100%; margin-bottom: 40px;}
+  #apply-popup th { font-size: 18px; font-weight: 700; padding: 7px; text-align: center;}
+  #apply-popup td { text-align: center; padding: 20px 0; font-size: 18px; }
+
+#confirm-popup { color: #333; font-size: 16px; clear: both; text-align: center;}
+  #confirm-popup .modal-dialog { width: 486px; }
+  #confirm-popup .icon { margin: 0 auto 20px; display: table; }
+
+#disponibles { font-weight: 400 !important; padding-left: 0; }
+#disponibles:after { border: none;}
+.checkbox[type="checkbox"].filled-in:checked + #disponibles:after { top: 5px; left: 38%; }
+.checkbox[type="checkbox"].filled-in:checked + #disponibles:before { top: 5px; left: 38%; }

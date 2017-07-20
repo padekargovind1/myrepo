@@ -299,7 +299,7 @@
                                                         <select name="class" class="form-control" id="class" 
                                                             (click)="onAdvancedClick($event, 'diploma')">
                                                             <option value="" disabled selected hidden>Diplôme</option>
-                                                            <option *ngFor="let diplome of diplome" value="{{diplome}}">
+                                                            <option *ngFor="let diplome of diplomes" value="{{diplome}}">
                                                                 {{ diplome }}
                                                             </option>
                                                         </select>

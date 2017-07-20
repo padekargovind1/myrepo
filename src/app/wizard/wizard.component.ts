@@ -32,6 +32,7 @@ export class WizardComponent implements OnInit {
   userData : any;
   appointmentData=["", "", "", "", ""];
   adviserData: any;
+  activeTabIndex = 0;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
