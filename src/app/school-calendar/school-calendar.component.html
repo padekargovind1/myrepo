@@ -1,9 +1,9 @@
 <main class="main white-background" role="main">
 
 	<h2 class="title-page">Agenda des écoles</h2>
-
-	<div *ngFor="let event of events">
-	    <app-cube [eventData]="event"></app-cube>
+	
+	<div *ngFor="let event of events; let i=index">
+	    <app-cube [eventData]="event" [counter]="i+1"></app-cube>
 	</div>
 	
 </main>
