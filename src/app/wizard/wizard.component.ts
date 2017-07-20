@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UsersService } from '../services/users.service';
@@ -16,7 +16,7 @@ import { CustomValidators } from 'ng2-validation';
 export class WizardComponent implements OnInit {
 
   tokenLog : string ="";
-  bookingData=["","",""];
+  bookingData=[];
   wizardForm : FormGroup;
   lienparents = [ "Père", 
                 "Mère", 
@@ -30,7 +30,7 @@ export class WizardComponent implements OnInit {
   primarySchool = ["CP", "CE1", "CE2", "CM1", "CM2"];
   secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"];
   userData : any;
-  appointmentData=["", "", "", "", ""];
+  appointmentData=[];
   adviserData: any;
   activeTabIndex = 0;
 
@@ -38,7 +38,8 @@ export class WizardComponent implements OnInit {
               private authService : AuthService,
               private bookingService : BookingService,
               private route : Router,
-              private fb : FormBuilder) { 
+              private fb : FormBuilder,
+              private router : ActivatedRoute) { 
                 this.initAdviserData();
                 this.buildForm();
                 this.getUserProfile();
@@ -51,7 +52,10 @@ export class WizardComponent implements OnInit {
       alert("Vous devez être connecté afin de prendre un rendez-vous.");
       this.route.navigate(['/login']);
     } else {
-      this.bookingData = this.bookingService.getBookingData();
+      for(let i = 0; i<4; i++){
+        // console.log(this.router.snapshot.params[i])
+        this.bookingData[i]=this.router.snapshot.params[i];
+      }
       console.log(this.bookingData);
     }
   }
@@ -107,7 +111,10 @@ export class WizardComponent implements OnInit {
   }
 
   getAdviserId(){
-    this.appointmentData=this.bookingService.getAdviserId()
+    // this.appointmentData=this.bookingService.getAdviserData()
+    for(let i = 4; i<9; i++){
+      this.appointmentData.push(this.router.snapshot.params[i]);
+    }
     console.log(this.appointmentData);
     this.getAdviserData();
   }

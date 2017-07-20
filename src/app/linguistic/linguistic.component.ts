@@ -9,6 +9,7 @@ import { SchoolService } from '../services/school.service';
 export class LinguisticComponent implements OnInit {
 
   listTrips : any;
+  listTripsFiltered : any;
 
   constructor(private schoolService : SchoolService) { 
     this.getTrips();
@@ -27,10 +28,81 @@ export class LinguisticComponent implements OnInit {
             console.log(data.message);
           } else {
             this.listTrips = data;
+            this.listTripsFiltered = data;
             // console.log(this.listTrips);
           }
         }
       )
+  }
+
+  onDestinationClick(event, index){
+    console.log(event)
+    let filterValue = event.srcElement.value;
+    if(filterValue!=''){
+      if(index=='0'){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip =>{
+            return filterValue == trip.destination
+          }
+        )
+      } else if(index=='1') {
+        this.listTripsFiltered = this.listTrips.filter(
+          trip=>{
+            return filterValue == trip.periode
+          }
+        )
+      } else if(index=='2'){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip =>{
+            return filterValue == trip.language
+          }
+        )
+      } else if(index=='3'){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip=>{
+            return filterValue > trip.minAge && filterValue < trip.maxAge
+          }
+        )
+      } else if(index=='4'){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip=>{
+            return filterValue = trip.linguistic
+          }
+        )
+      } else if(index=='5' && event.srcElement.checked){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip=>{
+            return trip.place.apartement
+          }
+        )
+      } else if(index=='6' && event.srcElement.checked){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip=>{
+            return trip.place.common
+          }
+        )
+      } else if(index=='7' && event.srcElement.checked){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip=>{
+            return trip.place.family
+          }
+        )
+      } else if(index=='8' && event.srcElement.checked){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip=>{
+            return trip.place.residence
+          }
+        )
+      } else if(index=='9'){
+        this.listTripsFiltered = this.listTrips.filter(
+          trip=>{
+            return filterValue == trip.tripType
+          }
+        )
+      } else {
+        this.listTripsFiltered = this.listTrips
+      }
+    }
   }
 
 }

@@ -1,344 +1,344 @@
 <div class="filter-form-holder college">
 
-            <form class="form-inline searchform  school-page">
+    <form class="form-inline searchform  school-page">
 
-                
-                <h2 class="featured-title">Un collège 6ème-3ème</h2>
-                
+        
+        <h2 class="featured-title">Un collège 6ème-3ème</h2>
+        
 
-                <div class="container">
+        <div class="container">
 
-                    <div class="row">
+            <div class="row">
+
+                <div class="col-md-11">
+                    
+                    <div class="form-wrap row">
 
                         <div class="col-md-11">
-                            
-                            <div class="form-wrap row">
+                            <div class="row">
+                                <form [formGroup]="searchForm">
+                                    <div class="col-md-4  col-xs-6">
+                                        <div class="form-group">
+                                            <label class="select-custom" for="class">
+                                                <select name="class" class="form-control" id="class"
+                                                    [formControl]="searchForm.controls['classe']">
+                                                    <option value="" disabled selected hidden>Classe</option>
+                                                    <optgroup label="Cycle collège">
+                                                        <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                                        <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+                                                        <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+                                                        <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+                                                    </optgroup>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div><!-- .col-* -->
 
-                                <div class="col-md-11">
-                                    <div class="row">
-                                        <form [formGroup]="searchForm">
-                                            <div class="col-md-4  col-xs-6">
-                                                <div class="form-group">
-                                                    <label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class"
-                                                            [formControl]="searchForm.controls['classe']">
-                                                            <option value="" disabled selected hidden>Classe</option>
-                                                            <optgroup label="Cycle collège">
-                                                                <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
-                                                                <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
-                                                                <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
-                                                                <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div><!-- .col-* -->
+                                    <div class="col-md-4  col-xs-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Lieu"
+                                                [formControl]="searchForm.controls['lieu']" 
+                                                [mdAutocomplete]="auto"
+                                                (keyup)="filterLieu($event)"/>
+                                            <md-autocomplete #auto="mdAutocomplete">
+                                                <md-option *ngFor="let option of options" [value]="option.cityName">
+                                                    {{ option.cityName }}
+                                                </md-option>
+                                            </md-autocomplete>
+                                        </div>
+                                    </div>
 
-                                            <div class="col-md-4  col-xs-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Lieu"
-                                                        [formControl]="searchForm.controls['lieu']" 
-                                                        [mdAutocomplete]="auto"
-                                                        (keyup)="filterLieu($event)"/>
-                                                    <md-autocomplete #auto="mdAutocomplete">
-                                                        <md-option *ngFor="let option of options" [value]="option.cityName">
-                                                            {{ option.cityName }}
-                                                        </md-option>
-                                                    </md-autocomplete>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4  col-xs-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" 
-                                                        placeholder="Nom d'etablissement" 
-                                                        [formControl]="searchForm.controls['etablissement']"
-                                                        [mdAutocomplete]="autoSchool"
-                                                        (keyup)="filterSchool($event)"/>
-                                                    <md-autocomplete #autoSchool="mdAutocomplete">
-                                                        <md-option *ngFor="let school of schoolsOptions" 
-                                                            [value]="school.longName">
-                                                            {{ school.longName }}
-                                                        </md-option>
-                                                    </md-autocomplete>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div><!-- .row -->
-                                </div><!-- .col-* -->
-                                
-                                <div class="col-md-1">
-                                <!-- <div class="form-group"> -->
-                                    <button class="btn btn-search" type="submit"
-                                        [disabled]="searchForm.controls['etablissement'].value.length==0 && 
-                                        (searchForm.controls['lieu'].value.length==0 || 
-                                        searchForm.controls['classe'].value.length==0)"
-                                        (click)="onSubmitSearch()">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                <!-- </div> -->
-                                </div>
-
-
-                            </div><!-- .form-wrap -->
-                        
+                                    <div class="col-md-4  col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" 
+                                                placeholder="Nom d'etablissement" 
+                                                [formControl]="searchForm.controls['etablissement']"
+                                                [mdAutocomplete]="autoSchool"
+                                                (keyup)="filterSchool($event)"/>
+                                            <md-autocomplete #autoSchool="mdAutocomplete">
+                                                <md-option *ngFor="let school of schoolsOptions" 
+                                                    [value]="school.longName">
+                                                    {{ school.longName }}
+                                                </md-option>
+                                            </md-autocomplete>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div><!-- .row -->
                         </div><!-- .col-* -->
-
+                        
                         <div class="col-md-1">
-                            <div class="filter-wrapper">
-                                <i class="fa fa-filter filter-holder" 
-                                    data-toggle="tooltip" data-placement="right" 
-                                    title="Affinez votre recherche avec plus de critères"></i>
-                                <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
-                                <div class="advance-filter">
-                                    <ul>
-                                        <li><a>Specialités</a>
-                                            <ul (click)="onAdvancedClick($event, 'specifications')">
-                                                <li><input type="checkbox" name="handicaped" class="checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li>
-                                                <li><input type="checkbox" name="finance" class="checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
-                                                <li><input type="checkbox" name="foreignFrench" class="checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
-                                                <li><input type="checkbox" name="advanced" class="checkbox filled-in" id="filter-4" /><label for="filter-4">Enfant Precoces</label></li>
-                                                <li><input type="checkbox" name="flexibleTimeFrame" class="checkbox filled-in" id="filter-5" /><label for="filter-5">Horaires Aménagés</label></li>
-                                            </ul>
-                                        </li>
-                                        <li><a>Internat</a>
-                                            <ul (click)="onAdvancedClick($event, 'boarding')">
-                                                <li><input type="checkbox" name="boarding" class="checkbox filled-in" id="filter-6" /><label for="filter-6">si case Internat est cochée</label></li>
-                                                <li><input type="checkbox" name="capacity" class="checkbox filled-in" id="filter-7" /><label for="filter-7">Capacité</label></li>
-                                                <li><input type="checkbox" name="onSite" class="checkbox filled-in" id="filter-8" /><label for="filter-8">Internat sur Place</label></li>
-                                                <li><input type="checkbox" name="notOnSite" class="checkbox filled-in" id="filter-9" /><label for="filter-9">Internat externe</label></li>
-                                                <li><input type="checkbox" name="residence" class="checkbox filled-in" id="filter-10" /><label for="filter-10">Résidence Etudiante</label></li>
-                                                <li><input type="checkbox" name="weekdays" class="checkbox filled-in" id="filter-11" /><label for="filter-11">Internat de semaine</label></li>
-                                                <li><input type="checkbox" name="fulltime" class="checkbox filled-in" id="filter-12" /><label for="filter-12">Internat Permanent</label></li>
-                                                <li><input type="checkbox" name="someweekends" class="checkbox filled-in" id="filter-13" /><label for="filter-13">Internat Certains Weekend</label></li>
-                                                <li><input type="checkbox" name="mixed" class="checkbox filled-in" id="filter-14" /><label for="filter-14">Internat mixte</label></li>
-                                                <li><input type="checkbox" name="girls" class="checkbox filled-in" id="filter-15" /><label for="filter-15">Internat filles</label></li>
-                                                <li><input type="checkbox" name="boys" class="checkbox filled-in" id="filter-16" /><label for="filter-16">Internat garçons</label></li>
-                                                <li><input type="checkbox" name="individual" class="checkbox filled-in" id="filter-17" /><label for="filter-17">Chambres individuelles</label></li>
-                                                <li><input type="checkbox" name="'2to4'" class="checkbox filled-in" id="filter-18" /><label for="filter-18">Chambres 2 a 4 lits</label></li>
-                                                <li><input type="checkbox" name="'5to8'" class="checkbox filled-in" id="filter-19" /><label for="filter-19">chambres 5 a 8 lits</label></li>
-                                                <li><input type="checkbox" name="domitories" class="checkbox filled-in" id="filter-20" /><label for="filter-20">Dortoirs</label></li>
-                                            </ul>
-                                        </li>
-                                        <li><a>Stages</a>
-                                            <ul (click)="onAdvancedClick($event, 'extraCurriculum')">
-                                                <li><input type="checkbox" name="preintake" class="checkbox filled-in" id="filter-21" /><label for="filter-21">stage pre-rentree</label></li>
-                                                <li><input type="checkbox" name="smallholidays" class="checkbox filled-in" id="filter-22" /><label for="filter-22">stages petites vacances</label></li>
-                                                <li><input type="checkbox" name="bigholidays" class="checkbox filled-in" id="filter-23" /><label for="filter-23">stages de grandes vacances</label></li> 
-                                            </ul>
-                                        </li>
-                                        <li><a>Restauration</a>
-                                            <ul (click)="onAdvancedClick($event, 'canteen')">
-                                                <li><input type="checkbox" name="'self-service'" class="checkbox filled-in" id="filter-24" /><label for="filter-24">self-service</label></li>
-                                                <li><input type="checkbox" name="serviceAtTable" class="checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
-                                                <li><input type="checkbox" name="cafeteria" class="checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
-                                            </ul>
-                                        </li>
-                                        <li><a>Externat</a>
-                                            <ul (click)="onAdvancedClick($event, 'external')">
-                                                <li><input type="checkbox" name="'half-board_mixed'" class="checkbox filled-in" id="filter-27" /><label for="filter-27">demi-pension mixte</label></li>
-                                                <li><input type="checkbox" name="'half-board_boys'" class="checkbox filled-in" id="filter-28" /><label for="filter-28">demi-pension garcons</label></li>
-                                                <li><input type="checkbox" name="'half-board_girls'" class="checkbox filled-in" id="filter-29" /><label for="filter-29">demi-pension filles</label></li> 
-                                            </ul>
-                                        </li>
-                                        <li><a>Statut</a>
-                                            <ul (click)="onAdvancedClick($event, 'status')">
-                                                <li>
-                                                    <input type="checkbox" name="public" class="checkbox filled-in" id="filter-33" />
-                                                    <label for="filter-33">Public</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="private" class="checkbox filled-in" id="filter-34" />
-                                                    <label for="filter-34">Prive</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="CCI" class="checkbox filled-in" id="filter-35" />
-                                                    <label for="filter-35">CCI</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="association" class="checkbox filled-in" id="filter-36" />
-                                                    <label for="filter-36">Sous Contrat D'association</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="outContract" class="checkbox filled-in" id="filter-37" />
-                                                    <label for="filter-37">Hors contrat</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="CFA" class="checkbox filled-in" id="filter-38" />
-                                                    <label for="filter-38">CFA</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="UFA" class="checkbox filled-in" id="filter-39" />
-                                                    <label for="filter-40">UFA</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="recognized" class="checkbox filled-in" id="filter-40" />
-                                                    <label for="filter-40">Reconnue par l'Etat</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="convention" class="checkbox filled-in" id="filter-41" />
-                                                    <label for="filter-41">en convention avec l'Etat</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="higherEducationFree" class="checkbox filled-in" id="filter-42" />
-                                                    <label for="filter-42">Enseignement supérieur Libre</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="higherEducation" class="checkbox filled-in" id="filter-43" />
-                                                    <label for="filter-43">Enseignement supérieur</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="technical" class="checkbox filled-in" id="filter-44" />
-                                                    <label for="filter-44">Enseignement supérieur technique</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="simple" class="checkbox filled-in" id="filter-45" />
-                                                    <label for="filter-45">Sous contrat simple</label>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a>Ens. Confessionel</a>
-                                            <ul (click)="onAdvancedClick($event, 'religious')">
-                                                <li>
-                                                    <input type="checkbox" name="secular" class="checkbox filled-in" id="laic" />
-                                                    <label for="laic">Laic</label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" name="religious" class="checkbox filled-in" id="confessionel" />
-                                                    <label for="confessionel">Confessionel</label>
+                        <!-- <div class="form-group"> -->
+                            <button class="btn btn-search" type="submit"
+                                [disabled]="searchForm.controls['etablissement'].value.length==0 && 
+                                (searchForm.controls['lieu'].value.length==0 || 
+                                searchForm.controls['classe'].value.length==0)"
+                                (click)="onSubmitSearch()">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        <!-- </div> -->
+                        </div>
 
-                                                    <div class="collapse" id="addConfessionel" aria-expanded="false">
-                                                        <ul>
-                                                            <li>
-                                                                <input type="checkbox" name="catholic" class="checkbox filled-in" id="catholique" />
-                                                                <label for="catholique">Catholique</label>        
-                                                            </li>
-                                                            <li>
-                                                                <input type="checkbox" name="protestant" class="checkbox filled-in" id="protestant" />
-                                                                <label for="protestant">Protestant</label>        
-                                                            </li>
-                                                            <li>
-                                                                <input type="checkbox" name="muslim" class="checkbox filled-in" id="musulman" />
-                                                                <label for="musulman">Musulman</label>        
-                                                            </li>
-                                                            <li>
-                                                                <input type="checkbox" name="jew" class="checkbox filled-in" id="juif" />
-                                                                <label for="juif">Juif</label>        
-                                                            </li>
-                                                            <li>
-                                                                <input type="checkbox" name="boudhist" class="checkbox filled-in" id="boudhiste" />
-                                                                <label for="boudhiste">Boudhiste</label>        
-                                                            </li>
-                                                        </ul>                                                  
-                                                    </div>
-                                                </li>
-                                            </ul>
+
+                    </div><!-- .form-wrap -->
+                
+                </div><!-- .col-* -->
+
+                <div class="col-md-1">
+                    <div class="filter-wrapper">
+                        <i class="fa fa-filter filter-holder" 
+                            data-toggle="tooltip" data-placement="right" 
+                            title="Affinez votre recherche avec plus de critères"></i>
+                        <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
+                        <div class="advance-filter">
+                            <ul>
+                                <li><a>Specialités</a>
+                                    <ul (click)="onAdvancedClick($event, 'specifications')">
+                                        <li><input type="checkbox" name="handicaped" class="checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li>
+                                        <li><input type="checkbox" name="finance" class="checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
+                                        <li><input type="checkbox" name="foreignFrench" class="checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
+                                        <li><input type="checkbox" name="advanced" class="checkbox filled-in" id="filter-4" /><label for="filter-4">Enfant Precoces</label></li>
+                                        <li><input type="checkbox" name="flexibleTimeFrame" class="checkbox filled-in" id="filter-5" /><label for="filter-5">Horaires Aménagés</label></li>
+                                    </ul>
+                                </li>
+                                <li><a>Internat</a>
+                                    <ul (click)="onAdvancedClick($event, 'boarding')">
+                                        <li><input type="checkbox" name="boarding" class="checkbox filled-in" id="filter-6" /><label for="filter-6">si case Internat est cochée</label></li>
+                                        <li><input type="checkbox" name="capacity" class="checkbox filled-in" id="filter-7" /><label for="filter-7">Capacité</label></li>
+                                        <li><input type="checkbox" name="onSite" class="checkbox filled-in" id="filter-8" /><label for="filter-8">Internat sur Place</label></li>
+                                        <li><input type="checkbox" name="notOnSite" class="checkbox filled-in" id="filter-9" /><label for="filter-9">Internat externe</label></li>
+                                        <li><input type="checkbox" name="residence" class="checkbox filled-in" id="filter-10" /><label for="filter-10">Résidence Etudiante</label></li>
+                                        <li><input type="checkbox" name="weekdays" class="checkbox filled-in" id="filter-11" /><label for="filter-11">Internat de semaine</label></li>
+                                        <li><input type="checkbox" name="fulltime" class="checkbox filled-in" id="filter-12" /><label for="filter-12">Internat Permanent</label></li>
+                                        <li><input type="checkbox" name="someweekends" class="checkbox filled-in" id="filter-13" /><label for="filter-13">Internat Certains Weekend</label></li>
+                                        <li><input type="checkbox" name="mixed" class="checkbox filled-in" id="filter-14" /><label for="filter-14">Internat mixte</label></li>
+                                        <li><input type="checkbox" name="girls" class="checkbox filled-in" id="filter-15" /><label for="filter-15">Internat filles</label></li>
+                                        <li><input type="checkbox" name="boys" class="checkbox filled-in" id="filter-16" /><label for="filter-16">Internat garçons</label></li>
+                                        <li><input type="checkbox" name="individual" class="checkbox filled-in" id="filter-17" /><label for="filter-17">Chambres individuelles</label></li>
+                                        <li><input type="checkbox" name="'2to4'" class="checkbox filled-in" id="filter-18" /><label for="filter-18">Chambres 2 a 4 lits</label></li>
+                                        <li><input type="checkbox" name="'5to8'" class="checkbox filled-in" id="filter-19" /><label for="filter-19">chambres 5 a 8 lits</label></li>
+                                        <li><input type="checkbox" name="domitories" class="checkbox filled-in" id="filter-20" /><label for="filter-20">Dortoirs</label></li>
+                                    </ul>
+                                </li>
+                                <li><a>Stages</a>
+                                    <ul (click)="onAdvancedClick($event, 'extraCurriculum')">
+                                        <li><input type="checkbox" name="preintake" class="checkbox filled-in" id="filter-21" /><label for="filter-21">stage pre-rentree</label></li>
+                                        <li><input type="checkbox" name="smallholidays" class="checkbox filled-in" id="filter-22" /><label for="filter-22">stages petites vacances</label></li>
+                                        <li><input type="checkbox" name="bigholidays" class="checkbox filled-in" id="filter-23" /><label for="filter-23">stages de grandes vacances</label></li> 
+                                    </ul>
+                                </li>
+                                <li><a>Restauration</a>
+                                    <ul (click)="onAdvancedClick($event, 'canteen')">
+                                        <li><input type="checkbox" name="'self-service'" class="checkbox filled-in" id="filter-24" /><label for="filter-24">self-service</label></li>
+                                        <li><input type="checkbox" name="serviceAtTable" class="checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
+                                        <li><input type="checkbox" name="cafeteria" class="checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
+                                    </ul>
+                                </li>
+                                <li><a>Externat</a>
+                                    <ul (click)="onAdvancedClick($event, 'external')">
+                                        <li><input type="checkbox" name="'half-board_mixed'" class="checkbox filled-in" id="filter-27" /><label for="filter-27">demi-pension mixte</label></li>
+                                        <li><input type="checkbox" name="'half-board_boys'" class="checkbox filled-in" id="filter-28" /><label for="filter-28">demi-pension garcons</label></li>
+                                        <li><input type="checkbox" name="'half-board_girls'" class="checkbox filled-in" id="filter-29" /><label for="filter-29">demi-pension filles</label></li> 
+                                    </ul>
+                                </li>
+                                <li><a>Statut</a>
+                                    <ul (click)="onAdvancedClick($event, 'status')">
+                                        <li>
+                                            <input type="checkbox" name="public" class="checkbox filled-in" id="filter-33" />
+                                            <label for="filter-33">Public</label>
                                         </li>
-                                        <li><a>Langues</a>
-                                            <ul>
-                                                <li><label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class" 
-                                                            (click)="filterLanguage($event, 'lv1')">
-                                                            <option value="" disabled selected hidden>LV1</option>
-                                                            <option *ngFor="let langue of langues" value="{{langue}}">
-                                                                {{ langue }}
-                                                            </option>
-                                                        </select>
-                                                    </label>
-                                                </li>
-                                                <li><label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class" 
-                                                            (click)="filterLanguage($event, 'lv2')">
-                                                            <option value="" disabled selected hidden>LV2</option>
-                                                            <option *ngFor="let langue of langues" value="{{langue}}">
-                                                                {{ langue }}
-                                                            </option>
-                                                        </select>
-                                                    </label>
-                                                </li>
-                                                <li><label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class" 
-                                                            (click)="filterLanguage($event, 'lv3')">
-                                                            <option value="" disabled selected hidden>LV3</option>
-                                                            <option *ngFor="let langue of langues" value="{{langue}}">
-                                                                {{ langue }}
-                                                            </option>
-                                                        </select>
-                                                    </label>
-                                                </li>
-                                                <li><label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class"
-                                                            (click)="filterLanguage($event, 'ancient')">
-                                                            <option value="" disabled selected hidden>LA - Langues Anciennes</option>
-                                                            <option value="Grec">Grec</option>
-                                                            <option value="Latin">Latin</option>
-                                                        </select>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class"
-                                                            (click)="filterLanguage($event, 'regional')">
-                                                            <option value="" disabled selected hidden>LR - Langues Regionales</option>
-                                                            <option *ngFor="let langue of languesRegio" value="{{langue}}">
-                                                                {{ langue }}
-                                                            </option>
-                                                        </select>
-                                                    </label>
-                                                </li>
-                                            </ul>
+                                        <li>
+                                            <input type="checkbox" name="private" class="checkbox filled-in" id="filter-34" />
+                                            <label for="filter-34">Prive</label>
                                         </li>
-                                        <li><a>Sections</a>
-                                            <ul (click)="onAdvancedClick($event, 'sections')">
-                                                <li><input type="checkbox" name="europeanSections" class="checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
-                                                <li><input type="checkbox" name="bilingualSections" class="checkbox filled-in" id="filter-53" /><label for="filter-53">Section bilingue</label></li>
-                                                <li><input type="checkbox" name="sportSections" class="checkbox filled-in" id="filter-54" /><label for="filter-54">Section Sportive</label></li>
-                                            </ul>
+                                        <li>
+                                            <input type="checkbox" name="CCI" class="checkbox filled-in" id="filter-35" />
+                                            <label for="filter-35">CCI</label>
                                         </li>
-                                        <li><a>Diplomes</a>
-                                            <ul>
-                                               <li><label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class" 
-                                                            (click)="onAdvancedClick($event, 'diploma')">
-                                                            <option value="" disabled selected hidden>Diplôme</option>
-                                                            <option *ngFor="let diplome of diplomes" value="{{diplome}}">
-                                                                {{ diplome }}
-                                                            </option>
-                                                        </select>
-                                                    </label>
-                                                </li> 
-                                            </ul>
+                                        <li>
+                                            <input type="checkbox" name="association" class="checkbox filled-in" id="filter-36" />
+                                            <label for="filter-36">Sous Contrat D'association</label>
                                         </li>
-                                        <li><a>Options</a>
-                                            <ul>
-                                                <li>
-                                                    <input type="text" name="" placeholder="Nom de L'option" 
-                                                        class="form-control" (keyup)="addOptionFilter($event)">
-                                                    <!--<button class="btn btn-confirm" (click)="addOptionFilter($event)">Entrer</button>-->
-                                                </li>
-                                            </ul>
+                                        <li>
+                                            <input type="checkbox" name="outContract" class="checkbox filled-in" id="filter-37" />
+                                            <label for="filter-37">Hors contrat</label>
                                         </li>
-                                        <li><a>Places disponibles</a>
-                                            <ul (click)="onAdvancedClick($event, 'availableSeat')">
-                                                <li>
-                                                    <input type="checkbox" name="activation" class="checkbox filled-in" id="filter-60" />
-                                                    <label for="filter-60">Places disponibles</label>
-                                                    <!--<input type="checkbox" name="available" class="checkbox filled-in" id="filter-60" />
-                                                    <label id="disponibles" for="filter-60">Places Disponibles</label>-->
-                                                </li>
-                                            </ul>  
+                                        <li>
+                                            <input type="checkbox" name="CFA" class="checkbox filled-in" id="filter-38" />
+                                            <label for="filter-38">CFA</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="UFA" class="checkbox filled-in" id="filter-39" />
+                                            <label for="filter-40">UFA</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="recognized" class="checkbox filled-in" id="filter-40" />
+                                            <label for="filter-40">Reconnue par l'Etat</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="convention" class="checkbox filled-in" id="filter-41" />
+                                            <label for="filter-41">en convention avec l'Etat</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="higherEducationFree" class="checkbox filled-in" id="filter-42" />
+                                            <label for="filter-42">Enseignement supérieur Libre</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="higherEducation" class="checkbox filled-in" id="filter-43" />
+                                            <label for="filter-43">Enseignement supérieur</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="technical" class="checkbox filled-in" id="filter-44" />
+                                            <label for="filter-44">Enseignement supérieur technique</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="simple" class="checkbox filled-in" id="filter-45" />
+                                            <label for="filter-45">Sous contrat simple</label>
                                         </li>
                                     </ul>
-                                    <!-- <img src="assets/images/ad/ads-filter.jpg" alt="ads" class="ad-filter" /> -->
-                                </div><!-- .advance-filter -->
-                            </div><!-- .filter-wrap -->
-                        </div><!-- .col -->
-                
-                    </div><!-- .row -->
+                                </li>
+                                <li><a>Ens. Confessionel</a>
+                                    <ul (click)="onAdvancedClick($event, 'religious')">
+                                        <li>
+                                            <input type="checkbox" name="secular" class="checkbox filled-in" id="laic" />
+                                            <label for="laic">Laic</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="religious" class="checkbox filled-in" id="confessionel" />
+                                            <label for="confessionel">Confessionel</label>
 
-                </div><!-- .container -->
+                                            <div class="collapse" id="addConfessionel" aria-expanded="false">
+                                                <ul>
+                                                    <li>
+                                                        <input type="checkbox" name="catholic" class="checkbox filled-in" id="catholique" />
+                                                        <label for="catholique">Catholique</label>        
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" name="protestant" class="checkbox filled-in" id="protestant" />
+                                                        <label for="protestant">Protestant</label>        
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" name="muslim" class="checkbox filled-in" id="musulman" />
+                                                        <label for="musulman">Musulman</label>        
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" name="jew" class="checkbox filled-in" id="juif" />
+                                                        <label for="juif">Juif</label>        
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" name="boudhist" class="checkbox filled-in" id="boudhiste" />
+                                                        <label for="boudhiste">Boudhiste</label>        
+                                                    </li>
+                                                </ul>                                                  
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a>Langues</a>
+                                    <ul>
+                                        <li><label class="select-custom" for="class">
+                                                <select name="class" class="form-control" id="class" 
+                                                    (click)="filterLanguage($event, 'lv1')">
+                                                    <option value="" disabled selected hidden>LV1</option>
+                                                    <option *ngFor="let langue of langues" value="{{langue}}">
+                                                        {{ langue }}
+                                                    </option>
+                                                </select>
+                                            </label>
+                                        </li>
+                                        <li><label class="select-custom" for="class">
+                                                <select name="class" class="form-control" id="class" 
+                                                    (click)="filterLanguage($event, 'lv2')">
+                                                    <option value="" disabled selected hidden>LV2</option>
+                                                    <option *ngFor="let langue of langues" value="{{langue}}">
+                                                        {{ langue }}
+                                                    </option>
+                                                </select>
+                                            </label>
+                                        </li>
+                                        <li><label class="select-custom" for="class">
+                                                <select name="class" class="form-control" id="class" 
+                                                    (click)="filterLanguage($event, 'lv3')">
+                                                    <option value="" disabled selected hidden>LV3</option>
+                                                    <option *ngFor="let langue of langues" value="{{langue}}">
+                                                        {{ langue }}
+                                                    </option>
+                                                </select>
+                                            </label>
+                                        </li>
+                                        <li><label class="select-custom" for="class">
+                                                <select name="class" class="form-control" id="class"
+                                                    (click)="filterLanguage($event, 'ancient')">
+                                                    <option value="" disabled selected hidden>LA - Langues Anciennes</option>
+                                                    <option value="Grec">Grec</option>
+                                                    <option value="Latin">Latin</option>
+                                                </select>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="select-custom" for="class">
+                                                <select name="class" class="form-control" id="class"
+                                                    (click)="filterLanguage($event, 'regional')">
+                                                    <option value="" disabled selected hidden>LR - Langues Regionales</option>
+                                                    <option *ngFor="let langue of languesRegio" value="{{langue}}">
+                                                        {{ langue }}
+                                                    </option>
+                                                </select>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a>Sections</a>
+                                    <ul (click)="onAdvancedClick($event, 'sections')">
+                                        <li><input type="checkbox" name="europeanSections" class="checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
+                                        <li><input type="checkbox" name="bilingualSections" class="checkbox filled-in" id="filter-53" /><label for="filter-53">Section bilingue</label></li>
+                                        <li><input type="checkbox" name="sportSections" class="checkbox filled-in" id="filter-54" /><label for="filter-54">Section Sportive</label></li>
+                                    </ul>
+                                </li>
+                                <li><a>Diplomes</a>
+                                    <ul>
+                                        <li><label class="select-custom" for="class">
+                                                <select name="class" class="form-control" id="class" 
+                                                    (click)="onAdvancedClick($event, 'diploma')">
+                                                    <option value="" disabled selected hidden>Diplôme</option>
+                                                    <option *ngFor="let diplome of diplomes" value="{{diplome}}">
+                                                        {{ diplome }}
+                                                    </option>
+                                                </select>
+                                            </label>
+                                        </li> 
+                                    </ul>
+                                </li>
+                                <li><a>Options</a>
+                                    <ul>
+                                        <li>
+                                            <input type="text" name="" placeholder="Nom de L'option" 
+                                                class="form-control" (keyup)="addOptionFilter($event)">
+                                            <!--<button class="btn btn-confirm" (click)="addOptionFilter($event)">Entrer</button>-->
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a>Places disponibles</a>
+                                    <ul (click)="onAdvancedClick($event, 'availableSeat')">
+                                        <li>
+                                            <input type="checkbox" name="activation" class="checkbox filled-in" id="filter-60" />
+                                            <label for="filter-60">Places disponibles</label>
+                                            <!--<input type="checkbox" name="available" class="checkbox filled-in" id="filter-60" />
+                                            <label id="disponibles" for="filter-60">Places Disponibles</label>-->
+                                        </li>
+                                    </ul>  
+                                </li>
+                            </ul>
+                            <!-- <img src="assets/images/ad/ads-filter.jpg" alt="ads" class="ad-filter" /> -->
+                        </div><!-- .advance-filter -->
+                    </div><!-- .filter-wrap -->
+                </div><!-- .col -->
+        
+            </div><!-- .row -->
 
-            </form>
+        </div><!-- .container -->
+
+    </form>
 
     </div><!-- .filter-form-holder -->
 

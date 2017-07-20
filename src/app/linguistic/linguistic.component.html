@@ -15,7 +15,8 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                      (click)="onDestinationClick($event, '0')">
                                                         <option value="" disabled selected hidden>Destination</option>
                                                         <option value="Allemagne">Allemagne</option>
                                                         <option value="Australie">Australie</option>
@@ -39,7 +40,8 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                      (click)="onDestinationClick($event, '1')">
                                                         <option value="" disabled selected hidden>Période</option>
                                                         <option value="janvier">janvier</option>
                                                         <option value="février">février</option>
@@ -61,7 +63,8 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                      (click)="onDestinationClick($event, '2')">
                                                         <option value="" disabled selected hidden>Langue</option>
                                                         <option value="Allemand">Allemand</option>
                                                         <option value="Anglais">Anglais</option>
@@ -93,7 +96,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                      (click)="onDestinationClick($event, '3')">
                                                         <option value="" disabled selected hidden>Âge</option>
                                                         <option value="8">8</option>
                                                         <option value="9">9</option>
@@ -122,7 +126,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                      (click)="onDestinationClick($event, '4')">
                                                         <option value="" disabled selected hidden>Organisme</option>
                                                     </select>
                                                 </label>
@@ -143,15 +148,24 @@
                     <div class="col-md-12  holder-refine-search">
                         <div class="checkbox-one-line">
                             <span class="label-holder">Hébergement</span><br />
-                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-1" /><label for="filter-1">Appartement</label>
-                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-2" /><label for="filter-2">Collectif</label>
-                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-3" /><label for="filter-3">Famille</label>
-                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-4" /><label for="filter-4">Résidence</label>
+                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-1" 
+                              (click)="onDestinationClick($event, '5')"/>
+                            <label for="filter-1">Appartement</label>
+                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-2" 
+                              (click)="onDestinationClick($event, '6')"/>
+                            <label for="filter-2">Collectif</label>
+                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-3" 
+                              (click)="onDestinationClick($event, '7')"/>
+                            <label for="filter-3">Famille</label>
+                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-4" 
+                              (click)="onDestinationClick($event, '8')"/>
+                            <label for="filter-4">Résidence</label>
                         </div><!-- -->
 
                         
                         <label class="select-custom" for="class"> Type de sejour<br />
-                            <select name="class" class="form-control" id="class">
+                            <select name="class" class="form-control" id="class"
+                              (click)="onDestinationClick($event, '9')">
                                 <!-- <option value="" disabled selected hidden>Organisme</option> -->
                                 <option value="Indifférent">Indifférent</option>
                                 <option value="Au pair">Au pair</option>
@@ -176,7 +190,7 @@
 
                     </div><!-- .col-* -->
 
-                    <div *ngFor="let trip of listTrips">
+                    <div *ngFor="let trip of listTripsFiltered">
                        <app-linguistic-trips [tripData]="trip"></app-linguistic-trips>
                     </div><!-- .col-* -->
 

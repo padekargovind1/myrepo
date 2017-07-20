@@ -18,9 +18,9 @@ import { DetailAppointmentComponent } from './detail-appointment/detail-appointm
 import { LandingPage1Component } from './landing-page-1/landing-page-1.component';
 import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 import { WizardComponent } from './wizard/wizard.component';
-import {ApplytoComponent} from './applyto/applyto.component';
-import {EditorialContComponent} from './editorial-cont/editorial-cont.component';
-import {EditorialDetComponent} from './editorial-cont/editorial-det/editorial-det.component';
+import { ApplytoComponent } from './applyto/applyto.component';
+import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
+import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
 
 
 export const AppRoutes: Routes = [
@@ -44,8 +44,8 @@ export const AppRoutes: Routes = [
     { path: 'landing-page-1', component: LandingPage1Component },
     { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'wizard', component: WizardComponent},
-    { path: 'applyto', component: ApplytoComponent},
+    { path: 'applyto/:schoolId', component: ApplytoComponent},
     { path: 'editorial', component: EditorialContComponent},
-    {path:'editorial-detail',component:EditorialDetComponent},
+    { path: 'editorial-detail',component:EditorialDetComponent},
     { path: '**', redirectTo: ''}
 ]

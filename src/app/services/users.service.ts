@@ -13,13 +13,14 @@ import {MyAccountMdl,
 const PROFILE_API : string = "http://54.254.203.172/cideapi/api/users/profile";
 const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/users/appointments";
 const PACKAGE_API : string = "http://54.254.203.172/cideapi/api/users/package";
+const APPLICATION_API : string = "http://54.254.203.172/cideapi/api/users/apply";
 
 @Injectable()
 export class UsersService {
 
   private parentData : MyAccountParentMdl;
   private childData : MyAccountMdl;
-  private token : string='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NjMzYWJjODBkYzNlMjEyYzJlZTFlMiIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk2MzNhYmM4MGRjM2UyMTJjMmVlMWUzIiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NjMzYWJjODBkYzNlMjEyYzJlZTFlNCIsImlhdCI6MTUwMDQ0Mzk5MywiZXhwIjoxNTAwNDUyNjMzLCJhdWQiOiIxIiwiaXNzIjoiMSJ9.W0N9fsLJhW_fbU0rqqs_lYjOvf0qMGG86UgDQLU8P8k';
+  private token : string='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NzAwNmQ3ZWViNTgxMTUwYzI5MzYyZiIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk3MDA2ZDdlZWI1ODExNTBjMjkzNjMwIiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NzAwNmQ3ZWViNTgxMTUwYzI5MzYzMSIsImlhdCI6MTUwMDUxNDAxNywiZXhwIjoxNTAwNTIyNjU3LCJhdWQiOiIxIiwiaXNzIjoiMSJ9.PupDekuC2NEnM5iem9eCgAb2oFoSEfn-_0EWbtS4Xu0';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -96,6 +97,11 @@ export class UsersService {
 
   postCreateNewAppointment(data, packageId): Observable<any>{
     return this.http.post(APPOINTMENTS_API+'/adviser?id='+packageId, data)
+      .map((response)=>response.json());
+  }
+
+  postApplication(data): Observable<any>{
+    return this.http.post(APPLICATION_API+'?token='+this.token, data)
       .map((response)=>response.json());
   }
 }

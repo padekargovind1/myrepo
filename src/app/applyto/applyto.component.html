@@ -24,7 +24,7 @@
     <div class="row">
 
       <div id="rootwizard">
-        <form id="wizard" [formGroup]="wizardForm">
+        <form id="wizard" [formGroup]="applytoForm">
 
           <div class="container-fluid">
             <md-tab-group md-dynamic-height [(selectedIndex)]="activeTabIndex"  class="apply-to-tabs">
@@ -38,7 +38,7 @@
 
                         <div class="form-group">
                           <div class="select-custom">
-                            <md-select placeholder="Lien de Parenté" class="form-control" [formControl]="wizardForm.controls['lienParent']">
+                            <md-select placeholder="Lien de Parenté" class="form-control" [formControl]="applytoForm.controls['lienParent']">
                               <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
                                 {{ lientparent }}
                               </md-option>
@@ -50,7 +50,7 @@
                           <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
                                                 <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
                                                 <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
-                          <md-radio-group [formControl]="wizardForm.controls['title']">
+                          <md-radio-group [formControl]="applytoForm.controls['title']">
                             <md-radio-button value="Mme">Mme</md-radio-button>
                             <md-radio-button value="Mlle">Mlle</md-radio-button>
                             <md-radio-button value="M">M</md-radio-button>
@@ -61,12 +61,12 @@
                         <div class="row">
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Nom" [formControl]="wizardForm.controls['lastName']">
+                              <input type="text" class="form-control" placeholder="Nom" [formControl]="applytoForm.controls['lastName']">
                             </div>
                           </div>
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Prénom" [formControl]="wizardForm.controls['firstName']">
+                              <input type="text" class="form-control" placeholder="Prénom" [formControl]="applytoForm.controls['firstName']">
                             </div>
                           </div>
                         </div>
@@ -76,19 +76,19 @@
                           <div class="row">
 
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Profession / Secteur d'activité" [formControl]="wizardForm.controls['job']">
+                              <input type="text" class="form-control" placeholder="Profession / Secteur d'activité" [formControl]="applytoForm.controls['job']">
                             </div>
                           </div>
                         </div>
 
                         <div class="form-group">
-                          <input type="email" class="form-control" placeholder="Email" [formControl]="wizardForm.controls['email']">
+                          <input type="email" class="form-control" placeholder="Email" [formControl]="applytoForm.controls['email']">
                         </div>
 
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable" [formControl]="wizardForm.controls['tel']">
+                              <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable" [formControl]="applytoForm.controls['tel']">
                             </div>
                           </div>
                         </div>
@@ -97,7 +97,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom">
-                                <select name="" class="form-control" [formControl]="wizardForm.controls['horaireJoingnable']">
+                                <select name="" class="form-control" [formControl]="applytoForm.controls['horaireJoingnable']">
                                                                 <option value="" disabled selected hidden>Horaires pour me contacter</option>
                                                                 <option value="9h-12h">9h-12h</option>
                                                                 <option value="12h-14h">12h-14h</option>
@@ -135,12 +135,12 @@
                         <div class="row">
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Nom" [formControl]="wizardForm.controls['childLastName']">
+                              <input type="text" class="form-control" placeholder="Nom" [formControl]="applytoForm.controls['childLastName']">
                             </div>
                           </div>
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Prénom" [formControl]="wizardForm.controls['childFirstName']">
+                              <input type="text" class="form-control" placeholder="Prénom" [formControl]="applytoForm.controls['childFirstName']">
                             </div>
                           </div>
                         </div>
@@ -152,7 +152,7 @@
                                                     <div class="row"> -->
                           <div class="col-sm-3  col-xs-6">
                             <div class="form-group">
-                              <input type="number" class="form-control" max="120" min="1" placeholder="Age" [formControl]="wizardForm.controls['childAge']">
+                              <input type="number" class="form-control" max="120" min="1" placeholder="Age" [formControl]="applytoForm.controls['childAge']">
                             </div>
                           </div>
                           <div class="col-sm-3  hidden-xs">&nbsp;</div>
@@ -164,7 +164,7 @@
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
                               <div class="horizontal-radio">
-                                <md-radio-group [formControl]="wizardForm.controls['childTitle']">
+                                <md-radio-group [formControl]="applytoForm.controls['childTitle']">
                                   <md-radio-button value="garçon">Garçon</md-radio-button>
                                   <md-radio-button value="fille">Fille</md-radio-button>
                                 </md-radio-group>
@@ -183,12 +183,12 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="email" class="form-control" placeholder="Mel" [formControl]="wizardForm.controls['childMel']">
+                              <input type="email" class="form-control" placeholder="Mel" [formControl]="applytoForm.controls['childMel']">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Portable" [formControl]="wizardForm.controls['childTel']">
+                              <input type="text" class="form-control" placeholder="Portable" [formControl]="applytoForm.controls['childTel']">
                             </div>
                           </div>
                         </div>
@@ -197,7 +197,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <textarea class="form-control" placeholder="Adresse" [formControl]="wizardForm.controls['childAddr']"></textarea>
+                              <textarea class="form-control" placeholder="Adresse" [formControl]="applytoForm.controls['childAddr']"></textarea>
                             </div>
                           </div>
                         </div>
@@ -207,12 +207,12 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Code postal" [formControl]="wizardForm.controls['childPostalCode']">
+                              <input type="text" class="form-control" placeholder="Code postal" [formControl]="applytoForm.controls['childPostalCode']">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Ville" [formControl]="wizardForm.controls['childCity']">
+                              <input type="text" class="form-control" placeholder="Ville" [formControl]="applytoForm.controls['childCity']">
                             </div>
                           </div>
                         </div>
@@ -223,13 +223,13 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               <div class="datepicker-holder">
-                                <input type="text" class="form-control datepicker" placeholder="Date de naissance" [formControl]="wizardForm.controls['childBirthDay']">
+                                <input type="text" class="form-control datepicker" placeholder="Date de naissance" [formControl]="applytoForm.controls['childBirthDay']">
                               </div>
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Lieu" [formControl]="wizardForm.controls['childBirthPlace']">
+                              <input type="text" class="form-control" placeholder="Lieu" [formControl]="applytoForm.controls['childBirthPlace']">
                             </div>
                           </div>
                         </div>
@@ -256,7 +256,7 @@
                             <div class="row">
                               <div class="col-for-radio">
                                 <div class="gap-for-radio horizontal-radio clearfix">
-                                  <md-radio-group [formControl]="wizardForm.controls['childSisBroTitle']">
+                                  <md-radio-group [formControl]="applytoForm.controls['childSisBroTitle']">
                                     <md-radio-button value="frere">Frère</md-radio-button>
                                     <md-radio-button value="soeur">Soeur</md-radio-button>
                                   </md-radio-group>
@@ -265,7 +265,7 @@
                                 </div>
                               </div>
                               <div class="col-sm-2">
-                                <input type="number" max="120" min="1" class="form-control gap-for-radio" placeholder="Age" [formControl]="wizardForm.controls['childSisBroAge']"
+                                <input type="number" max="120" min="1" class="form-control gap-for-radio" placeholder="Age" [formControl]="applytoForm.controls['childSisBroAge']"
                                 />
                                 <!-- <div class="select-custom">
                                                                 <select name="" class="form-control">
@@ -274,7 +274,7 @@
                                                             </div> -->
                               </div>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control gap-for-radio" placeholder="Niveau d'étude" [formControl]="wizardForm.controls['childSisBroStudy']">
+                                <input type="text" class="form-control gap-for-radio" placeholder="Niveau d'étude" [formControl]="applytoForm.controls['childSisBroStudy']">
                               </div>
                               <div class="col-sm-2">
                                 <div class="form-group clearfix">
@@ -304,7 +304,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Nom Etablissement Actuel" [formControl]="wizardForm.controls['schoolName']">
+                              <input type="text" class="form-control" placeholder="Nom Etablissement Actuel" [formControl]="applytoForm.controls['schoolName']">
                             </div>
                           </div>
                         </div>
@@ -313,7 +313,7 @@
                           <div class="form-group  col-sm-12  col-xs-6">
                             <div class="row">
                               <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Ville" [formControl]="wizardForm.controls['schoolCity']">
+                                <input type="text" class="form-control" placeholder="Ville" [formControl]="applytoForm.controls['schoolCity']">
                               </div>
                             </div>
                           </div>
@@ -322,7 +322,7 @@
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="select-custom">
-                                  <select name="" class="form-control" [formControl]="wizardForm.controls['schoolClasse']">
+                                  <select name="" class="form-control" [formControl]="applytoForm.controls['schoolClasse']">
                                                                     <option value="" disabled selected hidden>Classe</option>
                                                                     <optgroup label="Cycle 1 : Apprentissages Premiers">
                                                                         <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
@@ -349,7 +349,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Options" [formControl]="wizardForm.controls['schoolOption']">
+                              <input type="text" class="form-control" placeholder="Options" [formControl]="applytoForm.controls['schoolOption']">
                             </div>
                           </div>
                         </div>
@@ -359,7 +359,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom">
-                                <select name="" class="form-control" [formControl]="wizardForm.controls['schoolLv1']">
+                                <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv1']">
                                                                 <option value="" disabled selected hidden>Lv1</option>
                                                                 <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
                                                             </select>
@@ -372,7 +372,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom">
-                                <select name="" class="form-control" [formControl]="wizardForm.controls['schoolLv2']">
+                                <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv2']">
                                                                 <option value="" disabled selected hidden>Lv2</option>
                                                                 <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
                                                             </select>
@@ -385,7 +385,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom">
-                                <select name="" class="form-control" [formControl]="wizardForm.controls['schoolLv3']">
+                                <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv3']">
                                                                 <option value="" disabled selected hidden>Lv3</option>
                                                                 <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
                                                             </select>
@@ -469,7 +469,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Matières fortes" [formControl]="wizardForm.controls['bestSubject']">
+                              <input type="text" class="form-control" placeholder="Matières fortes" [formControl]="applytoForm.controls['bestSubject']">
                             </div>
                           </div>
                         </div>
@@ -477,7 +477,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Matières fortes" [formControl]="wizardForm.controls['weakSubject']">
+                              <input type="text" class="form-control" placeholder="Matières fortes" [formControl]="applytoForm.controls['weakSubject']">
                             </div>
                           </div>
                         </div>
@@ -500,12 +500,12 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Job" [formControl]="wizardForm.controls['interestJob']">
+                              <input type="text" class="form-control" placeholder="Job" [formControl]="applytoForm.controls['interestJob']">
                             </div>
                           </div>
                           <div class="col-sm-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Age" [formControl]="wizardForm.controls['interestAge']">
+                              <input type="text" class="form-control" placeholder="Age" [formControl]="applytoForm.controls['interestAge']">
                             </div>
                           </div>
                           <div class="col-md-3">
@@ -519,7 +519,7 @@
                         <div class="form-group different-gap">
                           <div class="row">
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" placeholder="Quels sont vos centres d’interets" [formControl]="wizardForm.controls['yourInterest']">
+                              <input type="text" class="form-control" placeholder="Quels sont vos centres d’interets" [formControl]="applytoForm.controls['yourInterest']">
                             </div>
                           </div>
                         </div>
@@ -527,7 +527,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" placeholder="Quels loisirs et activités pratiquez-vous" [formControl]="wizardForm.controls['practiceInterest']">
+                              <input type="text" class="form-control" placeholder="Quels loisirs et activités pratiquez-vous" [formControl]="applytoForm.controls['practiceInterest']">
                             </div>
                           </div>
                         </div>

@@ -22,7 +22,7 @@ export class SchoolCardComponent implements OnInit {
   }
    
   applyToSchool(){
-    this.router.navigate(['applyto']);
+    this.router.navigate(['applyto', this.SchoolData._id]);
   }
   
 }

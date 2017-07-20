@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsersService } from '../services/users.service';
 import { BookingService } from '../services/booking.service';
@@ -14,19 +14,24 @@ declare var fullCalendar: any;
 })
 export class BookingComponent implements OnInit, AfterViewInit {
   tokenLog = "";
-  bookingData = ["", "", "", ""];
+  bookingData = [];
   appointmentPackage : any;
   appointmentPackageId ="";
+  appointmentData = [];
   adviserList:any;
   adviserFreeTime:any;
   adviserData:any;
   bookingDate="";
   public storing="";
+  calendarData:any;
+  calendarDataFiltered:any;
+  adviserToDisplay=[];
 
   constructor(private bookingService : BookingService,
               private route : Router,
               private usersService: UsersService,
-              private authService : AuthService) { }
+              private authService : AuthService,
+              private router : ActivatedRoute) { }
 
   ngOnInit() {
     this.tokenLog=this.authService.getToken()
@@ -34,6 +39,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
       alert("Vous devez être connecté afin de prendre un rendez-vous.");
       this.route.navigate(['/login']);
     } else {
+      this.adviserToDisplay=this.initDataAppoint();
       this.checkBooking();
     }
   }
@@ -44,7 +50,11 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   getBookingData(){
-    this.bookingData = this.bookingService.getBookingData();
+    // console.log(this.router.snapshot)
+    for(let i = 0; i<4; i++){
+      // console.log(this.router.snapshot.params[i])
+      this.bookingData[i]=this.router.snapshot.params[i];
+    }
     console.log(this.bookingData);
   }
 
@@ -118,20 +128,18 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   onConfirmAppointment(){
-    this.route.navigate(['/wizard']);
+    let data = [];
+    for (let bookData of this.bookingData){
+      data.push(bookData);
+    }
+    for(let appointData of this.appointmentData){
+      data.push(appointData);
+    }
+    this.route.navigate(['/wizard', data]);
   }
 
   ngAfterViewInit() {
-    const self = this;
-  	(<any> $('#calendar')).fullCalendar({
-      locale:'fr', 
-      eventClick: function(calEvent) {
-        console.log(calEvent);
-        $('#appointment').modal('show');
-        self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
-      }, 
-      events:this.getData()
-    });
+    this.initCalendar();
   }
 
   storeData(adviserId, start, end){
@@ -140,12 +148,10 @@ export class BookingComponent implements OnInit, AfterViewInit {
     const debut = start.substr(11, 5);
     const fin = end.substr(11, 5);
     console.log(date, debut, fin)
-    this.bookingService.storeAdviserData(adviserId, date, debut, fin, this.appointmentPackageId);
+    this.appointmentData = [adviserId, date, debut, fin, this.appointmentPackageId];
   }
 
-  getData(){
-    
-    let data = [];
+  initDataAppoint(){
 
     if(typeof this.appointmentPackage=='undefined'){
       let data = [
@@ -168,35 +174,75 @@ export class BookingComponent implements OnInit, AfterViewInit {
         for(let day of adviser.calendar){
           if(this.bookingData[0]=='1'){
             for(let i=day.hour.start; i<day.hour.start+7; i++){
-              data.push({title:'Disponible', 
+              this.calendarData.push({title:'Disponible', 
                         start: '2017-07-07 '+ i + ':00:00',
                         end: '2017-07-07 '+ i+1 + ':00:00',
                         adviserId: adviser.id});
             }
           } else if (this.bookingData[0]=='2') {
             for(let i=day.hour.start; i<day.hour.start+8; i+=2){
-            data.push({title:'Disponible', 
+            this.calendarData.push({title:'Disponible', 
                         start: '2017-07-07 '+ i + ':00:00',
                         end: '2017-07-07 '+ i+2 + ':00:00',
                         adviserId: adviser.id});
             }
           } else if (this.bookingData[0]=='3'){
             for(let i=day.hour.start; i<day.hour.start+6; i+=3){
-            data.push({title:'Disponible', 
+            this.calendarData.push({title:'Disponible', 
                         start: '2017-07-07 '+ i + ':00:00',
                         end: '2017-07-07 '+ i+3 + ':00:00',
                         adviserId: adviser.id});
             }
           } else {
-            data.push({title:'Disponible', 
+            this.calendarData.push({title:'Disponible', 
                       start: '2017-07-07 '+ day.hour.start + ':00:00',
-                      end: '2017-07-07 '+ day.hour.start+7 + ':00:00',
+                      end: '2017-07-08 '+ day.hour.start+7 + ':00:00',
                       adviserId: adviser.id});
           }
         }
       }
-      return data
+      return this.calendarData;
     }
+  }
+
+  onCheckbox(adviserId){
+    let index = this.adviserToDisplay.indexOf(adviserId);
+    if(index==-1){
+      this.adviserToDisplay.push(adviserId);
+    } else {
+      this.adviserToDisplay.splice(index, 1);
+    }
+    this.adviserToDisplay = this.bookingService.filterBooking(this.calendarData, this.adviserToDisplay)
+    this.initCalendar();
+  }
+
+  initCalendar(){
+    const self = this;
+  	(<any> $('#calendar')).fullCalendar({
+      locale:'fr', 
+      eventClick: function(calEvent) {
+        console.log(calEvent);
+        $('#appointment').modal('show');
+        self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
+      }, 
+      events:this.adviserToDisplay
+    });
+  }
+
+  onSelectAll(){
+    $('.checkbox.filled-in').prop('checked', function(idx, oldProp) {
+      return true
+    });
+    this.adviserToDisplay = this.calendarData;
+    this.initCalendar();
+  }
+
+  onUnselectAll(){
+    $('.checkbox.filled-in').prop('checked', function(idx, oldProp) {
+      return false
+    });
+    this.adviserToDisplay = [];
+    this.initCalendar();
   }
 
 }

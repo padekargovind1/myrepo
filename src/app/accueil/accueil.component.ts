@@ -90,9 +90,10 @@ export class AccueilComponent implements OnInit {
     }
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
     $('.'+contentName+'-content').removeClass('fadeOut').addClass('fadeIn');
-    // console.log($('.'+contentName+'-content'));
-    var image = $('.'+contentName+'-content').data('image');
-    $('.main').css('background-image', 'url('+ image +')');
+    console.log($('.'+contentName+'-content'));
+    // var image = $('.'+contentName+'-content').data('image');
+    // console.log(image);
+    $('.main').css('background-image', 'url(assets/images/new-landing-page-2/'+ contentName +'.jpg)');
   }
 
   navigate(componentName : String){

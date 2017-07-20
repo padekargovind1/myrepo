@@ -10,8 +10,14 @@
                     
                     <h3 class="advisor-title">Conseillers d’orientation</h3>
 
-                    <button class="btn btn-appointment btn-block select-all-advisor">Sélectionnez tous les conseillers <i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger btn-block deselect-all-advisor">Désélectionnez tous les conseillers <i class="fa fa-times"></i></button>
+                    <button class="btn btn-appointment btn-block select-all-advisor"
+                        (click)="onSelectAll()">
+                        Sélectionnez tous les conseillers <i class="fa fa-check"></i>
+                    </button>
+                    <button class="btn btn-danger btn-block deselect-all-advisor"
+                        (click)="onUnselectAll()">
+                        Désélectionnez tous les conseillers <i class="fa fa-times"></i>
+                    </button>
 
                     <ul class="advisors">
 
@@ -24,7 +30,7 @@
                                     <section class="col-md-7">
                                         <div class="advisor-name">Anita Lubies</div>    
                                         <div class="checkbox-wrap">
-                                            <!-- <input type="checkbox" class="checkbox filled-in" id="anita-lubies" /> -->
+                                             <input type="checkbox" class="checkbox filled-in" id="anita-lubies" /> 
                                             <!-- <md-checkbox> -->
                                             <label for="anita-lubies" class="">&nbsp;</label>
                                         </div>

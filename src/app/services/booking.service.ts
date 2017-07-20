@@ -24,7 +24,19 @@ export class BookingService {
     console.log(this.adviserData);
   }
 
-  getAdviserId(){
+  getAdviserData(){
     return this.adviserData;
+  }
+
+  filterBooking(dataToFilter, listAdvisers){
+    let dataFiltered:any;
+    for(let adviser of listAdvisers){
+      for(let data of dataToFilter){
+        if(adviser==data.adviserId){
+          dataFiltered.push(data);
+        }
+      }
+    }
+    return dataFiltered;
   }
 }
