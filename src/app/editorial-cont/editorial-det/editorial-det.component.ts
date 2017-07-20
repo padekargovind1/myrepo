@@ -7,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorialDetComponent implements OnInit {
 
+   editorialnews : any;
+
   constructor() { }
 
   ngOnInit() {
+  
+   this.fetch((data) => {
+      this.editorialnews = data;
+      
+    });
+     console.log("cek data",this.editorialnews);
+     
   }
+  
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+   req.open('GET', `assets/json/editorial.json`);
+   req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
 
+   req.send();
+  }
 }

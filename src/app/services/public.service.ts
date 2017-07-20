@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-
 import { Observable } from 'rxjs/Observable';
 
 const SCHOOLS_API : string = "http://54.254.203.172/cideapi/api/public/schools/";
