@@ -1,0 +1,25 @@
+
+<div class="modal-body">
+
+    <h3>Je confirme ma demande de téléchargement des documentations suivantes:</h3>
+
+    <ul class="files-to-download">
+        <li *ngFor="let brochure of brochureList; let i=index">
+            <img src="assets/images/school-logo/lycee-francois-d-estaing.png" alt="" width="20" />
+            <span>{{ brochure.brochure }}</span>
+            <span class="remove" (click)="onRemoveBrochure(i)"
+              style="cursor:pointer">X</span>
+            <!--<a class="remove">x</a>-->
+        </li>
+    </ul>
+
+    <button type="button" 
+      data-dismiss="modal" 
+      class="btn btn-highlighted"
+      (click)="onCancel()">Annuler</button>
+    <button type="button" 
+      data-dismiss="modal" 
+      class="btn btn-secondary"
+      (click)="onSubmit()">Télécharger</button>
+
+</div><!-- .modal-body -->

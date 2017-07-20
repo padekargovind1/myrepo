@@ -34,6 +34,11 @@ export class PublicService {
       .map((response)=>response.json());
   }
 
+  getBrochurebyId(brochureId): Observable<any>{
+    return this.http.get(SCHOOLS_API+'/brochures/' + brochureId)
+      .map((response)=>response.json());
+  }
+
   postAutoCompleteLieu(keyword) : Observable<any>{
     return this.http.post(CITIES_API, keyword)
       .map((response)=>response.json());
