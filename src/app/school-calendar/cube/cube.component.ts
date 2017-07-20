@@ -18,10 +18,11 @@ export class CubeComponent implements OnInit, AfterViewInit {
   cube;
 
   constructor() {
-    // this.createCube();
+    
   }
 
   ngOnInit() {    
+    this.createCube();
   }
 
   ngAfterViewInit() {
