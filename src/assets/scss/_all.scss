@@ -675,6 +675,11 @@ z-index: 10;
     .btn-conseil { border-radius: 50px; text-transform: uppercase; font-weight: 700; font-size: 12px; color: #fff;}
         .btn-conseil:hover { color: #fff; }
 
+.mat-button {
+    &.btn-conseil { border-radius: 50px; text-transform: uppercase; font-weight: 700; font-size: 12px; color: #fff;}
+        &.btn-conseil:hover { color: #fff; }
+}
+
 /**
  * Custom colors
  */
