@@ -59,7 +59,6 @@ export class WizardComponent implements OnInit, AfterViewInit {
       }
       console.log(this.bookingData);
     }
-    this.datePicker();
   }
 
   ngAfterViewInit() {
@@ -76,13 +75,6 @@ export class WizardComponent implements OnInit, AfterViewInit {
       lastName : "",
       photo : ""
     }
-  }
-
-  datePicker() { console.log('executed');
-    (<any> $('#birthdate')).datetimepicker({
-      // locale: 'fr',
-      format: 'DD/MM/YYYY'
-    });
   }
 
   getUserProfile(){

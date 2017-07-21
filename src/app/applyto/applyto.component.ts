@@ -249,12 +249,14 @@ export class ApplytoComponent implements OnInit {
   }
 
   onAddFrSo(){
-    this.freresoeur.push("Frère/Soeur "+this.freresoeur+1);
+    const nb = this.freresoeur.length+1;
+    this.freresoeur.push("Frère/Soeur "+nb);
   }
 
   onRemoveFrSo(){
-    if(this.freresoeur.length!=1){
-      this.freresoeur.splice(this.freresoeur.length-1, 1);
+    if(this.freresoeur.length!=0){
+      const nb = this.freresoeur.length-1;
+      this.freresoeur.splice(nb, 1);
     }
   }
 }
