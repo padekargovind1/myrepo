@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -13,7 +13,7 @@ import { CustomValidators } from 'ng2-validation';
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.scss']
 })
-export class WizardComponent implements OnInit {
+export class WizardComponent implements OnInit, AfterViewInit {
 
   tokenLog : string ="";
   bookingData=[];
@@ -43,7 +43,7 @@ export class WizardComponent implements OnInit {
                 this.initAdviserData();
                 this.buildForm();
                 this.getUserProfile();
-                this.datePicker();
+                
               }
 
   ngOnInit() {
@@ -59,6 +59,11 @@ export class WizardComponent implements OnInit {
       }
       console.log(this.bookingData);
     }
+    this.datePicker();
+  }
+
+  ngAfterViewInit() {
+    // this.datePicker();
   }
 
   /*
@@ -73,9 +78,9 @@ export class WizardComponent implements OnInit {
     }
   }
 
-  datePicker() { console.log('clicked');
-    (<any> $('.datepicker')).datetimepicker({
-      locale: 'fr',
+  datePicker() { console.log('executed');
+    (<any> $('#birthdate')).datetimepicker({
+      // locale: 'fr',
       format: 'DD/MM/YYYY'
     });
   }
@@ -93,7 +98,7 @@ export class WizardComponent implements OnInit {
             this.patchValue(this.userData);
           }
         }
-      )
+      ) 
   }
 
   patchValue(userData){

@@ -307,10 +307,10 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <div class="datepicker-holder">
-                                                                <input type="text" class="form-control datepicker" 
+                                                                <input type="date" id="birthdate" class="form-control datepicker" [mdDatepicker]="myDatepicker"
                                                                   placeholder="Date de naissance"
                                                                   [formControl]="wizardForm.controls['childBirthDay']">
-                                                                  <!-- <md-datepicker #birthdate></md-datepicker> -->
+                                                                  <md-datepicker #myDatepicker></md-datepicker>
                                                             </div>
                                                         </div>
                                                     </div>
