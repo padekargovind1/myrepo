@@ -516,7 +516,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <input type="checkbox" name="" class="checkbox filled-in" 
-                                                          id="scolaire-filter" [formControl]="wizardForm.controls['schoolHelp']"/>
+                                                          id="scolaire-filter" [formControl]="wizardForm.controls['schoolHelp']"
+                                                          [checked]="onChecked()" />
                                                           <label for="scolaire-filter">
                                                             Etes-vous aidé scolairement?
                                                           </label>
@@ -527,9 +528,9 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <div class="select-custom hidden dans-quelles">
+                                                        <div class="select-custom dans-quelles" [ngClass]="{ 'hidden': checked}">
                                                             <select name="" class="form-control multiselect" 
-                                                              id="dans-quelles" multiple="multiple">
+                                                              id="dans-quelles">
                                                                 <option value="">Dans quelles matières</option>
                                                             </select>
                                                         </div>
