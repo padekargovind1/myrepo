@@ -15,6 +15,7 @@ export class EditorialDetComponent implements OnInit {
   
    this.fetch((data) => {
       this.editorialnews = data;
+      console.log(data);
       
     });
      console.log("cek data",this.editorialnews);

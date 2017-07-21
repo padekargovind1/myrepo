@@ -1,5 +1,5 @@
 
-<ul class="school-action">
+<!--<ul class="school-action">
     <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
     <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
     <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
@@ -15,6 +15,29 @@
         {{ SchoolData.cycles[0].cycle.status3 }}</p>
     <address> {{ SchoolData.address.ad1 }} <br /> 
         {{ SchoolData.address.postCode }} {{ SchoolData.address.city }}<br /> 
+        Tel: {{ SchoolData.address.phoneNumber }}</address>
+
+    <button class="btn btn-highlighted"
+        (click)="onSchoolDetail()">Détail de l'école</button>
+    
+    <button type="button" class="btn btn-secondary"  (click)="applyToSchool()">Postuler</button> 
+</div>-->
+
+
+<ul class="school-action">
+    <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+</ul>
+
+<img src="assets/images/ad/school-1.jpg" alt="School 1" />
+
+<div class="card-content">
+    <h3>{{ SchoolData.longName }}</h3>
+    <p> {{ SchoolData.status }} <br /> 
+    <address> {{ SchoolData.address.ad1 }} <br /> 
+        {{ SchoolData.address.postcode }} {{ SchoolData.address.city }}<br /> 
         Tel: {{ SchoolData.address.phoneNumber }}</address>
 
     <button class="btn btn-highlighted"

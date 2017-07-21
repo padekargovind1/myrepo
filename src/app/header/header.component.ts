@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsersApplication();
+    // this.getUsersApplication();
   }
 
   onNavigateHome(){
