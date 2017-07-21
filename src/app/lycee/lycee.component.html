@@ -96,11 +96,11 @@
 
                         <div class="col-md-1">
                             <div class="filter-wrapper">
-                                <i class="fa fa-filter filter-holder" (click)="openAdvance()"
+                                <i class="fa fa-filter filter-holder"
                                     data-toggle="tooltip" data-placement="right" 
                                     title="Affinez votre recherche avec plus de critères"></i>
                                 <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
-                                <div class="advance-filter" [ngClass]="{ 'open': opened }">
+                                <div class="advance-filter">
                                     <ul>
                                         <li><a>Specialités</a>
                                             <ul (click)="onAdvancedClick($event, 'specifications')">

@@ -20,7 +20,7 @@ export class UsersService {
 
   private parentData : MyAccountParentMdl;
   private childData : MyAccountMdl;
-  private token : string='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NzAwNmQ3ZWViNTgxMTUwYzI5MzYyZiIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk3MDA2ZDdlZWI1ODExNTBjMjkzNjMwIiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NzAwNmQ3ZWViNTgxMTUwYzI5MzYzMSIsImlhdCI6MTUwMDUxNDAxNywiZXhwIjoxNTAwNTIyNjU3LCJhdWQiOiIxIiwiaXNzIjoiMSJ9.PupDekuC2NEnM5iem9eCgAb2oFoSEfn-_0EWbtS4Xu0';
+  private token : string='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NzAyMmZlZWViNTgxMTUwYzI5MzZhMSIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk3MDIyZmVlZWI1ODExNTBjMjkzNmEyIiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NzAyMmZlZWViNTgxMTUwYzI5MzZhMyIsImlhdCI6MTUwMDYxNTUxMiwiZXhwIjoxNTAwNjI0MTUyLCJhdWQiOiIxIiwiaXNzIjoiMSJ9.johxRgxVI9jeGHeTy6npgRbllDCiPMk8VV-nnsRcwSk';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -76,7 +76,7 @@ export class UsersService {
   }
 
   getAppointmentsAdviserList(packageId): Observable<any>{
-    return this.http.get(APPOINTMENTS_API+'/adviserlist?id='+packageId, {headers: this.headers})
+    return this.http.get(APPOINTMENTS_API+'/adviserlist?id='+packageId+'&token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }
 
