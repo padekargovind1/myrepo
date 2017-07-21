@@ -34,6 +34,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
   adviserData: any;
   activeTabIndex = 0;
 
+  checked:boolean;
+
   constructor(private usersService: UsersService,
               private authService : AuthService,
               private bookingService : BookingService,
@@ -63,6 +65,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // this.datePicker();
+    this.checked = false;
   }
 
   /*
@@ -279,4 +282,11 @@ export class WizardComponent implements OnInit, AfterViewInit {
     this.usersService.postCreateNewAppointment(data, this.appointmentData[4]);
   }
 
+  onChecked() {
+    var check = this.wizardForm.controls.schoolHelp.value;
+
+    console.log(check);
+
+    this.checked = check;
+  }
 }
