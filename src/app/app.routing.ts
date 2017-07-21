@@ -24,7 +24,7 @@ import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-
 
 
 export const AppRoutes: Routes = [
-    { path: '', component: AccueilComponent},
+    { path: '', component: LandingPage1Component},
     { path: 'conseil', component: ConseilComponent},
     { path: 'internat', component: ConseilComponent},
     { path: 'booking' , component: BookingComponent },
@@ -41,7 +41,7 @@ export const AppRoutes: Routes = [
     { path: 'etablissement/:schoolId', component: EtablissementComponent },
     { path: 'compare-mode', component: CompareModeComponent },
     { path: 'detail-appointment', component: DetailAppointmentComponent },
-    { path: 'landing-page-1', component: LandingPage1Component },
+    { path: 'landing-page-1', component: AccueilComponent },
     { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'wizard', component: WizardComponent},
     { path: 'applyto/:schoolId', component: ApplytoComponent},
