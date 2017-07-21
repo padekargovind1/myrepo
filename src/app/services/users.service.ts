@@ -75,8 +75,13 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
+  // getAppointmentsAdviserList(packageId): Observable<any>{
+  //   return this.http.get(APPOINTMENTS_API+'/adviserlist?id='+packageId+'&token='+this.token, {headers: this.headers})
+  //     .map((response)=>response.json());
+  // }
+
   getAppointmentsAdviserList(packageId): Observable<any>{
-    return this.http.get(APPOINTMENTS_API+'/adviserlist?id='+packageId+'&token='+this.token, {headers: this.headers})
+    return this.http.get('http://linkaran.com/api/v1/availability/59269309195480442448fb1e', {headers: this.headers})
       .map((response)=>response.json());
   }
 

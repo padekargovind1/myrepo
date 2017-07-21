@@ -86,7 +86,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
           } else {
             this.adviserList = data;
             for(let adviser of this.adviserList){
-              this.getAdviserFreeTime(adviser.id);
+              // this.getAdviserFreeTime(adviser.id);
             }
           }
         }
