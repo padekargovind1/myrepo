@@ -59,8 +59,8 @@
         <li><i class="fa fa-bookmark"></i></li>
         <li><i class="fa fa-user"></i>
             <ul class="login">
-                <li><a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a></li>
-                <li><a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier / Fermer la Session</a></li>
+                <li><a (click)="onSignIn()"><i class="fa fa-sign-in"></i> S'inscrire</a></li>
+                <li><a (click)="onSignUp()"><i class="fa fa-unlock-alt"></i> S'identifier / Fermer la Session</a></li>
             </ul>
         </li>
     </ul>
@@ -68,8 +68,8 @@
         <li><i class=" fa fa-file-text"></i></li>
         <li><i class="fa fa-bookmark"></i></li>
         <li class="login-text" *ngIf="!userLogin; else log">
-            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
-            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
+            <a (click)="onSignIn()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
+            <a (click)="onSignUp()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
         </li>
         <ng-template #log>
             <li class="login-text">
