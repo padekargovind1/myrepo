@@ -79,7 +79,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
     this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]].id)
       .subscribe(
         (response)=>{
-          let data = response.data;
+          let data = response;
           console.log(data);
           if(response.code==400 || typeof data == 'undefined'){
             console.log(response.message);

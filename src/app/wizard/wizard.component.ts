@@ -282,6 +282,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
     }
 
     this.usersService.postCreateNewAppointment(data, this.appointmentData[4]);
+   
   }
 
   onChecked() {

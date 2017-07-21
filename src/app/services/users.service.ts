@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers,Jsonp } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service'; 
@@ -25,6 +25,7 @@ export class UsersService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http : Http,
+              private jsonp :Jsonp,
               private authService : AuthService) { }
 
   putProfile(data) : Observable<any>{
@@ -70,6 +71,11 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
+  // getAppointmentsPackageById(packageId): Observable<any>{
+  //   return this.http.get(PACKAGE_API+'/packageId?token='+this.token, {headers: this.headers})
+  //     .map((response)=>response.json());
+  // }
+
   getAppointmentsPackageById(packageId): Observable<any>{
     return this.http.get(PACKAGE_API+'/packageId?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
@@ -85,7 +91,12 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
-  getAdviserFreeTime(adviserId):Observable<any>{
+  // getAdviserFreeTime(adviserId):Observable<any>{
+  //   return this.http.get(APPOINTMENTS_API+'/adviserdata?token='+this.token+'&id='+adviserId, {headers: this.headers})
+  //     .map((response)=>response.json());
+  // }
+  
+   getAdviserFreeTime(adviserId):Observable<any>{
     return this.http.get(APPOINTMENTS_API+'/adviserdata?token='+this.token+'&id='+adviserId, {headers: this.headers})
       .map((response)=>response.json());
   }

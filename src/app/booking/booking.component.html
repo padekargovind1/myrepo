@@ -13,35 +13,22 @@
                         Désélectionnez tous les conseillers <i class="fa fa-times"></i>
                     </button>
                     <ul class="advisors">
-                        <li class="active">
-                            <a href="#">
-                                <div class="row">
+                        <li class="active" *ngFor="let adviser of adviserList; let i=index" >           
+                               
+                                <div class="row" >
                                     <section class="col-md-5 col-xs-3">
-                                        <img src="assets/images/advisor-1.jpg"  alt="" class="img-circle img-responsive" />    
-                                    </section>
-                                    <section class="col-md-7">
-                                        <div class="advisor-name">Anita Lubies</div>    
-                                        <div class="checkbox-wrap">
-                                            <input type="checkbox" class="checkbox filled-in" id="anita-lubies" /> 
-                                            <!-- <md-checkbox> -->
-                                            <label for="anita-lubies" class="">&nbsp;</label>
-                                        </div>
-                                    </section>
-                                </div>
-                                <div class="row" *ngFor="let adviser of adviserList; let i=index">
-                                    <section class="col-md-5 col-xs-3">
-                                        <img src="{{adviser.photo}}"  alt="" class="img-circle img-responsive" />    
+                                        <img src="assets/images/{{adviser.image}}"  alt="" class="img-circle img-responsive" />    
                                     </section>
                                     <section class="col-md-7">
                                         <div class="advisor-name">{{adviser.firstName}} {{adviser.lastName}}</div>    
                                         <div class="checkbox-wrap">
-                                            <!-- <input type="checkbox" class="checkbox filled-in" id="anita-lubies" /> -->
-                                            <!-- <md-checkbox> -->
+                                             <input type="checkbox" class="checkbox filled-in" id={{adviser.id}} /> 
+                                           
                                             <label for="anita-lubies" class="">&nbsp;</label>
                                         </div>
                                     </section>
                                 </div>
-                            </a>
+                            
                         </li>
                     </ul>
                 </div><!-- .advisors-wrap -->
