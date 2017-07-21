@@ -34,7 +34,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
   adviserData: any;
   activeTabIndex = 0;
 
-  checked:boolean;
+  checked:boolean=false;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -169,7 +169,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       childCity : ['', Validators.required],
       childBirthDay : ['', Validators.required],
       childBirthPlace : ['', Validators.required],
-      childSisBroTitle : ['', Validators.required],
+      childSisBroTitle : [''],
       childSisBroAge:[''],
       childSisBroStudy:[''],
       schoolName:['', Validators.required],
@@ -199,7 +199,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(){
-    console.log(this.wizardForm.value);
+    console.log(this.wizardForm);
 
     const lienParent = this.wizardForm.controls.lienParent.value;
     const title = this.wizardForm.controls.title.value;
@@ -269,6 +269,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
     //       }
     //     }
     //   )
+
+    console.log(data);
     this.createAppointement();
   }
 
@@ -287,6 +289,6 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
     console.log(check);
 
-    this.checked = check;
+    this.checked = !check;
   }
 }

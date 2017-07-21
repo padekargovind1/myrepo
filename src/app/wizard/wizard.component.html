@@ -517,7 +517,7 @@
                                                     <div class="col-sm-12">
                                                         <input type="checkbox" name="" class="checkbox filled-in" 
                                                           id="scolaire-filter" [formControl]="wizardForm.controls['schoolHelp']"
-                                                          [checked]="onChecked()" />
+                                                          (click)="onChecked()" />
                                                           <label for="scolaire-filter">
                                                             Etes-vous aidé scolairement?
                                                           </label>
@@ -527,10 +527,10 @@
 
                                             <div class="form-group">
                                                 <div class="row">
-                                                    <div class="col-sm-12">{{ checked}}
-                                                        <div class="select-custom dans-quelles" [ngClass]="{ 'hidden': checked}">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom dans-quelles">
                                                             <select name="" class="form-control multiselect" 
-                                                              id="dans-quelles">
+                                                              id="dans-quelles" *ngIf="checked">
                                                                 <option value="">Dans quelles matières</option>
                                                             </select>
                                                         </div>
@@ -1229,8 +1229,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <button class="btn btn-appointment pull-right" 
-                                                          type="submit" (click)="onSubmit()"
-                                                          [disabled]="!wizardForm.valid">Terminer</button>
+                                                          type="submit" (click)="onSubmit()">Terminer</button>
                                                     </div>
                                                 </div>
                                             </div>
