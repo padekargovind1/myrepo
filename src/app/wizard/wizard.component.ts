@@ -43,6 +43,7 @@ export class WizardComponent implements OnInit {
                 this.initAdviserData();
                 this.buildForm();
                 this.getUserProfile();
+                this.datePicker();
               }
 
   ngOnInit() {
@@ -70,6 +71,13 @@ export class WizardComponent implements OnInit {
       lastName : "",
       photo : ""
     }
+  }
+
+  datePicker() { console.log('clicked');
+    (<any> $('.datepicker')).datetimepicker({
+      locale: 'fr',
+      format: 'DD/MM/YYYY'
+    });
   }
 
   getUserProfile(){

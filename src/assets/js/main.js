@@ -244,10 +244,10 @@ jQuery(document).ready(function($) {
 
 
     // Call date picker
-	// $('.datepicker').datetimepicker({
-	// 	locale: 'fr',
-	// 	format: 'DD/MM/YYYY'
-	// });
+	$('.datepicker').datetimepicker({
+		locale: 'fr',
+		format: 'DD/MM/YYYY'
+	});
 
 
     // Carousel
