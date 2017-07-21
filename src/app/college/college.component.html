@@ -88,11 +88,11 @@
 
                 <div class="col-md-1">
                     <div class="filter-wrapper">
-                        <i class="fa fa-filter filter-holder" 
+                        <i class="fa fa-filter filter-holder" (click)="openAdvance()"
                             data-toggle="tooltip" data-placement="right" 
                             title="Affinez votre recherche avec plus de critères"></i>
                         <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
-                        <div class="advance-filter">
+                        <div class="advance-filter" [ngClass]="{ 'open': opened }">
                             <ul>
                                 <li><a>Specialités</a>
                                     <ul (click)="onAdvancedClick($event, 'specifications')">
@@ -208,32 +208,30 @@
                                         <li>
                                             <input type="checkbox" name="religious" class="checkbox filled-in" id="confessionel" />
                                             <label for="confessionel">Confessionel</label>
-
-                                            <div class="collapse" id="addConfessionel" aria-expanded="false">
-                                                <ul>
-                                                    <li>
-                                                        <input type="checkbox" name="catholic" class="checkbox filled-in" id="catholique" />
-                                                        <label for="catholique">Catholique</label>        
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="protestant" class="checkbox filled-in" id="protestant" />
-                                                        <label for="protestant">Protestant</label>        
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="muslim" class="checkbox filled-in" id="musulman" />
-                                                        <label for="musulman">Musulman</label>        
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="jew" class="checkbox filled-in" id="juif" />
-                                                        <label for="juif">Juif</label>        
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="boudhist" class="checkbox filled-in" id="boudhiste" />
-                                                        <label for="boudhiste">Boudhiste</label>        
-                                                    </li>
-                                                </ul>                                                  
-                                            </div>
                                         </li>
+                                            <ul *ngIf="religiousChecked">
+                                                <li>
+                                                    <input type="checkbox" name="catholic" class="checkbox filled-in" id="catholique" />
+                                                    <label for="catholique">Catholique</label>        
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="protestant" class="checkbox filled-in" id="protestant" />
+                                                    <label for="protestant">Protestant</label>        
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="muslim" class="checkbox filled-in" id="musulman" />
+                                                    <label for="musulman">Musulman</label>        
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="jew" class="checkbox filled-in" id="juif" />
+                                                    <label for="juif">Juif</label>        
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="boudhist" class="checkbox filled-in" id="boudhiste" />
+                                                    <label for="boudhiste">Boudhiste</label>        
+                                                </li>
+                                            </ul>   
+                                        
                                     </ul>
                                 </li>
                                 <li><a>Langues</a>

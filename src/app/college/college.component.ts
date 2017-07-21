@@ -37,6 +37,7 @@ export class CollegeComponent implements OnInit {
   languesRegio = [];
   diplomes = [];
   optionValue: string="";
+  opened = false;
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -46,7 +47,13 @@ export class CollegeComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    this.getSchoolList();
+    // this.getSchoolList();
+    this.fetch((data) => {
+      this.schoolList = data;
+      this.schoolListFilter = data;
+      console.log(data);
+      this.getSearchFilter();
+    });
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
@@ -54,6 +61,17 @@ export class CollegeComponent implements OnInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+  }
+
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/json/schools.json`);
+
+   req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+
+   req.send();
   }
 
   getSchoolList(){
@@ -151,6 +169,17 @@ export class CollegeComponent implements OnInit {
     this.router.navigate(['/compare-mode/', schoolList]);
   }
 
+  openAdvance() {
+    console.log('clicked');
+    // (<any> $('.advance-filter')).toggleClass('open');
+
+    if (this.opened) { 
+      this.opened = false;
+    } else {
+      this.opened = true;
+    }
+  }
+
   buildForm(){
     this.searchForm = this.fb.group({
       classe : [''],
@@ -234,6 +263,11 @@ export class CollegeComponent implements OnInit {
         this.updateSchoolList();
         index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
         this.advancedSearchToDisplay.splice(index, 1);
+      }
+      if(event.srcElement.id=="confessionel" && event.srcElement.checked){
+        this.religiousChecked=true;
+      } else if(event.srcElement.id=="confessionel" && !event.srcElement.checked){
+        this.religiousChecked=false;
       }
     }
   }
