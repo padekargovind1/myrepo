@@ -1,0 +1,174 @@
+/**
+Tab wheel
+**/
+#tabwheel{
+    height: 600px;
+    width: 600px;
+    margin: 0;
+    float: left; 
+}
+
+#wheelnav-tabwheel-slice-0 {
+    fill: url("#ecole-inactive") #fff; 
+}
+
+#wheelnav-tabwheel-slice-1 {
+    fill: url("#college-inactive") #fff;  
+}
+
+#wheelnav-tabwheel-slice-2 {
+    fill: url("#lycee-inactive") #fff; 
+}
+
+#wheelnav-tabwheel-slice-3 {
+    fill: url("#internat-inactive") #fff; 
+}
+
+#wheelnav-tabwheel-slice-4 {
+    fill: url("#enseignement-inactive") #fff; 
+}
+
+#wheelnav-tabwheel-slice-5 {
+    fill: url("#sejour-inactive") #fff; 
+}
+
+#wheelnav-tabwheel-slice-6 {
+    fill: url("#orientation-inactive") #fff; 
+}
+
+#wheelnav-tabwheel-slice-0.open {
+    fill: url("#ecole-active") #fff; 
+}
+
+#wheelnav-tabwheel-slice-1.open {
+    fill: url("#college-active") #fff; 
+}
+
+#wheelnav-tabwheel-slice-2.open {
+    fill: url("#lycee-active") #fff; 
+}
+
+#wheelnav-tabwheel-slice-3.open {
+    fill: url("#internat-active") #fff; 
+}
+
+#wheelnav-tabwheel-slice-4.open {
+    fill: url("#enseignement-active") #fff; 
+}
+
+#wheelnav-tabwheel-slice-5.open {
+    fill: url("#sejour-active") #fff; 
+}
+
+#wheelnav-tabwheel-slice-6.open {
+    fill: url("#orientation-active") #fff; 
+}
+
+.wheel-content {
+    position: relative;
+    min-height: 500px;
+    width: 550px;
+    float: left; 
+}
+.main{
+    background-image: url(../images/new-landing-page-2/cloud.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/**
+Select custom
+**/
+.select-custom {
+    position: relative;
+    margin-right: 15px; 
+}
+
+/* .select-custom:after { content: "\f078"; display: block; position: absolute; font-family: 'FontAwesome'; background: #393649; padding: 0 4px; border-radius: 4px; right: 10px; top: 10px;}*/
+.select-custom select {
+    background: #fff url(../images/cide-dropbox-arrow.png) no-repeat 97% 48%;
+    -webkit-appearance: none;
+    padding-right: 30px;
+    font-weight: 700; 
+}
+
+.appointment-wizard .select-custom {
+    position: relative;
+    margin-right: 0; 
+}
+
+.my-account .select-custom {
+    margin-right: 0; 
+}
+
+/*.appointment-wizard .select-custom:after { content: "\f078"; display: block; position: absolute; font-family: 'FontAwesome'; background: #00BC50; padding: 0 4px; border-radius: 4px; right: 10px; top: 10px;}*/
+.appointment-wizard .select-custom select {
+    -webkit-appearance: none;
+    width: 100% !important;
+    font-weight: 400;
+    font-size: 14px; 
+}
+
+/**
+content holder
+**/
+.content-holder {
+    position: relative;
+    overflow: hidden;
+    height: 267px; 
+}
+
+.content-holder a {
+    color: #fff; 
+}
+
+.content-holder:hover .content-image {
+    width: 125%; 
+}
+
+.landing-page-2 .content-holder {
+    position: absolute;
+    bottom: 20px;
+    padding: 15px 30px;
+    margin-left: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    height: auto;
+    border-radius: 3px;
+    opacity: 0;
+    display: none; 
+}
+
+.landing-page-2 .content-holder.fadeIn {
+    display: block; }
+
+.landing-page-2 .content-holder h2 {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 5px; 
+}
+
+.landing-page-2 .content-holder h3 {
+    font-size: 18px;
+    margin-top: 0; 
+}
+
+.landing-page-2 .content-holder .form-wrap {
+    padding: 13px 6px; 
+}
+
+.landing-page-2 .content-holder .form-group {
+    margin-bottom: 0; 
+}
+
+.landing-page-2 .content-holder .select-custom {
+    width: 100%; 
+}
+
+.landing-page-2 .content-holder .btn-search {
+    padding: 6px 0;
+    font-size: 20px; 
+}
+
+.landing-page-2 .content-holder .form-control {
+    font-size: 12px; 
+}

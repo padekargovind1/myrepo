@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
+import { SweetAlertService } from 'ng2-sweetalert2';
 
 import 'hammerjs';
 
@@ -153,7 +154,8 @@ import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-
     PublicService,
     CompareService,
     BookingService,
-    EditorService
+    EditorService,
+    SweetAlertService
   ],
     entryComponents: [
        BrochpopupComponent,
