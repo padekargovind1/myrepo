@@ -19,7 +19,6 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 })
 export class ApplytoComponent implements OnInit {
   
-  schoolTitle = "Nom de l'école";
   tokenLog : string ="";
   applytoForm : FormGroup;
   lienparents = [ "Père", 
@@ -235,6 +234,5 @@ export class ApplytoComponent implements OnInit {
   fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
   }
-
 
 }
