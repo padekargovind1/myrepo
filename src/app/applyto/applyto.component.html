@@ -15,7 +15,7 @@
           <img src="assets/images/school-logo/lyccee-du-chateaa.jpg" alt="" class="img-circle img-responsive advisor-img" />
         </section>
         <section>
-          <h2>{{schoolTitle}}</h2>
+          <h2>{{ schoolData.longName }}</h2>
         </section>
 
       </section>
@@ -240,18 +240,6 @@
                       <div class="col-md-6">
                         <div class="wrap-enfant">
                           <h4>Frère / Sœur</h4>
-                          <!-- <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" placeholder="Prénom">
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" placeholder="Nom de famille">
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-
-
                           <div class="form-group">
                             <div class="row">
                               <div class="col-for-radio">
@@ -260,18 +248,11 @@
                                     <md-radio-button value="frere">Frère</md-radio-button>
                                     <md-radio-button value="soeur">Soeur</md-radio-button>
                                   </md-radio-group>
-                                  <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Frère</span></label>
-                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Sœur</span></label>-->
                                 </div>
                               </div>
                               <div class="col-sm-2">
                                 <input type="number" max="120" min="1" class="form-control gap-for-radio" placeholder="Age" [formControl]="applytoForm.controls['childSisBroAge']"
                                 />
-                                <!-- <div class="select-custom">
-                                                                <select name="" class="form-control">
-                                                                    <option value="">Âge</option>
-                                                                </select>
-                                                            </div> -->
                               </div>
                               <div class="col-sm-3">
                                 <input type="text" class="form-control gap-for-radio" placeholder="Niveau d'étude" [formControl]="applytoForm.controls['childSisBroStudy']">
@@ -279,8 +260,8 @@
                               <div class="col-sm-2">
                                 <div class="form-group clearfix">
                                   <button class="btn  btn-inverse gap-for-radio  btn-add">
-                                                                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
-                                                                </button>
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
+                                  </button>
                                 </div>
                               </div>
                             </div>
@@ -323,23 +304,23 @@
                               <div class="col-sm-12">
                                 <div class="select-custom">
                                   <select name="" class="form-control" [formControl]="applytoForm.controls['schoolClasse']">
-                                                                    <option value="" disabled selected hidden>Classe</option>
-                                                                    <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                                        <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                                                        <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                                                        <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
-                                                                    </optgroup>
-                                                                    <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                                        <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                                                        <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                                                        <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
-                                                                    </optgroup>
-                                                                    <optgroup label="Cycle 3 : Consolidation">
-                                                                        <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                                                        <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                                                        <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
-                                                                    </optgroup>
-                                                                </select>
+                                    <option value="" disabled selected hidden>Classe</option>
+                                    <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                      <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                      <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                      <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                    </optgroup>
+                                    <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                      <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                      <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                      <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                    </optgroup>
+                                    <optgroup label="Cycle 3 : Consolidation">
+                                      <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                      <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                      <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                    </optgroup>
+                                  </select>
                                 </div>
                               </div>
                             </div>
@@ -360,9 +341,9 @@
                             <div class="col-sm-12">
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv1']">
-                                                                <option value="" disabled selected hidden>Lv1</option>
-                                                                <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
-                                                            </select>
+                                    <option value="" disabled selected hidden>Lv1</option>
+                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -373,9 +354,9 @@
                             <div class="col-sm-12">
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv2']">
-                                                                <option value="" disabled selected hidden>Lv2</option>
-                                                                <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
-                                                            </select>
+                                    <option value="" disabled selected hidden>Lv2</option>
+                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -386,9 +367,9 @@
                             <div class="col-sm-12">
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv3']">
-                                                                <option value="" disabled selected hidden>Lv3</option>
-                                                                <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
-                                                            </select>
+                                    <option value="" disabled selected hidden>Lv3</option>
+                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -396,7 +377,7 @@
                         <!-- Button Upload -->
                         <div>
                           <label>Télécharger ici le dernier bulletin scolaire</label>
-                          <input type="file" ng2FileSelect [uploader]="uploader" />
+                          <input type="file" ng2FileSelect [uploader]="uploader"/>
                         </div>
 
                         <!-- end button upload -->
@@ -405,51 +386,51 @@
                       <div class="col-md-8">
                         <div fxFlex.gt-sm="80" fxFlex.gt-xs="50" fxFlex="100">
                           <h6 class="mt-0" fxLayout="row">
-                            <span fxFlex>Upload queue</span>
-                            <span>Queue length: {{ uploader?.queue?.length }}</span>
+                            <span fxFlex>File d'attente des téléchargements</span>
+                            <span>Nombre de fichier en attente: {{ uploader?.queue?.length }}</span>
                           </h6>
 
                           <ngx-datatable class="material ml-0 mr-0" [rows]="uploader.queue" [columnMode]="'flex'" [headerHeight]="50" [footerHeight]="0"
                             [rowHeight]="'auto'">
-                            <ngx-datatable-column name="Name" [flexGrow]="1">
+                            <ngx-datatable-column name="Nom" [flexGrow]="1">
                               <ng-template let-row="row" ngx-datatable-cell-template>
                                 {{ row?.file?.name }}
                               </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="Size" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
+                            <ngx-datatable-column name="Taille" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
                               <ng-template let-row="row" ngx-datatable-cell-template>
                                 {{ row?.file?.size/1024/1024 | number:'.2' }} MB
                               </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="Progress" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
+                            <ngx-datatable-column name="Progression" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
                               <ng-template let-row="row" ngx-datatable-cell-template>
                                 <md-progress-bar mode="determinate" value="{{row.progress}}"></md-progress-bar>
                               </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="status" [flexGrow]="1">
+                            <ngx-datatable-column name="Statut" [flexGrow]="1">
                               <ng-template let-row="row" ngx-datatable-cell-template>
                                 <span *ngIf="row.isSuccess"><md-icon>check</md-icon></span>
                                 <span *ngIf="row.isCancel"><md-icon>cancel</md-icon></span>
                                 <span *ngIf="row.isError"><md-icon>error</md-icon></span>
                               </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="action" [flexGrow]="3">
+                            <ngx-datatable-column name="Action" [flexGrow]="3">
                               <ng-template let-row="row" ngx-datatable-cell-template>
-                                <button md-raised-button md-button-sm color="primary" type="button" (click)="row.upload()" [disabled]="row.isReady || row.isUploading || row.isSuccess">Upload</button>
-                                <button md-raised-button md-button-sm color="warn" type="button" (click)="row.cancel()" [disabled]="!row.isUploading">Cancel</button>
-                                <button md-raised-button md-button-sm color="accent" type="button" (click)="row.remove()">Remove
-              </button>
+                                <button md-raised-button md-button-sm color="primary" type="button" (click)="row.upload()" [disabled]="row.isReady || row.isUploading || row.isSuccess">Télécharger</button>
+                                <button md-raised-button md-button-sm color="warn" type="button" (click)="row.cancel()" [disabled]="!row.isUploading">Annuler</button>
+                                <button md-raised-button md-button-sm color="accent" type="button" (click)="row.remove()">Supprimer
+                                </button>
                               </ng-template>
                             </ngx-datatable-column>
                           </ngx-datatable>
 
                           <div class="mb-1">
-                            <p>Queue progress:</p>
+                            <p>Progression de la file d'attente</p>
                             <md-progress-bar mode="determinate" value="{{uploader.progress}}"></md-progress-bar>
                           </div>
-                          <button md-raised-button md-button-sm color="primary" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload all</button>
-                          <button md-raised-button md-button-sm color="warn" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">Cancel all</button>
-                          <button md-raised-button md-button-sm color="accent" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">Remove all</button>
+                          <button md-raised-button md-button-sm color="primary" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Tout télécharger</button>
+                          <button md-raised-button md-button-sm color="warn" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">Tout annuler</button>
+                          <button md-raised-button md-button-sm color="accent" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">Tout supprimer</button>
                         </div>
 
 

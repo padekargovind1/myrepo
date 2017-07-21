@@ -65,8 +65,8 @@
         </li>
     </ul>
     <ul class="right-top-menu pull-right">
-        <li><i class=" fa fa-file-text"></i></li>
-        <li><i class="fa fa-bookmark"></i></li>
+        <li><i class=" fa fa-file-text"  data-toggle="modal" data-target="#download-popup"></i></li>
+        <li><i class="fa fa-bookmark"  data-toggle="modal" data-target="#download-popup"></i></li>
         <li class="login-text" *ngIf="!userLogin; else log">
             <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
             <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
@@ -88,3 +88,88 @@
         <li><a href="#"><i class="fa fa-viadeo"></i></a></li>
     </ul>
 </header>
+
+<div class="modal fade" id="download-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
+        <div class="modal-dialog modal-download" role="document">
+            <div class="modal-content">
+                <div class="modal-body  wishlist">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Ma candidature</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Ma liste d'envies</a></li>
+                    </ul>
+
+                      <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="tab1">
+                            
+                            <div class="card  school-list">
+                                                               
+                                <div class="card-content">
+                                    <img src="asstes/images/school-1.jpg" alt="School 1" />
+                                    <h3>Lycee Saint-Charles</h3>
+                                    <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
+                                    <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
+
+                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a>
+                                    
+                                </div><!-- .card-content -->
+
+                            </div><!-- .card -->
+
+                            <div class="card  school-list">
+                                                               
+                                <div class="card-content">
+                                    <img src="asstes/images/school-2.jpg" alt="School 1" />
+                                    <h3>Lycee Saint-Charles</h3>
+                                    <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
+                                    <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
+
+                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a>
+                                    
+                                </div><!-- .card-content -->
+
+                            </div><!-- .card -->
+
+                        </div><!-- .tab-pane -->
+
+                        <div role="tabpanel" class="tab-pane" id="tab2">
+
+                            <div class="card  school-list">
+                                                               
+                                <div class="card-content">
+                                    <img src="asstes/images/school-1.jpg" alt="School 1" />
+                                    <h3>Lycee Saint-Charles</h3>
+                                    <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
+                                    <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
+
+                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted">Détail de l'école</a>
+                                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#apply-popup">Je postule</button>
+                                </div><!-- .card-content -->
+
+                            </div><!-- .card -->
+
+                            <div class="card  school-list">
+                                                               
+                                <div class="card-content">
+                                    <img src="asstes/images/school-2.jpg" alt="School 1" />
+                                    <h3>Lycee Saint-Charles</h3>
+                                    <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
+                                    <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
+
+                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted">Détail de l'école</a>
+                                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#apply-popup">Je postule</button>
+                                </div><!-- .card-content -->
+
+                            </div><!-- .card -->
+                            
+                        </div><!-- .tab-pane -->
+
+                    </div><!-- .tab-content -->
+
+                    <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" type="button">Annuler</button>
+
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal -->

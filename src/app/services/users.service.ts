@@ -104,4 +104,9 @@ export class UsersService {
     return this.http.post(APPLICATION_API+'?token='+this.token, data)
       .map((response)=>response.json());
   }
+
+  getApplication():Observable<any>{
+    return this.http.get(APPLICATION_API+'?token='+this.token, {headers: this.headers})
+      .map((response)=>response.json());
+  }
 }
