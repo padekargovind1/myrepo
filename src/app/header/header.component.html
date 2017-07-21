@@ -106,7 +106,7 @@
                             <div class="card  school-list">
                                                                
                                 <div class="card-content">
-                                    <img src="asstes/images/school-1.jpg" alt="School 1" />
+                                    <img src="assets/images/school-1.jpg" alt="School 1" />
                                     <h3>Lycee Saint-Charles</h3>
                                     <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
                                     <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
@@ -120,7 +120,7 @@
                             <div class="card  school-list">
                                                                
                                 <div class="card-content">
-                                    <img src="asstes/images/school-2.jpg" alt="School 1" />
+                                    <img src="assets/images/school-2.jpg" alt="School 1" />
                                     <h3>Lycee Saint-Charles</h3>
                                     <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
                                     <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
@@ -130,6 +130,20 @@
                                 </div><!-- .card-content -->
 
                             </div><!-- .card -->
+
+                            <!--<div class="card  school-list" *ngFor="let school of schoolApply">
+                                                               
+                                <div class="card-content">
+                                    <img src="{{school.image}}" alt="School 1" />
+                                    <h3>{{school.longName}}</h3>
+                                    <p>{{school.status}}</p>
+                                    <address>{{school.address.ad1}} {{school.address.postCode}} {{school.address.city}} <br /> Tel: {{school.address.phoneNumber}}</address>
+
+                                    <button class="btn btn-highlighted btn-block" (click)="onSchoolDetail(school.id)">Détail de l'école</button>
+                                    
+                                </div>
+
+                            </div>-->
 
                         </div><!-- .tab-pane -->
 
@@ -138,7 +152,7 @@
                             <div class="card  school-list">
                                                                
                                 <div class="card-content">
-                                    <img src="asstes/images/school-1.jpg" alt="School 1" />
+                                    <img src="assets/images/school-1.jpg" alt="School 1" />
                                     <h3>Lycee Saint-Charles</h3>
                                     <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
                                     <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
@@ -152,7 +166,7 @@
                             <div class="card  school-list">
                                                                
                                 <div class="card-content">
-                                    <img src="asstes/images/school-2.jpg" alt="School 1" />
+                                    <img src="assets/images/school-2.jpg" alt="School 1" />
                                     <h3>Lycee Saint-Charles</h3>
                                     <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
                                     <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
@@ -162,6 +176,20 @@
                                 </div><!-- .card-content -->
 
                             </div><!-- .card -->
+
+                            <!--<div class="card  school-list" *ngFor="let school of schoolWish">
+                                                               
+                                <div class="card-content">
+                                    <img src="{{school.image}}" alt="School 1" />
+                                    <h3>{{school.longName}}</h3>
+                                    <p>{{school.status}}</p>
+                                    <address>{{school.address.ad1}} {{school.address.postCode}} {{school.address.city}} <br /> Tel: {{school.address.phoneNumber}}</address>
+
+                                    <button class="btn btn-highlighted btn-block" (click)="onSchoolDetail(school.id)">Détail de l'école</button>
+                                    <button type="button" class="btn btn-secondary btn-block" (click)="onApplyTo(school.id)">Je postule</button>
+                                </div>
+
+                            </div>-->
                             
                         </div><!-- .tab-pane -->
 
