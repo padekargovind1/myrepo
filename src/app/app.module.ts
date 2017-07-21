@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Jsonp, JsonpModule } from '@angular/http';
 import {
   MdCardModule, MdButtonModule, MdListModule,
   MdProgressBarModule, MdMenuModule, MdInputModule, MdRadioModule,
@@ -42,6 +42,7 @@ import { UsersService } from './services/users.service';
 import { PublicService } from './services/public.service';
 import { CompareService } from './services/compare.service';
 import { BookingService } from './services/booking.service';
+import { EditorService } from './services/editor.service';
 import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
@@ -141,8 +142,8 @@ import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-
     ReactiveFormsModule,
     CustomFormsModule,
     FileUploadModule,
-    NgxDatatableModule
-    
+    NgxDatatableModule,
+    JsonpModule
   ],
   providers: [
     SchoolService,
@@ -151,7 +152,8 @@ import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-
     UsersService,
     PublicService,
     CompareService,
-    BookingService
+    BookingService,
+    EditorService
   ],
     entryComponents: [
        BrochpopupComponent,

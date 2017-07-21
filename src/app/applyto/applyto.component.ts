@@ -38,6 +38,8 @@ export class ApplytoComponent implements OnInit {
   schoolId="";
   schoolData:any;
   userData:any;
+  parents = ["Parent 1"];
+  freresoeur = ["Frère/Soeur 1"];
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -235,4 +237,24 @@ export class ApplytoComponent implements OnInit {
     this.hasAnotherDropZoneOver = e;
   }
 
+  onAddParent(){
+    if(this.parents.length==1){
+      this.parents.push("Parent 2")
+    }
+  }
+  onRemoveParent(){
+    if(this.parents.length==2){
+      this.parents.splice(1,1);
+    }
+  }
+
+  onAddFrSo(){
+    this.freresoeur.push("Frère/Soeur "+this.freresoeur+1);
+  }
+
+  onRemoveFrSo(){
+    if(this.freresoeur.length!=1){
+      this.freresoeur.splice(this.freresoeur.length-1, 1);
+    }
+  }
 }

@@ -33,86 +33,101 @@
                   <div class="container-fluid">
                     <div class="row">
                       <section class="col-md-4">
+                        <div *ngFor="let parent of parents">
+                          <h3>{{parent}}</h3>
 
-                        <h3>Parents</h3>
-
-                        <div class="form-group">
-                          <div class="select-custom">
-                            <md-select placeholder="Lien de Parenté" class="form-control" [formControl]="applytoForm.controls['lienParent']">
-                              <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
-                                {{ lientparent }}
-                              </md-option>
-                            </md-select>
-                          </div>
-                        </div>
-
-                        <div class="form-group horizontal-radio clearfix">
-                          <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
-                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
-                                                <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
-                          <md-radio-group [formControl]="applytoForm.controls['title']">
-                            <md-radio-button value="Mme">Mme</md-radio-button>
-                            <md-radio-button value="Mlle">Mlle</md-radio-button>
-                            <md-radio-button value="M">M</md-radio-button>
-                          </md-radio-group>
-                        </div>
-
-
-                        <div class="row">
-                          <div class="col-sm-6  col-xs-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Nom" [formControl]="applytoForm.controls['lastName']">
+                          <div class="form-group">
+                            <div class="select-custom">
+                              <md-select placeholder="Lien de Parenté" class="form-control" [formControl]="applytoForm.controls['lienParent']">
+                                <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
+                                  {{ lientparent }}
+                                </md-option>
+                              </md-select>
                             </div>
                           </div>
-                          <div class="col-sm-6  col-xs-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Prénom" [formControl]="applytoForm.controls['firstName']">
-                            </div>
+
+                          <div class="form-group horizontal-radio clearfix">
+                            <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
+                                                  <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
+                                                  <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
+                            <md-radio-group [formControl]="applytoForm.controls['title']">
+                              <md-radio-button value="Mme">Mme</md-radio-button>
+                              <md-radio-button value="Mlle">Mlle</md-radio-button>
+                              <md-radio-button value="M">M</md-radio-button>
+                            </md-radio-group>
                           </div>
-                        </div>
 
 
-                        <div class="form-group">
                           <div class="row">
-
-                            <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Profession / Secteur d'activité" [formControl]="applytoForm.controls['job']">
+                            <div class="col-sm-6  col-xs-6">
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom" [formControl]="applytoForm.controls['lastName']">
+                              </div>
+                            </div>
+                            <div class="col-sm-6  col-xs-6">
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Prénom" [formControl]="applytoForm.controls['firstName']">
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div class="form-group">
-                          <input type="email" class="form-control" placeholder="Email" [formControl]="applytoForm.controls['email']">
-                        </div>
 
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable" [formControl]="applytoForm.controls['tel']">
+                          <div class="form-group">
+                            <div class="row">
+
+                              <div class="col-sm-12">
+                                <input type="text" class="form-control" placeholder="Profession / Secteur d'activité" [formControl]="applytoForm.controls['job']">
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-sm-12">
-                              <div class="select-custom">
-                                <select name="" class="form-control" [formControl]="applytoForm.controls['horaireJoingnable']">
-                                                                <option value="" disabled selected hidden>Horaires pour me contacter</option>
-                                                                <option value="9h-12h">9h-12h</option>
-                                                                <option value="12h-14h">12h-14h</option>
-                                                                <option value="14h-18h">14h-18h</option>
-                                                                <option value="18h-20h">18h-20h</option>
-                                                            </select>
+                          <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" [formControl]="applytoForm.controls['email']">
+                          </div>
+
+                          <div class="form-group">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable" [formControl]="applytoForm.controls['tel']">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="select-custom">
+                                  <select name="" class="form-control" [formControl]="applytoForm.controls['horaireJoingnable']">
+                                      <option value="" disabled selected hidden>Horaires pour me contacter</option>
+                                      <option value="9h-12h">9h-12h</option>
+                                      <option value="12h-14h">12h-14h</option>
+                                      <option value="14h-18h">14h-18h</option>
+                                      <option value="18h-20h">18h-20h</option>
+                                  </select>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        <div class="form-group clearfix">
-                          <button type="button" class="btn  btn-inverse pull-right btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter Parent</button>
+                        <div class="form-group clearfix"
+                          *ngIf="parents.length==1">
+                          <button type="button" class="btn  
+                            btn-inverse pull-right btn-add"
+                            (click)="onAddParent()">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                            </span> Ajouter Parent
+                          </button>
                         </div>
-
+                        <div class="form-group clearfix"
+                          *ngIf="parents.length==2">
+                          <button type="button" class="btn  
+                            btn-inverse pull-right btn-add"
+                            (click)="onRemoveParent()">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                            </span> Retirer Parent
+                          </button>
+                        </div>
                       </section>
                       <!-- .col-* -->
                     </div>
@@ -156,11 +171,6 @@
                             </div>
                           </div>
                           <div class="col-sm-3  hidden-xs">&nbsp;</div>
-                          <!-- <div class="select-custom">
-                                                        <select name="" class="form-control">
-                                                            <option value="">Age</option>
-                                                        </select>
-                                                    </div> -->
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
                               <div class="horizontal-radio">
@@ -168,14 +178,9 @@
                                   <md-radio-button value="garçon">Garçon</md-radio-button>
                                   <md-radio-button value="fille">Fille</md-radio-button>
                                 </md-radio-group>
-
-                                <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Garçon</span></label>
-                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Fille</span></label>-->
                               </div>
                             </div>
                           </div>
-                          <!-- </div>
-                                                </div> -->
                         </div>
 
 
@@ -257,17 +262,19 @@
                               <div class="col-sm-3">
                                 <input type="text" class="form-control gap-for-radio" placeholder="Niveau d'étude" [formControl]="applytoForm.controls['childSisBroStudy']">
                               </div>
-                              <div class="col-sm-2">
-                                <div class="form-group clearfix">
-                                  <button class="btn  btn-inverse gap-for-radio  btn-add">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
-                                  </button>
-                                </div>
-                              </div>
                             </div>
                           </div>
+                        </div>
 
-
+                        <div class="form-group clearfix">
+                          <button class="btn  btn-inverse gap-for-radio  btn-add"
+                            (click)="onAddFrSo()">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
+                          </button>
+                          <button class="btn  btn-inverse gap-for-radio  btn-remove"
+                            (click)="onRemoveFrSo()">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Retirer
+                          </button>
                         </div>
                       </div>
                     </div>
