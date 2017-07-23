@@ -53,7 +53,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
     // console.log(this.router.snapshot)
     for(let i = 0; i<4; i++){
       // console.log(this.router.snapshot.params[i])
-      this.bookingData[i]=this.router.snapshot.params[i];
+      this.bookingData[i]=this.router.snapshot.params[i]; 
     }
     console.log(this.bookingData);
   }
