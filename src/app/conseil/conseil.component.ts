@@ -19,10 +19,9 @@ export class ConseilComponent implements OnInit {
   }
 
   navigateToBooking(time, concernPeople, price, index){
-    let bookData = [time, concernPeople, price, index];
+    this.bookingService.storeBookingPackage([time, concernPeople, price, index]);
     console.log("Navigate to booking");
-    // this.bookingService.storeBookingData([time, concernPeople, price, index]);
-    this.router.navigate(['booking', bookData]);
+    this.router.navigate(['booking']);
   }
 
 }

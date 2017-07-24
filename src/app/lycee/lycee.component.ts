@@ -47,13 +47,7 @@ export class LyceeComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    // this.getSchoolList();
-    this.fetch((data) => {
-      this.schoolList = data;
-      this.schoolListFilter = data;
-      console.log(data);
-      this.getSearchFilter();
-    });
+    this.getSchoolList();
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
@@ -62,18 +56,7 @@ export class LyceeComponent implements OnInit {
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
   }
-
-  fetch(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/json/schools.json`);
-
-   req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-   req.send();
-  }
-
+  
   getSchoolList(){
     this.publicService.getSchoolsList()
       .subscribe(

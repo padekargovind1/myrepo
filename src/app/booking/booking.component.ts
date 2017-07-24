@@ -13,7 +13,7 @@ declare var fullCalendar: any;
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit, AfterViewInit {
-  tokenLog = "";
+  tokenLog :boolean = false;;
   bookingData = [];
   appointmentPackage : any;
   appointmentPackageId ="";
@@ -21,11 +21,13 @@ export class BookingComponent implements OnInit, AfterViewInit {
   adviserList:any;
   adviserFreeTime:any;
   adviserData:any;
-  bookingDate="";
+  bookingDate=[];
   public storing="";
-  calendarData:any;
+  calendarData=[];
   calendarDataFiltered:any;
   adviserToDisplay=[];
+  adviserIdList=[];
+  allChecked : boolean = false;
 
   constructor(private bookingService : BookingService,
               private route : Router,
@@ -34,27 +36,18 @@ export class BookingComponent implements OnInit, AfterViewInit {
               private router : ActivatedRoute) { }
 
   ngOnInit() {
-    this.tokenLog=this.authService.getToken()
-    if(this.tokenLog==""){
+    this.tokenLog=this.authService.isUserLoggedIn()
+    if(!this.tokenLog){
       alert("Vous devez être connecté afin de prendre un rendez-vous.");
       this.route.navigate(['/login']);
     } else {
-      this.adviserToDisplay=this.initDataAppoint();
-      this.checkBooking();
+      this.getBookingData();
+      this.getAppointmentPackage();
     }
-  }
-
-  checkBooking(){
-    this.getBookingData();
-    this.getAppointmentPackage();
   }
 
   getBookingData(){
-    // console.log(this.router.snapshot)
-    for(let i = 0; i<4; i++){
-      // console.log(this.router.snapshot.params[i])
-      this.bookingData[i]=this.router.snapshot.params[i]; 
-    }
+    this.bookingData = this.bookingService.getBookingPackage();
     console.log(this.bookingData);
   }
 
@@ -76,7 +69,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   getListAdviser(){
-    this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]].id)
+    this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]]._id)
       .subscribe(
         (response)=>{
           let data = response;
@@ -85,43 +78,44 @@ export class BookingComponent implements OnInit, AfterViewInit {
             console.log(response.message);
           } else {
             this.adviserList = data;
-            for(let adviser of this.adviserList){
-              // this.getAdviserFreeTime(adviser.id);
-            }
+            this.calendarData=this.initDataAppoint();
+            // for(let adviser of this.adviserList){
+            //   this.getAdviserFreeTime(adviser.id);
+            // }
           }
         }
       )
   }
 
-  getAdviserFreeTime(adviserId){
-    this.usersService.getAdviserFreeTime(adviserId)
-      .subscribe(
-        (response)=>{
-          let data = response.data;
-          console.log(data);
-          if(response.code=400){
-            console.log(response.message);
-          } else {
-            this.adviserFreeTime.push(data);
-          }
-        }
-      )
-  }
+  // getAdviserFreeTime(adviserId){
+  //   this.usersService.getAdviserFreeTime(adviserId)
+  //     .subscribe(
+  //       (response)=>{
+  //         let data = response.data;
+  //         console.log(data);
+  //         if(response.code=400){
+  //           console.log(response.message);
+  //         } else {
+  //           this.adviserFreeTime.push(data);
+  //         }
+  //       }
+  //     )
+  // }
 
-  getAdviserData(adviserId){
-    this.usersService.getAdviserData(adviserId)
-      .subscribe(
-        (response)=>{
-          let data = response.data;
-          console.log(data);
-          if(response.code=400){
-            console.log(response.message);
-          } else {
-            this.adviserData.push(data);
-          }
-        }
-      )
-  }
+  // getAdviserData(adviserId){
+  //   this.usersService.getAdviserData(adviserId)
+  //     .subscribe(
+  //       (response)=>{
+  //         let data = response.data;
+  //         console.log(data);
+  //         if(response.code=400){
+  //           console.log(response.message);
+  //         } else {
+  //           this.adviserData.push(data);
+  //         }
+  //       }
+  //     )
+  // }
 
   onCancelAppointment(){
     this.route.navigate(['/conseil']);
@@ -129,13 +123,12 @@ export class BookingComponent implements OnInit, AfterViewInit {
 
   onConfirmAppointment(){
     let data = [];
-    for (let bookData of this.bookingData){
-      data.push(bookData);
-    }
-    for(let appointData of this.appointmentData){
+    console.log(this.bookingDate)
+    for(let appointData of this.bookingDate){
       data.push(appointData);
     }
-    this.route.navigate(['/wizard', data]);
+    this.bookingService.storeBookingData(data);
+    this.route.navigate(['/wizard']);
   }
 
   ngAfterViewInit() {
@@ -152,97 +145,84 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   initDataAppoint(){
-
-    if(typeof this.appointmentPackage=='undefined'){
-      let data = [
-        {
-          title: 'Disponible',
-          start: '2017-07-01 10:00:00',
-          end: '2017-07-01 11:00:00',
-          adviserId: '123'
-        },
-        {
-          title: 'Disponible',
-          start: '2017-07-07 08:00:00',
-          end: '2017-07-07 09:00:00',
-          adviserId: '123'
-        }
-      ]
-      return data;
-    } else {
-      for(let adviser of this.adviserList){
-        for(let day of adviser.calendar){
-          if(this.bookingData[0]=='1'){
-            for(let i=day.hour.start; i<day.hour.start+7; i++){
-              this.calendarData.push({title:'Disponible', 
-                        start: '2017-07-07 '+ i + ':00:00',
-                        end: '2017-07-07 '+ i+1 + ':00:00',
-                        adviserId: adviser.id});
-            }
-          } else if (this.bookingData[0]=='2') {
-            for(let i=day.hour.start; i<day.hour.start+8; i+=2){
-            this.calendarData.push({title:'Disponible', 
-                        start: '2017-07-07 '+ i + ':00:00',
-                        end: '2017-07-07 '+ i+2 + ':00:00',
-                        adviserId: adviser.id});
-            }
-          } else if (this.bookingData[0]=='3'){
-            for(let i=day.hour.start; i<day.hour.start+6; i+=3){
-            this.calendarData.push({title:'Disponible', 
-                        start: '2017-07-07 '+ i + ':00:00',
-                        end: '2017-07-07 '+ i+3 + ':00:00',
-                        adviserId: adviser.id});
-            }
-          } else {
-            this.calendarData.push({title:'Disponible', 
-                      start: '2017-07-07 '+ day.hour.start + ':00:00',
-                      end: '2017-07-08 '+ day.hour.start+7 + ':00:00',
-                      adviserId: adviser.id});
-          }
-        }
+    console.log("Package list : ", this.appointmentPackage, 
+      "Adviser List : ", this.adviserList);
+    for(let adviser of this.adviserList){
+      for(let day of adviser.available){
+        let debut = day.start.substr(11, 2);
+        let fin = day.end.substr(11, 2);
+        this.calendarData.push({
+          title:'Disponible', 
+          start: day.start.substr(0, 10)+' '+debut+':00:00',
+          end: day.start.substr(0, 10)+' '+ fin + ':00:00',
+          adviserId: adviser.id,
+          adviserName : adviser.firstName+ ' ' +adviser.lastName,
+          adviserGender : adviser.gender,
+          adviserImage : adviser.image,
+          availableId : day.id
+        });
       }
-      return this.calendarData;
     }
+    return this.calendarData;
   }
 
   onCheckbox(adviserId){
-    let index = this.adviserToDisplay.indexOf(adviserId);
+    // console.log(adviserId);
+    let index = this.adviserIdList.indexOf(adviserId);
     if(index==-1){
-      this.adviserToDisplay.push(adviserId);
+      this.adviserIdList.push(adviserId);
     } else {
-      this.adviserToDisplay.splice(index, 1);
+      this.adviserIdList.splice(index, 1);
     }
-    this.adviserToDisplay = this.bookingService.filterBooking(this.calendarData, this.adviserToDisplay)
-    this.initCalendar();
+    // console.log(this.adviserIdList);
+    this.adviserToDisplay = this.bookingService.filterBooking(this.calendarData, this.adviserIdList)
+    // console.log(this.adviserToDisplay);
+    this.refreshCalendar();
+  }
+
+  refreshCalendar(){
+    $('#calendar').fullCalendar('removeEvents');
+    $('#calendar').fullCalendar('addEventSource', this.adviserToDisplay);
+    $('#calendar').fullCalendar('rerenderEvents');
   }
 
   initCalendar(){
+    console.log(this.adviserToDisplay);
     const self = this;
   	(<any> $('#calendar')).fullCalendar({
       locale:'fr', 
       eventClick: function(calEvent) {
         console.log(calEvent);
-        $('#appointment').modal('show');
+      $('#appointment').modal('show');
         self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
+        self.bookingDate[0] = calEvent.start._i.substr(0, 10)
+        self.bookingDate[1] = calEvent.start._i.substr(11, 5)
+        self.bookingDate[2] = calEvent.end._i.substr(11, 5)
+        self.bookingDate[3] = calEvent.adviserName
+        if(calEvent.adviserGender=="Male"){
+          self.bookingDate[4] = "M"
+        } else {
+          self.bookingDate[4] = "Mme"
+        }
+        self.bookingDate[5] = calEvent.adviserId
+        self.bookingDate[6] = calEvent.adviserImage
+        self.bookingDate[7] = calEvent.availableId
       }, 
       events:this.adviserToDisplay
     });
   }
 
   onSelectAll(){
-    $('.checkbox.filled-in').prop('checked', function(idx, oldProp) {
-      return true
-    });
+    console.log($('.checkbox').attr('class'))
+    this.allChecked=true;
     this.adviserToDisplay = this.calendarData;
-    this.initCalendar();
+    this.refreshCalendar();
   }
 
   onUnselectAll(){
-    $('.checkbox.filled-in').prop('checked', function(idx, oldProp) {
-      return false
-    });
     this.adviserToDisplay = [];
-    this.initCalendar();
+    this.refreshCalendar();
+    this.allChecked=false;
   }
 
 }

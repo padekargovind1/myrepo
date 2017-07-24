@@ -15,8 +15,8 @@ import { CustomValidators } from 'ng2-validation';
 })
 export class WizardComponent implements OnInit, AfterViewInit {
 
-  tokenLog : string ="";
-  bookingData=[];
+  tokenLog : boolean = false;
+  bookingData:any;
   wizardForm : FormGroup;
   lienparents = [ "Père", 
                 "Mère", 
@@ -49,17 +49,13 @@ export class WizardComponent implements OnInit, AfterViewInit {
               }
 
   ngOnInit() {
-    this.getAdviserId();
-    this.tokenLog=this.authService.getToken();
-    if(this.tokenLog==""){
+    this.tokenLog=this.authService.isUserLoggedIn()
+    if(!this.tokenLog){
       alert("Vous devez être connecté afin de prendre un rendez-vous.");
       this.route.navigate(['/login']);
     } else {
-      for(let i = 0; i<4; i++){
-        // console.log(this.router.snapshot.params[i])
-        this.bookingData[i]=this.router.snapshot.params[i];
-      }
-      console.log(this.bookingData);
+      this.appointmentData = this.bookingService.getBookingData();
+      console.log(this.appointmentData);
     }
   }
 
@@ -116,36 +112,6 @@ export class WizardComponent implements OnInit, AfterViewInit {
       childBirthDay : userData.birthDate,
       childBirthPlace : userData.birthPlace
     });
-  }
-
-  getAdviserId(){
-    // this.appointmentData=this.bookingService.getAdviserData()
-    for(let i = 4; i<9; i++){
-      this.appointmentData.push(this.router.snapshot.params[i]);
-    }
-    console.log(this.appointmentData);
-    this.getAdviserData();
-  }
-
-  getAdviserData(){
-    this.usersService.getAdviserData(this.appointmentData[0])
-      .subscribe(
-        (response)=>{
-          let data = response.data;
-          console.log(data);
-          if(response.code==400){
-            console.log(response.message);
-            this.adviserData={
-              title : "Mme",
-              firstName : "Anita",
-              lastName : "Lubies",
-              photo : "assets/images/advisor-1.jpg"
-            }
-          } else {
-            this.adviserData=data;
-          }
-        }
-      )
   }
 
   buildForm(){
@@ -246,6 +212,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
     const causeOfRepeatSecondary = this.wizardForm.controls.causeOfRepeatSecondary.value;
     const reasonDiagnostic = this.wizardForm.controls.reasonDiagnostic.value;
     const note = this.wizardForm.controls.note.value;
+    const id = this.appointmentData[7];
 
     const data = ({
       lienParent, title, lastName, firstName, job, email, tel, horaireJoingnable, childLastName,
@@ -254,36 +221,41 @@ export class WizardComponent implements OnInit, AfterViewInit {
       schoolName, schoolCity, schoolClasse, schoolOption, schoolLv1, schoolLv2, schoolLv3, schoolHelp,
       schoolHelpSubject, bestSubject, weakSubject, interestJob, interestAge, yourInterest, practiceInterest,
       primarySchoolName, primarySchoolRepeat, causeOfRepeatPrimary, secondarySchoolName, secondarySchoolRepeat,
-      causeOfRepeatSecondary, reasonDiagnostic, note 
+      causeOfRepeatSecondary, reasonDiagnostic, note, id
     });
 
-    // this.usersService.postDataAppointments(data)
-    //   .subscribe(
-    //     (response)=>{
-    //       let data = response.data;
-    //       console.log(data);
-    //       if(response.code==400){
-    //         console.log(response.message);
-    //       } else {
-    //         console.log('Appointement register')
-    //       }
-    //     }
-    //   )
+    console.log(data)
+
+    this.usersService.postCreateNewAppointment(id)
+      .subscribe(
+        (response)=>{
+          let data = response;
+          console.log(data);
+          if(response!=true){
+            console.log(response.message);
+          } else {
+            console.log('Appointement register')
+            alert("Un email de confirmation de rendez-vous vous a été envoyé.")
+            this.bookingService.cleanBooking();
+            this.route.navigate(['/'])
+          }
+        }
+      )
 
     console.log(data);
-    this.createAppointement();
+    // this.createAppointement();
   }
 
-  createAppointement(){
-    const data = {
-      "adviser": this.appointmentData[0],
-      "from": this.appointmentData[1],
-      "to": this.appointmentData[2]
-    }
+  // createAppointement(){
+  //   const data = {
+  //     "adviser": this.appointmentData[0],
+  //     "from": this.appointmentData[1],
+  //     "to": this.appointmentData[2]
+  //   }
 
-    this.usersService.postCreateNewAppointment(data, this.appointmentData[4]);
+  //   this.usersService.postCreateNewAppointment(data, this.appointmentData[4]);
    
-  }
+  // }
 
   onChecked() {
     var check = this.wizardForm.controls.schoolHelp.value;
@@ -293,3 +265,11 @@ export class WizardComponent implements OnInit, AfterViewInit {
     this.checked = !check;
   }
 }
+
+
+  // this.adviserData={
+  //             title : "Mme",
+  //             firstName : "Anita",
+  //             lastName : "Lubies",
+  //             photo : "assets/images/advisor-1.jpg"
+  //           }

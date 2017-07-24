@@ -42,7 +42,7 @@ lienparents = [ "Père",
         this.getUserProfile();
       }, 500);
     } else {
-      console.log("navigate back");
+      // console.log("navigate back");
       this.route.navigate(['/login']);
     }
   }
@@ -65,7 +65,7 @@ lienparents = [ "Père",
   }
 
   patchValue(parentData: any){
-    console.log(parentData);
+    // console.log(parentData);
     this.parentAccountForm.patchValue({
       lienParent : parentData.relationship,
       titre : parentData.gender,

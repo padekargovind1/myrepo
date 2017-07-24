@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private authService : AuthService,
-              private location : Location) { 
+              private router : Router) { 
     this.buildFormGroup();
   }
 
@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
             else {
               console.log(response);
               alert("Un email de confirmation à été envoyé.");
-              this.location.back();
+              this.router.navigate(['/login'])
             }
           }
         )

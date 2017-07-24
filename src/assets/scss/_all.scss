@@ -1754,3 +1754,6 @@ a:hover { text-decoration: none;}
 .fc button { color: #333;}
 
 [hidden] { display: none;}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
+.mat-checkbox-checked.mat-accent .mat-checkbox-background{ background-color: #00BC50 ;}

@@ -14,9 +14,9 @@ export class MyaccountComponent implements OnInit {
   constructor(private route : Router,
               private authService : AuthService) { 
     const token = this.authService.getToken();
-    console.log(token);
+    // console.log(token);
     if(token == ''){
-      console.log("navigate back");
+      // console.log("navigate back");
       this.route.navigate(['/login']);
     }
   }

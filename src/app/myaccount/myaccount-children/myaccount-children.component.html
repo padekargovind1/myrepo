@@ -154,9 +154,10 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <div class="datepicker-holder">
-                  <input type="text" class="form-control datepicker" 
-                    placeholder="Date de naissance"
-                    [formControl]="childrenForm.controls['datenaissance']">
+                  <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
+                  placeholder="Date de naissance"
+                  [formControl]="childrenForm.controls['datenaissance']">
+                  <md-datepicker #myDatepicker></md-datepicker>
                   <small *ngIf="childrenForm.controls['datenaissance'].hasError('required') && 
                     childrenForm.controls['datenaissance'].touched" 
                     class="mat-text-warn"> 

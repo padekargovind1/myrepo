@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
 import { PublicService } from '../services/public.service';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-header',
@@ -17,20 +18,35 @@ export class HeaderComponent implements OnInit {
   userApplication : any;
   schoolApply = [];
   schoolWish = [];
+  userLastName : string = "";
+  userFirstName : string = "";
 
   constructor(private router : Router,
               private authService : AuthService,
               private usersService : UsersService,
-              private publicService : PublicService) { 
-    if(this.authService.getToken()!=""){
-      this.userLogin=true;
-    } else {
-      this.userLogin=false;
-    }
-  }
+              private publicService : PublicService) {}
 
   ngOnInit() {
-    // this.getUsersApplication();
+    this.router.events
+      .filter((event) => event instanceof NavigationEnd)
+      .subscribe((event) => {
+        // console.log(event);
+        this.userLogin=this.authService.isUserLoggedIn();
+        if(this.userLogin){
+          this.getUserName();
+        }
+      });
+  }
+  getUserName(){
+    this.usersService.getProfile()
+      .subscribe(
+        (response)=>{
+          // console.log(response.data[0]);
+          let data = response.data[0];
+          this.userFirstName = data.firstName;
+          // this.userLastName = data.lastName;
+        }
+      )
   }
 
   onNavigateHome(){
@@ -48,6 +64,7 @@ export class HeaderComponent implements OnInit {
   onSignOut(){
     this.authService.logout();
     this.userLogin=false;
+    this.router.navigate(['/']);
   }
 
   getUsersApplication(){
@@ -93,6 +110,12 @@ export class HeaderComponent implements OnInit {
 
   onApplyTo(schoolId){
     this.router.navigate(['/applto', schoolId]);
+  }
+
+  onMyAccount(){
+    if(this.userLogin){
+      this.router.navigate(['/my-account']);
+    }
   }
 
 }

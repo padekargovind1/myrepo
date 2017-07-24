@@ -45,7 +45,7 @@ export class MyaccountChildrenComponent implements OnInit {
 
   ngOnInit() {
     let date = new Date().toISOString();
-    console.log(date);
+    // console.log(date);
   }
 
   buildFormGroup(){
@@ -82,7 +82,7 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   patchValue(data: any){
-    console.log(data.address);
+    // console.log(data.address);
     this.childrenForm.patchValue({
       nom : data.lastName,
       prenom : data.firstName,
@@ -125,7 +125,7 @@ export class MyaccountChildrenComponent implements OnInit {
     //   this.myProfile.siblings[i].study = sibling[i].niveau.value;
     //   i++;
     // }
-    console.log(this.myProfile);
+    // console.log(this.myProfile);
     this.usersService.storeChildData(this.myProfile);
   }
 
@@ -133,11 +133,12 @@ export class MyaccountChildrenComponent implements OnInit {
     console.log("Click on submit", this.childrenForm.value);
     this.completeProfile();
     this.save();
+    this.route.navigate(['/']);
   }
 
   save(){
     this.myProfile.parents[0] = this.usersService.getParentData();
-    console.log(this.myProfile);
+    // console.log(this.myProfile);
     this.usersService.putProfile(this.myProfile)
       .subscribe(
         (data)=>{
@@ -173,7 +174,7 @@ export class MyaccountChildrenComponent implements OnInit {
       .subscribe(
         (data)=>{
           let response = data;
-          console.log(response);
+          // console.log(response);
           this.createProfile(response.data[0]);
           this.patchValue(response.data[0]);
           this.completeProfile();
@@ -193,7 +194,7 @@ export class MyaccountChildrenComponent implements OnInit {
     // for(let sibling of data.siblings){
     //   this.myProfile.siblings.push(new MyAccountSiblingsMdl());
     // }
-    console.log(this.myProfile);
+    // console.log(this.myProfile);
   }
 
 }

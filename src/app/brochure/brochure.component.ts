@@ -122,7 +122,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
                 } else {
                     this.listBrochures=response.data;
                     this.listBrochuresFiltered=response.data;
-                    console.log(this.listBrochures);
+                    // console.log(this.listBrochures);
                 }
             }
         )

@@ -30,16 +30,16 @@
 
                     <section class="col-md-2 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
                         
-                        <img src="{{adviserData.photo}}" alt="" class="img-circle img-responsive advisor-img" />    
+                        <img src="assets/images/{{appointmentData[6]}}" alt="" class="img-circle img-responsive advisor-img" />    
                     </section>
                     
                     <div class="col-sm-4 col-xs-12">
                         <div class="text-with-icon">
                             <i class="fa fa-calendar big-calendar"></i>
                             <h3>Vous avez rendez-vous</h3>
-                            <p class="appointment-date"><strong>avec {{adviserData.title}} {{ adviserData.firstName }} {{ adviserData.lastName }}</strong></p>
+                            <p class="appointment-date"><strong>avec {{appointmentData[4]}} {{ appointmentData[3] }}</strong></p>
 
-                            <time class="appointment-date">{{ appointmentData[1] | date:'fullDate' }} - {{ appointmentData[2] }} à {{ appointmentData[3] }}</time>
+                            <time class="appointment-date">{{ appointmentData[0] }} - {{ appointmentData[1] }} à {{ appointmentData[2] }}</time>
                         </div>                        
                     </div>
                     <div class="col-sm-4 col-xs-12">
@@ -48,8 +48,8 @@
                                 <h3 class="second-title">Pour un entretien</h3>
                                 <p>
                                 
-                                    {{bookingData[1]}}<br />
-                                    {{bookingData[2]}}</p>
+                                    {{appointmentData[8]}}<br />
+                                    {{appointmentData[9]}}</p>
                         </div>
                     </div>
 
@@ -307,7 +307,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <div class="datepicker-holder">
-                                                                <input type="date" id="birthdate" class="form-control datepicker" [mdDatepicker]="myDatepicker"
+                                                                <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
                                                                   placeholder="Date de naissance"
                                                                   [formControl]="wizardForm.controls['childBirthDay']">
                                                                   <md-datepicker #myDatepicker></md-datepicker>

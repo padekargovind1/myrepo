@@ -14,7 +14,6 @@ const LOGIN_API : string ="http://54.254.203.172/cideapi/api/auth/log";
 export class AuthService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private token : string ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NzAyMmZlZWViNTgxMTUwYzI5MzZhMSIsInJvbGVzIjp7ImNhbmRpZGF0ZS1hY2Nlc3MiOiIqIiwiX2lkIjoiNTk3MDIyZmVlZWI1ODExNTBjMjkzNmEyIiwibWFpbC1hY2Nlc3MiOiIqIn0sImNhbmRpZGF0ZSI6IjU5NzAyMmZlZWViNTgxMTUwYzI5MzZhMyIsImlhdCI6MTUwMDYxNTUxMiwiZXhwIjoxNTAwNjI0MTUyLCJhdWQiOiIxIiwiaXNzIjoiMSJ9.johxRgxVI9jeGHeTy6npgRbllDCiPMk8VV-nnsRcwSk";
   // private token : string = "";
   constructor(private http : Http) { }
 
@@ -40,20 +39,28 @@ export class AuthService {
       (response)=>{
         // console.log(response.json());
         if(response.json().code == 200){
-          this.token=response.json().data.token;
+          this.storeToken(response.json().data.token)
           // console.log(this.token);
         }
         return response.json();
       })
   }
 
+  storeToken(token){
+    localStorage.setItem("userToken", token)
+  }
+
   logout(){
-    this.token='';
+    localStorage.removeItem("userToken");
   }
 
   getToken(){
     // console.log(this.token);
-    return this.token;
+    return localStorage.getItem("userToken");
+  }
+
+  isUserLoggedIn(){
+    return !!localStorage.getItem("userToken");
   }
 
 }
