@@ -9,41 +9,41 @@
                   <tr>
                       <td>
                           <strong>Nom Court</strong><br />
-                          Moreau
+                          {{schoolData.shortName}}
                       </td>
                       <td>
                           <strong>Nombre D'Eleves</strong><br />
-                          1000 
+                          {{schoolData.numberOfStudents}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Création</strong><br />
-                          1832
+                          {{schoolData.creationYear}}
                       </td>
                       <td>
                           <strong>Academie</strong><br />
-                          
+                          {{schoolData.address.academy}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Departement</strong><br />
-                          
+                          {{schoolData.address.departmentName}}
                       </td>
                       <td>
                           <strong>Tel</strong><br />
-                          +33 598 776
+                          +33 {{schoolData.address.phoneNumber}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Website</strong><br />
-                          www.website.com
+                          {{schoolData.address.url}}
                       </td>
                       <td>
                           <strong>Mél</strong><br />
-                          nom@mél.com
+                          {{schoolData.address.email}}
                       </td>
                   </tr>
               </tbody>

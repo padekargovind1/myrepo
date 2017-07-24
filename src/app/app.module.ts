@@ -44,6 +44,7 @@ import { PublicService } from './services/public.service';
 import { CompareService } from './services/compare.service';
 import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
+import { BrochureService } from './services/brochure.service';
 import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
@@ -155,7 +156,8 @@ import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-
     CompareService,
     BookingService,
     EditorService,
-    SweetAlertService
+    SweetAlertService,
+    BrochureService
   ],
     entryComponents: [
        BrochpopupComponent,

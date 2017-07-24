@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
+import { BrochureService } from '../../services/brochure.service';
 
 @Component({
   selector: 'app-brochpopup',
@@ -15,7 +16,8 @@ export class BrochpopupComponent implements OnInit {
   
   constructor(public dialogref:MdDialogRef<BrochpopupComponent>,
               private fb : FormBuilder,
-              private usersService : UsersService) { 
+              private usersService : UsersService,
+              private brochureService : BrochureService) { 
                 this.buildFormGroup();
                 this.getProfile();
               }
@@ -83,10 +85,12 @@ export class BrochpopupComponent implements OnInit {
   }
 
   onCancel(){
+    this.brochureService.storeResponse("cancel")
     this.dialogref.close();
   }
 
   onSubmit(){
+    this.brochureService.storeResponse("submit")
     this.dialogref.close();
   }
 

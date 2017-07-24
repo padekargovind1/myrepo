@@ -11,9 +11,9 @@ export class EtablissementEssentielComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // setTimeout(()=>{
-    //   console.log(this.schoolData);
-    // }, 1000)
+    setTimeout(()=>{
+      console.log(this.schoolData);
+    }, 1000)
   }
 
 }

@@ -13,53 +13,53 @@
                       </td>
                       <td>
                           <strong>Adr 1</strong><br />
-                          
+                          {{schoolData.address.ad1}}
                       </td>
                       <td>
                           <strong>Adr 2</strong><br />
-                          
+                          {{schoolData.address.ad2}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>CP</strong><br />
-                          1832
+                          {{schoolData.address.postCode}}
                       </td>
                       <td>
                           <strong>Ville</strong><br />
-                          
+                          {{schoolData.address.city}}
                       </td>
                       <td>
                           <strong>Pays</strong><br />
-                          FR
+                          {{schoolData.address.country}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Academie</strong><br />
-                          Versailles
+                          {{schoolData.address.academy}}
                       </td>
                       <td>
                           <strong>Departement</strong><br />
-                          Essone
+                          {{schoolData.address.departmentName}}
                       </td>
                       <td>
                           <strong>Region</strong><br />
-                          Ile de France
+                          {{schoolData.address.region}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Tel</strong><br />
-                          +33 598 776
+                          +33 {{schoolData.address.phoneNumber}}
                       </td>
                       <td>
                           <strong>Url Web</strong><br />
-                          <a href="#">website.com</a>
+                          <a href="#">{{schoolData.address.url}}</a>
                       </td>
                       <td>
                           <strong>Mél</strong><br />
-                          <a href="mailto:nom@mel.com">nom@mel.com</a>
+                          <a href="mailto:nom@mel.com">{{schoolData.address.email}}</a>
                       </td>
                   </tr>
               </tbody>
@@ -74,29 +74,34 @@
                   <tr>
                       <td>
                           <strong>Horaires Aménagés</strong><br />
-                          Oui,
+                          <span *ngIf="schoolData.cycles[0].cycle.specifications.flexibleTimeframe.value; else cycle1">Oui</span>
+                          <ng-template #cycle1><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Enfant Precoces</strong><br />
-                          Oui,
+                          <span *ngIf="schoolData.cycles[0].cycle.specifications.advanced.value; else cycle2">Oui</span>
+                          <ng-template #cycle2><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Aides Financières - Bourse</strong><br />
-                          Oui,
+                          <span *ngIf="schoolData.cycles[0].cycle.specifications.finance.value; else cycle3">Oui</span>
+                          <ng-template #cycle3><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Cours Francais Langue Etrangere - LFE</strong><br />
-                          Oui,
+                          <span *ngIf="schoolData.cycles[0].cycle.specifications.foreignFrench.value; else cycle4">Oui</span>
+                          <ng-template #cycle4><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Accueil Handicapé, Dyslexie</strong><br />
-                          Non,
+                          <span *ngIf="schoolData.cycles[0].cycle.specifications.handicaped.value; else cycle5">Oui</span>
+                          <ng-template #cycle5><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Moyens d'acces</strong><br />
-                          
+                          {{schoolData.cycles[0].cycle.specifications.transports}}
                       </td>
                   </tr>
               </tbody>
@@ -112,81 +117,95 @@
                   <tr>
                       <td>
                           <strong>Internat</strong><br />
-                          Oui
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.boarding.value; else cycle6">Oui</span>
+                          <ng-template #cycle6><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Capacité</strong><br />
-                          1000
+                          {{schoolData.cycles[0].cycle.boarding.capacity}}
                       </td>
                       <td>
                           <strong>Commentaires Internat</strong><br />
-                          
+                          {{schoolData.cycles[0].cycle.boarding.comment}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Internat sur Place</strong><br />
-                          Oui,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.onSite.value; else cycle7">Oui</span>
+                          <ng-template #cycle7><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Internat externe</strong><br />
-                          Oui, 
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.notOnSite.value; else cycle8">Oui</span>
+                          <ng-template #cycle8><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Résidence Étudiante</strong><br />
-                          Oui, 
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.residence.value; else cycle9">Oui</span>
+                          <ng-template #cycle9><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Internat de semaine</strong><br />
-                          Oui,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.weekdays.value; else cycle10">Oui</span>
+                          <ng-template #cycle10><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Internat Permanent</strong><br />
-                          Oui, 
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.fulltime.value; else cycle11">Oui</span>
+                          <ng-template #cycle11><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Internat Certains Weekend</strong><br />
-                          Oui, 
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.someWeekEnds.value; else cycle12">Oui</span>
+                          <ng-template #cycle12><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Internat mixte</strong><br />
-                          Oui,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.mixed.value; else cycle13">Oui</span>
+                          <ng-template #cycle13><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Internat filles</strong><br />
-                          Oui,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.girls.value; else cycle14">Oui</span>
+                          <ng-template #cycle14><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Internat garcon</strong><br />
-                          Non,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.boys.value; else cycle15">Oui</span>
+                          <ng-template #cycle15><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Chambres individuelles</strong><br />
-                          Non,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.individual.value; else cycle16">Oui</span>
+                          <ng-template #cycle16><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Chambres 2 a 4 lits</strong><br />
-                          Non,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding['2to4'].value; else cycle17">Oui</span>
+                          <ng-template #cycle17><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>chambres 5 a 8 lits</strong><br />
-                          Non,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding['5to8'].value; else cycle18">Oui</span>
+                          <ng-template #cycle18><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Dortoirs</strong><br />
-                          Non,
+                          <span *ngIf="schoolData.cycles[0].cycle.boarding.dormitories.value; else cycle19">Oui</span>
+                          <ng-template #cycle19><span>Non</span></ng-template>
                       </td>
                       <td>
-                          <strong>&nbsp;</strong><br />
-                          
+                          <strong>Prix</strong><br />
+                          {{schoolData.cycles[0].cycle.boarding.cost}}€
                       </td>
                       <td>
                           <strong>&nbsp;</strong><br />
@@ -206,21 +225,24 @@
                   <tr>
                       <td>
                           <strong>Organisation du cursus</strong><br />
-                          
+                          {{schoolData.cycles[0].cycle.extraCuriculumn.courseOrganization}}
                       </td>
                       <td>
-                          <strong>stage pre-rentree</strong><br />
-                          Oui
+                          <strong>Stage pré-rentrée</strong><br />
+                          <span *ngIf="schoolData.cycles[0].cycle.extraCuriculumn.preIntakeTraining.value; else cycle20">Oui</span>
+                          <ng-template #cycle20><span>Non</span></ng-template>
                       </td>
                       <td>
-                          <strong>stages petites vacances</strong><br />
-                          Oui
+                          <strong>Stages petites vacances</strong><br />
+                          <span *ngIf="schoolData.cycles[0].cycle.extraCuriculumn.smallHolidaysTraining.value; else cycle21">Oui</span>
+                          <ng-template #cycle21><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>stages de grandes vacances</strong><br />
-                          Oui
+                          <span *ngIf="schoolData.cycles[0].cycle.extraCuriculumn.bigHolidaysTraining.value; else cycle22">Oui</span>
+                          <ng-template #cycle22><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong></strong><br />
@@ -242,16 +264,19 @@
               <tbody>
                   <tr>
                       <td>
-                          <strong>self-service</strong><br />
-                          Oui
+                          <strong>Self-service</strong><br />
+                          <span *ngIf="schoolData.cycles[0].cycle.canteen.selfService.value; else cycle23">Oui</span>
+                          <ng-template #cycle23><span>Non</span></ng-template>
                       </td>
                       <td>
-                          <strong>Service a Table</strong><br />
-                          Oui
+                          <strong>Service à Table</strong><br />
+                          <span *ngIf="schoolData.cycles[0].cycle.canteen.serviceAtTable.value; else cycle24">Oui</span>
+                          <ng-template #cycle24><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Cafeteria</strong><br />
-                          Non
+                          <span *ngIf="schoolData.cycles[0].cycle.canteen.cafeteria.value; else cycle25">Oui</span>
+                          <ng-template #cycle25><span>Non</span></ng-template>
                       </td>
                   </tr>
               </tbody>
@@ -267,21 +292,25 @@
                   <tr>
                       <td>
                           <strong>Externat</strong><br />
-                          Oui
+                          <span *ngIf="schoolData.cycles[0].cycle.externat.externat.value; else cycle26">Oui</span>
+                          <ng-template #cycle26><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>demi-pension mixte</strong><br />
-                          Oui
+                          <span *ngIf="schoolData.cycles[0].cycle.externat['demi-pension_mixte'].value; else cycle27">Oui</span>
+                          <ng-template #cycle27><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>demi-pension garcons</strong><br />
-                          Oui
+                          <span *ngIf="schoolData.cycles[0].cycle.externat['demi-pension_gars'].value; else cycle28">Oui</span>
+                          <ng-template #cycle28><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>demi-pension filles</strong><br />
-                          &nbsp;
+                          <span *ngIf="schoolData.cycles[0].cycle.externat['demi-pension_fille'].value; else cycle29">Oui</span>
+                          <ng-template #cycle29><span>Non</span></ng-template>
                       </td>
                   </tr>
               </tbody>
@@ -297,15 +326,16 @@
                   <tr>
                       <td>
                           <strong>Lien contact</strong><br />
-                          +33 598 776
+                          +33 {{schoolData.cycles[0].cycle.autorisations.contactLink}}
                       </td>
                       <td>
                           <strong>Priorite Web</strong><br />
-                          <a href="#">Website.com</a>
+                          <a href="#">{{schoolData.cycles[0].cycle.autorisations.link}}</a>
                       </td>
                       <td>
                           <strong>Autorisation Web 1</strong><br />
-                          Oui
+                          <span *ngIf="schoolData.cycles[0].cycle.autorisations.autorization1; else cycle30">Oui</span>
+                          <ng-template #cycle30><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
@@ -315,31 +345,37 @@
                       </td>
                       <td>
                           <strong>Mailing List</strong><br />
-                          Non
+                          <span *ngIf="schoolData.cycles[0].cycle.autorisations.mailing.value; else cycle31">Oui</span>
+                          <ng-template #cycle31><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Stat Mail Fiche Consultee</strong><br />
-                          Oui
+                          <span *ngIf="schoolData.cycles[0].cycle.autorisations.ficheLink.value; else cycle32">Oui</span>
+                          <ng-template #cycle32><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Stat envoi immediat</strong><br />
-                          Non
+                          <span *ngIf="schoolData.cycles[0].cycle.autorisations.immediate.value; else cycle33">Oui</span>
+                          <ng-template #cycle33><span>Non</span></ng-template>
                       </td>
                       <td>
-                          <strong>Stat envoi quotien</strong><br />
-                          Non
+                          <strong>Stat envoi quotidient</strong><br />
+                          <span *ngIf="schoolData.cycles[0].cycle.autorisations.daily.value; else cycle34">Oui</span>
+                          <ng-template #cycle34><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong>Stat envoi hebdo</strong><br />
-                          Oui
+                          <span *ngIf="schoolData.cycles[0].cycle.autorisations.weekly.value; else cycle35">Oui</span>
+                          <ng-template #cycle35><span>Non</span></ng-template>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Stat envoi mensuel</strong><br />
-                          &nbsp;
+                          <span *ngIf="schoolData.cycles[0].cycle.autorisations.monthly.value; else cycle36">Oui</span>
+                          <ng-template #cycle36><span>Non</span></ng-template>
                       </td>
                       <td>
                           <strong></strong><br />

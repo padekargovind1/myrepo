@@ -20,7 +20,8 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
         
         (<any> $(this)).css('z-index', 10);
         (<any> $(this)).find('.form-wrap').removeClass('fadeOut').addClass('fadeIn');
-        var img = (<any> $(this)).data('background'); console.log(img);
+        var img = (<any> $(this)).data('background'); 
+        // console.log(img);
 
         (<any> $('body .main')).css({ 'background-image': 'url(' + img + ')', 'background-size': 'cover'});
     });

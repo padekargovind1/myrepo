@@ -4,7 +4,7 @@ import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {BrochpopupComponent} from './brochpopup/brochpopup.component'
 import { BrochureDownloadComponent } from './brochure-download/brochure-download.component';
-
+import { BrochureService } from '../services/brochure.service';
 @Component({
   selector: 'app-brochure',
   templateUrl: './brochure.component.html',
@@ -34,7 +34,8 @@ export class BrochureComponent implements OnInit, AfterViewInit {
 
   constructor(private publicService : PublicService,
               public dialog:MdDialog,
-              private fb : FormBuilder) { 
+              private fb : FormBuilder,
+              private brochureService : BrochureService) { 
       this.getBrochure();
       this.buildForm();
       this.makeProfile()
@@ -122,7 +123,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
                 } else {
                     this.listBrochures=response.data;
                     this.listBrochuresFiltered=response.data;
-                    // console.log(this.listBrochures);
+                    console.log(this.listBrochures);
                 }
             }
         )
@@ -132,8 +133,13 @@ export class BrochureComponent implements OnInit, AfterViewInit {
         let dialogref = this.dialog.open(BrochpopupComponent,this.config);
         dialogref.afterClosed().subscribe(result => {
             this.lastCloseResult = result;
+            // console.log(result)
             dialogref = null;
-            this.downloadDialog();
+            const closeResponse = this.brochureService.getResponse();
+            console.log(closeResponse)
+            if(closeResponse=="submit"){
+                this.downloadDialog();
+            }
         });
     }
 
