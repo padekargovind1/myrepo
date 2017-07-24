@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -12,7 +12,7 @@ import { AdvancedSearchMdl } from '../model/advanced-search.model';
   templateUrl: './college.component.html',
   styleUrls: ['./college.component.scss']
 })
-export class CollegeComponent implements OnInit {
+export class CollegeComponent implements OnInit, AfterViewInit {
   schoolList : any;
   schoolListFilter : any;
   compareList= [];
@@ -57,6 +57,18 @@ export class CollegeComponent implements OnInit {
     this.diplomes=this.schoolService.getDiplomes();
   }
 
+  ngAfterViewInit(){
+    $('.filter-holder').on('click', function() {
+      $('.advance-filter').toggleClass('open');
+      // $('.main').toggleClass('open');
+      // $('.ad-holder').toggleClass('hide');
+      // $('.survey-holder').toggleClass('hide');
+    });
+    $('.advancedFilter').on('click', function() {
+      $(this).parent().find('.adv-filt').toggleClass('open');
+    })
+  }
+
   getSchoolList(){
     this.publicService.getSchoolsList()
       .subscribe(
@@ -91,7 +103,17 @@ export class CollegeComponent implements OnInit {
         return school.longName==this.searchFilter[2] || school.shortName==this.searchFilter[2] &&
           school.cycles[0].cycle.classes[0].className == this.searchFilter[0] && school.address.city == this.searchFilter[1]
       })
-    } else {
+    } else if(this.advancedSearch.length!=0){
+      console.log("test");
+      this.schoolListFilter = this.schoolList.filter(
+        school => {
+          for(let i=0; i<this.advancedSearch.length; i=+2){
+            console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
+            return school.cycles[0].cycle[this.advancedSearch[i]][this.advancedSearch[i+1]].value
+          }
+        }
+      )
+    }else {
       this.schoolListFilter=this.schoolList;
     }
   }
@@ -238,12 +260,12 @@ export class CollegeComponent implements OnInit {
         this.advancedSearch.push(event.srcElement.name);
         this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
         console.log(this.advancedSearch);
-        this.updateSchoolList();
+        this.getSearchFilter();
       } else{
         console.log("unchecked!");
         let index = this.advancedSearch.indexOf(category, 0);
         this.advancedSearch.splice(index, 2);
-        this.updateSchoolList();
+        this.getSearchFilter();
         index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
         this.advancedSearchToDisplay.splice(index, 1);
       }
@@ -255,23 +277,23 @@ export class CollegeComponent implements OnInit {
     }
   }
 
-  updateSchoolList(){
-    console.log(this.advancedSearch.length);
-    if(this.advancedSearch.length!=0){
-      console.log("test");
-      this.schoolListFilter = this.schoolList.filter(
-        school => {
-          for(let i=0; i<this.advancedSearch.length; i=+2){
-            console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
-            return school.cycles[0].cycle[this.advancedSearch[i]][this.advancedSearch[i+1]].value
-          }
-        }
-      )
-    } else {
-      this.schoolListFilter=this.schoolList;
-    }
-    console.log(this.schoolListFilter)
-  }
+  // updateSchoolList(){
+  //   console.log(this.advancedSearch.length);
+  //   if(this.advancedSearch.length!=0){
+  //     console.log("test");
+  //     this.schoolListFilter = this.schoolList.filter(
+  //       school => {
+  //         for(let i=0; i<this.advancedSearch.length; i=+2){
+  //           console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
+  //           return school.cycles[0].cycle[this.advancedSearch[i]][this.advancedSearch[i+1]].value
+  //         }
+  //       }
+  //     )
+  //   } else {
+  //     this.schoolListFilter=this.schoolList;
+  //   }
+  //   console.log(this.schoolListFilter)
+  // }
 
   filterLanguage(event, category){
     console.log(event);

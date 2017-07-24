@@ -116,8 +116,10 @@ export class EcoleComponent implements OnInit, AfterViewInit {
           // $('.ad-holder').toggleClass('hide');
           // $('.survey-holder').toggleClass('hide');
         });
+        $('.advancedFilter').on('click', function() {
+          $(this).parent().find('.adv-filt').toggleClass('open');
+        })
           $('#filter-trigger').on('change', function() {
-              // console.log();
               if ($(this).prop('checked')) {
                   $('.advance-filter').toggleClass('open');
               } else {
@@ -182,7 +184,17 @@ export class EcoleComponent implements OnInit, AfterViewInit {
         return school.longName==this.searchFilter[2] || school.shortName==this.searchFilter[2] &&
           school.cycles[0].cycle.classes[0].className == this.searchFilter[0] && school.address.city == this.searchFilter[1]
       })
-    } else {
+    } else if(this.advancedSearch.length!=0){
+      console.log("test");
+      this.schoolListFilter = this.schoolList.filter(
+        school => {
+          for(let i=0; i<this.advancedSearch.length; i=+2){
+            console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
+            return school.cycles[0].cycle[this.advancedSearch[i]][this.advancedSearch[i+1]].value
+          }
+        }
+      )
+    }else {
       this.schoolListFilter=this.schoolList;
     }
   }
@@ -318,12 +330,12 @@ export class EcoleComponent implements OnInit, AfterViewInit {
         this.advancedSearch.push(event.srcElement.name);
         this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
         console.log(this.advancedSearch);
-        this.updateSchoolList();
+        this.getSearchFilter();
       } else{
         console.log("unchecked!");
         let index = this.advancedSearch.indexOf(category, 0);
         this.advancedSearch.splice(index, 2);
-        this.updateSchoolList();
+        this.getSearchFilter();
         index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
         this.advancedSearchToDisplay.splice(index, 1);
       }
@@ -331,23 +343,23 @@ export class EcoleComponent implements OnInit, AfterViewInit {
     }
   }
 
-  updateSchoolList(){
-    console.log(this.advancedSearch.length);
-    if(this.advancedSearch.length!=0){
-      console.log("test");
-      this.schoolListFilter = this.schoolList.filter(
-        school => {
-          for(let i=0; i<this.advancedSearch.length; i=+2){
-            console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
-            return school.cycles[0].cycle[this.advancedSearch[i]][this.advancedSearch[i+1]].value
-          }
-        }
-      )
-    } else {
-      this.schoolListFilter=this.schoolList;
-    }
-    console.log(this.schoolListFilter)
-  }
+  // updateSchoolList(){
+  //   console.log(this.advancedSearch.length);
+  //   if(this.advancedSearch.length!=0){
+  //     console.log("test");
+  //     this.schoolListFilter = this.schoolList.filter(
+  //       school => {
+  //         for(let i=0; i<this.advancedSearch.length; i=+2){
+  //           console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
+  //           return school.cycles[0].cycle[this.advancedSearch[i]][this.advancedSearch[i+1]].value
+  //         }
+  //       }
+  //     )
+  //   } else {
+  //     this.schoolListFilter=this.schoolList;
+  //   }
+  //   console.log(this.schoolListFilter)
+  // }
 
   filterLanguage(event, category){
     console.log(event);

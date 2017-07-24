@@ -133,8 +133,9 @@
                                 
                                 <div class="advance-filter" [ngClass]="{ 'open': opened }">
                                     <ul>
-                                        <li><a>Specialités</a> 
-                                            <ul (click)="onAdvancedClick($event, 'specifications')">
+                                        <li><a class="advancedFilter">Specialités</a> 
+                                            <ul (click)="onAdvancedClick($event, 'specifications')" 
+                                                class="adv-filt">
                                                 <!-- <li><input type="checkbox" name="handicaped" class="checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li> -->
                                                 <li><input type="checkbox" name="finance" class="checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
                                                 <li><input type="checkbox" name="foreignFrench" class="checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
@@ -142,8 +143,9 @@
                                                 <li><input type="checkbox" name="flexibleTimeFrame" class="checkbox filled-in" id="filter-5" /><label for="filter-5">Horaires Aménagés</label></li>
                                             </ul>
                                         </li>
-                                        <li><a>Internat</a>
-                                            <ul (click)="onAdvancedClick($event, 'boarding')">
+                                        <li><a class="advancedFilter">Internat</a>
+                                            <ul (click)="onAdvancedClick($event, 'boarding')"
+                                                class="adv-filt">
                                                 <li><input type="checkbox" name="boarding" class="checkbox filled-in" id="filter-6" /><label for="filter-6">si case Internat est cochée</label></li>
                                                 <!-- <li><input type="checkbox" name="capacity" class="checkbox filled-in" id="filter-7" /><label for="filter-7">Capacité</label></li> -->
                                                 <li><input type="checkbox" name="onSite" class="checkbox filled-in" id="filter-8" /><label for="filter-8">Internat sur Place</label></li>
@@ -161,30 +163,34 @@
                                                 <li><input type="checkbox" name="domitories" class="checkbox filled-in" id="filter-20" /><label for="filter-20">Dortoirs</label></li> -->
                                             </ul>
                                         </li>
-                                        <li><a>Stages</a>
-                                            <ul (click)="onAdvancedClick($event, 'extraCurriculum')">
+                                        <li><a class="advancedFilter">Stages</a>
+                                            <ul (click)="onAdvancedClick($event, 'extraCurriculum')"
+                                                class="adv-filt">
                                                 <li><input type="checkbox" name="preintake" class="checkbox filled-in" id="filter-21" /><label for="filter-21">stage pre-rentree</label></li>
                                                 <li><input type="checkbox" name="smallholidays" class="checkbox filled-in" id="filter-22" /><label for="filter-22">stages petites vacances</label></li>
                                                 <li><input type="checkbox" name="bigholidays" class="checkbox filled-in" id="filter-23" /><label for="filter-23">stages de grandes vacances</label></li> 
                                             </ul>
                                         </li>
-                                        <li><a>Restauration</a>
-                                            <ul (click)="onAdvancedClick($event, 'canteen')">
+                                        <li><a class="advancedFilter">Restauration</a>
+                                            <ul (click)="onAdvancedClick($event, 'canteen')"
+                                                class="adv-filt">
                                                 <li><input type="checkbox" name="'self-service'" class="checkbox filled-in" id="filter-24" /><label for="filter-24">self-service</label></li>
                                                 <li><input type="checkbox" name="serviceAtTable" class="checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
                                                 <li><input type="checkbox" name="cafeteria" class="checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
                                             </ul>
                                         </li>
                                         <li>
-                                            <a>Externat</a>
+                                            <a class="advancedFilter"
+                                                class="adv-filt">Externat</a>
                                             <!-- <ul (click)="onAdvancedClick($event, 'external')">
                                                 <li><input type="checkbox" name="'half-board_mixed'" class="checkbox filled-in" id="filter-27" /><label for="filter-27">demi-pension mixte</label></li>
                                                 <li><input type="checkbox" name="'half-board_boys'" class="checkbox filled-in" id="filter-28" /><label for="filter-28">demi-pension garcons</label></li>
                                                 <li><input type="checkbox" name="'half-board_girls'" class="checkbox filled-in" id="filter-29" /><label for="filter-29">demi-pension filles</label></li> 
                                             </ul> -->
                                         </li>
-                                        <li><a>Statut</a>
-                                            <ul (click)="onAdvancedClick($event, 'status')">
+                                        <li><a class="advancedFilter">Statut</a>
+                                            <ul (click)="onAdvancedClick($event, 'status')"
+                                                class="adv-filt">
                                                 <li>
                                                     <input type="checkbox" name="public" class="checkbox filled-in" id="filter-33" />
                                                     <label for="filter-33">Public</label>
@@ -239,8 +245,9 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a>Ens. Confessionel</a>
-                                            <ul (click)="onAdvancedClick($event, 'religious')">
+                                        <li><a class="advancedFilter">Ens. Confessionel</a>
+                                            <ul (click)="onAdvancedClick($event, 'religious')"
+                                                class="adv-filt">
                                                 <li>
                                                     <input type="checkbox" name="secular" class="checkbox filled-in" id="laic" />
                                                     <label for="laic">Laic</label>
@@ -276,8 +283,8 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a>Langues</a>
-                                           <ul>
+                                        <li><a class="advancedFilter">Langues</a>
+                                           <ul class="adv-filt">
                                                 <li><label class="select-custom" for="class">
                                                         <select name="class" class="form-control" id="class" 
                                                             (click)="filterLanguage($event, 'lv1')">
@@ -330,16 +337,17 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a>Sections</a>
-                                            <ul (click)="onAdvancedClick($event, 'sections')">
+                                        <li><a class="advancedFilter">Sections</a>
+                                            <ul (click)="onAdvancedClick($event, 'sections')"
+                                                class="adv-filt">
                                                 <li><input type="checkbox" name="europeanSections" class="checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
                                                 <li><input type="checkbox" name="internationalSections" class="checkbox filled-in" id="filter-53" /><label for="filter-53">Section Internationnale</label></li>
                                                 <li><input type="checkbox" name="bilingualSections" class="checkbox filled-in" id="filter-53" /><label for="filter-53">Section bilingue</label></li>
                                                 <li><input type="checkbox" name="sportSections" class="checkbox filled-in" id="filter-54" /><label for="filter-54">Section Sportive</label></li>
                                             </ul>
                                         </li>
-                                        <li><a>Diplomes</a>
-                                            <ul>
+                                        <li><a class="advancedFilter">Diplomes</a>
+                                            <ul class="adv-filt">
                                                <li><label class="select-custom" for="class">
                                                         <select name="class" class="form-control" id="class" 
                                                             (click)="onAdvancedClick($event, 'diploma')">
@@ -352,16 +360,17 @@
                                                 </li> 
                                             </ul>
                                         </li>
-                                        <li><a>Options</a>
-                                            <ul>
+                                        <li><a class="advancedFilter">Options</a>
+                                            <ul class="adv-filt">
                                                 <li>
                                                     <input type="text" name="" placeholder="Nom de L'option" 
                                                         class="form-control" (keyup)="addOptionFilter($event)">
                                                     <!--<button class="btn btn-confirm" (click)="addOptionFilter($event)">Entrer</button>-->
                                                 </li>
                                             </ul>
-                                        <li><a>Places disponibles</a>
-                                            <ul (click)="onAdvancedClick($event, 'availableSeat')">
+                                        <li><a class="advancedFilter">Places disponibles</a>
+                                            <ul (click)="onAdvancedClick($event, 'availableSeat')"
+                                                class="adv-filt">
                                                 <li>
                                                     <input type="checkbox" name="activation" class="checkbox filled-in" id="filter-60" />
                                                     <label for="filter-60">Places disponibles</label>
