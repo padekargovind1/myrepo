@@ -37,14 +37,6 @@ import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myacc
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { CubeComponent } from './school-calendar/cube/cube.component';
 import { FilterComponent } from './filter/filter.component';
-import { SchoolService } from './services/school.service';
-import { AuthService } from './services/auth.service';
-import { UsersService } from './services/users.service';
-import { PublicService } from './services/public.service';
-import { CompareService } from './services/compare.service';
-import { BookingService } from './services/booking.service';
-import { EditorService } from './services/editor.service';
-import { BrochureService } from './services/brochure.service';
 import { BrochureComponent } from './brochure/brochure.component';
 import { EcoleComponent } from './ecole/ecole.component';
 import { CollegeComponent } from './college/college.component';
@@ -72,6 +64,16 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
 import {BrochureDownloadComponent} from './brochure/brochure-download/brochure-download.component';
 import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
+
+import { SchoolService } from './services/school.service';
+import { AuthService } from './services/auth.service';
+import { UsersService } from './services/users.service';
+import { PublicService } from './services/public.service';
+import { CompareService } from './services/compare.service';
+import { BookingService } from './services/booking.service';
+import { EditorService } from './services/editor.service';
+import { BrochureService } from './services/brochure.service';
+import { EtablissementService } from './services/etablissement.service';
 
 @NgModule({
   declarations: [
@@ -157,7 +159,8 @@ import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-
     BookingService,
     EditorService,
     SweetAlertService,
-    BrochureService
+    BrochureService,
+    EtablissementService
   ],
     entryComponents: [
        BrochpopupComponent,

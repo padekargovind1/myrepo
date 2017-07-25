@@ -15,7 +15,7 @@
           <img src="assets/images/school-logo/lyccee-du-chateaa.jpg" alt="" class="img-circle img-responsive advisor-img" />
         </section>
         <section>
-          <h2>{{ schoolData.longName }}</h2>
+          <h2>{{ schoolName }}</h2>
         </section>
 
       </section>
@@ -511,19 +511,30 @@
 
 
                         <div class="row">
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Job" [formControl]="applytoForm.controls['interestJob']">
+                          <div *ngFor="let metier of metiers">
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Job" [formControl]="applytoForm.controls['interestJob']">
+                              </div>
                             </div>
-                          </div>
-                          <div class="col-sm-3">
-                            <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Age" [formControl]="applytoForm.controls['interestAge']">
+                            <div class="col-sm-3">
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Age" [formControl]="applytoForm.controls['interestAge']">
+                              </div>
                             </div>
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
-                              <button class="btn  btn-inverse  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter</button>
+                              <button class="btn  btn-inverse  btn-add">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"
+                                  (click)="onAddJob()">
+                                </span> Ajouter
+                              </button>
+                              <button class="btn  btn-inverse  btn-add">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"
+                                  (click)="onRemoveJob()">
+                                </span> Retirer
+                              </button>
                             </div>
                           </div>
                         </div>

@@ -6,12 +6,18 @@
 
             <div class="row wrapper border-bottom white-bg">
 
+                <div style="cursor : pointer"
+                    (click)="navigateBack()">
+                    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                    Retourner à la liste
+                </div>
+
                 <div class="col-lg-1  col-xs-4">
                     <img src="assets/images/etablissement/cesacom-logo.png" class="img-responsive">
                 </div>
                 <div class="col-lg-5 col-xs-8">
-                    <h2 class="school-short-name">CESACOM</h2>
-                    <h3 class="school-long-name">Centre d'Etudes Supérieures Alternées en Communication</h3>
+                    <h2 class="school-short-name">{{schoolShortName}}</h2>
+                    <h3 class="school-long-name">{{schoolLongName}}</h3>
                 </div>
                 <div class="col-lg-6  hidden-xs">
                     <h2></h2>
@@ -73,10 +79,10 @@
                                             <div class="tab-content">
 
                                                 <div id="tab-1" class="tab-pane active">
-                                                    <app-etablissement-essentiel [schoolData]="schoolData"></app-etablissement-essentiel>
+                                                    <app-etablissement-essentiel></app-etablissement-essentiel>
                                                 </div><!-- /tab 1 -->
                                                 <div id="tab-2" class="tab-pane">
-                                                    <app-etablissement-formation [schoolData]="schoolData"></app-etablissement-formation>
+                                                    <app-etablissement-formation></app-etablissement-formation>
                                                 </div><!-- /tab 2 -->
                                                 <div id="tab-3" class="tab-pane">
                                                     <app-etablissement-evenement [schoolData]="schoolData"></app-etablissement-evenement>

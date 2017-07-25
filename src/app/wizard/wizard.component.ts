@@ -33,8 +33,13 @@ export class WizardComponent implements OnInit, AfterViewInit {
   appointmentData=[];
   adviserData: any;
   activeTabIndex = 0;
-
   checked:boolean=false;
+  parents=["Parent 1"];
+  addParents : boolean = true;
+  sisBro=["Frère / Soeur 1"];
+  metiers=["Métier 1"];
+  primaires=["Etablissement Primaire 1"]
+  secondaires=["Etablissement Secondaire 1"]
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -264,12 +269,65 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
     this.checked = !check;
   }
+
+  addParent(){
+    if(this.parents.length==1){
+      this.parents.push("Parent 2");
+      this.addParents=false;
+    }
+  }
+
+  removeParent(){
+    if(this.parents.length==2){
+      this.parents.splice(1, 1);
+      this.addParents=true;
+    }
+  }
+
+  addSisBro(){
+    const nb = this.sisBro.length+1;
+    this.sisBro.push("Frère / Soeur "+nb);
+  }
+
+  removeSisBro(){
+    const nb = this.sisBro.length-1;
+    if(nb>=0){
+      this.sisBro.splice(nb, 1);
+    }
+  }
+
+  onAddJob(){
+    const nb = this.metiers.length+1;
+    this.metiers.push("Métier "+nb);
+  }
+
+  onRemoveJob(){
+    if(this.metiers.length!=0){
+      const nb = this.metiers.length-1;
+      this.metiers.splice(nb, 1);
+    }
+  }
+  onAddPrimaire(){
+    const nb = this.primaires.length+1;
+    this.primaires.push("Etablissement Primaire "+nb);
+  }
+
+  onRemovePrimaire(){
+    if(this.primaires.length!=0){
+      const nb = this.primaires.length-1;
+      this.primaires.splice(nb, 1);
+    }
+  }
+
+  onAddSecondaire(){
+    const nb = this.secondaires.length+1;
+    this.secondaires.push("Etablissement Secondaire "+nb);
+  }
+
+  onRemoveSecondaire(){
+    if(this.secondaires.length!=0){
+      const nb = this.secondaires.length-1;
+      this.secondaires.splice(nb, 1);
+    }
+  }
 }
-
-
-  // this.adviserData={
-  //             title : "Mme",
-  //             firstName : "Anita",
-  //             lastName : "Lubies",
-  //             photo : "assets/images/advisor-1.jpg"
-  //           }

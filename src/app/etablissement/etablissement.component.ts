@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Subscription } from 'rxjs/Subscription';
 import { PublicService } from '../services/public.service';
@@ -14,9 +15,15 @@ export class EtablissementComponent implements OnInit {
   schoolId : string = "";
   schoolData : any;
   subscription : Subscription;
+  schoolShortName : string = "";
+  schoolLongName : string = "";
 
   constructor(private route : ActivatedRoute,
-              private publicService : PublicService) { 
+              private publicService : PublicService,
+              private location : Location) { 
+  }
+
+  ngOnInit() {
     this.subscription = this.route.params
       .subscribe(
         params =>{
@@ -29,9 +36,6 @@ export class EtablissementComponent implements OnInit {
       )
   }
 
-  ngOnInit() {
-  }
-
   getSchoolById(){
     this.publicService.getSchoolById(this.schoolId)
       .subscribe(
@@ -42,10 +46,16 @@ export class EtablissementComponent implements OnInit {
             console.log(response.message);
           }else {
             this.schoolData = response.data;
+            this.schoolLongName=this.schoolData.longName;
+            this.schoolShortName=this.schoolData.shortName;
             console.log(this.schoolData);
           }
         }
       )
+  }
+
+  navigateBack(){
+    this.location.back();
   }
 
 }

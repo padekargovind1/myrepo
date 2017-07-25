@@ -94,104 +94,123 @@
                             <div class="tab-pane" id="tab1">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <section class="col-md-4">
+                                        <section  class="col-md-8">
 
-                                            <h3>Parents</h3>
+                                            <div *ngFor="let parent of parents"
+                                                class="col-md-6">
+                                                <h3>{{parent}}</h3>
 
-                                            <div class="form-group">
-                                                <div class="select-custom">
-                                                    <md-select placeholder="Lien de Parenté"
-                                                      class="form-control"
-                                                      [formControl]="wizardForm.controls['lienParent']">
-                                                      <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
-                                                        {{ lientparent }}
-                                                      </md-option>
-                                                    </md-select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group horizontal-radio clearfix">
-                                                <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
-                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
-                                                <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
-                                                <md-radio-group [formControl]="wizardForm.controls['title']">
-                                                  <md-radio-button value="ms">Mme</md-radio-button>
-                                                  <md-radio-button value="mrs">Mlle</md-radio-button>
-                                                  <md-radio-button value="m">M</md-radio-button>
-                                                </md-radio-group>
-                                            </div>
-
-                                            
-                                            <div class="row">
-                                                <div class="col-sm-6  col-xs-6">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Nom"
-                                                          [formControl]="wizardForm.controls['lastName']">
+                                                <div class="form-group">
+                                                    <div class="select-custom">
+                                                        <md-select placeholder="Lien de Parenté"
+                                                        class="form-control"
+                                                        [formControl]="wizardForm.controls['lienParent']">
+                                                        <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
+                                                            {{ lientparent }}
+                                                        </md-option>
+                                                        </md-select>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6  col-xs-6">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Prénom"
-                                                          [formControl]="wizardForm.controls['firstName']">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
 
-                                            <div class="form-group">
+                                                <div class="form-group horizontal-radio clearfix">
+                                                    <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
+                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
+                                                    <md-radio-group [formControl]="wizardForm.controls['title']">
+                                                    <md-radio-button value="ms">Mme</md-radio-button>
+                                                    <md-radio-button value="mrs">Mlle</md-radio-button>
+                                                    <md-radio-button value="m">M</md-radio-button>
+                                                    </md-radio-group>
+                                                </div>
+
+                                                
                                                 <div class="row">
-    <!--                                                 <div class="col-sm-4">
-                                                        <input type="number" class="form-control" max="120" min="1" placeholder="Age">
-                                                        <div class="select-custom">
-                                                            <select name="" class="form-control">
-                                                                <option value="" disabled selected hidden>Age</option>
-                                                            </select>
+                                                    <div class="col-sm-6  col-xs-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Nom"
+                                                            [formControl]="wizardForm.controls['lastName']">
                                                         </div>
                                                     </div>
-     -->                                                <div class="col-sm-12">
-                                                        <input type="text" class="form-control" 
-                                                          placeholder="Profession / Secteur d'activité"
-                                                          [formControl]="wizardForm.controls['job']">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Email"
-                                                  [formControl]="wizardForm.controls['email']">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" 
-                                                          placeholder="Téléphone auquel je suis joignable"
-                                                          [formControl]="wizardForm.controls['tel']">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="select-custom">
-                                                            <select name="" class="form-control"
-                                                              [formControl]="wizardForm.controls['horaireJoingnable']">
-                                                                <option value="" disabled selected hidden>Horaires pour me contacter</option>
-                                                                <option value="9h-12h">9h-12h</option>
-                                                                <option value="12h-14h">12h-14h</option>
-                                                                <option value="14h-18h">14h-18h</option>
-                                                                <option value="18h-20h">18h-20h</option>
-                                                            </select>
+                                                    <div class="col-sm-6  col-xs-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Prénom"
+                                                            [formControl]="wizardForm.controls['firstName']">
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
+
+                                                <div class="form-group">
+                                                    <div class="row">
+        <!--                                                 <div class="col-sm-4">
+                                                            <input type="number" class="form-control" max="120" min="1" placeholder="Age">
+                                                            <div class="select-custom">
+                                                                <select name="" class="form-control">
+                                                                    <option value="" disabled selected hidden>Age</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+        -->                                                <div class="col-sm-12">
+                                                            <input type="text" class="form-control" 
+                                                            placeholder="Profession / Secteur d'activité"
+                                                            [formControl]="wizardForm.controls['job']">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="Email"
+                                                    [formControl]="wizardForm.controls['email']">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" 
+                                                            placeholder="Téléphone auquel je suis joignable"
+                                                            [formControl]="wizardForm.controls['tel']">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="select-custom">
+                                                                <select name="" class="form-control"
+                                                                [formControl]="wizardForm.controls['horaireJoingnable']">
+                                                                    <option value="" disabled selected hidden>Horaires pour me contacter</option>
+                                                                    <option value="9h-12h">9h-12h</option>
+                                                                    <option value="12h-14h">12h-14h</option>
+                                                                    <option value="14h-18h">14h-18h</option>
+                                                                    <option value="18h-20h">18h-20h</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group clearfix"
+                                                    *ngIf="addParents; else remove">
+                                                    <button type="button" class="btn  btn-inverse pull-right btn-add"
+                                                        (click)="addParent()">
+                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+                                                        Ajouter un Parent
+                                                    </button>
+                                                </div>
+                                                <ng-template #remove>
+                                                    <div class="form-group clearfix">
+                                                        <button type="button" class="btn  btn-inverse pull-right btn-add"
+                                                            (click)="removeParent()">
+                                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+                                                            Retirer un Parent
+                                                        </button>
+                                                    </div>
+                                                </ng-template>
                                             </div>
 
-                                            <div class="form-group clearfix">
-                                                <button type="button" class="btn  btn-inverse pull-right btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter Parent</button>
-                                            </div>
-
+                                                
+                                            
                                         </section><!-- .col-* -->
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
@@ -325,8 +344,9 @@
                                         </div><!-- .col-* -->
 
                                         <div class="col-md-6">
-                                            <div class="wrap-enfant">
-                                                <h4>Frère / Sœur</h4>
+                                            <div class="wrap-enfant"
+                                                *ngFor="let frereSoeur of sisBro">
+                                                <h4>{{frereSoeur}}</h4>
                                                 <!-- <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -366,22 +386,22 @@
                                                             placeholder="Niveau d'étude"
                                                             [formControl]="wizardForm.controls['childSisBroStudy']">
                                                         </div>
-                                                        <div class="col-sm-2">
-                                                            <div class="form-group clearfix">
-                                                                <button class="btn  btn-inverse gap-for-radio  btn-add">
-                                                                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
-                                                                </button>
-                                                            </div>
-                                                        </div>
                                                     </div>
+                                                
                                                 </div>
-    <!-- 
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        
-                                                    </div>
-                                                </div> -->
                                             </div><!-- wrap-enfant -->
+                                            <div class="form-group clearfix">
+                                                <button class="btn  btn-inverse gap-for-radio  btn-add"
+                                                    (click)="addSisBro()">
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                                                    </span> Ajouter
+                                                </button>
+                                                <button class="btn  btn-inverse gap-for-radio  btn-add"
+                                                    (click)="removeSisBro()">
+                                                    <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                                                    </span> Retirer
+                                                </button>
+                                            </div>
                                         </div><!-- .col-* -->
 
                                     </div><!-- .row -->
@@ -612,7 +632,8 @@
                                             <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
                     
                                             
-                                                <div class="row">
+                                                <div class="row" *ngFor="let metier of metiers">
+                                                    <h4>{{ metier }}</h4>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Job"
@@ -625,11 +646,18 @@
                                                               [formControl]="wizardForm.controls['interestAge']">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <button class="btn  btn-inverse  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter</button>
-                                                        </div>
-                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button class="btn  btn-inverse  btn-add"
+                                                        (click)="onAddJob()">
+                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                                                        </span> Ajouter
+                                                    </button>
+                                                    <button class="btn  btn-inverse  btn-add"
+                                                        (click)="onRemoveJob()">
+                                                        <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                                                        </span> Retirer
+                                                    </button>
                                                 </div>
                                             
 
@@ -665,11 +693,9 @@
                                     <div class="row">
                                        <div class="col-md-8">
                                             <h3>Etablissements fréquentés</h3>
-
-                                            <h4>Etablissement Primaire</h4>
-
-                                            
-                                                <div class="row">
+                                                <div class="row"
+                                                    *ngFor="let primaire of primaires">
+                                                    <h4>{{primaire}}</h4>
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Nom"
@@ -693,17 +719,22 @@
                                                               [formControl]="wizardForm.controls['causeOfRepeatPrimary']">
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-2">
-                                                        <div class="form-group">
-                                                            <button class="btn  btn-inverse  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                                                        </div>
-                                                    </div>
                                                 </div>
-
-                                            <h4>Etablissement Secondaire</h4>
-
-                                            
-                                                <div class="row">
+                                                <div class="form-group">
+                                                    <button class="btn  btn-inverse  btn-add"
+                                                        (click)="onAddPrimaire()">
+                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                        Ajouter un établissement primaire
+                                                    </button>
+                                                    <button class="btn  btn-inverse  btn-add"
+                                                        (click)="onRemovePrimaire()">
+                                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                                        Retirer un établissement primaire
+                                                    </button>
+                                                </div>
+                                                <div class="row"
+                                                    *ngFor="let secondaire of secondaires">
+                                                    <h4>{{secondaire}}</h4>
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Nom"
@@ -727,11 +758,20 @@
                                                               [formControl]="wizardForm.controls['causeOfRepeatSecondary']">
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-2">
-                                                        <div class="form-group">
-                                                            <button class="btn  btn-inverse  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                                                        </div>
-                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button class="btn  btn-inverse  btn-add"
+                                                        (click)="onAddSecondaire()">
+                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                                                        </span>
+                                                        Ajouter un établissement secondaire
+                                                    </button>
+                                                    <button class="btn  btn-inverse  btn-add"
+                                                        (click)="onRemoveSecondaire()">
+                                                        <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                                                        </span>
+                                                        Retirer un établissement secondaire
+                                                    </button>
                                                 </div>
 
 

@@ -36,10 +36,11 @@ export class ApplytoComponent implements OnInit {
   activeTabIndex = 0;
   subscription : Subscription;
   schoolId="";
-  schoolData:any;
   userData:any;
   parents = ["Parent 1"];
   freresoeur = ["Frère/Soeur 1"];
+  metiers = ["Métier 1"]
+  schoolName : string ="";
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -55,6 +56,7 @@ export class ApplytoComponent implements OnInit {
                       if(params.hasOwnProperty('schoolId')){
                         this.schoolId=params['schoolId'];
                         this.getSchoolDataById();
+                        this.getUserProfile();
                       }
                     }
                   )
@@ -77,8 +79,7 @@ export class ApplytoComponent implements OnInit {
           if (response.code==400){
             console.log(response.message);
           }else {
-            this.schoolData = response.data;
-            console.log(this.schoolData);
+            this.schoolName = response.data.longName;
           }
         }
       )
@@ -89,11 +90,12 @@ export class ApplytoComponent implements OnInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(data);
+          // console.log(data);
           if(response.code==400){
             console.log(response.message);
           } else {
             this.userData = data[0];
+            console.log(this.userData);
             this.patchValue(data[0]);
           }
         }
@@ -257,6 +259,18 @@ export class ApplytoComponent implements OnInit {
     if(this.freresoeur.length!=0){
       const nb = this.freresoeur.length-1;
       this.freresoeur.splice(nb, 1);
+    }
+  }
+
+  onAddJob(){
+    const nb = this.metiers.length+1;
+    this.metiers.push("Métier "+nb);
+  }
+
+  onRemoveJob(){
+    if(this.metiers.length!=0){
+      const nb = this.metiers.length-1;
+      this.metiers.splice(nb, 1);
     }
   }
 }
