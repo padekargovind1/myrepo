@@ -96,7 +96,7 @@ export class UsersService {
   //     .map((response)=>response.json());
   // }
   
-   getAdviserFreeTime(adviserId):Observable<any>{
+  getAdviserFreeTime(adviserId):Observable<any>{
     return this.http.get(APPOINTMENTS_API+'/adviserdata?token='+this.token+'&id='+adviserId, {headers: this.headers})
       .map((response)=>response.json());
   }

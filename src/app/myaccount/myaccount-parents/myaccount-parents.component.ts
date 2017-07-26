@@ -100,22 +100,23 @@ lienparents = [ "Père",
   onSubmit(){
     console.log("On submit button");
     this.completeProfile();
+    alert("Vos données ont bien été enregistré. Veuillez passer aux données de votre enfant.")
   }
 
-  save(){
-    this.myProfile=this.usersService.getChildData();
-    this.myProfile.parents[0] = this.myParentProfile;
-    console.log("Click on submit", this.myProfile);
-    this.completeProfile();
-    // console.log(this.myProfile);
-    this.usersService.putProfile(this.myProfile)
-      .subscribe(
-        (data)=>{
-          let response = data;
-          console.log(response);
-        }
-      )
-  }
+  // save(){
+  //   this.myProfile=this.usersService.getChildData();
+  //   this.myProfile.parents[0] = this.myParentProfile;
+  //   console.log("Click on submit", this.myProfile);
+  //   this.completeProfile();
+  //   // console.log(this.myProfile);
+  //   this.usersService.putProfile(this.myProfile)
+  //     .subscribe(
+  //       (data)=>{
+  //         let response = data;
+  //         console.log(response);
+  //       }
+  //     )
+  // }
 
   createProfile(){
     this.myParentProfile.address = new MyAccountAdresse();
@@ -133,6 +134,7 @@ lienparents = [ "Père",
     this.myParentProfile.address.country = this.parentAccountForm.controls.pays.value;
     this.myParentProfile.address.city = this.parentAccountForm.controls.ville.value;
     this.usersService.storeParentData(this.myParentProfile);
+    
   }
 
 }

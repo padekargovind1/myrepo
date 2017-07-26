@@ -144,6 +144,7 @@ export class MyaccountChildrenComponent implements OnInit {
         (data)=>{
           let response = data;
           console.log(response);
+          alert("Vos données ont bien été enregistré. Vous allez être redirigé vers le menu principal.")
         }
       )
   }
