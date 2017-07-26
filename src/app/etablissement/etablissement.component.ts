@@ -27,6 +27,7 @@ export class EtablissementComponent implements OnInit {
     this.subscription = this.route.params
       .subscribe(
         params =>{
+          // console.log(params)
           if(params.hasOwnProperty('schoolId')){
             this.schoolId=params['schoolId'];
             this.getSchoolById();

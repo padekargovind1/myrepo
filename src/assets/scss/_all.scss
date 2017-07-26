@@ -551,9 +551,7 @@ text { fill: #fff !important; font-size: 20px !important; font-family: Roboto !i
  *  Filter  
  */
 .filter-form-holder { background-repeat: no-repeat; background-size: cover; height: 492px; position: relative;}
-    .filter-form-holder.ecole { background-image: url('./assets/images/primary-school.jpg');}
-    .filter-form-holder.lycee { background-image: url('./assets/images/high-school.jpg');}
-    .filter-form-holder.college { background-image: url('./assets/images/secondary-school.jpg');}
+    
     .filter-form-holder .searchform { background: rgba( 0, 0, 0, .6); width: 100%; position: absolute; bottom: 0; padding: 10px 0 35px;}
     .form-wrap { background: #393645; border-radius: 5px; padding: 13px;}
     

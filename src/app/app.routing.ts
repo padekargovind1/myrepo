@@ -9,9 +9,6 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { BrochureComponent } from './brochure/brochure.component';
-import { EcoleComponent } from './ecole/ecole.component';
-import { CollegeComponent } from './college/college.component';
-import { LyceeComponent } from './lycee/lycee.component';
 import { EtablissementComponent } from './etablissement/etablissement.component';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
@@ -21,7 +18,7 @@ import { WizardComponent } from './wizard/wizard.component';
 import { ApplytoComponent } from './applyto/applyto.component';
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
 import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
-
+import { SchoolComponent } from './school/school.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: LandingPage1Component},
@@ -35,9 +32,9 @@ export const AppRoutes: Routes = [
     { path: 'my-account' , component: MyaccountComponent },
     { path: 'school-calendar' , component: SchoolCalendarComponent },
     { path: 'brochure', component: BrochureComponent },
-    { path: 'ecole', component: EcoleComponent },
-    { path: 'college', component: CollegeComponent },
-    { path: 'lycee', component: LyceeComponent },
+    { path: 'ecole', component: SchoolComponent },
+    { path: 'college', component: SchoolComponent },
+    { path: 'lycee', component: SchoolComponent },
     { path: 'etablissement/:schoolId', component: EtablissementComponent },
     { path: 'compare-mode', component: CompareModeComponent },
     { path: 'detail-appointment', component: DetailAppointmentComponent },

@@ -74,6 +74,7 @@ import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
 import { EtablissementService } from './services/etablissement.service';
+import { SchoolComponent } from './school/school.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +121,8 @@ import { EtablissementService } from './services/etablissement.service';
     BrochureDownloadComponent,
     ApplytoComponent,
     EditorialContComponent,
-    EditorialDetComponent
+    EditorialDetComponent,
+    SchoolComponent
   ],
   imports: [
     BrowserModule,
