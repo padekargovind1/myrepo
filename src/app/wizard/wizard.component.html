@@ -22,7 +22,7 @@
                             <input type="text" class="form-control small" value="22" />
                             <input type="text" class="form-control half" value="Mai" />
                             <input type="text" class="form-control half" value="2017" />
-                            <input type="text" class="form-control medium" value="8:00 h" />
+                            <input type="text" class="Etabform-control medium" value="8:00 h" />
                             <input type="text" class="form-control medium" value="9:30 h" />
                         </div>
 
@@ -444,7 +444,7 @@
                                                             <div class="select-custom">
                                                                 <select name="" class="form-control"
                                                                   [formControl]="wizardForm.controls['schoolClasse']">
-                                                                    <option value="" disabled selected hidden>Classe</option>
+                                                                    <option value="" selected>Choisir une classe</option>
                                                                     <optgroup label="Cycle 1 : Apprentissages Premiers">
                                                                         <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
                                                                         <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
@@ -460,6 +460,28 @@
                                                                         <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
                                                                         <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
                                                                     </optgroup>
+                                                                    <optgroup label="Cycle 4 : Approfondissement">
+                                                                        <option value="5ème">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+                                                                        <option value="4ème">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+                                                                        <option value="3ème">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="2nde">
+                                                                        <option value="2ndGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                        <option value="2ndePB">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="1ere">
+                                                                        <option value="1ereES">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
+                                                                        <option value="1ereL">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
+                                                                        <option value="1ereS">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Terminale">
+                                                                        <option value="TES">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
+                                                                        <option value="TL">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
+                                                                        <option value="TS">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
+                                                                    </optgroup>
+                                                                    <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
+                                                                    <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
+                                                                    <option value="CNF">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -552,6 +574,10 @@
                                                             <select name="" class="form-control multiselect" 
                                                               id="dans-quelles" *ngIf="checked">
                                                                 <option value="">Dans quelles matières</option>
+                                                                <option *ngFor="let subject of subjectSchool" value="subject">
+                                                                    <md-checkbox>{{subject}}</md-checkbox>
+                                                                </option>
+                                                                <select name="Autre Langue" id=""></select>
                                                             </select>
                                                         </div>
                                                     </div>

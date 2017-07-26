@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -46,7 +47,12 @@ export class LoginComponent implements OnInit {
               let msg = response.message;
               this.errorMessage = msg;
               console.log('message: ', this.errorMessage);
-              alert("L'identifiant ou le mot de passe est incorrecte");
+              swal({
+                title: 'Erreur',
+                text: "L'identifiant ou le mot de passe est incorrecte",
+                type: 'error',
+                confirmButtonText: 'Ok'
+              })
             }
             else {
               console.log(response);

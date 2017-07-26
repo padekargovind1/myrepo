@@ -9,6 +9,7 @@ import { PublicService } from '../services/public.service';
 import { BookingService } from '../services/booking.service';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { CustomValidators } from 'ng2-validation';
+import swal from 'sweetalert2';
 
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
@@ -64,8 +65,14 @@ export class ApplytoComponent implements OnInit {
 
  ngOnInit() {
     this.tokenLog=this.authService.getToken();
-    if(this.tokenLog==""){
-      alert("Vous devez être connecté afin de prendre un rendez-vous.");
+    console.log(this.tokenLog)
+    if(this.tokenLog=="" || this.tokenLog == null){
+      swal({
+        title: 'Attention',
+        text: 'Vous devez être connecté afin de prendre un rendez-vous.',
+        type: 'warning',
+        confirmButtonText: 'Ok'
+      })
       this.route.navigate(['/login']);
     }
   }
@@ -223,8 +230,12 @@ export class ApplytoComponent implements OnInit {
           }
         }
       )
-
-    alert("Votre demande à bien été enregistré.");
+    swal({
+      title: 'Votre demande à bien été enregistré.',
+      text: 'Redirection vers le menu principal',
+      type: 'success',
+      confirmButtonText: 'Ok'
+    })
     this.route.navigate(['/']);
 }
   uploader: FileUploader = new FileUploader({

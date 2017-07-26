@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert2';
 
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,6 +15,7 @@ import {MyAccountMdl,
         MyAccountBulletin,
         MyAccountSiblingsMdl } from '../../model/myaccount.model';
 
+const self = this;
 @Component({
   selector: 'app-myaccount-children',
   templateUrl: './myaccount-children.component.html',
@@ -133,7 +135,13 @@ export class MyaccountChildrenComponent implements OnInit {
     console.log("Click on submit", this.childrenForm.value);
     this.completeProfile();
     this.save();
-    this.route.navigate(['/']);
+    swal({
+      title: 'Vos données ont bien été enregistré.',
+      text: '',
+      type: 'success',
+      confirmButtonText: 'Ok'
+    })
+    this.route.navigate(['/'])
   }
 
   save(){
@@ -144,7 +152,6 @@ export class MyaccountChildrenComponent implements OnInit {
         (data)=>{
           let response = data;
           console.log(response);
-          alert("Vos données ont bien été enregistré. Vous allez être redirigé vers le menu principal.")
         }
       )
   }

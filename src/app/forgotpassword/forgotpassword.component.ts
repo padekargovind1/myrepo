@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
-
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -46,7 +46,12 @@ export class ForgotpasswordComponent implements OnInit {
             }
             else {
               console.log(response);
-              alert(response.data);
+              swal({
+                title: response.data,
+                text: '',
+                type: 'success',
+                confirmButtonText: 'Ok'
+              })
               this.location.back();
             } 
           }

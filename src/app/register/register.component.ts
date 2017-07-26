@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -59,7 +60,12 @@ export class RegisterComponent implements OnInit {
             }
             else {
               console.log(response);
-              alert("Un email de confirmation à été envoyé.");
+              swal({
+                title: 'Un email de confirmation vous a été envoyé',
+                text: "",
+                type: 'success',
+                confirmButtonText: 'Ok'
+              })
               this.router.navigate(['/login'])
             }
           }

@@ -7,6 +7,7 @@ import { AuthService } from '../services/auth.service';
 import { BookingService } from '../services/booking.service';
 
 import { CustomValidators } from 'ng2-validation';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-wizard',
@@ -29,6 +30,10 @@ export class WizardComponent implements OnInit, AfterViewInit {
   langues = ["Français", "Anglais", "Espagnol", "Allemand", "Italien"];
   primarySchool = ["CP", "CE1", "CE2", "CM1", "CM2"];
   secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"];
+  subjectSchool = ["Maths", "Sciences", "Physiques", "Sciences Naturelles", "Histoire", 
+                  "Géographie", "Instruction Civique", "Sport", "Musique", 
+                  "Arts Plastiques", "Français", "Anglais", "Espagnol", "Allemand", 
+                  "Italien"]
   userData : any;
   appointmentData=[];
   adviserData: any;
@@ -56,7 +61,12 @@ export class WizardComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.tokenLog=this.authService.isUserLoggedIn()
     if(!this.tokenLog){
-      alert("Vous devez être connecté afin de prendre un rendez-vous.");
+      swal({
+        title: 'Attention',
+        text: "Vous devez être connecté afin de prendre un rendez-vous.",
+        type: 'warning',
+        confirmButtonText: 'Ok'
+      })
       this.route.navigate(['/login']);
     } else {
       this.appointmentData = this.bookingService.getBookingData();
@@ -241,7 +251,12 @@ export class WizardComponent implements OnInit, AfterViewInit {
           } else {
             console.log('Appointement register')
             this.bookingService.cleanBooking();
-            alert("Votre rendez-vous à bien été enregistré. Vous allez être redirigé vers le menu principal.")
+            swal({
+              title: 'Votre rendez-vous à bien été enregistré.',
+              text: '',
+              type: 'success',
+              confirmButtonText: 'Ok'
+            })
             this.route.navigate(['/'])
           }
         }

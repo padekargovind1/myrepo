@@ -7,6 +7,7 @@ import { CompareService } from '../services/compare.service';
 import { SchoolService } from '../services/school.service';
 import { AdvancedSearchMdl } from '../model/advanced-search.model';
 import { Subscription } from 'rxjs/Subscription';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-school',
@@ -166,7 +167,12 @@ export class SchoolComponent implements OnInit {
         this.canCompare=false;
       }
     } else if(this.compareList.length >= 4){
-      alert("Vous ne pouvez comparer plus de 4 écoles à la fois. Vous pouvez tout de même désélectionner une école déjà sélectionné");
+      swal({
+        title: 'Attention',
+        text: "Vous ne pouvez comparer plus de 4 écoles à la fois. Vous pouvez tout de même désélectionner une école déjà sélectionné",
+        type: 'warning',
+        confirmButtonText: 'Ok'
+      })
       this.four=true;
     } else {
       this.compareList.push(schoolId);

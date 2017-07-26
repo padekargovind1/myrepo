@@ -38,9 +38,6 @@ import { SchoolCalendarComponent } from './school-calendar/school-calendar.compo
 import { CubeComponent } from './school-calendar/cube/cube.component';
 import { FilterComponent } from './filter/filter.component';
 import { BrochureComponent } from './brochure/brochure.component';
-import { EcoleComponent } from './ecole/ecole.component';
-import { CollegeComponent } from './college/college.component';
-import { LyceeComponent } from './lycee/lycee.component';
 import { EtablissementComponent } from './etablissement/etablissement.component';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
@@ -97,9 +94,6 @@ import { SchoolComponent } from './school/school.component';
     CubeComponent,
     FilterComponent,
     BrochureComponent,
-    EcoleComponent,
-    CollegeComponent,
-    LyceeComponent,
     EtablissementComponent,
     CompareModeComponent,
     DetailAppointmentComponent,

@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { BookingService } from '../services/booking.service';
 import { AuthService } from '../services/auth.service';
+import swal from 'sweetalert2';
 declare var $:any;
 declare var fullCalendar: any;
 
@@ -38,7 +39,12 @@ export class BookingComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.tokenLog=this.authService.isUserLoggedIn()
     if(!this.tokenLog){
-      alert("Vous devez être connecté afin de prendre un rendez-vous.");
+      swal({
+        title: 'Attention',
+        text: 'Vous devez être connecté afin de prendre un rendez-vous.',
+        type: 'warning',
+        confirmButtonText: 'Ok'
+      })
       this.route.navigate(['/login']);
     } else {
       this.getBookingData();

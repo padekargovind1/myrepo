@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { AuthService } from '../../services/auth.service';
+import swal from 'sweetalert2';
 
 import {MyAccountMdl, 
         MyAccountParentMdl, 
@@ -100,7 +101,12 @@ lienparents = [ "Père",
   onSubmit(){
     console.log("On submit button");
     this.completeProfile();
-    alert("Vos données ont bien été enregistré. Veuillez passer aux données de votre enfant.")
+    swal({
+      title: 'Vos données ont bien été enregistré.',
+      text: 'Veuillez passer aux données de votre enfant.',
+      type: 'success',
+      confirmButtonText: 'Ok'
+    })
   }
 
   // save(){
