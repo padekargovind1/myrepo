@@ -23,6 +23,7 @@
         "styles.scss"
       ],
       "scripts": [
+        "assets/js/main.js",
         "../node_modules/hammerjs/hammer.js",
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/wheelnav/js/dist/wheelnav.min.js",
@@ -36,8 +37,7 @@
         "assets/js/bootstrap-datetimepicker.js",
         "assets/js/prettify.js",
         "assets/js/cube.js",
-        "assets/js/owl.carousel.js",
-        "assets/js/main.js"
+        "assets/js/owl.carousel.js"        
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

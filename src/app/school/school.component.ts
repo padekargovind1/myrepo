@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -14,7 +14,7 @@ import swal from 'sweetalert2';
   templateUrl: './school.component.html',
   styleUrls: ['./school.component.scss']
 })
-export class SchoolComponent implements OnInit {
+export class SchoolComponent implements OnInit, AfterViewInit {
 
   schoolList : any;
   schoolListFilter : any;
@@ -44,6 +44,7 @@ export class SchoolComponent implements OnInit {
   subscription : Subscription;
   schoolComponentTitle = "";
   pathName ="";
+  confessionChecked : boolean = false;
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -67,14 +68,29 @@ export class SchoolComponent implements OnInit {
 
   ngAfterViewInit(){
     $('.filter-holder').on('click', function() {
-      $('.advance-filter').toggleClass('open');
-      // $('.main').toggleClass('open');
-      // $('.ad-holder').toggleClass('hide');
-      // $('.survey-holder').toggleClass('hide');
+		$('.advance-filter').toggleClass('open');
+		// $('.main').toggleClass('open');
+		// $('.ad-holder').toggleClass('hide');
+		// $('.survey-holder').toggleClass('hide');
+	  });
+    $('#filter-trigger').on('change', function() {
+        // console.log();
+        if ($(this).prop('checked')) {
+            $('.advance-filter').toggleClass('open');
+        } else {
+            $('.advance-filter').toggleClass('open');
+        }
     });
-    // $('.advancedFilter').on('click', function() {
-    //   $(this).parent().find('.adv-filt').toggleClass('open');
-    // })
+    $('.advance-filter a').on('click', function(e) {
+      if ($(this).hasClass('open')) {
+        $(this).siblings('ul').toggleClass('fadeIn open');
+        $(this).removeClass('open');
+      } else {
+        $('.advance-filter a.open').removeClass('open').siblings('ul').removeClass('fadeIn open');
+        $(this).siblings('ul').toggleClass('fadeIn open');
+        $(this).addClass('open');
+      }
+    });
   }
 
   setBackgroundImage(){
@@ -137,7 +153,7 @@ export class SchoolComponent implements OnInit {
       this.schoolListFilter = this.schoolList.filter(
         school => {
           for(let i=0; i<this.advancedSearch.length; i=+2){
-            console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
+            // console.log(this.advancedSearch[i], this.advancedSearch[i+1]);
             return school.cycles[0].cycle[this.advancedSearch[i]][this.advancedSearch[i+1]].value
           }
         }
@@ -404,6 +420,10 @@ export class SchoolComponent implements OnInit {
     this.optionValue="";
     console.log($('.checkbox'));
     $('.checkbox :checked').removeAttr('checked')
+  }
+
+  onConfessionClick(){
+    this.confessionChecked=!this.confessionChecked;
   }
 
 }
