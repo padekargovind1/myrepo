@@ -215,7 +215,7 @@ export class ApplytoComponent implements OnInit {
       .subscribe(
         response=>{
           let data = response.data;
-          console.log(data);
+          console.log(response);
           if(response.code==400){
             console.log(response.message)
           } else {
@@ -223,6 +223,9 @@ export class ApplytoComponent implements OnInit {
           }
         }
       )
+
+    alert("Votre demande à bien été enregistré.");
+    this.route.navigate(['/']);
 }
   uploader: FileUploader = new FileUploader({
     url: URL,
@@ -263,6 +266,7 @@ export class ApplytoComponent implements OnInit {
   }
 
   onAddJob(){
+    console.log("test")
     const nb = this.metiers.length+1;
     this.metiers.push("Métier "+nb);
   }

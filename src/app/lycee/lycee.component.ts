@@ -64,9 +64,9 @@ export class LyceeComponent implements OnInit, AfterViewInit {
       // $('.ad-holder').toggleClass('hide');
       // $('.survey-holder').toggleClass('hide');
     });
-    $('.advancedFilter').on('click', function() {
-      $(this).parent().find('.adv-filt').toggleClass('open');
-    })
+    // $('.advancedFilter').on('click', function() {
+    //   $(this).parent().find('.adv-filt').toggleClass('open');
+    // })
   }
 
   getSchoolList(){

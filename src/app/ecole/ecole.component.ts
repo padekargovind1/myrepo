@@ -1,11 +1,11 @@
-import { Router } from '@angular/router';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { SchoolService } from '../services/school.service';
-declare var $:any;
+import { AdvancedSearchMdl } from '../model/advanced-search.model';
 
 @Component({
   selector: 'app-ecole',
@@ -14,18 +14,18 @@ declare var $:any;
 })
 export class EcoleComponent implements OnInit, AfterViewInit {
 
-  schoolList : any;
+   schoolList : any;
   schoolListFilter : any;
   compareList= [];
-  four : boolean = false;
-  canCompare : boolean = false;
-  canFilter : boolean = false;
   compareListFilter = [];
-  searchFilter = [];
   filterList = ["Cycles & Classes", "Langues", "Spécialités", 
                 "Internat", "Stages", "Restauration", 
                 "Externat", "Status", "Ens. Confessionel", 
-                "Sections", "Diplôme", "Options", "Places Disponible"];
+                "Sections", "Diplôme", "Options", "Places Disponible"]
+  four : boolean = false;
+  canCompare : boolean = false;
+  canFilter : boolean = false;
+  searchFilter = [];
   searchForm : FormGroup;
   options: any;
   schoolsOptions: any;
@@ -38,14 +38,13 @@ export class EcoleComponent implements OnInit, AfterViewInit {
   languesRegio = [];
   diplomes = [];
   optionValue: string="";
-
   opened = false;
 
   constructor(private publicService : PublicService,
-              private router : Router,
+              private schoolService : SchoolService,
               private compareService : CompareService,
-              private fb : FormBuilder,
-              private schoolService : SchoolService) { }
+              private router : Router,
+              private fb : FormBuilder) { }
 
   ngOnInit() {
     this.buildForm();
@@ -57,6 +56,19 @@ export class EcoleComponent implements OnInit, AfterViewInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+  }
+
+  ngAfterViewInit(){
+    $('.filter-holder').on('click', function() {
+      $('.advance-filter').toggleClass('open');
+      // $('.main').toggleClass('open');
+      // $('.ad-holder').toggleClass('hide');
+      // $('.survey-holder').toggleClass('hide');
+    });
+    // $('.advancedFilter').on('click', function() {
+    //   // $('.adv-filt').toggleClass('close');
+    //   $(this).parent().find('.adv-filt').toggleClass('open');
+    // })
   }
 
   getSchoolList(){
@@ -72,101 +84,10 @@ export class EcoleComponent implements OnInit, AfterViewInit {
       )
   }
 
-  ngAfterViewInit() {
-      /**
-       * Show ads bases on delay time
-       *
-       */
-      window.setTimeout(hideAd, 3000);
-
-        function hideAd() {
-            // console.log('time is up');
-            // $('body').hover(function() {
-                $('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
-                $('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');//.delay(16000).removeClass('fadeInDown').addClass('fadeOutDown');
-            // });
-        }
-
-        window.setTimeout(hideSideAd, 13000);
-
-        function hideSideAd() {
-            $('.from-popup').delay(13000).removeClass('fadeInDown').addClass('fadeOutDown');
-            $('.fixed-ad').delay(26000).removeClass('hidden').addClass('fadeIn animated');
-        }
-
-
-        $('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { $(this).parent().addClass('fadeOutDown'); });
-
-
-        // listen scrolling, in 500 px height will show footer ads
-        $(document).scroll(function() {
-            var y = $(this).scrollTop();
-            if (y > 500) {
-                $('.footer-ads').removeClass('fadeOutDown hidden').addClass('fadeInUp');
-            } else {
-                $('.footer-ads').removeClass('fadeInUp').addClass('fadeOutDown');
-            }
-        });
-
-
-        // Toggle advance filter
-        $('.filter-holder').on('click', function() {
-          $('.advance-filter').toggleClass('open');
-          // $('.main').toggleClass('open');
-          // $('.ad-holder').toggleClass('hide');
-          // $('.survey-holder').toggleClass('hide');
-        });
-        $('.advancedFilter').on('click', function() {
-          $(this).parent().find('.adv-filt').toggleClass('open');
-        })
-          $('#filter-trigger').on('change', function() {
-              if ($(this).prop('checked')) {
-                  $('.advance-filter').toggleClass('open');
-              } else {
-                  $('.advance-filter').toggleClass('open');
-              }
-          });
-
-
-          // Initiate tooltip
-        $('[data-toggle="tooltip"]').tooltip();
-
-        // Carousel
-        $('.slickjs').slick({
-              infinite: true,
-              slidesToShow: 5,
-              slidesToScroll: 1,
-              autoplay: true,
-              autoplaySpeed: 2000,
-              arrows: false,
-              // centerMode: true
-              responsive: [
-                  {
-                    breakpoint: 600,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 1
-                    }
-                  },
-              ]
-          });
-  }
-
-  openAdvance() {
-    console.log('clicked');
-    // (<any> $('.advance-filter')).toggleClass('open');
-
-    if (this.opened) { 
-      this.opened = false;
-    } else {
-      this.opened = true;
-    }
-  }
-
   getSearchFilter(){
     this.searchFilter = this.publicService.getSearchSchool();
-    console.log(this.searchFilter);
     this.patchValue();
+    console.log(this.searchFilter);
     if(this.searchFilter[0]!="" && this.searchFilter[1]!="" && this.searchFilter[2]==""){
       this.schoolListFilter = this.schoolList.filter(
       school => {
@@ -233,6 +154,7 @@ export class EcoleComponent implements OnInit, AfterViewInit {
     // console.log(index, this.compareListFilter[index]);
     this.compareListFilter[index] = !this.compareListFilter[index];
     this.canFilter = this.checkFilterBox();
+    console.log(this.canFilter);
   }
 
   checkFilterBox(){
@@ -247,15 +169,25 @@ export class EcoleComponent implements OnInit, AfterViewInit {
     return false;
   }
 
-
   onCompare(){
     let schoolList = this.compareList;
-    console.log(schoolList);
+    console.log(schoolList, this.compareListFilter);
     this.compareService.storeCompareFilter(this.compareListFilter);
     this.router.navigate(['/compare-mode/', schoolList]);
   }
 
-   buildForm(){
+  openAdvance() {
+    console.log('clicked');
+    // (<any> $('.advance-filter')).toggleClass('open');
+
+    if (this.opened) { 
+      this.opened = false;
+    } else {
+      this.opened = true;
+    }
+  }
+
+  buildForm(){
     this.searchForm = this.fb.group({
       classe : [''],
       lieu : [''],
@@ -339,7 +271,11 @@ export class EcoleComponent implements OnInit, AfterViewInit {
         index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
         this.advancedSearchToDisplay.splice(index, 1);
       }
-      
+      if(event.srcElement.id=="confessionel" && event.srcElement.checked){
+        this.religiousChecked=true;
+      } else if(event.srcElement.id=="confessionel" && !event.srcElement.checked){
+        this.religiousChecked=false;
+      }
     }
   }
 
@@ -422,7 +358,6 @@ export class EcoleComponent implements OnInit, AfterViewInit {
     console.log("clean search")
     this.languageAdvancedSearch=["", "", "", "", "", "", "", "", "", ""];
     this.advancedSearch=[];
-    this.advancedSearchToDisplay=[];
     this.advancedSearchToDisplay=[];
     this.searchForm.reset();
     this.buildForm();

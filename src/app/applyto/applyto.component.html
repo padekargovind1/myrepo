@@ -124,7 +124,7 @@
                           <button type="button" class="btn  
                             btn-inverse pull-right btn-add"
                             (click)="onRemoveParent()">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true">
                             </span> Retirer Parent
                           </button>
                         </div>
@@ -243,10 +243,10 @@
                       <!-- .col-* -->
 
                       <div class="col-md-6">
-                        <div class="wrap-enfant"
-                         *ngFor="let frso of freresoeur">
-                          <h4>{{frso}}</h4>
-                          <div class="form-group">
+                        <div class="wrap-enfant">
+                          <div class="form-group"
+                            *ngFor="let frso of freresoeur">
+                            <h4>{{frso}}</h4>
                             <div class="row">
                               <div class="col-for-radio">
                                 <div class="gap-for-radio horizontal-radio clearfix">
@@ -265,18 +265,18 @@
                               </div>
                             </div>
                           </div>
+                          <div class="form-group clearfix">
+                            <button class="btn  btn-inverse gap-for-radio  btn-add"
+                              (click)="onAddFrSo()">
+                              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
+                            </button>
+                            <button class="btn  btn-inverse gap-for-radio  btn-remove"
+                              (click)="onRemoveFrSo()">
+                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Retirer
+                            </button>
+                          </div>
                         </div>
 
-                        <div class="form-group clearfix">
-                          <button class="btn  btn-inverse gap-for-radio  btn-add"
-                            (click)="onAddFrSo()">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
-                          </button>
-                          <button class="btn  btn-inverse gap-for-radio  btn-remove"
-                            (click)="onRemoveFrSo()">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Retirer
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -513,30 +513,31 @@
                         <div class="row">
                           <div *ngFor="let metier of metiers">
                             <div class="col-sm-6">
+                              <h4>{{metier}}</h4>
                               <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Job" [formControl]="applytoForm.controls['interestJob']">
                               </div>
                             </div>
                             <div class="col-sm-3">
+                              <h4>&nbsp;</h4>
                               <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Age" [formControl]="applytoForm.controls['interestAge']">
                               </div>
                             </div>
                           </div>
-                          <div class="col-md-3">
-                            <div class="form-group">
-                              <button class="btn  btn-inverse  btn-add">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"
-                                  (click)="onAddJob()">
-                                </span> Ajouter
-                              </button>
-                              <button class="btn  btn-inverse  btn-add">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"
-                                  (click)="onRemoveJob()">
-                                </span> Retirer
-                              </button>
-                            </div>
-                          </div>
+                        </div>
+
+                        <div class="row">
+                          <button class="btn  btn-inverse  btn-add"
+                            (click)="onAddJob()">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                            </span> Ajouter
+                          </button>
+                          <button class="btn  btn-inverse  btn-add"
+                            (click)="onRemoveJob()">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true">
+                            </span> Retirer
+                          </button>
                         </div>
 
 
@@ -558,7 +559,8 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <button class="btn btn-appointment pull-right" type="submit" (click)="onSubmit()" >Terminer</button>
+                              <button class="btn btn-appointment" 
+                                type="submit" (click)="onSubmit()" >Terminer</button>
                             </div>
                           </div>
                         </div>
