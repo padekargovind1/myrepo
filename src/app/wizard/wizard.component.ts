@@ -240,8 +240,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
             console.log(response.message);
           } else {
             console.log('Appointement register')
-            alert("Un email de confirmation de rendez-vous vous a été envoyé.")
             this.bookingService.cleanBooking();
+            alert("Votre rendez-vous à bien été enregistré. Vous allez être redirigé vers le menu principal.")
             this.route.navigate(['/'])
           }
         }
