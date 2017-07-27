@@ -21,7 +21,7 @@ export class SchoolService {
             "Hébreu", "Italien", "Japonais", "Néerlandais", "Persan", "Polonais", "Portugais", "Russe",
             "Suédois", "Vietnamien"];
   
-  languesRegio = ["Alsacien", "Auvergnat", "Basque", "Breton", "Catalan", "Corse", "Nicois", "Occitan", "Pays Mosel", "Provencal"]
+  languesRegio = ["Alsacien", "Auvergnat", "Basque", "Breton", "Catalan", "Corse", "Nicois", "Occitan", "Pays Mosel", "Provençal"]
 
   diplomes = [];
 
