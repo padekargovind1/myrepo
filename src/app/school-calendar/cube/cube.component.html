@@ -12,9 +12,9 @@
                         <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
                     </div>
 
-                    <p class="cube__meta">Type d'evenement</p>
+                    <p class="cube__meta">{{eventData.eventType}}</p>
 
-                    <h3>Titre de l'evenement</h3>
+                    <h3>{{eventData.title}}</h3>
 
                     
                     <div class="text-left">
@@ -22,7 +22,7 @@
                             <i class="fa fa-calendar big-calendar"></i>
                         </div>
                         <div class="col-xs-10">
-                            <p>de 27/05/2017 au 28/05/2017</p>
+                            <p>de {{eventData.fromDate | shorten:10}} au 28/05/2017</p>
                         </div>
                     </div>
 

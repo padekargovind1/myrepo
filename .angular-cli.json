@@ -23,9 +23,9 @@
         "styles.scss"
       ],
       "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
         "assets/js/main.js",
         "../node_modules/hammerjs/hammer.js",
-        "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/wheelnav/js/dist/wheelnav.min.js",
         "../node_modules/raphael/raphael.min.js",
         "../node_modules/wheelnav/js/dist/raphael.icons.min.js",

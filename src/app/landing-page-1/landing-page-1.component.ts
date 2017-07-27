@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-
+declare var jquery:any;
+declare var $ :any;
 @Component({
   selector: 'app-landing-page-1',
   templateUrl: './landing-page-1.component.html',

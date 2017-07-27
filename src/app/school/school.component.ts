@@ -150,7 +150,7 @@ export class SchoolComponent implements OnInit {
           school.cycles[0].cycle.classes[0].className == this.searchFilter[0] && school.address.city == this.searchFilter[1]
       })
     } else if(this.advancedSearch.length!=0){
-      console.log("test");
+      // console.log("test");
       this.schoolListFilter = this.schoolList.filter(
         school => {
           for(let i=0; i<this.advancedSearch.length; i=+2){
@@ -166,7 +166,7 @@ export class SchoolComponent implements OnInit {
       for(let i=0; i<this.languageAdvancedSearch.length; i++){
         this.schoolListFilter = this.schoolList.filter(
           school => {
-            console.log("test")
+            // console.log("test")
             if(school.cycles[0].cycle.language[this.languageAdvancedSearch[i]].value.length==0){
               return false;
             } else {
@@ -317,7 +317,7 @@ export class SchoolComponent implements OnInit {
         this.advancedSearch.push(category);
         this.advancedSearch.push(event.srcElement.name);
         this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
-        // console.log(this.advancedSearch);
+        console.log(this.advancedSearchToDisplay);
         this.getSearchFilter();
       } else{
         console.log("unchecked!");
@@ -390,6 +390,7 @@ export class SchoolComponent implements OnInit {
   onRemoveFilter(index){
     console.log("click sur la croix")
     this.advancedSearchToDisplay.splice(index, 1)
+    this.advancedSearch.splice(index, 2);
     this.getSearchFilter();
   }
 

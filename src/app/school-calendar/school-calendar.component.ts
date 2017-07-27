@@ -11,13 +11,13 @@ export class SchoolCalendarComponent implements OnInit {
   events : any;
 
   constructor(private publicService : PublicService) { 
-    this.fetch((data) => {
-      this.events = data;
-    });
+    // this.fetch((data) => {
+    //   this.events = data;
+    // });
   }
 
   ngOnInit() {
-    // this.getEvents();
+    this.getEvents();
   }
   getEvents(){
     this.publicService.getEvent()
@@ -30,15 +30,15 @@ export class SchoolCalendarComponent implements OnInit {
       )
   }
 
-  fetch(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/json/event.json`);
+  // fetch(cb) {
+  //   const req = new XMLHttpRequest();
+  //   req.open('GET', `assets/json/event.json`);
 
-   req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
+  //  req.onload = () => {
+  //     cb(JSON.parse(req.response));
+  //   };
 
-   req.send();
-  }
+  //  req.send();
+  // }
 
 }

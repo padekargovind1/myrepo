@@ -138,20 +138,20 @@ jQuery(document).ready(function($) {
 
 
     // Toggle advance filter
-	$('.filter-holder').on('click', function() {
-		$('.advance-filter').toggleClass('open');
-		// $('.main').toggleClass('open');
-		// $('.ad-holder').toggleClass('hide');
-		// $('.survey-holder').toggleClass('hide');
-	});
-    $('#filter-trigger').on('change', function() {
-        // console.log();
-        if ($(this).prop('checked')) {
-            $('.advance-filter').toggleClass('open');
-        } else {
-            $('.advance-filter').toggleClass('open');
-        }
-    });
+	// $('.filter-holder').on('click', function() {
+	// 	$('.advance-filter').toggleClass('open');
+	// 	// $('.main').toggleClass('open');
+	// 	// $('.ad-holder').toggleClass('hide');
+	// 	// $('.survey-holder').toggleClass('hide');
+	// });
+    // $('#filter-trigger').on('change', function() {
+    //     // console.log();
+    //     if ($(this).prop('checked')) {
+    //         $('.advance-filter').toggleClass('open');
+    //     } else {
+    //         $('.advance-filter').toggleClass('open');
+    //     }
+    // });
 
 
     // Initiate tooltip
@@ -182,16 +182,16 @@ jQuery(document).ready(function($) {
 
 
 
-	$('.advance-filter a').on('click', function(e) {
-		if ($(this).hasClass('open')) {
-			$(this).siblings('ul').toggleClass('fadeIn open');
-			$(this).removeClass('open');
-		} else {
-			$('.advance-filter a.open').removeClass('open').siblings('ul').removeClass('fadeIn open');
-			$(this).siblings('ul').toggleClass('fadeIn open');
-			$(this).addClass('open');
-		}
-	});
+	// $('.advance-filter a').on('click', function(e) {
+	// 	if ($(this).hasClass('open')) {
+	// 		$(this).siblings('ul').toggleClass('fadeIn open');
+	// 		$(this).removeClass('open');
+	// 	} else {
+	// 		$('.advance-filter a.open').removeClass('open').siblings('ul').removeClass('fadeIn open');
+	// 		$(this).siblings('ul').toggleClass('fadeIn open');
+	// 		$(this).addClass('open');
+	// 	}
+	// });
 
 	// $('#test1').click(function() { 
 		

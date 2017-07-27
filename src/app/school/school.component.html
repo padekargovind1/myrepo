@@ -191,7 +191,7 @@
                                 <li><a class="advancedFilter">Restauration</a>
                                     <ul (click)="onAdvancedClick($event, 'canteen')"
                                         class="adv-filt">
-                                        <li><input type="checkbox" name="'self-service'" class="checkbox filled-in" id="filter-24" /><label for="filter-24">self-service</label></li>
+                                        <li><input type="checkbox" name="selfService" class="checkbox filled-in" id="filter-24" /><label for="filter-24">self-service</label></li>
                                         <li><input type="checkbox" name="serviceAtTable" class="checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
                                         <li><input type="checkbox" name="cafeteria" class="checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
                                     </ul>
@@ -496,9 +496,9 @@
                                 <ng-template #empty1>
                                     <h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                                 </ng-template>
-                                <div *ngIf="advancedSearchToDisplay.length!=0 && languageAdvancedSearch.length!=0; else empty2">
+                                <div *ngIf="advancedSearchToDisplay.length!=0; else empty2">
                                     
-                                    <div *ngIf="advancedSearchToDisplay.length!=0">Recherche Affine: 
+                                    <div>Recherche Affine: 
                                         <span *ngFor="let advanced of advancedSearchToDisplay; let i = index"
                                             class="contact-roles">{{ advanced }}
                                             <span class="fa fa-times" style="cursor: pointer"

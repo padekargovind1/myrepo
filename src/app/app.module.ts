@@ -72,6 +72,7 @@ import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
 import { EtablissementService } from './services/etablissement.service';
 import { SchoolComponent } from './school/school.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import { SchoolComponent } from './school/school.component';
     ApplytoComponent,
     EditorialContComponent,
     EditorialDetComponent,
-    SchoolComponent
+    SchoolComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,

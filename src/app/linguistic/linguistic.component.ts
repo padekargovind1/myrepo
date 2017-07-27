@@ -12,14 +12,14 @@ export class LinguisticComponent implements OnInit {
   listTripsFiltered : any;
 
   constructor(private schoolService : SchoolService) { 
-    // this.getTrips();
+    this.getTrips();
   }
 
   ngOnInit() {
   }
 
   getTrips(){
-    this.schoolService.getLinguistics()
+    this.schoolService.getTrips()
       .subscribe(
         (response)=>{
           let data = response.data;
