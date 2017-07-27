@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 declare var jquery:any;
 declare var $ :any;
@@ -19,17 +20,22 @@ export class CubeComponent implements OnInit, AfterViewInit {
   cube;
   video;
 
-  constructor() {
+  constructor(private sanitizer : DomSanitizer) {
     
   }
 
   ngOnInit() {    
     this.createCube();
-    this.video="https://www.youtube.com/embed/XDazcvF8o8k"+this.eventData.video;
+    this.video="https://www.youtube.com/embed/"+this.eventData.video;
+    console.log(this.video);
   }
 
   ngAfterViewInit() {
       this.createCube();
+  }
+
+  getUrl(){
+      return this.sanitizer.bypassSecurityTrustResourceUrl(this.video);
   }
 
   createCube(){
