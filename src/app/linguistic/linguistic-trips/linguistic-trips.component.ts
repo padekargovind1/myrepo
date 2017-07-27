@@ -2,9 +2,8 @@ import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 
 import { SchoolService } from '../../services/school.service';
 
-
-declare var $:any;
-
+declare var jquery:any;
+declare var $ :any;
 // import '../../../assets/js/main.js';
 
 @Component({
@@ -15,12 +14,9 @@ declare var $:any;
 export class LinguisticTripsComponent implements OnInit, AfterViewInit {
   @Input() tripData;
   constructor(private schoolService : SchoolService) { 
-    setTimeout(
-      ()=>{
-        console.log(this.tripData);
-      }, 500
-    )
-    
+    setTimeout(()=>{
+      console.log(this.tripData);  
+    }, 2000);
   }
 
   ngOnInit() {
@@ -53,16 +49,9 @@ export class LinguisticTripsComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() { 
 
-        // console.log('test');
-
-        (<any> $('.school-carousel')).slick({
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: false,
-            autoplaySpeed: 2000,
-            arrows: true
-        });
+      // console.log('test');
+      (<any> $('.'+this.tripData.class)).slick();
+        
     }
 
 }

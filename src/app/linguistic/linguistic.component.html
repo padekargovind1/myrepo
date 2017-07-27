@@ -167,7 +167,7 @@
                             <select name="class" class="form-control" id="class"
                               (click)="onDestinationClick($event, '9')">
                                 <!-- <option value="" disabled selected hidden>Organisme</option> -->
-                                <option value="Indifférent">Indifférent</option>
+                                <option value="">Indifférent</option>
                                 <option value="Au pair">Au pair</option>
                                 <option value="Bénévolat">Bénévolat</option>
                                 <option value="Cours et découverte">Cours et découverte</option>
@@ -189,9 +189,14 @@
                         </label>
 
                     </div><!-- .col-* -->
+                    
 
                     <div *ngFor="let trip of listTripsFiltered">
-                       <app-linguistic-trips [tripData]="trip"></app-linguistic-trips>
+                       <div class="col-md-4" >  
+                        <div class="card  school-item">
+                            <app-linguistic-trips [tripData]="trip"></app-linguistic-trips>
+                        </div>
+                       </div>
                     </div><!-- .col-* -->
 
                 </div><!-- .row -->

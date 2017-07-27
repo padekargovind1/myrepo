@@ -1,7 +1,8 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 
-//import * as $ from 'jquery';
-// declare var cube: any;
+declare var jquery:any;
+declare var $ :any;
+declare var cube: any;
 
 //import 'assets/js/cube.js';
 
@@ -16,6 +17,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
   @Input() eventData: any;
   @Input() counter: any;
   cube;
+  video;
 
   constructor() {
     
@@ -23,6 +25,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {    
     this.createCube();
+    this.video="https://www.youtube.com/embed/XDazcvF8o8k"+this.eventData.video;
   }
 
   ngAfterViewInit() {

@@ -1,22 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { SchoolService } from '../services/school.service';
 
+declare var jquery:any;
+declare var $ :any;
+import 'slick-carousel/slick/slick';
 @Component({
   selector: 'app-linguistic',
   templateUrl: './linguistic.component.html',
   styleUrls: ['./linguistic.component.css']
 })
-export class LinguisticComponent implements OnInit {
+export class LinguisticComponent implements OnInit, AfterViewInit {
 
   listTrips : any;
   listTripsFiltered : any;
 
-  constructor(private schoolService : SchoolService) { 
+  constructor(private schoolService : SchoolService,
+              private location : Location) { 
     this.getTrips();
   }
 
   ngOnInit() {
   }
+
+  ngAfterViewInit() { 
+    let test = '.school-carousel1';
+      (<any> $(test)).slick();
+        
+    }
 
   getTrips(){
     this.schoolService.getTrips()
@@ -29,7 +41,11 @@ export class LinguisticComponent implements OnInit {
           } else {
             this.listTrips = data;
             this.listTripsFiltered = data;
-            // console.log(this.listTrips);
+            for(let i=0; i<this.listTrips.length; i++){
+              this.listTrips[i].class = "school-carousel"+i;
+              this.listTripsFiltered[i].class = "school-carousel"+i;
+            }
+            console.log(this.listTripsFiltered);
           }
         }
       )

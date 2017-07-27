@@ -22,7 +22,7 @@
                             <i class="fa fa-calendar big-calendar"></i>
                         </div>
                         <div class="col-xs-10">
-                            <p>de {{eventData.fromDate | shorten:10}} au 28/05/2017</p>
+                            <p>de {{eventData.fromDate | shorten:10}} au {{eventData.toDate | shorten:10}}</p>
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
                             <i class="fa fa-clock-o big-calendar"></i>
                         </div>
                         <div class="col-xs-10">
-                            <p>9h - 18h</p>
+                            <p>{{eventData.fromTime}} - {{eventData.toTime}}</p>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                             <i class="fa fa-map-marker big-calendar"></i>
                         </div>
                         <div class="col-xs-10">
-                            <p>1 rue du Brouage / 02300 / Chauny</p>
+                            <p>{{eventData.address}}</p>
                         </div>
                     </div>
 
@@ -64,9 +64,9 @@
                         <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
                     </div>
 
-                    <div class="no-padding"><iframe class="cube__youtube" src="https://www.youtube.com/embed/XDazcvF8o8k" frameborder="0" allowfullscreen></iframe></div>
+                    <div class="no-padding"><iframe class="cube__youtube" [src]="'video'" frameborder="0" allowfullscreen></iframe></div>
 
-                    <h3>Titre de l'evenement</h3>
+                    <h3>{{eventData.title}}</h3>
 
 
                 </article>
@@ -81,9 +81,9 @@
                     
 
                     <div class="text-wrapper text-1">
-                    <h3>Titre de l'evenement</h3>
-                    A partir de Septembre 2017<br />
-                    <ul>
+                    <h3>{{eventData.title}}</h3>
+                    {{eventData.description}}<br />
+                    <!--<ul>
                         <li>Nouvelle classe de Seconde Renforcée</li>
                         <li>Philosophie dès la Seconde</li>
                         <li>Enseignement numérique et codage dès la Seconde</li>
@@ -91,7 +91,7 @@
                         <li>Filière L revisitée et enrichie</li>
                         <li>Une Ecole de Commerce dès la Première STMG</li>
                         <li>Option prépa Médecine et HEC dès la Première</li>
-                    </ul>
+                    </ul>-->
                     
                     </div>
                 </article>
