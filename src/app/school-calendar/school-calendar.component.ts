@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicService } from '../services/public.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-school-calendar',
@@ -10,7 +11,8 @@ export class SchoolCalendarComponent implements OnInit {
 
   events : any;
 
-  constructor(private publicService : PublicService) { 
+  constructor(private publicService : PublicService,
+              private route : Router) { 
     // this.fetch((data) => {
     //   this.events = data;
     // });
@@ -29,16 +31,5 @@ export class SchoolCalendarComponent implements OnInit {
         }
       )
   }
-
-  // fetch(cb) {
-  //   const req = new XMLHttpRequest();
-  //   req.open('GET', `assets/json/event.json`);
-
-  //  req.onload = () => {
-  //     cb(JSON.parse(req.response));
-  //   };
-
-  //  req.send();
-  // }
 
 }

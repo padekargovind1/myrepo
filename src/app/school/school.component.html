@@ -515,13 +515,13 @@
                                     <p>
                                         {{optionValue}}
                                     </p>
-                                    
-                                    <span class="fa fa-times" style="cursor: pointer" (click)="cleanAdvancedSearch()">Effacer la recherche</span>
                                 </div>
                                 <ng-template #empty2>
                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                 </ng-template>
-                                
+                                <span class="fa fa-times" style="cursor: pointer" 
+                                    *ngIf="searchFilter[0]!='' || searchFilter[2]!='' || advancedSearchToDisplay.length!=0"
+                                    (click)="cleanAdvancedSearch()">Effacer la recherche</span>
                                 
 <!--                                 <input type="checkbox" class="checkbox filled-in" id="test1" />
                                 <label for="test1" class="">Tout sélectionner</label> -->

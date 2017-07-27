@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 declare var jquery:any;
 declare var $ :any;
@@ -20,7 +21,8 @@ export class CubeComponent implements OnInit, AfterViewInit {
   cube;
   video;
 
-  constructor(private sanitizer : DomSanitizer) {
+  constructor(private sanitizer : DomSanitizer,
+                private route : Router) {
     
   }
 
@@ -101,7 +103,9 @@ export class CubeComponent implements OnInit, AfterViewInit {
         this.cube.goTo(direction);
   }
 
-  
+    onClickCube(){
+    this.route.navigate(['/etablissement/'+this.eventData.school]);
+  }  
 
 }
 
