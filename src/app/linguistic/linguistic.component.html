@@ -16,8 +16,8 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                      (click)="onDestinationClick($event, '0')">
-                                                        <option value="" disabled selected hidden>Destination</option>
+                                                      (click)="onDestinationClick($event, 'destination')">
+                                                        <option value="" selected>Destination</option>
                                                         <option value="Allemagne">Allemagne</option>
                                                         <option value="Australie">Australie</option>
                                                         <option value="Canada">Canada</option>
@@ -41,8 +41,8 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                      (click)="onDestinationClick($event, '1')">
-                                                        <option value="" disabled selected hidden>Période</option>
+                                                      (click)="onDestinationClick($event, 'duration')">
+                                                        <option value="" selected >Période</option>
                                                         <option value="janvier">janvier</option>
                                                         <option value="février">février</option>
                                                         <option value="mars">mars</option>
@@ -64,26 +64,10 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                      (click)="onDestinationClick($event, '2')">
-                                                        <option value="" disabled selected hidden>Langue</option>
-                                                        <option value="Allemand">Allemand</option>
-                                                        <option value="Anglais">Anglais</option>
-                                                        <option value="Arabe">Arabe</option>
-                                                        <option value="Chinois">Chinois</option>
-                                                        <option value="Coréen">Coréen</option>
-                                                        <option value="Danois">Danois</option>
-                                                        <option value="Espagnol">Espagnol</option>
-                                                        <option value="Grec Moderne">Grec Moderne</option>
-                                                        <option value="Hébreu">Hébreu</option>
-                                                        <option value="Italien">Italien</option>
-                                                        <option value="Japonais">Japonais</option>
-                                                        <option value="Néerlandais">Néerlandais</option>
-                                                        <option value="Persan">Persan</option>
-                                                        <option value="Polonais">Polonais</option>
-                                                        <option value="Portugais">Portugais</option>
-                                                        <option value="Russe">Russe</option>
-                                                        <option value="Suédois">Suédois</option>
-                                                        <option value="Vietnamien">Vietnamien</option>
+                                                      (click)="onDestinationClick($event, 'language')">
+                                                        <option value="" selected>Langue</option>
+                                                        <option *ngFor="let language of languageList" [value]="language._id">{{language.name}}</option>
+                                                        
                                                     </select>
                                                 </label>
                                             </div>
@@ -97,8 +81,8 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                      (click)="onDestinationClick($event, '3')">
-                                                        <option value="" disabled selected hidden>Âge</option>
+                                                      (click)="onDestinationClick($event, 'age')">
+                                                        <option value="" selected>Âge</option>
                                                         <option value="8">8</option>
                                                         <option value="9">9</option>
                                                         <option value="10">10</option>
@@ -127,8 +111,8 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                      (click)="onDestinationClick($event, '4')">
-                                                        <option value="" disabled selected hidden>Organisme</option>
+                                                      (click)="onDestinationClick($event, 'organisme')">
+                                                        <option value="" selected>Organisme</option>
                                                     </select>
                                                 </label>
                                             </div>
@@ -148,43 +132,27 @@
                     <div class="col-md-12  holder-refine-search">
                         <div class="checkbox-one-line">
                             <span class="label-holder">Hébergement</span><br />
-                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-1" 
-                              (click)="onDestinationClick($event, '5')"/>
+                            <input type="checkbox" value="apartment" class="checkbox filled-in" id="filter-1" 
+                              (click)="onDestinationClick($event, 'place')"/>
                             <label for="filter-1">Appartement</label>
-                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-2" 
-                              (click)="onDestinationClick($event, '6')"/>
+                            <input type="checkbox" value="common" class="checkbox filled-in" id="filter-2" 
+                              (click)="onDestinationClick($event, 'place')"/>
                             <label for="filter-2">Collectif</label>
-                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-3" 
-                              (click)="onDestinationClick($event, '7')"/>
+                            <input type="checkbox" value="family" class="checkbox filled-in" id="filter-3" 
+                              (click)="onDestinationClick($event, 'place')"/>
                             <label for="filter-3">Famille</label>
-                            <input type="checkbox" name="" class="checkbox filled-in" id="filter-4" 
-                              (click)="onDestinationClick($event, '8')"/>
+                            <input type="checkbox" value="residence" class="checkbox filled-in" id="filter-4" 
+                              (click)="onDestinationClick($event, 'place')"/>
                             <label for="filter-4">Résidence</label>
                         </div><!-- -->
 
                         
                         <label class="select-custom" for="class"> Type de sejour<br />
                             <select name="class" class="form-control" id="class"
-                              (click)="onDestinationClick($event, '9')">
+                              (click)="onDestinationClick($event, 'destination')">
                                 <!-- <option value="" disabled selected hidden>Organisme</option> -->
                                 <option value="">Indifférent</option>
-                                <option value="Au pair">Au pair</option>
-                                <option value="Bénévolat">Bénévolat</option>
-                                <option value="Cours et découverte">Cours et découverte</option>
-                                <option value="Cours et sports">Cours et sports</option>
-                                <option value="Cours et thème">Cours et thème</option>
-                                <option value="Cours particuliers chez le professeur">Cours particuliers chez le professeur</option>
-                                <option value="Cours particuliers chez le professeur, voyage accompagné">Cours particuliers chez le professeur, voyage accompagné</option>
-                                <option value="Découverte sans cours">Découverte sans cours accompagné</option>
-                                <option value="Ecoles de langues">Ecoles de langues</option>
-                                <option value="Formation professionnelle">Formation professionnelle</option>
-                                <option value="Circuits aventure et découverte">Circuits aventure et découverte</option>
-                                <option value="Prépa cpge">Prépa cpge</option>
-                                <option value="Préparations aux examens étrangers">Préparations aux examens étrangers</option>
-                                <option value="Séjours avec parents">Séjours avec parents</option>
-                                <option value="Séjours studieux">Séjours studieux</option>
-                                <option value="Stage en entreprise">Stage en entreprise</option>
-                                <option value="Summer camp">Summer camp</option>
+                                <option *ngFor="let linguistic of linguisticList" [value]="linguistic._id">{{linguistic.name}}</option>
                             </select>
                         </label>
 
@@ -205,178 +173,3 @@
 
         </div><!-- white -->
 
-
-<!--<div class="white-background">
-  <div fxLayout>
-    <div fxFlex>
-      <h2 class="brochure-title">Recherche de séjour linguistique</h2>
-    </div>
-  </div>
-  <div fxLayout>
-    <div fxFlex fxLayoutAlign="center">
-      <form class="searchform">
-        <div class="form-wrap" fxFlex>
-          <div fxFlex>
-            <div fxFlex>
-              <div fxFlex>
-                <div class="form-group">
-                  <label class="select-custom" for="class">
-                    <md-select placeholder="Destination" class="form-control" id="class">
-                      <md-option value="" disabled selected hidden>Destination</md-option>
-                      <md-option value="Allemagne">Allemagne</md-option>
-                      <md-option value="Australie">Australie</md-option>
-                      <md-option value="Canada">Canada</md-option>
-                      <md-option value="Chine">Chine</md-option>
-                      <md-option value="Espagne">Espagne</md-option>
-                      <md-option value="Etats-unis">Etats-unis</md-option>
-                      <md-option value="France">France</md-option>
-                      <md-option value="Inde">Inde</md-option>
-                      <md-option value="Irlande">Irlande</md-option>
-                      <md-option value="Italie">Italie</md-option>
-                      <md-option value="Malte">Malte</md-option>
-                      <md-option value="Pays-bas">Pays-bas</md-option>
-                      <md-option value="Royaume Uni">Royaume Uni</md-option>
-                      <md-option value="Sri lanka">Sri lanka</md-option>
-                    </md-select>
-                  </label>
-                </div>
-              </div>
-
-              <div fxFlex>
-                <div class="form-group">
-                  <label class="select-custom" for="class">
-                    <md-select placeholder="Période" class="form-control" id="class">
-                      <md-option value="" disabled selected hidden>Période</md-option>
-                      <md-option value="janvier">janvier</md-option>
-                      <md-option value="février">février</md-option>
-                      <md-option value="mars">mars</md-option>
-                      <md-option value="avril">avril</md-option>
-                      <md-option value="mai">mai</md-option>
-                      <md-option value="juin">juin</md-option>
-                      <md-option value="juillet">juillet</md-option>
-                      <md-option value="août">août</md-option>
-                      <md-option value="septembre">septembre</md-option>
-                      <md-option value="octobre">octobre</md-option>
-                      <md-option value="novembre">novembre</md-option>
-                      <md-option value="décembre">décembre</md-option>
-                    </md-select>
-                  </label>
-                </div>
-              </div>
-
-              <div fxFlex>
-                <div class="form-group">
-                  <label class="select-custom" for="class">
-                    <md-select placeholder="Langue" class="form-control" id="class">
-                      <md-option value="" disabled selected hidden>Langue</md-option>
-                      <md-option value="Allemand">Allemand</md-option>
-                      <md-option value="Anglais">Anglais</md-option>
-                      <md-option value="Arabe">Arabe</md-option>
-                      <md-option value="Chinois">Chinois</md-option>
-                      <md-option value="Coréen">Coréen</md-option>
-                      <md-option value="Danois">Danois</md-option>
-                      <md-option value="Espagnol">Espagnol</md-option>
-                      <md-option value="Grec Moderne">Grec Moderne</md-option>
-                      <md-option value="Hébreu">Hébreu</md-option>
-                      <md-option value="Italien">Italien</md-option>
-                      <md-option value="Japonais">Japonais</md-option>
-                      <md-option value="Néerlandais">Néerlandais</md-option>
-                      <md-option value="Persan">Persan</md-option>
-                      <md-option value="Polonais">Polonais</md-option>
-                      <md-option value="Portugais">Portugais</md-option>
-                      <md-option value="Russe">Russe</md-option>
-                      <md-option value="Suédois">Suédois</md-option>
-                      <md-option value="Vietnamien">Vietnamien</md-option>
-                    </md-select>
-                  </label>
-                </div>
-              </div>
-              <div fxFlex>
-                <div class="form-group">
-                  <label class="select-custom" for="class">
-                    <md-select placeholder="Age" class="form-control" id="class">
-                      <md-option value="" disabled selected hidden>Âge</md-option>
-                      <md-option value="8">8</md-option>
-                      <md-option value="9">9</md-option>
-                      <md-option value="10">10</md-option>
-                      <md-option value="11">11</md-option>
-                      <md-option value="12">12</md-option>
-                      <md-option value="13">13</md-option>
-                      <md-option value="14">14</md-option>
-                      <md-option value="15">15</md-option>
-                      <md-option value="16">16</md-option>
-                      <md-option value="17">17</md-option>
-                      <md-option value="18">18</md-option>
-                      <md-option value="19">19</md-option>
-                      <md-option value="20">20</md-option>
-                      <md-option value="21">21</md-option>
-                      <md-option value="22">22</md-option>
-                      <md-option value="23">23</md-option>
-                      <md-option value="24">24</md-option>
-                      <md-option value="25">25</md-option>
-                      <md-option value="25>">25></md-option>
-                    </md-select>
-                  </label>
-                </div>
-              </div>
-              <div fxFlex>
-                <div class="form-group">
-                  <label class="select-custom" for="class">
-                    <md-select placeholder="Organisme" class="form-control" id="class">
-                      <md-option value="" disabled selected hidden>Organisme</md-option>
-                    </md-select>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div fxLayout class="linguistic-content holder-refine-search">
-    <div class="checkbox-one-line" fxFlex fxLayoutAlign="center">
-      <div fxLayout="column">
-        <div>
-          <span class="label-holder">Hébergement</span>
-        </div>
-        <div>
-          <md-checkbox>Appartement</md-checkbox>
-          <md-checkbox>Collectif</md-checkbox>
-          <md-checkbox>Famille</md-checkbox>
-          <md-checkbox>Résidence</md-checkbox>
-          <label class="select-custom" for="class">
-            <md-select placeholder="Type de séjour" class="form-control" id="class">
-              <md-option value="Indifférent">Indifférent</md-option>
-              <md-option value="Au pair">Au pair</md-option>
-              <md-option value="Bénévolat">Bénévolat</md-option>
-              <md-option value="Cours et découverte">Cours et découverte</md-option>
-              <md-option value="Cours et sports">Cours et sports</md-option>
-              <md-option value="Cours et thème">Cours et thème</md-option>
-              <md-option value="Cours particuliers chez le professeur">Cours particuliers chez le professeur</md-option>
-              <md-option value="Cours particuliers chez le professeur, voyage accompagné">Cours particuliers chez le professeur, voyage accompagné</md-option>
-              <md-option value="Découverte sans cours">Découverte sans cours accompagné</md-option>
-              <md-option value="Ecoles de langues">Ecoles de langues</md-option>
-              <md-option value="Formation professionnelle">Formation professionnelle</md-option>
-              <md-option value="Circuits aventure et découverte">Circuits aventure et découverte</md-option>
-              <md-option value="Prépa cpge">Prépa cpge</md-option>
-              <md-option value="Préparations aux examens étrangers">Préparations aux examens étrangers</md-option>
-              <md-option value="Séjours avec parents">Séjours avec parents</md-option>
-              <md-option value="Séjours studieux">Séjours studieux</md-option>
-              <md-option value="Stage en entreprise">Stage en entreprise</md-option>
-              <md-option value="Summer camp">Summer camp</md-option>
-            </md-select>
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2%">
-    <div *ngFor="let trip of listTrips">
-      <app-linguistic-trips></app-linguistic-trips>
-    </div>
-  </div>
-  <div *ngFor="let trip of listTrips">
-      <app-linguistic-trips></app-linguistic-trips>
-    </div>
-</div>-->

@@ -8,73 +8,30 @@
       <div class="content-detail">
           <h3>Nom du séjour</h3>
 
-          <p>
-              <label class="select-custom" for="class">Langue
-                  <select name="class" class="form-control" id="class">
-                      <option value="" disabled selected hidden>Langue</option>
-                      <option value="Allemand">Allemand</option>
-                      <option value="Anglais">Anglais</option>
-                      <option value="Arabe">Arabe</option>
-                      <option value="Chinois">Chinois</option>
-                      <option value="Coréen">Coréen</option>
-                      <option value="Danois">Danois</option>
-                      <option value="Espagnol">Espagnol</option>
-                      <option value="Grec Moderne">Grec Moderne</option>
-                      <option value="Hébreu">Hébreu</option>
-                      <option value="Italien">Italien</option>
-                      <option value="Japonais">Japonais</option>
-                      <option value="Néerlandais">Néerlandais</option>
-                      <option value="Persan">Persan</option>
-                      <option value="Polonais">Polonais</option>
-                      <option value="Portugais">Portugais</option>
-                      <option value="Russe">Russe</option>
-                      <option value="Suédois">Suédois</option>
-                      <option value="Vietnamien">Vietnamien</option>
-                  </select>
-              </label>
+          <p><label>Langue : </label> {{tripData.language.name}}</p>
+
+          <p><label>Age</label> de {{tripData.minAge}} à {{tripData.maxAge}}</p>
+          <p><label>Date de debut :</label> {{tripData.startDate | shorten:10}}<br />
+              <label>Date de fin :</label> {{tripData.endDate | shorten:10}}
           </p>
 
-          <p><label>Age</label> de 8 a 25</p>
-          <p><label>Date de debut:</label> 12/06/2017<br />
-              <label>Date de fin:</label> 18/06/2017
-          </p>
+          <p><label>Prix:</label> {{tripData.price}}</p>
 
-          <p><label>Prix:</label> 200</p>
-
-          <p><label>Devise:</label> EUR</p>
+          <p><label>Devise:</label> {{tripData.currency}}</p>
           
           <p>
-              <span class="label-holder">Hébergement</span><br />
-              <input type="checkbox" name="" class="checkbox filled-in" id="school-1" /><label for="school-1">Appartement</label><br />
-              <input type="checkbox" name="" class="checkbox filled-in" id="school-2" /><label for="school-2">Collectif</label><br />
-              <input type="checkbox" name="" class="checkbox filled-in" id="school-3" /><label for="school-3">Famille</label><br />
-              <input type="checkbox" name="" class="checkbox filled-in" id="school-4" /><label for="school-4">Résidence</label><br />
+            <span class="label-holder">Hébergement</span><br />
+            <input type="checkbox" name="" class="checkbox filled-in" id="school-1" [checked]="tripData.place.apartment" disabled />
+            <label for="school-1">Appartement</label><br />
+            <input type="checkbox" name="" class="checkbox filled-in" id="school-2" [checked]="tripData.place.common" disabled/>
+            <label for="school-2">Collectif</label><br />
+            <input type="checkbox" name="" class="checkbox filled-in" id="school-3" [checked]="tripData.place.family" disabled/>
+            <label for="school-3">Famille</label><br />
+            <input type="checkbox" name="" class="checkbox filled-in" id="school-4" [checked]="tripData.place.residence" disabled/>
+            <label for="school-4">Résidence</label><br />
           </p>
 
-          <p>
-              <label class="select-custom" for="class"> Type de sejour<br />
-                  <select name="class" class="form-control" id="class">
-                      <option value="Indifférent">Indifférent</option>
-                      <option value="Au pair">Au pair</option>
-                      <option value="Bénévolat">Bénévolat</option>
-                      <option value="Cours et découverte">Cours et découverte</option>
-                      <option value="Cours et sports">Cours et sports</option>
-                      <option value="Cours et thème">Cours et thème</option>
-                      <option value="Cours particuliers chez le professeur">Cours particuliers chez le professeur</option>
-                      <option value="Cours particuliers chez le professeur, voyage accompagné">Cours particuliers chez le professeur, voyage accompagné</option>
-                      <option value="Découverte sans cours">Découverte sans cours accompagné</option>
-                      <option value="Ecoles de langues">Ecoles de langues</option>
-                      <option value="Formation professionnelle">Formation professionnelle</option>
-                      <option value="Circuits aventure et découverte">Circuits aventure et découverte</option>
-                      <option value="Prépa cpge">Prépa cpge</option>
-                      <option value="Préparations aux examens étrangers">Préparations aux examens étrangers</option>
-                      <option value="Séjours avec parents">Séjours avec parents</option>
-                      <option value="Séjours studieux">Séjours studieux</option>
-                      <option value="Stage en entreprise">Stage en entreprise</option>
-                      <option value="Summer camp">Summer camp</option>
-                  </select>
-              </label>
-          </p>
+          <p><label>Type de séjour : </label> {{tripData.linguistic.name}}</p>
 
 
           

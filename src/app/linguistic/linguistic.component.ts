@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SchoolService } from '../services/school.service';
+import { PublicService }from '../services/public.service';
+import { UsersService } from '../services/users.service';
 
 declare var jquery:any;
 declare var $ :any;
@@ -14,21 +16,34 @@ import 'slick-carousel/slick/slick';
 export class LinguisticComponent implements OnInit, AfterViewInit {
 
   listTrips : any;
-  listTripsFiltered : any;
+  listTripsFiltered =[];
+  languageList: any;
+  linguisticList: any;
+  tripFilter = {};
+  nbSlick = 0;
 
   constructor(private schoolService : SchoolService,
-              private location : Location) { 
-    this.getTrips();
+              private location : Location,
+              private publicService : PublicService,
+              private usersService : UsersService) { 
+    
   }
 
   ngOnInit() {
+    this.getTrips();
+    this.getLanguage();
+    this.getLinguistic();
   }
 
   ngAfterViewInit() { 
-    let test = '.school-carousel1';
-      (<any> $(test)).slick();
-        
+    this.initCarousel()
+      
     }
+
+  initCarousel(){
+    let test = '.school-carousel1';
+    (<any> $(test)).slick();
+  }
 
   getTrips(){
     this.schoolService.getTrips()
@@ -41,9 +56,9 @@ export class LinguisticComponent implements OnInit, AfterViewInit {
           } else {
             this.listTrips = data;
             this.listTripsFiltered = data;
-            for(let i=0; i<this.listTrips.length; i++){
-              this.listTrips[i].class = "school-carousel"+i;
-              this.listTripsFiltered[i].class = "school-carousel"+i;
+            for(let i=0; i<this.listTripsFiltered.length; i++){
+              this.listTripsFiltered[i].class = "school-carousel"+this.nbSlick;
+              this.nbSlick+=1;
             }
             console.log(this.listTripsFiltered);
           }
@@ -51,74 +66,97 @@ export class LinguisticComponent implements OnInit, AfterViewInit {
       )
   }
 
-  onDestinationClick(event, index){
-    console.log(event)
+  getLanguage(){
+      this.publicService.getLanguage()
+        .subscribe(
+          response=>{
+            let data = response.data
+            if(response.code ==400){
+              console.log(response.message)
+            } else {
+              this.languageList=data;
+              console.log(data);
+            }
+          }
+        )
+    }
+  
+  getLinguistic(){
+    this.publicService.getLinguistics()
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code==400){
+            console.log(response.message)
+          } else {
+            this.linguisticList = response.data;
+            console.log(this.linguisticList)
+          }
+        }
+      )
+  }
+
+  postTrip(){
+    console.log(this.tripFilter);
+    this.usersService.postTrip(this.tripFilter)
+      .subscribe(
+        response=>{
+          let data = response.data;
+          console.log(data)
+          if(response.code==400){
+            console.log(response.message)
+          } else {
+            this.listTripsFiltered=[]
+            this.listTripsFiltered=data;
+            console.log(this.listTripsFiltered);
+            for(let i=0; i<this.listTripsFiltered.length; i++){
+              this.listTripsFiltered[i].class = "school-carousel"+this.nbSlick;
+              this.nbSlick+=1;
+            }
+          }
+        }
+      )
+  }
+
+  onDestinationClick(event, type){
+    // console.log(event)
     let filterValue = event.srcElement.value;
-    if(filterValue!=''){
-      if(index=='0'){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip =>{
-            return filterValue == trip.destination
-          }
-        )
-      } else if(index=='1') {
-        this.listTripsFiltered = this.listTrips.filter(
-          trip=>{
-            return filterValue == trip.periode
-          }
-        )
-      } else if(index=='2'){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip =>{
-            return filterValue == trip.language
-          }
-        )
-      } else if(index=='3'){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip=>{
-            return filterValue > trip.minAge && filterValue < trip.maxAge
-          }
-        )
-      } else if(index=='4'){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip=>{
-            return filterValue = trip.linguistic
-          }
-        )
-      } else if(index=='5' && event.srcElement.checked){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip=>{
-            return trip.place.apartement
-          }
-        )
-      } else if(index=='6' && event.srcElement.checked){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip=>{
-            return trip.place.common
-          }
-        )
-      } else if(index=='7' && event.srcElement.checked){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip=>{
-            return trip.place.family
-          }
-        )
-      } else if(index=='8' && event.srcElement.checked){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip=>{
-            return trip.place.residence
-          }
-        )
-      } else if(index=='9'){
-        this.listTripsFiltered = this.listTrips.filter(
-          trip=>{
-            return filterValue == trip.tripType
-          }
-        )
+    console.log(filterValue, this.tripFilter[type]);
+    if(type=="place"){
+      if(typeof this.tripFilter[type]=="undefined"){
+        // this.tripFilter[type]=filterValue;
+        // this.tripFilter[type][filterValue]=true;
+        this.tripFilter[type]={}
+        if(filterValue=="apartment"){
+          this.tripFilter[type].apartment=true;
+        } else if (filterValue=="common"){
+          this.tripFilter[type].common=true;
+        } else if (filterValue=="family"){
+          this.tripFilter[type].family=true;
+        } else{
+          this.tripFilter[type].residence=true;
+        }
+        console.log(this.tripFilter)
       } else {
-        this.listTripsFiltered = this.listTrips
+        // this.tripFilter[type][filterValue]=!this.tripFilter[type][filterValue]
+        delete this.tripFilter[type][filterValue];
+        console.log(this.tripFilter[type].apartement, this.tripFilter[type].common,
+          this.tripFilter[type].family, this.tripFilter[type].residence)
+        if(typeof this.tripFilter[type].apartement == "undefined" &&
+            typeof this.tripFilter[type].common == "undefined" &&
+            typeof this.tripFilter[type].family == "undefined" &&
+            typeof this.tripFilter[type].residence == "undefined"){
+          delete this.tripFilter[type];
+        }
+      }
+    } else {
+      if(filterValue==""){
+        delete this.tripFilter[type]
+      }else {
+        this.tripFilter[type]=filterValue;
       }
     }
+    this.postTrip();
   }
 
 }

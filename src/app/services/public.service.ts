@@ -3,7 +3,9 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 const SCHOOLS_API : string = "http://54.254.203.172/cideapi/api/public/schools/";
-const CITIES_API : string = "http://54.254.203.172/cideapi/api/public/cities/autocomplete"
+const CITIES_API : string = "http://54.254.203.172/cideapi/api/public/cities/autocomplete";
+const LINGUISTIC_API: string = "http://54.254.203.172/cideapi/api/public/linguistic";
+const LANGUAGE_API: string = "http://54.254.203.172/cideapi/api/public/language";
 
 @Injectable()
 export class PublicService {
@@ -60,5 +62,15 @@ export class PublicService {
 
   cleanSearch(){
     this.searchData=["", "", ""];
+  }
+
+  getLinguistics() : Observable <any> {
+    return this.http.get(LINGUISTIC_API)
+      .map((response)=>response.json());
+  }
+
+  getLanguage() : Observable<any> {
+    return this.http.get(LANGUAGE_API)
+      .map((response)=>response.json());
   }
 }

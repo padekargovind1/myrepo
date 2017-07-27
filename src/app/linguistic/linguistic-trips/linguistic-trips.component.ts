@@ -16,7 +16,7 @@ export class LinguisticTripsComponent implements OnInit, AfterViewInit {
   constructor(private schoolService : SchoolService) { 
     setTimeout(()=>{
       console.log(this.tripData);  
-    }, 2000);
+    }, 1000);
   }
 
   ngOnInit() {
@@ -45,7 +45,6 @@ export class LinguisticTripsComponent implements OnInit, AfterViewInit {
     //   }
     // )
   }
-
 
     ngAfterViewInit() { 
 

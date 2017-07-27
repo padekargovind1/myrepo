@@ -14,6 +14,7 @@ const PROFILE_API : string = "http://54.254.203.172/cideapi/api/users/profile";
 const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/users/appointments";
 const PACKAGE_API : string = "http://54.254.203.172/cideapi/api/users/package";
 const APPLICATION_API : string = "http://54.254.203.172/cideapi/api/users/apply";
+const TRIPS_API: string = "http://54.254.203.172/cideapi/api/users/trips";
 
 @Injectable()
 export class UsersService {
@@ -129,5 +130,10 @@ export class UsersService {
   getApplication():Observable<any>{
     return this.http.get(APPLICATION_API+'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
+  }
+
+  postTrip(data):Observable<any>{
+    return this.http.post(TRIPS_API+'?token='+this.token, data, {headers: this.headers})
+      .map((response)=>response.json())
   }
 }
