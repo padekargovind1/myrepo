@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-school-card',
@@ -10,7 +11,8 @@ export class SchoolCardComponent implements OnInit {
 
   @Input() SchoolData : any;
 
-  constructor(private router : Router) { }
+  constructor(private router : Router,
+              private usersService : UsersService) { }
 
   ngOnInit() {
     // console.log(this.SchoolData, this.SchoolData._id);
@@ -23,6 +25,19 @@ export class SchoolCardComponent implements OnInit {
    
   applyToSchool(){
     this.router.navigate(['applyto', this.SchoolData._id]);
+  }
+
+  saveInWish(){
+    const data = {
+      type : "wish",
+      school : this.SchoolData._id
+    }
+    this.usersService.postApplication(data)
+      .subscribe(
+        response=>{
+          console.log(response)
+        }
+      )
   }
   
 }

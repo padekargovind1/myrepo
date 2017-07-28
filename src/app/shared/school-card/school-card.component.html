@@ -1,9 +1,17 @@
 
 <ul class="school-action">
-    <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
-    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
-    <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
-    <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+    <li (click)="saveInWish()">
+        <i style="cursor:pointer" class="fa fa-bookmark" aria-hidden="true"></i>
+    </li>
+    <li (click)="applyToSchool()">
+        <i style="cursor:pointer" class="fa fa-paper-plane" aria-hidden="true"></i>
+    </li>
+    <li>
+        <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
+    </li>
+    <li>
+        <i style="cursor:pointer" class="fa fa-download" aria-hidden="true"></i>
+    </li>
 </ul>
 
 <img src="assets/images/ad/school-1.jpg" alt="School 1" />

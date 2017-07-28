@@ -127,6 +127,7 @@ export class LinguisticComponent implements OnInit, AfterViewInit {
         // this.tripFilter[type]=filterValue;
         // this.tripFilter[type][filterValue]=true;
         this.tripFilter[type]={}
+        console.log(this.tripFilter)
         if(filterValue=="apartment"){
           this.tripFilter[type].apartment=true;
         } else if (filterValue=="common"){

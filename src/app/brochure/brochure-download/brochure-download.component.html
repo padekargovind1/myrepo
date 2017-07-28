@@ -17,9 +17,11 @@
       data-dismiss="modal" 
       class="btn btn-highlighted"
       (click)="onCancel()">Annuler</button>
-    <button type="button" 
-      data-dismiss="modal" 
-      class="btn btn-secondary"
-      (click)="onSubmit()">Télécharger</button>
+      <a href="../../assets/brochure/1.pdf" download="1.pdf" target="_self">
+        <button type="button" 
+        data-dismiss="modal" 
+        class="btn btn-secondary"
+        (click)="onSubmit()">Télécharger</button>
+      </a>
 
 </div><!-- .modal-body -->
