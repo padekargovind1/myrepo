@@ -41,20 +41,20 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                      (click)="onDestinationClick($event, 'duration')">
+                                                      (click)="onDestinationClick($event, 'period')">
                                                         <option value="" selected >Période</option>
-                                                        <option value="janvier">janvier</option>
-                                                        <option value="février">février</option>
-                                                        <option value="mars">mars</option>
-                                                        <option value="avril">avril</option>
-                                                        <option value="mai">mai</option>
-                                                        <option value="juin">juin</option>
-                                                        <option value="juillet">juillet</option>
-                                                        <option value="août">août</option>
-                                                        <option value="septembre">septembre</option>
-                                                        <option value="octobre">octobre</option>
-                                                        <option value="novembre">novembre</option>
-                                                        <option value="décembre">décembre</option>
+                                                        <option value="0">janvier</option>
+                                                        <option value="1">février</option>
+                                                        <option value="2">mars</option>
+                                                        <option value="3">avril</option>
+                                                        <option value="4">mai</option>
+                                                        <option value="5">juin</option>
+                                                        <option value="6">juillet</option>
+                                                        <option value="7">août</option>
+                                                        <option value="8">septembre</option>
+                                                        <option value="9">octobre</option>
+                                                        <option value="10">novembre</option>
+                                                        <option value="11">décembre</option>
                                                     </select>
                                                 </label>
                                             </div>
@@ -149,7 +149,7 @@
                         
                         <label class="select-custom" for="class"> Type de sejour<br />
                             <select name="class" class="form-control" id="class"
-                              (click)="onDestinationClick($event, 'destination')">
+                              (click)="onDestinationClick($event, 'linguistic')">
                                 <!-- <option value="" disabled selected hidden>Organisme</option> -->
                                 <option value="">Indifférent</option>
                                 <option *ngFor="let linguistic of linguisticList" [value]="linguistic._id">{{linguistic.name}}</option>

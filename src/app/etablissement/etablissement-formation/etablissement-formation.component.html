@@ -1,449 +1,486 @@
-<div class="panel-body-course">
-    
-    <div class="wrapper wrapper-content animated fadeInRight">
+
+<!--<div class="tabs-container">
+
+    <ul class="nav nav-tabs responsive">
+        <li class="">
+            <a data-toggle="tab" href="#{{cycle.cycle.cycle.nom}}" *ngFor="let cycle of schoolDataRef.cycles">{{cycle.cycle.cycle.nom}}</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div *ngFor="let cycle of schoolDataRef.cycles" id="{{cycle.cycle.cycle.nom}}" class="tab-pane active">
+            <p>test</p>
+        </div>
+    </div>
+</div>-->
+<md-tab-group>
+    <md-tab [label]="cycle.cycle.cycle.nom" 
+        *ngFor="let cycle of schoolDataToDisplay; let i=index">
+            <div class="panel-body-course">
+                
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    
+                    <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  identity  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Nom Cycle</strong><br />
+                                    {{schoolData[i].cycleName}}
+                                </td>
+                                <td>
+                                    <strong>Adr 1</strong><br />
+                                    {{schoolData[i].ad1}}
+                                </td>
+                                <td>
+                                    <strong>Adr 2</strong><br />
+                                    {{schoolData[i].ad2}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>CP</strong><br />
+                                    {{schoolData[i].postalCode}}
+                                </td>
+                                <td>
+                                    <strong>Ville</strong><br />
+                                    {{schoolData[i].city}}
+                                </td>
+                                <td>
+                                    <strong>Pays</strong><br />
+                                    {{schoolData[i].country}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Academie</strong><br />
+                                    {{schoolData[i].academic}}
+                                </td>
+                                <td>
+                                    <strong>Departement</strong><br />
+                                    {{schoolData[i].departement}}
+                                </td>
+                                <td>
+                                    <strong>Region</strong><br />
+                                    {{schoolData[i].region}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Tel</strong><br />
+                                    +33 {{schoolData[i].tel}}
+                                </td>
+                                <td>
+                                    <strong>Url Web</strong><br />
+                                    <a href="#">{{schoolData[i].urlWeb}}</a>
+                                </td>
+                                <td>
+                                    <strong>Mél</strong><br />
+                                    <a href="mailto:nom@mel.com">{{schoolData[i].mel}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                    <h4>Specificites</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Horaires Aménagés</strong><br />
+                                    <span *ngIf="schoolData[i].flexibleTime; else cycle1">Oui</span>
+                                    <ng-template #cycle1><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Enfant Precoces</strong><br />
+                                    <span *ngIf="schoolData[i].advanced; else cycle2">Oui</span>
+                                    <ng-template #cycle2><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Aides Financières - Bourse</strong><br />
+                                    <span *ngIf="schoolData[i].finance; else cycle3">Oui</span>
+                                    <ng-template #cycle3><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Cours Francais Langue Etrangere - LFE</strong><br />
+                                    <span *ngIf="schoolData[i].foreignFrench; else cycle4">Oui</span>
+                                    <ng-template #cycle4><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Accueil Handicapé, Dyslexie</strong><br />
+                                    <span *ngIf="schoolData[i].handicaped; else cycle5">Oui</span>
+                                    <ng-template #cycle5><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Moyens d'acces</strong><br />
+                                    {{schoolData[i].transport}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Internat</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Internat</strong><br />
+                                    <span *ngIf="schoolData[i].internat; else cycle6">Oui</span>
+                                    <ng-template #cycle6><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Capacité</strong><br />
+                                    {{schoolData[i].capacity}}
+                                </td>
+                                <td>
+                                    <strong>Commentaires Internat</strong><br />
+                                    {{schoolData[i].internatComments}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Internat sur Place</strong><br />
+                                    <span *ngIf="schoolData[i].onSite; else cycle7">Oui</span>
+                                    <ng-template #cycle7><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Internat externe</strong><br />
+                                    <span *ngIf="schoolData[i].notOnSite; else cycle8">Oui</span>
+                                    <ng-template #cycle8><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Résidence Étudiante</strong><br />
+                                    <span *ngIf="schoolData[i].resident; else cycle9">Oui</span>
+                                    <ng-template #cycle9><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Internat de semaine</strong><br />
+                                    <span *ngIf="schoolData[i].weekdays; else cycle10">Oui</span>
+                                    <ng-template #cycle10><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Internat Permanent</strong><br />
+                                    <span *ngIf="schoolData[i].fulltime; else cycle11">Oui</span>
+                                    <ng-template #cycle11><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Internat Certains Weekend</strong><br />
+                                    <span *ngIf="schoolData[i].someweek; else cycle12">Oui</span>
+                                    <ng-template #cycle12><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Internat mixte</strong><br />
+                                    <span *ngIf="schoolData[i].internatMixte; else cycle13">Oui</span>
+                                    <ng-template #cycle13><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Internat filles</strong><br />
+                                    <span *ngIf="schoolData[i].internatGirls; else cycle14">Oui</span>
+                                    <ng-template #cycle14><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Internat garcon</strong><br />
+                                    <span *ngIf="schoolData[i].internatBoys; else cycle15">Oui</span>
+                                    <ng-template #cycle15><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                        <!--<div class="tabs-container">
+
+        <ul class="nav nav-tabs responsive">
+            <li class="">
+                <a data-toggle="tab" href="#{{cycle.cycle.cycle.nom}}" *ngFor="let cycle of schoolDataRef.cycles">{{cycle.cycle.cycle.nom}}</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div *ngFor="let cycle of schoolDataRef.cycles" id="{{cycle.cycle.cycle.nom}}" class="tab-pane active">
+                <p>test</p>
+            </div>
+        </div>
+    </div>-->
+            <strong>Chambres individuelles</strong><br />
+                                    <span *ngIf="schoolData[i].individual; else cycle16">Oui</span>
+                                    <ng-template #cycle16><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Chambres 2 a 4 lits</strong><br />
+                                    <span *ngIf="schoolData['2to4']; else cycle17">Oui</span>
+                                    <ng-template #cycle17><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>chambres 5 a 8 lits</strong><br />
+                                    <span *ngIf="schoolData['5to8']; else cycle18">Oui</span>
+                                    <ng-template #cycle18><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Dortoirs</strong><br />
+                                    <span *ngIf="schoolData[i].dormitories; else cycle19">Oui</span>
+                                    <ng-template #cycle19><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Prix</strong><br />
+                                    {{schoolData[i].price}}€
+                                </td>
+                                <td>
+                                    <strong>&nbsp;</strong><br />
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Stages</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Organisation du cursus</strong><br />
+                                    {{schoolData[i].organisationCourse}}
+                                </td>
+                                <td>
+                                    <strong>Stage pré-rentrée</strong><br />
+                                    <span *ngIf="schoolData[i].preIntake; else cycle20">Oui</span>
+                                    <ng-template #cycle20><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Stages petites vacances</strong><br />
+                                    <span *ngIf="schoolData[i].smallHoliday; else cycle21">Oui</span>
+                                    <ng-template #cycle21><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>stages de grandes vacances</strong><br />
+                                    <span *ngIf="schoolData[i].bigHoliday; else cycle22">Oui</span>
+                                    <ng-template #cycle22><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong></strong><br />
+                                    
+                                </td>
+                                <td>
+                                    <strong></strong><br />
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Restaurantion</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Self-service</strong><br />
+                                    <span *ngIf="schoolData[i].selfService; else cycle23">Oui</span>
+                                    <ng-template #cycle23><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Service à Table</strong><br />
+                                    <span *ngIf="schoolData[i].serviceAtTable; else cycle24">Oui</span>
+                                    <ng-template #cycle24><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Cafeteria</strong><br />
+                                    <span *ngIf="schoolData[i].cafeteria; else cycle25">Oui</span>
+                                    <ng-template #cycle25><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Externat</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Externat</strong><br />
+                                    <span *ngIf="schoolData[i].externat; else cycle26">Oui</span>
+                                    <ng-template #cycle26><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>demi-pension mixte</strong><br />
+                                    <span *ngIf="schoolData[i].externatMixte; else cycle27">Oui</span>
+                                    <ng-template #cycle27><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>demi-pension garcons</strong><br />
+                                    <span *ngIf="schoolData[i].externatBoys; else cycle28">Oui</span>
+                                    <ng-template #cycle28><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>demi-pension filles</strong><br />
+                                    <span *ngIf="schoolData[i].externatGirls; else cycle29">Oui</span>
+                                    <ng-template #cycle29><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Autorisations</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Lien contact</strong><br />
+                                    +33 {{schoolData[i].autoContact}}
+                                </td>
+                                <td>
+                                    <strong>Priorite Web</strong><br />
+                                    <a href="#">{{schoolData[i].autoWebsite}}</a>
+                                </td>
+                                <td>
+                                    <strong>Autorisation Web 1</strong><br />
+                                    <span *ngIf="schoolData[i].autoWeb1; else cycle30">Oui</span>
+                                    <ng-template #cycle30><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Autorisation Web 2</strong><br />
+                                    Oui
+                                </td>
+                                <td>
+                                    <strong>Mailing List</strong><br />
+                                    <span *ngIf="schoolData[i].autoWeb2; else cycle31">Oui</span>
+                                    <ng-template #cycle31><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Stat Mail Fiche Consultee</strong><br />
+                                    <span *ngIf="schoolData[i].statMailing; else cycle32">Oui</span>
+                                    <ng-template #cycle32><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Stat envoi immediat</strong><br />
+                                    <span *ngIf="schoolData[i].statImmediat; else cycle33">Oui</span>
+                                    <ng-template #cycle33><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Stat envoi quotidient</strong><br />
+                                    <span *ngIf="schoolData[i].statQuotidien; else cycle34">Oui</span>
+                                    <ng-template #cycle34><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>Stat envoi hebdo</strong><br />
+                                    <span *ngIf="schoolData[i].statHebdo; else cycle35">Oui</span>
+                                    <ng-template #cycle35><span>Non</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Stat envoi mensuel</strong><br />
+                                    <span *ngIf="schoolData[i].statMensuel; else cycle36">Oui</span>
+                                    <ng-template #cycle36><span>Non</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong></strong><br />
+                                    
+                                </td>
+                                <td>
+                                    <strong></strong><br />
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Statut</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Statut 1</strong><br />
+                                    {{schoolData[i].status1}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Statut 2</h5>
+                    <table class="table table-stripped table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td>Sous Contrat D'association<br /> Oui</td>
+                                    <td>Hors contrat<br /> Oui</td>
+                                </tr>
+                                <tr>
+                                    <td>CFA<br /> Oui</td>
+                                    <td>UFA<br /> Oui</td>
+                                </tr>
+                                <tr>
+                                    <td>Reconnue par l'Etat<br /> Oui</td>
+                                    <td>en convention avec l'Etat<br /> Oui</td>
+                                </tr>
+                                <tr>
+                                    <td>Enseignement superieur Libre<br /> Oui</td>
+                                    <td>Enseignement superieur<br /> Oui</td>
+                                </tr>
+                                <tr>
+                                    <td>Enseignement superieur technique<br /> Non</td>
+                                    <td>Sous contrat simple<br /> Non</td>
+                                </tr>
+                        
+                        </tbody>
+                    </table>
+
+                    <h5>Statut 3</h5>
+                    <table class="table table-stripped table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td>Laique<br /> Non</td>
+                                    <td>Confessionel<br /> Oui, Catholique</td>
+                                </tr>              
+                        </tbody>
+                    </table>
+                </div>
+
+
+                </div><!-- .wrapper -->
+
+            </div><!-- .panel-body -->
+    </md-tab>
+</md-tab-group>
+
         
-        <div class="table-responsive">
 
-          <table class="table table-stripped table-bordered  identity  formation-table">
-              <tbody>
-                  <tr>
-                      <td>
-                          <strong>Nom Cycle</strong><br />
-                          {{schoolData.cycleName}}
-                      </td>
-                      <td>
-                          <strong>Adr 1</strong><br />
-                          {{schoolData.ad1}}
-                      </td>
-                      <td>
-                          <strong>Adr 2</strong><br />
-                          {{schoolData.ad2}}
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>CP</strong><br />
-                          {{schoolData.postalCode}}
-                      </td>
-                      <td>
-                          <strong>Ville</strong><br />
-                          {{schoolData.city}}
-                      </td>
-                      <td>
-                          <strong>Pays</strong><br />
-                          {{schoolData.country}}
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Academie</strong><br />
-                          {{schoolData.academic}}
-                      </td>
-                      <td>
-                          <strong>Departement</strong><br />
-                          {{schoolData.department}}
-                      </td>
-                      <td>
-                          <strong>Region</strong><br />
-                          {{schoolData.region}}
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Tel</strong><br />
-                          +33 {{schoolData.tel}}
-                      </td>
-                      <td>
-                          <strong>Url Web</strong><br />
-                          <a href="#">{{schoolData.urlWeb}}</a>
-                      </td>
-                      <td>
-                          <strong>Mél</strong><br />
-                          <a href="mailto:nom@mel.com">{{schoolData.mel}}</a>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-    
-        <h4>Specificites</h4>
-      <div class="table-responsive">
-
-          <table class="table table-stripped table-bordered  specification  formation-table">
-              <tbody>
-                  <tr>
-                      <td>
-                          <strong>Horaires Aménagés</strong><br />
-                          <span *ngIf="schoolData.flexibleTime; else cycle1">Oui</span>
-                          <ng-template #cycle1><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Enfant Precoces</strong><br />
-                          <span *ngIf="schoolData.advanced; else cycle2">Oui</span>
-                          <ng-template #cycle2><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Aides Financières - Bourse</strong><br />
-                          <span *ngIf="schoolData.finance; else cycle3">Oui</span>
-                          <ng-template #cycle3><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Cours Francais Langue Etrangere - LFE</strong><br />
-                          <span *ngIf="schoolData.foreignFrench; else cycle4">Oui</span>
-                          <ng-template #cycle4><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Accueil Handicapé, Dyslexie</strong><br />
-                          <span *ngIf="schoolData.handicaped; else cycle5">Oui</span>
-                          <ng-template #cycle5><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Moyens d'acces</strong><br />
-                          {{schoolData.transport}}
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-
-      <h4>Internat</h4>
-      <div class="table-responsive">
-
-          <table class="table table-stripped table-bordered  specification  formation-table">
-              <tbody>
-                  <tr>
-                      <td>
-                          <strong>Internat</strong><br />
-                          <span *ngIf="schoolData.internat; else cycle6">Oui</span>
-                          <ng-template #cycle6><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Capacité</strong><br />
-                          {{schoolData.capacity}}
-                      </td>
-                      <td>
-                          <strong>Commentaires Internat</strong><br />
-                          {{schoolData.internatComments}}
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Internat sur Place</strong><br />
-                          <span *ngIf="schoolData.onSite; else cycle7">Oui</span>
-                          <ng-template #cycle7><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Internat externe</strong><br />
-                          <span *ngIf="schoolData.notOnSite; else cycle8">Oui</span>
-                          <ng-template #cycle8><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Résidence Étudiante</strong><br />
-                          <span *ngIf="schoolData.resident; else cycle9">Oui</span>
-                          <ng-template #cycle9><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Internat de semaine</strong><br />
-                          <span *ngIf="schoolData.weekdays; else cycle10">Oui</span>
-                          <ng-template #cycle10><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Internat Permanent</strong><br />
-                          <span *ngIf="schoolData.fulltime; else cycle11">Oui</span>
-                          <ng-template #cycle11><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Internat Certains Weekend</strong><br />
-                          <span *ngIf="schoolData.someweek; else cycle12">Oui</span>
-                          <ng-template #cycle12><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Internat mixte</strong><br />
-                          <span *ngIf="schoolData.internatMixte; else cycle13">Oui</span>
-                          <ng-template #cycle13><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Internat filles</strong><br />
-                          <span *ngIf="schoolData.internatGirls; else cycle14">Oui</span>
-                          <ng-template #cycle14><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Internat garcon</strong><br />
-                          <span *ngIf="schoolData.internatBoys; else cycle15">Oui</span>
-                          <ng-template #cycle15><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Chambres individuelles</strong><br />
-                          <span *ngIf="schoolData.individual; else cycle16">Oui</span>
-                          <ng-template #cycle16><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Chambres 2 a 4 lits</strong><br />
-                          <span *ngIf="schoolData['2to4']; else cycle17">Oui</span>
-                          <ng-template #cycle17><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>chambres 5 a 8 lits</strong><br />
-                          <span *ngIf="schoolData['5to8']; else cycle18">Oui</span>
-                          <ng-template #cycle18><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Dortoirs</strong><br />
-                          <span *ngIf="schoolData.dormitories; else cycle19">Oui</span>
-                          <ng-template #cycle19><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Prix</strong><br />
-                          {{schoolData.price}}€
-                      </td>
-                      <td>
-                          <strong>&nbsp;</strong><br />
-                          
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-
-      <h4>Stages</h4>
-      <div class="table-responsive">
-
-          <table class="table table-stripped table-bordered  specification  formation-table">
-              <tbody>
-                  <tr>
-                      <td>
-                          <strong>Organisation du cursus</strong><br />
-                          {{schoolData.organisationCourse}}
-                      </td>
-                      <td>
-                          <strong>Stage pré-rentrée</strong><br />
-                          <span *ngIf="schoolData.preIntake; else cycle20">Oui</span>
-                          <ng-template #cycle20><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Stages petites vacances</strong><br />
-                          <span *ngIf="schoolData.smallHoliday; else cycle21">Oui</span>
-                          <ng-template #cycle21><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>stages de grandes vacances</strong><br />
-                          <span *ngIf="schoolData.bigHoliday; else cycle22">Oui</span>
-                          <ng-template #cycle22><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong></strong><br />
-                          
-                      </td>
-                      <td>
-                          <strong></strong><br />
-                          
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-      <h4>Restaurantion</h4>
-      <div class="table-responsive">
-
-          <table class="table table-stripped table-bordered  specification  formation-table">
-              <tbody>
-                  <tr>
-                      <td>
-                          <strong>Self-service</strong><br />
-                          <span *ngIf="schoolData.selfService; else cycle23">Oui</span>
-                          <ng-template #cycle23><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Service à Table</strong><br />
-                          <span *ngIf="schoolData.serviceAtTable; else cycle24">Oui</span>
-                          <ng-template #cycle24><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Cafeteria</strong><br />
-                          <span *ngIf="schoolData.cafeteria; else cycle25">Oui</span>
-                          <ng-template #cycle25><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-
-      <h4>Externat</h4>
-      <div class="table-responsive">
-
-          <table class="table table-stripped table-bordered  specification  formation-table">
-              <tbody>
-                  <tr>
-                      <td>
-                          <strong>Externat</strong><br />
-                          <span *ngIf="schoolData.externat; else cycle26">Oui</span>
-                          <ng-template #cycle26><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>demi-pension mixte</strong><br />
-                          <span *ngIf="schoolData.externatMixte; else cycle27">Oui</span>
-                          <ng-template #cycle27><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>demi-pension garcons</strong><br />
-                          <span *ngIf="schoolData.externatBoys; else cycle28">Oui</span>
-                          <ng-template #cycle28><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>demi-pension filles</strong><br />
-                          <span *ngIf="schoolData.externatGirls; else cycle29">Oui</span>
-                          <ng-template #cycle29><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-
-      <h4>Autorisations</h4>
-      <div class="table-responsive">
-
-          <table class="table table-stripped table-bordered  specification  formation-table">
-              <tbody>
-                  <tr>
-                      <td>
-                          <strong>Lien contact</strong><br />
-                          +33 {{schoolData.autoContact}}
-                      </td>
-                      <td>
-                          <strong>Priorite Web</strong><br />
-                          <a href="#">{{schoolData.autoWebsite}}</a>
-                      </td>
-                      <td>
-                          <strong>Autorisation Web 1</strong><br />
-                          <span *ngIf="schoolData.autoWeb1; else cycle30">Oui</span>
-                          <ng-template #cycle30><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Autorisation Web 2</strong><br />
-                          Oui
-                      </td>
-                      <td>
-                          <strong>Mailing List</strong><br />
-                          <span *ngIf="schoolData.autoWeb2; else cycle31">Oui</span>
-                          <ng-template #cycle31><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Stat Mail Fiche Consultee</strong><br />
-                          <span *ngIf="schoolData.statMailing; else cycle32">Oui</span>
-                          <ng-template #cycle32><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Stat envoi immediat</strong><br />
-                          <span *ngIf="schoolData.statImmediat; else cycle33">Oui</span>
-                          <ng-template #cycle33><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Stat envoi quotidient</strong><br />
-                          <span *ngIf="schoolData.statQuotidien; else cycle34">Oui</span>
-                          <ng-template #cycle34><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong>Stat envoi hebdo</strong><br />
-                          <span *ngIf="schoolData.statHebdo; else cycle35">Oui</span>
-                          <ng-template #cycle35><span>Non</span></ng-template>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <strong>Stat envoi mensuel</strong><br />
-                          <span *ngIf="schoolData.statMensuel; else cycle36">Oui</span>
-                          <ng-template #cycle36><span>Non</span></ng-template>
-                      </td>
-                      <td>
-                          <strong></strong><br />
-                          
-                      </td>
-                      <td>
-                          <strong></strong><br />
-                          
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-
-      <h4>Statut</h4>
-      <div class="table-responsive">
-
-          <table class="table table-stripped table-bordered  specification">
-              <tbody>
-                  <tr>
-                      <td>
-                          <strong>Statut 1</strong><br />
-                          {{schoolData.status1}}
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-
-          <h5>Statut 2</h5>
-          <table class="table table-stripped table-bordered">
-              <tbody>
-                      <tr>
-                          <td>Sous Contrat D'association<br /> Oui</td>
-                          <td>Hors contrat<br /> Oui</td>
-                      </tr>
-                      <tr>
-                          <td>CFA<br /> Oui</td>
-                          <td>UFA<br /> Oui</td>
-                      </tr>
-                      <tr>
-                          <td>Reconnue par l'Etat<br /> Oui</td>
-                          <td>en convention avec l'Etat<br /> Oui</td>
-                      </tr>
-                      <tr>
-                          <td>Enseignement superieur Libre<br /> Oui</td>
-                          <td>Enseignement superieur<br /> Oui</td>
-                      </tr>
-                      <tr>
-                          <td>Enseignement superieur technique<br /> Non</td>
-                          <td>Sous contrat simple<br /> Non</td>
-                      </tr>
-              
-              </tbody>
-          </table>
-
-          <h5>Statut 3</h5>
-          <table class="table table-stripped table-bordered">
-              <tbody>
-                      <tr>
-                          <td>Laique<br /> Non</td>
-                          <td>Confessionel<br /> Oui, Catholique</td>
-                      </tr>              
-              </tbody>
-          </table>
-      </div>
-
-
-    </div><!-- .wrapper -->
-
-</div><!-- .panel-body -->

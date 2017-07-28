@@ -897,7 +897,7 @@ label.custom-radio.sad:before { border: none;}
  * Material design custom
  */
 .mat-tab-label-container { background: #c5c7c6; padding: 3px;}
-.mat-tab-label:focus, .mat-tab-label-active { background: #00bc50; color: #fff; opacity: 1;}
+.mat-tab-label:focus, .mat-tab-label-active { /**background: #00bc50**/ background: #1cc09f; color:#555555/* #fff*/; opacity: 1;     font-weight: 600;}
 .mat-ink-bar { background-color: transparent;}
 .mat-select-underline, .mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-underline { background-color: transparent;}
 .mat-select-arrow { display: none;}

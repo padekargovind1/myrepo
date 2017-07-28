@@ -8,8 +8,10 @@
 
                 <div style="cursor : pointer"
                     (click)="navigateBack()">
-                    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-                    Retourner à la liste
+                    <button type="button" class="btn button-return">
+                        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                        Retourner à la liste
+                    </button>
                 </div>
 
                 <div class="col-lg-1  col-xs-4">
@@ -82,7 +84,7 @@
                                                     <app-etablissement-essentiel></app-etablissement-essentiel>
                                                 </div><!-- /tab 1 -->
                                                 <div id="tab-2" class="tab-pane">
-                                                    <app-etablissement-formation></app-etablissement-formation>
+                                                    <app-etablissement-formation [schoolDataRef]="schoolData"></app-etablissement-formation>
                                                 </div><!-- /tab 2 -->
                                                 <div id="tab-3" class="tab-pane">
                                                     <app-etablissement-evenement [schoolData]="schoolData"></app-etablissement-evenement>
