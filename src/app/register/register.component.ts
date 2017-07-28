@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
             else {
               console.log(response);
               swal({
-                title: 'Un email de confirmation vous a été envoyé',
+                title: 'Votre compte a été créer',
                 text: "",
                 type: 'success',
                 confirmButtonText: 'Ok'

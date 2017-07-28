@@ -82,15 +82,15 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
-  // getAppointmentsAdviserList(packageId): Observable<any>{
-  //   return this.http.get(APPOINTMENTS_API+'/adviserlist?id='+packageId+'&token='+this.token, {headers: this.headers})
-  //     .map((response)=>response.json());
-  // }
-
   getAppointmentsAdviserList(packageId): Observable<any>{
-    return this.http.get('http://linkaran.com/api/v1/availability/'+packageId, {headers: this.headers})
+    return this.http.get(APPOINTMENTS_API+'/adviserlist/'+packageId+'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }
+
+  // getAppointmentsAdviserList(packageId): Observable<any>{
+  //   return this.http.get('http://linkaran.com/api/v1/availability/'+packageId, {headers: this.headers})
+  //     .map((response)=>response.json());
+  // }
 
   // getAdviserFreeTime(adviserId):Observable<any>{
   //   return this.http.get(APPOINTMENTS_API+'/adviserdata?token='+this.token+'&id='+adviserId, {headers: this.headers})
@@ -112,15 +112,15 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
-  // postCreateNewAppointment(data, packageId): Observable<any>{
-  //   return this.http.post(APPOINTMENTS_API+'/adviser?id='+packageId, data)
-  //     .map((response)=>response.json());
-  // }
-
-  postCreateNewAppointment(data): Observable<any>{
-    return this.http.post('http://linkaran.com/api/v1/booking-appointment', data)
+  postCreateNewAppointment(data, packageId): Observable<any>{
+    return this.http.post(APPOINTMENTS_API+'/adviser?id='+packageId, data)
       .map((response)=>response.json());
   }
+
+  // postCreateNewAppointment(data): Observable<any>{
+  //   return this.http.post('http://linkaran.com/api/v1/booking-appointment', data)
+  //     .map((response)=>response.json());
+  // }
 
   postApplication(data): Observable<any>{
     return this.http.post(APPLICATION_API+'?token='+this.token, data)

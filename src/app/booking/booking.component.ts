@@ -75,10 +75,11 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   getListAdviser(){
+    // console.log(this.appointmentPackage[this.bookingData[3]]._id)
     this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]]._id)
       .subscribe(
         (response)=>{
-          let data = response;
+          let data = response.data;
           console.log(data);
           if(response.code==400 || typeof data == 'undefined'){
             console.log(response.message);
@@ -154,18 +155,18 @@ export class BookingComponent implements OnInit, AfterViewInit {
     console.log("Package list : ", this.appointmentPackage, 
       "Adviser List : ", this.adviserList);
     for(let adviser of this.adviserList){
-      for(let day of adviser.available){
-        let debut = day.start.substr(11, 2);
-        let fin = day.end.substr(11, 2);
+      for(let day of adviser.calendar){
+        let debut = day.from[0].substr(11, 2);
+        let fin = day.to[0].substr(11, 2);
+        console.log(debut, fin, day.from[0].substr(0, 10))
         this.calendarData.push({
           title:'Disponible', 
-          start: day.start.substr(0, 10)+' '+debut+':00:00',
-          end: day.start.substr(0, 10)+' '+ fin + ':00:00',
-          adviserId: adviser.id,
+          start: day.from[0].substr(0, 10)+' '+debut+':00:00',
+          end: day.to[0].substr(0, 10)+' '+ fin + ':00:00',
+          adviserId: adviser._id,
           adviserName : adviser.firstName+ ' ' +adviser.lastName,
           adviserGender : adviser.gender,
-          adviserImage : adviser.image,
-          availableId : day.id
+          adviserImage : adviser.photo
         });
       }
     }
@@ -212,7 +213,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
         }
         self.bookingDate[5] = calEvent.adviserId
         self.bookingDate[6] = calEvent.adviserImage
-        self.bookingDate[7] = calEvent.availableId
+        console.log(self.bookingDate);
       }, 
       events:this.adviserToDisplay
     });

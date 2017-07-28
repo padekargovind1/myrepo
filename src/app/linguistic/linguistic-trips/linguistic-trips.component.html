@@ -1,8 +1,7 @@
         <div [class]="tripData.class">
-            <div><img src="assets/images/linguistic/cesacom_8.jpg" alt="School 1" /></div>
-            <div><img src="assets/images/linguistic/cesacom_7.jpg" alt="School 1" /></div>
-            <div><img src="assets/images/linguistic/cesacom_6.jpg" alt="School 1" /></div>
-            <div><img src="assets/images/linguistic/cesacom_5.jpg" alt="School 1" /></div>
+            <div *ngFor="let image of tripData.images">
+                <img src="assets/images/linguistic/{{image}}" alt="School 1" />
+            </div>
         </div>
       
       <div class="content-detail">

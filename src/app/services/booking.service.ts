@@ -16,7 +16,6 @@ export class BookingService {
     localStorage.setItem("bookingDataAdvGender", data[4])
     localStorage.setItem("bookingDataAdvId", data[5])
     localStorage.setItem("bookingDataAdvPhoto", data[6])
-    localStorage.setItem("bookingDataAvailableId", data[7])
   }
 
   getBookingData(){
@@ -27,10 +26,9 @@ export class BookingService {
     const advGender = localStorage.getItem("bookingDataAdvGender")
     const advId = localStorage.getItem("bookingDataAdvId")
     const advPhoto = localStorage.getItem("bookingDataAdvPhoto")
-    const availableId = localStorage.getItem("bookingDataAvailableId")
     const packageTitle = localStorage.getItem("bookingPackageTitle")
     const packageDesc = localStorage.getItem("bookingPackageDesc")
-    const data = [day, start, end, advName, advGender, advId, advPhoto, availableId, packageTitle, packageDesc]
+    const data = [day, start, end, advName, advGender, advId, advPhoto, packageTitle, packageDesc]
 
     return data;
   }

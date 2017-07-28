@@ -241,26 +241,30 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
     console.log(data)
 
-    this.usersService.postCreateNewAppointment(id)
-      .subscribe(
-        (response)=>{
-          let data = response;
-          console.log(data);
-          if(response!=true){
-            console.log(response.message);
-          } else {
-            console.log('Appointement register')
-            this.bookingService.cleanBooking();
-            swal({
-              title: 'Votre rendez-vous à bien été enregistré.',
-              text: '',
-              type: 'success',
-              confirmButtonText: 'Ok'
-            })
-            this.route.navigate(['/'])
-          }
-        }
-      )
+    // const newAppointment = {
+    //   adviser :
+    // }
+
+    // this.usersService.postCreateNewAppointment(id)
+    //   .subscribe(
+    //     (response)=>{
+    //       let data = response;
+    //       console.log(data);
+    //       if(response!=true){
+    //         console.log(response.message);
+    //       } else {
+    //         console.log('Appointement register')
+    //         this.bookingService.cleanBooking();
+    //         swal({
+    //           title: 'Votre rendez-vous à bien été enregistré.',
+    //           text: '',
+    //           type: 'success',
+    //           confirmButtonText: 'Ok'
+    //         })
+    //         this.route.navigate(['/'])
+    //       }
+    //     }
+    //   )
 
     console.log(data);
     // this.createAppointement();
