@@ -28,7 +28,9 @@ export class BookingService {
     const advPhoto = localStorage.getItem("bookingDataAdvPhoto")
     const packageTitle = localStorage.getItem("bookingPackageTitle")
     const packageDesc = localStorage.getItem("bookingPackageDesc")
-    const data = [day, start, end, advName, advGender, advId, advPhoto, packageTitle, packageDesc]
+    const packageNumber = localStorage.getItem("bookingPackageNumber")
+    const data = [day, start, end, advName, advGender, advId, 
+      advPhoto, packageTitle, packageDesc, packageNumber]
 
     return data;
   }

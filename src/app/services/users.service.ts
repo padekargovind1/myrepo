@@ -78,7 +78,7 @@ export class UsersService {
   // }
 
   getAppointmentsPackageById(packageId): Observable<any>{
-    return this.http.get(PACKAGE_API+'/packageId?token='+this.token, {headers: this.headers})
+    return this.http.get(PACKAGE_API+'/'+ packageId +'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }
 
@@ -113,7 +113,7 @@ export class UsersService {
   }
 
   postCreateNewAppointment(data, packageId): Observable<any>{
-    return this.http.post(APPOINTMENTS_API+'/adviser?id='+packageId, data)
+    return this.http.post(APPOINTMENTS_API+'/'+packageId+'?token='+this.token, data)
       .map((response)=>response.json());
   }
 

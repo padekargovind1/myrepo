@@ -44,7 +44,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
   sisBro=["Frère / Soeur 1"];
   metiers=["Métier 1"];
   primaires=["Etablissement Primaire 1"]
-  secondaires=["Etablissement Secondaire 1"]
+  secondaires=["Etablissement Secondaire 1"];
+  newAppointment={}
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -238,48 +239,57 @@ export class WizardComponent implements OnInit, AfterViewInit {
       primarySchoolName, primarySchoolRepeat, causeOfRepeatPrimary, secondarySchoolName, secondarySchoolRepeat,
       causeOfRepeatSecondary, reasonDiagnostic, note, id
     });
-
-    console.log(data)
-
-    // const newAppointment = {
-    //   adviser :
-    // }
-
-    // this.usersService.postCreateNewAppointment(id)
-    //   .subscribe(
-    //     (response)=>{
-    //       let data = response;
-    //       console.log(data);
-    //       if(response!=true){
-    //         console.log(response.message);
-    //       } else {
-    //         console.log('Appointement register')
-    //         this.bookingService.cleanBooking();
-    //         swal({
-    //           title: 'Votre rendez-vous à bien été enregistré.',
-    //           text: '',
-    //           type: 'success',
-    //           confirmButtonText: 'Ok'
-    //         })
-    //         this.route.navigate(['/'])
-    //       }
-    //     }
-    //   )
-
     console.log(data);
-    // this.createAppointement();
+    this.initNewAppointment();
   }
 
-  // createAppointement(){
-  //   const data = {
-  //     "adviser": this.appointmentData[0],
-  //     "from": this.appointmentData[1],
-  //     "to": this.appointmentData[2]
-  //   }
+  initNewAppointment(){
+    this.newAppointment = {
+      adviser : this.appointmentData[5],
+      from: this.appointmentData[0],
+      to:this.appointmentData[0]
+    }
+    this.getPackageById(this.appointmentData[9]);
+  }
 
-  //   this.usersService.postCreateNewAppointment(data, this.appointmentData[4]);
-   
-  // }
+  getPackageById(packageId){
+    this.usersService.getAppointmentsPackage()
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code==400){
+            console.log(response.message)
+          } else {
+            console.log(response.data[packageId]._id)
+            this.postCreateNewAppointment(response.data[packageId]._id)
+          }
+        }
+      )
+  }
+
+  postCreateNewAppointment(packageId){
+    console.log(packageId)
+    this.usersService.postCreateNewAppointment(this.newAppointment, packageId)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          if(data.code==400){
+            console.log(response.message);
+          } else {
+            console.log('Appointement register')
+            this.bookingService.cleanBooking();
+            swal({
+              title: 'Votre rendez-vous à bien été enregistré.',
+              text: '',
+              type: 'success',
+              confirmButtonText: 'Ok'
+            })
+            this.route.navigate(['/'])
+          }
+        }
+      )
+  }
 
   onChecked() {
     var check = this.wizardForm.controls.schoolHelp.value;
