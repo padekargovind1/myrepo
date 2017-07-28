@@ -1,44 +1,37 @@
 <div class="modal fade" id="apply-compare-popup" tabindex="-1" role="dialog" aria-labelledby="apply-compare-popup">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" name="" class="checkbox filled-in" id="choose-1" checked /><label for="choose-1">&nbsp;</label></td>
-                                    <td><img src="assets/images/school-1.jpg" alt="School 1" class="image-popup" /></td>
-                                    <td><h5>Lycee Saint-Charles</h5>
-                                        <p>Lycee d'enseignement general Prive Catholique Sous contrat d'association</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="" class="checkbox filled-in" id="choose-2" /><label for="choose-2">&nbsp;</label></td>
-                                    <td><img src="assets/images/school-2.jpg" alt="School 1" class="image-popup" /></td>
-                                    <td><h5>Lycee Saint-Charles</h5>
-                                        <p>Lycee d'enseignement general Prive Catholique Sous contrat d'association</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="" class="checkbox filled-in" id="choose-3" /><label for="choose-3">&nbsp;</label></td>
-                                    <td><img src="assets/images/school-3.jpg" alt="School 1" class="image-popup" /></td>
-                                    <td><h5>Lycee Saint-Charles</h5>
-                                        <p>Lycee d'enseignement general Prive Catholique Sous contrat d'association</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="" class="checkbox filled-in" id="choose-4" /><label for="choose-4">&nbsp;</label></td>
-                                    <td><img src="assets/images/school-4.jpg" alt="School 1" class="image-popup" /></td>
-                                    <td><h5>Lycee Saint-Charles</h5>
-                                        <p>Lycee d'enseignement general Prive Catholique Sous contrat d'association</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <button class="btn btn-lg btn-appointment" data-dismiss="modal">Je postule</button>
-                    </div><!-- .modal-body -->
-                </div><!-- .modal-content -->
-            </div><!-- .modal-dialog -->
-        </div><!-- modal -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="assets/images/{{applytoSchool.photo}}" alt="School 1" class="image-popup" />
+                    </div>
+                    <div class="col-md-7">
+                        <h5 style="color:black">{{applytoSchool.sName}}</h5>
+                        <p style="color:black">{{applytoSchool.lName}}</p>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-lg btn-appointment" 
+                            data-dismiss="modal" (click)="applyToSchool()">Je postule</button>
+                    </div>
+                </div>
+                <!--<table>
+                    <tbody>
+                        <tr>
+                            <td><img src="assets/images/{{applytoSchool.photo}}" alt="School 1" class="image-popup" /></td>
+                            <td>
+                            </td>
+                            <td>
+                                <button class="btn btn-lg btn-appointment" 
+                                data-dismiss="modal" (click)="applyToSchool()">Je postule</button>
+                            </td>   
+                        </tr>
+                    </tbody>
+                </table>-->
+            </div>
+        </div>
+    </div>
+</div>
     
     <main class="main" role="main">
         
@@ -77,7 +70,7 @@
 
                                     <div class="item-compare-table">
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[0]">
+                                            *ngIf="compareListFilter[0]=='true'">
                                             <li class="title"><h5>Cycles & Classes</h5></li>
                                             <li><a class="subtitle" role="button" data-toggle="collapse" href=".ecole" aria-expanded="false" aria-controls="collapseExample">Ecole<span class="caret"></span></a>
                                                 <div class="collapse in ecole">
@@ -106,7 +99,7 @@
                                         </ul>
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[1]">
+                                            *ngIf="compareListFilter[1]=='true'">
                                             <li class="title"><h5><a role="button" data-toggle="collapse" href=".language" aria-expanded="false" aria-controls="collapseExample">Langue<span class="caret"></span></a></h5>
                                                 <div class="collapse in language">
                                                     <ul class="compare-item">
@@ -119,7 +112,7 @@
                                         </ul>
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[2]">
+                                            *ngIf="compareListFilter[2]=='true'">
                                             <li class="title"><h5><a role="button" data-toggle="collapse" href=".specialities" aria-expanded="false" aria-controls="collapseExample">Specialités<span class="caret"></span></a></h5>
                                                 <div class="collapse in specialities">
                                                     <ul class="compare-item">
@@ -134,7 +127,7 @@
                                         </ul>
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[3]">
+                                            *ngIf="compareListFilter[3]=='true'">
                                             <li class="title"><h5><a role="button" data-toggle="collapse" href=".internat" aria-expanded="false" aria-controls="collapseExample">Internat<span class="caret"></span></a></h5>
                                                 <div class="collapse in internat">
                                                     <ul class="compare-item">
@@ -158,7 +151,7 @@
 
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[4]">
+                                            *ngIf="compareListFilter[4]=='true'">
                                             <li class="title"><h5><a role="button" data-toggle="collapse" href=".stages" aria-expanded="false" aria-controls="collapseExample">Stages<span class="caret"></span></a></h5>
                                                 <div class="collapse in stages">
                                                     <ul class="compare-item">
@@ -172,7 +165,7 @@
 
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[5]">
+                                            *ngIf="compareListFilter[5]=='true'">
                                             <li class="title"><h5><a role="button" data-toggle="collapse" href=".restauration" aria-expanded="false" aria-controls="collapseExample">Restauration<span class="caret"></span></a></h5>
                                                 <div class="collapse in restauration">
                                                     <ul class="compare-item">
@@ -186,7 +179,7 @@
 
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[6]">
+                                            *ngIf="compareListFilter[6]=='true'">
                                             <li class="title"><h5><a role="button" data-toggle="collapse" href=".externat" aria-expanded="false" aria-controls="collapseExample">Externat<span class="caret"></span></a></h5>
                                                 <div class="collapse in externat">
                                                     <ul class="compare-item">
@@ -199,7 +192,7 @@
                                         </ul>
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[7]">
+                                            *ngIf="compareListFilter[7]=='true'">
                                             <li class="title"><h5><a role="button" data-toggle="collapse" href=".status" aria-expanded="false" aria-controls="collapseExample">Status<span class="caret"></span></a></h5>
                                                 <div class="collapse in status">
                                                     <ul class="compare-item">
@@ -223,12 +216,12 @@
 
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[8]">
+                                            *ngIf="compareListFilter[8]=='true'">
                                             <li class="title"><h5>Ens. Confessionel</h5></li>
                                         </ul>
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[9]">
+                                            *ngIf="compareListFilter[9]=='true'">
                                             <li class="title"><h5><a role="button" data-toggle="collapse" href=".section" aria-expanded="false" aria-controls="collapseExample">Sections<span class="caret"></span></a></h5>
                                                 <div class="collapse in section">
                                                     <ul class="compare-item">
@@ -241,18 +234,18 @@
                                         </ul>
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[10]">
+                                            *ngIf="compareListFilter[10]=='true'">
                                             <li class="title"><h5>Nom du Diplome</h5>
                                             </li>
                                         </ul>
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[11]">
+                                            *ngIf="compareListFilter[11]=='true'">
                                             <li class="title"><h5>Nom de L'option</h5></li>
                                         </ul>
 
                                         <ul class="compare-item class-cycle"
-                                            *ngIf="compareListFilter[12]">
+                                            *ngIf="compareListFilter[12]=='true'">
                                             <li class="title"><h5>Places Disponibles</h5></li>
                                         </ul>
 
@@ -270,7 +263,7 @@
                                 </div>
 
                                 <div class="content-compare-table"
-                                    *ngFor="let school of schoolDataToDisplay">
+                                    *ngFor="let school of schoolDataToDisplay; let i =index">
                                    <div class="top-compare-table">
                                         <button type="button" 
                                             class="close" 
@@ -279,19 +272,6 @@
                                             (click)="onDeleteCompare(school)">
                                             <img src="assets/images/cide-remove.png" width="16" />
                                         </button>
-                                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="assets/images/cide-remove.png" width="16" /></button>
-                                        <img src="assets/images/school-1.jpg" alt="" width="60" height="60" />    
-                                        <h4 title="Lycée Saint-Charles">Lycée Saint-Charles</h4>
-                                        
-                                        <ul class="school-action">
-                                            <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
-                                        </ul>
-                                        <div class="col-md-10 col-md-offset-1">
-                                            <button class="btn btn-appointment btn-block">Je Postuler</button>
-                                        </div> -->
                                         <div class="card  school-item">
                                             <ul class="school-action">
                                                 <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
@@ -303,12 +283,18 @@
                                             <img src="assets/images/school-1.jpg" alt="School 1" />
                                             
                                             <div class="card-content">
-                                                <h3>Lycee Saint-Charles</h3>
-                                                <p>Lycee d'enseignement <br /> general Prive Catholique <br />Sous contrat d'association</p>
-                                                <address>1 rue du Brouage<br /> 02300 Chauny<br /> Tel: 03 23 52 10 50</address>
+                                                <h3>{{school.shortName}}</h3>
+                                                <p>{{school.longName}} 
+                                                    <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
+                                                <address>{{school.address.ad1}}<br /> 
+                                                    {{school.address.postCode}} {{school.address.city}}<br /> 
+                                                    Tel: {{school.address.phoneNumber}}</address>
 
                                                 <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
-                                                <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button>
+                                                <button type="button" class="btn btn-secondary btn-block" 
+                                                    data-toggle="modal" data-target="#apply-compare-popup"
+                                                    (click)="onApply(school)">
+                                                    Postuler</button>
                                                 <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button> -->
                                             </div><!-- .card-content -->
 

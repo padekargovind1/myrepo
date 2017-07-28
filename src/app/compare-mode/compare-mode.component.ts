@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
-
+import swal from 'sweetalert2';
+var self = this;
 @Component({
   selector: 'app-compare-mode',
   templateUrl: './compare-mode.component.html',
@@ -14,19 +15,27 @@ export class CompareModeComponent implements OnInit {
   schoolToCompare =[];
   schoolDataToDisplay : [any]=[null];
   compareListFilter : any;
+  applytoSchool={
+    id: "",
+    lName : "",
+    sName:"",
+    photo:"school-1.jpg"
+  }
 
   constructor(private location : Location,
               private route : ActivatedRoute,
               private publicService : PublicService,
-              private compareService : CompareService) { }
+              private compareService : CompareService,
+              private router : Router) { }
 
   ngOnInit() {
     this.compareListFilter = this.compareService.getCompareFilter();
+    console.log(this.compareListFilter)
     if(this.compareListFilter[0]==null){
       this.location.back();
     }
     // console.log(this.compareListFilter);
-    console.log(this.route.snapshot.params);
+    // console.log(this.route.snapshot.params);
     this.schoolToCompare.push(this.route.snapshot.params[0]);
     this.schoolToCompare.push(this.route.snapshot.params[1]);
     if(this.route.snapshot.params[2]){
@@ -47,7 +56,7 @@ export class CompareModeComponent implements OnInit {
             let data = response.data;
             // console.log(data);
             this.schoolDataToDisplay.push(data);
-            console.log(this.schoolDataToDisplay);
+            // console.log(this.schoolDataToDisplay);
           }
         )
     }
@@ -62,6 +71,19 @@ export class CompareModeComponent implements OnInit {
     // console.log(this.schoolDataToDisplay);
     this.schoolDataToDisplay.splice(school, 1);
     // console.log(this.schoolDataToDisplay);
+  }
+
+  applyToSchool(){
+    console.log('click', this.applytoSchool);
+    this.router.navigate(['applyto', this.applytoSchool.id]);
+  }
+
+  onApply(school){
+    console.log(school)
+    this.applytoSchool.id=school._id;
+    this.applytoSchool.lName=school.longName;
+    this.applytoSchool.sName=school.shortName;
+    this.applytoSchool.photo="school-1.jpg";
   }
 
 }

@@ -21,12 +21,18 @@ export class CompareService {
   constructor() { }
 
   storeCompareFilter(compareFilter){
-    this.compareFilterData = compareFilter;
-    console.log(this.compareFilterData);
+    // this.compareFilterData = compareFilter;
+    for(let i = 0; i<13; i++){
+      localStorage.setItem('filter'+i, compareFilter[i])
+    }
+    // console.log(this.compareFilterData);
   }
 
   getCompareFilter(){
-    console.log(this.compareFilterData);
+    // console.log(this.compareFilterData);
+    for(let i = 0; i<13; i++){
+      this.compareFilterData[i]=localStorage.getItem('filter'+i)
+    }
     return this.compareFilterData;
   }
 

@@ -16,11 +16,12 @@ export class CompareBlockComponent implements OnInit {
   constructor(private compareService: CompareService) {}
 
   ngOnInit() {
-    console.log(this.schoolDataToDisplay);
+    // console.log(this.schoolDataToDisplay);
     this.twoToFour = this.schoolDataToDisplay.cycles[0].cycle.boarding['2to4'].value;
     // this.fiveToEight = this.schoolDataToDisplay.cycles[0].cycle.boarding['5to8'].element;
-    console.log(JSON.stringify(this.twoToFour));
+    // console.log(JSON.stringify(this.twoToFour));
     this.compareListFilter = this.compareService.getCompareFilter();
+    // console.log(this.compareListFilter);
   }
 
   onDeleteCompare(){

@@ -3,7 +3,7 @@
 <div class="item-compare-table">
 
     <ul class="compare-item class-cycle center"
-        *ngIf="compareListFilter[0]">
+        *ngIf="compareListFilter[0]=='true'">
         <li class="title"><h5>&nbsp;</h5></li>
         <li><span class="subtitle">&nbsp;</span>
             <div class="collapse in ecole">
@@ -32,7 +32,7 @@
     </ul>
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[1]">
+        *ngIf="compareListFilter[1]=='true'">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in language">
                 <ul class="compare-item">
@@ -45,7 +45,7 @@
     </ul>
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[2]">
+        *ngIf="compareListFilter[2]=='true'">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in specialities">
                 <ul class="compare-item">
@@ -85,7 +85,7 @@
     </ul>
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[3]">
+        *ngIf="compareListFilter[3]=='true'">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in internat">
                 <ul class="compare-item">
@@ -174,7 +174,7 @@
 
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[4]">
+        *ngIf="compareListFilter[4]=='true'">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in stages">
                 <ul class="compare-item">
@@ -203,7 +203,7 @@
 
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[5]">
+        *ngIf="compareListFilter[5]=='true'">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in restauration">
                 <ul class="compare-item">
@@ -219,7 +219,7 @@
                     <ng-template #field23>
                         <li >&nbsp;</li>
                     </ng-template>
-                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.canteen.cafetaria.value; else field24">
+                    <li *ngIf="schoolDataToDisplay.cycles[0].cycle.canteen.cafeteria.value; else field24">
                         <img width="20" src="assets/images/cide-true.png">
                     </li>
                     <ng-template #field24>
@@ -232,7 +232,7 @@
 
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[6]">
+        *ngIf="compareListFilter[6]=='true'">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in externat">
                 <ul class="compare-item">
@@ -260,7 +260,7 @@
     </ul>
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[7]">
+        *ngIf="compareListFilter[7]=='true'">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in status">
                 <ul class="compare-item">
@@ -284,12 +284,12 @@
 
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[8]">
+        *ngIf="compareListFilter[8]=='true'">
         <li class="title"><h5>Laic</h5></li>
     </ul>
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[9]">
+        *ngIf="compareListFilter[9]=='true'">
         <li class="title"><h5>&nbsp;</h5>
             <div class="collapse in section">
                 <ul class="compare-item">
@@ -302,18 +302,18 @@
     </ul>
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[10]">
+        *ngIf="compareListFilter[10=='true']">
         <li>{{ schoolDataToDisplay.cycles[0].cycle.classes[0].diplomas.name }}</li> 
     </ul>
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[11]">
+        *ngIf="compareListFilter[11=='true']">
         <li>{{ schoolDataToDisplay.cycles[0].cycle.classes[0].options[0].name }}</li>    
     </ul>
 
     <ul class="compare-item center class-cycle"
-        *ngIf="compareListFilter[12]">
-        <li *ngIf="schoolDataToDisplay.cycles[0].cycle.availableSeat.availableSeat.value; else field28">
+        *ngIf="compareListFilter[12=='true']">
+        <li *ngIf="schoolDataToDisplay.cycles[0].cycle.availableSeat.activation; else field28">
             <img width="20" src="assets/images/cide-true.png">
         </li>
         <ng-template #field28>
