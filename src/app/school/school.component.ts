@@ -48,6 +48,11 @@ export class SchoolComponent implements OnInit {
   pathName ="";
   confessionChecked : boolean = false;
   boardingChecked : boolean = false;
+  lv1: any="";
+  lv2: any="";
+  lv3: any="";
+  ancient: any="";
+  regional: any="";
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -89,7 +94,7 @@ export class SchoolComponent implements OnInit {
       }
     });
     $('body').on('mousedown', function($event){
-      console.log($event.target.attributes)
+      // console.log($event.target.attributes)
       if(typeof $event.target.attributes['class']!='undefined'){
         if($event.target.attributes['class'].value == 'main' || $event.target.attributes['class'].value == 'filter-form-holder' || $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'){
           $('.advance-filter').hide();
@@ -291,23 +296,26 @@ export class SchoolComponent implements OnInit {
   filterLanguage(event, category){
     console.log(event);
     // this.languageAdvancedSearch.push(category);
-    if(typeof this.advancedSearch['language']=='undefined'){
+    if(typeof this.advancedSearch['language']=='undefined' && event.srcElement.value!=""){
       this.advancedSearch['language']={}
     }
-    if(event.srcElement.value==""){
-      delete this.advancedSearch['language'][category];
-      let index = this.languageAdvancedSearchName.indexOf(category)
-      this.languageAdvancedSearchName.splice(index, 1);
-      this.languageAdvancedSearch.splice(index, 1)
-      this.checkCategory('language')
-    } else {
+    if(event.srcElement.value=="" && typeof this.advancedSearch['language']!='undefined'){
+      if(this.advancedSearch['language'][category]!='undefined'){
+        delete this.advancedSearch['language'][category];
+        let index = this.languageAdvancedSearchName.indexOf(category)
+        this.languageAdvancedSearchName.splice(index, 1);
+        this.languageAdvancedSearch.splice(index, 1)
+        this.checkCategory('language')
+        this.postAdvancedFilter();
+      }
+    } else if(event.srcElement.value!=""){
       this.advancedSearch['language'][category]=event.srcElement.value
       this.languageAdvancedSearch.push(category);
       this.languageAdvancedSearchName.push(event.srcElement.value);
       console.log("test", this.languageAdvancedSearch, this.languageAdvancedSearchName)
+      this.postAdvancedFilter();
     }
-    console.log(this.advancedSearch)
-    this.postAdvancedFilter();
+    // console.log(this.advancedSearch)
   }
 
   checkCategory(category){
@@ -384,9 +392,9 @@ export class SchoolComponent implements OnInit {
 
   onRemoveLanguageFilter(index){
     console.log("click")
+    this[this.languageAdvancedSearch[index]]=""
     this.languageAdvancedSearch.splice(index, 1);
     this.languageAdvancedSearchName.splice(index, 1);
-    // this.getSearchFilter();
   }
 
 }

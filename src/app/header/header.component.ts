@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
     this.usersService.getApplication()
       .subscribe(
         response => {
-          console.log(response.data)
+          // console.log(response.data)
           if(response.code==400){
             console.log(response.message);
           } else {

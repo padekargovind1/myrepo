@@ -234,7 +234,7 @@
                                         </li>
                                         <li>
                                             <input type="checkbox" name="UFA" class="UFA checkbox filled-in" id="filter-39" />
-                                            <label for="filter-40">UFA</label>
+                                            <label for="filter-39">UFA</label>
                                         </li>
                                         <li>
                                             <input type="checkbox" name="recognized" class="recognized checkbox filled-in" id="filter-40" />
@@ -301,8 +301,8 @@
                                 <li><a class="advancedFilter">Langues</a>
                                     <ul class="adv-filt">
                                         <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class" 
-                                                    (click)="filterLanguage($event, 'lv1')">
+                                                <select name="class" class="form-control" id="lv1" 
+                                                    (click)="filterLanguage($event, 'lv1')" [(ngModel)]="lv1">
                                                     <option value="" selected >LV1</option>
                                                     <option *ngFor="let langue of langues" value="{{langue}}">
                                                         {{ langue }}
@@ -311,8 +311,8 @@
                                             </label>
                                         </li>
                                         <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class" 
-                                                    (click)="filterLanguage($event, 'lv2')">
+                                                <select name="class" class="form-control" id="lv2" 
+                                                    (click)="filterLanguage($event, 'lv2')" [(ngModel)]="lv2">
                                                     <option value="" selected>LV2</option>
                                                     <option *ngFor="let langue of langues" value="{{langue}}">
                                                         {{ langue }}
@@ -321,8 +321,8 @@
                                             </label>
                                         </li>
                                         <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class" 
-                                                    (click)="filterLanguage($event, 'lv3')">
+                                                <select name="class" class="form-control" id="lv3" 
+                                                    (click)="filterLanguage($event, 'lv3')" [(ngModel)]="lv3">
                                                     <option value="" selected>LV3</option>
                                                     <option *ngFor="let langue of langues" value="{{langue}}">
                                                         {{ langue }}
@@ -331,8 +331,8 @@
                                             </label>
                                         </li>
                                         <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class"
-                                                    (click)="filterLanguage($event, 'ancient')">
+                                                <select name="class" class="form-control" id="ancient"
+                                                    (click)="filterLanguage($event, 'ancient')" [(ngModel)]="ancient">
                                                     <option value="" selected>LA - Langues Anciennes</option>
                                                     <option value="Grec">Grec</option>
                                                     <option value="Latin">Latin</option>
@@ -341,8 +341,8 @@
                                         </li>
                                         <li>
                                             <label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class"
-                                                    (click)="filterLanguage($event, 'regional')">
+                                                <select name="class" class="form-control" id="regional"
+                                                    (click)="filterLanguage($event, 'regional')" [(ngModel)]="regional">
                                                     <option value="" selected>LR - Langues Regionales</option>
                                                     <option *ngFor="let langue of languesRegio" value="{{langue}}">
                                                         {{ langue }}
@@ -356,7 +356,7 @@
                                     <ul (click)="onAdvancedClick($event, 'sections')"
                                         class="adv-filt">
                                         <li><input type="checkbox" name="european" class="european checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
-                                        <li><input type="checkbox" name="international" class="international checkbox filled-in" id="filter-53" /><label for="filter-53">Section Internationnale</label></li>
+                                        <li><input type="checkbox" name="international" class="international checkbox filled-in" id="filter-52" /><label for="filter-52">Section Internationnale</label></li>
                                         <li><input type="checkbox" name="bilingual" class="bilingual checkbox filled-in" id="filter-53" /><label for="filter-53">Section bilingue</label></li>
                                         <li><input type="checkbox" name="sport" class="sport checkbox filled-in" id="filter-54" /><label for="filter-54">Section Sportive</label></li>
                                     </ul>

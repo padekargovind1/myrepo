@@ -66,7 +66,7 @@ export class ApplytoComponent implements OnInit {
 
  ngOnInit() {
     this.tokenLog=this.authService.getToken();
-    console.log(this.tokenLog)
+    // console.log(this.tokenLog)
     if(this.tokenLog=="" || this.tokenLog == null){
       swal({
         title: 'Attention',
@@ -83,7 +83,7 @@ export class ApplytoComponent implements OnInit {
       .subscribe(
         (data) => {
           let response = data;
-          console.log(response);
+          // console.log(response);
           if (response.code==400){
             console.log(response.message);
           }else {
@@ -104,7 +104,7 @@ export class ApplytoComponent implements OnInit {
             console.log(response.message);
           } else {
             this.userData = data[0];
-            console.log(this.userData);
+            // console.log(this.userData);
             this.patchValue(data[0]);
           }
         }
