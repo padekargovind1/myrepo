@@ -19,9 +19,9 @@ export class AccueilComponent implements OnInit {
   searchForm: FormGroup;
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private publicService : PublicService,
-              private fb : FormBuilder
-              ) { 
+              private publicService: PublicService,
+              private fb: FormBuilder
+              ) {
     this.buildForm();
   }
 
@@ -48,25 +48,25 @@ export class AccueilComponent implements OnInit {
       let wheelNavId : String = $(this).attr('id');
       let contentName :String;
       switch ($(this).attr('id').charAt(24)){
-        case '0' : 
+        case '0' :
           contentName='ecole';
           break;
-        case '1' : 
+        case '1' :
           contentName='college';
           break;
-        case '2' : 
+        case '2' :
           contentName='lycee';
           break;
-        case '3' : 
+        case '3' :
           contentName='internat';
           break;
-        case '4' : 
+        case '4' :
           contentName='enseignement';
           break;
-        case '5' : 
+        case '5' :
           contentName='linguistic';
           break;
-        case '6' : 
+        case '6' :
           contentName='orientation';
           break;
       }
@@ -82,7 +82,7 @@ export class AccueilComponent implements OnInit {
 
   switchWheelComponent(wheelNavId: String, contentName: String){
     var self = this;
-    $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').removeClass('open');                
+    $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').removeClass('open');
     $('#'+wheelNavId).addClass('open');
     if ($('.'+contentName+'-content').hasClass('fadeIn')) {
         console.log("Need to navigate");

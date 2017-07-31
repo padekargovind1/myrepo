@@ -36,4 +36,10 @@ export class CompareService {
     return this.compareFilterData;
   }
 
+  cleanCompareFilter(){
+    for(let i=0; i<13; i++){
+      localStorage.removeItem('filter'+i)
+    }
+  }
+
 }

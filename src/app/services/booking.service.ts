@@ -61,7 +61,6 @@ export class BookingService {
     localStorage.removeItem("bookingDataAdvGender")
     localStorage.removeItem("bookingDataAdvId")
     localStorage.removeItem("bookingDataAdvPhoto")
-    localStorage.removeItem("bookingDataAvailableId")
     localStorage.removeItem("bookingPackageNumber")
     localStorage.removeItem("bookingPackageTitle")
     localStorage.removeItem("bookingPackageDesc")

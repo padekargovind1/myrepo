@@ -3,6 +3,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
 import { PublicService } from '../services/public.service';
+import { BookingService } from '../services/booking.service';
+import { CompareService } from '../services/compare.service';
 import 'rxjs/add/operator/filter';
 
 @Component({
@@ -20,11 +22,14 @@ export class HeaderComponent implements OnInit {
   schoolWish = [];
   userLastName : string = "";
   userFirstName : string = "";
+  wishList= []
 
   constructor(private router : Router,
               private authService : AuthService,
               private usersService : UsersService,
-              private publicService : PublicService) {}
+              private publicService : PublicService,
+              private bookingService : BookingService,
+              private compareService : CompareService) {}
 
   ngOnInit() {
     this.router.events
@@ -34,6 +39,7 @@ export class HeaderComponent implements OnInit {
         this.userLogin=this.authService.isUserLoggedIn();
         if(this.userLogin){
           this.getUserName();
+          this.getApplication();
         }
       });
   }
@@ -50,6 +56,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onNavigateHome(){
+    this.cleanLocalStorage()
     this.router.navigate( ['/'] );
   }
 
@@ -62,22 +69,22 @@ export class HeaderComponent implements OnInit {
   }
 
   onSignOut(){
+    this.cleanLocalStorage();
     this.authService.logout();
     this.userLogin=false;
     this.router.navigate(['/']);
   }
 
-  getUsersApplication(){
+  getApplication(){
     this.usersService.getApplication()
       .subscribe(
-        (response)=>{
-          let data = response.data;
-          console.log(data);
+        response => {
+          console.log(response.data)
           if(response.code==400){
             console.log(response.message);
           } else {
-            this.userApplication = data;
-            this.getSchoolsData()
+            // console.log(response.data)
+            this.wishList=response.data
           }
         }
       )
@@ -109,13 +116,19 @@ export class HeaderComponent implements OnInit {
   }
 
   onApplyTo(schoolId){
-    this.router.navigate(['/applto', schoolId]);
+    this.router.navigate(['/applyto', schoolId]);
   }
 
   onMyAccount(){
+    this.cleanLocalStorage();
     if(this.userLogin){
       this.router.navigate(['/my-account']);
     }
+  }
+
+  cleanLocalStorage(){
+    this.bookingService.cleanBooking();
+    this.compareService.cleanCompareFilter();
   }
 
 }

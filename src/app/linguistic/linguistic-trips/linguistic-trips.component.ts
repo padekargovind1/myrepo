@@ -14,9 +14,9 @@ declare var $ :any;
 export class LinguisticTripsComponent implements OnInit, AfterViewInit {
   @Input() tripData;
   constructor(private schoolService : SchoolService) { 
-    setTimeout(()=>{
-      console.log(this.tripData);  
-    }, 1000);
+    // setTimeout(()=>{
+    //   console.log(this.tripData);  
+    // }, 1000);
   }
 
   ngOnInit() {

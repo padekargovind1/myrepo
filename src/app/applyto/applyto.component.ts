@@ -11,7 +11,7 @@ import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { CustomValidators } from 'ng2-validation';
 import swal from 'sweetalert2';
 
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+const URL = 'http://54.254.203.172/cideapi/';
 
 @Component({
   selector: 'app-applyto',
@@ -42,6 +42,7 @@ export class ApplytoComponent implements OnInit {
   freresoeur = ["Frère/Soeur 1"];
   metiers = ["Métier 1"]
   schoolName : string ="";
+  schoolID : string ="";
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -87,6 +88,7 @@ export class ApplytoComponent implements OnInit {
             console.log(response.message);
           }else {
             this.schoolName = response.data.longName;
+            this.schoolID = response.data._id
           }
         }
       )
@@ -174,49 +176,55 @@ export class ApplytoComponent implements OnInit {
   onSubmit(){
     console.log(this.applytoForm.value);
 
-    const lienParent = this.applytoForm.controls.lienParent.value;
-    const title = this.applytoForm.controls.title.value;
-    const lastName = this.applytoForm.controls.lastName.value;
-    const firstName = this.applytoForm.controls.firstName.value;
-    const job = this.applytoForm.controls.job.value;
-    const email = this.applytoForm.controls.email.value;
-    const tel = this.applytoForm.controls.tel.value;
-    const horaireJoingnable = this.applytoForm.controls.horaireJoingnable.value;
-    const childLastName =this.applytoForm.controls.childFirstName.value;
-    const childFirstName = this.applytoForm.controls.childFirstName.value;
-    const childAge = this.applytoForm.controls.childAge.value;
-    const childTitle= this.applytoForm.controls.childTitle.value;
-    const childMel = this.applytoForm.controls.childMel.value;
-    const childTel = this.applytoForm.controls.childTel.value;
-    const childAddr = this.applytoForm.controls.childAddr.value;
-    const childPostalCode = this.applytoForm.controls.childPostalCode.value;
-    const childCity = this.applytoForm.controls.childCity.value;
-    const childBirthDay = this.applytoForm.controls.childBirthDay.value;
-    const childBirthPlace = this.applytoForm.controls.childBirthPlace.value;
-    const childSisBroTitle = this.applytoForm.controls.childSisBroTitle.value;
-    const childSisBroAge = this.applytoForm.controls.childSisBroAge.value;
-    const childSisBroStudy = this.applytoForm.controls.childSisBroStudy.value;
-    const schoolName = this.applytoForm.controls.schoolName.value;
-    const schoolCity = this.applytoForm.controls.schoolCity.value;
-    const schoolClasse = this.applytoForm.controls.schoolClasse.value;
-    const schoolOption = this.applytoForm.controls.schoolOption.value;
-    const schoolLv1 = this.applytoForm.controls.schoolLv1.value;
-    const schoolLv2 = this.applytoForm.controls.schoolLv2.value;
-    const schoolLv3 = this.applytoForm.controls.schoolLv3.value;
-    const bestSubject = this.applytoForm.controls.bestSubject.value;
-    const weakSubject = this.applytoForm.controls.weakSubject.value;
-    const interestJob = this.applytoForm.controls.interestJob.value;
-    const interestAge = this.applytoForm.controls.interestAge.value;
-    const yourInterest = this.applytoForm.controls.yourInterest.value;
-    const practiceInterest = this.applytoForm.controls.practiceInterest.value;
-    
+    // const lienParent = this.applytoForm.controls.lienParent.value;
+    // const title = this.applytoForm.controls.title.value;
+    // const lastName = this.applytoForm.controls.lastName.value;
+    // const firstName = this.applytoForm.controls.firstName.value;
+    // const job = this.applytoForm.controls.job.value;
+    // const email = this.applytoForm.controls.email.value;
+    // const tel = this.applytoForm.controls.tel.value;
+    // const horaireJoingnable = this.applytoForm.controls.horaireJoingnable.value;
+    // const childLastName =this.applytoForm.controls.childFirstName.value;
+    // const childFirstName = this.applytoForm.controls.childFirstName.value;
+    // const childAge = this.applytoForm.controls.childAge.value;
+    // const childTitle= this.applytoForm.controls.childTitle.value;
+    // const childMel = this.applytoForm.controls.childMel.value;
+    // const childTel = this.applytoForm.controls.childTel.value;
+    // const childAddr = this.applytoForm.controls.childAddr.value;
+    // const childPostalCode = this.applytoForm.controls.childPostalCode.value;
+    // const childCity = this.applytoForm.controls.childCity.value;
+    // const childBirthDay = this.applytoForm.controls.childBirthDay.value;
+    // const childBirthPlace = this.applytoForm.controls.childBirthPlace.value;
+    // const childSisBroTitle = this.applytoForm.controls.childSisBroTitle.value;
+    // const childSisBroAge = this.applytoForm.controls.childSisBroAge.value;
+    // const childSisBroStudy = this.applytoForm.controls.childSisBroStudy.value;
+    // const schoolName = this.applytoForm.controls.schoolName.value;
+    // const schoolCity = this.applytoForm.controls.schoolCity.value;
+    // const schoolClasse = this.applytoForm.controls.schoolClasse.value;
+    // const schoolOption = this.applytoForm.controls.schoolOption.value;
+    // const schoolLv1 = this.applytoForm.controls.schoolLv1.value;
+    // const schoolLv2 = this.applytoForm.controls.schoolLv2.value;
+    // const schoolLv3 = this.applytoForm.controls.schoolLv3.value;
+    // const bestSubject = this.applytoForm.controls.bestSubject.value;
+    // const weakSubject = this.applytoForm.controls.weakSubject.value;
+    // const interestJob = this.applytoForm.controls.interestJob.value;
+    // const interestAge = this.applytoForm.controls.interestAge.value;
+    // const yourInterest = this.applytoForm.controls.yourInterest.value;
+    // const practiceInterest = this.applytoForm.controls.practiceInterest.value;
+    // const type = 'cadidate';
+    // const school = this.schoolID;
 
-    const data = ({
-      lienParent, title, lastName, firstName, job, email, tel, horaireJoingnable, childLastName,
-      childFirstName, childAge, childTitle, childMel, childTel, childAddr, childPostalCode, 
-      childCity, childBirthDay, childBirthPlace, childSisBroAge, childSisBroStudy, childSisBroTitle,
-      schoolName, schoolCity, schoolClasse, schoolOption, schoolLv1, schoolLv2, schoolLv3, bestSubject, weakSubject, interestJob, interestAge, yourInterest, practiceInterest
-    });
+    // const data = ({
+    //   lienParent, title, lastName, firstName, job, email, tel, horaireJoingnable, childLastName,
+    //   childFirstName, childAge, childTitle, childMel, childTel, childAddr, childPostalCode, 
+    //   childCity, childBirthDay, childBirthPlace, childSisBroAge, childSisBroStudy, childSisBroTitle,
+    //   schoolName, schoolCity, schoolClasse, schoolOption, schoolLv1, schoolLv2, schoolLv3, bestSubject, 
+    //   weakSubject, interestJob, interestAge, yourInterest, practiceInterest, type, school
+    // });
+    const data = {
+      type : "apply",
+      school : this.schoolID
+    }
 
     this.usersService.postApplication(data)
       .subscribe(

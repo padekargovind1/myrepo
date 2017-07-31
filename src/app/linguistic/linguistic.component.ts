@@ -102,7 +102,7 @@ export class LinguisticComponent implements OnInit, AfterViewInit {
       .subscribe(
         response=>{
           let data = response.data;
-          console.log(data)
+          // console.log(data)
           if(response.code==400){
             console.log(response.message)
           } else {
