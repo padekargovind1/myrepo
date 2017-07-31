@@ -261,50 +261,55 @@
 
                                     </div>
                                 </div>
-
-                                <div class="content-compare-table"
-                                    *ngFor="let school of schoolDataToDisplay; let i =index">
-                                   <div class="top-compare-table">
-                                        <button type="button" 
-                                            class="close" 
-                                            data-dismiss="modal" 
-                                            aria-label="Close"
-                                            (click)="onDeleteCompare(school)">
-                                            <img src="assets/images/cide-remove.png" width="16" />
-                                        </button>
-                                        <div class="card  school-item">
-                                            <ul class="school-action">
-                                                <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                            
-                                            <img src="assets/images/school-1.jpg" alt="School 1" />
-                                            
-                                            <div class="card-content">
-                                                <h3>{{school.shortName}}</h3>
-                                                <p>{{school.longName}} 
-                                                    <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
-                                                <address>{{school.address.ad1}}<br /> 
-                                                    {{school.address.postCode}} {{school.address.city}}<br /> 
-                                                    Tel: {{school.address.phoneNumber}}</address>
-
-                                                <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
-                                                <button type="button" class="btn btn-secondary btn-block" 
-                                                    data-toggle="modal" data-target="#apply-compare-popup"
-                                                    (click)="onApply(school)">
-                                                    Postuler</button>
-                                                <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button> -->
-                                            </div><!-- .card-content -->
-
-                                        </div><!-- .card -->
-                                    </div>
-                                    <app-compare-block [schoolDataToDisplay]="school"></app-compare-block>
-
+                                
+                                <div *ngIf="!showSchool; else compare1">
+                                    &nbsp;
                                 </div>
 
+                                <ng-template #compare1>
+                                    <div class="content-compare-table"
+                                        *ngFor="let school of schoolDataToDisplay; let i =index">
+                                    <div class="top-compare-table">
+                                            <button type="button" 
+                                                class="close" 
+                                                data-dismiss="modal" 
+                                                aria-label="Close"
+                                                (click)="onDeleteCompare(school)">
+                                                <img src="assets/images/cide-remove.png" width="16" />
+                                            </button>
+                                            <div class="card  school-item">
+                                                <ul class="school-action">
+                                                    <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+                                                </ul>
+                                                
+                                                <img src="assets/images/school-1.jpg" alt="School 1" />
+                                                
+                                                <div class="card-content">
+                                                    <h3>{{school.shortName}}</h3>
+                                                    <p>{{school.longName}} 
+                                                        <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
+                                                    <address>{{school.address.ad1}}<br /> 
+                                                        {{school.address.postCode}} {{school.address.city}}<br /> 
+                                                        Tel: {{school.address.phoneNumber}}</address>
 
+                                                    <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
+                                                    <button type="button" class="btn btn-secondary btn-block" 
+                                                        data-toggle="modal" data-target="#apply-compare-popup"
+                                                        (click)="onApply(school)">
+                                                        Postuler</button>
+                                                    <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button> -->
+                                                </div><!-- .card-content -->
+
+                                            </div><!-- .card -->
+                                        </div>
+                                        <app-compare-block [schoolDataToDisplay]="school"></app-compare-block>
+
+                                    </div>
+
+                                </ng-template>
                             </div>
 
                         </div><!-- .col-* -->

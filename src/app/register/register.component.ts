@@ -66,7 +66,9 @@ export class RegisterComponent implements OnInit {
                 type: 'success',
                 confirmButtonText: 'Ok'
               })
-              this.router.navigate(['/login'])
+              // console.log(response.data.token)
+              this.authService.storeToken(response.data.token)
+              this.router.navigate(['/my-account'])
             }
           }
         )

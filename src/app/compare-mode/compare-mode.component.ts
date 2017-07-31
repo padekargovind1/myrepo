@@ -12,7 +12,7 @@ var self = this;
 })
 export class CompareModeComponent implements OnInit {
 
-  schoolToCompare =[];
+  schoolToCompare ={ids:[]};
   schoolDataToDisplay : [any]=[null];
   compareListFilter : any;
   applytoSchool={
@@ -21,6 +21,7 @@ export class CompareModeComponent implements OnInit {
     sName:"",
     photo:"school-1.jpg"
   }
+  showSchool : boolean = false;
 
   constructor(private location : Location,
               private route : ActivatedRoute,
@@ -36,30 +37,39 @@ export class CompareModeComponent implements OnInit {
     }
     // console.log(this.compareListFilter);
     // console.log(this.route.snapshot.params);
-    this.schoolToCompare.push(this.route.snapshot.params[0]);
-    this.schoolToCompare.push(this.route.snapshot.params[1]);
+    this.schoolToCompare.ids.push(this.route.snapshot.params[0]);
+    this.schoolToCompare.ids.push(this.route.snapshot.params[1]);
     if(this.route.snapshot.params[2]){
-      this.schoolToCompare.push(this.route.snapshot.params[2]);
+      this.schoolToCompare.ids.push(this.route.snapshot.params[2]);
     }
     if (this.route.snapshot.params[3]){
-      this.schoolToCompare.push(this.route.snapshot.params[3]);
+      this.schoolToCompare.ids.push(this.route.snapshot.params[3]);
     }
     this.getSchoolData();
   }
 
   getSchoolData(){
-    this.schoolDataToDisplay.pop()
-    for(let school of this.schoolToCompare){
-      this.publicService.getSchoolById(school)
-        .subscribe(
-          (response)=>{
-            let data = response.data;
-            // console.log(data);
-            this.schoolDataToDisplay.push(data);
-            // console.log(this.schoolDataToDisplay);
-          }
-        )
-    }
+    this.publicService.postComparing(this.schoolToCompare)
+      .subscribe(
+        response=>{
+          let data = response.data;
+          this.schoolDataToDisplay=data;
+          this.showSchool=true;
+          console.log(this.schoolDataToDisplay, this.showSchool)
+        }
+      )
+    // this.schoolDataToDisplay.pop()
+    // for(let school of this.schoolToCompare){
+    //   this.publicService.getSchoolById(school)
+    //     .subscribe(
+    //       (response)=>{
+    //         let data = response.data;
+    //         // console.log(data);
+    //         this.schoolDataToDisplay.push(data);
+    //         // console.log(this.schoolDataToDisplay);
+    //       }
+    //     )
+    // }
   }
 
   onNavigateBack(){
@@ -70,6 +80,9 @@ export class CompareModeComponent implements OnInit {
     console.log("click on delete");
     // console.log(this.schoolDataToDisplay);
     this.schoolDataToDisplay.splice(school, 1);
+    if(this.schoolDataToDisplay.length==0){
+      this.showSchool=false
+    }
     // console.log(this.schoolDataToDisplay);
   }
 

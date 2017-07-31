@@ -18,8 +18,10 @@ export class SchoolCardComponent implements OnInit {
               private publicService : PublicService) { }
 
   ngOnInit() {
-    // console.log(this.SchoolData, this.SchoolData._id);
-    this.getSchoolBrochureById();
+    setTimeout(()=>{
+      // console.log(this.SchoolData);
+      this.getSchoolBrochureById();
+    }, 500)
   }
 
   onSchoolDetail(){
@@ -45,10 +47,10 @@ export class SchoolCardComponent implements OnInit {
   }
 
   getSchoolBrochureById(){
-    this.publicService.getBrochurebyId(this.SchoolData.cycles[0].cycle._id)
+    this.publicService.getBrochurebyId(this.SchoolData.cycles[0].cycle)
       .subscribe(
         response=>{
-          console.log(response.data)
+          // console.log(response.data)
           if(response.code==400){
             console.log(response.message)
           } else {

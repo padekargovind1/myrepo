@@ -6,6 +6,7 @@ const SCHOOLS_API : string = "http://54.254.203.172/cideapi/api/public/schools/"
 const CITIES_API : string = "http://54.254.203.172/cideapi/api/public/cities/autocomplete";
 const LINGUISTIC_API: string = "http://54.254.203.172/cideapi/api/public/linguistic";
 const LANGUAGE_API: string = "http://54.254.203.172/cideapi/api/public/language";
+const SEARCH_API : string = "http://54.254.203.172/cideapi/api/public/search/"
 
 @Injectable()
 export class PublicService {
@@ -72,5 +73,15 @@ export class PublicService {
   getLanguage() : Observable<any> {
     return this.http.get(LANGUAGE_API)
       .map((response)=>response.json());
+  }
+
+  postSearchSchool(data) : Observable<any>{
+    return this.http.post(SEARCH_API+'schools', data)
+      .map((response)=>response.json())
+  }
+
+  postComparing(data) : Observable<any>{
+    return this.http.post(SCHOOLS_API+'comparing', data)
+      .map((response)=>response.json())
   }
 }
