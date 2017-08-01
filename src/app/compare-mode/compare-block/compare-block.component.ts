@@ -1,12 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { CompareService } from '../../services/compare.service';
+
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-compare-block',
   templateUrl: './compare-block.component.html',
   styleUrls: ['./compare-block.component.scss']
 })
-export class CompareBlockComponent implements OnInit {
+export class CompareBlockComponent implements OnInit, AfterViewInit {
 
   @Input() schoolDataToDisplay;
   compareListFilter : any;
@@ -20,6 +23,10 @@ export class CompareBlockComponent implements OnInit {
 
   onDeleteCompare(){
     // console.log("click on detele img")
+  }
+
+  ngAfterViewInit(){
+    (<any> $('.cycleSlick'+this.schoolDataToDisplay._id)).slick();
   }
 
 }

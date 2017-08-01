@@ -106,8 +106,8 @@
     <h1 class="sitename">Avec le CIDE, je trouve</h1>
 
     <ul class="mobile-login">
-        <li><i class=" fa fa-file-text"></i></li>
-        <li><i class="fa fa-bookmark"></i></li>
+        <li><i class=" fa fa-file-text" data-target="#download-popup"></i></li>
+        <li><i class="fa fa-bookmark" data-target="#download-popup"></i></li>
         <li><i class="fa fa-user"></i>
             <ul class="login">
                 <li><a (click)="onSignUp()">S'inscrire</a></li>
@@ -116,8 +116,8 @@
         </li>
     </ul>
     <ul class="right-top-menu pull-right">
-        <li><i class=" fa fa-file-text"></i></li>
-        <li><i class="fa fa-bookmark"></i></li>
+        <li><i class=" fa fa-file-text" data-target="#download-popup"></i></li>
+        <li><i class="fa fa-bookmark" data-target="#download-popup"></i></li>
         <li class="login-text" *ngIf="!userLogin; else log">
             <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
             <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SchoolService } from '../services/school.service';
@@ -13,7 +13,7 @@ import 'slick-carousel/slick/slick';
   templateUrl: './linguistic.component.html',
   styleUrls: ['./linguistic.component.css']
 })
-export class LinguisticComponent implements OnInit, AfterViewInit {
+export class LinguisticComponent implements OnInit{
 
   listTrips : any;
   listTripsFiltered =[];
@@ -33,16 +33,6 @@ export class LinguisticComponent implements OnInit, AfterViewInit {
     this.getTrips();
     this.getLanguage();
     this.getLinguistic();
-  }
-
-  ngAfterViewInit() { 
-    this.initCarousel()
-      
-    }
-
-  initCarousel(){
-    let test = '.school-carousel1';
-    (<any> $(test)).slick();
   }
 
   getTrips(){
