@@ -136,7 +136,7 @@ lienparents = [ "Père",
     this.myParentProfile.phoneNumber = this.parentAccountForm.controls.portable.value;
     this.myParentProfile.email = this.parentAccountForm.controls.email.value;
     this.myParentProfile.address.address1 = this.parentAccountForm.controls.adresse.value;
-    this.myParentProfile.address.postCode = this.parentAccountForm.controls.codepostal.value;
+    this.myParentProfile.address.postCode = this.parentAccountForm.controls.codepostal.value.toString();
     this.myParentProfile.address.country = this.parentAccountForm.controls.pays.value;
     this.myParentProfile.address.city = this.parentAccountForm.controls.ville.value;
     this.usersService.storeParentData(this.myParentProfile);

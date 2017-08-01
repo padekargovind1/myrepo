@@ -32,12 +32,12 @@ export class PublicService {
   }
 
   getBrochure(): Observable<any>{
-    return this.http.get(SCHOOLS_API+'/brochures')
+    return this.http.get(SCHOOLS_API+'brochures')
       .map((response)=>response.json());
   }
 
-  getBrochurebyId(brochureId): Observable<any>{
-    return this.http.get(SCHOOLS_API+'/brochures/' + brochureId)
+  getBrochurebyId(schoolId, cycleId): Observable<any>{
+    return this.http.get(SCHOOLS_API+'brochures/' + schoolId+'?id='+cycleId)
       .map((response)=>response.json());
   }
 

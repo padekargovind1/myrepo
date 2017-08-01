@@ -47,7 +47,8 @@ export class SchoolCardComponent implements OnInit {
   }
 
   getSchoolBrochureById(){
-    this.publicService.getBrochurebyId(this.SchoolData.cycles[0].cycle)
+    console.log(this.SchoolData);
+    this.publicService.getBrochurebyId(this.SchoolData._id, this.SchoolData.cycles[0]._id)
       .subscribe(
         response=>{
           // console.log(response.data)

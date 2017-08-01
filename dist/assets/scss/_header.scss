@@ -32,18 +32,18 @@
   padding-left: 0;
   list-style: none;
 }
-header .main-navigation > ul > li {
+ .main-navigation > ul > li {
   float: left;
   margin-right: 17px;
   position: relative;
 }
-header .main-navigation > ul > li:last-child {
+ .main-navigation > ul > li:last-child {
   margin: 0;
 }
-header .main-navigation > ul > li:last-child a {
+ .main-navigation > ul > li:last-child a {
   padding-right: 0;
 }
-header .main-navigation > ul > li > a {
+ .main-navigation > ul > li > a {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -52,38 +52,38 @@ header .main-navigation > ul > li > a {
   display: block;
   position: relative;
 }
-header .main-navigation > ul > li > a:focus {
+.main-navigation > ul > li > a:focus {
   outline: 0;
 }
-header .main-navigation > ul > li.login > a span {
+.main-navigation > ul > li.login > a span {
   background: #7bc673; 
   padding: 5px 10px;
   border-radius: 3px;
   box-shadow: none;
 }
-header .main-navigation ul li.current_page_item a,
-header .main-navigation ul li a:hover,
-header.alt .main-navigation ul li.current_page_item a,
-header.alt .main-navigation ul li a:hover,
-header .main-navigation li.parent-item ul.submenu li:hover > a {
+.main-navigation ul li.current_page_item a,
+.main-navigation ul li a:hover,
+.alt .main-navigation ul li.current_page_item a,
+.alt .main-navigation ul li a:hover,
+.main-navigation li.parent-item ul.submenu li:hover > a {
   color: #7bc673;
 }
-header.alt .main-navigation > ul > li.login > a {
+.alt .main-navigation > ul > li.login > a {
   color: #fff;
 }
-header .main-navigation > ul > li.login > a:hover {
+.main-navigation > ul > li.login > a:hover {
   color: #383c4b;
 }
-header.alt .main-navigation > ul > li.login > a:hover span {
+.alt .main-navigation > ul > li.login > a:hover span {
   background: #383c4b;
   color: #fff;
 }
-header.alt .main-navigation > ul > li.login:after {
+.alt .main-navigation > ul > li.login:after {
   display: none;
 }
 /* 2nd menu option */
-header.alt .main-navigation > ul > li:after,
-header.alt .main-navigation > ul > li.courses-menu > a:after {
+.alt .main-navigation > ul > li:after,
+.alt .main-navigation > ul > li.courses-menu > a:after {
   content: '';
   background: #7bc673;
   display: block;
@@ -96,20 +96,20 @@ header.alt .main-navigation > ul > li.courses-menu > a:after {
   opacity: 0;
   visibility: hidden;
 }
-header.alt .main-navigation > ul > li:hover:after,
-header.alt .main-navigation > ul > li.current_page_item:after,
-header.alt .main-navigation > ul > li.courses-menu:hover a:after {
+.alt .main-navigation > ul > li:hover:after,
+.alt .main-navigation > ul > li.current_page_item:after,
+.alt .main-navigation > ul > li.courses-menu:hover a:after {
   top: 100%;
   opacity: 1;
   visibility: visible;
 }
-header.alt .main-navigation > ul > li > a {
+.alt .main-navigation > ul > li > a {
   color: #4b4f5c;
 }
 /* submenu */
-header .main-navigation li.parent-item ul.submenu,
-header .main-navigation li.courses-menu ul,
-header .main-navigation li.parent-item ul.submenu ul {
+.main-navigation li.parent-item ul.submenu,
+.main-navigation li.courses-menu ul,
+.main-navigation li.parent-item ul.submenu ul {
   position: absolute;
   left: 11px;
   top: 80px;
@@ -136,45 +136,45 @@ header .main-navigation li.parent-item ul.submenu ul {
   -o-transform-origin: 0 0;
   transform-origin: 0 0;
 }
-header.alt .main-navigation li.parent-item ul.submenu {
+.alt .main-navigation li.parent-item ul.submenu {
   left: 0;
   top: 100%;
 }
-header .main-navigation li.parent-item ul.submenu ul {
+.main-navigation li.parent-item ul.submenu ul {
   left: 100%;
   top: -3px;
   overflow: hidden;
   border-left: 1px solid #e6e6e7;
 }
-header .main-navigation li.parent-item ul.submenu ul.left-submenu {
+.main-navigation li.parent-item ul.submenu ul.left-submenu {
   left: auto;
   right: 100%;
   border-left: 0;
   border-right: 1px solid #e6e6e7;
 }
-header .main-navigation li.parent-item ul.submenu li a {
+.main-navigation li.parent-item ul.submenu li a {
   position: relative;
   display: block;
   color: #a9abb0;
   padding: 11px 20px;
   border-bottom: 1px solid #e6e6e7;
 }
-header .main-navigation li.parent-item ul.submenu li.haschild,
-header .mobile-navigation .mobile-container li.haschild {
+.main-navigation li.parent-item ul.submenu li.haschild,
+.mobile-navigation .mobile-container li.haschild {
   position: relative;
 }
-header .main-navigation li.parent-item ul.submenu li.haschild > a:after,
-header .mobile-navigation .mobile-container li.haschild > a:after {
+.main-navigation li.parent-item ul.submenu li.haschild > a:after,
+.mobile-navigation .mobile-container li.haschild > a:after {
   content: '\f107';
   font: normal normal normal 14px/1 "FontAwesome";
   float: right;
 }
-header .main-navigation li.parent-item ul.submenu li:hover > a {
+.main-navigation li.parent-item ul.submenu li:hover > a {
   background: #f4f4f4;
 }
-header .main-navigation li.parent-item:hover ul.submenu,
-header .main-navigation li.courses-menu:hover ul,
-header .main-navigation li.parent-item ul.submenu li.haschild:hover ul {
+.main-navigation li.parent-item:hover ul.submenu,
+.main-navigation li.courses-menu:hover ul,
+.main-navigation li.parent-item ul.submenu li.haschild:hover ul {
   opacity: 1;
   visibility: visible;
   -moz-transform: scaleY(1);
@@ -184,13 +184,13 @@ header .main-navigation li.parent-item ul.submenu li.haschild:hover ul {
   transform: scaleY(1);
 }
 /* Courses MENU */
-header .main-navigation > ul > li.courses-menu:after {
+.main-navigation > ul > li.courses-menu:after {
   display: none;
 }
-header .main-navigation li.courses-menu {
+.main-navigation li.courses-menu {
   position: static;
 }
-header .main-navigation li.courses-menu ul {
+.main-navigation li.courses-menu ul {
   background: rgba(0, 0, 0, .1);
   left: 0;
   top: 100%;
@@ -200,29 +200,29 @@ header .main-navigation li.courses-menu ul {
   border-top: none;
   box-shadow: none;
 }
-#home header .main-navigation li.courses-menu ul,
-#home-2 header .main-navigation li.courses-menu ul,
-#home-3 header .main-navigation li.courses-menu ul,
-#home-4 header .main-navigation li.courses-menu ul,
-#home-5 header .main-navigation li.courses-menu ul,
-#home-6 header .main-navigation li.courses-menu ul,
-#home-7 header .main-navigation li.courses-menu ul {
+#home .main-navigation li.courses-menu ul,
+#home-2 .main-navigation li.courses-menu ul,
+#home-3 .main-navigation li.courses-menu ul,
+#home-4 .main-navigation li.courses-menu ul,
+#home-5 .main-navigation li.courses-menu ul,
+#home-6 .main-navigation li.courses-menu ul,
+#home-7 .main-navigation li.courses-menu ul {
   background: none;
   padding-bottom: 0;
   border-radius: 0;
 }
-header .main-navigation li.courses-menu li .single-item {
+.main-navigation li.courses-menu li .single-item {
   background: #f3f3f3;
   border-radius: 2px;
   overflow: hidden;
   padding: 20px;
   margin-bottom: 30px;
 }
-header.alt .main-navigation li.courses-menu li .single-item {
+.alt .main-navigation li.courses-menu li .single-item {
   margin-top: 30px;
   margin-bottom: 0;
 }
-header .main-navigation li.courses-menu li .single-item .item-icon {
+.main-navigation li.courses-menu li .single-item .item-icon {
   background: #7bc673;
   display: block;
   width: 38px;
@@ -235,17 +235,17 @@ header .main-navigation li.courses-menu li .single-item .item-icon {
   float: left;
   margin-right: 9px;
 }
-header .main-navigation li.courses-menu li .single-item a {
+.main-navigation li.courses-menu li .single-item a {
   display: block;
   color: #7bc673;
   font-weight: bold;
   font-size: 14px;
   margin: -3px 0 7px 0;
 }
-header .main-navigation li.courses-menu li .single-item a:hover {
+.main-navigation li.courses-menu li .single-item a:hover {
   color: #383c4b;
 }
-header .main-navigation li.courses-menu li .single-item .courses-num {
+.main-navigation li.courses-menu li .single-item .courses-num {
   color: #383c4b;
 }
 

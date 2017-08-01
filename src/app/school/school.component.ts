@@ -276,9 +276,9 @@ export class SchoolComponent implements OnInit {
           if(response.code==400){
             console.log(response.message)
           } else {
-            // this.schoolListFilter=data;
+            this.schoolListFilter=data;
             console.log(this.schoolListFilter)
-            this.filterCycleSchool(data)
+            // this.filterCycleSchool(data)
           }
         }
       )

@@ -42,7 +42,7 @@ export class MyaccountDocumentationsComponent implements OnInit {
             console.log(this.docList)
             for(let doc of this.docList){
               console.log(doc)
-              this.getBrochureById(doc.school.cycles[0].cycle)
+              this.getBrochureById(doc.school._id, doc.school.cycles[0]._id)
             }
             setTimeout(()=>{
               this.showDownload=true;
@@ -52,8 +52,8 @@ export class MyaccountDocumentationsComponent implements OnInit {
       )
   }
 
-  getBrochureById(brochureId){
-    this.publicService.getBrochurebyId(brochureId)
+  getBrochureById(schoolId, cycleId){
+    this.publicService.getBrochurebyId(schoolId, cycleId)
       .subscribe(
         response=>{
           console.log(response.data)

@@ -54,7 +54,9 @@ export class EtablissementFormationComponent implements OnInit {
             this.schoolData.splice(0, 1);
             for(let i = 0; i<response.data.cycles.length; i++){
               this.schoolData.push(this.etablissementService.fillSchoolData(response.data, i))
+              // console.log(this.schoolData[i])
             }
+            console.log(this.schoolDataRef)
             this.schoolDataToDisplay=this.schoolDataRef.cycles
             console.log(this.schoolData, this.schoolDataToDisplay);
           }

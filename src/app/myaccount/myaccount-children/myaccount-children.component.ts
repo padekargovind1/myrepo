@@ -115,7 +115,7 @@ export class MyaccountChildrenComponent implements OnInit {
     this.myProfile.email = this.childrenForm.controls.email.value;
     this.myProfile.mobilePhone = this.childrenForm.controls.portable.value;
     this.myProfile.address.address1 = this.childrenForm.controls.adresse.value;
-    this.myProfile.address.postCode = this.childrenForm.controls.codepostal.value;
+    this.myProfile.address.postCode = this.childrenForm.controls.codepostal.value.toString();
     this.myProfile.address.city = this.childrenForm.controls.ville.value;
     this.myProfile.birthDate = this.childrenForm.controls.datenaissance.value;
     this.myProfile.birthPlace = this.childrenForm.controls.lieu.value;
