@@ -84,4 +84,9 @@ export class PublicService {
     return this.http.post(SCHOOLS_API+'comparing', data)
       .map((response)=>response.json())
   }
+
+  postFastSearch(data): Observable<any>{
+    return this.http.post(SCHOOLS_API+'schools', data)
+      .map((response)=>response.json())
+  }
 }

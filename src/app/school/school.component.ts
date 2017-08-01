@@ -195,13 +195,32 @@ export class SchoolComponent implements OnInit {
 
 
   onSubmitSearch(){
-    let data = [
-      this.searchForm.controls.classe.value,
-      this.searchForm.controls.lieu.value,
-      this.searchForm.controls.etablissement.value
-    ]
+    let data = {
+      class : this.searchForm.controls.classe.value,
+      place : this.searchForm.controls.lieu.value,
+      name : this.searchForm.controls.etablissement.value
+    }
     this.publicService.storeSearchSchool(data);
+    this.postFastSearch(data)
     // this.getSearchFilter();
+  }
+
+  postFastSearch(data){
+    this.publicService.postFastSearch(data)
+      .subscribe(
+        response => {
+          console.log(response);
+          if(response.code==400){
+            console.log(response.message)
+          } else {
+            this.schoolListFilter=response.data
+            if(this.schoolListFilter.length>8){
+              this.schoolListFilter.splice(7, 12)
+            }
+            console.log(this.schoolListFilter)
+          }
+        }
+      )
   }
 
   filterLieu(event){
