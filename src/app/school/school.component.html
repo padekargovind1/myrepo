@@ -212,7 +212,7 @@
                                         <li><input type="checkbox" name="half-board_girls" class="half-board_girls checkbox filled-in" id="filter-29" /><label for="filter-29">demi-pension filles</label></li> 
                                     </ul> 
                                 </li>
-                                <li><a class="advancedFilter">Statut</a>
+                                <li><a class="advancedFilter">Status</a>
                                     <ul (click)="onAdvancedClick($event, 'status')"
                                         class="adv-filt">
                                         <li>
@@ -562,7 +562,7 @@
                                                     <md-checkbox  name="" 
                                                         class="checkbox filled-in"
                                                         (click)="onFilterCheckbox(i)">
-                                                    <label>{{ filter }}</label>
+                                                    {{ filter }}
                                                     </md-checkbox>
                                                 </div><!-- .filter-option -->
 
