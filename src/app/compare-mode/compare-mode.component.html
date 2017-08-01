@@ -219,7 +219,25 @@
 
                                         <ul class="compare-item class-cycle"
                                             *ngIf="compareListFilter[8]=='true'">
-                                            <li class="title">Ens. Confessionel</li>
+                                            <li class="title">
+                                                <h5>
+                                                    <a role="button" data-toggle="collapse" href=".confess" 
+                                                        aria-expanded="false" aria-controls="collapseExample">
+                                                        Ens Confessionel
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                </h5>
+                                                <div class="collapse in confess">
+                                                    <ul class="compare-item">
+                                                        <li>Laïc</li>
+                                                        <li>Catholic</li>
+                                                        <li>Protestant</li>
+                                                        <li>Musulman</li>
+                                                        <li>Juif</li>
+                                                        <li>Boudhiste</li>
+                                                    </ul>
+                                                </div>
+                                            </li>
                                         </ul>
 
                                         <ul class="compare-item class-cycle"

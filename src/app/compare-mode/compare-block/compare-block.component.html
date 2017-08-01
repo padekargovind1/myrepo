@@ -392,7 +392,48 @@
 
     <ul class="compare-item center class-cycle"
         *ngIf="compareListFilter[8]=='true'">
-        <li class="title"><h5>Laic</h5></li>
+        <li class="title"><h5>&nbsp;</h5>
+            <div class="collapse in confess">
+                <ul class="compare-item">
+                    <li *ngIf="schoolDataToDisplay.cycles[0].status3.indexOf('Laïque')!=-1; else field41">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field41>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].status3.indexOf('Catholique')!=-1; else field42">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field42>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].status3.indexOf('Protestant')!=-1; else field43">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field43>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].status3.indexOf('Musulman')!=-1; else field44">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field44>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].status3.indexOf('Juif')!=-1; else field45">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field45>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[0].status3.indexOf('Boudhiste')!=-1; else field46">
+                        <img width="20" src="assets/images/cide-true.png">
+                    </li>
+                    <ng-template #field46>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                </ul>
+            </div>
+        </li>
     </ul>
 
     <ul class="compare-item center class-cycle"

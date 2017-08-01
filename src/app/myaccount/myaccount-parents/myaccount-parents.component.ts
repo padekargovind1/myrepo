@@ -23,7 +23,7 @@ export class MyaccountParentsComponent implements OnInit {
   myParentProfile : MyAccountParentMdl = new MyAccountParentMdl();
   myProfile : MyAccountMdl = new MyAccountMdl();
   public parentAccountForm : FormGroup;
-lienparents = [ "Père", 
+  lienparents = [ "Père", 
                 "Mère", 
                 "Oncle", 
                 "Tante", 
@@ -31,6 +31,7 @@ lienparents = [ "Père",
                 "Grand-Mère", 
                 "Tuteur", 
                 "Tutrice"];
+  @Output() goToChild = new EventEmitter<boolean>();
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
@@ -101,12 +102,13 @@ lienparents = [ "Père",
   onSubmit(){
     console.log("On submit button");
     this.completeProfile();
-    swal({
-      title: 'Vos données ont bien été enregistré.',
-      text: 'Veuillez passer aux données de votre enfant.',
-      type: 'success',
-      confirmButtonText: 'Ok'
-    })
+    // swal({
+    //   title: 'Vos données ont bien été enregistré.',
+    //   text: 'Veuillez passer aux données de votre enfant.',
+    //   type: 'success',
+    //   confirmButtonText: 'Ok'
+    // })
+    this.goToChild.emit(true);
   }
 
   // save(){
