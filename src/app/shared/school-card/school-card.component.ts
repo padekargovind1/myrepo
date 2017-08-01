@@ -19,7 +19,7 @@ export class SchoolCardComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(()=>{
-      console.log(this.SchoolData);
+      // console.log(this.SchoolData);
       this.getSchoolBrochureById();
     }, 500)
   }
@@ -47,7 +47,7 @@ export class SchoolCardComponent implements OnInit {
   }
 
   getSchoolBrochureById(){
-    console.log(this.SchoolData);
+    // console.log(this.SchoolData);
     this.publicService.getBrochurebyId(this.SchoolData._id, this.SchoolData.cycles[0]._id)
       .subscribe(
         response=>{

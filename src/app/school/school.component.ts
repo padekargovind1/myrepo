@@ -262,6 +262,7 @@ export class SchoolComponent implements OnInit {
           } else {
             this.defaultSchoolList=response.data;
             this.schoolListFilter=response.data;
+            this.schoolListFilter.splice(7, 12)
           }
         }
       )
@@ -277,6 +278,7 @@ export class SchoolComponent implements OnInit {
             console.log(response.message)
           } else {
             this.schoolListFilter=data;
+            this.schoolListFilter.splice(7, 12)
             console.log(this.schoolListFilter)
             // this.filterCycleSchool(data)
           }

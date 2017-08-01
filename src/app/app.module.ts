@@ -73,6 +73,7 @@ import { BrochureService } from './services/brochure.service';
 import { EtablissementService } from './services/etablissement.service';
 import { SchoolComponent } from './school/school.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
+import { SchoolPipe } from './pipes/school.pipe';
 
 @NgModule({
   declarations: [
@@ -118,7 +119,8 @@ import { ShortenPipe } from './pipes/shorten.pipe';
     EditorialContComponent,
     EditorialDetComponent,
     SchoolComponent,
-    ShortenPipe
+    ShortenPipe,
+    SchoolPipe
   ],
   imports: [
     BrowserModule,

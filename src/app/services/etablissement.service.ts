@@ -76,11 +76,11 @@ export class EtablissementService {
     let school = schoolDataToFill;
 
     school.shortName = schoolData.shortName;
-    school.numberOfStudents = schoolData.numberOfStudents;
+    school.numberOfStudents = schoolData.nbrStudents;
     school.creationYear = schoolData.creationYear;
     school.academic = schoolData.address.academy;
     school.departement = schoolData.address.departmentName;
-    school.tel = schoolData.address.phoneNumber;
+    school.tel = schoolData.address.phone;
     school.website = schoolData.address.url;
     school.mel = schoolData.address.email;
     school.title = "Mme";

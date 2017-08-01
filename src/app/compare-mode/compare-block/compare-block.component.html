@@ -8,14 +8,14 @@
                 <li><span class="subtitle">&nbsp;</span>
                     <div class="collapse in ecole">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i]; else cycle1">
-                                {{ schoolDataToDisplay.cycles[i].classes[0].className }}
+                            <li *ngIf="schoolDataToDisplay.cycles[0] && i==0; else cycle1">
+                                {{ schoolDataToDisplay.cycles[0].classes[0].className }}
                             </li>
                             <ng-template #cycle1>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i]; else cycle2">
-                                {{ schoolDataToDisplay.cycles[i].classes[0].className }}
+                            <li *ngIf="schoolDataToDisplay.cycles[1] && i==1; else cycle2">
+                                {{ schoolDataToDisplay.cycles[1].classes[0].className }}
                             </li>
                             <ng-template #cycle2>
                                 <li >&nbsp;</li>
@@ -26,14 +26,14 @@
                 <li><span class="subtitle">&nbsp;</span>
                     <div class="collapse in college">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i]; else cycle3">
-                                {{ schoolDataToDisplay.cycles[i].classes[0].className }}
+                            <li *ngIf="schoolDataToDisplay.cycles[2] && i==2; else cycle3">
+                                {{ schoolDataToDisplay.cycles[2].classes[0].className }}
                             </li>
                             <ng-template #cycle3>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i]; else cycle4">
-                                {{ schoolDataToDisplay.cycles[i].classes[0].className }}
+                            <li *ngIf="schoolDataToDisplay.cycles[3] && i==3; else cycle4">
+                                {{ schoolDataToDisplay.cycles[3].classes[0].className }}
                             </li>
                             <ng-template #cycle4>
                                 <li >&nbsp;</li>
@@ -44,14 +44,14 @@
                 <li><span class="subtitle">&nbsp;</span>
                     <div class="collapse in college">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i]; else cycle5">
-                                {{ schoolDataToDisplay.cycles[i].classes[0].className }}
+                            <li *ngIf="schoolDataToDisplay.cycles[4] && i==4; else cycle5">
+                                {{ schoolDataToDisplay.cycles[4].classes[0].className }}
                             </li>
                             <ng-template #cycle5>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i]; else cycle6">
-                                {{ schoolDataToDisplay.cycles[i].classes[0].className }}
+                            <li *ngIf="schoolDataToDisplay.cycles[5] && i==5; else cycle6">
+                                {{ schoolDataToDisplay.cycles[5].classes[0].className }}
                             </li>
                             <ng-template #cycle6>
                                 <li >&nbsp;</li>
