@@ -1,126 +1,117 @@
-<div class="white-background">
+
+ <div class="white-background">
+
   <section class="login-page fadeInDown-animation">
     <div class="container">
-      <div fxLayout fxLayoutAlign="center" >
-        <div fxFlex="66%">
-          <h2 class="brochure-title">Je m'inscris</h2>
-          <div class="login-form register">
-            <!--<div class="login-title">
-              <span class="icon"><i class="fa fa-group"></i></span>
-              <span class="text">Register</span>
-            </div> -->
-            <form [formGroup]="registerForm"  (ngSubmit)="save()">
-              <div fxLayout="row" fxLayoutGap="5%">
-                <div fxFlex>
-                  <md-input-container style="width: 100%">
-                    <input [formControl]="registerForm.controls['username']" 
-                      mdInput 
-                      placeholder="Nom d'utilisateur" >
-                  </md-input-container>
-                  <small 
-                    *ngIf="registerForm.controls['username'].hasError('required') && 
-                    registerForm.controls['username'].touched" 
-                    class="mat-text-warn"> 
-                    Username required
-                  </small>
-                </div>
-                <div fxFlex>
-                  <md-input-container style="width: 100%">
-                    <input [formControl]="registerForm.controls['email']"
-                      mdInput 
-                      placeholder="Adresse Mail" >
-                  </md-input-container>
-                  <small *ngIf="registerForm.controls['email'].hasError('required') && 
-                    registerForm.controls['email'].touched" 
-                    class="mat-text-warn"> 
-                    Email required
-                  </small>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
 
-                  <small *ngIf="registerForm.controls['email'].errors?.email && 
-                    registerForm.controls['email'].touched" 
-                    class="mat-text-warn"> 
-                    Must be valid Email
-                  </small>
-                </div>
+            <h2 class="brochure-title">Je m'inscrit</h2>
+            <div class="login-form register">
+              <form [formGroup]="registerForm"  (ngSubmit)="save()" 
+                id="register-form">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                    <div class="input">
+                      <input type="text" id="reg_username" class="username-input" 
+                        placeholder="Nom d'utilisateur"
+                        [formControl]="registerForm.controls['username']" >
+                      <small 
+                        *ngIf="registerForm.controls['username'].hasError('required') && 
+                        registerForm.controls['username'].touched" 
+                        class="mat-text-warn"> 
+                        Nom d'utilisateur obligatoire
+                      </small>  
+                    </div>
+                  </div><!-- end username -->
+                  <div class="col-md-6 col-sm-6">
+                    <div class="input">
+                      <input type="email" id="reg_email" class="email-input" 
+                        placeholder="Email" [formControl]="registerForm.controls['email']">
+                      <small *ngIf="registerForm.controls['email'].hasError('required') && 
+                        registerForm.controls['email'].touched" 
+                        class="mat-text-warn"> 
+                        Email obligatoire
+                      </small>
+                      <small *ngIf="registerForm.controls['email'].errors?.email && 
+                        registerForm.controls['email'].touched" 
+                        class="mat-text-warn"> 
+                        Email invalide
+                      </small>
+                    </div>
+                  </div><!-- end email -->
+                  <div class="col-md-6 col-sm-6">
+                    <div class="input">
+                      <input type="password" id="reg_password" class="password-input" 
+                        placeholder="Mot de passe"
+                        [formControl]="registerForm.controls['password']">
+                      <small 
+                        *ngIf="registerForm.controls['password'].hasError('required') && 
+                        registerForm.controls['password'].touched" 
+                        class="mat-text-warn"> 
+                        Mot de passe obligatoire
+                      </small>
+                    </div>
+                  </div><!-- end password -->
+                  <div class="col-md-6 col-sm-6">
+                    <div class="input">
+                      <input type="password" id="reg_confirm-password" 
+                        class="confirm-password-input" placeholder="Confirmer mot de passe"
+                        [formControl]="registerForm.controls['repeated']">
+                      <small 
+                        *ngIf="registerForm.controls['repeated'].errors?.equalTo && 
+                        registerForm.controls['repeated'].touched" 
+                        class="mat-text-warn"> 
+                        Mot de passe différent
+                      </small>
+                    </div>
+                  </div><!-- end confirm password -->
+                  <div class="col-md-12">
+                    <div class="input clearfix">
+                      <input type="submit" id="reg_submit" 
+                        class="submit-input btn-appointment grad-btn ln-tr" 
+                        value="Enregistrer" [disabled]="!registerForm.valid">
+                    </div>
+                  </div><!-- end submit -->
+                </div><!-- end row -->
+              </form><!-- End form -->
+            </div><!-- end login form -->
+
+            <h3 class="text-center">Je peux aussi m'inscrire avec :</h3>
+
+            <div class="login-options">
+              <div class="row">
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr fb"><i class="fa fa-facebook"></i> Facebook</a>
+                </div><!-- end FB login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr in"><i class="fa fa-instagram"></i> Instagram</a>
+                </div><!-- end GP login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr tw"><i class="fa fa-twitter"></i> Twitter</a>
+                </div><!-- end TW login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr gp"><i class="fa fa-google-plus"> Google +</i></a>
+                </div><!-- end YA login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr li"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                </div><!-- end YA login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr vim"><i class="fa fa-vimeo"></i> Vimeo</a>
+                </div><!-- end YA login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr yo"><i class="fa fa-youtube"></i> Youtube</a>
+                </div><!-- end YA login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr via"><i class="fa fa-viadeo"></i> Viadeo</a>
+                </div><!-- end YA login -->
+
               </div>
-              <div fxLayout="row" fxLayoutGap="5%">
-                <div fxFlex>
-                  <md-input-container style="width: 100%">
-                    <input [formControl]="registerForm.controls['password']"
-                      mdInput 
-                      placeholder="Mot de passe" 
-                      type="password">
-                  </md-input-container>
-                  <small 
-                    *ngIf="registerForm.controls['password'].hasError('required') && 
-                    registerForm.controls['password'].touched" 
-                    class="mat-text-warn"> 
-                    Password required
-                  </small>
-                </div>
-                <div fxFlex>
-                  <md-input-container style="width: 100%">
-                    <input [formControl]="registerForm.controls['repeated']"
-                      mdInput 
-                      placeholder="Répéter le mot de passe" 
-                      type="password">
-                  </md-input-container>
-                  <small 
-                    *ngIf="registerForm.controls['repeated'].errors?.equalTo && 
-                    registerForm.controls['repeated'].touched" 
-                    class="mat-text-warn"> 
-                    Repeated Password required
-                  </small>
-                </div>
-              </div>
-              <div fxLayout>
-                <div fxFlex>
-                  <div class="input">
-                    <input type="submit" 
-                      id="reg_submit" 
-                      class="submit-input  ln-tr btn-appointment" 
-                      value="S'enregistrer"
-                      [disabled]="!registerForm.valid"
-                      style="cursor:pointer;">
-                  </div>
-                </div>
-              </div>
-            </form>
-            <small *ngIf="errorMessage" class="mat-text-warn"> {{errorMessage}}</small>
-          </div>
-          <h3 class="brochure-title">Je peux aussi m'inscrire avec :</h3>
-          <div class="login-options">
-            <div fxLayout="row" fxLayoutGap="5%">
-              <div fxFlex>
-                <a href="#" class="login-op-btn grad-btn ln-tr fb"><i class="fa fa-facebook"></i> Facebook</a>
-              </div>
-              <div fxFlex>
-                <a href="#" class="login-op-btn grad-btn ln-tr in"><i class="fa fa-instagram"></i> Instagram</a>
-              </div>
-              <div fxFlex>
-                <a href="#" class="login-op-btn grad-btn ln-tr tw"><i class="fa fa-twitter"></i> Twitter</a>
-              </div>
-              <div fxFlex>
-                <a href="#" class="login-op-btn grad-btn ln-tr gp"><i class="fa fa-google-plus"> Google +</i></a>
-              </div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="5%">
-              <div fxFlex>
-                <a href="#" class="login-op-btn grad-btn ln-tr li"><i class="fa fa-linkedin"></i> LinkedIn</a>
-              </div>
-              <div fxFlex>
-                <a href="#" class="login-op-btn grad-btn ln-tr vim"><i class="fa fa-vimeo"></i> Vimeo</a>
-              </div>
-              <div fxFlex>
-                <a href="#" class="login-op-btn grad-btn ln-tr yo"><i class="fa fa-youtube"></i> Youtube</a>
-              </div>
-              <div fxFlex>
-                <a href="#" class="login-op-btn grad-btn ln-tr via"><i class="fa fa-viadeo"></i> Viadeo</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          </div><!-- end login optionss -->
+
+        </div><!-- end col-md-8/offset -->
+      </div><!-- end row -->
+    </div><!-- end container -->
+  </section><!-- End Register Page -->
+
 </div>

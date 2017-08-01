@@ -21,12 +21,12 @@
 
 <div class="card-content">
     <h3>{{ SchoolData.longName }}</h3>
-    <p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
+    <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
         {{ SchoolData.cycles[0].cycle.status2 }} <br />
-        {{ SchoolData.cycles[0].cycle.status3 }}</p>
+        {{ SchoolData.cycles[0].cycle.status3 }}</p>-->
     <address> {{ SchoolData.address.ad1 }} <br /> 
-        {{ SchoolData.address.postCode }} {{ SchoolData.address.city }}<br /> 
-        Tel: {{ SchoolData.address.phoneNumber }}</address>
+        {{ SchoolData.address.postcode }} {{ SchoolData.address.city }}<br /> 
+        Tel: {{ SchoolData.address.phone }}</address>
 
     <button class="btn btn-highlighted"
         (click)="onSchoolDetail()">Détail de l'école</button>

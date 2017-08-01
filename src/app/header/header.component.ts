@@ -7,6 +7,8 @@ import { BookingService } from '../services/booking.service';
 import { CompareService } from '../services/compare.service';
 import 'rxjs/add/operator/filter';
 
+var self = this;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -22,7 +24,8 @@ export class HeaderComponent implements OnInit {
   schoolWish = [];
   userLastName : string = "";
   userFirstName : string = "";
-  wishList= []
+  wishList= [];
+  onMobile:boolean=false
 
   constructor(private router : Router,
               private authService : AuthService,
@@ -32,6 +35,7 @@ export class HeaderComponent implements OnInit {
               private compareService : CompareService) {}
 
   ngOnInit() {
+    this.runScript()
     this.router.events
       .filter((event) => event instanceof NavigationEnd)
       .subscribe((event) => {
@@ -43,6 +47,43 @@ export class HeaderComponent implements OnInit {
         }
       });
   }
+
+  runScript(){
+    $('.mobile-login .fa-user').on('click', function() {
+        $('.login').toggle('slow');
+    });
+     function detectmob() {
+        if( navigator.userAgent.match(/Android/i)
+         || navigator.userAgent.match(/webOS/i)
+         || navigator.userAgent.match(/iPhone/i)
+         || navigator.userAgent.match(/iPad/i)
+         || navigator.userAgent.match(/iPod/i)
+         || navigator.userAgent.match(/BlackBerry/i)
+         || navigator.userAgent.match(/Windows Phone/i)
+         ){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    var checkMobile = detectmob();
+    if (checkMobile) {
+      console.log(checkMobile)
+      self.onMobile=true;
+      $('.select-all-advisor').on('click', function() {
+          $(this).hide();
+          $('.deselect-all-advisor').show();
+      });
+      $('.deselect-all-advisor').on('click', function() {
+          $(this).hide();
+          $('.select-all-advisor').show();
+      });
+    }else {
+      self.onMobile=false;
+    }
+  }
+
   getUserName(){
     this.usersService.getProfile()
       .subscribe(

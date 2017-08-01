@@ -19,6 +19,7 @@ export class SchoolComponent implements OnInit {
 
   schoolList : any;
   schoolListFilter : any;
+  defaultSchoolList : any;
   compareList= [];
   compareListFilter = [];
   filterList = ["Cycles & Classes", "Langues", "Spécialités", 
@@ -65,7 +66,7 @@ export class SchoolComponent implements OnInit {
     this.runScript();
     this.setBackgroundImage();
     this.buildForm();
-    this.postAdvancedFilter();
+    this.getAllSchool();
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
@@ -99,6 +100,13 @@ export class SchoolComponent implements OnInit {
         if($event.target.attributes['class'].value == 'main' || $event.target.attributes['class'].value == 'filter-form-holder' || $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'){
           $('.advance-filter').hide();
         }
+      }
+    })
+    $('#mobileFilter').on('click', function(e){
+      if($('.advance-filter').is(':visible')){
+        $('.advance-filter').hide();
+      } else {
+        $('.advance-filter').show();
       }
     })
   }
@@ -244,6 +252,21 @@ export class SchoolComponent implements OnInit {
       )
   }
 
+  getAllSchool(){
+    this.publicService.getSchoolsList()
+      .subscribe(
+        response => {
+          console.log(response);
+          if(response.code==400){
+            console.log(response.message)
+          } else {
+            this.defaultSchoolList=response.data;
+            this.schoolListFilter=response.data;
+          }
+        }
+      )
+  }
+
   postAdvancedFilter(){
     this.publicService.postSearchSchool(this.advancedSearch)
       .subscribe(
@@ -253,11 +276,33 @@ export class SchoolComponent implements OnInit {
           if(response.code==400){
             console.log(response.message)
           } else {
-            this.schoolListFilter=data;
+            // this.schoolListFilter=data;
             console.log(this.schoolListFilter)
+            this.filterCycleSchool(data)
           }
         }
       )
+  }
+
+  filterCycleSchool(cycleFromSearch){
+    console.log(cycleFromSearch)
+    if(cycleFromSearch.length==0){
+      this.schoolListFilter=[];
+    } else {
+      var schoolIdTab =[];
+      for(let schoolId of cycleFromSearch){
+        schoolIdTab.push(schoolId.school._id)
+      }
+      this.schoolListFilter = this.defaultSchoolList.filter(
+        school => {
+          if(schoolIdTab.indexOf(school._id)!=-1){
+            return true
+          } else{
+            return false
+          }
+        }
+      )
+    }
   }
 
   onAdvancedClick(event, category){

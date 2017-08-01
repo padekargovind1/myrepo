@@ -143,11 +143,18 @@
                             data-toggle="tooltip" data-placement="right" 
                             title="Affinez votre recherche avec plus de critères"></i>
                         <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
+                        <div class="inline-text pull-right hidden-lg hidden-md hidden-sm visible-xs">
+                            <i class="fa fa-filter"></i> Filtre avancé
+                            <div class="switch  mobile">
+                                <input id="filter-trigger" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                                <label for="filter-trigger" id="mobileFilter"></label>
+                            </div>
+                        </div>
                         <div class="advance-filter open" style="display:none">
                             <ul>
                                 <li><a class="advancedFilter">Specialités</a> 
                                     <ul (click)="onAdvancedClick($event, 'speciality')" 
-                                        class="adv-filt">
+                                        class="adv-filt left-popup">
                                         <li><input type="checkbox" name="handicapped" class="handicapped checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li> 
                                         <li><input type="checkbox" name="finance" class="finance checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
                                         <li><input type="checkbox" name="frenchAsForeign" class="frenchAsForeign checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
@@ -182,7 +189,7 @@
                                 </li>
                                 <li><a class="advancedFilter">Stages</a>
                                     <ul (click)="onAdvancedClick($event, 'curriculum')"
-                                        class="adv-filt">
+                                        class="adv-filt left-popup">
                                         <li><input type="checkbox" name="preintake" class="preintake checkbox filled-in" id="filter-21" /><label for="filter-21">stage pre-rentree</label></li>
                                         <li><input type="checkbox" name="smallholidays" class="smallholidays checkbox filled-in" id="filter-22" /><label for="filter-22">stages petites vacances</label></li>
                                         <li><input type="checkbox" name="bigholidays" class="bigholidays checkbox filled-in" id="filter-23" /><label for="filter-23">stages de grandes vacances</label></li> 
@@ -198,7 +205,7 @@
                                 </li>
                                 <li>
                                     <a class="advancedFilter"
-                                        class="adv-filt">Externat</a>
+                                        class="adv-filt left-popup">Externat</a>
                                      <ul (click)="onAdvancedClick($event, 'external')">
                                         <li><input type="checkbox" name="half-board_mixed" class="half-board_mixed checkbox filled-in" id="filter-27" /><label for="filter-27">demi-pension mixte</label></li>
                                         <li><input type="checkbox" name="half-board_boys" class="half-board_boys checkbox filled-in" id="filter-28" /><label for="filter-28">demi-pension garcons</label></li>
@@ -264,7 +271,7 @@
                                 </li>
                                 <li><a class="advancedFilter">Ens. Confessionel</a>
                                     <ul (click)="onAdvancedClick($event, 'religious')"
-                                        class="adv-filt">
+                                        class="adv-filt left-popup">
                                         <li>
                                             <input type="checkbox" name="secular" class="secular checkbox filled-in" id="laic" />
                                             <label for="laic">Laic</label>
@@ -354,7 +361,7 @@
                                 </li>
                                 <li><a class="advancedFilter">Sections</a>
                                     <ul (click)="onAdvancedClick($event, 'sections')"
-                                        class="adv-filt">
+                                        class="adv-filt left-popup">
                                         <li><input type="checkbox" name="european" class="european checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
                                         <li><input type="checkbox" name="international" class="international checkbox filled-in" id="filter-52" /><label for="filter-52">Section Internationnale</label></li>
                                         <li><input type="checkbox" name="bilingual" class="bilingual checkbox filled-in" id="filter-53" /><label for="filter-53">Section bilingue</label></li>
@@ -376,7 +383,7 @@
                                     </ul>
                                 </li>
                                 <li><a class="advancedFilter">Options</a>
-                                    <ul class="adv-filt">
+                                    <ul class="adv-filt left-popup">
                                         <li>
                                             <input type="text" name="" placeholder="Nom de L'option" 
                                                 class="form-control" (keyup)="addOptionFilter($event)">
@@ -575,14 +582,20 @@
                         <div class="col-md-3" *ngFor="let school of schoolListFilter; let i=index">
         
                             <div class="card  school-item">
-                                <div class="checkbox-custom">
+                                <!--<div class="checkbox-custom">
                                     <md-checkbox [disabled]="four" (click)="onCheckbox(school.school._id)"></md-checkbox>
+                                </div>-->
+                                <div class="checkbox-custom">
+                                    <input type="checkbox" [disabled]="four" 
+                                    class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
+                                    <label [for]="'school-'+i"
+                                        (click)="onCheckbox(school._id)">&nbsp;</label>
                                 </div>
                                 <!--<div class="checkbox-custom">
                                     <input type="checkbox" class="checkbox filled-in" id="school-1" />
                                     <label for="school-1">&nbsp;</label>
                                 </div>-->
-                                <app-school-card [SchoolData]="school.school"></app-school-card>
+                                <app-school-card [SchoolData]="school"></app-school-card>
                             </div>
 
                         </div><!-- .col-* -->

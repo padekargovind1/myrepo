@@ -1,8 +1,8 @@
-<header class="header">
+<header class="header" >
     <nav class="main-navigation">
             <ul class="clearfix">
                 <li class="parent-item haschild courses-menu">
-                    <a href="#" class="ln-tr"><i class="fa fa-bars menu-holder"></i></a>
+                    <a class="ln-tr"><i class="fa fa-bars menu-holder"></i></a>
                     <ul class="clearfix">
                         <li class="course-menu-item col-md-3 col-sm-4">
                             <div class="single-item">
@@ -50,9 +50,8 @@
                 </li>
             </ul>
         </nav>
-    <a routerLink="/">
+    <!--<a routerLink="/">
         <img class="cide-logo" src="assets/images/cide-white.png" alt="cide logo"/>
-        <!--<img class="cide-logo-mobile" src="assets/images/cide-white-just-logo.png" alt="">-->
     </a>
 
     <ul class="mobile-login">
@@ -84,6 +83,53 @@
                 <a (click)="onSignOut()">
                 <i class="fa fa-sign-in"></i> 
                  Se déconnecter</a> 
+            </li>
+        </ng-template>
+    </ul>
+    <ul class="social-media-list in-header">
+        <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="#"><i class="fa fa-viadeo"></i></a></li>
+    </ul>-->
+    <a routerLink="/">
+        <img class="cide-logo" src="assets/images/cide-white.png" alt="CIDE Logo" 
+            *ngIf="!onMobile"/>
+        <!--<img class="cide-logo-mobile" 
+            src="assets/images/cide-white-just-logo.png" alt=""
+            style="display: none; width: 32px; float: left;">-->
+    </a>
+    <h1 class="sitename">Avec le CIDE, je trouve</h1>
+
+    <ul class="mobile-login">
+        <li><i class=" fa fa-file-text"></i></li>
+        <li><i class="fa fa-bookmark"></i></li>
+        <li><i class="fa fa-user"></i>
+            <ul class="login">
+                <li><a (click)="onSignUp()">S'inscrire</a></li>
+                <li><a (click)="onSignIn()">S'identifier</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="right-top-menu pull-right">
+        <li><i class=" fa fa-file-text"></i></li>
+        <li><i class="fa fa-bookmark"></i></li>
+        <li class="login-text" *ngIf="!userLogin; else log">
+            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
+            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
+        </li>
+        <ng-template #log>
+            <li class="login-text" 
+                (click)="onMyAccount()"
+                style="cursor : pointer; font-size: 14px">{{ userFirstName }}</li> |
+            <li class="login-text">
+                <a (click)="onSignOut()">
+                <i class="fa fa-sign-in"></i> 
+                Se déconnecter</a> 
             </li>
         </ng-template>
     </ul>

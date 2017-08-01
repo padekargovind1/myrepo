@@ -117,103 +117,7 @@
             </div><!-- .landingpage__image-holder -->
         </div>
         
-        <div class="landingpage__additional-content  holder-3  do-animate  have-form" data-background="./assets/images/new-landingpage/college-blur.jpg">
-            <div class="landingpage__image-holder">
-                <a routerLink="/lycee">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/college.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>Lycée</h2>
-                        <h3>2nde-Terminale</h3>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
-
-            <div class="form-wrap row  animated fadeOut">
-
-                <form [formGroup]="searchForm" 
-                    (ngSubmit)="onSubmitSearch('college')">
-                <div class="col-md-11">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="select-custom" for="class">
-                                    <select name="class" class="form-control" id="class"
-                                        [formControl]="searchForm.controls['classe']">
-                                        <option value="" disabled selected hidden>Classe</option>
-                                        <optgroup label="Cycle 3 : Consolidation">
-                                            <option value="6ème">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
-                                        </optgroup>
-                                        <optgroup label="Cycle 4 : Approfondissement">
-                                            <option value="5ème">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
-                                            <option value="4ème">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
-                                            <option value="3ème">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
-                                        </optgroup>
-                                    </select>
-                                </label>
-                            </div>
-                        </div><!-- .col-* -->
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Lieu" 
-                                    (keyup)="filterLieu($event)"
-                                    [mdAutocomplete]="auto"
-                                    [formControl]="searchForm.controls['lieu']"/>
-                                
-                                <md-autocomplete #auto="mdAutocomplete">
-                                <md-option *ngFor="let option of options" [value]="option.cityName">
-                                    {{ option.cityName }}
-                                </md-option>
-                                </md-autocomplete>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nom d'etablissement" 
-                                    [mdAutocomplete]="autoSchool"
-                                    (keyup)="filterSchool($event)"
-                                    [formControl]="searchForm.controls['etablissement']"/>
-                                
-                                <md-autocomplete #autoSchool="mdAutocomplete">
-                                <md-option *ngFor="let school of schoolsOptions" [value]="school.longName">
-                                    {{ school.longName }}
-                                </md-option>
-                                </md-autocomplete>
-                            </div>
-                        </div>
-                    </div><!-- .row -->
-                </div><!-- .col-* -->
-                
-                <div class="col-md-1">
-                <!-- <div class="form-group"> -->
-                    <button class="btn btn-search" type="submit"
-                        [disabled]="searchForm.controls['etablissement'].value.length==0 && 
-                        (searchForm.controls['lieu'].value.length==0 || 
-                        searchForm.controls['classe'].value.length==0)">
-                        <i class="fa fa-search"></i>
-                    </button>
-                <!-- </div> -->
-                </div>
-            </form>
-
-
-            </div><!-- .form-wrap -->
-
-        </div>
-        
-        <div class="landingpage__additional-content  holder-5  do-animate" data-background="./assets/images/new-landingpage/sejour-blur.jpg">
-            <div class="landingpage__image-holder">
-                <a routerLink="/linguistic">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/sejour.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>Séjours linguistiques <br />soutien scolaire</h2>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
-        </div>
-        
-        <div class="landingpage__additional-content  holder-6  do-animate  have-form" data-background="./assets/images/new-landingpage/lycee-blur.jpg">
+        <div class="landingpage__additional-content  holder-3  do-animate  have-form" data-background="./assets/images/new-landingpage/lycee-blur.jpg">
             
             <div class="landingpage__image-holder">
                 <a routerLink="/college">
@@ -302,6 +206,102 @@
                     <!-- </div> -->
                     </div>
                 </form>
+
+
+            </div><!-- .form-wrap -->
+
+        </div>
+        
+        <div class="landingpage__additional-content  holder-5  do-animate" data-background="./assets/images/new-landingpage/sejour-blur.jpg">
+            <div class="landingpage__image-holder">
+                <a routerLink="/linguistic">
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/sejour.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>Séjours linguistiques <br />soutien scolaire</h2>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+        </div>
+        
+        <div class="landingpage__additional-content  holder-6  do-animate  have-form" data-background="./assets/images/new-landingpage/college-blur.jpg">
+            <div class="landingpage__image-holder">
+                <a routerLink="/lycee">
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/college.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>Lycée</h2>
+                        <h3>2nde-Terminale</h3>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+
+            <div class="form-wrap row  animated fadeOut">
+
+                <form [formGroup]="searchForm" 
+                    (ngSubmit)="onSubmitSearch('college')">
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="select-custom" for="class">
+                                    <select name="class" class="form-control" id="class"
+                                        [formControl]="searchForm.controls['classe']">
+                                        <option value="" disabled selected hidden>Classe</option>
+                                        <optgroup label="Cycle 3 : Consolidation">
+                                            <option value="6ème">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                        </optgroup>
+                                        <optgroup label="Cycle 4 : Approfondissement">
+                                            <option value="5ème">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+                                            <option value="4ème">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+                                            <option value="3ème">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+                                        </optgroup>
+                                    </select>
+                                </label>
+                            </div>
+                        </div><!-- .col-* -->
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Lieu" 
+                                    (keyup)="filterLieu($event)"
+                                    [mdAutocomplete]="auto"
+                                    [formControl]="searchForm.controls['lieu']"/>
+                                
+                                <md-autocomplete #auto="mdAutocomplete">
+                                <md-option *ngFor="let option of options" [value]="option.cityName">
+                                    {{ option.cityName }}
+                                </md-option>
+                                </md-autocomplete>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom d'etablissement" 
+                                    [mdAutocomplete]="autoSchool"
+                                    (keyup)="filterSchool($event)"
+                                    [formControl]="searchForm.controls['etablissement']"/>
+                                
+                                <md-autocomplete #autoSchool="mdAutocomplete">
+                                <md-option *ngFor="let school of schoolsOptions" [value]="school.longName">
+                                    {{ school.longName }}
+                                </md-option>
+                                </md-autocomplete>
+                            </div>
+                        </div>
+                    </div><!-- .row -->
+                </div><!-- .col-* -->
+                
+                <div class="col-md-1">
+                <!-- <div class="form-group"> -->
+                    <button class="btn btn-search" type="submit"
+                        [disabled]="searchForm.controls['etablissement'].value.length==0 && 
+                        (searchForm.controls['lieu'].value.length==0 || 
+                        searchForm.controls['classe'].value.length==0)">
+                        <i class="fa fa-search"></i>
+                    </button>
+                <!-- </div> -->
+                </div>
+            </form>
 
 
             </div><!-- .form-wrap -->

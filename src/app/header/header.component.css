@@ -1,0 +1,13 @@
+.header{
+    
+    background: center bottom url('/assets/images/header-background.png') no-repeat;
+    background-size: contain;
+    padding: 15px 10px;
+    position: relative;
+}
+
+.mobile-header{
+    background: #444; 
+    color: #fff; 
+    font-family: 'Roboto', Arial, sans-serif;
+}
