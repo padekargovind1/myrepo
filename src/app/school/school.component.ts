@@ -8,6 +8,8 @@ import { SchoolService } from '../services/school.service';
 import { AdvancedSearchMdl } from '../model/advanced-search.model';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-school',
@@ -109,6 +111,15 @@ export class SchoolComponent implements OnInit {
         $('.advance-filter').show();
       }
     })
+    
+    $('.slickjs').slick({
+      arrows : false,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+    });
+      
   }
 
   setBackgroundImage(){
@@ -281,7 +292,7 @@ export class SchoolComponent implements OnInit {
           } else {
             this.defaultSchoolList=response.data;
             this.schoolListFilter=response.data;
-            this.schoolListFilter.splice(7, 12)
+            this.schoolListFilter.splice(8, 12)
           }
         }
       )
