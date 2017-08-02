@@ -64,12 +64,18 @@
     <div [class]="'cycleSlick'+schoolDataToDisplay._id">
         <div *ngFor="let school of schoolDataToDisplay.cycles; let i=index">
 
-            <ul class="compare-item center class-cycle"
-                *ngIf="compareListFilter[2]=='true'">
-                <li class="title"><h5>Test</h5>
+            <ul class="compare-item center class-cycle">
+                <li class="title"><h5>&nbsp;</h5>
+                <div class="collapse in language">
+                    <ul class="compare-item">
+                        <li>
+                            {{ schoolDataToDisplay.cycles[i].classes[0].className }}
+                        </li>
+                    </ul>
+                </div>
                 </li>
             </ul>
-            
+
             <ul class="compare-item center class-cycle"
                 *ngIf="compareListFilter[1]=='true'">
                 <li class="title"><h5>&nbsp;</h5>

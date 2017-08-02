@@ -100,7 +100,12 @@
 
                                         <ul class="compare-item class-cycle">
                                             <li class="title">
-                                                <h5>Nom du cycle</h5>
+                                                <h5>Cycle</h5>
+                                                <div class="collapse in language">
+                                                    <ul class="compare-item">
+                                                        <li style="margin-bottom:5px">Nom du cycle</li>
+                                                    </ul>
+                                                </div>
                                             </li>
                                         </ul>
 
@@ -314,7 +319,7 @@
                                                 <img src="assets/images/school-1.jpg" alt="School 1" />
                                                 
                                                 <div class="card-content">
-                                                    <h3>{{school.shortName }}</h3>
+                                                    <h3>{{school.shortName | school}}</h3>
                                                     <p>{{school.longName | school}} 
                                                         <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
                                                     <address>{{school.address.ad1}}<br /> 
