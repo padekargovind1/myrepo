@@ -105,4 +105,12 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       )
   }
 
+  navigateTo(index){
+    if(index==2){
+      this.router.navigate(['/'])
+    } else {
+      this.router.navigate(['/landing-page-'+index])
+    }
+  }
+
 }

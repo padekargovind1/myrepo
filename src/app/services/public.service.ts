@@ -16,8 +16,8 @@ export class PublicService {
 
   constructor(private http : Http) { }
 
-  getSchoolsList() : Observable<any>{
-    return this.http.post(SCHOOLS_API+"schools", {headers: this.headers})
+  getSchoolsList(limit) : Observable<any>{
+    return this.http.post(SCHOOLS_API+"schools?limit="+limit, {headers: this.headers})
       .map((response)=>response.json());
   }
 
@@ -75,8 +75,8 @@ export class PublicService {
       .map((response)=>response.json());
   }
 
-  postSearchSchool(data) : Observable<any>{
-    return this.http.post(SEARCH_API+'schools', data)
+  postSearchSchool(data, limit) : Observable<any>{
+    return this.http.post(SEARCH_API+'schools?limit='+limit, data)
       .map((response)=>response.json())
   }
 
@@ -85,8 +85,8 @@ export class PublicService {
       .map((response)=>response.json())
   }
 
-  postFastSearch(data): Observable<any>{
-    return this.http.post(SCHOOLS_API+'schools', data)
+  postFastSearch(data, limit): Observable<any>{
+    return this.http.post(SCHOOLS_API+'schools?limit='+limit, data)
       .map((response)=>response.json())
   }
 }

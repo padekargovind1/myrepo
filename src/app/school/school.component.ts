@@ -20,7 +20,7 @@ declare var $ :any;
 export class SchoolComponent implements OnInit {
 
   schoolList : any;
-  schoolListFilter : any;
+  schoolListFilter = [];
   defaultSchoolList : any;
   compareList= [];
   compareListFilter = [];
@@ -56,6 +56,7 @@ export class SchoolComponent implements OnInit {
   lv3: any="";
   ancient: any="";
   regional: any="";
+  limit=20
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -68,7 +69,7 @@ export class SchoolComponent implements OnInit {
     this.runScript();
     this.setBackgroundImage();
     this.buildForm();
-    this.getAllSchool();
+    this.getAllSchool(this.limit);
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
@@ -217,7 +218,7 @@ export class SchoolComponent implements OnInit {
   }
 
   postFastSearch(data){
-    this.publicService.postFastSearch(data)
+    this.publicService.postFastSearch(data, this.limit)
       .subscribe(
         response => {
           console.log(response);
@@ -225,9 +226,6 @@ export class SchoolComponent implements OnInit {
             console.log(response.message)
           } else {
             this.schoolListFilter=response.data
-            if(this.schoolListFilter.length>8){
-              this.schoolListFilter.splice(7, 12)
-            }
             console.log(this.schoolListFilter)
           }
         }
@@ -282,8 +280,9 @@ export class SchoolComponent implements OnInit {
       )
   }
 
-  getAllSchool(){
-    this.publicService.getSchoolsList()
+  getAllSchool(limit){
+    // console.log(this.limit)
+    this.publicService.getSchoolsList(limit)
       .subscribe(
         response => {
           console.log(response);
@@ -292,14 +291,13 @@ export class SchoolComponent implements OnInit {
           } else {
             this.defaultSchoolList=response.data;
             this.schoolListFilter=response.data;
-            this.schoolListFilter.splice(8, 12)
           }
         }
       )
   }
 
   postAdvancedFilter(){
-    this.publicService.postSearchSchool(this.advancedSearch)
+    this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
         response=>{
           console.log(response);
@@ -308,7 +306,6 @@ export class SchoolComponent implements OnInit {
             console.log(response.message)
           } else {
             this.schoolListFilter=data;
-            this.schoolListFilter.splice(7, 12)
             console.log(this.schoolListFilter)
             // this.filterCycleSchool(data)
           }
@@ -350,12 +347,14 @@ export class SchoolComponent implements OnInit {
         this.advancedSearchCategory.push(category);
         this.advancedSearchValue.push(event.srcElement.name);
         console.log(this.advancedSearch);
+        this.limit=20
         this.postAdvancedFilter();
       } else{
         console.log("unchecked!");
         delete this.advancedSearch[category][event.srcElement.name];
         this.checkCategory(category);
         console.log(this.advancedSearch);
+        this.limit=20
         this.postAdvancedFilter();
         let index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
         this.advancedSearchToDisplay.splice(index, 1);
@@ -432,6 +431,7 @@ export class SchoolComponent implements OnInit {
     this.buildForm();
     this.searchFilter = ["", "", ""];
     this.publicService.storeSearchSchool(this.searchFilter);
+    this.limit=20
     this.postAdvancedFilter();
     // this.getSearchFilter();
   }
@@ -464,6 +464,7 @@ export class SchoolComponent implements OnInit {
     $('.'+this.advancedSearchValue).prop('checked', false)
     this.advancedSearchCategory.splice(index, 1);
     this.advancedSearchValue.splice(index, 1);
+    this.limit=20;
     this.postAdvancedFilter();
   }
 
@@ -472,6 +473,11 @@ export class SchoolComponent implements OnInit {
     this[this.languageAdvancedSearch[index]]=""
     this.languageAdvancedSearch.splice(index, 1);
     this.languageAdvancedSearchName.splice(index, 1);
+  }
+
+  showMore(){
+    this.limit+=20
+    this.postAdvancedFilter()
   }
 
 }

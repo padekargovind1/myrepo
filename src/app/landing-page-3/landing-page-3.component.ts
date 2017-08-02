@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page-3',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPage3Component implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
   }
+
+   navigateTo(index){
+    if(index==2){
+      this.router.navigate(['/'])
+      } else {
+        this.router.navigate(['/landing-page-'+index])
+      }
+    }
 
 }

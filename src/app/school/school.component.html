@@ -442,7 +442,9 @@
         
     <!--<div class="white-background">-->
 
-        <div class="modal fade" id="apply-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
+        <div class="modal fade" id="apply-popup" tabindex="-1" 
+            role="dialog" aria-labelledby="apply-popup"
+            style="padding-bottom:20px;">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -621,14 +623,24 @@
                                     <label for="school-1">&nbsp;</label>
                                 </div>-->
                                 <app-school-card [SchoolData]="school"></app-school-card>
+                                
                             </div>
 
                         </div><!-- .col-* -->
+                        <div class="row">
+                            <button type="button" 
+                                class="btn btn-appointment" style="margin-left: 46%"
+                                (click)="showMore()" *ngIf="schoolListFilter.length==limit"
+                                >Voir plus
+                            </button>
+                        </div>
+                            
 
                     </div><!-- .list-schools -->
 
-
-                    <div class="footer-ads hidden animated">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <div class="footer-ads hidden animated" style="margin-top:10px">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1  wrapper  slickjs">
