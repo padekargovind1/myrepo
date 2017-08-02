@@ -169,4 +169,12 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/'+path]);
   }
 
+  navigateTo(index){
+    if(index==2){
+      this.router.navigate(['/'])
+    } else {
+      this.router.navigate(['/landing-page-'+index])
+    }
+  }
+
 }
