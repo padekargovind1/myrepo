@@ -142,11 +142,15 @@ export class SchoolComponent implements OnInit {
             this.schoolComponentTitle="Un lycée 2nde-Tle"
             $('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
             this.advancedSearch.code=[this.pathName]
-          } else {
+          } else if(this.pathName == "internat"){
             this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
             this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
             this.schoolComponentTitle="Un Internat Maternelle au Lycée"
             $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
+          } else {
+            this.advancedSearch.code=["enseignement"]
+            this.schoolComponentTitle="Enseignement Supérieur";
+            $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
           }
           // this.getAllSchool(this.limit);
           this.postAdvancedFilter()
@@ -193,13 +197,13 @@ export class SchoolComponent implements OnInit {
     // console.log(index, this.compareListFilter[index]);
     this.compareListFilter[index] = !this.compareListFilter[index];
     this.canFilter = this.checkFilterBox();
-    console.log(this.canFilter);
+    // console.log(this.canFilter);
   }
 
   checkFilterBox(){
     let i = 0;
     for(let filter of this.compareListFilter){
-      console.log(filter);
+      // console.log(filter);
       if(filter==true){
         return true;
       }

@@ -92,18 +92,4 @@ export class EtablissementService {
     return school;
   }
 
-  getSchoolToDisplay(){
-    const data = [];
-
-    data.push({
-      cycle : {
-        cycle : {
-          nom : "test"
-        }
-      }
-    })
-
-    return data;
-  }
-
 }

@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PublicService } from '../../services/public.service';
 import { Subscription } from 'rxjs/Subscription';
-import { EtablissementService } from '../../services/etablissement.service';
 
 @Component({
   selector: 'app-etablissement-essentiel',
@@ -13,10 +12,9 @@ export class EtablissementEssentielComponent implements OnInit {
   schoolId = "";
   subscription : Subscription;
   schoolData : any;
+  gettingSchool : boolean = false;
   constructor(private publicService : PublicService,
-              private route : ActivatedRoute,
-              private etablissementService : EtablissementService) { 
-    this.initData();
+              private route : ActivatedRoute) { 
   }
 
   ngOnInit() {
@@ -33,25 +31,6 @@ export class EtablissementEssentielComponent implements OnInit {
     
   }
 
-  initData(){
-    this.schoolData={
-      shortName : "",
-      numberOfStudents : "",
-      creationYear : "",
-      academic : "",
-      departement : "",
-      tel : "",
-      website:"",
-      mel:"",
-      title:"",
-      firstName:"",
-      lastName:"",
-      fonction:"",
-      dirCycle:""
-    }
-    console.log(this.schoolData)
-  }
-
   getSchoolById(){
     this.publicService.getSchoolById(this.schoolId)
       .subscribe(
@@ -61,8 +40,8 @@ export class EtablissementEssentielComponent implements OnInit {
           if (response.code==400){
             console.log(response.message);
           }else {
-            // this.schoolData = response.data;
-            this.schoolData = this.etablissementService.fillEssentielData(this.schoolData, response.data);
+            this.schoolData = response.data;
+            this.gettingSchool=true;
             console.log(this.schoolData);
           }
         }

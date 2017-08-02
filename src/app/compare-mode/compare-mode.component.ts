@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
+import { UsersService } from '../services/users.service';
 import swal from 'sweetalert2';
 var self = this;
 @Component({
@@ -27,7 +28,8 @@ export class CompareModeComponent implements OnInit {
               private route : ActivatedRoute,
               private publicService : PublicService,
               private compareService : CompareService,
-              private router : Router) { }
+              private router : Router,
+              private usersService : UsersService) { }
 
   ngOnInit() {
     this.compareListFilter = this.compareService.getCompareFilter();
@@ -97,6 +99,19 @@ export class CompareModeComponent implements OnInit {
     this.applytoSchool.lName=school.longName;
     this.applytoSchool.sName=school.shortName;
     this.applytoSchool.photo="school-1.jpg";
+  }
+
+  saveInWish(index){
+    const data = {
+      type : "wish",
+      school : this.schoolDataToDisplay[index]._id
+    }
+    this.usersService.postApplication(data)
+      .subscribe(
+        response=>{
+          console.log(response)
+        }
+      )
   }
 
 }
