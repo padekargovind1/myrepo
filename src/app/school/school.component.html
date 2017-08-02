@@ -525,9 +525,9 @@
                                     <span *ngIf="searchFilter[1]!=''">{{ ' - ' + searchFilter[1] }}</span>
                                     <span *ngIf="searchFilter[2]!=''">{{ searchFilter[2] }}</span>
                                 </h3>-->
-                                <!--<ng-template #empty1>
+                                <ng-template #empty1>
                                     <h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>
-                                </ng-template>-->
+                                </ng-template>
                                 <div *ngIf="advancedSearchToDisplay.length!=0 || languageAdvancedSearch.length!=0; else empty2">
                                     
                                     <div>Recherche Affine: 

@@ -212,6 +212,7 @@ export class SchoolComponent implements OnInit {
       place : this.searchForm.controls.lieu.value,
       name : this.searchForm.controls.etablissement.value
     }
+    console.log(data);
     this.publicService.storeSearchSchool(data);
     this.postFastSearch(data)
     // this.getSearchFilter();

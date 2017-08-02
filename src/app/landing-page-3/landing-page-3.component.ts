@@ -13,12 +13,12 @@ export class LandingPage3Component implements OnInit {
   ngOnInit() {
   }
 
-   navigateTo(index){
-    if(index==2){
-      this.router.navigate(['/'])
-      } else {
-        this.router.navigate(['/landing-page-'+index])
-      }
+  navigateTo(index){
+  if(index==2){
+    this.router.navigate(['/'])
+    } else {
+      this.router.navigate(['/landing-page-'+index])
     }
+  }
 
 }
