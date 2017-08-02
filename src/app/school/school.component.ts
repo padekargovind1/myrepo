@@ -52,7 +52,6 @@ export class SchoolComponent implements OnInit {
   schoolComponentTitle = "";
   pathName ="";
   confessionChecked : boolean = false;
-  boardingChecked : boolean = false;
   lv1: any="";
   lv2: any="";
   lv3: any="";
@@ -144,6 +143,8 @@ export class SchoolComponent implements OnInit {
             $('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
             this.advancedSearch.code=[this.pathName]
           } else {
+            this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
+            this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
             this.schoolComponentTitle="Un Internat Maternelle au Lycée"
             $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
           }
@@ -472,14 +473,6 @@ export class SchoolComponent implements OnInit {
 
   onConfessionClick(){
     this.confessionChecked=!this.confessionChecked;
-  }
-
-  onBoardingClick(){
-    this.boardingChecked=!this.boardingChecked;
-    if(this.boardingChecked){
-      this.advancedSearch["boarding"]={ boarding : true }
-    }
-    console.log(this.boardingChecked);
   }
 
   onRemoveFilter(index, advanced){
