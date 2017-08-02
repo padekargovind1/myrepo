@@ -23,19 +23,19 @@ export class BrochureDownloadComponent implements OnInit {
   }
 
   getbrochureDetail(brochureId){
-    this.publicService.getBrochurebyId(brochureId)
-      .subscribe(
-        (response)=>{
-          let data = response.data;
-          console.log(data);
-          if(response.code==400){
-            console.log(response.message);
-          } else {
-            this.brochureList.push(data);
-            console.log(this.brochureList);
-          }
-        }
-      )
+    // this.publicService.getBrochurebyId(brochureId)
+    //   .subscribe(
+    //     (response)=>{
+    //       let data = response.data;
+    //       console.log(data);
+    //       if(response.code==400){
+    //         console.log(response.message);
+    //       } else {
+    //         this.brochureList.push(data);
+    //         console.log(this.brochureList);
+    //       }
+    //     }
+    //   )
   }
 
   onRemoveBrochure(index){

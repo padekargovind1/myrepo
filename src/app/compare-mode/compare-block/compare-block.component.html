@@ -1,66 +1,75 @@
-<div [class]="'cycleSlick'+schoolDataToDisplay._id">
-    <div *ngFor="let school of schoolDataToDisplay.cycles; let i=index">
-        <div class="item-compare-table">
 
-            <ul class="compare-item class-cycle center"
-                *ngIf="compareListFilter[0]=='true'">
-                <li class="title"><h5>&nbsp;</h5></li>
-                <li><span class="subtitle">&nbsp;</span>
-                    <div class="collapse in ecole">
-                        <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[0] && i==0; else cycle1">
-                                {{ schoolDataToDisplay.cycles[0].classes[0].className }}
-                            </li>
-                            <ng-template #cycle1>
-                                <li >&nbsp;</li>
-                            </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[1] && i==1; else cycle2">
-                                {{ schoolDataToDisplay.cycles[1].classes[0].className }}
-                            </li>
-                            <ng-template #cycle2>
-                                <li >&nbsp;</li>
-                            </ng-template>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="subtitle">&nbsp;</span>
-                    <div class="collapse in college">
-                        <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[2] && i==2; else cycle3">
-                                {{ schoolDataToDisplay.cycles[2].classes[0].className }}
-                            </li>
-                            <ng-template #cycle3>
-                                <li >&nbsp;</li>
-                            </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[3] && i==3; else cycle4">
-                                {{ schoolDataToDisplay.cycles[3].classes[0].className }}
-                            </li>
-                            <ng-template #cycle4>
-                                <li >&nbsp;</li>
-                            </ng-template>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="subtitle">&nbsp;</span>
-                    <div class="collapse in college">
-                        <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[4] && i==4; else cycle5">
-                                {{ schoolDataToDisplay.cycles[4].classes[0].className }}
-                            </li>
-                            <ng-template #cycle5>
-                                <li >&nbsp;</li>
-                            </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[5] && i==5; else cycle6">
-                                {{ schoolDataToDisplay.cycles[5].classes[0].className }}
-                            </li>
-                            <ng-template #cycle6>
-                                <li >&nbsp;</li>
-                            </ng-template>
-                        </ul>
-                    </div>
+<div class="item-compare-table">
+
+    <ul class="compare-item class-cycle center"
+        *ngIf="compareListFilter[0]=='true'">
+        <li class="title"><h5>&nbsp;</h5></li>
+        <li><span class="subtitle">&nbsp;</span>
+            <div class="collapse in ecole">
+                <ul class="compare-item">
+                    <li *ngIf="schoolDataToDisplay.cycles[0]; else cycle1">
+                        {{ schoolDataToDisplay.cycles[0].classes[0].className }}
+                    </li>
+                    <ng-template #cycle1>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[1]; else cycle2">
+                        {{ schoolDataToDisplay.cycles[1].classes[0].className }}
+                    </li>
+                    <ng-template #cycle2>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                </ul>
+            </div>
+        </li>
+        <li><span class="subtitle">&nbsp;</span>
+            <div class="collapse in college">
+                <ul class="compare-item">
+                    <li *ngIf="schoolDataToDisplay.cycles[2]; else cycle3">
+                        {{ schoolDataToDisplay.cycles[2].classes[0].className }}
+                    </li>
+                    <ng-template #cycle3>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[3]; else cycle4">
+                        {{ schoolDataToDisplay.cycles[3].classes[0].className }}
+                    </li>
+                    <ng-template #cycle4>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                </ul>
+            </div>
+        </li>
+        <li><span class="subtitle">&nbsp;</span>
+            <div class="collapse in college">
+                <ul class="compare-item">
+                    <li *ngIf="schoolDataToDisplay.cycles[4]; else cycle5">
+                        {{ schoolDataToDisplay.cycles[4].classes[0].className }}
+                    </li>
+                    <ng-template #cycle5>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                    <li *ngIf="schoolDataToDisplay.cycles[5]; else cycle6">
+                        {{ schoolDataToDisplay.cycles[5].classes[0].className }}
+                    </li>
+                    <ng-template #cycle6>
+                        <li >&nbsp;</li>
+                    </ng-template>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+
+    <div [class]="'cycleSlick'+schoolDataToDisplay._id">
+        <div *ngFor="let school of schoolDataToDisplay.cycles; let i=index">
+
+            <ul class="compare-item center class-cycle"
+                *ngIf="compareListFilter[2]=='true'">
+                <li class="title"><h5>Test</h5>
                 </li>
             </ul>
-
+            
             <ul class="compare-item center class-cycle"
                 *ngIf="compareListFilter[1]=='true'">
                 <li class="title"><h5>&nbsp;</h5>
