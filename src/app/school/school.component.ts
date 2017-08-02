@@ -31,11 +31,13 @@ export class SchoolComponent implements OnInit {
   four : boolean = false;
   canCompare : boolean = false;
   canFilter : boolean = false;
-  searchFilter = [];
+  searchFilter = ["", "", ""];
   searchForm : FormGroup;
   options: any;
   schoolsOptions: any;
-  advancedSearch={};
+  advancedSearch={
+    code : []
+  };
   advancedSearchToDisplay=[];
   advancedSearchCategory=[];
   advancedSearchValue=[];
@@ -56,7 +58,7 @@ export class SchoolComponent implements OnInit {
   lv3: any="";
   ancient: any="";
   regional: any="";
-  limit=20
+  limit=20;
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -69,7 +71,6 @@ export class SchoolComponent implements OnInit {
     this.runScript();
     this.setBackgroundImage();
     this.buildForm();
-    this.getAllSchool(this.limit);
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
@@ -133,13 +134,21 @@ export class SchoolComponent implements OnInit {
           if(this.pathName == "ecole"){
             this.schoolComponentTitle="École Maternelle / Primaire"
             $('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')")
+            this.advancedSearch.code=["maternelle", "primaire"]
           } else if (this.pathName == "college"){
-            this.schoolComponentTitle="Un collège 6ème-3ème"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/secondary-school.jpg')")
-          } else {
+              this.schoolComponentTitle="Un collège 6ème-3ème"
+              $('.filter-form-holder').css('background-image', "url('./assets/images/secondary-school.jpg')")
+              this.advancedSearch.code=[this.pathName]
+          } else if(this.pathName == "lycee"){
             this.schoolComponentTitle="Un lycée 2nde-Tle"
             $('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
+            this.advancedSearch.code=[this.pathName]
+          } else {
+            this.schoolComponentTitle="Un Internat Maternelle au Lycée"
+            $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
           }
+          // this.getAllSchool(this.limit);
+          this.postAdvancedFilter()
         }
       )
   }
@@ -212,6 +221,7 @@ export class SchoolComponent implements OnInit {
       place : this.searchForm.controls.lieu.value,
       name : this.searchForm.controls.etablissement.value
     }
+    this.searchFilter=[data.class, data.place, data.name]
     console.log(data);
     this.publicService.storeSearchSchool(data);
     this.postFastSearch(data)
@@ -281,23 +291,24 @@ export class SchoolComponent implements OnInit {
       )
   }
 
-  getAllSchool(limit){
-    // console.log(this.limit)
-    this.publicService.getSchoolsList(limit)
-      .subscribe(
-        response => {
-          console.log(response);
-          if(response.code==400){
-            console.log(response.message)
-          } else {
-            this.defaultSchoolList=response.data;
-            this.schoolListFilter=response.data;
-          }
-        }
-      )
-  }
+  // getAllSchool(limit){
+  //   // console.log(this.limit)
+  //   this.publicService.getSchoolsList(limit, this.schoolCode)
+  //     .subscribe(
+  //       response => {
+  //         console.log(response);
+  //         if(response.code==400){
+  //           console.log(response.message)
+  //         } else {
+  //           this.defaultSchoolList=response.data;
+  //           this.schoolListFilter=response.data;
+  //         }
+  //       }
+  //     )
+  // }
 
   postAdvancedFilter(){
+    console.log(this.advancedSearch)
     this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
         response=>{
@@ -306,6 +317,7 @@ export class SchoolComponent implements OnInit {
           if(response.code==400){
             console.log(response.message)
           } else {
+            this.defaultSchoolList=response.data;
             this.schoolListFilter=data;
             console.log(this.schoolListFilter)
             // this.filterCycleSchool(data)
@@ -424,7 +436,8 @@ export class SchoolComponent implements OnInit {
     console.log("clean search")
     this.languageAdvancedSearch=[];
     this.languageAdvancedSearchName=[]
-    this.advancedSearch={};
+    delete this.advancedSearch;
+    this.setCodeName();
     this.advancedSearchToDisplay=[];
     this.advancedSearchCategory=[];
     this.advancedSearchValue=[]
@@ -435,6 +448,18 @@ export class SchoolComponent implements OnInit {
     this.limit=20
     this.postAdvancedFilter();
     // this.getSearchFilter();
+  }
+
+  setCodeName(){
+    if(this.pathName=="ecole"){
+      this.advancedSearch={
+        code:["maternelle", "primaire"]
+      }
+    } else {
+      this.advancedSearch={
+        code:[this.pathName]
+      }
+    }
   }
 
   cleanAdvancedSearch(){

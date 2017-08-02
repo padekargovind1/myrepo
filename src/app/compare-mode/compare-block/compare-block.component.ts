@@ -27,7 +27,7 @@ export class CompareBlockComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(){
     (<any> $('.cycleSlick'+this.schoolDataToDisplay._id)).slick({
-      arrows: false
+      arrows: false,
     });
   }
 

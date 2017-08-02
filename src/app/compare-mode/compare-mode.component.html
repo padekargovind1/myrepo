@@ -319,8 +319,8 @@
                                                 <img src="assets/images/school-1.jpg" alt="School 1" />
                                                 
                                                 <div class="card-content">
-                                                    <h3>{{school.shortName | school}}</h3>
-                                                    <p>{{school.longName | school}} 
+                                                    <h3>{{school.shortName | school:42}}</h3>
+                                                    <p>{{school.longName | school:42}} 
                                                         <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
                                                     <address>{{school.address.ad1}}<br /> 
                                                         {{school.address.postcode}} {{school.address.city}}<br /> 

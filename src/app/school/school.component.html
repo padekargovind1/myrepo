@@ -518,13 +518,23 @@
                         <div class="col-md-12">
                             
                             <div class="result-text" class="col-md-11">
-                                <!--<h3 *ngIf="searchFilter[0]!=''; else empty1">Mon résultat pour: 
-                                    <span *ngIf="searchFilter[0]!=''">{{ 'Classe ' + searchFilter[0] }}</span> 
+                                <h3 *ngIf="searchFilter[0]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour: 
+                                    <span *ngIf="searchFilter[0]!=''">
+                                        {{ 'Classe ' + searchFilter[0] }}
+                                    </span> 
                                     <span class="fa fa-map-marker"
-                                        *ngIf="searchFilter[1]!=''"></span> 
-                                    <span *ngIf="searchFilter[1]!=''">{{ ' - ' + searchFilter[1] }}</span>
-                                    <span *ngIf="searchFilter[2]!=''">{{ searchFilter[2] }}</span>
-                                </h3>-->
+                                        *ngIf="searchFilter[1]!=''">
+                                    </span> 
+                                    <span *ngIf="searchFilter[1]!=''">
+                                        {{ ' - ' + searchFilter[1] }}
+                                    </span>
+                                    <span *ngIf="searchFilter[1]!='' && searchFilter[2]!=''">
+                                        /
+                                    </span>
+                                    <span *ngIf="searchFilter[2]!=''">
+                                        {{ searchFilter[2] }}
+                                    </span>
+                                </h3>
                                 <ng-template #empty1>
                                     <h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                                 </ng-template>
@@ -553,12 +563,9 @@
                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                 </ng-template>
                                 <span class="fa fa-times" style="cursor: pointer" 
-                                    *ngIf="advancedSearchToDisplay.length!=0; else empty3"
+                                    *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' || searchFilter[0]!=''"
                                     (click)="cleanAdvancedSearch()">Effacer la recherche
                                 </span>
-                                <ng-template #empty3>
-                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                                </ng-template>
                             </div>
 
                             <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->

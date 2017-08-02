@@ -16,10 +16,10 @@ export class PublicService {
 
   constructor(private http : Http) { }
 
-  getSchoolsList(limit) : Observable<any>{
-    return this.http.post(SCHOOLS_API+"schools?limit="+limit, {headers: this.headers})
-      .map((response)=>response.json());
-  }
+  // getSchoolsList(limit, codeName) : Observable<any>{
+  //   return this.http.post(SCHOOLS_API+"schools?limit="+limit, codeName)
+  //     .map((response)=>response.json());
+  // }
 
   getSchoolById(schoolId : string){
     return this.http.get(SCHOOLS_API+"schools/"+schoolId)

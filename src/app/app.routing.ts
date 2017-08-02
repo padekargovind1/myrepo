@@ -23,7 +23,6 @@ import { SchoolComponent } from './school/school.component';
 export const AppRoutes: Routes = [
     { path: '', component: LandingPage1Component},
     { path: 'conseil', component: ConseilComponent},
-    { path: 'internat', component: ConseilComponent},
     { path: 'booking' , component: BookingComponent },
     { path: 'linguistic' , component: LinguisticComponent },
     { path: 'register' , component: RegisterComponent },
@@ -35,6 +34,7 @@ export const AppRoutes: Routes = [
     { path: 'ecole', component: SchoolComponent },
     { path: 'college', component: SchoolComponent },
     { path: 'lycee', component: SchoolComponent },
+    { path: 'internat', component: SchoolComponent },
     { path: 'etablissement/:schoolId', component: EtablissementComponent },
     { path: 'compare-mode', component: CompareModeComponent },
     { path: 'detail-appointment', component: DetailAppointmentComponent },

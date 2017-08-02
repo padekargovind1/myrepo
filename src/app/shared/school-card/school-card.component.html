@@ -20,7 +20,7 @@
 <img src="assets/images/school-1.jpg" alt="School 1" />
 
 <div class="card-content">
-    <h3>{{ SchoolData.longName | school }}
+    <h3>{{ SchoolData.longName | school:50 }}
         <span *ngIf="SchoolData.longName.length<33"><br>&nbsp;</span>
     </h3>
     <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
