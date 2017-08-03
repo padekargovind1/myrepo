@@ -325,8 +325,12 @@
                                                 <ul class="school-action">
                                                     <li><a (click)="saveInWish(i)"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
                                                     <li><a (click)="applyToSchool()"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+                                                    <li><a ><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                                    <li *ngIf="schoolBrochure.length!=0">
+                                                        <a href="http://54.254.203.172/cideapi{{schoolBrochure[i].brochure}}" download="brochure.pdf" target="_self">
+                                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                                 
                                                 <img src="assets/images/school-1.jpg" alt="School 1" />

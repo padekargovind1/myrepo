@@ -27,6 +27,7 @@ export class CompareModeComponent implements OnInit {
   canAddSchool : boolean = false;
   schoolIdToCompare : string = "";
   counterId : number = 0;
+  schoolBrochure=[];
 
   constructor(private location : Location,
               private route : ActivatedRoute,
@@ -57,20 +58,26 @@ export class CompareModeComponent implements OnInit {
           this.schoolDataToDisplay=data;
           this.showSchool=true;
           console.log(this.schoolDataToDisplay, this.showSchool)
+          // this.getSchoolBrochure();
         }
       )
-    // this.schoolDataToDisplay.pop()
-    // for(let school of this.schoolToCompare){
-    //   this.publicService.getSchoolById(school)
-    //     .subscribe(
-    //       (response)=>{
-    //         let data = response.data;
-    //         // console.log(data);
-    //         this.schoolDataToDisplay.push(data);
-    //         // console.log(this.schoolDataToDisplay);
-    //       }
-    //     )
-    // }
+  }
+
+  getSchoolBrochure(){
+    this.schoolBrochure=[];
+    for(let school of this.schoolDataToDisplay){
+      this.publicService.getBrochurebyId(school._id, school.cycles[0].cycle._id)
+        .subscribe(
+          response => {
+            console.log(response)
+            if(response.code==400){
+              console.log(response.message)
+            } else {
+              this.schoolBrochure.push(response.data)
+            }
+          }
+        )
+    }
   }
 
   onNavigateBack(){
