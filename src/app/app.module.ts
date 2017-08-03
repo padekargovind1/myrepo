@@ -61,6 +61,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
 import {BrochureDownloadComponent} from './brochure/brochure-download/brochure-download.component';
 import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
+import { SchoolComponent } from './school/school.component';
 
 import { SchoolService } from './services/school.service';
 import { AuthService } from './services/auth.service';
@@ -70,8 +71,6 @@ import { CompareService } from './services/compare.service';
 import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
-import { EtablissementService } from './services/etablissement.service';
-import { SchoolComponent } from './school/school.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
 
@@ -159,8 +158,7 @@ import { SchoolPipe } from './pipes/school.pipe';
     BookingService,
     EditorService,
     SweetAlertService,
-    BrochureService,
-    EtablissementService
+    BrochureService
   ],
     entryComponents: [
        BrochpopupComponent,

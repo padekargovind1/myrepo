@@ -213,10 +213,9 @@ export class SchoolComponent implements OnInit {
   }
 
   onCompare(){
-    let schoolList = this.compareList;
-    console.log(schoolList, this.compareListFilter);
     this.compareService.storeCompareFilter(this.compareListFilter);
-    this.router.navigate(['/compare-mode/', schoolList]);
+    this.compareService.storeSchoolId(this.compareList)
+    this.router.navigate(['/compare-mode/']);
   }
 
 

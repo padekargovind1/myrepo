@@ -23,6 +23,10 @@ export class CompareModeComponent implements OnInit {
     photo:"school-1.jpg"
   }
   showSchool : boolean = false;
+  addSchoolsOptions=[];
+  canAddSchool : boolean = false;
+  schoolIdToCompare : string = "";
+  counterId : number = 0;
 
   constructor(private location : Location,
               private route : ActivatedRoute,
@@ -37,16 +41,7 @@ export class CompareModeComponent implements OnInit {
     if(this.compareListFilter[0]==null){
       this.location.back();
     }
-    // console.log(this.compareListFilter);
-    // console.log(this.route.snapshot.params);
-    this.schoolToCompare.ids.push(this.route.snapshot.params[0]);
-    this.schoolToCompare.ids.push(this.route.snapshot.params[1]);
-    if(this.route.snapshot.params[2]){
-      this.schoolToCompare.ids.push(this.route.snapshot.params[2]);
-    }
-    if (this.route.snapshot.params[3]){
-      this.schoolToCompare.ids.push(this.route.snapshot.params[3]);
-    }
+    this.schoolToCompare.ids=this.compareService.getSchoolToCompareId()
     this.getSchoolData();
   }
 
@@ -55,6 +50,10 @@ export class CompareModeComponent implements OnInit {
       .subscribe(
         response=>{
           let data = response.data;
+          for(let school of data){
+            school.counter=this.counterId;
+            this.counterId++;
+          }
           this.schoolDataToDisplay=data;
           this.showSchool=true;
           console.log(this.schoolDataToDisplay, this.showSchool)
@@ -78,10 +77,12 @@ export class CompareModeComponent implements OnInit {
     this.location.back();
   }
 
-  onDeleteCompare(school){
+  onDeleteCompare(index){
     console.log("click on delete");
     // console.log(this.schoolDataToDisplay);
-    this.schoolDataToDisplay.splice(school, 1);
+    this.schoolDataToDisplay.splice(index, 1);
+    this.schoolToCompare.ids.splice(index, 1);
+    this.compareService.storeSchoolId(this.schoolToCompare.ids)
     if(this.schoolDataToDisplay.length==0){
       this.showSchool=false
     }
@@ -112,6 +113,52 @@ export class CompareModeComponent implements OnInit {
           console.log(response)
         }
       )
+  }
+
+  addSchoolKeyDown(event){
+    this.canAddSchool=false;
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+      this.getSchoolFilter(filter)
+    }else {
+      this.addSchoolsOptions=null;
+    }
+  }
+
+  getSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutocompleteSchool(data)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          this.addSchoolsOptions=data
+        }
+      )
+  }
+
+  onSchoolClick(schoolId){
+    console.log(schoolId)
+    this.canAddSchool=true;
+    this.schoolIdToCompare=schoolId;
+  }
+
+  onAddSchool(){
+    if(this.schoolToCompare.ids.indexOf(this.schoolIdToCompare)==-1){
+      this.schoolToCompare.ids.push(this.schoolIdToCompare);
+      this.compareService.storeSchoolId(this.schoolToCompare.ids);
+      this.getSchoolData();
+    }else {
+      swal({
+        title: 'Erreur',
+        text: "Vous ne pouvez pas comparer deux mêmes écoles",
+        type: 'error',
+        confirmButtonText: 'Ok'
+      })
+    }
   }
 
 }

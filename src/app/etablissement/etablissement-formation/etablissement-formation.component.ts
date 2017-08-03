@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EtablissementService } from '../../services/etablissement.service';
 import { PublicService } from '../../services/public.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -15,8 +14,7 @@ export class EtablissementFormationComponent implements OnInit {
   subscription : Subscription;
   schoolData=[];
   schoolId = "";
-  constructor(private etablissementService : EtablissementService,
-              private publicService : PublicService,
+  constructor(private publicService : PublicService,
               private route : ActivatedRoute) { 
     
   }

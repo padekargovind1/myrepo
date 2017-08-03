@@ -1,4 +1,4 @@
-<md-tab-group class="download-modal">
+<md-tab-group class="download-modal" #tabGroup>
   <md-tab label="Formulaire">
      <div role="tabpanel"  id="Formulaire" class="modal-download">
          <form [formGroup]="brochureForm">
@@ -164,7 +164,9 @@
 
             <button type="button" data-dismiss="modal" class="btn btn-highlighted"
                 (click)="onCancel()">Annuler</button>
-            <a href="#ProfilScolaire" data-toggle="tab" class="btn btn-secondary">Suivant</a>
+            <a (click)="toSecondTab()" data-toggle="tab" class="btn btn-secondary">
+                Suivant
+            </a>
          </form>
     </div>
   </md-tab>

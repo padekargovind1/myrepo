@@ -14,6 +14,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
 
     listBrochures = [];
     listBrochuresFiltered = [];
+    schoolList = [];
     lastCloseResult: string;
     config: MdDialogConfig = {
         disableClose: false,
@@ -112,22 +113,22 @@ export class BrochureComponent implements OnInit, AfterViewInit {
     });  
   }
 
-  getBrochure(){
-    this.publicService.getBrochure()
-        .subscribe(
-            (data)=>{
-                let response = data;
-                // console.log(response.data);
-                if(response.code==400){
-                    console.log(response.message);
-                } else {
-                    this.listBrochures=response.data;
-                    this.listBrochuresFiltered=response.data;
-                    console.log(this.listBrochures);
+    getBrochure(){
+        this.publicService.getBrochure()
+            .subscribe(
+                (data)=>{
+                    let response = data;
+                    // console.log(response.data);
+                    if(response.code==400){
+                        console.log(response.message);
+                    } else {
+                        this.listBrochures=response.data;
+                        this.listBrochuresFiltered=response.data;
+                        console.log(this.listBrochures);
+                    }
                 }
-            }
-        )
-  }
+            )
+    }
 
     brochDialog(){  
         let dialogref = this.dialog.open(BrochpopupComponent,this.config);

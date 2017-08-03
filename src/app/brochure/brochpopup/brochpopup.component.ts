@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -12,6 +12,7 @@ import { BrochureService } from '../../services/brochure.service';
   styleUrls: ['./brochpopup.component.scss']
 })
 export class BrochpopupComponent implements OnInit {
+  @ViewChild('tabGroup') tabGroup;
   brochureForm : FormGroup;
   
   constructor(public dialogref:MdDialogRef<BrochpopupComponent>,
@@ -92,6 +93,10 @@ export class BrochpopupComponent implements OnInit {
   onSubmit(){
     this.brochureService.storeResponse("submit")
     this.dialogref.close();
+  }
+
+  toSecondTab(){
+    this.tabGroup.selectedIndex=1;
   }
 
 }

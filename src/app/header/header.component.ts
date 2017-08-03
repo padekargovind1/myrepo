@@ -181,6 +181,7 @@ export class HeaderComponent implements OnInit {
   cleanLocalStorage(){
     this.bookingService.cleanBooking();
     this.compareService.cleanCompareFilter();
+    this.compareService.cleanSchoolCompare();
   }
 
 }
