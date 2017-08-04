@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UsersService } from '../../services/users.service';
+
 @Component({
   selector: 'app-myaccount-mysearch',
   templateUrl: './myaccount-mysearch.component.html',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyaccountMysearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private usersService : UsersService) { }
 
   ngOnInit() {
+
+  }
+
+  getApplications(){
+    this.usersService.getApplication()
+      .subscribe(
+        response =>{
+          console.log(response)
+        }
+      )
   }
 
 }
