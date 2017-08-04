@@ -118,7 +118,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
             .subscribe(
                 (data)=>{
                     let response = data;
-                    // console.log(response.data);
+                    console.log(response.data);
                     if(response.code==400){
                         console.log(response.message);
                     } else {

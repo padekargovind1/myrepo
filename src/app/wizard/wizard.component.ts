@@ -136,6 +136,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       title : ['', Validators.required],
       lastName : ['', Validators.required],
       firstName : ['', Validators.required],
+      age : ['', Validators.required],
       job : ['', Validators.required],
       email : ['', Validators.compose([Validators.required, CustomValidators.email])],
       tel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
