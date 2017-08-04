@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit {
               console.log('message: ', this.errorMessage);
             }
             else {
+              this.sendVerificationEmail(email);
               console.log(response);
               swal({
                 title: 'Votre compte a été créer',
@@ -73,6 +74,15 @@ export class RegisterComponent implements OnInit {
           }
         )
     }
+  }
+
+  sendVerificationEmail(email){
+    this.authService.postSendEmail({email : email})
+      .subscribe(
+        response=>{
+          console.log(response)
+        }
+      )
   }
 
 }

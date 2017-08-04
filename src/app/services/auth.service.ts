@@ -9,6 +9,7 @@ import 'rxjs/add/operator/toPromise';
 const REGISTER_API: string = "http://54.254.203.172/cideapi/api/auth/register";
 const FORGOT_API : string = "http://54.254.203.172/cideapi/api/auth/password";
 const LOGIN_API : string ="http://54.254.203.172/cideapi/api/auth/log";
+const SEND_API : string = "http://54.254.203.172/cideapi/api/auth/email/send";
 
 @Injectable()
 export class AuthService {
@@ -61,6 +62,11 @@ export class AuthService {
 
   isUserLoggedIn(){
     return !!localStorage.getItem("userToken");
+  }
+
+  postSendEmail(data) : Observable<any>{
+    return this.http.post(SEND_API, data, {headers: this.headers})
+      .map((response)=>response.json())
   }
 
 }
