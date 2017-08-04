@@ -1740,3 +1740,13 @@ a:hover { text-decoration: none;}
 
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background{ background-color: #00BC50 ;}
+ 
+ header .main-navigation li.courses-menu ul {
+   max-width: 300px;
+   top: 88%;
+ }
+ 
+ 
+ header .main-navigation li.courses-menu li .single-item {
+   margin-bottom: 10px;
+ } 
