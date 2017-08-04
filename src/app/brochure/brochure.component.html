@@ -25,96 +25,99 @@
                                                             [formControl]="searchForm.controls['classe']">
                                                             <option value="" disabled selected hidden>Classe</option>
                                                             <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                                <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                                                <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                                                <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                                <option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                <option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                <option value="gs">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
                                                             </optgroup>
                                                             <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                                <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                                                <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                                                <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                                <option value="cp">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                <option value="ce1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                <option value="ce2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
                                                             </optgroup>
                                                             <optgroup label="Cycle 3 : Consolidation">
-                                                                <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                                                <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                                                <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                                <option value="cm1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                <option value="cm2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                <option value="6e">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
                                                             </optgroup>
-                                                             <optgroup label="Cycle 4 : Approfondissement">
-                                                                <option value="5ème">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
-                                                                <option value="4ème">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
-                                                                <option value="3ème">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+                                                            <optgroup label="Cycle 3 : Consolidation">
+                                                                <option value="sixieme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                                            </optgroup>
+                                                            <optgroup label="Cycle 4 : Approfondissement">
+                                                                <option value="cinquieme">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+                                                                <option value="quatrieme">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+                                                                <option value="troisieme">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
                                                             </optgroup>
                                                             <optgroup label="2nde">
-                                                                <option value="2ndGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                <option value="2ndePB">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
+                                                                <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                <option value="seconde_probation">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
                                                             </optgroup>
                                                             <optgroup label="1ere">
-                                                                <option value="1ereES">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
-                                                                <option value="1ereL">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
-                                                                <option value="1ereS">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
+                                                                <option value="premiere_es">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
+                                                                <option value="premiere_l">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
+                                                                <option value="premiere_s">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
                                                             </optgroup>
                                                             <optgroup label="Terminale">
-                                                                <option value="TES">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ES - Economique et Sociale</option>
-                                                                <option value="TL">&nbsp;&nbsp;&nbsp;&nbsp;Terminale L - Littéraire</option>
-                                                                <option value="TS">&nbsp;&nbsp;&nbsp;&nbsp;Terminale S - Scientifique</option>
+                                                                <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
+                                                                <option value="terminale_l">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
+                                                                <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
                                                             </optgroup>
                                                             <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
                                                             <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
-                                                            <option value="CNF">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
+                                                            <option value="cursus_non_francophone">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
                                                             <optgroup label="STHR - Hôtellerie et Restauration">
-                                                                <option value="2ndeSTHR">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
-                                                                <option value="1ereA-STHR">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
-                                                                <option value="1ereSTHR">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
-                                                                <option value="TSTHR">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
+                                                                <option value="seconde_sthr">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
+                                                                <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
+                                                                <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
+                                                                <option value="terminale_sthr">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
                                                             </optgroup>
                                                             <optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
-                                                                <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                <option value="1ereA-STI2S">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
-                                                                <option value="1ereSTI2S">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
-                                                                <option value="TSTI2S">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
+                                                                <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                <option value="premiere_sti2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
+                                                                <option value="premiere_st2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
+                                                                <option value="terminale_st2s">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
                                                             </optgroup>
                                                             <optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
-                                                                <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                <option value="1ereS2A">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
-                                                                <option value="TS2A">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
+                                                                <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                <option value="premiere_std2a">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
+                                                                <option value="terminale_std2a">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
                                                             </optgroup>
                                                             <optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
-                                                                <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                <option value="1ereSTI2D">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
-                                                                <option value="TSTI2DAC">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Architecture et Construction</option>
-                                                                <option value="TSTI2DEE">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
-                                                                <option value="TSTI2DITEC">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
-                                                                <option value="TSTI2DSIN">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
+                                                                <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                <option value="premiere_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
+                                                                <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ST2D – Architecture et Construction</option>
+                                                                <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
+                                                                <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
+                                                                <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
                                                             </optgroup>
                                                             <optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
-                                                                <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                <option value="1ereA-STMG">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
-                                                                <option value="1ereSTMG">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
-                                                                <option value="TSTMGGF">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
-                                                                <option value="TSTMGM">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
-                                                                <option value="TSTMGRHC">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
-                                                                <option value="TSTMGSIG">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
+                                                                <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
+                                                                <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
+                                                                <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
+                                                                <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
+                                                                <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
+                                                                <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
                                                             </optgroup>
                                                             <optgroup label="STL - Sciences et Technologies de Laboratoire">
-                                                                <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                <option value="1ereA-STL">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
-                                                                <option value="1ereSTL">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
-                                                                <option value="TSTLB">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
-                                                                <option value="TSTLSPCL">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
+                                                                <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
+                                                                <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
+                                                                <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
+                                                                <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
                                                             </optgroup>
                                                             <optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
-                                                                <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                <option value="1ereA-STAV">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
-                                                                <option value="1ereSTAV">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
-                                                                <option value="TSTAV">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
+                                                                <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
+                                                                <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
+                                                                <option value="terminale_stav">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
                                                             </optgroup>
                                                             <optgroup label="TMD - Techniques de la Musique et de la Danse">
                                                                 <option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
-                                                                <option value="1ereA-TMD">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
-                                                                <option value="1ereTMD">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
-                                                                <option value="TTMDD">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
-                                                                <option value="TTMDM">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
-                                                            </optgroup>
+                                                                <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
+                                                                <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
+                                                                <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
+                                                                <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
+                                                            </optgroup> 
                                                         </select>
                                                     </label>
                                                 </div>
@@ -181,338 +184,7 @@
                 </form><!-- .col-* -->
 
             </section>
-            <section class="holder-modal">
-                <!-- <button type="button" class="btn btn-secondary btn-lg  pull-right btn-download" data-toggle="modal" data-target="#download-popup"><i class="fa fa-download"></i></button> -->
-
-                <div class="modal fade" id="download-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
-                    <div class="modal-dialog modal-download" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="active"><a href="#tab1" data-toggle="tab">Formulaire</a></li>
-                                    <li><a href="#tab2" data-toggle="tab">Profil Scolaire</a></li>
-                                </ul>
-
-                                    <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="tab1">
-                                        <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
-
-                                        <h3>Parents</h3>
-
-                                        <div class="form-group">
-                                            <div class="select-custom">
-                                                <select name="" class="form-control">
-                                                    <option value="" disabled selected hidden>Lien de Parenté</option>
-                                                    <option value="">Père</option>
-                                                    <option value="">Mère</option>
-                                                    <option value="">Oncle</option>
-                                                    <option value="">Tante</option>
-                                                    <option value="">Grand-Père</option>
-                                                    <option value="">Grand-Mère</option>
-                                                    <option value="">Tuteur</option>
-                                                    <option value="">Tutric</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group horizontal-radio clearfix">
-                                            <label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
-                                            <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
-                                            <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>
-                                        </div>
-
-                                        
-                                        <div class="row">
-                                            <div class="col-sm-6  col-xs-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Nom">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6  col-xs-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Prénom">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <h3>Enfant</h3>
-                                        <div class="row">
-                                            <div class="col-sm-6  col-xs-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Nom">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6  col-xs-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Prénom">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <!-- <div class="col-sm-12">
-                                                <div class="row"> -->
-                                                    <div class="col-sm-3  col-xs-6">
-                                                        <div class="form-group">
-                                                            <input type="number" class="form-control" max="120" min="1" placeholder="Age">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3  hidden-xs">&nbsp;</div>
-                                                
-                                                    <div class="col-sm-6  col-xs-6">
-                                                        <div class="form-group">
-                                                            <div class="horizontal-radio">
-                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Garçon</span></label>
-                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Fille</span></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <!-- </div>
-                                            </div> -->
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" placeholder="Nom Etablissement Actuel">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="form-group  col-sm-12  col-xs-6">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" placeholder="Ville">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group  col-sm-12  col-xs-6">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="select-custom">
-                                                            <select name="" class="form-control">
-                                                                <option value="" disabled selected hidden>Classe</option>
-                                                                <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                                    <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                                                    <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                                                    <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
-                                                                </optgroup>
-                                                                <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                                    <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                                                    <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                                                    <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
-                                                                </optgroup>
-                                                                <optgroup label="Cycle 3 : Consolidation">
-                                                                    <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                                                    <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                                                    <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
-                                                                </optgroup>
-                                                                <optgroup label="Cycle 3 : Consolidation">
-                                                                    <option value="6ème">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
-                                                                </optgroup>
-                                                                <optgroup label="Cycle 4 : Approfondissement">
-                                                                    <option value="5ème">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
-                                                                    <option value="4ème">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
-                                                                    <option value="3ème">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
-                                                                </optgroup>
-                                                                <optgroup label="2nde">
-                                                                    <option value="2ndGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                    <option value="2ndePB">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
-                                                                </optgroup>
-                                                                <optgroup label="1ere">
-                                                                    <option value="1ereES">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
-                                                                    <option value="1ereL">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
-                                                                    <option value="1ereS">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
-                                                                </optgroup>
-                                                                <optgroup label="Terminale">
-                                                                    <option value="TES">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ES - Economique et Sociale</option>
-                                                                    <option value="TL">&nbsp;&nbsp;&nbsp;&nbsp;Terminale L - Littéraire</option>
-                                                                    <option value="TS">&nbsp;&nbsp;&nbsp;&nbsp;Terminale S - Scientifique</option>
-                                                                </optgroup>
-                                                                <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
-                                                                <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
-                                                                <option value="CNF">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
-                                                                <optgroup label="STHR - Hôtellerie et Restauration">
-                                                                    <option value="2ndeSTHR">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
-                                                                    <option value="1ereA-STHR">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
-                                                                    <option value="1ereSTHR">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
-                                                                    <option value="TSTHR">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
-                                                                </optgroup>
-                                                                <optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
-                                                                    <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                    <option value="1ereA-STI2S">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
-                                                                    <option value="1ereSTI2S">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
-                                                                    <option value="TSTI2S">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
-                                                                </optgroup>
-                                                                <optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
-                                                                    <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                    <option value="1ereS2A">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
-                                                                    <option value="TS2A">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
-                                                                </optgroup>
-                                                                <optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
-                                                                    <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                    <option value="1ereSTI2D">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
-                                                                    <option value="TSTI2DAC">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Architecture et Construction</option>
-                                                                    <option value="TSTI2DEE">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
-                                                                    <option value="TSTI2DITEC">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
-                                                                    <option value="TSTI2DSIN">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                                                </optgroup>
-                                                                <optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
-                                                                    <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                    <option value="1ereA-STMG">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
-                                                                    <option value="1ereSTMG">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
-                                                                    <option value="TSTMGGF">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
-                                                                    <option value="TSTMGM">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
-                                                                    <option value="TSTMGRHC">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
-                                                                    <option value="TSTMGSIG">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                                                </optgroup>
-                                                                <optgroup label="STL - Sciences et Technologies de Laboratoire">
-                                                                    <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                    <option value="1ereA-STL">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
-                                                                    <option value="1ereSTL">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
-                                                                    <option value="TSTLB">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
-                                                                    <option value="TSTLSPCL">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                                                </optgroup>
-                                                                <optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
-                                                                    <option value="2ndeGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                    <option value="1ereA-STAV">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
-                                                                    <option value="1ereSTAV">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
-                                                                    <option value="TSTAV">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
-                                                                </optgroup>
-                                                                <optgroup label="TMD - Techniques de la Musique et de la Danse">
-                                                                    <option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
-                                                                    <option value="1ereA-TMD">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
-                                                                    <option value="1ereTMD">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
-                                                                    <option value="TTMDD">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
-                                                                    <option value="TTMDM">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
-                                                                </optgroup>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <input type="checkbox" id="school-1" class="checkbox" /><label for="school-1">Je souhaite recevoir un copie de votre message</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <button type="button" data-dismiss="modal" class="btn btn-highlighted">Annuler</button>
-                                        <a href="#tab2" data-toggle="tab" class="btn btn-secondary">Suivant</a>
-
-                                    </div><!-- .tab-pane -->
-
-                                    <div role="tabpanel" class="tab-pane" id="tab2">
-                                        <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
-
-                                        <div class="form-group horizontal-radio clearfix">
-                                            <label class="custom-radio"><input type="radio" name="public"><span>Privé</span></label>
-                                            <label class="custom-radio"><input type="radio" name="public"><span>Public</span></label>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" placeholder="Niveau Actuel">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" placeholder="Niveau concerné par la demande">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <textarea placeholder="Information précise, pour mieux traiter votre demande" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="g-recaptcha" data-sitekey="6LdkaCIUAAAAAOHbgd3nOACP2g0gQLMJVv93CBpp"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <p class="note">
-                                        Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires des informations communiquées. Vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données qui vous concernent (art. 34 de la loi "informatique et libertés" - Numéro de déclaration CNIL 1271917). Formulez votre demande par écrit au CIDE, 84, boulevard Saint-Michel 75006 Paris.
-                                        </p>
-
-                                        <button type="button" data-dismiss="modal" class="btn btn-highlighted">Annuler</button>
-                                        <button class="btn btn-secondary close-download">Valider</button>
-
-                                    </div><!-- .tab-pane -->
-
-                                </div><!-- .tab-content -->
-
-                            </div><!-- .modal-body -->
-                        </div><!-- .modal-content -->
-                    </div><!-- .modal-dialog -->
-                </div><!-- modal -->
-
-
-                <div class="modal fade" id="download-file" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
-                    <div class="modal-dialog modal-download" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-
-                                <h3>Je confirme ma demande de téléchargement des documentations suivantes:</h3>
-
-                                <ul class="files-to-download">
-                                    <li>
-                                        <img src="assets/images/school-logo/lycee-francois-d-estaing.png" alt="" width="20" />
-                                        <span>FDE - Nom de la documentation.pdf</span>
-                                        <a class="remove">x</a>
-                                    </li>
-                                    <li>
-                                        <img src="assets/images/school-logo/montplaisir.jpeg" alt="" width="20" />
-                                        <span>MNT - Nom de la documentation.pdf</span>
-                                        <a class="remove">x</a>
-                                    </li>
-                                    <li>
-                                        <img src="assets/images/school-logo/renasup-scalia-person.png" alt="" width="20" />
-                                        <span>RSE - Nom de la documentation.pdf</span>
-                                        <a class="remove">x</a>
-                                    </li>
-                                </ul>
-
-                                <button type="button" data-dismiss="modal" class="btn btn-highlighted">Annuler</button>
-                                <button type="button" data-dismiss="modal" class="btn btn-secondary">Télécharger</button>
-
-                            </div><!-- .modal-body -->
-                        </div><!-- .modal-content -->
-                    </div><!-- .modal-dialog -->
-                </div><!-- modal -->
-            </section>
+            
         </div><!-- .row -->
 
         <div class="row brochure-content">
@@ -553,16 +225,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+                                {{brochure.shortName}}
+                            </div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+                                Nom du Cycle : {{cycle.cycle.nom}}
+                            </div>
                             
                         </div>
-                        <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
-                            FDE - François D'estaing
-                        </div>
-                    </div>
-                        
-                        
-
-                </div>
+                            
+                    </div><!-- end second for -->
+              
+                </div><!-- end first for -->
 
             </div>
 

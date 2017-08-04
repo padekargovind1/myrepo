@@ -32,6 +32,11 @@ export class BrochureComponent implements OnInit, AfterViewInit {
     options: any;
     schoolsOptions: any;
     downloadList = [];
+    searchBrochure = {
+        class : "",
+        place : "",
+        name : ""
+    };
 
   constructor(private publicService : PublicService,
               public dialog:MdDialog,
@@ -114,17 +119,18 @@ export class BrochureComponent implements OnInit, AfterViewInit {
   }
 
     getBrochure(){
-        this.publicService.getBrochure()
+        console.log(this.searchBrochure)
+        this.publicService.postBrochure(this.searchBrochure)
             .subscribe(
                 (data)=>{
                     let response = data;
-                    console.log(response.data);
+                    // console.log(response.data);
                     if(response.code==400){
                         console.log(response.message);
                     } else {
                         this.listBrochures=response.data;
                         this.listBrochuresFiltered=response.data;
-                        console.log(this.listBrochures);
+                        // console.log(this.listBrochures);
                     }
                 }
             )
@@ -227,12 +233,10 @@ export class BrochureComponent implements OnInit, AfterViewInit {
 
     onSubmitSearch(){
         console.log("click on submit");
-        let data = [
-            this.searchForm.controls.classe.value,
-            this.searchForm.controls.lieu.value,
-            this.searchForm.controls.etablissement.value
-        ]
-        this.getSearchFilter(data);
+        this.searchBrochure.class = this.searchForm.controls.classe.value;
+        this.searchBrochure.place = this.searchForm.controls.lieu.value;
+        this.searchBrochure.name = this.searchForm.controls.etablissement.value;
+        this.getBrochure()
     }
 
     getSearchFilter(searchFilter){
