@@ -132,6 +132,11 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
+  deleteApplciation(data): Observable<any>{
+    return this.http.delete(APPLICATION_API+'?token='+this.token, data)
+      .map((response)=>response.json())
+  }
+
   postTrip(data):Observable<any>{
     return this.http.post(TRIPS_API+'?token='+this.token, data, {headers: this.headers})
       .map((response)=>response.json())

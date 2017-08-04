@@ -11,6 +11,11 @@ export class MysearchCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // setTimeout(
+    //   ()=>{
+    //     console.log(this.cardData)
+    //   }, 1000
+    // )
   }
 
 }

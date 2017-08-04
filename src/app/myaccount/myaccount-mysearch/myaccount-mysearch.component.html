@@ -9,26 +9,11 @@
           <h4>Mes souhaits</h4>
           <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
-            <li>
-              <!--<app-myaccount-mysearch></app-myaccount-mysearch>-->
-            </li>
-            <li>
-              <p>
-                <time>12/05/2017</time><br />
-                <strong>MNT</strong><br />
-                Montplaisir<br />
-                Classe: PS
-              </p>
-              <button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
-            </li>
-            <li>
-              <p>
-                <time>12/05/2017</time><br />
-                <strong>RSE</strong><br />
-                Rena Sup<br />
-                Classe: PS
-              </p>
-              <button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
+            <li *ngFor="let wish of wishList">
+              <app-mysearch-card [cardData]="wish" ></app-mysearch-card>
+              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(wish.school._id)">
+                <i class="fa fa-trash"></i>
+              </button>
             </li>
           </ul>
         </div><!-- .card-mobile -->
@@ -38,32 +23,11 @@
           <h4>Mes demande d'inscription</h4>
           <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
-            <li>
-              <p>
-                <time>12/05/2017</time><br />
-                <strong>FDE</strong><br />
-                François D'estaing<br />
-                Classe: PS
-              </p>
-              <button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
-            </li>
-            <li>
-              <p>
-                <time>12/05/2017</time><br />
-                <strong>MNT</strong><br />
-                Montplaisir<br />
-                Classe: PS
-              </p>
-              <button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
-            </li>
-            <li>
-              <p>
-                <time>12/05/2017</time><br />
-                <strong>RSE</strong><br />
-                Rena Sup<br />
-                Classe: PS
-              </p>
-              <button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
+            <li *ngFor="let apply of applyList">
+              <app-mysearch-card [cardData]="apply" ></app-mysearch-card>
+              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(apply.school._id)">
+                <i class="fa fa-trash"></i>
+              </button>
             </li>
           </ul>
         </div><!-- .card-mobile -->
@@ -73,32 +37,11 @@
           <h4>Les ecoles vues</h4>
           <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
-            <li>
-              <p>
-                <time>12/05/2017</time><br />
-                <strong>FDE</strong><br />
-                François D'estaing<br />
-                Classe: PS
-              </p>
-              <button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
-            </li>
-            <li>
-              <p>
-                <time>12/05/2017</time><br />
-                <strong>MNT</strong><br />
-                Montplaisir<br />
-                Classe: PS
-              </p>
-              <button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
-            </li>
-            <li>
-              <p>
-                <time>12/05/2017</time><br />
-                <strong>RSE</strong><br />
-                Rena Sup<br />
-                Classe: PS
-              </p>
-              <button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
+            <li *ngFor="let history of historyList">
+              <app-mysearch-card [cardData]="history" ></app-mysearch-card>
+              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(history.school._id)">
+                <i class="fa fa-trash"></i>
+              </button>
             </li>
           </ul>
         </div><!-- .card-mobile -->

@@ -1,7 +1,8 @@
-<p>
-  <time>12/05/2017</time><br />
-  <strong>FDE</strong><br />
-  François D'estaing<br />
-  Classe: PS
-</p>
-<button class="btn btn-warning btn-remove"><i class="fa fa-trash"></i></button>
+<div *ngIf="cardData!=[]">  
+  <p>
+    <time>{{cardData.createdAt | shorten : 10}}</time><br />
+    <strong>{{cardData.school.shortName}}</strong><br />
+    {{cardData.school.longName}}<br />
+    <!--Classe: PS-->
+  </p>
+</div>
