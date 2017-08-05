@@ -10,7 +10,7 @@
             <div class="col-sm-6  col-xs-6">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Nom"
-                  [formControl]="childrenForm.controls['nom']">
+                  [formControl]="childrenForm.controls['nom']" maxlength="25">
                 <small *ngIf="childrenForm.controls['nom'].hasError('required') && 
                   childrenForm.controls['nom'].touched" 
                   class="mat-text-warn"> 
@@ -21,7 +21,7 @@
             <div class="col-sm-6  col-xs-6">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Prénom"
-                  [formControl]="childrenForm.controls['prenom']">
+                  [formControl]="childrenForm.controls['prenom']" maxlength="25">
                 <small *ngIf="childrenForm.controls['nom'].hasError('required') && 
                   childrenForm.controls['nom'].touched" 
                   class="mat-text-warn"> 
@@ -35,7 +35,7 @@
               <div class="form-group">
                 <input type="number" class="form-control" max="100" min="1" placeholder="Age"
                   [formControl]="childrenForm.controls['age']"
-                  pattern="[0-9]+">
+                  pattern="[0-9]+" maxlength="2">
                 <small *ngIf="childrenForm.controls['age'].hasError('required') && 
                   childrenForm.controls['age'].touched" 
                   class="mat-text-warn"> 
@@ -89,7 +89,7 @@
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Portable"
                   [formControl]="childrenForm.controls['portable']"
-                  pattern="[0-9]+">
+                  pattern="[0-9]+" maxlength="10">
                   <small *ngIf="childrenForm.controls['portable'].hasError('required') && 
                     childrenForm.controls['portable'].touched" 
                     class="mat-text-warn"> 
@@ -125,7 +125,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Code postal"
-                  [formControl]="childrenForm.controls['codepostal']">
+                  [formControl]="childrenForm.controls['codepostal']" maxlength="5">
                 <small *ngIf="childrenForm.controls['codepostal'].hasError('required') && 
                   childrenForm.controls['codepostal'].touched" 
                   class="mat-text-warn"> 
@@ -141,7 +141,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Ville"
-                  [formControl]="childrenForm.controls['ville']">
+                  [formControl]="childrenForm.controls['ville']" maxlength="30">
                 <small *ngIf="childrenForm.controls['ville'].hasError('required') && 
                   childrenForm.controls['ville'].touched" 
                   class="mat-text-warn"> 
@@ -174,7 +174,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Lieu"
-                  [formControl]="childrenForm.controls['lieu']">
+                  [formControl]="childrenForm.controls['lieu']" maxlength="50">
                 <small *ngIf="childrenForm.controls['lieu'].hasError('required') && 
                   childrenForm.controls['lieu'].touched" 
                   class="mat-text-warn"> 

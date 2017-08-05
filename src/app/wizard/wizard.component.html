@@ -128,13 +128,13 @@
                                                     <div class="col-sm-6  col-xs-6">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Nom"
-                                                            [formControl]="wizardForm.controls['lastName']">
+                                                            [formControl]="wizardForm.controls['lastName']" maxlength="25">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6  col-xs-6">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Prénom"
-                                                            [formControl]="wizardForm.controls['firstName']">
+                                                            [formControl]="wizardForm.controls['firstName']" maxlength="25">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -153,7 +153,8 @@
         -->                                                <div class="col-sm-12">
                                                             <input type="text" class="form-control" 
                                                             placeholder="Profession / Secteur d'activité"
-                                                            [formControl]="wizardForm.controls['job']">
+                                                            [formControl]="wizardForm.controls['job']"
+                                                            maxlength="50">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +169,8 @@
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" 
                                                             placeholder="Téléphone auquel je suis joignable"
-                                                            [formControl]="wizardForm.controls['tel']">
+                                                            [formControl]="wizardForm.controls['tel']"
+                                                            maxlength="10">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -231,13 +233,15 @@
                                                 <div class="col-sm-6  col-xs-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Nom"
-                                                          [formControl]="wizardForm.controls['childLastName']">
+                                                          [formControl]="wizardForm.controls['childLastName']"
+                                                          maxlength="25">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6  col-xs-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Prénom"
-                                                          [formControl]="wizardForm.controls['childFirstName']">
+                                                          [formControl]="wizardForm.controls['childFirstName']"
+                                                          maxlength="25">
                                                     </div>
                                                 </div>
                                             </div>
@@ -250,7 +254,7 @@
                                                         <div class="col-sm-3  col-xs-6">
                                                             <div class="form-group">
                                                                 <input type="number" class="form-control" max="120" min="1" placeholder="Age"
-                                                                  [formControl]="wizardForm.controls['childAge']">
+                                                                  [formControl]="wizardForm.controls['childAge']" maxlength="2">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-3  hidden-xs">&nbsp;</div>
@@ -288,7 +292,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Portable"
-                                                          [formControl]="wizardForm.controls['childTel']">
+                                                          [formControl]="wizardForm.controls['childTel']" maxlength="10">
                                                     </div>
                                                 </div>
                                             </div>
@@ -298,7 +302,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <textarea class="form-control" placeholder="Adresse"
-                                                          [formControl]="wizardForm.controls['childAddr']"></textarea>
+                                                          [formControl]="wizardForm.controls['childAddr']"
+                                                          maxlength="125"></textarea>
                                                     </div>
                                                 </div>
                                             </div> 
@@ -309,13 +314,13 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Code postal"
-                                                          [formControl]="wizardForm.controls['childPostalCode']">
+                                                          [formControl]="wizardForm.controls['childPostalCode']" maxlength="5">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Ville"
-                                                          [formControl]="wizardForm.controls['childCity']">
+                                                          [formControl]="wizardForm.controls['childCity']" maxlength="25">
                                                     </div>
                                                 </div>
                                             </div>
@@ -336,7 +341,8 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Lieu"
-                                                              [formControl]="wizardForm.controls['childBirthPlace']">
+                                                              [formControl]="wizardForm.controls['childBirthPlace']"
+                                                              maxlength="30">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -374,7 +380,8 @@
                                                         <div class="col-sm-2">
                                                             <input type="number" max="120" min="1" 
                                                               class="form-control gap-for-radio" placeholder="Age" 
-                                                              [formControl]="wizardForm.controls['childSisBroAge']"/>
+                                                              [formControl]="wizardForm.controls['childSisBroAge']"
+                                                              maxlength="2"/>
                                                             <!-- <div class="select-custom">
                                                                 <select name="" class="form-control">
                                                                     <option value="">Âge</option>
@@ -384,7 +391,8 @@
                                                         <div class="col-sm-3">
                                                             <input type="text" class="form-control gap-for-radio" 
                                                             placeholder="Niveau d'étude"
-                                                            [formControl]="wizardForm.controls['childSisBroStudy']">
+                                                            [formControl]="wizardForm.controls['childSisBroStudy']"
+                                                            maxlength="15">
                                                         </div>
                                                     </div>
                                                 
@@ -423,7 +431,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
-                                                          [formControl]="wizardForm.controls['schoolName']">
+                                                          [formControl]="wizardForm.controls['schoolName']" maxlength="50">
                                                     </div>
                                                 </div>
                                             </div>
@@ -433,7 +441,7 @@
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" placeholder="Ville"
-                                                              [formControl]="wizardForm.controls['schoolCity']">
+                                                              [formControl]="wizardForm.controls['schoolCity']" maxlength="35">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -550,7 +558,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <input type="text" class="form-control" placeholder="Options"
-                                                          [formControl]="wizardForm.controls['schoolOption']">
+                                                          [formControl]="wizardForm.controls['schoolOption']"
+                                                          maxlength="50">
                                                     </div>
                                                 </div>
                                             </div>
@@ -659,7 +668,6 @@
                                                     <div class="col-sm-12">
                                                         <input type="text" class="form-control" placeholder="Matières fortes"
                                                           [formControl]="wizardForm.controls['bestSubject']">
-                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -721,13 +729,15 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Job"
-                                                              [formControl]="wizardForm.controls['interestJob']">
+                                                              [formControl]="wizardForm.controls['interestJob']"
+                                                              maxlength="50">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Age"
-                                                              [formControl]="wizardForm.controls['interestAge']">
+                                                              [formControl]="wizardForm.controls['interestAge']"
+                                                              maxlength="2">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -750,7 +760,8 @@
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels sont vos centres d’interets"
-                                                          [formControl]="wizardForm.controls['yourInterest']">
+                                                          [formControl]="wizardForm.controls['yourInterest']"
+                                                          maxlength="60">
                                                     </div>
                                                 </div>
                                             </div>
@@ -760,7 +771,8 @@
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels loisirs et activités pratiquez-vous"
-                                                          [formControl]="wizardForm.controls['practiceInterest']">
+                                                          [formControl]="wizardForm.controls['practiceInterest']"
+                                                          maxlength="60">
                                                     </div>
                                                 </div>
                                             </div>                          
@@ -783,7 +795,8 @@
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Nom"
-                                                              [formControl]="wizardForm.controls['primarySchoolName']">
+                                                              [formControl]="wizardForm.controls['primarySchoolName']"
+                                                              maxlength="100">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -800,7 +813,8 @@
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Cause du redoublement"
-                                                              [formControl]="wizardForm.controls['causeOfRepeatPrimary']">
+                                                              [formControl]="wizardForm.controls['causeOfRepeatPrimary']"
+                                                              maxlength="100">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -822,7 +836,9 @@
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Nom"
-                                                              [formControl]="wizardForm.controls['secondarySchoolName']">
+                                                              [formControl]="wizardForm.controls['secondarySchoolName']"
+                                                              maxlength="100">
+                                                              
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -839,7 +855,8 @@
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Cause du redoublement"
-                                                              [formControl]="wizardForm.controls['causeOfRepeatSecondary']">
+                                                              [formControl]="wizardForm.controls['causeOfRepeatSecondary']"
+                                                              maxlength="100">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1335,7 +1352,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <input type="text" class="form-control" placeholder="Motif du Diagnostic"
-                                                          [formControl]="wizardForm.controls['reasonDiagnostic']">
+                                                          [formControl]="wizardForm.controls['reasonDiagnostic']"
+                                                          maxlength="50">
                                                     </div>
                                                 </div>
                                             </div>

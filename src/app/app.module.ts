@@ -74,6 +74,7 @@ import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
+import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +122,8 @@ import { SchoolPipe } from './pipes/school.pipe';
     SchoolComponent,
     ShortenPipe,
     SchoolPipe,
-    MysearchCardComponent
+    MysearchCardComponent,
+    WishApplyPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -164,7 +166,8 @@ import { SchoolPipe } from './pipes/school.pipe';
   ],
     entryComponents: [
        BrochpopupComponent,
-       BrochureDownloadComponent
+       BrochureDownloadComponent,
+       WishApplyPopupComponent
     ],
   bootstrap: [AppComponent]
 })

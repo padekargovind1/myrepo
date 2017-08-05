@@ -61,12 +61,16 @@
                           <div class="row">
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nom" [formControl]="applytoForm.controls['lastName']">
+                                <input type="text" class="form-control" placeholder="Nom" 
+                                  [formControl]="applytoForm.controls['lastName']"
+                                  maxlength="25">
                               </div>
                             </div>
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Prénom" [formControl]="applytoForm.controls['firstName']">
+                                <input type="text" class="form-control" placeholder="Prénom" 
+                                  [formControl]="applytoForm.controls['firstName']"
+                                  maxlength="25">
                               </div>
                             </div>
                           </div>
@@ -76,19 +80,26 @@
                             <div class="row">
 
                               <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Profession / Secteur d'activité" [formControl]="applytoForm.controls['job']">
+                                <input type="text" class="form-control" 
+                                  placeholder="Profession / Secteur d'activité" 
+                                  [formControl]="applytoForm.controls['job']"
+                                  maxlength="25">
                               </div>
                             </div>
                           </div>
 
                           <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" [formControl]="applytoForm.controls['email']">
+                            <input type="email" class="form-control" placeholder="Email" 
+                              [formControl]="applytoForm.controls['email']">
                           </div>
 
                           <div class="form-group">
                             <div class="row">
                               <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable" [formControl]="applytoForm.controls['tel']">
+                                <input type="text" class="form-control" 
+                                placeholder="Téléphone auquel je suis joignable" 
+                                [formControl]="applytoForm.controls['tel']"
+                                maxlength="10">
                               </div>
                             </div>
                           </div>
@@ -150,12 +161,16 @@
                         <div class="row">
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Nom" [formControl]="applytoForm.controls['childLastName']">
+                              <input type="text" class="form-control" placeholder="Nom" 
+                                [formControl]="applytoForm.controls['childLastName']"
+                                maxlength="25">
                             </div>
                           </div>
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Prénom" [formControl]="applytoForm.controls['childFirstName']">
+                              <input type="text" class="form-control" placeholder="Prénom" 
+                                [formControl]="applytoForm.controls['childFirstName']"
+                                maxlength="25">
                             </div>
                           </div>
                         </div>
@@ -167,7 +182,9 @@
                                                     <div class="row"> -->
                           <div class="col-sm-3  col-xs-6">
                             <div class="form-group">
-                              <input type="number" class="form-control" max="120" min="1" placeholder="Age" [formControl]="applytoForm.controls['childAge']">
+                              <input type="number" class="form-control" max="20" min="1" 
+                                placeholder="Age" [formControl]="applytoForm.controls['childAge']"
+                                maxlength="2">
                             </div>
                           </div>
                           <div class="col-sm-3  hidden-xs">&nbsp;</div>
@@ -188,12 +205,15 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="email" class="form-control" placeholder="Mel" [formControl]="applytoForm.controls['childMel']">
+                              <input type="email" class="form-control" placeholder="Mel" 
+                                [formControl]="applytoForm.controls['childMel']">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Portable" [formControl]="applytoForm.controls['childTel']">
+                              <input type="text" class="form-control" placeholder="Portable" 
+                                [formControl]="applytoForm.controls['childTel']"
+                                maxlength="10">
                             </div>
                           </div>
                         </div>
@@ -202,7 +222,9 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <textarea class="form-control" placeholder="Adresse" [formControl]="applytoForm.controls['childAddr']"></textarea>
+                              <textarea class="form-control" placeholder="Adresse" 
+                                [formControl]="applytoForm.controls['childAddr']">
+                              </textarea>
                             </div>
                           </div>
                         </div>
@@ -212,12 +234,16 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Code postal" [formControl]="applytoForm.controls['childPostalCode']">
+                              <input type="text" class="form-control" placeholder="Code postal" 
+                                [formControl]="applytoForm.controls['childPostalCode']"
+                                maxlength="5">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Ville" [formControl]="applytoForm.controls['childCity']">
+                              <input type="text" class="form-control" placeholder="Ville" 
+                                [formControl]="applytoForm.controls['childCity']"
+                                maxlength="25">
                             </div>
                           </div>
                         </div>
@@ -228,13 +254,16 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               <div class="datepicker-holder">
-                                <input type="date" class="form-control" placeholder="Date de naissance" [formControl]="applytoForm.controls['childBirthDay']">
+                                <input type="date" class="form-control" placeholder="Date de naissance" 
+                                  [formControl]="applytoForm.controls['childBirthDay']">
                               </div>
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Lieu" [formControl]="applytoForm.controls['childBirthPlace']">
+                              <input type="text" class="form-control" placeholder="Lieu" 
+                                [formControl]="applytoForm.controls['childBirthPlace']"
+                                maxlength="50">
                             </div>
                           </div>
                         </div>
@@ -257,11 +286,15 @@
                                 </div>
                               </div>
                               <div class="col-sm-2">
-                                <input type="number" max="120" min="1" class="form-control gap-for-radio" placeholder="Age" [formControl]="applytoForm.controls['childSisBroAge']"
-                                />
+                                <input type="number" max="120" min="1" class="form-control gap-for-radio" 
+                                placeholder="Age" [formControl]="applytoForm.controls['childSisBroAge']"
+                                maxlength="2"/>
                               </div>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control gap-for-radio" placeholder="Niveau d'étude" [formControl]="applytoForm.controls['childSisBroStudy']">
+                                <input type="text" class="form-control gap-for-radio" 
+                                  placeholder="Niveau d'étude" 
+                                  [formControl]="applytoForm.controls['childSisBroStudy']"
+                                  maxlength="25">
                               </div>
                             </div>
                           </div>
@@ -293,7 +326,9 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Nom Etablissement Actuel" [formControl]="applytoForm.controls['schoolName']">
+                              <input type="text" class="form-control" placeholder="Nom Etablissement Actuel" 
+                                [formControl]="applytoForm.controls['schoolName']"
+                                maxlength="50">
                             </div>
                           </div>
                         </div>
@@ -302,7 +337,9 @@
                           <div class="form-group  col-sm-12  col-xs-6">
                             <div class="row">
                               <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Ville" [formControl]="applytoForm.controls['schoolCity']">
+                                <input type="text" class="form-control" placeholder="Ville" 
+                                  [formControl]="applytoForm.controls['schoolCity']"
+                                  maxlength="50">
                               </div>
                             </div>
                           </div>
@@ -417,7 +454,9 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Options" [formControl]="applytoForm.controls['schoolOption']">
+                              <input type="text" class="form-control" placeholder="Options" 
+                                [formControl]="applytoForm.controls['schoolOption']"
+                                maxlength="50">
                             </div>
                           </div>
                         </div>
@@ -574,13 +613,17 @@
                             <div class="col-sm-6">
                               <h4>{{metier}}</h4>
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Job" [formControl]="applytoForm.controls['interestJob']">
+                                <input type="text" class="form-control" placeholder="Job" 
+                                  [formControl]="applytoForm.controls['interestJob']"
+                                  maxlength="25">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <h4>&nbsp;</h4>
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Age" [formControl]="applytoForm.controls['interestAge']">
+                                <input type="text" class="form-control" placeholder="Age" 
+                                  [formControl]="applytoForm.controls['interestAge']"
+                                  maxlength="2">
                               </div>
                             </div>
                           </div>
@@ -603,7 +646,10 @@
                         <div class="form-group different-gap">
                           <div class="row">
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" placeholder="Quels sont vos centres d’interets" [formControl]="applytoForm.controls['yourInterest']">
+                              <input type="text" class="form-control" 
+                                placeholder="Quels sont vos centres d’interets" 
+                                [formControl]="applytoForm.controls['yourInterest']"
+                                maxlength="100">
                             </div>
                           </div>
                         </div>
@@ -611,7 +657,10 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" placeholder="Quels loisirs et activités pratiquez-vous" [formControl]="applytoForm.controls['practiceInterest']">
+                              <input type="text" class="form-control" 
+                                placeholder="Quels loisirs et activités pratiquez-vous" 
+                                [formControl]="applytoForm.controls['practiceInterest']"
+                                maxlength="100">
                             </div>
                           </div>
                         </div>

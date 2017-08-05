@@ -31,12 +31,12 @@ export class MyaccountComponent implements OnInit {
   }
 
   goTabNb(nb){
-    console.log(nb)
+    // console.log(nb)
     this.tabGroup.selectedIndex=nb;
   }
 
   goToChild(event){
-    console.log(event);
+    // console.log(event);
     this.tabGroup.selectedIndex=1;
   }
 }
