@@ -1,4 +1,4 @@
-<div class="main white-background" role="main">
+<div class="main white-background" role="main" *ngIf="canDisplayApply">
   <div class="container-fluid  appointment-wizard">
 
     <div class="row">
@@ -32,17 +32,24 @@
                 <div class="tab-pane" id="tab1">
                   <div class="container-fluid">
                     <div class="row">
-                      <section class="col-md-4">
-                        <div *ngFor="let parent of parents">
-                          <h3>{{parent}}</h3>
+                      <section class="col-md-6" formArrayName="parents"
+                        *ngFor="let parent of applytoForm.controls['parents']['controls']; let i = index">
+                        <div [formGroupName]="i">
+                          <h3>Parents {{i+1}}</h3>
 
                           <div class="form-group">
                             <div class="select-custom">
-                              <md-select placeholder="Lien de Parenté" class="form-control" [formControl]="applytoForm.controls['lienParent']">
+                              <md-select placeholder="Lien de Parenté" class="form-control" 
+                                formControlName="lienParent">
                                 <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
                                   {{ lientparent }}
                                 </md-option>
                               </md-select>
+                              <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.lienParent.hasError('required') && 
+                                applytoForm.controls['parents']['controls'][i].controls.lienParent.touched" 
+                                class="mat-text-warn"> 
+                                Lien de Parenté Obligatoire
+                              </small>
                             </div>
                           </div>
 
@@ -50,11 +57,16 @@
                             <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
                                                   <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
                                                   <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
-                            <md-radio-group [formControl]="applytoForm.controls['title']">
+                            <md-radio-group formControlName="titre">
                               <md-radio-button value="Mme">Mme</md-radio-button>
                               <md-radio-button value="Mlle">Mlle</md-radio-button>
                               <md-radio-button value="M">M</md-radio-button>
                             </md-radio-group>
+                            <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
+                              applytoForm.controls['parents']['controls'][i].controls.titre.touched" 
+                              class="mat-text-warn"> 
+                              Titre Obligatoire
+                            </small>
                           </div>
 
 
@@ -62,15 +74,25 @@
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Nom" 
-                                  [formControl]="applytoForm.controls['lastName']"
+                                  formControlName="nom"
                                   maxlength="25">
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.nom.hasError('required') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.nom.touched" 
+                                  class="mat-text-warn"> 
+                                  Nom Obligatoire
+                                </small>
                               </div>
                             </div>
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Prénom" 
-                                  [formControl]="applytoForm.controls['firstName']"
+                                  formControlName="prenom"
                                   maxlength="25">
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.prenom.hasError('required') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.prenom.touched" 
+                                  class="mat-text-warn"> 
+                                  Prénom Obligatoire
+                                </small>
                               </div>
                             </div>
                           </div>
@@ -82,24 +104,54 @@
                               <div class="col-sm-12">
                                 <input type="text" class="form-control" 
                                   placeholder="Profession / Secteur d'activité" 
-                                  [formControl]="applytoForm.controls['job']"
+                                  formControlName="job"
                                   maxlength="25">
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.job.hasError('required') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.job.touched" 
+                                  class="mat-text-warn"> 
+                                  Profession Obligatoire
+                                </small>
                               </div>
                             </div>
                           </div>
 
                           <div class="form-group">
                             <input type="email" class="form-control" placeholder="Email" 
-                              [formControl]="applytoForm.controls['email']">
+                              formControlName="email">
+                            <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.email.hasError('required') && 
+                              applytoForm.controls['parents']['controls'][i].controls.email.touched" 
+                              class="mat-text-warn"> 
+                              Email Obligatoire
+                            </small>
+                            <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.email.errors?.email && 
+                              applytoForm.controls['parents']['controls'][i].controls.email.touched" 
+                              class="mat-text-warn"> 
+                              Email Invalide
+                            </small>
                           </div>
 
                           <div class="form-group">
                             <div class="row">
                               <div class="col-sm-12">
                                 <input type="text" class="form-control" 
-                                placeholder="Téléphone auquel je suis joignable" 
-                                [formControl]="applytoForm.controls['tel']"
-                                maxlength="10">
+                                  placeholder="Téléphone auquel je suis joignable" 
+                                  formControlName="portable"
+                                  pattern="[0-9]+" maxlength="10">
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('required') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                  class="mat-text-warn"> 
+                                  Numéro de Portable Obligatoire
+                                </small>
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                  class="mat-text-warn"> 
+                                  Numéro de Portable Invalide (max 10)
+                                </small>
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                  class="mat-text-warn"> 
+                                  Numéro de Portable Invalide (Doit être des chiffres)
+                                </small>
                               </div>
                             </div>
                           </div>
@@ -108,39 +160,39 @@
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="select-custom">
-                                  <select name="" class="form-control" [formControl]="applytoForm.controls['horaireJoingnable']">
+                                  <select name="" class="form-control" formControlName="horaireJoignable">
                                       <option value="" disabled selected hidden>Horaires pour me contacter</option>
                                       <option value="9h-12h">9h-12h</option>
                                       <option value="12h-14h">12h-14h</option>
                                       <option value="14h-18h">14h-18h</option>
                                       <option value="18h-20h">18h-20h</option>
                                   </select>
+                                  <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.horaireJoignable.hasError('required') && 
+                                    applytoForm.controls['parents']['controls'][i].controls.horaireJoignable.touched" 
+                                    class="mat-text-warn"> 
+                                    Profession Obligatoire
+                                  </small>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        <div class="form-group clearfix"
-                          *ngIf="parents.length==1">
-                          <button type="button" class="btn  
-                            btn-inverse pull-right btn-add"
-                            (click)="onAddParent()">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                            </span> Ajouter Parent
-                          </button>
-                        </div>
-                        <div class="form-group clearfix"
-                          *ngIf="parents.length==2">
-                          <button type="button" class="btn  
-                            btn-inverse pull-right btn-add"
-                            (click)="onRemoveParent()">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true">
-                            </span> Retirer Parent
+                        <div class="form-group clearfix">
+                          <button class="btn  btn-danger" style="float:right" 
+                            (click)="onRemoveParent(i)" [disabled]="applytoForm.controls['parents']['controls'].length==1">
+                            Retirer un parent
                           </button>
                         </div>
                       </section>
                       <!-- .col-* -->
+                    </div>
+                    <div class="form-group clearfix">
+                      <button class="btn  btn-appointment" (click)="onAddParent()"
+                        [disabled]="applytoForm.controls['parents']['controls'].length==2"
+                        style="margin-left:0px">
+                        Ajouter un parent
+                      </button>
                     </div>
                     <!-- .row -->
                   </div>
@@ -248,7 +300,6 @@
                           </div>
                         </div>
 
-?token='+this.token,
 
                         <div class="row">
                           <div class="col-sm-6">
@@ -271,41 +322,63 @@
                       </div>
                       <!-- .col-* -->
 
-                      <div class="col-md-6">
+                      <div class="col-md-8" *ngIf="canDisplaySiblings">
                         <div class="wrap-enfant">
-                          <div class="form-group"
-                            *ngFor="let frso of freresoeur">
-                            <h4>{{frso}}</h4>
-                            <div class="row">
+                          <div class="form-group" formArrayName="freresoeur"
+                            *ngFor="let siblings of applytoForm.controls['freresoeur']['controls']; let i=index">
+                            <h4>Frère / Soeur {{ i + 1 }}</h4>
+                            <div class="row" [formGroupName]="i">
                               <div class="col-for-radio">
                                 <div class="gap-for-radio horizontal-radio clearfix">
-                                  <md-radio-group [formControl]="applytoForm.controls['childSisBroTitle']">
-                                    <md-radio-button value="frere">Frère</md-radio-button>
-                                    <md-radio-button value="soeur">Soeur</md-radio-button>
+                                  <md-radio-group formControlName="gender">
+                                    <md-radio-button value="Frère">Frère</md-radio-button>
+                                    <md-radio-button value="Soeur">Soeur</md-radio-button>
                                   </md-radio-group>
+                                  <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls.gender.hasError('required') && 
+                                    applytoForm.controls['freresoeur']['controls'][i].controls.gender.touched" 
+                                    class="mat-text-warn"> 
+                                    Gender Obligatoire
+                                  </small>
                                 </div>
                               </div>
                               <div class="col-sm-2">
                                 <input type="number" max="120" min="1" class="form-control gap-for-radio" 
-                                placeholder="Age" [formControl]="applytoForm.controls['childSisBroAge']"
-                                maxlength="2"/>
+                                placeholder="Age" formControlName="age"
+                                maxlength="2" style="margin-top:0px"/>
+                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
+                                  applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
+                                  class="mat-text-warn"> 
+                                  Age Obligatoire
+                                </small>
+                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('pattern') && 
+                                  applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
+                                  class="mat-text-warn"> 
+                                  Seulement des chiffres
+                                </small>
                               </div>
                               <div class="col-sm-3">
                                 <input type="text" class="form-control gap-for-radio" 
                                   placeholder="Niveau d'étude" 
-                                  [formControl]="applytoForm.controls['childSisBroStudy']"
-                                  maxlength="25">
+                                  formControlName="niveau"
+                                  maxlength="25" style="margin-top:0px">
+                                  <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') && 
+                                    applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].touched" 
+                                    class="mat-text-warn"> 
+                                    Niveau d'étude Obligatoire
+                                  </small>
+                              </div>
+                              <div class="col-sm-2">
+                                <button class="btn  btn-danger" style="float:right" 
+                                  (click)="onRemoveFrSo(i)">
+                                  Retirer un parent
+                                </button>
                               </div>
                             </div>
                           </div>
                           <div class="form-group clearfix">
-                            <button class="btn  btn-inverse gap-for-radio  btn-add"
-                              (click)="onAddFrSo()">
-                              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
-                            </button>
-                            <button class="btn  btn-inverse gap-for-radio  btn-remove"
-                              (click)="onRemoveFrSo()">
-                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Retirer
+                            <button class="btn  btn-appointment" (click)="onAddFrSo()"
+                              style="margin-left:0px">
+                              Ajouter un frère / soeur
                             </button>
                           </div>
                         </div>
@@ -608,13 +681,14 @@
                         <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
 
 
-                        <div class="row">
-                          <div *ngFor="let metier of metiers">
+                        <div class="row" formArrayName="job" 
+                            *ngFor="let parent of applytoForm.controls['job']['controls']; let i = index">
+                          <div [formGroupName]="i">
                             <div class="col-sm-6">
-                              <h4>{{metier}}</h4>
+                              <h4>Métier {{i+1}}</h4>
                               <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Job" 
-                                  [formControl]="applytoForm.controls['interestJob']"
+                                  formControlName="interestJob"
                                   maxlength="25">
                               </div>
                             </div>
@@ -622,23 +696,24 @@
                               <h4>&nbsp;</h4>
                               <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Age" 
-                                  [formControl]="applytoForm.controls['interestAge']"
+                                  formControlName="interestAge"
                                   maxlength="2">
                               </div>
+                            </div>
+                            <div class="col-sm-3">
+                              <h4>&nbsp;</h4>
+                              <button class="btn  btn-danger" style="float:right" 
+                                (click)="onRemoveJob(i)">
+                                Retirer un métier
+                              </button>
                             </div>
                           </div>
                         </div>
 
                         <div class="row">
-                          <button class="btn  btn-inverse  btn-add"
-                            (click)="onAddJob()">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                            </span> Ajouter
-                          </button>
-                          <button class="btn  btn-inverse  btn-add"
-                            (click)="onRemoveJob()">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true">
-                            </span> Retirer
+                          <button class="btn  btn-appointment" (click)="onAddJob()"
+                            style="margin-left:15px">
+                            Ajouter un métier
                           </button>
                         </div>
 
@@ -668,7 +743,8 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <button class="btn btn-appointment" 
-                                type="submit" (click)="onSubmit()" >Terminer</button>
+                                type="submit" (click)="onSubmit()" 
+                                style="margin-left:0px;">Je postule</button>
                             </div>
                           </div>
                         </div>
