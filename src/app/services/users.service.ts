@@ -19,7 +19,7 @@ const TRIPS_API: string = "http://54.254.203.172/cideapi/api/users/trips";
 @Injectable()
 export class UsersService {
 
-  private parentData : MyAccountParentMdl;
+  private parentData = [];
   private childData : MyAccountMdl;
   private token : string='';
 
@@ -47,7 +47,7 @@ export class UsersService {
     // console.log(this.token);
   }
 
-  storeParentData(parentData : MyAccountParentMdl){
+  storeParentData(parentData){
     this.parentData=parentData;
     console.log(this.parentData);
   }

@@ -1,4 +1,4 @@
-<div class="tab-pane" id="enfant">
+<div class="tab-pane" id="enfant" *ngIf="canDisplay">
   <div class="container-fluid">      
     <div class="row">
       <section class="col-md-12">
@@ -190,20 +190,20 @@
               Terminer</button>
           </div>
         </section><!-- .col-* -->
-        <!--<section class="col-md-6" formArrayName="freresoeur">
-          <div class="wrap-enfant" 
-            *ngFor="let fs of childrenForm.controls.freresoeur.controls; let i=index">
+        <section class="col-md-6" *ngIf="canDisplay">
+          <div class="wrap-enfant" formArrayName="freresoeur"
+            *ngFor="let siblings of childrenForm.controls['freresoeur']['controls']; let i=index">
             <h4>Frère / Soeur {{ i + 1 }}</h4>
-            <div class="form-group">
+            <div class="form-group" [formGroupName]="i">
               <div class="row">
                 <div class="col-for-radio">
-                  <md-radio-group [formControl]="fs.controls['gender']"
+                  <md-radio-group formControlName="gender"
                     style="border-color:white">
                     <md-radio-button value="Frère">Frère</md-radio-button>
                     <md-radio-button value="Soeur">Soeur</md-radio-button>
                   </md-radio-group>
-                  <small *ngIf="fs.controls['gender'].hasError('required') && 
-                    fs.controls['gender'].touched" 
+                  <small *ngIf="childrenForm.controls['freresoeur']['controls'][i].controls.gender.hasError('required') && 
+                    childrenForm.controls['freresoeur']['controls'][i].controls.gender.touched" 
                     class="mat-text-warn"> 
                     Gender Obligatoire
                   </small>
@@ -214,16 +214,16 @@
                     min="1" 
                     class="form-control gap-for-radio" 
                     placeholder="Age" 
-                    [formControl]="fs.controls['age']"
+                    formControlName="age"
                     pattern="[0-9]+"
                     />
-                  <small *ngIf="fs.controls['age'].hasError('required') && 
-                    fs.controls['age'].touched" 
+                  <small *ngIf="childrenForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
+                    childrenForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
                     class="mat-text-warn"> 
                     Age Obligatoire
                   </small>
-                  <small *ngIf="fs.controls['age'].hasError('pattern') && 
-                    fs.controls['age'].touched" 
+                  <small *ngIf="childrenForm.controls['freresoeur']['controls'][i].controls['age'].hasError('pattern') && 
+                    childrenForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
                     class="mat-text-warn"> 
                     Seulement des chiffres
                   </small>
@@ -232,23 +232,23 @@
                   <input type="text" 
                     class="form-control gap-for-radio" 
                     placeholder="Niveau d'étude"
-                    [formControl]="fs.controls['niveau']">
-                  <small *ngIf="fs.controls['niveau'].hasError('required') && 
-                    fs.controls['niveau'].touched" 
+                    formControlName="niveau">
+                  <small *ngIf="childrenForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') && 
+                    childrenForm.controls['freresoeur']['controls'][i].controls['niveau'].touched" 
                     class="mat-text-warn"> 
                     Niveau d'étude Obligatoire
                   </small>
                 </div>
+                <div class="col-sm-2">
+                  <button class="btn  btn-danger" (click)="onRemoveChild(i)">Retirer un frère/soeur</button>
+                </div>
               </div>
             </div>
           </div>
-        </section>
-        <section class="col-md-4">
           <div class="form-group clearfix">
-            <button class="btn  btn-appointment" (click)="onAddChild()">Ajouter</button>
-            <button class="btn  btn-appointment" (click)="onRemoveChild()">Retirer</button>
+            <button class="btn  btn-appointment" (click)="onAddChild()">Ajouter un frère/soeur</button>
           </div>
-        </section>-->
+        </section>
       </form>
     </div><!-- .row -->
   </div><!-- .container-fluid -->

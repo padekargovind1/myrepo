@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
@@ -20,7 +20,7 @@ import {MyAccountMdl,
 })
 export class MyaccountParentsComponent implements OnInit {
 
-  myParentProfile : MyAccountParentMdl = new MyAccountParentMdl();
+  myParentProfile = [];
   myProfile : MyAccountMdl = new MyAccountMdl();
   public parentAccountForm : FormGroup;
   lienparents = [ "Père", 
@@ -32,17 +32,15 @@ export class MyaccountParentsComponent implements OnInit {
                 "Tuteur", 
                 "Tutrice"];
   @Output() goToChild = new EventEmitter<boolean>();
+  parents: any;
+  canDisplay : boolean = false;
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
               private route : Router,
               private authService : AuthService) { 
     if(this.authService.getToken() != ""){
-      this.buildFormGroup();
-      this.createProfile();
-      setTimeout(()=>{
-        this.getUserProfile();
-      }, 500);
+      this.getUserProfile();
     } else {
       // console.log("navigate back");
       this.route.navigate(['/login']);
@@ -50,6 +48,7 @@ export class MyaccountParentsComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   getUserProfile(){
@@ -57,10 +56,13 @@ export class MyaccountParentsComponent implements OnInit {
       .subscribe(
         (data)=>{
           let response = data;
-          // console.log(response);
+          console.log(response);
           if (response.data[0].parents.length!=0){
-            this.patchValue(response.data[0].parents[0]);
+            this.buildFormGroup(response.data[0].parents);
+            this.createProfile();
+            this.patchValue(response.data[0].parents);
             this.completeProfile();
+            this.canDisplay=true;
           }
         }
       )
@@ -68,22 +70,39 @@ export class MyaccountParentsComponent implements OnInit {
 
   patchValue(parentData: any){
     // console.log(parentData);
-    this.parentAccountForm.patchValue({
-      lienParent : parentData.relationship,
-      titre : parentData.gender,
-      nom : parentData.lastName,
-      prenom : parentData.firstName,
-      email : parentData.email,
-      portable : parentData.phoneNumber,
-      adresse : parentData.address.address1,
-      codepostal : parentData.address.postCode,
-      ville : parentData.address.city,
-      pays : parentData.address.country
-    })
+    for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){
+      this.parentAccountForm.controls['parents']['controls'][i].patchValue({
+        lienParent : parentData[i].relationship,
+        titre : parentData[i].gender,
+        nom : parentData[i].lastName,
+        prenom : parentData[i].firstName,
+        email : parentData[i].email,
+        portable : parentData[i].phoneNumber,
+        adresse : parentData[i].address.address1,
+        codepostal : parentData[i].address.postCode,
+        ville : parentData[i].address.city,
+        pays : parentData[i].address.country
+      })
+    }
+    console.log(this.parentAccountForm);
   }
 
-  buildFormGroup(){
-    this.parentAccountForm = this.fb.group({
+  buildFormGroup(data){
+    for(let parant of data){
+      this.parentAccountForm = this.fb.group({
+        parents : this.fb.array([this.createParent()])
+      })
+    }
+    if(data.length>1){
+      for(let i = 1; i<data.length; i++){
+        this.parentAccountForm.controls['parents']['controls'].push(this.createParent())
+      }
+    }
+    console.log(this.parentAccountForm);
+  }
+
+  createParent(){
+    return this.fb.group({
       lienParent : ['', Validators.required],
       titre : ['', Validators.required],
       nom : ['', Validators.required],
@@ -97,6 +116,20 @@ export class MyaccountParentsComponent implements OnInit {
       ville: ['', Validators.required],
       pays: ['', Validators.required]
     })
+  }
+
+  onAddParent(){
+    this.parents = this.parentAccountForm.get('parents') as FormArray;
+    this.parents.push(this.createParent());
+    this.myParentProfile.push(new MyAccountParentMdl);
+    let index = this.myParentProfile.length - 1;
+    this.myParentProfile[index].address = new MyAccountAdresse();
+  }
+
+  onRemoveParent(index){
+    this.parents = this.parentAccountForm.get('parents') as FormArray;
+    this.parents.removeAt(index, 1);
+    this.myParentProfile.splice(index, 1);
   }
 
   onSubmit(){
@@ -127,22 +160,27 @@ export class MyaccountParentsComponent implements OnInit {
   // }
 
   createProfile(){
-    this.myParentProfile.address = new MyAccountAdresse();
+    console.log(this.myParentProfile, this.parentAccountForm.controls['parents']['controls'])
+    for(let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){
+      this.myParentProfile.push(new MyAccountParentMdl);
+      this.myParentProfile[i].address = new MyAccountAdresse();
+    }
   }
 
   completeProfile(){
-    this.myParentProfile.relationship = this.parentAccountForm.controls.lienParent.value;
-    this.myParentProfile.firstName = this.parentAccountForm.controls.prenom.value;
-    this.myParentProfile.lastName = this.parentAccountForm.controls.nom.value;
-    this.myParentProfile.gender = this.parentAccountForm.controls.titre.value;
-    this.myParentProfile.phoneNumber = this.parentAccountForm.controls.portable.value;
-    this.myParentProfile.email = this.parentAccountForm.controls.email.value;
-    this.myParentProfile.address.address1 = this.parentAccountForm.controls.adresse.value;
-    this.myParentProfile.address.postCode = this.parentAccountForm.controls.codepostal.value.toString();
-    this.myParentProfile.address.country = this.parentAccountForm.controls.pays.value;
-    this.myParentProfile.address.city = this.parentAccountForm.controls.ville.value;
+    for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){
+      console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)
+      this.myParentProfile[i].relationship = this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value;
+      this.myParentProfile[i].firstName = this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value;
+      this.myParentProfile[i].lastName = this.parentAccountForm.controls['parents']['controls'][i].controls.nom.value;
+      this.myParentProfile[i].gender = this.parentAccountForm.controls['parents']['controls'][i].controls.titre.value;
+      this.myParentProfile[i].phoneNumber = this.parentAccountForm.controls['parents']['controls'][i].controls.portable.value;
+      this.myParentProfile[i].email = this.parentAccountForm.controls['parents']['controls'][i].controls.email.value;
+      this.myParentProfile[i].address.address1 = this.parentAccountForm.controls['parents']['controls'][i].controls.adresse.value;
+      this.myParentProfile[i].address.postCode = this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString();
+      this.myParentProfile[i].address.country = this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value;
+      this.myParentProfile[i].address.city = this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value;
+    }
     this.usersService.storeParentData(this.myParentProfile);
-    
   }
-
 }
