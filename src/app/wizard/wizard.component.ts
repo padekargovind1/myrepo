@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
@@ -39,13 +39,16 @@ export class WizardComponent implements OnInit, AfterViewInit {
   adviserData: any;
   activeTabIndex = 0;
   checked:boolean=false;
-  parents=["Parent 1"];
   addParents : boolean = true;
-  sisBro=["Frère / Soeur 1"];
-  metiers=["Métier 1"];
-  primaires=["Etablissement Primaire 1"]
-  secondaires=["Etablissement Secondaire 1"];
   newAppointment={}
+  parents : any;
+  siblings : any;
+  metiers : any;
+  primaires : any;
+  secondaires : any;
+  canDisplaySiblings : boolean = false;
+  canDisplayWizard : boolean = false;
+  canDisplaySchool : boolean = false;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -54,7 +57,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
               private fb : FormBuilder,
               private router : ActivatedRoute) { 
                 this.initAdviserData();
-                this.buildForm();
+                
                 this.getUserProfile();
                 
               }
@@ -102,7 +105,9 @@ export class WizardComponent implements OnInit, AfterViewInit {
             console.log(response.message);
           } else {
             this.userData=data[0];
+            this.buildForm(this.userData);
             this.patchValue(this.userData);
+            this.canDisplayWizard=true;
           }
         }
       ) 
@@ -110,12 +115,6 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
   patchValue(userData){
     this.wizardForm.patchValue({
-      lienParent : userData.parents[0].relationship,
-      title : userData.parents[0].gender,
-      lastName : userData.parents[0].lastName,
-      firstName : userData.parents[0].firstName,
-      email: userData.parents[0].email,
-      tel : userData.parents[0].phoneNumber,
       childLastName : userData.lastName,
       childFirstName : userData.firstName,
       childAge : userData.age,
@@ -128,19 +127,35 @@ export class WizardComponent implements OnInit, AfterViewInit {
       childBirthDay : userData.birthDate,
       childBirthPlace : userData.birthPlace
     });
+    for (let i = 0; i<this.wizardForm.controls['parents']['controls'].length; i++){
+      this.wizardForm.controls['parents']['controls'][i].patchValue({
+        lienParent : userData.parents[i].relationship,
+        titre : userData.parents[i].gender,
+        nom : userData.parents[i].lastName,
+        prenom : userData.parents[i].firstName,
+        email : userData.parents[i].email,
+        portable : userData.parents[i].phoneNumber,
+        adresse : userData.parents[i].address.address1,
+        codepostal : userData.parents[i].address.postCode,
+        ville : userData.parents[i].address.city,
+        pays : userData.parents[i].address.country
+      })
+    }
+    for (let i = 0; i<this.wizardForm.controls['freresoeur']['controls'].length; i++){
+      if(userData.siblings.length!=0){
+        this.wizardForm.controls['freresoeur']['controls'][i].patchValue({
+          gender : userData.siblings[i].gender,
+          age : userData.siblings[i].age,
+          niveau : userData.siblings[i].study
+        })
+      }
+    }
+    this.canDisplaySiblings=true;
   }
 
-  buildForm(){
+  buildForm(data){
     this.wizardForm = this.fb.group({
-      lienParent : ['', Validators.required],
-      title : ['', Validators.required],
-      lastName : ['', Validators.required],
-      firstName : ['', Validators.required],
-      age : ['', Validators.required],
-      job : ['', Validators.required],
-      email : ['', Validators.compose([Validators.required, CustomValidators.email])],
-      tel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
-      horaireJoingnable : ['', Validators.required],
+      parents : this.fb.array([this.createParent()]),
       childLastName: ['', Validators.required],
       childFirstName : ['', Validators.required],
       childAge : ['', Validators.required],
@@ -152,9 +167,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       childCity : ['', Validators.required],
       childBirthDay : ['', Validators.required],
       childBirthPlace : ['', Validators.required],
-      childSisBroTitle : [''],
-      childSisBroAge:[''],
-      childSisBroStudy:[''],
+      freresoeur : this.fb.array([this.createfs()]),
       schoolName:['', Validators.required],
       schoolCity : ['', Validators.required],
       schoolClasse : ['', Validators.required],
@@ -166,18 +179,68 @@ export class WizardComponent implements OnInit, AfterViewInit {
       schoolHelpSubject : ['', Validators.required],
       bestSubject : ['', Validators.required],
       weakSubject : ['', Validators.required],
-      interestJob : ['', Validators.required],
-      interestAge : ['', Validators.required],
+      job : this.fb.array([this.createJob()]),
       yourInterest : ['', Validators.required],
       practiceInterest : ['', Validators.required],
-      primarySchoolName : [''],
-      primarySchoolRepeat : [''],
-      causeOfRepeatPrimary : [''],
-      secondarySchoolName : [''],
-      secondarySchoolRepeat : [''],
-      causeOfRepeatSecondary : [''],
+      primary : this.fb.array([this.createPrimaireSchool()]),
+      secondary : this.fb.array([this.createSecondarySchool()]),
       reasonDiagnostic : ['', Validators.required],
       note :['', Validators.required],
+    });
+    if(data.siblings.length>1){
+      for(let i = 1; i<data.siblings.length; i++){
+        this.wizardForm.controls['freresoeur']['controls'].push((this.createfs()))
+      }
+    }
+    if(data.parents.length>1){
+      for(let i = 1; i<data.parents.length; i++){
+        this.wizardForm.controls['parents']['controls'].push(this.createParent())
+      }
+    }
+    this.canDisplaySchool=true;
+  }
+
+  createParent(){
+    return this.fb.group({
+      lienParent : ['', Validators.required],
+      titre : ['', Validators.required],
+      nom : ['', Validators.required],
+      prenom : ['', Validators.required],
+      job : ['', Validators.required],
+      email : ['', Validators.compose([CustomValidators.email, Validators.required])],
+      portable : ['', Validators.compose([Validators.required,
+                                          Validators.maxLength(10)])],
+      horaireJoignable : ['', Validators.required]
+    })
+  }
+
+  createfs(){
+    return this.fb.group({
+      gender : ['', Validators.required],
+      age : ['', Validators.required],
+      niveau : ['', Validators.required]
+    })
+  }
+
+  createJob(){
+    return this.fb.group({
+      interestJob : ['', Validators.required],
+      interestAge : ['', Validators.required]
+    })
+  }
+
+  createPrimaireSchool(){
+    return this.fb.group({
+      primarySchoolName : [''],
+      primarySchoolRepeat : [''],
+      causeOfRepeatPrimary : ['']
+    })
+  }
+  createSecondarySchool(){
+    return this.fb.group({
+      secondarySchoolName : [''],
+      secondarySchoolRepeat : [''],
+      causeOfRepeatSecondary : ['']
     })
   }
 
@@ -300,64 +363,52 @@ export class WizardComponent implements OnInit, AfterViewInit {
     this.checked = !check;
   }
 
-  addParent(){
-    if(this.parents.length==1){
-      this.parents.push("Parent 2");
-      this.addParents=false;
-    }
+  onAddParent(){
+    this.parents = this.wizardForm.get('parents') as FormArray;
+    this.parents.push(this.createParent());
+  }
+  onRemoveParent(index){
+    this.parents = this.wizardForm.get('parents') as FormArray;
+    this.parents.removeAt(index, 1);
   }
 
-  removeParent(){
-    if(this.parents.length==2){
-      this.parents.splice(1, 1);
-      this.addParents=true;
-    }
+  onAddFrSo(){
+    this.siblings = this.wizardForm.get('freresoeur') as FormArray;
+    this.siblings.push(this.createfs());
   }
 
-  addSisBro(){
-    const nb = this.sisBro.length+1;
-    this.sisBro.push("Frère / Soeur "+nb);
-  }
-
-  removeSisBro(){
-    const nb = this.sisBro.length-1;
-    if(nb>=0){
-      this.sisBro.splice(nb, 1);
-    }
+  onRemoveFrSo(index){
+    this.siblings = this.wizardForm.get('freresoeur') as FormArray;
+    this.siblings.removeAt(index, 1);
   }
 
   onAddJob(){
-    const nb = this.metiers.length+1;
-    this.metiers.push("Métier "+nb);
+    this.metiers = this.wizardForm.get('job') as FormArray;
+    this.metiers.push(this.createJob());
   }
 
-  onRemoveJob(){
-    if(this.metiers.length!=0){
-      const nb = this.metiers.length-1;
-      this.metiers.splice(nb, 1);
-    }
+  onRemoveJob(index){
+    this.metiers = this.wizardForm.get('job') as FormArray;
+    this.metiers.removeAt(index, 1);
   }
+
   onAddPrimaire(){
-    const nb = this.primaires.length+1;
-    this.primaires.push("Etablissement Primaire "+nb);
+    this.primaires = this.wizardForm.get('primary') as FormArray;
+    this.primaires.push(this.createPrimaireSchool());
   }
 
-  onRemovePrimaire(){
-    if(this.primaires.length!=0){
-      const nb = this.primaires.length-1;
-      this.primaires.splice(nb, 1);
-    }
+  onRemovePrimaire(index){
+    this.primaires = this.wizardForm.get('primary') as FormArray;
+    this.primaires.removeAt(index, 1);
   }
 
   onAddSecondaire(){
-    const nb = this.secondaires.length+1;
-    this.secondaires.push("Etablissement Secondaire "+nb);
+    this.secondaires = this.wizardForm.get('secondary') as FormArray;
+    this.secondaires.push(this.createSecondarySchool());
   }
 
-  onRemoveSecondaire(){
-    if(this.secondaires.length!=0){
-      const nb = this.secondaires.length-1;
-      this.secondaires.splice(nb, 1);
-    }
+  onRemoveSecondaire(index){
+    this.secondaires = this.wizardForm.get('secondary') as FormArray;
+    this.secondaires.removeAt(index, 1);
   }
 }
