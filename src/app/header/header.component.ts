@@ -171,9 +171,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/applyto', schoolId]);
   }
 
-  onMyAccount(){
+  onMyAccount(nb){
     this.cleanLocalStorage();
     if(this.userLogin){
+      this.usersService.storeTabNb(nb)
       this.router.navigate(['/my-account']);
     }
   }

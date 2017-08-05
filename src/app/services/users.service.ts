@@ -141,4 +141,16 @@ export class UsersService {
     return this.http.post(TRIPS_API+'?token='+this.token, data, {headers: this.headers})
       .map((response)=>response.json())
   }
+
+  storeTabNb(data){
+    localStorage.setItem('myaccountTab', data);
+  }
+
+  getTabNb(){
+    return localStorage.getItem('myaccountTab');
+  }
+
+  cleanTabNb(){
+    localStorage.removeItem('myaccountTab');
+  }
 }

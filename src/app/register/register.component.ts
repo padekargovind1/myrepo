@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
+import { UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
 
@@ -17,7 +18,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private authService : AuthService,
-              private router : Router) { 
+              private router : Router,
+              private usersService : UsersService) { 
     this.buildFormGroup();
   }
 
@@ -69,6 +71,7 @@ export class RegisterComponent implements OnInit {
               })
               // console.log(response.data.token)
               this.authService.storeToken(response.data.token)
+              this.usersService.storeTabNb('0')
               this.router.navigate(['/my-account'])
             }
           }

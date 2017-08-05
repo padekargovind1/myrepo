@@ -25,7 +25,7 @@
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-bookmark"></i></span>
-                                <a href="#" class="ln-tr link">Mes voeux / Inscriptions</a>
+                                <a (click)="onMyAccount('3')" class="ln-tr link">Mes voeux / Inscriptions</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
@@ -124,7 +124,7 @@
         </li>
         <ng-template #log>
             <li class="login-text" 
-                (click)="onMyAccount()"
+                (click)="onMyAccount('0')"
                 style="cursor : pointer; font-size: 14px">{{ userFirstName }}</li> |
             <li class="login-text">
                 <a (click)="onSignOut()">
