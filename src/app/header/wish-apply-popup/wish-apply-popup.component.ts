@@ -57,7 +57,7 @@ export class WishApplyPopupComponent implements OnInit {
   }
 
   onSchoolApply(schoolId){
-    this.route.navigate(['/apply', schoolId])
+    this.route.navigate(['/applyto', schoolId])
     this.dialogref.close();
   }
 
