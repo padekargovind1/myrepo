@@ -58,9 +58,9 @@
                                                   <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
                                                   <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
                             <md-radio-group formControlName="titre">
-                              <md-radio-button value="Mme">Mme</md-radio-button>
-                              <md-radio-button value="Mlle">Mlle</md-radio-button>
-                              <md-radio-button value="M">M</md-radio-button>
+                              <md-radio-button value="Ms">Mme</md-radio-button>
+                              <md-radio-button value="Mrs">Mlle</md-radio-button>
+                              <md-radio-button value="m">M</md-radio-button>
                             </md-radio-group>
                             <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
                               applytoForm.controls['parents']['controls'][i].controls.titre.touched" 
@@ -541,7 +541,7 @@
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv1']">
                                     <option value="" disabled selected hidden>Lv1</option>
-                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                    <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
                                 </select>
                               </div>
                             </div>
@@ -554,7 +554,7 @@
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv2']">
                                     <option value="" disabled selected hidden>Lv2</option>
-                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                    <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
                                 </select>
                               </div>
                             </div>
@@ -567,7 +567,7 @@
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv3']">
                                     <option value="" disabled selected hidden>Lv3</option>
-                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                    <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
                                 </select>
                               </div>
                             </div>
@@ -660,7 +660,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Matières fortes" 
+                              <input type="text" class="form-control" placeholder="Matières faibles" 
                                 [formControl]="applytoForm.controls['weakSubject']">
                             </div>
                           </div>
@@ -743,7 +743,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <button class="btn btn-appointment" 
-                                type="submit" (click)="onSubmit()" 
+                                type="submit" (click)="onSubmit()"
                                 style="margin-left:0px;">Je postule</button>
                             </div>
                           </div>

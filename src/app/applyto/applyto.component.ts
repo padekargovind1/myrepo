@@ -106,7 +106,7 @@ export class ApplytoComponent implements OnInit {
             console.log(response.message);
           } else {
             this.userData = data[0];
-            // console.log(this.userData);
+            console.log(this.userData);
             this.buildForm(data[0]);
             this.patchValue(data[0]);
             this.canDisplayApply=true;
@@ -140,7 +140,9 @@ export class ApplytoComponent implements OnInit {
         adresse : userData.parents[i].address.address1,
         codepostal : userData.parents[i].address.postCode,
         ville : userData.parents[i].address.city,
-        pays : userData.parents[i].address.country
+        pays : userData.parents[i].address.country,
+        job : userData.parents[i].profession,
+        horaireJoignable : userData.parents[i].availability
       })
     }
     for (let i = 0; i<this.applytoForm.controls['freresoeur']['controls'].length; i++){
@@ -227,52 +229,62 @@ export class ApplytoComponent implements OnInit {
 
   onSubmit(){
     console.log(this.applytoForm.value);
+    for(let i = 0; i<this.applytoForm.value.parents.length; i++){
+      this.userData.parents[i].profession = this.applytoForm.value.parents[i].job;
+      this.userData.parents[i].relationship = this.applytoForm.value.parents[i].lienParent
+      this.userData.parents[i].gender = this.applytoForm.value.parents[i].titre
+      this.userData.parents[i].lastName = this.applytoForm.value.parents[i].nom
+      this.userData.parents[i].firstName = this.applytoForm.value.parents[i].prenom
+      this.userData.parents[i].email = this.applytoForm.value.parents[i].email
+      this.userData.parents[i].phonenumber = this.applytoForm.value.parents[i].portable
+      this.userData.parents[i].availability = this.applytoForm.value.parents[i].horaireJoignable
+    }
 
-    // const lienParent = this.applytoForm.controls.lienParent.value;
-    // const title = this.applytoForm.controls.title.value;
-    // const lastName = this.applytoForm.controls.lastName.value;
-    // const firstName = this.applytoForm.controls.firstName.value;
-    // const job = this.applytoForm.controls.job.value;
-    // const email = this.applytoForm.controls.email.value;
-    // const tel = this.applytoForm.controls.tel.value;
-    // const horaireJoingnable = this.applytoForm.controls.horaireJoingnable.value;
-    // const childLastName =this.applytoForm.controls.childFirstName.value;
-    // const childFirstName = this.applytoForm.controls.childFirstName.value;
-    // const childAge = this.applytoForm.controls.childAge.value;
-    // const childTitle= this.applytoForm.controls.childTitle.value;
-    // const childMel = this.applytoForm.controls.childMel.value;
-    // const childTel = this.applytoForm.controls.childTel.value;
-    // const childAddr = this.applytoForm.controls.childAddr.value;
-    // const childPostalCode = this.applytoForm.controls.childPostalCode.value;
-    // const childCity = this.applytoForm.controls.childCity.value;
-    // const childBirthDay = this.applytoForm.controls.childBirthDay.value;
-    // const childBirthPlace = this.applytoForm.controls.childBirthPlace.value;
-    // const childSisBroTitle = this.applytoForm.controls.childSisBroTitle.value;
-    // const childSisBroAge = this.applytoForm.controls.childSisBroAge.value;
-    // const childSisBroStudy = this.applytoForm.controls.childSisBroStudy.value;
-    // const schoolName = this.applytoForm.controls.schoolName.value;
-    // const schoolCity = this.applytoForm.controls.schoolCity.value;
-    // const schoolClasse = this.applytoForm.controls.schoolClasse.value;
-    // const schoolOption = this.applytoForm.controls.schoolOption.value;
-    // const schoolLv1 = this.applytoForm.controls.schoolLv1.value;
-    // const schoolLv2 = this.applytoForm.controls.schoolLv2.value;
-    // const schoolLv3 = this.applytoForm.controls.schoolLv3.value;
-    // const bestSubject = this.applytoForm.controls.bestSubject.value;
-    // const weakSubject = this.applytoForm.controls.weakSubject.value;
-    // const interestJob = this.applytoForm.controls.interestJob.value;
-    // const interestAge = this.applytoForm.controls.interestAge.value;
-    // const yourInterest = this.applytoForm.controls.yourInterest.value;
-    // const practiceInterest = this.applytoForm.controls.practiceInterest.value;
-    // const type = 'cadidate';
-    // const school = this.schoolID;
+    this.userData.lastName = this.applytoForm.value.childLastName
+    this.userData.firstName = this.applytoForm.value.childFirstName
+    this.userData.age = this.applytoForm.value.childAge
+    this.userData.gender = this.applytoForm.value.childTitle
+    this.userData.email = this.applytoForm.value.childMel
+    this.userData.mobilePhone = this.applytoForm.value.childTel
+    this.userData.address.address1 = this.applytoForm.value.childAddr
+    this.userData.address.postCode = this.applytoForm.value.childPostalCode
+    this.userData.address.city = this.applytoForm.value.childCity
+    this.userData.birthDate = this.applytoForm.value.childBirthDay
+    this.userData.birthPlace = this.applytoForm.value.childBirthPlace
 
-    // const data = ({
-    //   lienParent, title, lastName, firstName, job, email, tel, horaireJoingnable, childLastName,
-    //   childFirstName, childAge, childTitle, childMel, childTel, childAddr, childPostalCode, 
-    //   childCity, childBirthDay, childBirthPlace, childSisBroAge, childSisBroStudy, childSisBroTitle,
-    //   schoolName, schoolCity, schoolClasse, schoolOption, schoolLv1, schoolLv2, schoolLv3, bestSubject, 
-    //   weakSubject, interestJob, interestAge, yourInterest, practiceInterest, type, school
-    // });
+    for(let i = 0; i<this.applytoForm.value.freresoeur.length; i++){
+      this.userData.siblings[i].age = this.applytoForm.value.freresoeur[i].age
+      this.userData.siblings[i].gender = this.applytoForm.value.freresoeur[i].gender
+      this.userData.siblings[i].study = this.applytoForm.value.freresoeur[i].niveau
+    }
+
+    this.userData.academicHistories[0].city = this.applytoForm.value.schoolCity
+    this.userData.academicHistories[0].class = this.applytoForm.value.schoolClasse
+    this.userData.academicHistories[0].classType = this.applytoForm.value.schoolOption
+    this.userData.academicHistories[0].schoolName = this.applytoForm.value.schoolName
+    this.userData.academicHistories[0].languages = []
+    this.userData.academicHistories[0].languages.push(this.applytoForm.value.schoolLv1)
+    this.userData.academicHistories[0].languages.push(this.applytoForm.value.schoolLv2)
+    this.userData.academicHistories[0].languages.push(this.applytoForm.value.schoolLv3)
+
+    this.userData.attractionToSubjects = [];
+    this.userData.attractionToSubjects.push(this.applytoForm.value.bestSubject)
+    this.userData.weakAtSubjects = [];
+    this.userData.weakAtSubjects.push(this.applytoForm.value.weakSubject)
+
+    this.userData.jobs=[]
+    console.log(this.userData)
+    for(let i = 0; i<this.applytoForm.value.job.length; i++){
+      this.userData.jobs[i]={};
+      console.log(this.userData.jobs[i])
+      this.userData.jobs[i].profession=this.applytoForm.value.job[i].interestJob
+      this.userData.jobs[i].age=this.applytoForm.value.job[i].interestAge
+    }
+
+    this.userData.interest = this.applytoForm.value.yourInterest;
+    this.userData.hobbies = this.applytoForm.value.practiceInterest;
+
+    console.log(this.userData)
     const data = {
       type : "apply",
       school : this.schoolID
@@ -285,11 +297,27 @@ export class ApplytoComponent implements OnInit {
           console.log(response);
           if(response.code==400){
             console.log(response.message)
+            this.failSubmit(response.message)
           } else {
             console.log("apply successful")
           }
         }
       )
+    this.usersService.putProfile(this.userData)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code==400){
+            this.failSubmit(response.message);
+          } else {
+            this.successSubmit()
+          }
+        }
+      )
+    
+}
+
+  successSubmit(){
     swal({
       title: 'Votre demande à bien été enregistré.',
       text: 'Redirection vers le menu principal',
@@ -297,7 +325,18 @@ export class ApplytoComponent implements OnInit {
       confirmButtonText: 'Ok'
     })
     this.route.navigate(['/']);
-}
+  }
+
+  failSubmit(message){
+    console.log("test")
+    swal({
+      title: 'Erreur',
+      text: message,
+      type: 'error',
+      confirmButtonText: 'Ok'
+    })
+  }
+
   uploader: FileUploader = new FileUploader({
     url: URL,
     isHTML5: true

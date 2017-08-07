@@ -27,9 +27,7 @@ export class CompareBlockComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    (<any> $('.cycleSlick'+this.schoolDataToDisplay.counter)).slick({
-      arrows: false,
-    });
+    (<any> $('.cycleSlick'+this.schoolDataToDisplay.counter)).slick({});
   }
 
 }
