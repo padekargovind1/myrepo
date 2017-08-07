@@ -1,0 +1,35 @@
+/**
+ * Landing Page
+ */
+.landingpage__image-holder { width: 250px; height: 180px; overflow: hidden; position: absolute;}
+  .landingpage__image { width: 140%; position: absolute; top: -10%; left: -22%; transition: .7s width ease; }
+  .landingpage__caption { position: absolute; width: 100%; text-align: center; background: rgba( 0, 0, 0, .4); padding: 10px 0; bottom: 0;}
+  .landingpage__caption h2 { margin: 0 0 8px; font-size: 18px; font-weight: 700; text-transform: uppercase;}
+  .landingpage__caption h3 { margin: 0; font-size: 16px; }
+  
+  .landingpage__wrapper { width: 791px; display: table; margin: 5px auto 10px; position: relative; padding-top: 10px;}
+  .holder-1 { top: 80px; }
+  .holder-2 { top: 270px;}
+  .holder-3 { left: 271px;}
+  .holder-4 { top: 198px; left: 271px;}
+  .holder-5 { top: 387px; left: 271px;}
+  .holder-6 { top: 80px; right: 0;}
+  .holder-7 { top: 270px; right: 0; }
+
+.landingpage__additional-content { position: absolute; width: 250px; height: 180px;}
+
+.landingpage__image-holder:hover .landingpage__image { width: 145%; }
+.landingpage__image-holder a { color: #fff; }
+
+.landingpage__additional-content .select-custom { width: 100%; }
+.landingpage__additional-content .form-group { margin-bottom: 0; }
+.landingpage__additional-content .form-wrap { 
+    position: absolute;
+    width: 724px;
+    top: 180px;
+    left: -216px;
+    border: solid 20px #2F2E2D;
+}
+
+.landingpage__additional-content .form-wrap.fadeOut { display: none; }
+.landingpage__additional-content .form-wrap.fadeIn {display: block;}
