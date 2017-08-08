@@ -14,7 +14,11 @@ declare var sliceTransform: any;
 })
 export class AccueilComponent implements OnInit {
   wheel : any;
-  options: any;
+  options={
+    regions : [],
+    departements : [],
+    villes : []
+  };
   schoolsOptions: any;
   searchForm: FormGroup;
   constructor(private router: Router,
@@ -107,8 +111,6 @@ export class AccueilComponent implements OnInit {
     let filter: string = event.target.value;
     if(filter.length>=2){
       this.getLieuFilter(filter)
-    }else {
-      this.options=null;
     }
   }
 
@@ -131,7 +133,9 @@ export class AccueilComponent implements OnInit {
         (response)=>{
           let data = response.data;
           console.log(data);
-          this.options=data
+          this.options['regions']=data.regions
+          this.options['departements']=data.departments
+          this.options['villes']=data.cities
         }
       )
   }
@@ -156,6 +160,14 @@ export class AccueilComponent implements OnInit {
       lieu : [''],
       etablissement : ['']
     })
+    this.initOptions()
+  }
+
+  initOptions(){
+    this.options['regions']=[];
+    this.options['departements']=[];
+    this.options['villes']=[];
+    console.log(this.options)
   }
 
   onSubmitSearch(path){

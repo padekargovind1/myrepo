@@ -33,7 +33,11 @@ export class SchoolComponent implements OnInit {
   canFilter : boolean = false;
   searchFilter = ["", "", ""];
   searchForm : FormGroup;
-  options: any;
+  options={
+    regions : [],
+    departements : [],
+    villes : []
+  };
   schoolsOptions: any;
   advancedSearch={
     code : []
@@ -164,6 +168,14 @@ export class SchoolComponent implements OnInit {
       lieu : [''],
       etablissement : ['']
     })
+    this.initOptions()
+  }
+
+  initOptions(){
+    this.options['regions']=[];
+    this.options['departements']=[];
+    this.options['villes']=[];
+    console.log(this.options)
   }
 
   onCheckbox(schoolId){
@@ -252,8 +264,6 @@ export class SchoolComponent implements OnInit {
     let filter: string = event.target.value;
     if(filter.length>=2){
       this.getLieuFilter(filter)
-    }else {
-      this.options=null;
     }
   }
 
@@ -276,7 +286,9 @@ export class SchoolComponent implements OnInit {
         (response)=>{
           let data = response.data;
           console.log(data);
-          this.options=data
+          this.options['regions']=data.regions
+          this.options['departements']=data.departments
+          this.options['villes']=data.cities
         }
       )
   }

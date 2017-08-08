@@ -10,7 +10,7 @@ import {MyAccountMdl,
         MyAccountHistoryMdl,
         MyAccountBulletin } from '../model/myaccount.model';
 
-const PROFILE_API : string = "http://54.254.203.172/cideapi/api/users/profile";
+const PROFILE_API : string = "http://54.254.203.172/cideapi/api/common/profile";
 const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/users/appointments";
 const PACKAGE_API : string = "http://54.254.203.172/cideapi/api/users/package";
 const APPLICATION_API : string = "http://54.254.203.172/cideapi/api/users/apply";
