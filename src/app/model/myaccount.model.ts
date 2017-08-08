@@ -17,7 +17,7 @@ export class MyAccountMdl{
   currentClass: string = "A compléter";
   currentClassType: string = "A compléter";
   age : string ="A compléter";
-  parents : [any] = [null];
+  parents = [];
   address : any;
   socialAddresses : any;
   academicHistories: [any] = [null];

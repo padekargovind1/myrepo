@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
 import { PublicService } from '../services/public.service';
 import { BookingService } from '../services/booking.service';
 import { CompareService } from '../services/compare.service';
+import { WishApplyPopupComponent } from './wish-apply-popup/wish-apply-popup.component';
 import 'rxjs/add/operator/filter';
 
 var self = this;
@@ -25,14 +27,17 @@ export class HeaderComponent implements OnInit {
   userLastName : string = "";
   userFirstName : string = "";
   wishList= [];
-  onMobile:boolean=false
+  onMobile:boolean=false;
+
+  config: MdDialogConfig;
 
   constructor(private router : Router,
               private authService : AuthService,
               private usersService : UsersService,
               private publicService : PublicService,
               private bookingService : BookingService,
-              private compareService : CompareService) {}
+              private compareService : CompareService,
+              public dialog:MdDialog,) {}
 
   ngOnInit() {
     this.runScript()
@@ -171,9 +176,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/applyto', schoolId]);
   }
 
-  onMyAccount(){
+  onMyAccount(nb){
     this.cleanLocalStorage();
     if(this.userLogin){
+      this.usersService.storeTabNb(nb)
       this.router.navigate(['/my-account']);
     }
   }
@@ -181,6 +187,32 @@ export class HeaderComponent implements OnInit {
   cleanLocalStorage(){
     this.bookingService.cleanBooking();
     this.compareService.cleanCompareFilter();
+    this.compareService.cleanSchoolCompare();
+  }
+
+  makeProfile(tabNbSelected : number){
+    this.config = {
+      data:{
+          tabNb : tabNbSelected
+      },
+      disableClose: false,
+      width: '300',
+      height: '500',
+      position: {
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
+      }
+    }
+  }
+
+  wishApplyDialog(nb : number){  
+    this.makeProfile(nb)
+    let dialogref = this.dialog.open(WishApplyPopupComponent,this.config);
+    // dialogref.afterClosed().subscribe(result => {
+    //   console.log(result)
+    // });
   }
 
 }

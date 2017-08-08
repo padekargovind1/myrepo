@@ -44,7 +44,7 @@
                     
                     <div class="compare-block  row  white-background" id="compare">
 
-                        <div class="col-md-4 col-md-offset-4 select-school">
+                        <div class="col-md-4 select-school">
 
                             
                             
@@ -52,8 +52,21 @@
                                 <h3>Mon résultat pour: Classe PS - <span class="fa fa-map-marker"></span> Lyon</h3>
                                 <p>Recherche Affine: Aides Financieres - Bourse / Lv1 Anglais / Place Disponibles <a href="#"><span class="fa fa-times"></span></a></p>
                             </div> -->
-                            <input type="text" class="form-control" placeholder="Rechercher votre établissement" />
-
+                            <input type="text" class="form-control" placeholder="Rechercher votre établissement" 
+                                (keyup)="addSchoolKeyDown($event)"
+                                [mdAutocomplete]="autoSchool"/>
+                            <md-autocomplete #autoSchool="mdAutocomplete">
+                                <md-option *ngFor="let school of addSchoolsOptions" [value]="school.longName"
+                                    (click)="onSchoolClick(school._id)">
+                                    {{ school.longName }}
+                                </md-option>
+                            </md-autocomplete>
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <input type="button" class="btn btn-success" 
+                                value="Ajouter à la comparaison"
+                                [disabled]="!canAddSchool" (click)="onAddSchool()">
                         </div>
                         <div class="col-md-4">
                             <a (click)="onNavigateBack()" class="pull-right btn btn-success btn-back">Retour à la liste <img src="assets/images/back.png" alt="" /></a>
@@ -257,7 +270,7 @@
                                                 <div class="collapse in section">
                                                     <ul class="compare-item">
                                                         <li>Section Européenne</li>
-                                                        <li>Section bilingue</li>
+                                                        <li>Section Internationalle</li>
                                                         <li>Section Sportive</li>
                                                     </ul>
                                                 </div>
@@ -305,21 +318,25 @@
                                                 class="close" 
                                                 data-dismiss="modal" 
                                                 aria-label="Close"
-                                                (click)="onDeleteCompare(school)">
+                                                (click)="onDeleteCompare(i)">
                                                 <img src="assets/images/cide-remove.png" width="16" />
                                             </button>
                                             <div class="card  school-item">
                                                 <ul class="school-action">
-                                                    <li><a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+                                                    <li><a (click)="saveInWish(i)"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+                                                    <li><a (click)="applyToSchool()"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                                    <li><a ><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                                    <li *ngIf="schoolBrochure.length!=0">
+                                                        <a href="http://54.254.203.172/cideapi{{schoolBrochure[i].brochure}}" download="brochure.pdf" target="_self">
+                                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                                 
-                                                <img src="assets/images/school-1.jpg" alt="School 1" />
+                                                <img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1" />
                                                 
                                                 <div class="card-content">
-                                                    <h3>{{school.shortName | school:42}}</h3>
+                                                    <h3>{{school.shortName | school:35}}</h3>
                                                     <p>{{school.longName | school:42}} 
                                                         <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
                                                     <address>{{school.address.ad1}}<br /> 

@@ -1,4 +1,4 @@
-<div class="main white-background" role="main">
+<div class="main white-background" role="main" *ngIf="canDisplayApply">
   <div class="container-fluid  appointment-wizard">
 
     <div class="row">
@@ -12,7 +12,7 @@
 
         <section class="col-md-2 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
 
-          <img src="assets/images/school-logo/lyccee-du-chateaa.jpg" alt="" class="img-circle img-responsive advisor-img" />
+          <img src="http://54.254.203.172/cideapi/{{schoolLogo}}" alt="" class="img-circle img-responsive advisor-img" />
         </section>
         <section>
           <h2>{{ schoolName }}</h2>
@@ -32,17 +32,24 @@
                 <div class="tab-pane" id="tab1">
                   <div class="container-fluid">
                     <div class="row">
-                      <section class="col-md-4">
-                        <div *ngFor="let parent of parents">
-                          <h3>{{parent}}</h3>
+                      <section class="col-md-6" formArrayName="parents"
+                        *ngFor="let parent of applytoForm.controls['parents']['controls']; let i = index">
+                        <div [formGroupName]="i">
+                          <h3>Parents {{i+1}}</h3>
 
                           <div class="form-group">
                             <div class="select-custom">
-                              <md-select placeholder="Lien de Parenté" class="form-control" [formControl]="applytoForm.controls['lienParent']">
+                              <md-select placeholder="Lien de Parenté" class="form-control" 
+                                formControlName="lienParent">
                                 <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
                                   {{ lientparent }}
                                 </md-option>
                               </md-select>
+                              <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.lienParent.hasError('required') && 
+                                applytoForm.controls['parents']['controls'][i].controls.lienParent.touched" 
+                                class="mat-text-warn"> 
+                                Lien de Parenté Obligatoire
+                              </small>
                             </div>
                           </div>
 
@@ -50,23 +57,42 @@
                             <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
                                                   <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
                                                   <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
-                            <md-radio-group [formControl]="applytoForm.controls['title']">
-                              <md-radio-button value="Mme">Mme</md-radio-button>
-                              <md-radio-button value="Mlle">Mlle</md-radio-button>
-                              <md-radio-button value="M">M</md-radio-button>
+                            <md-radio-group formControlName="titre">
+                              <md-radio-button value="Ms">Mme</md-radio-button>
+                              <md-radio-button value="Mrs">Mlle</md-radio-button>
+                              <md-radio-button value="m">M</md-radio-button>
                             </md-radio-group>
+                            <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
+                              applytoForm.controls['parents']['controls'][i].controls.titre.touched" 
+                              class="mat-text-warn"> 
+                              Titre Obligatoire
+                            </small>
                           </div>
 
 
                           <div class="row">
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nom" [formControl]="applytoForm.controls['lastName']">
+                                <input type="text" class="form-control" placeholder="Nom" 
+                                  formControlName="nom"
+                                  maxlength="25">
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.nom.hasError('required') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.nom.touched" 
+                                  class="mat-text-warn"> 
+                                  Nom Obligatoire
+                                </small>
                               </div>
                             </div>
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Prénom" [formControl]="applytoForm.controls['firstName']">
+                                <input type="text" class="form-control" placeholder="Prénom" 
+                                  formControlName="prenom"
+                                  maxlength="25">
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.prenom.hasError('required') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.prenom.touched" 
+                                  class="mat-text-warn"> 
+                                  Prénom Obligatoire
+                                </small>
                               </div>
                             </div>
                           </div>
@@ -76,19 +102,56 @@
                             <div class="row">
 
                               <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Profession / Secteur d'activité" [formControl]="applytoForm.controls['job']">
+                                <input type="text" class="form-control" 
+                                  placeholder="Profession / Secteur d'activité" 
+                                  formControlName="job"
+                                  maxlength="25">
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.job.hasError('required') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.job.touched" 
+                                  class="mat-text-warn"> 
+                                  Profession Obligatoire
+                                </small>
                               </div>
                             </div>
                           </div>
 
                           <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" [formControl]="applytoForm.controls['email']">
+                            <input type="email" class="form-control" placeholder="Email" 
+                              formControlName="email">
+                            <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.email.hasError('required') && 
+                              applytoForm.controls['parents']['controls'][i].controls.email.touched" 
+                              class="mat-text-warn"> 
+                              Email Obligatoire
+                            </small>
+                            <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.email.errors?.email && 
+                              applytoForm.controls['parents']['controls'][i].controls.email.touched" 
+                              class="mat-text-warn"> 
+                              Email Invalide
+                            </small>
                           </div>
 
                           <div class="form-group">
                             <div class="row">
                               <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable" [formControl]="applytoForm.controls['tel']">
+                                <input type="text" class="form-control" 
+                                  placeholder="Téléphone auquel je suis joignable" 
+                                  formControlName="portable"
+                                  pattern="[0-9]+" maxlength="10">
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('required') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                  class="mat-text-warn"> 
+                                  Numéro de Portable Obligatoire
+                                </small>
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                  class="mat-text-warn"> 
+                                  Numéro de Portable Invalide (max 10)
+                                </small>
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
+                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                  class="mat-text-warn"> 
+                                  Numéro de Portable Invalide (Doit être des chiffres)
+                                </small>
                               </div>
                             </div>
                           </div>
@@ -97,39 +160,39 @@
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="select-custom">
-                                  <select name="" class="form-control" [formControl]="applytoForm.controls['horaireJoingnable']">
+                                  <select name="" class="form-control" formControlName="horaireJoignable">
                                       <option value="" disabled selected hidden>Horaires pour me contacter</option>
                                       <option value="9h-12h">9h-12h</option>
                                       <option value="12h-14h">12h-14h</option>
                                       <option value="14h-18h">14h-18h</option>
                                       <option value="18h-20h">18h-20h</option>
                                   </select>
+                                  <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.horaireJoignable.hasError('required') && 
+                                    applytoForm.controls['parents']['controls'][i].controls.horaireJoignable.touched" 
+                                    class="mat-text-warn"> 
+                                    Profession Obligatoire
+                                  </small>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        <div class="form-group clearfix"
-                          *ngIf="parents.length==1">
-                          <button type="button" class="btn  
-                            btn-inverse pull-right btn-add"
-                            (click)="onAddParent()">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                            </span> Ajouter Parent
-                          </button>
-                        </div>
-                        <div class="form-group clearfix"
-                          *ngIf="parents.length==2">
-                          <button type="button" class="btn  
-                            btn-inverse pull-right btn-add"
-                            (click)="onRemoveParent()">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true">
-                            </span> Retirer Parent
+                        <div class="form-group clearfix">
+                          <button class="btn  btn-danger" style="float:right" 
+                            (click)="onRemoveParent(i)" [disabled]="applytoForm.controls['parents']['controls'].length==1">
+                            Retirer un parent
                           </button>
                         </div>
                       </section>
                       <!-- .col-* -->
+                    </div>
+                    <div class="form-group clearfix">
+                      <button class="btn  btn-appointment" (click)="onAddParent()"
+                        [disabled]="applytoForm.controls['parents']['controls'].length==2"
+                        style="margin-left:0px">
+                        Ajouter un parent
+                      </button>
                     </div>
                     <!-- .row -->
                   </div>
@@ -150,12 +213,16 @@
                         <div class="row">
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Nom" [formControl]="applytoForm.controls['childLastName']">
+                              <input type="text" class="form-control" placeholder="Nom" 
+                                [formControl]="applytoForm.controls['childLastName']"
+                                maxlength="25">
                             </div>
                           </div>
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Prénom" [formControl]="applytoForm.controls['childFirstName']">
+                              <input type="text" class="form-control" placeholder="Prénom" 
+                                [formControl]="applytoForm.controls['childFirstName']"
+                                maxlength="25">
                             </div>
                           </div>
                         </div>
@@ -167,7 +234,9 @@
                                                     <div class="row"> -->
                           <div class="col-sm-3  col-xs-6">
                             <div class="form-group">
-                              <input type="number" class="form-control" max="120" min="1" placeholder="Age" [formControl]="applytoForm.controls['childAge']">
+                              <input type="number" class="form-control" max="20" min="1" 
+                                placeholder="Age" [formControl]="applytoForm.controls['childAge']"
+                                maxlength="2">
                             </div>
                           </div>
                           <div class="col-sm-3  hidden-xs">&nbsp;</div>
@@ -188,12 +257,15 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="email" class="form-control" placeholder="Mel" [formControl]="applytoForm.controls['childMel']">
+                              <input type="email" class="form-control" placeholder="Mel" 
+                                [formControl]="applytoForm.controls['childMel']">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Portable" [formControl]="applytoForm.controls['childTel']">
+                              <input type="text" class="form-control" placeholder="Portable" 
+                                [formControl]="applytoForm.controls['childTel']"
+                                maxlength="10">
                             </div>
                           </div>
                         </div>
@@ -202,7 +274,9 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <textarea class="form-control" placeholder="Adresse" [formControl]="applytoForm.controls['childAddr']"></textarea>
+                              <textarea class="form-control" placeholder="Adresse" 
+                                [formControl]="applytoForm.controls['childAddr']">
+                              </textarea>
                             </div>
                           </div>
                         </div>
@@ -212,29 +286,35 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Code postal" [formControl]="applytoForm.controls['childPostalCode']">
+                              <input type="text" class="form-control" placeholder="Code postal" 
+                                [formControl]="applytoForm.controls['childPostalCode']"
+                                maxlength="5">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Ville" [formControl]="applytoForm.controls['childCity']">
+                              <input type="text" class="form-control" placeholder="Ville" 
+                                [formControl]="applytoForm.controls['childCity']"
+                                maxlength="25">
                             </div>
                           </div>
                         </div>
 
-?token='+this.token,
 
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
                               <div class="datepicker-holder">
-                                <input type="date" class="form-control" placeholder="Date de naissance" [formControl]="applytoForm.controls['childBirthDay']">
+                                <input type="date" class="form-control" placeholder="Date de naissance" 
+                                  [formControl]="applytoForm.controls['childBirthDay']">
                               </div>
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Lieu" [formControl]="applytoForm.controls['childBirthPlace']">
+                              <input type="text" class="form-control" placeholder="Lieu" 
+                                [formControl]="applytoForm.controls['childBirthPlace']"
+                                maxlength="50">
                             </div>
                           </div>
                         </div>
@@ -242,37 +322,63 @@
                       </div>
                       <!-- .col-* -->
 
-                      <div class="col-md-6">
+                      <div class="col-md-8" *ngIf="canDisplaySiblings">
                         <div class="wrap-enfant">
-                          <div class="form-group"
-                            *ngFor="let frso of freresoeur">
-                            <h4>{{frso}}</h4>
-                            <div class="row">
+                          <div class="form-group" formArrayName="freresoeur"
+                            *ngFor="let siblings of applytoForm.controls['freresoeur']['controls']; let i=index">
+                            <h4>Frère / Soeur {{ i + 1 }}</h4>
+                            <div class="row" [formGroupName]="i">
                               <div class="col-for-radio">
                                 <div class="gap-for-radio horizontal-radio clearfix">
-                                  <md-radio-group [formControl]="applytoForm.controls['childSisBroTitle']">
-                                    <md-radio-button value="frere">Frère</md-radio-button>
-                                    <md-radio-button value="soeur">Soeur</md-radio-button>
+                                  <md-radio-group formControlName="gender">
+                                    <md-radio-button value="Frère">Frère</md-radio-button>
+                                    <md-radio-button value="Soeur">Soeur</md-radio-button>
                                   </md-radio-group>
+                                  <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls.gender.hasError('required') && 
+                                    applytoForm.controls['freresoeur']['controls'][i].controls.gender.touched" 
+                                    class="mat-text-warn"> 
+                                    Gender Obligatoire
+                                  </small>
                                 </div>
                               </div>
                               <div class="col-sm-2">
-                                <input type="number" max="120" min="1" class="form-control gap-for-radio" placeholder="Age" [formControl]="applytoForm.controls['childSisBroAge']"
-                                />
+                                <input type="number" max="120" min="1" class="form-control gap-for-radio" 
+                                placeholder="Age" formControlName="age"
+                                maxlength="2" style="margin-top:0px"/>
+                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
+                                  applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
+                                  class="mat-text-warn"> 
+                                  Age Obligatoire
+                                </small>
+                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('pattern') && 
+                                  applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
+                                  class="mat-text-warn"> 
+                                  Seulement des chiffres
+                                </small>
                               </div>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control gap-for-radio" placeholder="Niveau d'étude" [formControl]="applytoForm.controls['childSisBroStudy']">
+                                <input type="text" class="form-control gap-for-radio" 
+                                  placeholder="Niveau d'étude" 
+                                  formControlName="niveau"
+                                  maxlength="25" style="margin-top:0px">
+                                  <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') && 
+                                    applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].touched" 
+                                    class="mat-text-warn"> 
+                                    Niveau d'étude Obligatoire
+                                  </small>
+                              </div>
+                              <div class="col-sm-2">
+                                <button class="btn  btn-danger" style="float:right" 
+                                  (click)="onRemoveFrSo(i)">
+                                  Retirer un parent
+                                </button>
                               </div>
                             </div>
                           </div>
                           <div class="form-group clearfix">
-                            <button class="btn  btn-inverse gap-for-radio  btn-add"
-                              (click)="onAddFrSo()">
-                              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter
-                            </button>
-                            <button class="btn  btn-inverse gap-for-radio  btn-remove"
-                              (click)="onRemoveFrSo()">
-                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Retirer
+                            <button class="btn  btn-appointment" (click)="onAddFrSo()"
+                              style="margin-left:0px">
+                              Ajouter un frère / soeur
                             </button>
                           </div>
                         </div>
@@ -293,7 +399,9 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Nom Etablissement Actuel" [formControl]="applytoForm.controls['schoolName']">
+                              <input type="text" class="form-control" placeholder="Nom Etablissement Actuel" 
+                                [formControl]="applytoForm.controls['schoolName']"
+                                maxlength="50">
                             </div>
                           </div>
                         </div>
@@ -302,7 +410,9 @@
                           <div class="form-group  col-sm-12  col-xs-6">
                             <div class="row">
                               <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Ville" [formControl]="applytoForm.controls['schoolCity']">
+                                <input type="text" class="form-control" placeholder="Ville" 
+                                  [formControl]="applytoForm.controls['schoolCity']"
+                                  maxlength="50">
                               </div>
                             </div>
                           </div>
@@ -314,42 +424,99 @@
                                   <select name="" class="form-control" [formControl]="applytoForm.controls['schoolClasse']">
                                     <option value="" disabled selected hidden>Classe</option>
                                     <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                      <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                      <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                      <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                        <option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                        <option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                        <option value="gs">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
                                     </optgroup>
                                     <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                      <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                      <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                      <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                        <option value="cp">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                        <option value="ce1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                        <option value="ce2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
                                     </optgroup>
                                     <optgroup label="Cycle 3 : Consolidation">
-                                      <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                      <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                      <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                        <option value="cm1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                        <option value="cm2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                        <option value="6e">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                    </optgroup>
+                                    <optgroup label="Cycle 3 : Consolidation">
+                                        <option value="sixieme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
                                     </optgroup>
                                     <optgroup label="Cycle 4 : Approfondissement">
-                                        <option value="5ème">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
-                                        <option value="4ème">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
-                                        <option value="3ème">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+                                        <option value="cinquieme">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+                                        <option value="quatrieme">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+                                        <option value="troisieme">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
                                     </optgroup>
                                     <optgroup label="2nde">
-                                        <option value="2ndGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                        <option value="2ndePB">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
+                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                        <option value="seconde_probation">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
                                     </optgroup>
                                     <optgroup label="1ere">
-                                        <option value="1ereES">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
-                                        <option value="1ereL">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
-                                        <option value="1ereS">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
+                                        <option value="premiere_es">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
+                                        <option value="premiere_l">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
+                                        <option value="premiere_s">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
                                     </optgroup>
                                     <optgroup label="Terminale">
-                                        <option value="TES">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
-                                        <option value="TL">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
-                                        <option value="TS">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
+                                        <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
+                                        <option value="terminale_l">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
+                                        <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
                                     </optgroup>
                                     <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
                                     <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
-                                    <option value="CNF">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
+                                    <option value="cursus_non_francophone">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
+                                    <optgroup label="STHR - Hôtellerie et Restauration">
+                                        <option value="seconde_sthr">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
+                                        <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
+                                        <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
+                                        <option value="terminale_sthr">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
+                                    </optgroup>
+                                    <optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
+                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                        <option value="premiere_sti2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
+                                        <option value="premiere_st2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
+                                        <option value="terminale_st2s">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
+                                    </optgroup>
+                                    <optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
+                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                        <option value="premiere_std2a">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
+                                        <option value="terminale_std2a">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
+                                    </optgroup>
+                                    <optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
+                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                        <option value="premiere_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
+                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ST2D – Architecture et Construction</option>
+                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
+                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
+                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
+                                    </optgroup>
+                                    <optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
+                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                        <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
+                                        <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
+                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
+                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
+                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
+                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
+                                    </optgroup>
+                                    <optgroup label="STL - Sciences et Technologies de Laboratoire">
+                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                        <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
+                                        <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
+                                        <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
+                                        <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
+                                    </optgroup>
+                                    <optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
+                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                        <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
+                                        <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
+                                        <option value="terminale_stav">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
+                                    </optgroup>
+                                    <optgroup label="TMD - Techniques de la Musique et de la Danse">
+                                        <option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
+                                        <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
+                                        <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
+                                        <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
+                                        <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
+                                    </optgroup>
                                   </select>
                                 </div>
                               </div>
@@ -360,7 +527,9 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
-                              <input type="text" class="form-control" placeholder="Options" [formControl]="applytoForm.controls['schoolOption']">
+                              <input type="text" class="form-control" placeholder="Options" 
+                                [formControl]="applytoForm.controls['schoolOption']"
+                                maxlength="50">
                             </div>
                           </div>
                         </div>
@@ -372,7 +541,7 @@
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv1']">
                                     <option value="" disabled selected hidden>Lv1</option>
-                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                    <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
                                 </select>
                               </div>
                             </div>
@@ -385,7 +554,7 @@
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv2']">
                                     <option value="" disabled selected hidden>Lv2</option>
-                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                    <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
                                 </select>
                               </div>
                             </div>
@@ -398,7 +567,7 @@
                               <div class="select-custom">
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv3']">
                                     <option value="" disabled selected hidden>Lv3</option>
-                                    <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+                                    <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
                                 </select>
                               </div>
                             </div>
@@ -482,6 +651,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
+<<<<<<< HEAD
 								<div class="select-custom-multiple">
 									<select class="form-control matery" multiple="multiple" [formControl]="applytoForm.controls['bestSubject']">
 										<option value="Maths">Maths</option>
@@ -502,6 +672,28 @@
 										<option value="Autre matières">Autre matières</option>
 									</select>
 								</div>
+=======
+                              <div class="select-custom-multiple">
+              									<select class="form-control matery" multiple="multiple" [formControl]="applytoForm.controls['bestSubject']">
+              										<option value="Maths">Maths</option>
+              										<option value="Sciences Physiques">Sciences Physiques</option>
+              										<option value="Sciences Naturelles">Sciences Naturelles</option>
+              										<option value="Francais">Francais</option>
+              										<option value="Anglais">Anglais</option>
+              										<option value="Espagnol">Espagnol</option>
+              										<option value="Allemand">Allemand</option>
+              										<option value="Italien">Italien</option>
+              										<option value="Autre langue">Autre langue</option>
+              										<option value="Histoire">Histoire</option>
+              										<option value="Géographie">Géographie</option>
+              										<option value="Instruction Civique">Instruction Civique</option>
+              										<option value="Sport">Sport</option>
+              										<option value="Musique">Musique</option>
+              										<option value="Arts PLastiques">Arts PLastiques</option>
+              										<option value="Autre matières">Autre matières</option>
+              									</select>
+              								</div>
+>>>>>>> origin/master
                             </div>
                           </div>
                         </div>
@@ -509,6 +701,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
+<<<<<<< HEAD
 								<div class="select-custom-multiple">
 									<select class="form-control matery" multiple="multiple" [formControl]="applytoForm.controls['weakSubject']">
 										<option value="Maths">Maths</option>
@@ -529,6 +722,28 @@
 										<option value="Autre matières">Autre matières</option>
 									</select>
 								</div>
+=======
+                              <div class="select-custom-multiple">
+              									<select class="form-control matery" multiple="multiple" [formControl]="applytoForm.controls['weakSubject']">
+              										<option value="Maths">Maths</option>
+              										<option value="Sciences Physiques">Sciences Physiques</option>
+              										<option value="Sciences Naturelles">Sciences Naturelles</option>
+              										<option value="Francais">Francais</option>
+              										<option value="Anglais">Anglais</option>
+              										<option value="Espagnol">Espagnol</option>
+              										<option value="Allemand">Allemand</option>
+              										<option value="Italien">Italien</option>
+              										<option value="Autre langue">Autre langue</option>
+              										<option value="Histoire">Histoire</option>
+              										<option value="Géographie">Géographie</option>
+              										<option value="Instruction Civique">Instruction Civique</option>
+              										<option value="Sport">Sport</option>
+              										<option value="Musique">Musique</option>
+              										<option value="Arts PLastiques">Arts PLastiques</option>
+              										<option value="Autre matières">Autre matières</option>
+              									</select>
+              								</div>
+>>>>>>> origin/master
                             </div>
                           </div>
                         </div>
@@ -548,33 +763,39 @@
                         <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
 
 
-                        <div class="row">
-                          <div *ngFor="let metier of metiers">
+                        <div class="row" formArrayName="job" 
+                            *ngFor="let parent of applytoForm.controls['job']['controls']; let i = index">
+                          <div [formGroupName]="i">
                             <div class="col-sm-6">
-                              <h4>{{metier}}</h4>
+                              <h4>Métier {{i+1}}</h4>
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Job" [formControl]="applytoForm.controls['interestJob']">
+                                <input type="text" class="form-control" placeholder="Job" 
+                                  formControlName="interestJob"
+                                  maxlength="25">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <h4>&nbsp;</h4>
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Age" [formControl]="applytoForm.controls['interestAge']">
+                                <input type="text" class="form-control" placeholder="Age" 
+                                  formControlName="interestAge"
+                                  maxlength="2">
                               </div>
+                            </div>
+                            <div class="col-sm-3">
+                              <h4>&nbsp;</h4>
+                              <button class="btn  btn-danger" style="float:right" 
+                                (click)="onRemoveJob(i)">
+                                Retirer un métier
+                              </button>
                             </div>
                           </div>
                         </div>
 
                         <div class="row">
-                          <button class="btn  btn-inverse  btn-add"
-                            (click)="onAddJob()">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                            </span> Ajouter
-                          </button>
-                          <button class="btn  btn-inverse  btn-add"
-                            (click)="onRemoveJob()">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true">
-                            </span> Retirer
+                          <button class="btn  btn-appointment" (click)="onAddJob()"
+                            style="margin-left:15px">
+                            Ajouter un métier
                           </button>
                         </div>
 
@@ -582,7 +803,10 @@
                         <div class="form-group different-gap">
                           <div class="row">
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" placeholder="Quels sont vos centres d’interets" [formControl]="applytoForm.controls['yourInterest']">
+                              <input type="text" class="form-control" 
+                                placeholder="Quels sont vos centres d’interets" 
+                                [formControl]="applytoForm.controls['yourInterest']"
+                                maxlength="100">
                             </div>
                           </div>
                         </div>
@@ -590,7 +814,10 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" placeholder="Quels loisirs et activités pratiquez-vous" [formControl]="applytoForm.controls['practiceInterest']">
+                              <input type="text" class="form-control" 
+                                placeholder="Quels loisirs et activités pratiquez-vous" 
+                                [formControl]="applytoForm.controls['practiceInterest']"
+                                maxlength="100">
                             </div>
                           </div>
                         </div>
@@ -598,7 +825,8 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <button class="btn btn-appointment" 
-                                type="submit" (click)="onSubmit()" >Terminer</button>
+                                type="submit" (click)="onSubmit()"
+                                style="margin-left:0px;">Je postule</button>
                             </div>
                           </div>
                         </div>

@@ -13,6 +13,7 @@ export class CompareBlockComponent implements OnInit, AfterViewInit {
 
   @Input() schoolDataToDisplay;
   compareListFilter : any;
+  slickCounter: number = 0
 
   constructor(private compareService: CompareService) {}
 
@@ -26,9 +27,7 @@ export class CompareBlockComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    (<any> $('.cycleSlick'+this.schoolDataToDisplay._id)).slick({
-      arrows: false,
-    });
+    (<any> $('.cycleSlick'+this.schoolDataToDisplay.counter)).slick({});
   }
 
 }

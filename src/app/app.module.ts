@@ -34,6 +34,7 @@ import { MyaccountParentsComponent } from './myaccount/myaccount-parents/myaccou
 import { MyaccountChildrenComponent } from './myaccount/myaccount-children/myaccount-children.component';
 import { MyaccountDocumentationsComponent } from './myaccount/myaccount-documentations/myaccount-documentations.component';
 import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myaccount-mysearch.component';
+import { MysearchCardComponent } from './myaccount/myaccount-mysearch/mysearch-card/mysearch-card.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { CubeComponent } from './school-calendar/cube/cube.component';
 import { FilterComponent } from './filter/filter.component';
@@ -61,6 +62,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
 import {BrochureDownloadComponent} from './brochure/brochure-download/brochure-download.component';
 import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
+import { SchoolComponent } from './school/school.component';
 
 import { SchoolService } from './services/school.service';
 import { AuthService } from './services/auth.service';
@@ -70,10 +72,9 @@ import { CompareService } from './services/compare.service';
 import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
-import { EtablissementService } from './services/etablissement.service';
-import { SchoolComponent } from './school/school.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
+import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +121,9 @@ import { SchoolPipe } from './pipes/school.pipe';
     EditorialDetComponent,
     SchoolComponent,
     ShortenPipe,
-    SchoolPipe
+    SchoolPipe,
+    MysearchCardComponent,
+    WishApplyPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -159,12 +162,12 @@ import { SchoolPipe } from './pipes/school.pipe';
     BookingService,
     EditorService,
     SweetAlertService,
-    BrochureService,
-    EtablissementService
+    BrochureService
   ],
     entryComponents: [
        BrochpopupComponent,
-       BrochureDownloadComponent
+       BrochureDownloadComponent,
+       WishApplyPopupComponent
     ],
   bootstrap: [AppComponent]
 })

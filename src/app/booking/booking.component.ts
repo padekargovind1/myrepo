@@ -197,10 +197,10 @@ export class BookingComponent implements OnInit, AfterViewInit {
     console.log(this.adviserToDisplay);
     const self = this;
   	(<any> $('#calendar')).fullCalendar({
-      locale:'fr', 
+      lang:"fr", 
       eventClick: function(calEvent) {
         console.log(calEvent);
-      $('#appointment').modal('show');
+        $('#appointment').modal('show');
         self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
         self.bookingDate[0] = calEvent.start._i.substr(0, 10)
         self.bookingDate[1] = calEvent.start._i.substr(11, 5)

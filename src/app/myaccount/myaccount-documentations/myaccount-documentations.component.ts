@@ -34,14 +34,19 @@ export class MyaccountDocumentationsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response.data)
+          let data = response.data.filter(
+            application=>{
+              return application.type=="apply"
+            }
+          )
           if(response.code==400){
             console.log(response.message);
           } else {
             delete this.docList[0];
-            this.docList=response.data;
-            console.log(this.docList)
+            this.docList=data;
+            // console.log(this.docList)
             for(let doc of this.docList){
-              console.log(doc)
+              // console.log(doc)
               this.getBrochureById(doc.school._id, doc.school.cycles[0]._id)
             }
             setTimeout(()=>{
@@ -56,7 +61,7 @@ export class MyaccountDocumentationsComponent implements OnInit {
     this.publicService.getBrochurebyId(schoolId, cycleId)
       .subscribe(
         response=>{
-          console.log(response.data)
+          // console.log(response.data)
           if(response.code==400){
             console.log(response.message)
           } else {

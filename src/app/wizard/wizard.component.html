@@ -1,4 +1,4 @@
-      <div class="main white-background" role="main">  
+      <div class="main white-background" role="main" >  
         <div class="container-fluid  appointment-wizard">
             
             <div class="row">
@@ -57,7 +57,7 @@
 
             </div><!-- .row -->
 
-            <div class="row">
+            <div class="row" *ngIf="canDisplayWizard">
 
                 <div id="rootwizard"><form id="wizard" [formGroup]="wizardForm">
 
@@ -94,110 +94,150 @@
                             <div class="tab-pane" id="tab1">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <section  class="col-md-8">
+                                        <section class="col-md-6" formArrayName="parents"
+                                            *ngFor="let parent of wizardForm.controls['parents']['controls']; let i = index">
+                                            <div [formGroupName]="i">
+                                            <h3>Parents {{i+1}}</h3>
 
-                                            <div *ngFor="let parent of parents"
-                                                class="col-md-6">
-                                                <h3>{{parent}}</h3>
+                                            <div class="form-group">
+                                                <div class="select-custom">
+                                                <md-select placeholder="Lien de Parenté" class="form-control" 
+                                                    formControlName="lienParent">
+                                                    <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
+                                                    {{ lientparent }}
+                                                    </md-option>
+                                                </md-select>
+                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.lienParent.hasError('required') && 
+                                                    wizardForm.controls['parents']['controls'][i].controls.lienParent.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Lien de Parenté Obligatoire
+                                                </small>
+                                                </div>
+                                            </div>
 
+                                            <div class="form-group horizontal-radio clearfix">
+                                                <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
+                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
+                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
+                                                <md-radio-group formControlName="titre">
+                                                <md-radio-button value="Mme">Mme</md-radio-button>
+                                                <md-radio-button value="Mlle">Mlle</md-radio-button>
+                                                <md-radio-button value="M">M</md-radio-button>
+                                                </md-radio-group>
+                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
+                                                wizardForm.controls['parents']['controls'][i].controls.titre.touched" 
+                                                class="mat-text-warn"> 
+                                                Titre Obligatoire
+                                                </small>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-sm-6  col-xs-6">
                                                 <div class="form-group">
-                                                    <div class="select-custom">
-                                                        <md-select placeholder="Lien de Parenté"
-                                                        class="form-control"
-                                                        [formControl]="wizardForm.controls['lienParent']">
-                                                        <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
-                                                            {{ lientparent }}
-                                                        </md-option>
-                                                        </md-select>
-                                                    </div>
+                                                    <input type="text" class="form-control" placeholder="Nom" 
+                                                    formControlName="nom"
+                                                    maxlength="25">
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.nom.hasError('required') && 
+                                                    wizardForm.controls['parents']['controls'][i].controls.nom.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Nom Obligatoire
+                                                    </small>
                                                 </div>
-
-                                                <div class="form-group horizontal-radio clearfix">
-                                                    <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
-                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
-                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
-                                                    <md-radio-group [formControl]="wizardForm.controls['title']">
-                                                    <md-radio-button value="ms">Mme</md-radio-button>
-                                                    <md-radio-button value="mrs">Mlle</md-radio-button>
-                                                    <md-radio-button value="m">M</md-radio-button>
-                                                    </md-radio-group>
                                                 </div>
+                                                <div class="col-sm-6  col-xs-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Prénom" 
+                                                    formControlName="prenom"
+                                                    maxlength="25">
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.prenom.hasError('required') && 
+                                                    wizardForm.controls['parents']['controls'][i].controls.prenom.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Prénom Obligatoire
+                                                    </small>
+                                                </div>
+                                                </div>
+                                            </div>
 
-                                                
+
+                                            <div class="form-group">
                                                 <div class="row">
-                                                    <div class="col-sm-6  col-xs-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Nom"
-                                                            [formControl]="wizardForm.controls['lastName']">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6  col-xs-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Prénom"
-                                                            [formControl]="wizardForm.controls['firstName']">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
 
-                                                <div class="form-group">
-                                                    <div class="row">
-        <!--                                                 <div class="col-sm-4">
-                                                            <input type="number" class="form-control" max="120" min="1" placeholder="Age">
-                                                            <div class="select-custom">
-                                                                <select name="" class="form-control">
-                                                                    <option value="" disabled selected hidden>Age</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-        -->                                                <div class="col-sm-12">
-                                                            <input type="text" class="form-control" 
-                                                            placeholder="Profession / Secteur d'activité"
-                                                            [formControl]="wizardForm.controls['job']">
-                                                        </div>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" 
+                                                    placeholder="Profession / Secteur d'activité" 
+                                                    formControlName="job"
+                                                    maxlength="25">
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.job.hasError('required') && 
+                                                    wizardForm.controls['parents']['controls'][i].controls.job.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Profession Obligatoire
+                                                    </small>
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="Email" 
+                                                formControlName="email">
+                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.hasError('required') && 
+                                                wizardForm.controls['parents']['controls'][i].controls.email.touched" 
+                                                class="mat-text-warn"> 
+                                                Email Obligatoire
+                                                </small>
+                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.errors?.email && 
+                                                wizardForm.controls['parents']['controls'][i].controls.email.touched" 
+                                                class="mat-text-warn"> 
+                                                Email Invalide
+                                                </small>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" 
+                                                    placeholder="Téléphone auquel je suis joignable" 
+                                                    formControlName="portable"
+                                                    pattern="[0-9]+" maxlength="10">
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('required') && 
+                                                    wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Numéro de Portable Obligatoire
+                                                    </small>
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
+                                                    wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Numéro de Portable Invalide (max 10)
+                                                    </small>
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
+                                                    wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Numéro de Portable Invalide (Doit être des chiffres)
+                                                    </small>
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="select-custom">
+                                                    <select name="" class="form-control" formControlName="horaireJoignable">
+                                                        <option value="" disabled selected hidden>Horaires pour me contacter</option>
+                                                        <option value="9h-12h">9h-12h</option>
+                                                        <option value="12h-14h">12h-14h</option>
+                                                        <option value="14h-18h">14h-18h</option>
+                                                        <option value="18h-20h">18h-20h</option>
+                                                    </select>
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.hasError('required') && 
+                                                        wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.touched" 
+                                                        class="mat-text-warn"> 
+                                                        Profession Obligatoire
+                                                    </small>
                                                     </div>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="Email"
-                                                    [formControl]="wizardForm.controls['email']">
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <input type="text" class="form-control" 
-                                                            placeholder="Téléphone auquel je suis joignable"
-                                                            [formControl]="wizardForm.controls['tel']">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <div class="select-custom">
-                                                                <select name="" class="form-control"
-                                                                [formControl]="wizardForm.controls['horaireJoingnable']">
-                                                                    <option value="" disabled selected hidden>Horaires pour me contacter</option>
-                                                                    <option value="9h-12h">9h-12h</option>
-                                                                    <option value="12h-14h">12h-14h</option>
-                                                                    <option value="14h-18h">14h-18h</option>
-                                                                    <option value="18h-20h">18h-20h</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group clearfix"
-                                                    *ngIf="addParents; else remove">
-                                                    <button type="button" class="btn  btn-inverse pull-right btn-add"
-                                                        (click)="addParent()">
-                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
-                                                        Ajouter un Parent
-                                                    </button>
-                                                </div>
+<<<<<<< HEAD
                                                 <ng-template #remove>
                                                     <div class="form-group clearfix">
                                                         <button type="button" class="btn  btn-inverse pull-right btn-add"
@@ -207,22 +247,37 @@
                                                         </button>
                                                     </div>
                                                 </ng-template>
+=======
+                                            </div>
+>>>>>>> origin/master
                                             </div>
 
-                                                
-                                            
-                                        </section><!-- .col-* -->
+                                            <div class="form-group clearfix">
+                                            <button class="btn  btn-danger" style="float:right" 
+                                                (click)="onRemoveParent(i)" 
+                                                [disabled]="wizardForm.controls['parents']['controls'].length==1">
+                                                Retirer un parent
+                                            </button>
+                                            </div>
+                                        </section>
                                     </div><!-- .row -->
+                                    <div class="form-group clearfix">
+                                    <button class="btn  btn-appointment" (click)="onAddParent()"
+                                        [disabled]="wizardForm.controls['parents']['controls'].length==2"
+                                        style="margin-left:0px">
+                                        Ajouter un parent
+                                    </button>
+                                    </div>
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab1 -->
                         </md-tab>
                         
-                        <md-tab label="Enfant">
+                        <md-tab label="Écolier">
                             <div class="tab-pane" id="tab2">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h3>Enfant</h3>
+                                            <h3>Écolier</h3>
                                         </div>
                                         <div class="col-md-4">
 
@@ -231,13 +286,15 @@
                                                 <div class="col-sm-6  col-xs-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Nom"
-                                                          [formControl]="wizardForm.controls['childLastName']">
+                                                          [formControl]="wizardForm.controls['childLastName']"
+                                                          maxlength="25">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6  col-xs-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Prénom"
-                                                          [formControl]="wizardForm.controls['childFirstName']">
+                                                          [formControl]="wizardForm.controls['childFirstName']"
+                                                          maxlength="25">
                                                     </div>
                                                 </div>
                                             </div>
@@ -250,7 +307,7 @@
                                                         <div class="col-sm-3  col-xs-6">
                                                             <div class="form-group">
                                                                 <input type="number" class="form-control" max="120" min="1" placeholder="Age"
-                                                                  [formControl]="wizardForm.controls['childAge']">
+                                                                  [formControl]="wizardForm.controls['childAge']" maxlength="2">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-3  hidden-xs">&nbsp;</div>
@@ -288,7 +345,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Portable"
-                                                          [formControl]="wizardForm.controls['childTel']">
+                                                          [formControl]="wizardForm.controls['childTel']" maxlength="10">
                                                     </div>
                                                 </div>
                                             </div>
@@ -298,7 +355,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <textarea class="form-control" placeholder="Adresse"
-                                                          [formControl]="wizardForm.controls['childAddr']"></textarea>
+                                                          [formControl]="wizardForm.controls['childAddr']"
+                                                          maxlength="125"></textarea>
                                                     </div>
                                                 </div>
                                             </div> 
@@ -309,13 +367,13 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Code postal"
-                                                          [formControl]="wizardForm.controls['childPostalCode']">
+                                                          [formControl]="wizardForm.controls['childPostalCode']" maxlength="5">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Ville"
-                                                          [formControl]="wizardForm.controls['childCity']">
+                                                          [formControl]="wizardForm.controls['childCity']" maxlength="25">
                                                     </div>
                                                 </div>
                                             </div>
@@ -336,75 +394,78 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder="Lieu"
-                                                              [formControl]="wizardForm.controls['childBirthPlace']">
+                                                              [formControl]="wizardForm.controls['childBirthPlace']"
+                                                              maxlength="30">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                         </div><!-- .col-* -->
 
-                                        <div class="col-md-6">
-                                            <div class="wrap-enfant"
-                                                *ngFor="let frereSoeur of sisBro">
-                                                <h4>{{frereSoeur}}</h4>
-                                                <!-- <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" placeholder="Prénom">
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" placeholder="Nom de famille">
-                                                        </div>
+                                        <div class="col-md-8" *ngIf="canDisplaySiblings">
+                                            <div class="wrap-enfant">
+                                            <div class="form-group" formArrayName="freresoeur"
+                                                *ngFor="let siblings of wizardForm.controls['freresoeur']['controls']; let i=index">
+                                                <h4>Frère / Soeur {{ i + 1 }}</h4>
+                                                <div class="row" [formGroupName]="i">
+                                                <div class="col-for-radio col-sm-3">
+                                                    <div class="gap-for-radio horizontal-radio clearfix">
+                                                    <md-radio-group formControlName="gender">
+                                                        <md-radio-button value="Frère">Frère</md-radio-button>
+                                                        <md-radio-button value="Soeur">Soeur</md-radio-button>
+                                                    </md-radio-group>
+                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls.gender.hasError('required') && 
+                                                        wizardForm.controls['freresoeur']['controls'][i].controls.gender.touched" 
+                                                        class="mat-text-warn"> 
+                                                        Gender Obligatoire
+                                                    </small>
                                                     </div>
-                                                </div> -->
-
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-for-radio">
-                                                            <div class="gap-for-radio horizontal-radio clearfix">
-                                                              <md-radio-group [formControl]="wizardForm.controls['childSisBroTitle']">
-                                                                <md-radio-button value="frere">Frère</md-radio-button>
-                                                                <md-radio-button value="soeur">Soeur</md-radio-button>
-                                                              </md-radio-group>
-                                                                <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Frère</span></label>
-                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Sœur</span></label>-->
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <input type="number" max="120" min="1" 
-                                                              class="form-control gap-for-radio" placeholder="Age" 
-                                                              [formControl]="wizardForm.controls['childSisBroAge']"/>
-                                                            <!-- <div class="select-custom">
-                                                                <select name="" class="form-control">
-                                                                    <option value="">Âge</option>
-                                                                </select>
-                                                            </div> -->
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <input type="text" class="form-control gap-for-radio" 
-                                                            placeholder="Niveau d'étude"
-                                                            [formControl]="wizardForm.controls['childSisBroStudy']">
-                                                        </div>
-                                                    </div>
-                                                
                                                 </div>
-                                            </div><!-- wrap-enfant -->
+                                                <div class="col-sm-2">
+                                                    <input type="number" max="120" min="1" class="form-control gap-for-radio" 
+                                                        placeholder="Age" formControlName="age"
+                                                        maxlength="2" style="margin-top:0px"/>
+                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
+                                                        wizardForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
+                                                        class="mat-text-warn"> 
+                                                        Age Obligatoire
+                                                    </small>
+                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('pattern') && 
+                                                        wizardForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
+                                                        class="mat-text-warn"> 
+                                                        Seulement des chiffres
+                                                    </small>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control gap-for-radio" 
+                                                        placeholder="Niveau d'étude" 
+                                                        formControlName="niveau"
+                                                        maxlength="25" style="margin-top:0px">
+                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') && 
+                                                        wizardForm.controls['freresoeur']['controls'][i].controls['niveau'].touched" 
+                                                        class="mat-text-warn"> 
+                                                        Niveau d'étude Obligatoire
+                                                    </small>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button class="btn  btn-danger"  
+                                                        (click)="onRemoveFrSo(i)"
+                                                        [disabled]="wizardForm.controls['freresoeur']['controls'].length==0">
+                                                        Retirer un frère / soeur
+                                                    </button>
+                                                </div>
+                                                </div>
+                                            </div>
                                             <div class="form-group clearfix">
-                                                <button class="btn  btn-inverse gap-for-radio  btn-add"
-                                                    (click)="addSisBro()">
-                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                                                    </span> Ajouter
-                                                </button>
-                                                <button class="btn  btn-inverse gap-for-radio  btn-add"
-                                                    (click)="removeSisBro()">
-                                                    <span class="glyphicon glyphicon-minus" aria-hidden="true">
-                                                    </span> Retirer
+                                                <button class="btn  btn-appointment" (click)="onAddFrSo()"
+                                                style="margin-left:0px">
+                                                Ajouter un frère / soeur
                                                 </button>
                                             </div>
-                                        </div><!-- .col-* -->
+                                            </div>
 
-                                    </div><!-- .row -->
+                                        </div>
+                                    </div>
 
 
                                 </div><!-- .container-fluid -->
@@ -423,7 +484,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
-                                                          [formControl]="wizardForm.controls['schoolName']">
+                                                          [formControl]="wizardForm.controls['schoolName']" maxlength="50">
                                                     </div>
                                                 </div>
                                             </div>
@@ -433,7 +494,7 @@
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" placeholder="Ville"
-                                                              [formControl]="wizardForm.controls['schoolCity']">
+                                                              [formControl]="wizardForm.controls['schoolCity']" maxlength="35">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -446,42 +507,99 @@
                                                                   [formControl]="wizardForm.controls['schoolClasse']">
                                                                     <option value="" selected>Choisir une classe</option>
                                                                     <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                                        <option value="PS">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                                                        <option value="MS">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                                                        <option value="GS">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                                        <option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                                        <option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                                        <option value="gs">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
                                                                     </optgroup>
                                                                     <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                                        <option value="CP">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                                                        <option value="CE1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                                                        <option value="CE2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                                        <option value="cp">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                                        <option value="ce1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                                        <option value="ce2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
                                                                     </optgroup>
                                                                     <optgroup label="Cycle 3 : Consolidation">
-                                                                        <option value="CM1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                                                        <option value="CM2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                                                        <option value="6eme">&nbsp;&nbsp;&nbsp;&nbsp;6eme</option>
+                                                                        <option value="cm1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                                        <option value="cm2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                                        <option value="6e">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Cycle 3 : Consolidation">
+                                                                        <option value="sixieme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
                                                                     </optgroup>
                                                                     <optgroup label="Cycle 4 : Approfondissement">
-                                                                        <option value="5ème">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
-                                                                        <option value="4ème">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
-                                                                        <option value="3ème">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+                                                                        <option value="cinquieme">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+                                                                        <option value="quatrieme">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+                                                                        <option value="troisieme">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
                                                                     </optgroup>
                                                                     <optgroup label="2nde">
-                                                                        <option value="2ndGT">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                                        <option value="2ndePB">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
+                                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                        <option value="seconde_probation">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
                                                                     </optgroup>
                                                                     <optgroup label="1ere">
-                                                                        <option value="1ereES">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
-                                                                        <option value="1ereL">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
-                                                                        <option value="1ereS">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
+                                                                        <option value="premiere_es">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
+                                                                        <option value="premiere_l">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
+                                                                        <option value="premiere_s">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
                                                                     </optgroup>
                                                                     <optgroup label="Terminale">
-                                                                        <option value="TES">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
-                                                                        <option value="TL">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
-                                                                        <option value="TS">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
+                                                                        <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
+                                                                        <option value="terminale_l">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
+                                                                        <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
                                                                     </optgroup>
                                                                     <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
                                                                     <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
-                                                                    <option value="CNF">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
+                                                                    <option value="cursus_non_francophone">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
+                                                                    <optgroup label="STHR - Hôtellerie et Restauration">
+                                                                        <option value="seconde_sthr">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
+                                                                        <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
+                                                                        <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
+                                                                        <option value="terminale_sthr">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
+                                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                        <option value="premiere_sti2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
+                                                                        <option value="premiere_st2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
+                                                                        <option value="terminale_st2s">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
+                                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                        <option value="premiere_std2a">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
+                                                                        <option value="terminale_std2a">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
+                                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                        <option value="premiere_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
+                                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ST2D – Architecture et Construction</option>
+                                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
+                                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
+                                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
+                                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                        <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
+                                                                        <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
+                                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
+                                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
+                                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
+                                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="STL - Sciences et Technologies de Laboratoire">
+                                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                        <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
+                                                                        <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
+                                                                        <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
+                                                                        <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
+                                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                                        <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
+                                                                        <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
+                                                                        <option value="terminale_stav">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="TMD - Techniques de la Musique et de la Danse">
+                                                                        <option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
+                                                                        <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
+                                                                        <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
+                                                                        <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
+                                                                        <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
+                                                                    </optgroup>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -493,7 +611,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <input type="text" class="form-control" placeholder="Options"
-                                                          [formControl]="wizardForm.controls['schoolOption']">
+                                                          [formControl]="wizardForm.controls['schoolOption']"
+                                                          maxlength="50">
                                                     </div>
                                                 </div>
                                             </div>
@@ -600,6 +719,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
+<<<<<<< HEAD
 														<div class="select-custom-multiple">
 															<select class="form-control matery" multiple="multiple" [formControl]="wizardForm.controls['bestSubject']">
 																<option value="Maths">Maths</option>
@@ -620,6 +740,28 @@
 																<option value="Autre matières">Autre matières</option>
 															</select>
 														</div>
+=======
+                                                        <div class="select-custom-multiple">
+ 															<select class="form-control matery" multiple="multiple" [formControl]="wizardForm.controls['bestSubject']">
+ 																<option value="Maths">Maths</option>
+ 																<option value="Sciences Physiques">Sciences Physiques</option>
+ 																<option value="Sciences Naturelles">Sciences Naturelles</option>
+ 																<option value="Francais">Francais</option>
+ 																<option value="Anglais">Anglais</option>
+ 																<option value="Espagnol">Espagnol</option>
+ 																<option value="Allemand">Allemand</option>
+ 																<option value="Italien">Italien</option>
+ 																<option value="Autre langue">Autre langue</option>
+ 																<option value="Histoire">Histoire</option>
+ 																<option value="Géographie">Géographie</option>
+ 																<option value="Instruction Civique">Instruction Civique</option>
+ 																<option value="Sport">Sport</option>
+ 																<option value="Musique">Musique</option>
+ 																<option value="Arts PLastiques">Arts PLastiques</option>
+ 																<option value="Autre matières">Autre matières</option>
+ 															</select>
+ 														</div>
+>>>>>>> origin/master
                                                     </div>
                                                 </div>
                                             </div>
@@ -627,6 +769,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
+<<<<<<< HEAD
 														<div class="select-custom-multiple">
 															<select class="form-control matery" multiple="multiple" [formControl]="wizardForm.controls['weakSubject']">
 																<option value="Maths">Maths</option>
@@ -647,36 +790,31 @@
 																<option value="Autre matières">Autre matières</option>
 															</select>
 														</div>
+=======
+                                                      <div class="select-custom-multiple">
+ 															<select class="form-control matery" multiple="multiple" [formControl]="wizardForm.controls['weakSubject']">
+ 																<option value="Maths">Maths</option>
+ 																<option value="Sciences Physiques">Sciences Physiques</option>
+ 																<option value="Sciences Naturelles">Sciences Naturelles</option>
+ 																<option value="Francais">Francais</option>
+ 																<option value="Anglais">Anglais</option>
+ 																<option value="Espagnol">Espagnol</option>
+ 																<option value="Allemand">Allemand</option>
+ 																<option value="Italien">Italien</option>
+ 																<option value="Autre langue">Autre langue</option>
+ 																<option value="Histoire">Histoire</option>
+ 																<option value="Géographie">Géographie</option>
+ 																<option value="Instruction Civique">Instruction Civique</option>
+ 																<option value="Sport">Sport</option>
+ 																<option value="Musique">Musique</option>
+ 																<option value="Arts PLastiques">Arts PLastiques</option>
+ 																<option value="Autre matières">Autre matières</option>
+ 															</select>
+ 														</div>
+>>>>>>> origin/master
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!-- <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="select-custom">
-                                                            <select name="" class="form-control matery" multiple="multiple">
-                                                                <option value="">Votre goût pour les matières</option>
-                                                                <option value="Maths">Maths</option>
-                                                                <option value="Sciences Physiques">Sciences Physiques</option>
-                                                                <option value="Sciences Naturelles">Sciences Naturelles</option>
-                                                                <option value="Francais">Francais</option>
-                                                                <option value="Anglais">Anglais</option>
-                                                                <option value="Espagnol">Espagnol</option>
-                                                                <option value="Allemand">Allemand</option>
-                                                                <option value="Italien">Italien</option>
-                                                                <option value="Autre langue">Autre langue</option>
-                                                                <option value="Histoire">Histoire</option>
-                                                                <option value="Géographie">Géographie</option>
-                                                                <option value="Instruction Civique">Instruction Civique</option>
-                                                                <option value="Sport">Sport</option>
-                                                                <option value="Musique">Musique</option>
-                                                                <option value="Arts PLastiques">Arts PLastiques</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
 
                                         </div><!-- .col-* -->
                                     </div><!-- .row -->
@@ -694,32 +832,41 @@
                                             <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
                     
                                             
-                                                <div class="row" *ngFor="let metier of metiers">
-                                                    <h4>{{ metier }}</h4>
+                                                <div class="row" formArrayName="job" 
+                                                    *ngFor="let parent of wizardForm.controls['job']['controls']; let i = index">
+                                                <div [formGroupName]="i">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Job"
-                                                              [formControl]="wizardForm.controls['interestJob']">
-                                                        </div>
+                                                    <h4>Métier {{i+1}}</h4>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Job" 
+                                                        formControlName="interestJob"
+                                                        maxlength="25">
+                                                    </div>
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Age"
-                                                              [formControl]="wizardForm.controls['interestAge']">
-                                                        </div>
+                                                    <h4>&nbsp;</h4>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Age" 
+                                                        formControlName="interestAge"
+                                                        maxlength="2">
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                    <h4>&nbsp;</h4>
+                                                    <button class="btn  btn-danger" style="float:right" 
+                                                        (click)="onRemoveJob(i)"
+                                                        [disabled]="wizardForm.controls['job']['controls'].length==0">
+                                                        Retirer un métier
+                                                    </button>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <button class="btn  btn-inverse  btn-add"
-                                                        (click)="onAddJob()">
-                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                                                        </span> Ajouter
-                                                    </button>
-                                                    <button class="btn  btn-inverse  btn-add"
-                                                        (click)="onRemoveJob()">
-                                                        <span class="glyphicon glyphicon-minus" aria-hidden="true">
-                                                        </span> Retirer
-                                                    </button>
+                                                </div>
+
+                                                <div class="row">
+                                                <button class="btn  btn-appointment" (click)="onAddJob()"
+                                                    style="margin-left:15px">
+                                                    Ajouter un métier
+                                                </button>
                                                 </div>
                                             
 
@@ -728,7 +875,8 @@
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels sont vos centres d’interets"
-                                                          [formControl]="wizardForm.controls['yourInterest']">
+                                                          [formControl]="wizardForm.controls['yourInterest']"
+                                                          maxlength="60">
                                                     </div>
                                                 </div>
                                             </div>
@@ -738,7 +886,8 @@
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels loisirs et activités pratiquez-vous"
-                                                          [formControl]="wizardForm.controls['practiceInterest']">
+                                                          [formControl]="wizardForm.controls['practiceInterest']"
+                                                          maxlength="60">
                                                     </div>
                                                 </div>
                                             </div>                          
@@ -749,90 +898,98 @@
                             </div><!-- #tab6 -->
                         </md-tab>
 
-                        <md-tab label="Etablissements fréquentés">
+                        <md-tab label="Etablissements fréquentés" *ngIf="canDisplaySchool">
                             <div class="tab-pane" id="tab7">
                                 <div class="container-fluid">
                                     <div class="row">
                                        <div class="col-md-8">
                                             <h3>Etablissements fréquentés</h3>
-                                                <div class="row"
-                                                    *ngFor="let primaire of primaires">
-                                                    <h4>{{primaire}}</h4>
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Nom"
-                                                              [formControl]="wizardForm.controls['primarySchoolName']">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <div class="select-custom">
-                                                                <select name="" class="form-control"
-                                                                  [formControl]="wizardForm.controls['primarySchoolRepeat']">
-                                                                    <option value="" disabled selected hidden>Classe redoublée</option>
-                                                                    <option *ngFor="let school of primarySchool" value="school">{{ school }}</option>
-                                                                </select>
+                                                <div class="row" formArrayName="primary"
+                                                    *ngFor="let parent of wizardForm.controls['primary']['controls']; let i = index">
+                                                    <div [formGroupName]="i">
+                                                        <h4 style="margin-left:15px">Primaire {{i+1}}</h4>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Nom"
+                                                                formControlName="primarySchoolName"
+                                                                maxlength="100">
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Cause du redoublement"
-                                                              [formControl]="wizardForm.controls['causeOfRepeatPrimary']">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <div class="select-custom">
+                                                                    <select name="" class="form-control"
+                                                                        formControlName="primarySchoolRepeat">
+                                                                        <option value="" disabled selected hidden>Classe redoublée</option>
+                                                                        <option *ngFor="let school of primarySchool" value="school">{{ school }}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Cause du redoublement"
+                                                                formControlName="causeOfRepeatPrimary"
+                                                                maxlength="100">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <button class="btn  btn-danger" style="float:right" 
+                                                                (click)="onRemovePrimaire(i)"
+                                                                [disabled]="wizardForm.controls['primary']['controls'].length==0">
+                                                                Retirer une école primaire
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button class="btn  btn-inverse  btn-add"
+                                                    <button class="btn  btn-appointment" style="margin-left:0px" 
                                                         (click)="onAddPrimaire()">
-                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                                        Ajouter un établissement primaire
-                                                    </button>
-                                                    <button class="btn  btn-inverse  btn-add"
-                                                        (click)="onRemovePrimaire()">
-                                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                                        Retirer un établissement primaire
+                                                        Ajouter une école primaire
                                                     </button>
                                                 </div>
-                                                <div class="row"
-                                                    *ngFor="let secondaire of secondaires">
-                                                    <h4>{{secondaire}}</h4>
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Nom"
-                                                              [formControl]="wizardForm.controls['secondarySchoolName']">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <div class="select-custom">
-                                                                <select name="" class="form-control"
-                                                                  [formControl]="wizardForm.controls['secondarySchoolRepeat']">
-                                                                    <option value="" disabled selected hidden>Classe redoublée</option>
-                                                                    <option *ngFor="let school of secondarySchool" value="school">{{ school }}</option>
-                                                                </select>
+                                                <div class="row" formArrayName="secondary"
+                                                    *ngFor="let parent of wizardForm.controls['secondary']['controls']; let i = index">
+                                                    <div [formGroupName]="i">
+                                                        <h4 style="margin-left:15px">Secondaire {{i+1}}</h4>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Nom"
+                                                                formControlName="secondarySchoolName"
+                                                                maxlength="100">
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Cause du redoublement"
-                                                              [formControl]="wizardForm.controls['causeOfRepeatSecondary']">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <div class="select-custom">
+                                                                    <select name="" class="form-control"
+                                                                        formControlName="secondarySchoolRepeat">
+                                                                        <option value="" disabled selected hidden>Classe redoublée</option>
+                                                                        <option *ngFor="let school of secondarySchool" value="school">{{ school }}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Cause du redoublement"
+                                                                formControlName="causeOfRepeatSecondary"
+                                                                maxlength="100">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <button class="btn  btn-danger" style="float:right" 
+                                                                (click)="onRemoveSecondaire(i)"
+                                                                [disabled]="wizardForm.controls['secondary']['controls'].length==0">
+                                                                Retirer une école secondaire
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button class="btn  btn-inverse  btn-add"
-                                                        (click)="onAddSecondaire()">
-                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                                                        </span>
-                                                        Ajouter un établissement secondaire
-                                                    </button>
-                                                    <button class="btn  btn-inverse  btn-add"
-                                                        (click)="onRemoveSecondaire()">
-                                                        <span class="glyphicon glyphicon-minus" aria-hidden="true">
-                                                        </span>
-                                                        Retirer un établissement secondaire
+                                                    <button class="btn  btn-appointment" 
+                                                        (click)="onAddSecondaire()" style="margin-left:0px">
+                                                        Ajouter une école secondaire
                                                     </button>
                                                 </div>
 
@@ -1313,7 +1470,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <input type="text" class="form-control" placeholder="Motif du Diagnostic"
-                                                          [formControl]="wizardForm.controls['reasonDiagnostic']">
+                                                          [formControl]="wizardForm.controls['reasonDiagnostic']"
+                                                          maxlength="50">
                                                     </div>
                                                 </div>
                                             </div>

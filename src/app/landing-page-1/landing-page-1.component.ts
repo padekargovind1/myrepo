@@ -12,7 +12,11 @@ declare var $ :any;
 export class LandingPage1Component implements OnInit, AfterViewInit {
 
   searchForm: FormGroup;
-  options: any;
+  options={
+    regions : [],
+    departements : [],
+    villes : []
+  };
   schoolsOptions: any;
   constructor(private fb : FormBuilder,
               private publicService : PublicService,
@@ -21,6 +25,23 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+  }
+
+  buildForm(){
+    console.log('build form')
+    this.searchForm = this.fb.group({
+      classe : [''],
+      lieu : [''],
+      etablissement : ['']
+    })
+    this.initOptions();
+  }
+
+  initOptions(){
+    this.options['regions']=[];
+    this.options['departements']=[];
+    this.options['villes']=[];
+    console.log(this.options)
   }
 
   ngAfterViewInit() {
@@ -38,13 +59,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     });
   }
 
-  buildForm(){
-    this.searchForm = this.fb.group({
-      classe : [''],
-      lieu : [''],
-      etablissement : ['']
-    })
-  }
+  
 
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
@@ -62,8 +77,6 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     let filter: string = event.target.value;
     if(filter.length>=2){
       this.getLieuFilter(filter)
-    }else {
-      this.options=null;
     }
   }
 
@@ -75,8 +88,11 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(data);
-          this.options=data
+          // console.log(this.options);
+          this.options['regions']=data.regions
+          this.options['departements']=data.departments
+          this.options['villes']=data.cities
+          // console.log(this.options)
         }
       )
   }

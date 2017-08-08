@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
+import { UsersService } from '../services/users.service';
 import swal from 'sweetalert2';
 var self = this;
 @Component({
@@ -22,12 +23,18 @@ export class CompareModeComponent implements OnInit {
     photo:"school-1.jpg"
   }
   showSchool : boolean = false;
+  addSchoolsOptions=[];
+  canAddSchool : boolean = false;
+  schoolIdToCompare : string = "";
+  counterId : number = 0;
+  schoolBrochure=[];
 
   constructor(private location : Location,
               private route : ActivatedRoute,
               private publicService : PublicService,
               private compareService : CompareService,
-              private router : Router) { }
+              private router : Router,
+              private usersService : UsersService) { }
 
   ngOnInit() {
     this.compareListFilter = this.compareService.getCompareFilter();
@@ -35,16 +42,7 @@ export class CompareModeComponent implements OnInit {
     if(this.compareListFilter[0]==null){
       this.location.back();
     }
-    // console.log(this.compareListFilter);
-    // console.log(this.route.snapshot.params);
-    this.schoolToCompare.ids.push(this.route.snapshot.params[0]);
-    this.schoolToCompare.ids.push(this.route.snapshot.params[1]);
-    if(this.route.snapshot.params[2]){
-      this.schoolToCompare.ids.push(this.route.snapshot.params[2]);
-    }
-    if (this.route.snapshot.params[3]){
-      this.schoolToCompare.ids.push(this.route.snapshot.params[3]);
-    }
+    this.schoolToCompare.ids=this.compareService.getSchoolToCompareId()
     this.getSchoolData();
   }
 
@@ -53,33 +51,45 @@ export class CompareModeComponent implements OnInit {
       .subscribe(
         response=>{
           let data = response.data;
+          for(let school of data){
+            school.counter=this.counterId;
+            this.counterId++;
+          }
           this.schoolDataToDisplay=data;
           this.showSchool=true;
           console.log(this.schoolDataToDisplay, this.showSchool)
+          // this.getSchoolBrochure();
         }
       )
-    // this.schoolDataToDisplay.pop()
-    // for(let school of this.schoolToCompare){
-    //   this.publicService.getSchoolById(school)
-    //     .subscribe(
-    //       (response)=>{
-    //         let data = response.data;
-    //         // console.log(data);
-    //         this.schoolDataToDisplay.push(data);
-    //         // console.log(this.schoolDataToDisplay);
-    //       }
-    //     )
-    // }
+  }
+
+  getSchoolBrochure(){
+    this.schoolBrochure=[];
+    for(let school of this.schoolDataToDisplay){
+      this.publicService.getBrochurebyId(school._id, school.cycles[0].cycle._id)
+        .subscribe(
+          response => {
+            console.log(response)
+            if(response.code==400){
+              console.log(response.message)
+            } else {
+              this.schoolBrochure.push(response.data)
+            }
+          }
+        )
+    }
   }
 
   onNavigateBack(){
     this.location.back();
   }
 
-  onDeleteCompare(school){
+  onDeleteCompare(index){
     console.log("click on delete");
     // console.log(this.schoolDataToDisplay);
-    this.schoolDataToDisplay.splice(school, 1);
+    this.schoolDataToDisplay.splice(index, 1);
+    this.schoolToCompare.ids.splice(index, 1);
+    this.compareService.storeSchoolId(this.schoolToCompare.ids)
     if(this.schoolDataToDisplay.length==0){
       this.showSchool=false
     }
@@ -97,6 +107,65 @@ export class CompareModeComponent implements OnInit {
     this.applytoSchool.lName=school.longName;
     this.applytoSchool.sName=school.shortName;
     this.applytoSchool.photo="school-1.jpg";
+  }
+
+  saveInWish(index){
+    const data = {
+      type : "wish",
+      school : this.schoolDataToDisplay[index]._id
+    }
+    this.usersService.postApplication(data)
+      .subscribe(
+        response=>{
+          console.log(response)
+        }
+      )
+  }
+
+  addSchoolKeyDown(event){
+    this.canAddSchool=false;
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+      this.getSchoolFilter(filter)
+    }else {
+      this.addSchoolsOptions=null;
+    }
+  }
+
+  getSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutocompleteSchool(data)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          this.addSchoolsOptions=data
+        }
+      )
+  }
+
+  onSchoolClick(schoolId){
+    console.log(schoolId)
+    this.canAddSchool=true;
+    this.schoolIdToCompare=schoolId;
+  }
+
+  onAddSchool(){
+    if(this.schoolToCompare.ids.indexOf(this.schoolIdToCompare)==-1){
+      this.schoolToCompare.ids.push(this.schoolIdToCompare);
+      this.compareService.storeSchoolId(this.schoolToCompare.ids);
+      this.getSchoolData();
+    }else {
+      swal({
+        title: 'Erreur',
+        text: "Vous ne pouvez pas comparer deux mêmes écoles",
+        type: 'error',
+        confirmButtonText: 'Ok'
+      })
+    }
   }
 
 }

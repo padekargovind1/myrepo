@@ -33,7 +33,11 @@ export class SchoolComponent implements OnInit {
   canFilter : boolean = false;
   searchFilter = ["", "", ""];
   searchForm : FormGroup;
-  options: any;
+  options={
+    regions : [],
+    departements : [],
+    villes : []
+  };
   schoolsOptions: any;
   advancedSearch={
     code : []
@@ -142,11 +146,15 @@ export class SchoolComponent implements OnInit {
             this.schoolComponentTitle="Un lycée 2nde-Tle"
             $('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
             this.advancedSearch.code=[this.pathName]
-          } else {
+          } else if(this.pathName == "internat"){
             this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
             this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
             this.schoolComponentTitle="Un Internat Maternelle au Lycée"
             $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
+          } else {
+            this.advancedSearch.code=["enseignement"]
+            this.schoolComponentTitle="Enseignement Supérieur";
+            $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
           }
           // this.getAllSchool(this.limit);
           this.postAdvancedFilter()
@@ -160,6 +168,14 @@ export class SchoolComponent implements OnInit {
       lieu : [''],
       etablissement : ['']
     })
+    this.initOptions()
+  }
+
+  initOptions(){
+    this.options['regions']=[];
+    this.options['departements']=[];
+    this.options['villes']=[];
+    console.log(this.options)
   }
 
   onCheckbox(schoolId){
@@ -193,13 +209,13 @@ export class SchoolComponent implements OnInit {
     // console.log(index, this.compareListFilter[index]);
     this.compareListFilter[index] = !this.compareListFilter[index];
     this.canFilter = this.checkFilterBox();
-    console.log(this.canFilter);
+    // console.log(this.canFilter);
   }
 
   checkFilterBox(){
     let i = 0;
     for(let filter of this.compareListFilter){
-      console.log(filter);
+      // console.log(filter);
       if(filter==true){
         return true;
       }
@@ -209,10 +225,9 @@ export class SchoolComponent implements OnInit {
   }
 
   onCompare(){
-    let schoolList = this.compareList;
-    console.log(schoolList, this.compareListFilter);
     this.compareService.storeCompareFilter(this.compareListFilter);
-    this.router.navigate(['/compare-mode/', schoolList]);
+    this.compareService.storeSchoolId(this.compareList)
+    this.router.navigate(['/compare-mode/']);
   }
 
 
@@ -249,8 +264,6 @@ export class SchoolComponent implements OnInit {
     let filter: string = event.target.value;
     if(filter.length>=2){
       this.getLieuFilter(filter)
-    }else {
-      this.options=null;
     }
   }
 
@@ -273,7 +286,9 @@ export class SchoolComponent implements OnInit {
         (response)=>{
           let data = response.data;
           console.log(data);
-          this.options=data
+          this.options['regions']=data.regions
+          this.options['departements']=data.departments
+          this.options['villes']=data.cities
         }
       )
   }

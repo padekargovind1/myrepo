@@ -31,8 +31,8 @@ export class PublicService {
       .map((response)=>response.json());
   }
 
-  getBrochure(): Observable<any>{
-    return this.http.get(SCHOOLS_API+'brochures')
+  postBrochure(data): Observable<any>{
+    return this.http.post(SCHOOLS_API+'brochures', data)
       .map((response)=>response.json());
   }
 

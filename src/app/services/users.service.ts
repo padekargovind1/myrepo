@@ -10,7 +10,7 @@ import {MyAccountMdl,
         MyAccountHistoryMdl,
         MyAccountBulletin } from '../model/myaccount.model';
 
-const PROFILE_API : string = "http://54.254.203.172/cideapi/api/users/profile";
+const PROFILE_API : string = "http://54.254.203.172/cideapi/api/common/profile";
 const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/users/appointments";
 const PACKAGE_API : string = "http://54.254.203.172/cideapi/api/users/package";
 const APPLICATION_API : string = "http://54.254.203.172/cideapi/api/users/apply";
@@ -19,7 +19,7 @@ const TRIPS_API: string = "http://54.254.203.172/cideapi/api/users/trips";
 @Injectable()
 export class UsersService {
 
-  private parentData : MyAccountParentMdl;
+  private parentData = [];
   private childData : MyAccountMdl;
   private token : string='';
 
@@ -47,7 +47,7 @@ export class UsersService {
     // console.log(this.token);
   }
 
-  storeParentData(parentData : MyAccountParentMdl){
+  storeParentData(parentData){
     this.parentData=parentData;
     console.log(this.parentData);
   }
@@ -132,8 +132,25 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
+  deleteApplciation(data): Observable<any>{
+    return this.http.delete(APPLICATION_API+'?token='+this.token, data)
+      .map((response)=>response.json())
+  }
+
   postTrip(data):Observable<any>{
     return this.http.post(TRIPS_API+'?token='+this.token, data, {headers: this.headers})
       .map((response)=>response.json())
+  }
+
+  storeTabNb(data){
+    localStorage.setItem('myaccountTab', data);
+  }
+
+  getTabNb(){
+    return localStorage.getItem('myaccountTab');
+  }
+
+  cleanTabNb(){
+    localStorage.removeItem('myaccountTab');
   }
 }

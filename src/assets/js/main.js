@@ -46,4 +46,12 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+    $(".mat-tab-label-container .mat-tab-label").click(function(){
+ 		if($(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple select").length>0)
+ 		{
+ 			$(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple select").select2({
+ 				placeholder: 'Matières fortes'
+ 			});
+ 		}
+ 	});
 });

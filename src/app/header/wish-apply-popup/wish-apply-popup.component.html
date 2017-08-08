@@ -1,0 +1,99 @@
+<!--<div class="modal-dialog modal-download">
+  <div class="modal-content">
+    <div class="modal-body  wishlist">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#tab1" data-toggle="tab">Ma candidature</a></li>
+        <li><a href="#tab2" data-toggle="tab">Ma liste d'envies</a></li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab1">
+          <div class="card  school-list">                               
+            <div class="card-content">
+              <img src="assets/images/school-1.jpg" alt="School 1" />
+              <h3>Lycee Saint-Charles</h3>
+              <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
+              <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
+              <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab2">
+          <div class="card  school-list">                               
+            <div class="card-content">
+              <img src="assets/images/school-1.jpg" alt="School 1" />
+              <h3>Lycee Saint-Charles</h3>
+              <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
+              <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
+              <a href="apb-prive-etablissement.html" class="btn btn-highlighted">Détail de l'école</a>
+              <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#apply-popup">Je postule</button>
+            </div>
+          </div>
+        </div> 
+      </div> 
+      <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" 
+        type="button">Annuler
+      </button>
+    </div>
+  </div>
+</div>-->
+
+<md-tab-group #tabGroup>
+
+  <md-tab label="Ma candidature">
+    <div *ngIf="applyList.length!=0" style="max-height:400px">
+      <div class="card  school-list" *ngFor="let apply of applyList">                               
+        <div class="card-content" style="max-width:476px">
+          <img src="assets/images/school-1.jpg" alt="School 1" style="height:124px"/>
+          <h3>{{apply.school.shortName}}</h3>
+          <p>{{apply.school.longName}} 
+            {{apply.school.cycles[0].status1[0]}} 
+            {{apply.school.cycles[0].status3[0]}}
+            {{apply.school.cycles[0].status2[0]}}</p>
+          <address>{{apply.school.address.ad1}} 
+            {{apply.school.address.postcode}} 
+            {{apply.school.address.city}} <br /> 
+            Tel: {{apply.school.address.phone}}
+          </address>
+          <a (click)="onSchoolDetail(apply.school._id)" class="btn btn-highlighted btn-block">
+            Détails
+          </a>
+        </div><!-- .card-content -->
+      </div>
+    </div>
+  </md-tab>
+  
+  <md-tab label="Ma liste d'envies">
+    <div *ngIf="wishList.length!=0" style="max-height:400px">
+      <div class="card  school-list" *ngFor="let wish of wishList">                               
+        <div class="card-content" style="max-width:476px">
+          <img src="assets/images/school-1.jpg" alt="School 1" style="height:124px"/>
+          <h3>{{wish.school.shortName}}</h3>
+          <p>{{wish.school.longName}} 
+            {{wish.school.cycles[0].status1[0]}} 
+            {{wish.school.cycles[0].status3[0]}}
+            {{wish.school.cycles[0].status2[0]}}</p>
+          <address>{{wish.school.address.ad1}} 
+            {{wish.school.address.postcode}} 
+            {{wish.school.address.city}} <br /> 
+            Tel: {{wish.school.address.phone}}
+          </address>
+          <a (click)="onSchoolDetail(wish.school._id)" 
+            class="btn btn-highlighted btn-block">
+            Détails
+          </a>
+          <button (click)="onSchoolApply(wish.school._id)" type="button" 
+            class="btn btn-secondary btn-block">
+            Je postule
+          </button>
+        </div><!-- .card-content -->
+      </div>
+    </div>
+  </md-tab>
+
+</md-tab-group>
+<div style="width:20%; margin-left:40%">
+  <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" 
+    type="button" (click)="onCancel()">Annuler
+  </button>
+</div>
+  

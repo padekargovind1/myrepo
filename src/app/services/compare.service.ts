@@ -42,4 +42,30 @@ export class CompareService {
     }
   }
 
+  storeSchoolId(data){
+    console.log(data)
+    this.cleanSchoolCompare();
+    for(let i =0; i<4; i++){
+      if(!!data[i]){
+        localStorage.setItem('compare'+i, data[i])
+      }
+    }
+  }
+
+  getSchoolToCompareId(){
+    let data = [];
+    for(let i = 0; i<4; i++){
+      if(!!localStorage.getItem('compare'+i)){
+        data.push(localStorage.getItem('compare'+i))
+      }
+    }
+    return data;
+  }
+
+  cleanSchoolCompare(){
+    for(let i = 0; i<4; i++){
+      localStorage.removeItem('compare'+i)
+    }
+  }
+
 }

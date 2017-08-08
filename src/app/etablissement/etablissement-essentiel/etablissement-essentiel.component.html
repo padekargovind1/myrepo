@@ -1,6 +1,7 @@
 <div class="panel-body">
 
-  <div class="wrapper wrapper-content animated fadeInRight">
+  <div class="wrapper wrapper-content animated fadeInRight"
+    *ngIf="gettingSchool">
   
       <div class="table-responsive">
 
@@ -13,7 +14,7 @@
                       </td>
                       <td>
                           <strong>Nombre D'Eleves</strong><br />
-                          {{schoolData.numberOfStudents}}
+                          {{schoolData['nb_Student_total']}}
                       </td>
                   </tr>
                   <tr>
@@ -23,27 +24,27 @@
                       </td>
                       <td>
                           <strong>Academie</strong><br />
-                          {{schoolData.academic}}
+                          {{schoolData.address.academy}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Departement</strong><br />
-                          {{schoolData.departement}}
+                          {{schoolData.address.departmentName}}
                       </td>
                       <td>
                           <strong>Tel</strong><br />
-                          +33 {{schoolData.tel}}
+                          +33 {{schoolData.address.phoneNumber}}
                       </td>
                   </tr>
                   <tr>
                       <td>
-                          <strong>Website</strong><br />
-                          {{schoolData.website}}
+                          <strong>Site Internet</strong><br />
+                          {{schoolData.address.url}}
                       </td>
                       <td>
                           <strong>Mél</strong><br />
-                          {{schoolData.mel}}
+                          {{schoolData.address.email}}
                       </td>
                   </tr>
               </tbody>
@@ -60,25 +61,30 @@
                   <tr>
                       <td>
                           <strong>Titre</strong><br />
-                          {{schoolData.title}}
+                          <!--{{schoolData.title}}-->
+                          Mme
                       </td>
                       <td>
                           <strong>Prénom</strong><br />
-                          {{schoolData.firstName}}
+                          <!--{{schoolData.firstName}}-->
+                          Anita
                       </td>
                       <td>
                           <strong>Nom</strong><br />
-                          {{schoolData.lastName}}
+                          <!--{{schoolData.lastName}}-->
+                          Lubies
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Fonction</strong><br />
-                          {{schoolData.fonction}}
+                          <!--{{schoolData.fonction}}-->
+                          Directeur
                       </td>
                       <td>
                           <strong>Dir. Cycles</strong><br />
-                          {{schoolData.dirCycle}}
+                          <!--{{schoolData.dirCycle}}-->
+                          Ecole
                       </td>
                       <td>&nbsp;
                       </td>

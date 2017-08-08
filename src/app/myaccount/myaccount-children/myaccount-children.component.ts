@@ -29,14 +29,14 @@ export class MyaccountChildrenComponent implements OnInit {
 
   public childrenForm : FormGroup;
   // children = ["Frère / Sœur 1"];
-  nbChild : number = 1;
+  canDisplay: boolean = false;
+  siblings : any;
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
               private route : Router,
               private authService : AuthService) { 
     if(this.authService.getToken() != "") {
-      this.buildFormGroup();
       this.getUserProfile();
       this.parentData.address = new MyAccountAdresse();
     } else {
@@ -50,7 +50,23 @@ export class MyaccountChildrenComponent implements OnInit {
     // console.log(date);
   }
 
-  buildFormGroup(){
+  getUserProfile(){
+    this.usersService.getProfile()
+      .subscribe(
+        (data)=>{
+          let response = data;
+          console.log(response);
+          this.buildFormGroup(response.data[0].siblings);
+          this.createProfile(response.data[0]);
+          this.patchValue(response.data[0]);
+          this.completeProfile();
+          this.canDisplay=true;
+          console.log(this.childrenForm)
+        }
+      )
+  }
+
+  buildFormGroup(siblings){
     this.childrenForm = this.fb.group({
       nom : ['', Validators.required],
       prenom : ['', Validators.required],
@@ -63,28 +79,27 @@ export class MyaccountChildrenComponent implements OnInit {
       ville : ['', Validators.required],
       datenaissance : ['', Validators.compose([Validators.required, CustomValidators.date])],
       lieu : ['', Validators.required],
-      freresoeur : this.fb.array([])
+      freresoeur : this.fb.array([this.createfs()])
     })
-    this.addFS();
+    if(siblings.length>1){
+      for(let i = 1; i<siblings.length; i++){
+        this.childrenForm.controls['freresoeur']['controls'].push((this.createfs()))
+      }
+    }
+    console.log(this.childrenForm)
+    // this.addFS();
   }
 
-  addFS(){
-    const control = <FormArray>this.childrenForm.controls['freresoeur'];
-    const addrCtrl = this.initfs();
-
-    control.push(addrCtrl);
-  }
-
-  initfs(){
+  createfs(){
     return this.fb.group({
-      // gender : ['', Validators.required],
-      // age : ['', Validators.required],
-      // niveau : ['', Validators.required]
+      gender : ['', Validators.required],
+      age : ['', Validators.required],
+      niveau : ['', Validators.required]
     })
   }
 
   patchValue(data: any){
-    // console.log(data.address);
+    console.log(data);
     this.childrenForm.patchValue({
       nom : data.lastName,
       prenom : data.firstName,
@@ -105,6 +120,16 @@ export class MyaccountChildrenComponent implements OnInit {
     //   age : data.siblings
     // })
     }
+    for (let i = 0; i<this.childrenForm.controls['freresoeur']['controls'].length; i++){
+      if(data.siblings.length!=0){
+        this.childrenForm.controls['freresoeur']['controls'][i].patchValue({
+          gender : data.siblings[i].gender,
+          age : data.siblings[i].age,
+          niveau : data.siblings[i].study
+        })
+      }
+    }
+    console.log(this.childrenForm);
   }
 
   completeProfile(){
@@ -119,6 +144,13 @@ export class MyaccountChildrenComponent implements OnInit {
     this.myProfile.address.city = this.childrenForm.controls.ville.value;
     this.myProfile.birthDate = this.childrenForm.controls.datenaissance.value;
     this.myProfile.birthPlace = this.childrenForm.controls.lieu.value;
+    console.log(this.myProfile.siblings)
+    for(let i = 0; i<this.childrenForm.controls['freresoeur']['controls'].length; i++){
+      this.myProfile.siblings[i].age=this.childrenForm.controls['freresoeur']['controls'][i].controls.age.value;
+      this.myProfile.siblings[i].gender=this.childrenForm.controls['freresoeur']['controls'][i].controls.gender.value;
+      this.myProfile.siblings[i].study=this.childrenForm.controls['freresoeur']['controls'][i].controls.niveau.value;
+    }
+    
     // let i=0;
     // console.log(this.childrenForm.controls.freresoeur.value)
     // for (let sibling of this.childrenForm.controls.freresoeur.value){
@@ -127,7 +159,7 @@ export class MyaccountChildrenComponent implements OnInit {
     //   this.myProfile.siblings[i].study = sibling[i].niveau.value;
     //   i++;
     // }
-    // console.log(this.myProfile);
+    console.log(this.myProfile);
     this.usersService.storeChildData(this.myProfile);
   }
 
@@ -145,7 +177,7 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   save(){
-    this.myProfile.parents[0] = this.usersService.getParentData();
+    this.myProfile.parents = this.usersService.getParentData();
     // console.log(this.myProfile);
     this.usersService.putProfile(this.myProfile)
       .subscribe(
@@ -157,52 +189,29 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   onAddChild(){
-    // this.nbChild++;
-    // console.log("Child number " + this.nbChild + " added!");
-    // this.children.push("Frère / Sœur " + this.nbChild);
-    this.addFS();
-    this.myProfile.siblings.push(new MyAccountSiblingsMdl());
+    this.siblings = this.childrenForm.get('freresoeur') as FormArray;
+    this.siblings.push(this.createfs());
+    this.myProfile.siblings.push(new MyAccountSiblingsMdl);
   }
 
-  onRemoveChild(){
-    if(this.nbChild>0){
-      // this.nbChild--;
-      // this.children.pop();
-      // console.log("Child removed!")
-      const control = <FormArray>this.childrenForm.controls['freresoeur'];
-      control.removeAt(control.length-1);
-      this.myProfile.siblings.pop();
-    } else {
-      console.log("Can't remove 0 child");
-    }
-  }
-
-  getUserProfile(){
-    this.usersService.getProfile()
-      .subscribe(
-        (data)=>{
-          let response = data;
-          // console.log(response);
-          this.createProfile(response.data[0]);
-          this.patchValue(response.data[0]);
-          this.completeProfile();
-        }
-      )
+  onRemoveChild(index){
+    this.siblings = this.childrenForm.get('freresoeur') as FormArray;
+    this.siblings.removeAt(index, 1);
+    this.myProfile.siblings.splice(index, 1);
   }
 
   createProfile(data){
-    this.myProfile.parents[0]= new MyAccountParentMdl();
-    this.myProfile.parents[0].address = new MyAccountAdresse();
+    console.log(data)
+    this.myProfile.parents= [];
     this.myProfile.address= new MyAccountAdresse();
     this.myProfile.socialAddresses = new MyAccountSocialAdrMdl();
     this.myProfile.academicHistories[0]={};
     this.myProfile.academicHistories[0] = new MyAccountHistoryMdl(); 
     this.myProfile.bulletins[0] = new MyAccountBulletin();
     this.myProfile.siblings[0]=new MyAccountSiblingsMdl();
-    // for(let sibling of data.siblings){
-    //   this.myProfile.siblings.push(new MyAccountSiblingsMdl());
-    // }
-    // console.log(this.myProfile);
+    for(let i = 1; i<data.siblings.length; i++){
+      this.myProfile.siblings[i]=new MyAccountSiblingsMdl();
+    }
   }
 
 }
