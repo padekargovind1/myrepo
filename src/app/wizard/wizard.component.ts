@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
@@ -14,7 +14,7 @@ import swal from 'sweetalert2';
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.scss']
 })
-export class WizardComponent implements OnInit, AfterViewInit {
+export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   tokenLog : boolean = false;
   bookingData:any;
@@ -69,9 +69,17 @@ export class WizardComponent implements OnInit, AfterViewInit {
         title: 'Attention',
         text: "Vous devez être connecté afin de prendre un rendez-vous.",
         type: 'warning',
-        confirmButtonText: 'Ok'
+        confirmButtonText: "J'ai compris"
       })
       this.route.navigate(['/login']);
+    } else if(!this.bookingService.haveBookingData()){
+      swal({
+        title: 'Attention',
+        text: "Vous devez hoisir un conseiller avant de remplri le formulaire",
+        type: 'warning',
+        confirmButtonText: "J'ai compris"
+      })
+      this.route.navigate(['/booking']);
     } else {
       this.appointmentData = this.bookingService.getBookingData();
       console.log(this.appointmentData);
@@ -90,6 +98,11 @@ export class WizardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // this.datePicker();
     this.checked = false;
+  }
+
+  ngOnDestroy(){
+    this.bookingService.cleanBooking()
+    console.log("destroy")
   }
 
   /*

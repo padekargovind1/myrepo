@@ -151,13 +151,14 @@ export class SchoolComponent implements OnInit {
             this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
             this.schoolComponentTitle="Un Internat Maternelle au Lycée"
             $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
+            this.postAdvancedFilter()
           } else {
             this.advancedSearch.code=["enseignement"]
             this.schoolComponentTitle="Enseignement Supérieur";
             $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
           }
           // this.getAllSchool(this.limit);
-          this.postAdvancedFilter()
+          
         }
       )
   }
@@ -168,7 +169,19 @@ export class SchoolComponent implements OnInit {
       lieu : [''],
       etablissement : ['']
     })
+    this.fieldSearchForm()
     this.initOptions()
+  }
+
+  fieldSearchForm(){
+    let data = this.publicService.getSearchSchool()
+    console.log(data)
+    this.searchForm.patchValue({
+      classe : data[0],
+      lieu : data[1],
+      etablissement : data[2]
+    })
+    this.onSubmitSearch()
   }
 
   initOptions(){

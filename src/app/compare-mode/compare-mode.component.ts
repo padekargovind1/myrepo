@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
@@ -11,7 +11,7 @@ var self = this;
   templateUrl: './compare-mode.component.html',
   styleUrls: ['./compare-mode.component.scss']
 })
-export class CompareModeComponent implements OnInit {
+export class CompareModeComponent implements OnInit, OnDestroy {
 
   schoolToCompare ={ids:[]};
   schoolDataToDisplay : [any]=[null];
@@ -37,6 +37,9 @@ export class CompareModeComponent implements OnInit {
               private usersService : UsersService) { }
 
   ngOnInit() {
+    if(!this.compareService.haveSchoolId()){
+      this.router.navigate(['/'])
+    }
     this.compareListFilter = this.compareService.getCompareFilter();
     console.log(this.compareListFilter)
     if(this.compareListFilter[0]==null){
@@ -44,6 +47,11 @@ export class CompareModeComponent implements OnInit {
     }
     this.schoolToCompare.ids=this.compareService.getSchoolToCompareId()
     this.getSchoolData();
+  }
+
+  ngOnDestroy(){
+    this.compareService.cleanCompareFilter()
+    this.compareService.cleanSchoolCompare()
   }
 
   getSchoolData(){
