@@ -40,6 +40,7 @@ export class ApplytoComponent implements OnInit {
   userData:any;
   schoolName : string ="";
   schoolID : string ="";
+  schoolLogo : string ="";
   canDisplaySiblings : boolean = false;
   canDisplayApply : boolean = false;
   parents : any;
@@ -91,6 +92,7 @@ export class ApplytoComponent implements OnInit {
           }else {
             this.schoolName = response.data.longName;
             this.schoolID = response.data._id
+            this.schoolLogo = response.data.cycles[0].logo1
           }
         }
       )
@@ -319,10 +321,10 @@ export class ApplytoComponent implements OnInit {
 
   successSubmit(){
     swal({
-      title: 'Votre demande à bien été enregistré.',
-      text: 'Redirection vers le menu principal',
+      title: 'Nous transmettons votre dossier aux écoles sélectionné. Leurs directions vous contactera dans les meilleurs délais.',
+      text: 'Nous venons de vous envoyer un mél de confirmation',
       type: 'success',
-      confirmButtonText: 'Ok'
+      confirmButtonText: "J'AI COMPRIS"
     })
     this.route.navigate(['/']);
   }

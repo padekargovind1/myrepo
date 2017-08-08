@@ -306,7 +306,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
     let data = {};
     data['parents']=[]
     console.log(data);
-    // this.initNewAppointment();
+    this.initNewAppointment();
   }
 
   initNewAppointment(){

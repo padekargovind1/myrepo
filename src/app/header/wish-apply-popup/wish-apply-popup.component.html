@@ -42,7 +42,7 @@
   <md-tab label="Ma candidature">
     <div *ngIf="applyList.length!=0" style="max-height:400px">
       <div class="card  school-list" *ngFor="let apply of applyList">                               
-        <div class="card-content">
+        <div class="card-content" style="max-width:476px">
           <img src="assets/images/school-1.jpg" alt="School 1" style="height:124px"/>
           <h3>{{apply.school.shortName}}</h3>
           <p>{{apply.school.longName}} 
@@ -55,7 +55,7 @@
             Tel: {{apply.school.address.phone}}
           </address>
           <a (click)="onSchoolDetail(apply.school._id)" class="btn btn-highlighted btn-block">
-            Détail de l'école
+            Détails
           </a>
         </div><!-- .card-content -->
       </div>
@@ -79,7 +79,7 @@
           </address>
           <a (click)="onSchoolDetail(wish.school._id)" 
             class="btn btn-highlighted btn-block">
-            Détail de l'école
+            Détails
           </a>
           <button (click)="onSchoolApply(wish.school._id)" type="button" 
             class="btn btn-secondary btn-block">
