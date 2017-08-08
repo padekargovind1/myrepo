@@ -77,11 +77,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       this.appointmentData = this.bookingService.getBookingData();
       console.log(this.appointmentData);
     }
-<<<<<<< HEAD
-	this.loadScript('../../assets/js/select2.min.js');       
-=======
     this.loadScript('assets/js/select2.min.js'); 
->>>>>>> origin/master
   }
   
    loadScript(url) {
@@ -91,14 +87,6 @@ export class WizardComponent implements OnInit, AfterViewInit {
     node.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(node);
  }
-
-  loadScript(url) {
-      console.log('preparing to load...')
-      let node = document.createElement('script');
-      node.src = url;
-      node.type = 'text/javascript';
-      document.getElementsByTagName('head')[0].appendChild(node);
-   }
 
   ngAfterViewInit() {
     // this.datePicker();

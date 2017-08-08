@@ -79,11 +79,7 @@ export class ApplytoComponent implements OnInit {
       })
       this.route.navigate(['/login']);
     }
-<<<<<<< HEAD
-	this.loadScript('../../assets/js/select2.min.js');
-=======
     this.loadScript('assets/js/select2.min.js');
->>>>>>> origin/master
   }
   loadScript(url) {
     console.log('preparing to load...')
@@ -92,15 +88,7 @@ export class ApplytoComponent implements OnInit {
     node.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(node);
  }
-
-  loadScript(url) {
-      console.log('preparing to load...')
-      let node = document.createElement('script');
-      node.src = url;
-      node.type = 'text/javascript';
-      document.getElementsByTagName('head')[0].appendChild(node);
-   }
-
+ 
   getSchoolDataById(){
     this.publicService.getSchoolById(this.schoolId)
       .subscribe(
