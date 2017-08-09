@@ -126,6 +126,7 @@ export class ApplytoComponent implements OnInit {
   }
 
   patchValue(userData){
+	  var IsAdress = (userData.address!==undefined && userData.address!=null) ? true : false;
     this.applytoForm.patchValue({
       childLastName : userData.lastName,
       childFirstName : userData.firstName,
@@ -133,14 +134,29 @@ export class ApplytoComponent implements OnInit {
       childTitle : userData.gender,
       childMel : userData.email,
       childTel : userData.mobilePhone,
-      //childAddr : userData.address.address1,
-      //childPostalCode : userData.address.postCode,
-      //childCity : userData.address.city,
-      //childBirthDay : userData.birthDate,
-      //childBirthPlace : userData.birthPlace
+      childAddr : IsAdress ? userData.address.address1 : "",
+      childPostalCode : IsAdress ? userData.address.postCode : "",
+      childCity : IsAdress ? userData.address.city : "",
+      childBirthDay : IsAdress ? userData.birthDate : "",
+      childBirthPlace : IsAdress ? userData.birthPlace : "",
+	  //Current Institution
+	  schoolName : '',
+	  schoolCity : '',
+	  schoolClasse : '',
+	  schoolOption : '',
+	  schoolLv1 : '',
+	  schoolLv2 : '',
+	  schoolLv3 : '',
+	  //Strong and weak subject
+	  bestSubject : userData.attractionToSubjects,
+	  weakSubject : userData.weakAtSubjects,
+	  //Interests
+	  yourInterest : '',
+	  practiceInterest : ''
     });
     for (let i = 0; i<this.applytoForm.controls['parents']['controls'].length; i++){
-		if(userData.parents.length!=0){
+		if(userData.parents!==undefined && userData.parents!=null && userData.parents.length!=0){
+			IsAdress = (userData.parents[i].address!==undefined && userData.parents[i].address!=null) ? true : false;
 		  this.applytoForm.controls['parents']['controls'][i].patchValue({
 			lienParent : userData.parents[i].relationship,
 			titre : userData.parents[i].gender,
@@ -148,21 +164,30 @@ export class ApplytoComponent implements OnInit {
 			prenom : userData.parents[i].firstName,
 			email : userData.parents[i].email,
 			portable : userData.parents[i].phoneNumber,
-			adresse : userData.parents[i].address.address1,
-			codepostal : userData.parents[i].address.postCode,
-			ville : userData.parents[i].address.city,
-			pays : userData.parents[i].address.country,
+			adresse : IsAdress ? userData.parents[i].address.address1 : "",
+			codepostal : IsAdress ? userData.parents[i].address.postCode : "",
+			ville : IsAdress ? userData.parents[i].address.city : "",
+			pays : IsAdress ? userData.parents[i].address.country : "",
 			job : userData.parents[i].profession,
 			horaireJoignable : userData.parents[i].availability
 		  })
 		}
     }
     for (let i = 0; i<this.applytoForm.controls['freresoeur']['controls'].length; i++){
-      if(userData.siblings.length!=0){
+      if(userData.siblings!==undefined && userData.siblings!=null && userData.siblings.length!=0){
         this.applytoForm.controls['freresoeur']['controls'][i].patchValue({
           gender : userData.siblings[i].gender,
           age : userData.siblings[i].age,
           niveau : userData.siblings[i].study
+        })
+      }
+    }
+	//Jobs
+    for (let i = 0; i<this.applytoForm.controls['job']['controls'].length; i++){
+      if(userData.jobs!==undefined && userData.jobs!=null && userData.jobs.length!=0){
+        this.applytoForm.controls['job']['controls'][i].patchValue({
+          interestJob : userData.jobs[i].profession,
+          interestAge : userData.jobs[i].age
         })
       }
     }
@@ -206,6 +231,11 @@ export class ApplytoComponent implements OnInit {
     if(data.parents.length>1){
       for(let i = 1; i<data.parents.length; i++){
         this.applytoForm.controls['parents']['controls'].push(this.createParent())
+      }
+    }
+    if(data.jobs!==undefined && data.jobs!=null && data.jobs.length>1){
+      for(let i = 1; i<data.jobs.length; i++){
+        this.applytoForm.controls['job']['controls'].push(this.createJob())
       }
     }
   }
