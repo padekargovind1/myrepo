@@ -27,7 +27,6 @@ export class CubeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {    
-    this.createCube();
     this.video="https://www.youtube.com/embed/"+this.eventData.video;
     console.log(this.video);
   }

@@ -1,7 +1,8 @@
 
 
 <div class="col-sm-4">
-    <div data-page="1" [attr.data-cube]="counter" [className]="'cube-wrapper cube-' + counter"  >
+    <div data-page="1" [attr.data-cube]="counter" 
+        [className]="'cube-wrapper cube-' + counter"  >
         
         <div class="cube">
         
@@ -64,7 +65,10 @@
                         <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
                     </div>
 
-                    <div class="no-padding"><iframe class="cube__youtube" [src]="getUrl()" frameborder="0" allowfullscreen></iframe></div>
+                    <div class="no-padding">
+                        <iframe class="cube__youtube" [src]="getUrl()" frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
 
                     <h3>{{eventData.title}}</h3>
 

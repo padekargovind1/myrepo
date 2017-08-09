@@ -133,9 +133,11 @@ export class AccueilComponent implements OnInit {
         (response)=>{
           let data = response.data;
           console.log(data);
-          this.options['regions']=data.regions
-          this.options['departements']=data.departments
-          this.options['villes']=data.cities
+          if(response.code!=400){
+            this.options['regions']=data.regions
+            this.options['departements']=data.departments
+            this.options['villes']=data.cities
+          }
         }
       )
   }
