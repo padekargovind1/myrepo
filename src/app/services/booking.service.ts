@@ -18,6 +18,10 @@ export class BookingService {
     localStorage.setItem("bookingDataAdvPhoto", data[6])
   }
 
+  haveBookingData(){
+    return !!localStorage.getItem('bookingDataDay')
+  }
+
   getBookingData(){
     const day = localStorage.getItem("bookingDataDay")
     const start = localStorage.getItem("bookingDataStart")
@@ -41,6 +45,10 @@ export class BookingService {
     localStorage.setItem("bookingPackageTitle", data[1])
     localStorage.setItem("bookingPackageDesc", data[2])
     localStorage.setItem("bookingPackageIndex", data[3])
+  }
+
+  haveBookingPackage(){
+    return !!localStorage.getItem('bookingPackageNumber')
   }
 
   getBookingPackage(){

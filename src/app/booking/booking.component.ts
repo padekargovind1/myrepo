@@ -43,9 +43,17 @@ export class BookingComponent implements OnInit, AfterViewInit {
         title: 'Attention',
         text: 'Vous devez être connecté afin de prendre un rendez-vous.',
         type: 'warning',
-        confirmButtonText: 'Ok'
+        confirmButtonText: "J'ai compris"
       })
       this.route.navigate(['/login']);
+    } else if(!this.bookingService.haveBookingPackage()){
+      swal({
+        title: 'Attention',
+        text: 'Vous devez sélectionner le type du rendez-vous avant de pouvoir choisir un conseiller',
+        type: 'warning',
+        confirmButtonText: "J'ai compris"
+      })
+      this.route.navigate(['/conseil']);
     } else {
       this.getBookingData();
       this.getAppointmentPackage();

@@ -29,7 +29,11 @@ export class BrochureComponent implements OnInit, AfterViewInit {
     };
     config2: MdDialogConfig;
     searchForm : FormGroup;
-    options: any;
+    options={
+        regions : [],
+        departements : [],
+        villes : []
+    };
     schoolsOptions: any;
     downloadList = [];
     searchBrochure = {
@@ -188,9 +192,7 @@ export class BrochureComponent implements OnInit, AfterViewInit {
         // console.log(event.target.value);
         let filter: string = event.target.value;
         if(filter.length>=2){
-        this.getLieuFilter(filter)
-        }else {
-        this.options=null;
+            this.getLieuFilter(filter)
         }
     }
     getLieuFilter(filter: string){
@@ -200,9 +202,14 @@ export class BrochureComponent implements OnInit, AfterViewInit {
         this.publicService.postAutoCompleteLieu(data)
         .subscribe(
             (response)=>{
-            let data = response.data;
-            // console.log(data);
-            this.options=data
+                let data = response.data;
+                // console.log(data);
+                console.log(data);
+                if(response.code!=400){
+                    this.options['regions']=data.regions
+                    this.options['departements']=data.departments
+                    this.options['villes']=data.cities
+                }
             }
         )
     }

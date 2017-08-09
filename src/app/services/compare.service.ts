@@ -52,6 +52,10 @@ export class CompareService {
     }
   }
 
+  haveSchoolId(){
+    return !!localStorage.getItem('compare0')
+  }
+
   getSchoolToCompareId(){
     let data = [];
     for(let i = 0; i<4; i++){

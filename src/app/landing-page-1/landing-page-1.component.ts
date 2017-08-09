@@ -88,11 +88,13 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          // console.log(this.options);
-          this.options['regions']=data.regions
-          this.options['departements']=data.departments
-          this.options['villes']=data.cities
-          // console.log(this.options)
+          console.log(this.options);
+          if(response.code!=400){
+            this.options['regions']=data.regions
+            this.options['departements']=data.departments
+            this.options['villes']=data.cities
+            // console.log(this.options)
+          }
         }
       )
   }
