@@ -133,27 +133,29 @@ export class ApplytoComponent implements OnInit {
       childTitle : userData.gender,
       childMel : userData.email,
       childTel : userData.mobilePhone,
-      childAddr : userData.address.address1,
-      childPostalCode : userData.address.postCode,
-      childCity : userData.address.city,
-      childBirthDay : userData.birthDate,
-      childBirthPlace : userData.birthPlace
+      //childAddr : userData.address.address1,
+      //childPostalCode : userData.address.postCode,
+      //childCity : userData.address.city,
+      //childBirthDay : userData.birthDate,
+      //childBirthPlace : userData.birthPlace
     });
     for (let i = 0; i<this.applytoForm.controls['parents']['controls'].length; i++){
-      this.applytoForm.controls['parents']['controls'][i].patchValue({
-        lienParent : userData.parents[i].relationship,
-        titre : userData.parents[i].gender,
-        nom : userData.parents[i].lastName,
-        prenom : userData.parents[i].firstName,
-        email : userData.parents[i].email,
-        portable : userData.parents[i].phoneNumber,
-        adresse : userData.parents[i].address.address1,
-        codepostal : userData.parents[i].address.postCode,
-        ville : userData.parents[i].address.city,
-        pays : userData.parents[i].address.country,
-        job : userData.parents[i].profession,
-        horaireJoignable : userData.parents[i].availability
-      })
+		if(userData.parents.length!=0){
+		  this.applytoForm.controls['parents']['controls'][i].patchValue({
+			lienParent : userData.parents[i].relationship,
+			titre : userData.parents[i].gender,
+			nom : userData.parents[i].lastName,
+			prenom : userData.parents[i].firstName,
+			email : userData.parents[i].email,
+			portable : userData.parents[i].phoneNumber,
+			adresse : userData.parents[i].address.address1,
+			codepostal : userData.parents[i].address.postCode,
+			ville : userData.parents[i].address.city,
+			pays : userData.parents[i].address.country,
+			job : userData.parents[i].profession,
+			horaireJoignable : userData.parents[i].availability
+		  })
+		}
     }
     for (let i = 0; i<this.applytoForm.controls['freresoeur']['controls'].length; i++){
       if(userData.siblings.length!=0){
