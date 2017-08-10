@@ -318,9 +318,9 @@
                         <div class="col-md-1">
                         <!-- <div class="form-group"> -->
                             <button class="btn btn-search" type="submit"
-                                [disabled]="searchForm.controls['etablissement'].value.length==0 && 
-                                (searchForm.controls['lieu'].value.length==0 || 
-                                searchForm.controls['classe'].value.length==0)"
+                                [disabled]="(searchForm.controls['etablissement'].value==null || searchForm.controls['etablissement'].value.length==0) && 
+                                ((searchForm.controls['lieu'].value ==null || searchForm.controls['lieu'].value.length==0) || 
+                                (searchForm.controls['classe'].value==null || searchForm.controls['classe'].value.length==0))"
                                 (click)="onSubmitSearch()">
                                 <i class="fa fa-search"></i>
                             </button>
