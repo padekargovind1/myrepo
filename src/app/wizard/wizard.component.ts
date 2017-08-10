@@ -137,7 +137,12 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   patchValue(userData){
+    console.log(userData)
 	  var IsAdress = (userData.address!==undefined && userData.address!=null) ? true : false;
+    var haveLv1 = (userData.academicHistories[0].languages[1]!==undefined && userData.academicHistories[0].languages[1]!=null) ? true : false;
+    var haveLv2 = (userData.academicHistories[0].languages[2]!==undefined && userData.academicHistories[0].languages[2]!=null) ? true : false;
+    var hobbies = (userData.hobbies!==undefined && userData.hobbies!=null) ? true : false;
+    var interest = (userData.interest!==undefined && userData.interest!=null) ? true : false;
     this.wizardForm.patchValue({
       childLastName : userData.lastName,
       childFirstName : userData.firstName,
@@ -150,25 +155,25 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       childCity : IsAdress ? userData.address.city : "",
       childBirthDay : IsAdress ? userData.birthDate : "",
       childBirthPlace : IsAdress ? userData.birthPlace : "",
-	  //Current Institution
-	  schoolName : '',
-	  schoolCity : '',
-	  schoolClasse : '',
-	  schoolOption : '',
-	  schoolLv1 : '',
-	  schoolLv2 : '',
-	  schoolLv3 : '',
-	  //School help
-	  schoolHelp : '',
-	  //Strong and weak subject
-	  bestSubject : userData.attractionToSubjects,
-	  weakSubject : userData.weakAtSubjects,
-	  //Interests
-	  yourInterest : '',
-	  practiceInterest : '',
-	  //Diagnostic
-	  reasonDiagnostic : '',
-	  note : ''
+      //Current Institution
+      schoolName : userData.academicHistories[0].schoolName,
+      schoolCity : userData.academicHistories[0].city,
+      schoolClasse : userData.academicHistories[0].class,
+      schoolOption : userData.academicHistories[0].classType,
+      schoolLv1 : userData.academicHistories[0].languages[0],
+      schoolLv2 : haveLv1 ? userData.academicHistories[0].languages[1] : "",
+      schoolLv3 : haveLv2 ? userData.academicHistories[0].languages[2] : "",
+      //Strong and weak subject
+      bestSubject : userData.attractionToSubjects,
+      weakSubject : userData.weakAtSubjects,
+      //Interests
+      yourInterest : hobbies ? userData.hobbies : '',
+      practiceInterest : interest ? userData.interest : '',
+      //School help
+      schoolHelp : '',
+      //Diagnostic
+      reasonDiagnostic : '',
+      note : ''
     });
     for (let i = 0; i<this.wizardForm.controls['parents']['controls'].length; i++){
 		if(userData.parents!==undefined && userData.parents!=null && userData.parents.length!=0){
@@ -326,67 +331,62 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onSubmit(){
     console.log(this.wizardForm);
+    for(let i = 0; i<this.wizardForm.value.parents.length; i++){
+      this.userData.parents[i].profession = this.wizardForm.value.parents[i].job;
+      this.userData.parents[i].relationship = this.wizardForm.value.parents[i].lienParent
+      this.userData.parents[i].gender = this.wizardForm.value.parents[i].titre
+      this.userData.parents[i].lastName = this.wizardForm.value.parents[i].nom
+      this.userData.parents[i].firstName = this.wizardForm.value.parents[i].prenom
+      this.userData.parents[i].email = this.wizardForm.value.parents[i].email
+      this.userData.parents[i].phonenumber = this.wizardForm.value.parents[i].portable
+      this.userData.parents[i].availability = this.wizardForm.value.parents[i].horaireJoignable
+    }
 
-    // const lienParent = this.wizardForm.controls.lienParent.value;
-    // const title = this.wizardForm.controls.title.value;
-    // const lastName = this.wizardForm.controls.lastName.value;
-    // const firstName = this.wizardForm.controls.firstName.value;
-    // const job = this.wizardForm.controls.job.value;
-    // const email = this.wizardForm.controls.email.value;
-    // const tel = this.wizardForm.controls.tel.value;
-    // const horaireJoingnable = this.wizardForm.controls.horaireJoingnable.value;
-    // const childLastName =this.wizardForm.controls.childFirstName.value;
-    // const childFirstName = this.wizardForm.controls.childFirstName.value;
-    // const childAge = this.wizardForm.controls.childAge.value;
-    // const childTitle= this.wizardForm.controls.childTitle.value;
-    // const childMel = this.wizardForm.controls.childMel.value;
-    // const childTel = this.wizardForm.controls.childTel.value;
-    // const childAddr = this.wizardForm.controls.childAddr.value;
-    // const childPostalCode = this.wizardForm.controls.childPostalCode.value;
-    // const childCity = this.wizardForm.controls.childCity.value;
-    // const childBirthDay = this.wizardForm.controls.childBirthDay.value;
-    // const childBirthPlace = this.wizardForm.controls.childBirthPlace.value;
-    // const childSisBroTitle = this.wizardForm.controls.childSisBroTitle.value;
-    // const childSisBroAge = this.wizardForm.controls.childSisBroAge.value;
-    // const childSisBroStudy = this.wizardForm.controls.childSisBroStudy.value;
-    // const schoolName = this.wizardForm.controls.schoolName.value;
-    // const schoolCity = this.wizardForm.controls.schoolCity.value;
-    // const schoolClasse = this.wizardForm.controls.schoolClasse.value;
-    // const schoolOption = this.wizardForm.controls.schoolOption.value;
-    // const schoolLv1 = this.wizardForm.controls.schoolLv1.value;
-    // const schoolLv2 = this.wizardForm.controls.schoolLv2.value;
-    // const schoolLv3 = this.wizardForm.controls.schoolLv3.value;
-    // const schoolHelp = this.wizardForm.controls.schoolHelp.value;
-    // const schoolHelpSubject = this.wizardForm.controls.schoolHelpSubject.value;
-    // const bestSubject = this.wizardForm.controls.bestSubject.value;
-    // const weakSubject = this.wizardForm.controls.weakSubject.value;
-    // const interestJob = this.wizardForm.controls.interestJob.value;
-    // const interestAge = this.wizardForm.controls.interestAge.value;
-    // const yourInterest = this.wizardForm.controls.yourInterest.value;
-    // const practiceInterest = this.wizardForm.controls.practiceInterest.value;
-    // const primarySchoolName = this.wizardForm.controls.primarySchoolName.value;
-    // const primarySchoolRepeat = this.wizardForm.controls.primarySchoolRepeat.value;
-    // const causeOfRepeatPrimary = this.wizardForm.controls.causeOfRepeatPrimary.value;
-    // const secondarySchoolName = this.wizardForm.controls.secondarySchoolName.value;
-    // const secondarySchoolRepeat = this.wizardForm.controls.secondarySchoolRepeat.value;
-    // const causeOfRepeatSecondary = this.wizardForm.controls.causeOfRepeatSecondary.value;
-    // const reasonDiagnostic = this.wizardForm.controls.reasonDiagnostic.value;
-    // const note = this.wizardForm.controls.note.value;
-    // const id = this.appointmentData[7];
+    this.userData.lastName = this.wizardForm.value.childLastName
+    this.userData.firstName = this.wizardForm.value.childFirstName
+    this.userData.age = this.wizardForm.value.childAge
+    this.userData.gender = this.wizardForm.value.childTitle
+    this.userData.email = this.wizardForm.value.childMel
+    this.userData.mobilePhone = this.wizardForm.value.childTel
+    this.userData.address.address1 = this.wizardForm.value.childAddr
+    this.userData.address.postCode = this.wizardForm.value.childPostalCode
+    this.userData.address.city = this.wizardForm.value.childCity
+    this.userData.birthDate = this.wizardForm.value.childBirthDay
+    this.userData.birthPlace = this.wizardForm.value.childBirthPlace
 
-    // const data = ({
-    //   lienParent, title, lastName, firstName, job, email, tel, horaireJoingnable, childLastName,
-    //   childFirstName, childAge, childTitle, childMel, childTel, childAddr, childPostalCode, 
-    //   childCity, childBirthDay, childBirthPlace, childSisBroAge, childSisBroStudy, childSisBroTitle,
-    //   schoolName, schoolCity, schoolClasse, schoolOption, schoolLv1, schoolLv2, schoolLv3, schoolHelp,
-    //   schoolHelpSubject, bestSubject, weakSubject, interestJob, interestAge, yourInterest, practiceInterest,
-    //   primarySchoolName, primarySchoolRepeat, causeOfRepeatPrimary, secondarySchoolName, secondarySchoolRepeat,
-    //   causeOfRepeatSecondary, reasonDiagnostic, note, id
-    // });
-    let data = {};
-    data['parents']=[]
-    console.log(data);
+    for(let i = 0; i<this.wizardForm.value.freresoeur.length; i++){
+      this.userData.siblings[i].age = this.wizardForm.value.freresoeur[i].age
+      this.userData.siblings[i].gender = this.wizardForm.value.freresoeur[i].gender
+      this.userData.siblings[i].study = this.wizardForm.value.freresoeur[i].niveau
+    }
+
+    this.userData.academicHistories[0].city = this.wizardForm.value.schoolCity
+    this.userData.academicHistories[0].class = this.wizardForm.value.schoolClasse
+    this.userData.academicHistories[0].classType = this.wizardForm.value.schoolOption
+    this.userData.academicHistories[0].schoolName = this.wizardForm.value.schoolName
+    this.userData.academicHistories[0].languages = []
+    this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv1)
+    this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv2)
+    this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv3)
+
+    this.userData.attractionToSubjects = [];
+    this.userData.attractionToSubjects.push(this.wizardForm.value.bestSubject)
+    this.userData.weakAtSubjects = [];
+    this.userData.weakAtSubjects.push(this.wizardForm.value.weakSubject)
+
+    this.userData.jobs=[]
+    console.log(this.userData)
+    for(let i = 0; i<this.wizardForm.value.job.length; i++){
+      this.userData.jobs[i]={};
+      console.log(this.userData.jobs[i])
+      this.userData.jobs[i].profession=this.wizardForm.value.job[i].interestJob
+      this.userData.jobs[i].age=this.wizardForm.value.job[i].interestAge
+    }
+
+    this.userData.interest = this.wizardForm.value.yourInterest;
+    this.userData.hobbies = this.wizardForm.value.practiceInterest;
     this.initNewAppointment();
+    this.putProfile();
   }
 
   initNewAppointment(){
@@ -396,6 +396,39 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       to:this.appointmentData[0]
     }
     this.getPackageById(this.appointmentData[9]);
+  }
+
+  putProfile(){
+    this.usersService.putProfile(this.userData)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.failSubmit(response.message);
+          } else {
+            this.successSubmit()
+          }
+        }
+      )
+  }
+
+  successSubmit(){
+    swal({
+      title: 'Votre rendez-vous à bien été enregistré.',
+      text: '',
+      type: 'success',
+      confirmButtonText: "J'AI COMPRIS"
+    })
+    this.route.navigate(['/'])
+  }
+
+  failSubmit(message){
+    swal({
+      title: 'Erreur',
+      text: message,
+      type: 'error',
+      confirmButtonText: 'Ok'
+    })
   }
 
   getPackageById(packageId){
@@ -425,13 +458,6 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
           } else {
             console.log('Appointement register')
             this.bookingService.cleanBooking();
-            swal({
-              title: 'Votre rendez-vous à bien été enregistré.',
-              text: '',
-              type: 'success',
-              confirmButtonText: 'Ok'
-            })
-            this.route.navigate(['/'])
           }
         }
       )

@@ -77,7 +77,7 @@ export class SchoolComponent implements OnInit {
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
-    console.log(this.advancedSearch);
+    // console.log(this.advancedSearch);
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
@@ -128,7 +128,6 @@ export class SchoolComponent implements OnInit {
   }
 
   setBackgroundImage(){
-    // console.log(this.route.firstChild())
     this.subscription = this.route.url
       .subscribe(
         params =>{
@@ -169,14 +168,14 @@ export class SchoolComponent implements OnInit {
       lieu : [''],
       etablissement : ['']
     })
-    console.log(this.searchForm)
+    // console.log(this.searchForm)
     this.fieldSearchForm()
     this.initOptions()
   }
 
   fieldSearchForm(){
     let data = this.publicService.getSearchSchool()
-    console.log(data)
+    // console.log(data)
     this.searchForm.patchValue({
       classe : data[0],
       lieu : data[1],
@@ -189,13 +188,13 @@ export class SchoolComponent implements OnInit {
     this.options['regions']=[];
     this.options['departements']=[];
     this.options['villes']=[];
-    console.log(this.options)
+    // console.log(this.options)
   }
 
   onCheckbox(schoolId){
-    console.log(schoolId);
+    // console.log(schoolId);
     if(this.compareList.includes(schoolId)){
-      console.log("remove checkbox");
+      // console.log("remove checkbox");
       let i = this.compareList.indexOf(schoolId, 0);
       // console.log(i);
       this.compareList.splice(i, 1);
@@ -229,7 +228,7 @@ export class SchoolComponent implements OnInit {
   checkFilterBox(){
     let i = 0;
     for(let filter of this.compareListFilter){
-      // console.log(filter);
+      console.log(filter);
       if(filter==true){
         return true;
       }
@@ -246,14 +245,14 @@ export class SchoolComponent implements OnInit {
 
 
   onSubmitSearch(){
-    console.log(this.searchForm)
+    // console.log(this.searchForm)
     let data = {
       class : this.searchForm.controls.classe.value,
       place : this.searchForm.controls.lieu.value,
       name : this.searchForm.controls.etablissement.value
     }
     this.searchFilter=[data.class, data.place, data.name]
-    console.log(data);
+    // console.log(data);
     this.publicService.storeSearchSchool(this.searchFilter);
     this.postFastSearch(data)
     // this.getSearchFilter();
@@ -263,19 +262,19 @@ export class SchoolComponent implements OnInit {
     this.publicService.postFastSearch(data, this.limit)
       .subscribe(
         response => {
-          console.log(response);
+          // console.log(response);
           if(response.code==400){
-            console.log(response.message)
+            // console.log(response.message)
           } else {
             this.schoolListFilter=response.data
-            console.log(this.schoolListFilter)
+            // console.log(this.schoolListFilter)
           }
         }
       )
   }
 
   filterLieu(event){
-    console.log(event.target.value);
+    // console.log(event.target.value);
     let filter: string = event.target.value;
     if(filter.length>=2){
       this.getLieuFilter(filter)
@@ -283,7 +282,7 @@ export class SchoolComponent implements OnInit {
   }
 
   filterSchool(event){
-    console.log(event.target.value);
+    // console.log(event.target.value);
     let filter: string = event.target.value;
     if(filter.length>=3){
       this.getSchoolFilter(filter)
@@ -300,12 +299,12 @@ export class SchoolComponent implements OnInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(data);
+          // console.log(data);
           if(response.code!=400){
             this.options['regions']=data.regions
             this.options['departements']=data.departments
             this.options['villes']=data.cities
-            // console.log(this.options)
+            console.log(this.options)
           }
         }
       )
@@ -319,41 +318,25 @@ export class SchoolComponent implements OnInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(data);
+          // console.log(data);
           this.schoolsOptions=data
         }
       )
   }
 
-  // getAllSchool(limit){
-  //   // console.log(this.limit)
-  //   this.publicService.getSchoolsList(limit, this.schoolCode)
-  //     .subscribe(
-  //       response => {
-  //         console.log(response);
-  //         if(response.code==400){
-  //           console.log(response.message)
-  //         } else {
-  //           this.defaultSchoolList=response.data;
-  //           this.schoolListFilter=response.data;
-  //         }
-  //       }
-  //     )
-  // }
-
   postAdvancedFilter(){
-    console.log(this.advancedSearch)
+    // console.log(this.advancedSearch)
     this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
         response=>{
           console.log(response);
           let data = response.data
           if(response.code==400){
-            console.log(response.message)
+            // console.log(response.message)
           } else {
             this.defaultSchoolList=response.data;
             this.schoolListFilter=data;
-            console.log(this.schoolListFilter)
+            // console.log(this.schoolListFilter)
             // this.filterCycleSchool(data)
           }
         }
@@ -361,7 +344,7 @@ export class SchoolComponent implements OnInit {
   }
 
   filterCycleSchool(cycleFromSearch){
-    console.log(cycleFromSearch)
+    // console.log(cycleFromSearch)
     if(cycleFromSearch.length==0){
       this.schoolListFilter=[];
     } else {
@@ -382,10 +365,10 @@ export class SchoolComponent implements OnInit {
   }
 
   onAdvancedClick(event, category){
-    console.log(event);
+    // console.log(event);
     if(event.srcElement.localName=="input"){
       if(event.srcElement.checked){
-        console.log("checked!")
+        // console.log("checked!")
         if(typeof this.advancedSearch[category] == "undefined"){
           this.advancedSearch[category]={}
         }
@@ -393,14 +376,14 @@ export class SchoolComponent implements OnInit {
         this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
         this.advancedSearchCategory.push(category);
         this.advancedSearchValue.push(event.srcElement.name);
-        console.log(this.advancedSearch);
+        // console.log(this.advancedSearch);
         this.limit=20
         this.postAdvancedFilter();
       } else{
-        console.log("unchecked!");
+        // console.log("unchecked!");
         delete this.advancedSearch[category][event.srcElement.name];
         this.checkCategory(category);
-        console.log(this.advancedSearch);
+        // console.log(this.advancedSearch);
         this.limit=20
         this.postAdvancedFilter();
         let index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
@@ -417,7 +400,7 @@ export class SchoolComponent implements OnInit {
   }
 
   filterLanguage(event, category){
-    console.log(event);
+    // console.log(event);
     // this.languageAdvancedSearch.push(category);
     if(typeof this.advancedSearch['language']=='undefined' && event.srcElement.value!=""){
       this.advancedSearch['language']={}
@@ -435,7 +418,7 @@ export class SchoolComponent implements OnInit {
       this.advancedSearch['language'][category]=event.srcElement.value
       this.languageAdvancedSearch.push(category);
       this.languageAdvancedSearchName.push(event.srcElement.value);
-      console.log("test", this.languageAdvancedSearch, this.languageAdvancedSearchName)
+      // console.log("test", this.languageAdvancedSearch, this.languageAdvancedSearchName)
       this.postAdvancedFilter();
     }
     // console.log(this.advancedSearch)
@@ -452,22 +435,18 @@ export class SchoolComponent implements OnInit {
   }
 
   addOptionFilter(event){
-    console.log(event.srcElement.value);  
-    // this.cleanSearch();
-    // this.schoolListFilter = this.schoolList.filter(
-    //   school => {
-    //     this.optionValue = event.srcElement.value;
-    //     let size = this.optionValue.length;
-    //     if(school.cycles[0].cycle.classes[0].options[0].name.substr(0, size) == this.optionValue){
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   })
+    // console.log(event.srcElement.value);  
+    this.advancedSearch['options'] = {option : event.srcElement.value}
+    // console.log(this.advancedSearch['options']['option'])
+    if(this.advancedSearch['options']['option']==""){
+      delete this.advancedSearch['options']
+    }
+    // console.log(this.advancedSearch)
+    this.postAdvancedFilter();
   }
 
   cleanSearch(){
-    console.log("clean search")
+    // console.log("clean search")
     this.languageAdvancedSearch=[];
     this.languageAdvancedSearchName=[]
     delete this.advancedSearch;
@@ -497,10 +476,10 @@ export class SchoolComponent implements OnInit {
   }
 
   cleanAdvancedSearch(){
-    console.log("Clean all search");
+    // console.log("Clean all search");
     this.cleanSearch();
     this.optionValue="";
-    // console.log($('.checkbox'));
+    console.log($('.checkbox'));
     $('.checkbox').prop('checked', false)
   }
 
@@ -509,7 +488,7 @@ export class SchoolComponent implements OnInit {
   }
 
   onRemoveFilter(index, advanced){
-    console.log("click sur la croix", advanced)
+    // console.log("click sur la croix", advanced)
     this.advancedSearchToDisplay.splice(index, 1)
     delete this.advancedSearch[this.advancedSearchCategory[index]][this.advancedSearchValue[index]]
     this.checkCategory(this.advancedSearchCategory[index]);
@@ -521,7 +500,7 @@ export class SchoolComponent implements OnInit {
   }
 
   onRemoveLanguageFilter(index){
-    console.log("click")
+    // console.log("click")
     this[this.languageAdvancedSearch[index]]=""
     this.languageAdvancedSearch.splice(index, 1);
     this.languageAdvancedSearchName.splice(index, 1);

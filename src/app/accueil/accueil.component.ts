@@ -21,6 +21,7 @@ export class AccueilComponent implements OnInit {
   };
   schoolsOptions: any;
   searchForm: FormGroup;
+  rateId : string = '';
   constructor(private router: Router,
               private route: ActivatedRoute,
               private publicService: PublicService,
@@ -43,6 +44,7 @@ export class AccueilComponent implements OnInit {
     this.wheel.createWheel(["", "", "", "", "", "", ""]);
     // this.wheel.sliceSelectedTransformFunction = sliceTransform().MoveMiddleTransform;
     this.wheelNavigation();
+    this.initRate();
   }
 
   wheelNavigation(){
@@ -79,7 +81,7 @@ export class AccueilComponent implements OnInit {
     });
 
     $('#wheelnav-tabwheel-spreadertitle').mousedown(function(e){
-      self.navigate('conseil');
+      self.onNavigate('conseil');
     });
 
   }
@@ -89,8 +91,10 @@ export class AccueilComponent implements OnInit {
     $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').removeClass('open');
     $('#'+wheelNavId).addClass('open');
     if ($('.'+contentName+'-content').hasClass('fadeIn')) {
-        console.log("Need to navigate");
-        self.navigate(contentName);
+      if(contentName!="ecole" && contentName!="college" && contentName!="lycee"){
+        console.log("Need to navigate", contentName);
+        self.onNavigate(contentName);
+      }
     }
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
     $('.'+contentName+'-content').removeClass('fadeOut').addClass('fadeIn');
@@ -100,10 +104,26 @@ export class AccueilComponent implements OnInit {
     $('.main').css('background-image', 'url(assets/images/new-landing-page-2/'+ contentName +'.jpg)');
   }
 
+  initRate(){
+    let rate = {
+      page : '3'
+    }
+    this.publicService.postRate(rate)
+      .subscribe(
+        response=>{
+          // console.log(response);
+          if(response.code!=400){
+            this.rateId=response.data._id;
+            console.log(this.rateId);
+          }
+        }
+      )
+  }
+
   navigate(componentName : String){
     console.log("routing work!!");
     this.publicService.cleanSearch();
-    this.router.navigate([componentName], {relativeTo: this.route});
+    this.router.navigate(['/'+componentName]);
   }
 
   filterLieu(event){
@@ -180,15 +200,26 @@ export class AccueilComponent implements OnInit {
       this.searchForm.controls.etablissement.value
     ]
     this.publicService.storeSearchSchool(data);
-    this.router.navigate(['/'+path]);
+    this.onNavigate(path);
   }
 
   navigateTo(index){
-    if(index==2){
-      this.router.navigate(['/'])
-    } else {
-      this.router.navigate(['/landing-page-'+index])
-    }
+    this.router.navigate(['/landing-page-'+index])
   }
+
+  onNavigate(path){
+    let rate = {
+      id : this.rateId,
+      click : true
+    }
+    this.publicService.putRate(rate)
+      .subscribe(
+        response=>{
+          console.log(response)
+        }
+      )
+    this.router.navigate(['/'+path]);
+  }
+
 
 }

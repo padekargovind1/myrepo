@@ -23,10 +23,11 @@ import { RandomLandingComponent } from './random-landing/random-landing.componen
 
 export const AppRoutes: Routes = [
     { path: '', component: RandomLandingComponent},
-    { path: 'landing-page-1', component: AccueilComponent },
-    { path: 'landing-page-2', component: LandingPage1Component},
+    { path: 'landing-page-1', component: LandingPage1Component },
+    { path: 'landing-page-2', component: AccueilComponent },
     { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'conseil', component: ConseilComponent},
+    { path: 'orientation', component: ConseilComponent},
     { path: 'booking' , component: BookingComponent },
     { path: 'linguistic' , component: LinguisticComponent },
     { path: 'register' , component: RegisterComponent },

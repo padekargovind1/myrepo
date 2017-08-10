@@ -6,7 +6,8 @@ const SCHOOLS_API : string = "http://54.254.203.172/cideapi/api/public/schools/"
 const CITIES_API : string = "http://54.254.203.172/cideapi/api/public/cities/autocomplete";
 const LINGUISTIC_API: string = "http://54.254.203.172/cideapi/api/public/linguistic";
 const LANGUAGE_API: string = "http://54.254.203.172/cideapi/api/public/language";
-const SEARCH_API : string = "http://54.254.203.172/cideapi/api/public/search/"
+const SEARCH_API : string = "http://54.254.203.172/cideapi/api/public/search/";
+const RATE_API : string = "http://54.254.203.172/cideapi/api/public/rate";
 
 @Injectable()
 export class PublicService {
@@ -52,12 +53,12 @@ export class PublicService {
   }
 
   storeSearchSchool(data){
-    console.log(data);
+    // console.log(data);
     this.searchData=data;
   }
 
   getSearchSchool(){
-    console.log(this.searchData);
+    // console.log(this.searchData);
     return this.searchData;
   }
 
@@ -87,6 +88,16 @@ export class PublicService {
 
   postFastSearch(data, limit): Observable<any>{
     return this.http.post(SCHOOLS_API+'schools?limit='+limit, data)
+      .map((response)=>response.json())
+  }
+
+  postRate(data):Observable<any>{
+    return this.http.post(RATE_API, data)
+      .map((response)=>response.json())
+  }
+
+  putRate(data):Observable<any>{
+    return this.http.put(RATE_API, data)
       .map((response)=>response.json())
   }
 }
