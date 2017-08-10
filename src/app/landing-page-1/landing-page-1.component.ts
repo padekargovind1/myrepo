@@ -45,7 +45,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-  	(<any> $('.landingpage__additional-content')).on('mouseover', function() {
+  	(<any> $('.landingpage__additional-content')).mouseenter(function() {
 
         (<any> $('.landingpage__additional-content .form-wrap')).removeClass('fadeIn').addClass('fadeOut');
         (<any> $('.landingpage__additional-content')).css('z-index', 0);
@@ -56,6 +56,9 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
         // console.log(img);
 
         (<any> $('body .main')).css({ 'background-image': 'url(' + img + ')', 'background-size': 'cover'});
+    }).mouseleave(function(){
+        (<any> $('.landingpage__additional-content .form-wrap')).removeClass('fadeIn').addClass('fadeOut');
+        (<any> $('.landingpage__additional-content')).css('z-index', 0);
     });
   }
 
