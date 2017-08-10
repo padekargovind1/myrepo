@@ -1,0 +1,41 @@
+/**
+ * Cube
+ */
+ .cube-wrapper { margin: 0 auto 60px; width: 286px; height: 416px; box-shadow: 8px 23px 18px rgba(53,50,64,.4);}
+ .cube figure { height: 100%; width: 100%; overflow: hidden;}
+    .cube__header { margin: -10px -10px 0; background: #fff; }
+    .cube__header h3 { color: #333; text-align: left;}
+    .cube__content { padding: 10px;  color: #fff; height: 100%; position: relative;}
+    .cube__content h3 { margin-top: 10px; font-size: 18px; text-align: center;}
+    .cube__image-logo { margin: -10px -10px 10px -10px; background: #fff; height: 140px;}
+    .cube__image-logo img { height: 100%; }
+    .cube__small-logo { width: 50px; }
+    .cube__meta { font-size: 10px; }
+    .cube__youtube { width: 100%; height: 164px;}
+    .cube__image-holder { margin: 0 -10px -10px; overflow: hidden; height: 120px; position: absolute; bottom: 0;}
+    .cube__image-holder img { width: 100%; }
+    .cube .big-calendar { font-size: 18px; }
+    .cube__small-holder-logo { background: #fff; height: 70px; padding: 0 !important; margin-bottom: 10px;}
+    .cube__small-holder-logo img { margin: 0 auto; height: 100%; width: auto; }
+
+
+    .btns { position: absolute; top: 50%; width: 100%; opacity: 0; }
+      .cube-wrapper:hover .btns { opacity: 1;}
+      .btns .next { position: absolute; right: -14px; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0, .8); font-size: 18px;}
+      .btns .prev { position: absolute; left: -14px; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0, .8); font-size: 18px;}
+
+.cube-wrapper .social-media-list { display: none; 
+position: absolute;
+bottom: 10px;
+background: rgba(0,0,0, .5);
+margin: 0;
+width: 100%;
+left: 0;
+z-index: 10;
+}
+
+.no-padding { margin-right: -10px; margin-left: -10px; margin-top: -10px; }
+
+.cube-wrapper:hover .social-media-list {
+  display: block;
+} 
