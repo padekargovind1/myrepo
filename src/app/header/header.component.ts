@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
@@ -8,6 +8,7 @@ import { BookingService } from '../services/booking.service';
 import { CompareService } from '../services/compare.service';
 import { WishApplyPopupComponent } from './wish-apply-popup/wish-apply-popup.component';
 import 'rxjs/add/operator/filter';
+import { Subscription } from 'rxjs/Subscription';
 
 var self = this;
 
@@ -16,7 +17,7 @@ var self = this;
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   Title : String = "Ma Recherche";
 
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
   userFirstName : string = "";
   wishList= [];
   onMobile:boolean=false;
+  subscription : Subscription
 
   config: MdDialogConfig;
 
@@ -37,7 +39,8 @@ export class HeaderComponent implements OnInit {
               private publicService : PublicService,
               private bookingService : BookingService,
               private compareService : CompareService,
-              public dialog:MdDialog,) {}
+              public dialog:MdDialog,
+              private route : ActivatedRoute) {}
 
   ngOnInit() {
     this.runScript()
@@ -213,6 +216,10 @@ export class HeaderComponent implements OnInit {
     // dialogref.afterClosed().subscribe(result => {
     //   console.log(result)
     // });
+  }
+
+  ngOnDestroy(){
+    this.publicService.cleanNumLanding();
   }
 
 }

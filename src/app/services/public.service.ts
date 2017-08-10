@@ -11,7 +11,7 @@ const RATE_API : string = "http://54.254.203.172/cideapi/api/public/rate";
 
 @Injectable()
 export class PublicService {
-
+  numLandingPage : number=null;
   searchData = ["", "", ""]
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -99,5 +99,25 @@ export class PublicService {
   putRate(data):Observable<any>{
     return this.http.put(RATE_API, data)
       .map((response)=>response.json())
+  }
+
+  storeNumLanding(num){
+    this.numLandingPage=num
+  }
+
+  hasNumLanding(){
+    if(this.numLandingPage!=null){
+      return true
+    } else {
+      return false
+    }
+  }
+
+  getNumLanding(){
+    return this.numLandingPage;
+  }
+
+  cleanNumLanding(){
+    this.numLandingPage=null;
   }
 }
