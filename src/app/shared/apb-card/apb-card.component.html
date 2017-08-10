@@ -1,0 +1,50 @@
+
+<ul class="school-action">
+    <li (click)="saveInWish()">
+        <i style="cursor:pointer" class="fa fa-bookmark" aria-hidden="true"></i>
+    </li>
+    <li (click)="applyToSchool()">
+        <i style="cursor:pointer" class="fa fa-paper-plane" aria-hidden="true"></i>
+    </li>
+    <li>
+        <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
+    </li>
+    <!--<li>
+        <a href="http://54.254.203.172/cideapi{{brochureData.brochure}}" download="brochure.pdf" target="_self">
+            <i class="fa fa-download" aria-hidden="true"></i>
+        </a>
+        
+    </li>-->
+</ul>
+
+<img *ngIf="SchoolData.logo!='' && SchoolData.logo!=null; else emptyLogo"
+    src="https://media.apbprive.fr/{{SchoolData.logo}}" alt="School 1" 
+    style="width:213.75px; height:213.75px"/>
+<ng-template #emptyLogo>
+  <img src="assets/images/school-1.jpg" alt="School 1" 
+      style="width:213.75px; height:213.75px"/>
+</ng-template>
+
+<div class="card-content">
+    <h3 style="height:30px">{{ SchoolData.longName | school:42 }}
+    </h3>
+    <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
+        {{ SchoolData.cycles[0].cycle.status2 }} <br />
+        {{ SchoolData.cycles[0].cycle.status3 }}</p>-->
+    <address *ngIf="SchoolData.addresses.length!=0; else empty1"> 
+        {{ SchoolData.addresses[0].address | school:35  }} <br /> 
+        {{ SchoolData.addresses[0].postCode }} {{ SchoolData.addresses[0].city }}<br /> 
+        Tel: {{ SchoolData.addresses[0].phoneNumber }}</address>
+    <ng-template #empty1>
+      <address>
+        &nbsp;<br /> 
+        &nbsp;<br /> 
+        &nbsp;
+      </address>
+    </ng-template>
+
+    <button class="btn btn-highlighted"
+        (click)="onSchoolDetail()">Détail</button>
+    
+    <button type="button" class="btn btn-secondary"  (click)="applyToSchool()">Postuler</button> 
+</div>

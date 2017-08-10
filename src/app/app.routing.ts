@@ -20,6 +20,7 @@ import { EditorialContComponent } from './editorial-cont/editorial-cont.componen
 import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
 import { SchoolComponent } from './school/school.component';
 import { RandomLandingComponent } from './random-landing/random-landing.component';
+import { SuperieurComponent } from './superieur/superieur.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: RandomLandingComponent},
@@ -27,7 +28,7 @@ export const AppRoutes: Routes = [
     { path: 'landing-page-2', component: AccueilComponent },
     { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'conseil', component: ConseilComponent},
-    { path: 'orientation', component: ConseilComponent},
+    { path: 'orientation', component: LinguisticComponent},
     { path: 'booking' , component: BookingComponent },
     { path: 'linguistic' , component: LinguisticComponent },
     { path: 'register' , component: RegisterComponent },
@@ -40,7 +41,7 @@ export const AppRoutes: Routes = [
     { path: 'college', component: SchoolComponent },
     { path: 'lycee', component: SchoolComponent },
     { path: 'internat', component: SchoolComponent },
-    { path: 'enseignement', component: SchoolComponent },
+    { path: 'enseignement', component: SuperieurComponent },
     { path: 'etablissement/:schoolId', component: EtablissementComponent },
     { path: 'compare-mode', component: CompareModeComponent },
     { path: 'detail-appointment', component: DetailAppointmentComponent },

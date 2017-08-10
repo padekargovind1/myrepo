@@ -6,18 +6,17 @@ import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { SchoolService } from '../services/school.service';
 import { AdvancedSearchMdl } from '../model/advanced-search.model';
-import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
 declare var jquery:any;
 declare var $ :any;
 
+
 @Component({
-  selector: 'app-school',
-  templateUrl: './school.component.html',
-  styleUrls: ['./school.component.scss'],
-  providers: []
+  selector: 'app-superieur',
+  templateUrl: './superieur.component.html',
+  styleUrls: ['./superieur.component.scss']
 })
-export class SchoolComponent implements OnInit {
+export class SuperieurComponent implements OnInit {
 
   schoolList : any;
   schoolListFilter = [];
@@ -52,7 +51,6 @@ export class SchoolComponent implements OnInit {
   languesRegio = [];
   diplomes = [];
   optionValue: string="";
-  subscription : Subscription;
   schoolComponentTitle = "";
   pathName ="";
   confessionChecked : boolean = false;
@@ -62,6 +60,17 @@ export class SchoolComponent implements OnInit {
   ancient: any="";
   regional: any="";
   limit=20;
+  apbSchools =[];
+  searchBody={
+    courses : {
+      educationLevel : '',
+      professionalSector : ''
+    },
+    postCode : '',
+    departmentNumber : '',
+    region : '',
+    keyword : ''
+  };
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -71,6 +80,7 @@ export class SchoolComponent implements OnInit {
               private route : ActivatedRoute) { }
 
   ngOnInit() {
+    this.getApbSchool();
     this.runScript();
     this.setBackgroundImage();
     this.buildForm();
@@ -81,6 +91,54 @@ export class SchoolComponent implements OnInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+  }
+
+  getApbSchool(){
+    this.publicService.getApbSchool(this.limit, this.searchBody)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.apbSchools = response.data;
+          }
+        }
+      )
+  }
+
+  onSubmitSearch(){
+    this.searchBody.courses.professionalSector=this.searchForm.controls.domaine.value;
+    this.searchBody.keyword=this.searchForm.controls.etablissement.value;
+    this.searchFilter[0]=this.searchBody.courses.professionalSector;
+    this.searchFilter[1]=this.searchBody.keyword;
+    let lieu = this.searchForm.controls.lieu.value;
+    this.searchFilter[2]=lieu
+    console.log(this.searchForm.value, this.options)
+    this.resetSearchBodyLieu()
+    if(lieu!=''){
+      if(this.options['regions'].indexOf(lieu)!=-1){
+        this.searchBody.region=lieu;
+      }
+      for(let i =0; i<this.options['departements'].length; i++){
+        if(this.options['departements'][i].departementNumber==lieu){
+          this.searchBody.departmentNumber=lieu
+        }
+      }
+      let i=0
+      while(i<this.options['villes'].length){
+        if(this.options['villes'][i].postcode==lieu){
+          this.searchBody.postCode=lieu
+        }
+        i++;
+      }
+    }
+    console.log(this.searchBody)
+    this.getApbSchool();
+  }
+
+  resetSearchBodyLieu(){
+    this.searchBody.region='';
+    this.searchBody.departmentNumber='';
+    this.searchBody.postCode='';
   }
 
   runScript(){
@@ -128,60 +186,19 @@ export class SchoolComponent implements OnInit {
   }
 
   setBackgroundImage(){
-    this.subscription = this.route.url
-      .subscribe(
-        params =>{
-          // console.log(params[0].path);
-          this.pathName = params[0].path
-          if(this.pathName == "ecole"){
-            this.schoolComponentTitle="École Maternelle / Primaire"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')")
-            this.advancedSearch.code=["maternelle", "primaire"]
-          } else if (this.pathName == "college"){
-              this.schoolComponentTitle="Un collège 6ème-3ème"
-              $('.filter-form-holder').css('background-image', "url('./assets/images/secondary-school.jpg')")
-              this.advancedSearch.code=[this.pathName]
-          } else if(this.pathName == "lycee"){
-            this.schoolComponentTitle="Un lycée 2nde-Tle"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
-            this.advancedSearch.code=[this.pathName]
-          } else if(this.pathName == "internat"){
-            this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
-            this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
-            this.schoolComponentTitle="Un Internat Maternelle au Lycée"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
-            this.postAdvancedFilter()
-          } else {
-            this.advancedSearch.code=["enseignement"]
-            this.schoolComponentTitle="Enseignement Supérieur";
-            $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
-          }
-          // this.getAllSchool(this.limit);
-          
-        }
-      )
+    this.advancedSearch.code=["enseignement"]
+    this.schoolComponentTitle="Enseignement Supérieur";
+    $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
   }
 
   buildForm(){
     this.searchForm = this.fb.group({
-      classe : [''],
+      domaine : [''],
       lieu : [''],
       etablissement : ['']
     })
     // console.log(this.searchForm)
-    this.fieldSearchForm()
     this.initOptions()
-  }
-
-  fieldSearchForm(){
-    let data = this.publicService.getSearchSchool()
-    // console.log(data)
-    this.searchForm.patchValue({
-      classe : data[0],
-      lieu : data[1],
-      etablissement : data[2]
-    })
-    this.onSubmitSearch()
   }
 
   initOptions(){
@@ -243,36 +260,6 @@ export class SchoolComponent implements OnInit {
     this.router.navigate(['/compare-mode/']);
   }
 
-
-  onSubmitSearch(){
-    // console.log(this.searchForm)
-    let data = {
-      class : this.searchForm.controls.classe.value,
-      place : this.searchForm.controls.lieu.value,
-      name : this.searchForm.controls.etablissement.value
-    }
-    this.searchFilter=[data.class, data.place, data.name]
-    // console.log(data);
-    this.publicService.storeSearchSchool(this.searchFilter);
-    this.postFastSearch(data)
-    // this.getSearchFilter();
-  }
-
-  postFastSearch(data){
-    this.publicService.postFastSearch(data, this.limit)
-      .subscribe(
-        response => {
-          // console.log(response);
-          if(response.code==400){
-            // console.log(response.message)
-          } else {
-            this.schoolListFilter=response.data
-            // console.log(this.schoolListFilter)
-          }
-        }
-      )
-  }
-
   filterLieu(event){
     // console.log(event.target.value);
     let filter: string = event.target.value;
@@ -311,15 +298,19 @@ export class SchoolComponent implements OnInit {
   }
 
   getSchoolFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.postAutocompleteSchool(data)
+    this.publicService.getAutoCompleteApb(filter)
       .subscribe(
-        (response)=>{
-          let data = response.data;
-          // console.log(data);
-          this.schoolsOptions=data
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.schoolsOptions=[]
+            for(let i = 0; i<response.data.length; i++){
+              if(this.schoolsOptions.indexOf(response.data[i].longName)==-1){
+                this.schoolsOptions.push(response.data[i].longName)
+              }
+            }
+            console.log(this.schoolsOptions)
+          }
         }
       )
   }
@@ -456,36 +447,28 @@ export class SchoolComponent implements OnInit {
     this.languageAdvancedSearch=[];
     this.languageAdvancedSearchName=[]
     delete this.advancedSearch;
-    this.setCodeName();
-    this.advancedSearchToDisplay=[];
-    this.advancedSearchCategory=[];
-    this.advancedSearchValue=[]
+    // this.advancedSearchToDisplay=[];
+    // this.advancedSearchCategory=[];
+    // this.advancedSearchValue=[]
     this.searchForm.reset();
     this.buildForm();
     this.searchFilter = ["", "", ""];
+    this.searchBody.courses.professionalSector='';
+    this.searchBody.postCode='';
+    this.searchBody.departmentNumber='';
+    this.searchBody.region='';
+    this.searchBody.keyword='';
     this.publicService.storeSearchSchool(this.searchFilter);
     this.limit=20
-    this.postAdvancedFilter();
+    this.getApbSchool()
     // this.getSearchFilter();
-  }
-
-  setCodeName(){
-    if(this.pathName=="ecole"){
-      this.advancedSearch={
-        code:["maternelle", "primaire"]
-      }
-    } else {
-      this.advancedSearch={
-        code:[this.pathName]
-      }
-    }
   }
 
   cleanAdvancedSearch(){
     // console.log("Clean all search");
     this.cleanSearch();
     this.optionValue="";
-    console.log($('.checkbox'));
+    // console.log($('.checkbox'));
     $('.checkbox').prop('checked', false)
   }
 
@@ -539,7 +522,7 @@ export class SchoolComponent implements OnInit {
 
   showMore(){
     this.limit+=20
-    this.postAdvancedFilter()
+    this.getApbSchool()
   }
 
 }

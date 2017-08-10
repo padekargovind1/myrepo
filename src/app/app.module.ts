@@ -76,6 +76,8 @@ import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
 import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
 import { RandomLandingComponent } from './random-landing/random-landing.component';
+import { SuperieurComponent } from './superieur/superieur.component';
+import { ApbCardComponent } from './shared/apb-card/apb-card.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +127,9 @@ import { RandomLandingComponent } from './random-landing/random-landing.componen
     SchoolPipe,
     MysearchCardComponent,
     WishApplyPopupComponent,
-    RandomLandingComponent
+    RandomLandingComponent,
+    SuperieurComponent,
+    ApbCardComponent
   ],
   imports: [
     BrowserModule,

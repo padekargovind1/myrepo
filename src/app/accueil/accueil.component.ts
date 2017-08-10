@@ -218,6 +218,7 @@ export class AccueilComponent implements OnInit {
           console.log(response)
         }
       )
+    
     this.router.navigate(['/'+path]);
   }
 

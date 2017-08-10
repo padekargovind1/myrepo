@@ -8,6 +8,7 @@ const LINGUISTIC_API: string = "http://54.254.203.172/cideapi/api/public/linguis
 const LANGUAGE_API: string = "http://54.254.203.172/cideapi/api/public/language";
 const SEARCH_API : string = "http://54.254.203.172/cideapi/api/public/search/";
 const RATE_API : string = "http://54.254.203.172/cideapi/api/public/rate";
+const APB_API : string = "https://api2.apbprive.fr/";
 
 @Injectable()
 export class PublicService {
@@ -119,5 +120,15 @@ export class PublicService {
 
   cleanNumLanding(){
     this.numLandingPage=null;
+  }
+
+  getApbSchool(limit, body):Observable<any>{
+    return this.http.post(APB_API+'search/schools?limit='+limit, body)
+      .map((response)=>response.json())
+  }
+
+  getAutoCompleteApb(query):Observable<any>{
+    return this.http.get(APB_API+'search/schools?keyword='+query)
+      .map((response)=>response.json())
   }
 }
