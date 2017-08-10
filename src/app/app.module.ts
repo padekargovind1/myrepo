@@ -75,6 +75,7 @@ import { BrochureService } from './services/brochure.service';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
 import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
+import { RandomLandingComponent } from './random-landing/random-landing.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-po
     ShortenPipe,
     SchoolPipe,
     MysearchCardComponent,
-    WishApplyPopupComponent
+    WishApplyPopupComponent,
+    RandomLandingComponent
   ],
   imports: [
     BrowserModule,

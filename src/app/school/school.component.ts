@@ -169,6 +169,7 @@ export class SchoolComponent implements OnInit {
       lieu : [''],
       etablissement : ['']
     })
+    console.log(this.searchForm)
     this.fieldSearchForm()
     this.initOptions()
   }
@@ -245,6 +246,7 @@ export class SchoolComponent implements OnInit {
 
 
   onSubmitSearch(){
+    console.log(this.searchForm)
     let data = {
       class : this.searchForm.controls.classe.value,
       place : this.searchForm.controls.lieu.value,
@@ -252,7 +254,7 @@ export class SchoolComponent implements OnInit {
     }
     this.searchFilter=[data.class, data.place, data.name]
     console.log(data);
-    this.publicService.storeSearchSchool(data);
+    this.publicService.storeSearchSchool(this.searchFilter);
     this.postFastSearch(data)
     // this.getSearchFilter();
   }
