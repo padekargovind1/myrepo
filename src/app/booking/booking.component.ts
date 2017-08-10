@@ -205,7 +205,6 @@ export class BookingComponent implements OnInit, AfterViewInit {
     console.log(this.adviserToDisplay);
     const self = this;
   	(<any> $('#calendar')).fullCalendar({
-      lang:"fr", 
       eventClick: function(calEvent) {
         console.log(calEvent);
         $('#appointment').modal('show');
