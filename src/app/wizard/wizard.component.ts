@@ -9,6 +9,7 @@ import { BookingService } from '../services/booking.service';
 import { CustomValidators } from 'ng2-validation';
 import swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',
@@ -86,14 +87,14 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.loadScript('assets/js/select2.min.js'); 
   }
-
-  loadScript(url) {
-      console.log('preparing to load...')
-      let node = document.createElement('script');
-      node.src = url;
-      node.type = 'text/javascript';
-      document.getElementsByTagName('head')[0].appendChild(node);
-   }
+  
+   loadScript(url) {
+    console.log('preparing to load...')
+    let node = document.createElement('script');
+    node.src = url;
+    node.type = 'text/javascript';
+    document.getElementsByTagName('head')[0].appendChild(node);
+ }
 
   ngAfterViewInit() {
     // this.datePicker();
@@ -136,6 +137,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   patchValue(userData){
+	  var IsAdress = (userData.address!==undefined && userData.address!=null) ? true : false;
     this.wizardForm.patchValue({
       childLastName : userData.lastName,
       childFirstName : userData.firstName,
@@ -143,28 +145,50 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       childTitle : userData.gender,
       childMel : userData.email,
       childTel : userData.mobilePhone,
-      childAddr : userData.address.address1,
-      childPostalCode : userData.address.postCode,
-      childCity : userData.address.city,
-      childBirthDay : userData.birthDate,
-      childBirthPlace : userData.birthPlace
+      childAddr : IsAdress ? userData.address.address1 : "",
+      childPostalCode : IsAdress ? userData.address.postCode : "",
+      childCity : IsAdress ? userData.address.city : "",
+      childBirthDay : IsAdress ? userData.birthDate : "",
+      childBirthPlace : IsAdress ? userData.birthPlace : "",
+	  //Current Institution
+	  schoolName : '',
+	  schoolCity : '',
+	  schoolClasse : '',
+	  schoolOption : '',
+	  schoolLv1 : '',
+	  schoolLv2 : '',
+	  schoolLv3 : '',
+	  //School help
+	  schoolHelp : '',
+	  //Strong and weak subject
+	  bestSubject : userData.attractionToSubjects,
+	  weakSubject : userData.weakAtSubjects,
+	  //Interests
+	  yourInterest : '',
+	  practiceInterest : '',
+	  //Diagnostic
+	  reasonDiagnostic : '',
+	  note : ''
     });
     for (let i = 0; i<this.wizardForm.controls['parents']['controls'].length; i++){
-      this.wizardForm.controls['parents']['controls'][i].patchValue({
-        lienParent : userData.parents[i].relationship,
-        titre : userData.parents[i].gender,
-        nom : userData.parents[i].lastName,
-        prenom : userData.parents[i].firstName,
-        email : userData.parents[i].email,
-        portable : userData.parents[i].phoneNumber,
-        adresse : userData.parents[i].address.address1,
-        codepostal : userData.parents[i].address.postCode,
-        ville : userData.parents[i].address.city,
-        pays : userData.parents[i].address.country
-      })
+		if(userData.parents!==undefined && userData.parents!=null && userData.parents.length!=0){
+			IsAdress = (userData.parents[i].address!==undefined && userData.parents[i].address!=null) ? true : false;
+		  this.wizardForm.controls['parents']['controls'][i].patchValue({
+			lienParent : userData.parents[i].relationship,
+			titre : userData.parents[i].gender,
+			nom : userData.parents[i].lastName,
+			prenom : userData.parents[i].firstName,
+			email : userData.parents[i].email,
+			portable : userData.parents[i].phoneNumber,
+			adresse : IsAdress ? userData.parents[i].address.address1 : "",
+			codepostal : IsAdress ? userData.parents[i].address.postCode : "",
+			ville : IsAdress ? userData.parents[i].address.city : "",
+			pays : IsAdress ? userData.parents[i].address.country : ""
+		  })
+		}
     }
     for (let i = 0; i<this.wizardForm.controls['freresoeur']['controls'].length; i++){
-      if(userData.siblings.length!=0){
+      if(userData.siblings!==undefined && userData.siblings!=null && userData.siblings.length!=0){
         this.wizardForm.controls['freresoeur']['controls'][i].patchValue({
           gender : userData.siblings[i].gender,
           age : userData.siblings[i].age,
@@ -172,6 +196,35 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
         })
       }
     }
+	//Jobs
+    for (let i = 0; i<this.wizardForm.controls['job']['controls'].length; i++){
+      if(userData.jobs!==undefined && userData.jobs!=null && userData.jobs.length!=0){
+        this.wizardForm.controls['job']['controls'][i].patchValue({
+          interestJob : userData.jobs[i].profession,
+          interestAge : userData.jobs[i].age
+        })
+      }
+    }
+	//Primary SChool
+    //for (let i = 0; i<this.wizardForm.controls['primary']['controls'].length; i++){
+      //if(userData.primary!==undefined && userData.primary!=null && userData.primary.length!=0){
+        //this.wizardForm.controls['primary']['controls'][i].patchValue({
+          //primarySchoolName : '',//userData.primary[i].job,
+          //primarySchoolRepeat : '',
+          //causeOfRepeatPrimary : ''
+        //})
+      //}
+    //}
+	//Secondary SChool
+    //for (let i = 0; i<this.wizardForm.controls['secondary']['controls'].length; i++){
+      //if(userData.secondary!==undefined && userData.secondary!=null && userData.secondary.length!=0){
+        //this.wizardForm.controls['secondary']['controls'][i].patchValue({
+          //secondarySchoolName : '',//userData.secondary[i].job,
+          //secondarySchoolRepeat : '',
+          //causeOfRepeatSecondary : ''
+        //})
+      //}
+    //}
     this.canDisplaySiblings=true;
   }
 
@@ -209,14 +262,19 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       reasonDiagnostic : ['', Validators.required],
       note :['', Validators.required],
     });
-    if(data.siblings.length>1){
+    if(data.siblings!==undefined && data.siblings!=null && data.siblings.length>1){
       for(let i = 1; i<data.siblings.length; i++){
         this.wizardForm.controls['freresoeur']['controls'].push((this.createfs()))
       }
     }
-    if(data.parents.length>1){
+    if(data.parents!==undefined && data.parents!=null && data.parents.length>1){
       for(let i = 1; i<data.parents.length; i++){
         this.wizardForm.controls['parents']['controls'].push(this.createParent())
+      }
+    }
+    if(data.jobs!==undefined && data.jobs!=null && data.jobs.length>1){
+      for(let i = 1; i<data.jobs.length; i++){
+        this.wizardForm.controls['job']['controls'].push(this.createJob())
       }
     }
     this.canDisplaySchool=true;
