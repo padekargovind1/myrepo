@@ -124,7 +124,10 @@ export class SchoolComponent implements OnInit {
       autoplay: true,
       autoplaySpeed: 2000,
     });
-      
+	window.setTimeout("hideAd()", 3000);
+	window.setTimeout("hideSideAd()", 13000);
+
+	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { $(this).parent().addClass('fadeOutDown'); });
   }
 
   setBackgroundImage(){
