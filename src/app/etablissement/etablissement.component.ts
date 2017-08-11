@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Subscription } from 'rxjs/Subscription';
 import { PublicService } from '../services/public.service';
+declare var $ :any;
 
 @Component({
   selector: 'app-etablissement',
@@ -24,6 +25,7 @@ export class EtablissementComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.runScript();
     this.subscription = this.route.params
       .subscribe(
         params =>{
@@ -35,6 +37,16 @@ export class EtablissementComponent implements OnInit {
           }
         }
       )
+  }
+  runScript(){
+    $('.slickjs').slick({
+      arrows : false,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+    });
+      
   }
 
   getSchoolById(){
