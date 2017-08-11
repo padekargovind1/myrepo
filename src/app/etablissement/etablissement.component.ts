@@ -82,7 +82,7 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   addToWish(){
     const data = {
       type : "wish",
-      school : this.schoolId
+      schools : [{school : this.schoolId, class:'EE'}]
     }
 
     this.usersService.postApplication(data)

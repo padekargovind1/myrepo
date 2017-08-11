@@ -21,13 +21,16 @@ export class AccueilComponent implements OnInit {
   };
   schoolsOptions: any;
   searchForm: FormGroup;
+  apbForm: FormGroup;
   rateId : string = '';
+  domaines=[];
   constructor(private router: Router,
               private route: ActivatedRoute,
               private publicService: PublicService,
               private fb: FormBuilder
               ) {
     this.buildForm();
+    this.buildApbForm();
   }
 
   ngOnInit() {
@@ -45,6 +48,7 @@ export class AccueilComponent implements OnInit {
     // this.wheel.sliceSelectedTransformFunction = sliceTransform().MoveMiddleTransform;
     this.wheelNavigation();
     this.initRate();
+    this.domaines=this.publicService.getDomaines();
   }
 
   wheelNavigation(){
@@ -91,7 +95,7 @@ export class AccueilComponent implements OnInit {
     $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').removeClass('open');
     $('#'+wheelNavId).addClass('open');
     if ($('.'+contentName+'-content').hasClass('fadeIn')) {
-      if(contentName!="ecole" && contentName!="college" && contentName!="lycee"){
+      if(contentName!="ecole" && contentName!="college" && contentName!="lycee" && contentName!="internat" && contentName!="enseignement"){
         console.log("Need to navigate", contentName);
         self.onNavigate(contentName);
       }
@@ -144,6 +148,16 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  filterApbSchool(event){
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+      this.getApbSchoolFilter(filter)
+    }else {
+      this.schoolsOptions=null;
+    }
+  }
+
   getLieuFilter(filter: string){
     let data = {
       keyword : filter
@@ -176,9 +190,39 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  getApbSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.getAutoCompleteApb(filter)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.schoolsOptions=[]
+            for(let i = 0; i<response.data.length; i++){
+              if(this.schoolsOptions.indexOf(response.data[i].longName)==-1){
+                this.schoolsOptions.push(response.data[i].longName)
+              }
+            }
+            console.log(this.schoolsOptions)
+          }
+        }
+      )
+  }
+
   buildForm(){
     this.searchForm = this.fb.group({
       classe : [''],
+      lieu : [''],
+      etablissement : ['']
+    })
+    this.initOptions()
+  }
+
+  buildApbForm(){
+    this.apbForm = this.fb.group({
+      domaine : [''],
       lieu : [''],
       etablissement : ['']
     })
@@ -194,11 +238,20 @@ export class AccueilComponent implements OnInit {
 
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
-    let data = [
-      this.searchForm.controls.classe.value,
-      this.searchForm.controls.lieu.value,
-      this.searchForm.controls.etablissement.value
-    ]
+    let data;
+    if(path!="enseignement"){
+      data = [
+        this.searchForm.controls.classe.value,
+        this.searchForm.controls.lieu.value,
+        this.searchForm.controls.etablissement.value
+      ]
+    } else {
+      data = [
+        this.apbForm.controls.domaine.value,
+        this.apbForm.controls.lieu.value,
+        this.apbForm.controls.etablissement.value
+      ]
+    }
     this.publicService.storeSearchSchool(data);
     this.onNavigate(path);
   }

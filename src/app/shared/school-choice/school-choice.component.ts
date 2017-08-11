@@ -31,7 +31,7 @@ export class SchoolChoiceComponent implements OnInit {
   saveOnWish(){
     const data = {
       type : "wish",
-      school : [this.schoolData._id]
+      schools : [{school : this.schoolData._id, class:'EE'}]
     }
     this.usersService.postApplication(data)
       .subscribe(

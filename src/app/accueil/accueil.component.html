@@ -386,8 +386,257 @@
 
                             </div><!-- .form-wrap -->
                         </div>
-                        <div class="internat-content" data-image="img/new-landing-page-2/internat.jpg"></div>
-                        <div class="enseignement-content" data-image="img/new-landing-page-2/enseignement.jpg"></div>
+                        <div class="internat-content  content-holder   animated" data-image="img/new-landing-page-2/internat.jpg">
+							<h2>Internat</h2>
+							<h3>&nbsp;</h3>
+							<div class="form-wrap row">
+
+								<form [formGroup]="searchForm" 
+									(ngSubmit)="onSubmitSearch('internat')">
+									<div class="col-md-11">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="select-custom" for="class">
+														<select name="class" class="form-control" id="class"
+															[formControl]="searchForm.controls['classe']" >
+															<!--<option value="" disabled selected hidden>Classe</option>-->
+															<option value="" selected>Choisir une classe</option>
+															<optgroup label="Cycle 1 : Apprentissages Premiers">
+																<option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+																<option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+																<option value="gs">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+															</optgroup>
+															<optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+																<option value="cp">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+																<option value="ce1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+																<option value="ce2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+															</optgroup>
+															<optgroup label="Cycle 3 : Consolidation">
+																<option value="cm1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+																<option value="cm2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+																<option value="6e">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+															</optgroup>
+															<optgroup label="Cycle 3 : Consolidation">
+																<option value="sixieme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+															</optgroup>
+															<optgroup label="Cycle 4 : Approfondissement">
+																<option value="cinquieme">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+																<option value="quatrieme">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+																<option value="troisieme">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+															</optgroup>
+															<optgroup label="2nde">
+																<option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+																<option value="seconde_probation">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
+															</optgroup>
+															<optgroup label="1ere">
+																<option value="premiere_es">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
+																<option value="premiere_l">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
+																<option value="premiere_s">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
+															</optgroup>
+															<optgroup label="Terminale">
+																<option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
+																<option value="terminale_l">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
+																<option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
+															</optgroup>
+															<option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
+															<option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
+															<option value="cursus_non_francophone">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
+															<optgroup label="STHR - Hôtellerie et Restauration">
+																<option value="seconde_sthr">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
+																<option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
+																<option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
+																<option value="terminale_sthr">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
+															</optgroup>
+															<optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
+																<option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+																<option value="premiere_sti2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
+																<option value="premiere_st2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
+																<option value="terminale_st2s">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
+															</optgroup>
+															<optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
+																<option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+																<option value="premiere_std2a">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
+																<option value="terminale_std2a">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
+															</optgroup>
+															<optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
+																<option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+																<option value="premiere_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
+																<option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ST2D – Architecture et Construction</option>
+																<option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
+																<option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
+																<option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
+															</optgroup>
+															<optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
+																<option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+																<option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
+																<option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
+																<option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
+																<option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
+																<option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
+																<option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
+															</optgroup>
+															<optgroup label="STL - Sciences et Technologies de Laboratoire">
+																<option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+																<option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
+																<option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
+																<option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
+																<option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
+															</optgroup>
+															<optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
+																<option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+																<option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
+																<option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
+																<option value="terminale_stav">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
+															</optgroup>
+															<optgroup label="TMD - Techniques de la Musique et de la Danse">
+																<option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
+																<option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
+																<option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
+																<option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
+																<option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
+															</optgroup>
+														</select>
+													</label>
+												</div>
+											</div><!-- .col-* -->
+
+											<div class="col-md-4">
+												<div class="form-group">
+													<input type="text" class="form-control" placeholder="Lieu" 
+													(keyup)="filterLieu($event)"
+													[mdAutocomplete]="auto"
+													[formControl]="searchForm.controls['lieu']"/>
+
+													<md-autocomplete #auto="mdAutocomplete">
+														<md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+														<md-option *ngFor="let option of options.regions" [value]="option">
+															&nbsp;&nbsp;{{ option }}
+														</md-option>
+														<md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+														<md-option *ngFor="let option of options.departements" [value]="option.departmentName">
+															&nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+														</md-option>
+														<md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+														<md-option *ngFor="let option of options.villes" [value]="option.cityName">
+															&nbsp;&nbsp;{{ option.cityName }}
+														</md-option>
+													</md-autocomplete>
+												</div>
+											</div>
+
+											<div class="col-md-4">
+												<div class="form-group">
+													<input type="text" class="form-control" 
+														placeholder="Nom d'etablissement" 
+														[mdAutocomplete]="autoSchool"
+														(keyup)="filterSchool($event)"
+														[formControl]="searchForm.controls['etablissement']"/>
+													
+													<md-autocomplete #autoSchool="mdAutocomplete">
+														<md-option *ngFor="let school of schoolsOptions" 
+															[value]="school.longName">
+															{{ school.longName }}
+														</md-option>
+													</md-autocomplete>
+												</div>
+											</div>
+										</div><!-- .row -->
+									</div><!-- .col-* -->
+									
+									<div class="col-md-1">
+									<!-- <div class="form-group"> -->
+										<button class="btn btn-search" type="submit"
+											[disabled]="searchForm.controls['etablissement'].value.length==0 && 
+											(searchForm.controls['lieu'].value.length==0 || 
+											searchForm.controls['classe'].value.length==0)">
+											<i class="fa fa-search"></i>
+										</button>
+									<!-- </div> -->
+									</div>
+								</form>
+
+							</div><!-- .form-wrap -->
+						</div>
+                        <div class="enseignement-content  content-holder   animated" data-image="img/new-landing-page-2/enseignement.jpg">
+							<h2>Enseignement <br />supérieur</h2>
+							<h3>&nbsp;</h3>
+							<div class="form-wrap row">
+
+								<form [formGroup]="apbForm" 
+									(ngSubmit)="onSubmitSearch('enseignement')">
+									<div class="col-md-11">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="select-custom" for="class">
+                                                        <select name="class" class="form-control" id="class"
+                                                            [formControl]="apbForm.controls['domaine']">
+                                                            <option value="" selected>Choisir un domaine</option>
+                                                            <option *ngFor="let domaine of domaines" 
+                                                                [value]="domaine" selected>&nbsp;&nbsp;{{domaine}}</option>
+                                                        </select>
+                                                    </label>
+												</div>
+											</div><!-- .col-* -->
+
+											<div class="col-md-4">
+												<div class="form-group">
+													<input type="text" class="form-control" placeholder="Lieu" 
+													(keyup)="filterLieu($event)"
+													[mdAutocomplete]="auto"
+													[formControl]="apbForm.controls['lieu']"/>
+
+													<md-autocomplete #auto="mdAutocomplete">
+														<md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+														<md-option *ngFor="let option of options.regions" [value]="option">
+															&nbsp;&nbsp;{{ option }}
+														</md-option>
+														<md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+														<md-option *ngFor="let option of options.departements" [value]="option.departmentNumber">
+															&nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+														</md-option>
+														<md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+														<md-option *ngFor="let option of options.villes" [value]="option.postcode">
+															&nbsp;&nbsp;{{ option.cityName }}
+														</md-option>
+													</md-autocomplete>
+												</div>
+											</div>
+
+											<div class="col-md-4">
+												<div class="form-group">
+													<input type="text" class="form-control" 
+														placeholder="Nom d'etablissement" 
+														[mdAutocomplete]="autoSchoolApb"
+														(keyup)="filterApbSchool($event)"
+														[formControl]="apbForm.controls['etablissement']"/>
+													
+													<md-autocomplete #autoSchoolApb="mdAutocomplete">
+														<md-option *ngFor="let school of schoolsOptions" 
+															[value]="school">
+															{{ school }}
+														</md-option>
+													</md-autocomplete>
+												</div>
+											</div>
+										</div><!-- .row -->
+									</div><!-- .col-* -->
+									
+									<div class="col-md-1">
+									<!-- <div class="form-group"> -->
+										<button class="btn btn-search" type="submit"
+											[disabled]="apbForm.controls['etablissement'].value.length==0 && 
+											apbForm.controls['lieu'].value.length==0 && 
+											apbForm.controls['domaine'].value.length==0">
+											<i class="fa fa-search"></i>
+										</button>
+									<!-- </div> -->
+									</div>
+								</form>
+
+							</div><!-- .form-wrap -->
+						</div>
                         <div class="linguistic-content" data-image="img/new-landing-page-2/sejour.jpg"></div>
                         <div class="orientation-content" data-image="img/new-landing-page-2/orientation.jpg"></div>
                     </div>

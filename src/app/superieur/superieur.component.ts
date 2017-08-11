@@ -67,7 +67,7 @@ export class SuperieurComponent implements OnInit {
               private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.getApbSchool();
+    // this.getApbSchool();
     this.runScript();
     this.setBackgroundImage();
     this.buildForm();
@@ -183,7 +183,8 @@ export class SuperieurComponent implements OnInit {
       etablissement : ['']
     })
     // console.log(this.searchForm)
-    this.initOptions()
+    this.initOptions();
+    this.fieldForm()
   }
 
   initOptions(){
@@ -191,6 +192,17 @@ export class SuperieurComponent implements OnInit {
     this.options['departements']=[];
     this.options['villes']=[];
     // console.log(this.options)
+  }
+
+  fieldForm(){
+    let data = this.publicService.getSearchSchool()
+    console.log(data);
+    this.searchForm.patchValue({
+      domaine : data[0],
+      lieu : data[1],
+      etablissement : data[2]
+    })
+    this.onSubmitSearch()
   }
 
   filterLieu(event){
@@ -401,8 +413,8 @@ export class SuperieurComponent implements OnInit {
     this.searchBody.region='';
     this.searchBody.keyword='';
     this.publicService.storeSearchSchool(this.searchFilter);
-    this.limit=20
-    this.getApbSchool()
+    this.limit=20;
+    this.getApbSchool();
     // this.getSearchFilter();
   }
 

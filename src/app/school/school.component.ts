@@ -40,7 +40,10 @@ export class SchoolComponent implements OnInit {
   };
   schoolsOptions: any;
   advancedSearch={
-    code : []
+    code : [],
+    class : '',
+    name : '',
+    place : ''
   };
   advancedSearchToDisplay=[];
   advancedSearchCategory=[];
@@ -150,7 +153,6 @@ export class SchoolComponent implements OnInit {
             this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
             this.schoolComponentTitle="Un Internat Maternelle au Lycée"
             $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
-            this.postAdvancedFilter()
           } else {
             this.advancedSearch.code=["enseignement"]
             this.schoolComponentTitle="Enseignement Supérieur";
@@ -169,9 +171,7 @@ export class SchoolComponent implements OnInit {
       etablissement : ['']
     })
     // console.log(this.searchForm)
-    if(this.pathName!="internat"){
-      this.fieldSearchForm()
-    }
+    this.fieldSearchForm()
     this.initOptions()
   }
 
@@ -254,26 +254,31 @@ export class SchoolComponent implements OnInit {
       name : this.searchForm.controls.etablissement.value
     }
     this.searchFilter=[data.class, data.place, data.name]
+    this.advancedSearch.class = this.searchForm.controls.classe.value;
+    this.advancedSearch.place = this.searchForm.controls.lieu.value;
+    this.advancedSearch.name = this.searchForm.controls.etablissement.value;
     // console.log(data);
     this.publicService.storeSearchSchool(this.searchFilter);
-    this.postFastSearch(data)
+    // this.postFastSearch(data)
     // this.getSearchFilter();
+    this.postAdvancedFilter()
   }
 
-  postFastSearch(data){
-    this.publicService.postFastSearch(data, this.limit)
-      .subscribe(
-        response => {
-          // console.log(response);
-          if(response.code==400){
-            // console.log(response.message)
-          } else {
-            this.schoolListFilter=response.data
-            // console.log(this.schoolListFilter)
-          }
-        }
-      )
-  }
+  // postFastSearch(data){
+  //   console.log(data)
+  //   this.publicService.postFastSearch(data, this.limit)
+  //     .subscribe(
+  //       response => {
+  //         // console.log(response);
+  //         if(response.code==400){
+  //           // console.log(response.message)
+  //         } else {
+  //           this.schoolListFilter=response.data
+  //           // console.log(this.schoolListFilter)
+  //         }
+  //       }
+  //     )
+  // }
 
   filterLieu(event){
     // console.log(event.target.value);
@@ -458,33 +463,37 @@ export class SchoolComponent implements OnInit {
     this.languageAdvancedSearch=[];
     this.languageAdvancedSearchName=[]
     delete this.advancedSearch;
+    this.initAdvancedSearch();
     this.setCodeName();
     this.advancedSearchToDisplay=[];
     this.advancedSearchCategory=[];
     this.advancedSearchValue=[]
     this.searchForm.reset();
-    this.buildForm();
     this.searchFilter = ["", "", ""];
     this.publicService.storeSearchSchool(this.searchFilter);
+    this.buildForm();
     this.limit=20
     console.log(this.advancedSearch)
     this.postAdvancedFilter();
     // this.getSearchFilter();
   }
 
+  initAdvancedSearch(){
+    this.advancedSearch={
+      code : [],
+      class : '',
+      name : '',
+      place : ''
+    };
+  }
+
   setCodeName(){
     if(this.pathName=="ecole"){
-      this.advancedSearch={
-        code:["maternelle", "primaire"]
-      }
+      this.advancedSearch.code=["maternelle", "primaire"]
     } else if(this.pathName=="college" || this.pathName=="lycee"){
-      this.advancedSearch={
-        code:[this.pathName]
-      }
+      this.advancedSearch.code=[this.pathName]
     } else if(this.pathName="internat"){
-      this.advancedSearch={
-        code:["maternell", "primaire", "college", "lycee"]
-      }
+      this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
       this.advancedSearch['boarding']={
         notOnSite : true,
         onSite : true

@@ -36,7 +36,7 @@ export class ApbCardComponent implements OnInit {
   saveInWish(){
     const data = {
       type : "wish",
-      school : this.SchoolData._id
+      schools : [{school : this.SchoolData._id, class:'EE'}]
     }
     this.usersService.postApplication(data)
       .subscribe(
