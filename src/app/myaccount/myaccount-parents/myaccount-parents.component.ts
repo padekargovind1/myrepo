@@ -11,7 +11,8 @@ import {MyAccountMdl,
         MyAccountAdresse,
         MyAccountSocialAdrMdl,
         MyAccountHistoryMdl,
-        MyAccountBulletin } from '../../model/myaccount.model';
+        MyAccountBulletin,
+        MyAccountSiblingsMdl } from '../../model/myaccount.model';
 
 @Component({
   selector: 'app-myaccount-parents',
@@ -48,7 +49,7 @@ export class MyaccountParentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.myProfile.address=new MyAccountAdresse();
   }
 
   getUserProfile(){
@@ -57,12 +58,12 @@ export class MyaccountParentsComponent implements OnInit {
         (data)=>{
           let response = data;
           console.log(response);
+          this.buildFormGroup(response.data[0].parents);
+          this.createProfile();
+          this.canDisplay=true;
           if (response.data[0].parents.length!=0){
-            this.buildFormGroup(response.data[0].parents);
-            this.createProfile();
             this.patchValue(response.data[0].parents);
             this.completeProfile();
-            this.canDisplay=true;
           }
         }
       )
@@ -88,11 +89,9 @@ export class MyaccountParentsComponent implements OnInit {
   }
 
   buildFormGroup(data){
-    for(let parant of data){
-      this.parentAccountForm = this.fb.group({
-        parents : this.fb.array([this.createParent()])
-      })
-    }
+    this.parentAccountForm = this.fb.group({
+      parents : this.fb.array([this.createParent()])
+    })
     if(data.length>1){
       for(let i = 1; i<data.length; i++){
         this.parentAccountForm.controls['parents']['controls'].push(this.createParent())
@@ -142,6 +141,7 @@ export class MyaccountParentsComponent implements OnInit {
     //   confirmButtonText: 'Ok'
     // })
     this.goToChild.emit(true);
+    this.save()
   }
 
   // save(){
@@ -182,5 +182,21 @@ export class MyaccountParentsComponent implements OnInit {
       this.myParentProfile[i].address.city = this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value;
     }
     this.usersService.storeParentData(this.myParentProfile);
+  }
+
+  save(){
+    this.myProfile.parents=this.myParentProfile
+    console.log(this.myProfile)
+    this.myProfile.academicHistories[0]=new MyAccountHistoryMdl();
+    this.myProfile.bulletins[0]= new MyAccountBulletin();
+    this.myProfile.siblings[0]= new MyAccountSiblingsMdl();
+     this.usersService.putProfile(this.myProfile)
+      .subscribe(
+        (data)=>{
+          let response = data;
+          console.log(response);
+        }
+      )
+
   }
 }

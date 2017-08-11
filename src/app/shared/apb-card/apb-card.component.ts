@@ -29,9 +29,9 @@ export class ApbCardComponent implements OnInit {
     this.router.navigate(['etablissement', this.SchoolData._id]);
   }
    
-  applyToSchool(){
-    this.router.navigate(['applyto', this.SchoolData._id]);
-  }
+  // applyToSchool(){
+  //   this.router.navigate(['applyto', this.SchoolData._id]);
+  // }
 
   saveInWish(){
     const data = {
