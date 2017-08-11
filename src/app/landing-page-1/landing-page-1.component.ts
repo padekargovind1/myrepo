@@ -57,8 +57,12 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 
         (<any> $('body .main')).css({ 'background-image': 'url(' + img + ')', 'background-size': 'cover'});
     }).mouseleave(function(){
-        (<any> $('.landingpage__additional-content .form-wrap')).removeClass('fadeIn').addClass('fadeOut');
-        (<any> $('.landingpage__additional-content')).css('z-index', 0);
+		//console.log((<any> $('.landingpage__additional-content .form-wrap')).find("input:focus, select:focus").length);
+		if((<any> $('.landingpage__additional-content .form-wrap')).find("input:focus, select:focus").length==0)
+		{
+			(<any> $('.landingpage__additional-content .form-wrap')).removeClass('fadeIn').addClass('fadeOut');
+			(<any> $('.landingpage__additional-content')).css('z-index', 0);
+		}
     });
   }
 
