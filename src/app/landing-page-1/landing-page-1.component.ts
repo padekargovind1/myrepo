@@ -18,17 +18,20 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     villes : []
   };
   schoolsOptions: any;
+  rateId : string ="";
   constructor(private fb : FormBuilder,
               private publicService : PublicService,
               private router : Router) { 
     this.buildForm();
+    
   }
 
   ngOnInit() {
+    this.initRate();
   }
 
   buildForm(){
-    console.log('build form')
+    // console.log('build form')
     this.searchForm = this.fb.group({
       classe : [''],
       lieu : [''],
@@ -41,7 +44,23 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     this.options['regions']=[];
     this.options['departements']=[];
     this.options['villes']=[];
-    console.log(this.options)
+    // console.log(this.options)
+  }
+
+  initRate(){
+    let rate = {
+      page : '1'
+    }
+    this.publicService.postRate(rate)
+      .subscribe(
+        response=>{
+          // console.log(response);
+          if(response.code!=400){
+            this.rateId=response.data._id;
+            // console.log(this.rateId);
+          }
+        }
+      )
   }
 
   ngAfterViewInit() {
@@ -62,18 +81,32 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   
 
   onSubmitSearch(path){
-    console.log("on submit", this.searchForm.value)
+    // console.log("on submit", this.searchForm.value)
     let data = [
       this.searchForm.controls.classe.value,
       this.searchForm.controls.lieu.value,
       this.searchForm.controls.etablissement.value
     ]
     this.publicService.storeSearchSchool(data);
+    this.onNavigate(path);
+  }
+
+  onNavigate(path){
+    let rate = {
+      id : this.rateId,
+      click : true
+    }
+    this.publicService.putRate(rate)
+      .subscribe(
+        response=>{
+          console.log(response)
+        }
+      )
     this.router.navigate(['/'+path]);
   }
 
   filterLieu(event){
-    console.log(event.target.value);
+    // console.log(event.target.value);
     let filter: string = event.target.value;
     if(filter.length>=2){
       this.getLieuFilter(filter)
@@ -88,7 +121,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(this.options);
+          // console.log(this.options);
           if(response.code!=400){
             this.options['regions']=data.regions
             this.options['departements']=data.departments
@@ -100,7 +133,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   }
 
   filterSchool(event){
-    console.log(event.target.value);
+    // console.log(event.target.value);
     let filter: string = event.target.value;
     if(filter.length>=3){
       this.getSchoolFilter(filter)
@@ -117,18 +150,14 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(data);
+          // console.log(data);
           this.schoolsOptions=data
         }
       )
   }
 
   navigateTo(index){
-    if(index==2){
-      this.router.navigate(['/'])
-    } else {
-      this.router.navigate(['/landing-page-'+index])
-    }
+    this.router.navigate(['/landing-page-'+index])
   }
 
 }

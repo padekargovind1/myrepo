@@ -17,10 +17,11 @@
     </li>
 </ul>
 
-<img src="http://54.254.203.172/cideapi/{{SchoolData.cycles[0].logo1}}" alt="School 1" />
+<img src="http://54.254.203.172/cideapi/{{SchoolData.cycles[0].logo1}}" alt="School 1" 
+    style="width:213.75px; height:213.75px"/>
 
 <div class="card-content">
-    <h3>{{ SchoolData.longName | school:50 }}
+    <h3>{{ SchoolData.longName | school:42 }}
         <span *ngIf="SchoolData.longName.length<33"><br>&nbsp;</span>
     </h3>
     <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 

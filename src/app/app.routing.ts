@@ -19,10 +19,16 @@ import { ApplytoComponent } from './applyto/applyto.component';
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
 import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
 import { SchoolComponent } from './school/school.component';
+import { RandomLandingComponent } from './random-landing/random-landing.component';
+import { SuperieurComponent } from './superieur/superieur.component';
 
 export const AppRoutes: Routes = [
-    { path: '', component: LandingPage1Component},
+    { path: '', component: RandomLandingComponent},
+    { path: 'landing-page-1', component: LandingPage1Component },
+    { path: 'landing-page-2', component: AccueilComponent },
+    { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'conseil', component: ConseilComponent},
+    { path: 'orientation', component: LinguisticComponent},
     { path: 'booking' , component: BookingComponent },
     { path: 'linguistic' , component: LinguisticComponent },
     { path: 'register' , component: RegisterComponent },
@@ -35,12 +41,10 @@ export const AppRoutes: Routes = [
     { path: 'college', component: SchoolComponent },
     { path: 'lycee', component: SchoolComponent },
     { path: 'internat', component: SchoolComponent },
-    { path: 'enseignement', component: SchoolComponent },
+    { path: 'enseignement', component: SuperieurComponent },
     { path: 'etablissement/:schoolId', component: EtablissementComponent },
     { path: 'compare-mode', component: CompareModeComponent },
     { path: 'detail-appointment', component: DetailAppointmentComponent },
-    { path: 'landing-page-1', component: AccueilComponent },
-    { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'wizard', component: WizardComponent},
     { path: 'applyto/:schoolId', component: ApplytoComponent},
     { path: 'editorial', component: EditorialContComponent},

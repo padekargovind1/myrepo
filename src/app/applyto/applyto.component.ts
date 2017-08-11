@@ -127,6 +127,10 @@ export class ApplytoComponent implements OnInit {
 
   patchValue(userData){
 	  var IsAdress = (userData.address!==undefined && userData.address!=null) ? true : false;
+    var haveLv1 = (userData.academicHistories[0].languages[1]!==undefined && userData.academicHistories[0].languages[1]!=null) ? true : false;
+    var haveLv2 = (userData.academicHistories[0].languages[2]!==undefined && userData.academicHistories[0].languages[2]!=null) ? true : false;
+    var hobbies = (userData.hobbies!==undefined && userData.hobbies!=null) ? true : false;
+    var interest = (userData.interest!==undefined && userData.interest!=null) ? true : false;
     this.applytoForm.patchValue({
       childLastName : userData.lastName,
       childFirstName : userData.firstName,
@@ -139,39 +143,39 @@ export class ApplytoComponent implements OnInit {
       childCity : IsAdress ? userData.address.city : "",
       childBirthDay : IsAdress ? userData.birthDate : "",
       childBirthPlace : IsAdress ? userData.birthPlace : "",
-	  //Current Institution
-	  schoolName : '',
-	  schoolCity : '',
-	  schoolClasse : '',
-	  schoolOption : '',
-	  schoolLv1 : '',
-	  schoolLv2 : '',
-	  schoolLv3 : '',
-	  //Strong and weak subject
-	  bestSubject : userData.attractionToSubjects,
-	  weakSubject : userData.weakAtSubjects,
-	  //Interests
-	  yourInterest : '',
-	  practiceInterest : ''
+      //Current Institution
+      schoolName : userData.academicHistories[0].schoolName,
+      schoolCity : userData.academicHistories[0].city,
+      schoolClasse : userData.academicHistories[0].class,
+      schoolOption : userData.academicHistories[0].classType,
+      schoolLv1 : userData.academicHistories[0].languages[0],
+      schoolLv2 : haveLv1 ? userData.academicHistories[0].languages[1] : "",
+      schoolLv3 : haveLv2 ? userData.academicHistories[0].languages[2] : "",
+      //Strong and weak subject
+      bestSubject : userData.attractionToSubjects,
+      weakSubject : userData.weakAtSubjects,
+      //Interests
+      yourInterest : hobbies ? userData.hobbies : '',
+      practiceInterest : interest ? userData.interest : ''
     });
     for (let i = 0; i<this.applytoForm.controls['parents']['controls'].length; i++){
-		if(userData.parents!==undefined && userData.parents!=null && userData.parents.length!=0){
-			IsAdress = (userData.parents[i].address!==undefined && userData.parents[i].address!=null) ? true : false;
-		  this.applytoForm.controls['parents']['controls'][i].patchValue({
-			lienParent : userData.parents[i].relationship,
-			titre : userData.parents[i].gender,
-			nom : userData.parents[i].lastName,
-			prenom : userData.parents[i].firstName,
-			email : userData.parents[i].email,
-			portable : userData.parents[i].phoneNumber,
-			adresse : IsAdress ? userData.parents[i].address.address1 : "",
-			codepostal : IsAdress ? userData.parents[i].address.postCode : "",
-			ville : IsAdress ? userData.parents[i].address.city : "",
-			pays : IsAdress ? userData.parents[i].address.country : "",
-			job : userData.parents[i].profession,
-			horaireJoignable : userData.parents[i].availability
-		  })
-		}
+      if(userData.parents!==undefined && userData.parents!=null && userData.parents.length!=0){
+        IsAdress = (userData.parents[i].address!==undefined && userData.parents[i].address!=null) ? true : false;
+        this.applytoForm.controls['parents']['controls'][i].patchValue({
+        lienParent : userData.parents[i].relationship,
+        titre : userData.parents[i].gender,
+        nom : userData.parents[i].lastName,
+        prenom : userData.parents[i].firstName,
+        email : userData.parents[i].email,
+        portable : userData.parents[i].phoneNumber,
+        adresse : IsAdress ? userData.parents[i].address.address1 : "",
+        codepostal : IsAdress ? userData.parents[i].address.postCode : "",
+        ville : IsAdress ? userData.parents[i].address.city : "",
+        pays : IsAdress ? userData.parents[i].address.country : "",
+        job : userData.parents[i].profession,
+        horaireJoignable : userData.parents[i].availability
+        })
+      }
     }
     for (let i = 0; i<this.applytoForm.controls['freresoeur']['controls'].length; i++){
       if(userData.siblings!==undefined && userData.siblings!=null && userData.siblings.length!=0){
