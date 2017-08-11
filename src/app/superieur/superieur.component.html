@@ -321,9 +321,13 @@
                         <div class="row">
                             <button type="button" 
                                 class="btn btn-appointment" style="margin-left: 46%"
-                                (click)="showMore()" *ngIf="apbSchools.length==limit"
+                                (click)="showMore()" *ngIf="apbSchools.length==limit || apbSchools.length==0"
                                 >Voir plus
                             </button>
+                        </div>
+                        <div *ngIf="apbSchools.length==0" class="row">
+                            <p style="width:100%;
+                                text-align:center; font-size : 35px">Il n'y a pas d'école supérieure pour la recherche demandé.</p>
                         </div>
                             
 

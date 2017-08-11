@@ -745,10 +745,14 @@
                             </div>
 
                         </div><!-- .col-* -->
+                        <div *ngIf="schoolListFilter.length==0" class="row">
+                            <p style="width:100%;
+                                text-align:center; font-size : 35px">Il n'y a pas d'école pour la recherche demandé.</p>
+                        </div>
                         <div class="row">
                             <button type="button" 
                                 class="btn btn-appointment" style="margin-left: 46%"
-                                (click)="showMore()" *ngIf="schoolListFilter.length==limit"
+                                (click)="showMore()" *ngIf="schoolListFilter.length==limit || schoolListFilter.length!=0"
                                 >Voir plus
                             </button>
                         </div>

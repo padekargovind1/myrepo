@@ -8,13 +8,13 @@
             <div class="collapse in ecole">
                 <ul class="compare-item">
                     <li *ngIf="schoolDataToDisplay.cycles[0]; else cycle1">
-                        {{ schoolDataToDisplay.cycles[0].classes[0].className }}
+                        {{ schoolDataToDisplay.cycles[0].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle1>
                         <li >&nbsp;</li>
                     </ng-template>
                     <li *ngIf="schoolDataToDisplay.cycles[1]; else cycle2">
-                        {{ schoolDataToDisplay.cycles[1].classes[0].className }}
+                        {{ schoolDataToDisplay.cycles[1].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle2>
                         <li >&nbsp;</li>
@@ -26,13 +26,13 @@
             <div class="collapse in college">
                 <ul class="compare-item">
                     <li *ngIf="schoolDataToDisplay.cycles[2]; else cycle3">
-                        {{ schoolDataToDisplay.cycles[2].classes[0].className }}
+                        {{ schoolDataToDisplay.cycles[2].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle3>
                         <li >&nbsp;</li>
                     </ng-template>
                     <li *ngIf="schoolDataToDisplay.cycles[3]; else cycle4">
-                        {{ schoolDataToDisplay.cycles[3].classes[0].className }}
+                        {{ schoolDataToDisplay.cycles[3].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle4>
                         <li >&nbsp;</li>
@@ -44,13 +44,13 @@
             <div class="collapse in college">
                 <ul class="compare-item">
                     <li *ngIf="schoolDataToDisplay.cycles[4]; else cycle5">
-                        {{ schoolDataToDisplay.cycles[4].classes[0].className }}
+                        {{ schoolDataToDisplay.cycles[4].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle5>
                         <li >&nbsp;</li>
                     </ng-template>
                     <li *ngIf="schoolDataToDisplay.cycles[5]; else cycle6">
-                        {{ schoolDataToDisplay.cycles[5].classes[0].className }}
+                        {{ schoolDataToDisplay.cycles[5].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle6>
                         <li >&nbsp;</li>
@@ -62,17 +62,37 @@
 
 
     <div [class]="'cycleSlick'+schoolDataToDisplay.counter">
-        <div *ngFor="let school of schoolDataToDisplay.cycles; let i=index">
 
             <ul class="compare-item center class-cycle">
                 <li class="title"><h5>&nbsp;</h5>
-                <div class="collapse in language">
+                <!--<div class="collapse in language">
                     <ul class="compare-item">
                         <li>
-                            {{ schoolDataToDisplay.cycles[i].cycle.nom }}
+                            {{ schoolDataToDisplay.cycles[whichCycle].cycle.nom }}
                         </li>
                     </ul>
-                </div>
+                </div>-->
+                    <div class="form-group">
+                        <label>
+                            <select name="class" class="form-control" id="class" 
+                                (click)="cycleChanging($event)" style="width:162px">
+                                <!--<option value="" disabled selected hidden>Classe</option>-->
+                                <option value="" selected>Choisir une classe</option>
+                                <option *ngFor="let school of schoolDataToDisplay.cycles; let i=index">
+                                    {{ schoolDataToDisplay.cycles[i].cycle.nom }}
+                                </option>
+                            </select>
+                        </label>
+                    </div>
+                <!--<button md-button [mdMenuTriggerFor]="menu">Choisir un cycle
+                </button>
+                <md-menu #menu="mdMenu" >
+                    <button md-menu-item 
+                        *ngFor="let school of schoolDataToDisplay.cycles; let i=index"
+                        (click)="cycleChanging(i)">
+                        {{ schoolDataToDisplay.cycles[i].cycle.nom }}
+                    </button>
+                </md-menu>-->
                 </li>
             </ul>
 
@@ -82,19 +102,19 @@
                     <div class="collapse in language">
                         <ul class="compare-item">
                             <li>
-                                {{ schoolDataToDisplay.cycles[i].language.lv1.value[0] }}
+                                {{ schoolDataToDisplay.cycles[whichCycle].language.lv1.value[0] }}
                             </li>
                             <li>
-                                {{ schoolDataToDisplay.cycles[i].language.lv2.value[0] }}
+                                {{ schoolDataToDisplay.cycles[whichCycle].language.lv2.value[0] }}
                             </li>
                             <li>
-                                {{ schoolDataToDisplay.cycles[i].language.lv3.value[0] }}
+                                {{ schoolDataToDisplay.cycles[whichCycle].language.lv3.value[0] }}
                             </li>
                             <li>
-                                {{ schoolDataToDisplay.cycles[i].language.ancient.value[0] }}
+                                {{ schoolDataToDisplay.cycles[whichCycle].language.ancient.value[0] }}
                             </li>
                             <li>
-                                {{ schoolDataToDisplay.cycles[i].language.regional.value[0] }}
+                                {{ schoolDataToDisplay.cycles[whichCycle].language.regional.value[0] }}
                             </li>
                         </ul>
                     </div>
@@ -106,31 +126,31 @@
                 <li class="title"><h5>&nbsp;</h5>
                     <div class="collapse in specialities">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i].specifications.handicapped.value; else field1">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].specifications.handicapped.value; else field1">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field1>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].specifications.finance.value; else field2">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].specifications.finance.value; else field2">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field2>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].specifications.foreignFrench.value; else field3">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].specifications.foreignFrench.value; else field3">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field3>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].specifications.advanced.value; else field4">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].specifications.advanced.value; else field4">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field4>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <!--<li *ngIf="schoolDataToDisplay.cycles[i].specifications.flexibleTimeframe.value; else field5">
+                            <!--<li *ngIf="schoolDataToDisplay.cycles[whichCycle].specifications.flexibleTimeframe.value; else field5">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field5>
@@ -146,79 +166,79 @@
                 <li class="title"><h5>&nbsp;</h5>
                     <div class="collapse in internat">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.onSite.value; else field6">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.onSite.value; else field6">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field6>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.notOnSite.value; else field7">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.notOnSite.value; else field7">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field7>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.residence.value; else field8">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.residence.value; else field8">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field8>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.weekdays.value; else field9">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.weekdays.value; else field9">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field9>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.fulltime.value; else field10">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.fulltime.value; else field10">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field10>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.someWeekEnds.value; else field11">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.someWeekEnds.value; else field11">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field11>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.mixed.value; else field12">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.mixed.value; else field12">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field12>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.girls.value; else field13">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.girls.value; else field13">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field13>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.boys.value; else field14">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.boys.value; else field14">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field14>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.individual.value; else field15">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.individual.value; else field15">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field15>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding['2to4'].value; else field16">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding['2to4'].value; else field16">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field16>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding['5to8'].value; else field17">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding['5to8'].value; else field17">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field17>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].boarding.dormitories.value; else field18">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].boarding.dormitories.value; else field18">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field18>
@@ -235,19 +255,19 @@
                 <li class="title"><h5>&nbsp;</h5>
                     <div class="collapse in stages">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i].extraCuriculumn.preIntakeTraining.value; else field19">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].extraCuriculumn.preIntakeTraining.value; else field19">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field19>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].extraCuriculumn.smallHolidaysTraining.value; else field20">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].extraCuriculumn.smallHolidaysTraining.value; else field20">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field20>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].extraCuriculumn.bigHolidaysTraining.value; else field21">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].extraCuriculumn.bigHolidaysTraining.value; else field21">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field21>
@@ -264,19 +284,19 @@
                 <li class="title"><h5>&nbsp;</h5>
                     <div class="collapse in restauration">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i].canteen.selfService.value; else field22">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].canteen.selfService.value; else field22">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field22>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].canteen.serviceAtTable.value; else field23">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].canteen.serviceAtTable.value; else field23">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field23>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].canteen.cafeteria.value; else field24">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].canteen.cafeteria.value; else field24">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field24>
@@ -293,19 +313,19 @@
                 <li class="title"><h5>&nbsp;</h5>
                     <div class="collapse in externat">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i].externat['demi-pension_mixte'].value; else field25">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].externat['demi-pension_mixte'].value; else field25">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field25>
                                 <li >&nbsp;</li>
                             </ng-template>
-                        <li *ngIf="schoolDataToDisplay.cycles[i].externat['demi-pension_boys'].value; else field26">
+                        <li *ngIf="schoolDataToDisplay.cycles[whichCycle].externat['demi-pension_boys'].value; else field26">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field26>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].externat['demi-pension_girls'].value; else field27">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].externat['demi-pension_girls'].value; else field27">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field27>
@@ -321,79 +341,79 @@
                 <li class="title"><h5>&nbsp;</h5>
                     <div class="collapse in status">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status1.indexOf('Public')!=-1; else field28">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status1.indexOf('Public')!=-1; else field28">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field28>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status1.indexOf('Privé')!=-1; else field29">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status1.indexOf('Privé')!=-1; else field29">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field29>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('CCI')!=-1; else field30">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('CCI')!=-1; else field30">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field30>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('Sous Contrat D\'association')!=-1; else field31">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('Sous Contrat D\'association')!=-1; else field31">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field31>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('Hors contrat')!=-1; else field32">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('Hors contrat')!=-1; else field32">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field32>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('CFA')!=-1; else field33">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('CFA')!=-1; else field33">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field33>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('UFA')!=-1; else field34">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('UFA')!=-1; else field34">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field34>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('Reconnue par l\'Etat')!=-1; else field35">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('Reconnue par l\'Etat')!=-1; else field35">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field35>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('En convention avec l\'Etat')!=-1; else field36">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('En convention avec l\'Etat')!=-1; else field36">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field36>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('Enseignement supérieur Libre')!=-1; else field37">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('Enseignement supérieur Libre')!=-1; else field37">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field37>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('Enseignement supérieur')!=-1; else field38">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('Enseignement supérieur')!=-1; else field38">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field38>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('Enseignement supérieur technique')!=-1; else field39">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('Enseignement supérieur technique')!=-1; else field39">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field39>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status2.indexOf('Sous contrat simple')!=-1; else field40">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status2.indexOf('Sous contrat simple')!=-1; else field40">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field40>
@@ -410,37 +430,37 @@
                 <li class="title"><h5>&nbsp;</h5>
                     <div class="collapse in confess">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status3.indexOf('Laïque')!=-1; else field41">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status3.indexOf('Laïque')!=-1; else field41">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field41>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status3.indexOf('Catholique')!=-1; else field42">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status3.indexOf('Catholique')!=-1; else field42">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field42>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status3.indexOf('Protestant')!=-1; else field43">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status3.indexOf('Protestant')!=-1; else field43">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field43>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status3.indexOf('Musulman')!=-1; else field44">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status3.indexOf('Musulman')!=-1; else field44">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field44>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status3.indexOf('Juif')!=-1; else field45">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status3.indexOf('Juif')!=-1; else field45">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field45>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].status3.indexOf('Boudhiste')!=-1; else field46">
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].status3.indexOf('Boudhiste')!=-1; else field46">
                                 <img width="20" src="assets/images/cide-true.png">
                             </li>
                             <ng-template #field46>
@@ -456,20 +476,20 @@
                 <li class="title"><h5>&nbsp;</h5>
                     <div class="collapse in section">
                         <ul class="compare-item">
-                            <li *ngIf="schoolDataToDisplay.cycles[i].sections.europeanSections[0]!=''; else field47">
-                                {{ schoolDataToDisplay.cycles[i].sections.europeanSections[0] }}
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].sections.europeanSections[0]!=''; else field47">
+                                {{ schoolDataToDisplay.cycles[whichCycle].sections.europeanSections[0] }}
                             </li>
                             <ng-template #field47>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].sections.international[0]!=''; else field47">
-                                {{ schoolDataToDisplay.cycles[i].sections.international[0] }}
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].sections.international[0]!=''; else field47">
+                                {{ schoolDataToDisplay.cycles[whichCycle].sections.international[0] }}
                             </li>
                             <ng-template #field48>
                                 <li >&nbsp;</li>
                             </ng-template>
-                            <li *ngIf="schoolDataToDisplay.cycles[i].sections.sportSections[0]!=''; else field47">
-                                {{ schoolDataToDisplay.cycles[i].sections.sportSections[0] }}
+                            <li *ngIf="schoolDataToDisplay.cycles[whichCycle].sections.sportSections[0]!=''; else field47">
+                                {{ schoolDataToDisplay.cycles[whichCycle].sections.sportSections[0] }}
                             </li> 
                             <ng-template #field49>
                                 <li >&nbsp;</li>
@@ -482,15 +502,15 @@
             <ul class="compare-item center class-cycle"
                 *ngIf="compareListFilter[10]=='true'">
                 <li class="title">
-                    <h5 *ngIf="schoolDataToDisplay.cycles[i].classes[0].diplomas[0].name!=''; else field50">
-                        {{ schoolDataToDisplay.cycles[i].classes[0].diplomas[0].name |school:15 }}
+                    <h5 *ngIf="schoolDataToDisplay.cycles[whichCycle].classes[0].diplomas[0].name!=''; else field50">
+                        {{ schoolDataToDisplay.cycles[whichCycle].classes[0].diplomas[0].name |school:15 }}
                     </h5>
                     <ng-template #field50>
                         <h5 >&nbsp;</h5>
                     </ng-template> 
                     <!--<div class="collapse in section">
-                        <li *ngIf="schoolDataToDisplay.cycles[i].classes[0].diplomas[0].name!=''; else field50">
-                            {{ schoolDataToDisplay.cycles[i].classes[0].diplomas[0].name }}
+                        <li *ngIf="schoolDataToDisplay.cycles[whichCycle].classes[0].diplomas[0].name!=''; else field50">
+                            {{ schoolDataToDisplay.cycles[whichCycle].classes[0].diplomas[0].name }}
                         </li> 
                         <ng-template #field50>
                             <li >&nbsp;</li>
@@ -502,8 +522,8 @@
             <ul class="compare-item center class-cycle"
                 *ngIf="compareListFilter[11]=='true'">
                 <li class="title">
-                    <h5 *ngIf="schoolDataToDisplay.cycles[i].classes[0].option[0].name!=''; else field51">
-                        {{ schoolDataToDisplay.cycles[i].classes[0].option[0].name | school:15 }}
+                    <h5 *ngIf="schoolDataToDisplay.cycles[whichCycle].classes[0].option[0].name!=''; else field51">
+                        {{ schoolDataToDisplay.cycles[whichCycle].classes[0].option[0].name | school:15 }}
                     </h5>
                     <ng-template #field51>
                         <h5 >&nbsp;</h5>
@@ -514,7 +534,7 @@
             <ul class="compare-item center class-cycle"
                 *ngIf="compareListFilter[12]=='true'">
                 <li class="title">
-                    <h5 *ngIf="schoolDataToDisplay.cycles[i].availableSeat.activation; else field52"
+                    <h5 *ngIf="schoolDataToDisplay.cycles[whichCycle].availableSeat.activation; else field52"
                         style="margin-bottom:28px">
                         <img width="20" src="assets/images/cide-true.png">
                     </h5>
@@ -524,7 +544,6 @@
                 </li>
             </ul>
 
-        </div>
     </div>
     <!--<div *ngFor="let image of tripData.images">
         <img src="assets/images/linguistic/{{image}}" alt="School 1" />
