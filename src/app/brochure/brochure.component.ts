@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { PublicService } from '../services/public.service';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -10,7 +10,7 @@ import { BrochureService } from '../services/brochure.service';
   templateUrl: './brochure.component.html',
   styleUrls: ['./brochure.component.scss']
 })
-export class BrochureComponent implements OnInit, AfterViewInit {
+export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
 
     listBrochures = [];
     listBrochuresFiltered = [];
@@ -46,16 +46,33 @@ export class BrochureComponent implements OnInit, AfterViewInit {
               public dialog:MdDialog,
               private fb : FormBuilder,
               private brochureService : BrochureService) { 
-      this.getBrochure();
+      this.getBrochure()
       this.buildForm();
       this.makeProfile()
+      this.getSearch()
       // this.doBrochure();
   }
   ngOnInit() {
+    
   }
 
   ngAfterViewInit() {
   	// this.doBrochure();
+  }
+
+  ngOnDestroy(){
+    this.brochureService.cleanSchoolSearch()
+  }
+
+  getSearch(){
+    if(this.brochureService.hasSchoolSearch()){
+        let data = this.brochureService.getSchoolSearch()
+        console.log(data)
+        this.searchForm.patchValue({
+            etablissement : data
+        })  
+        this.onSubmitSearch();
+    }        
   }
 
   doBrochure() {

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Subscription } from 'rxjs/Subscription';
 import { PublicService } from '../services/public.service';
+import { UsersService } from '../services/users.service';
+import { BrochureService } from '../services/brochure.service';
 declare var $ :any;
 
 @Component({
@@ -11,7 +13,7 @@ declare var $ :any;
   templateUrl: './etablissement.component.html',
   styleUrls: ['./etablissement.component.scss']
 })
-export class EtablissementComponent implements OnInit {
+export class EtablissementComponent implements OnInit{
 
   schoolId : string = "";
   schoolData : any;
@@ -21,11 +23,13 @@ export class EtablissementComponent implements OnInit {
 
   constructor(private route : ActivatedRoute,
               private publicService : PublicService,
-              private location : Location) { 
+              private location : Location,
+              private usersService : UsersService,
+              private router : Router,
+              private brochureService : BrochureService) { 
   }
 
   ngOnInit() {
-    this.runScript();
     this.subscription = this.route.params
       .subscribe(
         params =>{
@@ -38,13 +42,11 @@ export class EtablissementComponent implements OnInit {
         }
       )
   }
+
   runScript(){
     $('.slickjs').slick({
       arrows : false,
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
+      slidesToShow: 4,
     });
       
   }
@@ -62,6 +64,7 @@ export class EtablissementComponent implements OnInit {
             this.schoolLongName=this.schoolData.longName;
             this.schoolShortName=this.schoolData.shortName;
             console.log(this.schoolData);
+            this.runScript()
           }
         }
       )
@@ -69,6 +72,35 @@ export class EtablissementComponent implements OnInit {
 
   navigateBack(){
     this.location.back();
+  }
+
+  addToWish(){
+    const data = {
+      type : "wish",
+      school : this.schoolId
+    }
+
+    this.usersService.postApplication(data)
+      .subscribe(
+        response=>{
+          let data = response.data;
+          console.log(response);
+          if(response.code==400){
+            console.log(response.message)
+          } else {
+            console.log("apply successful")
+          }
+        }
+      )
+  }
+
+  applyTo(){
+    this.router.navigate(['applyto', this.schoolId])
+  }
+
+  downloadBrochure(){
+    this.brochureService.storeSchoolSearch(this.schoolData.shortName);
+    this.router.navigate(['brochure']);
   }
 
 }

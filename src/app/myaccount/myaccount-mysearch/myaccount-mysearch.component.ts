@@ -55,7 +55,7 @@ export class MyaccountMysearchComponent implements OnInit {
     let data = {
       school : schoolId
     }
-    this.usersService.deleteApplciation(data)
+    this.usersService.deleteApplication(data)
       .subscribe(
         response=>{
           console.log(response)

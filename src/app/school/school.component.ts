@@ -169,7 +169,9 @@ export class SchoolComponent implements OnInit {
       etablissement : ['']
     })
     // console.log(this.searchForm)
-    this.fieldSearchForm()
+    if(this.pathName!="internat"){
+      this.fieldSearchForm()
+    }
     this.initOptions()
   }
 
@@ -325,7 +327,7 @@ export class SchoolComponent implements OnInit {
   }
 
   postAdvancedFilter(){
-    // console.log(this.advancedSearch)
+    console.log(this.advancedSearch)
     this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
         response=>{
@@ -334,9 +336,9 @@ export class SchoolComponent implements OnInit {
           if(response.code==400){
             // console.log(response.message)
           } else {
-            this.defaultSchoolList=response.data;
+            this.defaultSchoolList=data;
             this.schoolListFilter=data;
-            // console.log(this.schoolListFilter)
+            console.log(this.schoolListFilter)
             // this.filterCycleSchool(data)
           }
         }
@@ -420,7 +422,7 @@ export class SchoolComponent implements OnInit {
         this.checkCategory('language')
         this.postAdvancedFilter();
       }
-    } else if(event.srcElement.value!=""){
+    } else if(event.srcElement.value!="" && this.languageAdvancedSearchName.indexOf(event.srcElement.value)==-1){
       this.advancedSearch['language'][category]=event.srcElement.value
       this.languageAdvancedSearch.push(category);
       this.languageAdvancedSearchName.push(event.srcElement.value);
@@ -465,6 +467,7 @@ export class SchoolComponent implements OnInit {
     this.searchFilter = ["", "", ""];
     this.publicService.storeSearchSchool(this.searchFilter);
     this.limit=20
+    console.log(this.advancedSearch)
     this.postAdvancedFilter();
     // this.getSearchFilter();
   }
@@ -474,9 +477,17 @@ export class SchoolComponent implements OnInit {
       this.advancedSearch={
         code:["maternelle", "primaire"]
       }
-    } else {
+    } else if(this.pathName=="college" || this.pathName=="lycee"){
       this.advancedSearch={
         code:[this.pathName]
+      }
+    } else if(this.pathName="internat"){
+      this.advancedSearch={
+        code:["maternell", "primaire", "college", "lycee"]
+      }
+      this.advancedSearch['boarding']={
+        notOnSite : true,
+        onSite : true
       }
     }
   }
@@ -485,7 +496,7 @@ export class SchoolComponent implements OnInit {
     // console.log("Clean all search");
     this.cleanSearch();
     this.optionValue="";
-    console.log($('.checkbox'));
+    // console.log($('.checkbox'));
     $('.checkbox').prop('checked', false)
   }
 
