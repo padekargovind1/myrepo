@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
@@ -50,6 +50,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   canDisplaySiblings : boolean = false;
   canDisplayWizard : boolean = false;
   canDisplaySchool : boolean = false;
+  @ViewChild('tabGroup') tabGroup;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -518,5 +519,9 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   onRemoveSecondaire(index){
     this.secondaires = this.wizardForm.get('secondary') as FormArray;
     this.secondaires.removeAt(index, 1);
+  }
+
+  nextTab(nb){
+    this.tabGroup.selectedIndex=nb;
   }
 }

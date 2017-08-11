@@ -52,11 +52,12 @@ export class SuperieurComponent implements OnInit {
       professionalSector : '',
       courseType : ''
     },
-    postCode : '',
+    postcode : '',
     departmentNumber : '',
     region : '',
     keyword : ''
   };
+  domaines=[];
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -74,6 +75,7 @@ export class SuperieurComponent implements OnInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+    this.domaines=this.publicService.getDomaines();
   }
 
   getApbSchool(){
@@ -109,7 +111,7 @@ export class SuperieurComponent implements OnInit {
       let i=0
       while(i<this.options['villes'].length){
         if(this.options['villes'][i].postcode==lieu){
-          this.searchBody.postCode=lieu
+          this.searchBody.postcode=lieu
         }
         i++;
       }
@@ -121,7 +123,7 @@ export class SuperieurComponent implements OnInit {
   resetSearchBodyLieu(){
     this.searchBody.region='';
     this.searchBody.departmentNumber='';
-    this.searchBody.postCode='';
+    this.searchBody.postcode='';
   }
 
   runScript(){
@@ -394,7 +396,7 @@ export class SuperieurComponent implements OnInit {
     this.buildForm();
     this.searchFilter = ["", "", ""];
     this.searchBody.courses.professionalSector='';
-    this.searchBody.postCode='';
+    this.searchBody.postcode='';
     this.searchBody.departmentNumber='';
     this.searchBody.region='';
     this.searchBody.keyword='';

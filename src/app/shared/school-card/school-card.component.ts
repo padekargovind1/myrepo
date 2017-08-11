@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
+import { SchoolChoiceComponent } from '../school-choice/school-choice.component';
 
 @Component({
   selector: 'app-school-card',
@@ -12,10 +14,12 @@ export class SchoolCardComponent implements OnInit {
 
   @Input() SchoolData : any;
   brochureData={brochure : ""}
+  config: MdDialogConfig;
 
   constructor(private router : Router,
               private usersService : UsersService,
-              private publicService : PublicService) { }
+              private publicService : PublicService,
+              public dialog:MdDialog) { }
 
   ngOnInit() {
     setTimeout(()=>{
@@ -30,7 +34,36 @@ export class SchoolCardComponent implements OnInit {
   }
    
   applyToSchool(){
-    this.router.navigate(['applyto', this.SchoolData._id]);
+    this.makeProfile()
+    let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
+    // dialogref.afterClosed().subscribe(result => {
+    //   this.lastCloseResult = result;
+    //   // console.log(result)
+    //   dialogref = null;
+    //   const closeResponse = this.brochureService.getResponse();
+    //   console.log(closeResponse)
+    //   if(closeResponse=="submit"){
+    //     this.downloadDialog();
+    //   }
+    // });
+    // this.router.navigate(['applyto', this.SchoolData._id]);
+  }
+
+  makeProfile(){
+    this.config= {
+      data:{
+        schoolData : this.SchoolData
+      },
+      disableClose: false,
+      width: '1000px',
+      height: '400px',
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
   }
 
   saveInWish(){

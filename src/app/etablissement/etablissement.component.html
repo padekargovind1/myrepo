@@ -14,8 +14,9 @@
                     </button>
                 </div>
 
-                <div class="col-lg-1  col-xs-4">
-                    <img src="assets/images/etablissement/cesacom-logo.png" class="img-responsive">
+                <div class="col-lg-1  col-xs-4" *ngIf="canDisplay">
+                    <img src="http://54.254.203.172/cideapi/{{schoolData.cycles[0].logo1}}" 
+                        class="img-responsive">
                 </div>
                 <div class="col-lg-5 col-xs-8">
                     <h2 class="school-short-name">{{schoolShortName}}</h2>

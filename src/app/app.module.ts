@@ -78,6 +78,7 @@ import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-po
 import { RandomLandingComponent } from './random-landing/random-landing.component';
 import { SuperieurComponent } from './superieur/superieur.component';
 import { ApbCardComponent } from './shared/apb-card/apb-card.component';
+import { SchoolChoiceComponent } from './shared/school-choice/school-choice.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { ApbCardComponent } from './shared/apb-card/apb-card.component';
     WishApplyPopupComponent,
     RandomLandingComponent,
     SuperieurComponent,
-    ApbCardComponent
+    ApbCardComponent,
+    SchoolChoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -173,7 +175,8 @@ import { ApbCardComponent } from './shared/apb-card/apb-card.component';
     entryComponents: [
        BrochpopupComponent,
        BrochureDownloadComponent,
-       WishApplyPopupComponent
+       WishApplyPopupComponent,
+       SchoolChoiceComponent
     ],
   bootstrap: [AppComponent]
 })

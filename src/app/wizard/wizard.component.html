@@ -30,7 +30,7 @@
 
                     <section class="col-md-2 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
                         
-                        <img src="assets/images/{{appointmentData[6]}}" alt="" class="img-circle img-responsive advisor-img" />    
+                        <img src="http://54.254.203.172/cideapi{{appointmentData[6]}}" alt="" class="img-circle img-responsive advisor-img" />    
                     </section>
                     
                     <div class="col-sm-4 col-xs-12">
@@ -88,7 +88,9 @@
                     <!--</div><!-- .navbar -->
                       <!-- <form > -->
 
-                      <md-tab-group md-dynamic-height [(selectedIndex)]="activeTabIndex"  class="wizard-tabs">
+                      <md-tab-group md-dynamic-height 
+                        [(selectedIndex)]="activeTabIndex"  class="wizard-tabs"
+                        #tabGroup>
                         <!-- <div class="tab-content"> -->
                           <md-tab label="Parents">
                             <div class="tab-pane" id="tab1">
@@ -250,11 +252,18 @@
                                         </section>
                                     </div><!-- .row -->
                                     <div class="form-group clearfix">
-                                    <button class="btn  btn-appointment" (click)="onAddParent()"
-                                        [disabled]="wizardForm.controls['parents']['controls'].length==2"
-                                        style="margin-left:0px">
-                                        Ajouter un parent
-                                    </button>
+                                        <button class="btn  btn-appointment" (click)="onAddParent()"
+                                            [disabled]="wizardForm.controls['parents']['controls'].length==2"
+                                            style="margin-left:0px">
+                                            Ajouter un parent
+                                        </button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group clearfix">
+                                            <button class="btn  btn-appointment" (click)="nextTab(1)">
+                                            Suivant
+                                            </button>
+                                        </div>
                                     </div>
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab1 -->
@@ -366,28 +375,32 @@
                                                 </div>
                                             </div>
 
-
-                                            
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <div class="datepicker-holder">
-                                                                <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
-                                                                  placeholder="Date de naissance"
-                                                                  [formControl]="wizardForm.controls['childBirthDay']">
-                                                                  <md-datepicker #myDatepicker></md-datepicker>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder="Lieu"
-                                                              [formControl]="wizardForm.controls['childBirthPlace']"
-                                                              maxlength="30">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="datepicker-holder">
+                                                            <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
+                                                                placeholder="Date de naissance"
+                                                                [formControl]="wizardForm.controls['childBirthDay']">
+                                                                <md-datepicker #myDatepicker></md-datepicker>
                                                         </div>
                                                     </div>
                                                 </div>
-
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Lieu"
+                                                            [formControl]="wizardForm.controls['childBirthPlace']"
+                                                            maxlength="30">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group clearfix">
+                                                    <button class="btn  btn-appointment" (click)="nextTab(2)">
+                                                    Suivant
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div><!-- .col-* -->
 
                                         <div class="col-md-8" *ngIf="canDisplaySiblings">
@@ -646,7 +659,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>      
+                                            </div>   
+
+                                            <div class="row">
+                                                <div class="form-group clearfix">
+                                                    <button class="btn  btn-appointment" (click)="nextTab(3)">
+                                                    Suivant
+                                                    </button>
+                                                </div>
+                                            </div>   
                                             
                                         </div>
                                     </div><!-- .row -->
@@ -687,6 +708,14 @@
                                                                 <select name="Autre Langue" id=""></select>
                                                             </select>
                                                         </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group clearfix">
+                                                        <button class="btn  btn-appointment" (click)="nextTab(4)">
+                                                        Suivant
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -760,6 +789,13 @@
 
                                         </div><!-- .col-* -->
                                     </div><!-- .row -->
+                                    <div class="row">
+                                        <div class="form-group clearfix">
+                                            <button class="btn  btn-appointment" (click)="nextTab(5)">
+                                            Suivant
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab5 -->
                         </md-tab>
@@ -773,7 +809,6 @@
 
                                             <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
                     
-                                            
                                                 <div class="row" formArrayName="job" 
                                                     *ngFor="let parent of wizardForm.controls['job']['controls']; let i = index">
                                                 <div [formGroupName]="i">
@@ -836,6 +871,13 @@
 
                                         </div><!-- .col-* -->
                                     </div><!-- .row -->
+                                    <div class="row">
+                                        <div class="form-group clearfix">
+                                            <button class="btn  btn-appointment" (click)="nextTab(6)">
+                                            Suivant
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab6 -->
                         </md-tab>
@@ -938,6 +980,13 @@
 
                                         </div><!-- .col-* -->
                                     </div><!-- .row -->
+                                    <div class="row">
+                                        <div class="form-group clearfix">
+                                            <button class="btn  btn-appointment" (click)="nextTab(7)">
+                                            Suivant
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab7 -->
                         </md-tab>
@@ -1395,6 +1444,13 @@
 
 
                                        </div><!-- .col-* -->
+                                       <div class="row">
+                                            <div class="form-group clearfix">
+                                                <button class="btn  btn-appointment" (click)="nextTab(8)">
+                                                Suivant
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab8 -->

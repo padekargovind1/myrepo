@@ -19,15 +19,16 @@
                                 <form [formGroup]="searchForm">
                                     <div class="col-md-4  col-xs-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Domaine d'activité professionnel"
-                                                [formControl]="searchForm.controls['domaine']"/>
-                                            <!--<label class="select-custom" for="class">
+                                            <!--<input type="text" class="form-control" placeholder="Domaine d'activité professionnel"
+                                                [formControl]="searchForm.controls['domaine']"/>-->
+                                            <label class="select-custom" for="class">
                                                 <select name="class" class="form-control" id="class"
                                                     [formControl]="searchForm.controls['domaine']">
-                                                    <option value="" selected>Domaine</option>
-                                                    <option value="">Bac+1 à 2</option>
+                                                    <option value="" selected>Choisir un domaine</option>
+                                                    <option *ngFor="let domaine of domaines" 
+                                                        [value]="domaine" selected>&nbsp;&nbsp;{{domaine}}</option>
                                                 </select>
-                                            </label>-->
+                                            </label>
                                         </div>
                                     </div><!-- .col-* -->
 
@@ -264,22 +265,22 @@
 
                         <div class="col-md-12">
                             
-                            <div class="result-text" class="col-md-11">
+                            <div class="result-text" class="col-md-12">
                                 <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour: 
                                     <span *ngIf="searchFilter[0]!=''">
                                         {{ "Domaine d'activité professionnel " + searchFilter[0] }}
                                     </span> 
                                     <span class="fa fa-map-marker"
-                                        *ngIf="searchFilter[1]!=''">
+                                        *ngIf="searchFilter[2]!=''">
                                     </span> 
-                                    <span *ngIf="searchFilter[1]!=''">
-                                        {{ ' - ' + searchFilter[1] }}
+                                    <span *ngIf="searchFilter[2]!=''">
+                                        {{ ' - ' + searchFilter[2] }}
                                     </span>
                                     <span *ngIf="searchFilter[1]!='' && searchFilter[2]!=''">
                                         /
                                     </span>
-                                    <span *ngIf="searchFilter[2]!=''">
-                                        {{ searchFilter[2] }}
+                                    <span *ngIf="searchFilter[1]!=''">
+                                        {{ searchFilter[1] }}
                                     </span>
                                 </h3>
                                 <ng-template #empty1>

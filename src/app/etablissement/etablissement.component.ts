@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -13,13 +13,14 @@ declare var $ :any;
   templateUrl: './etablissement.component.html',
   styleUrls: ['./etablissement.component.scss']
 })
-export class EtablissementComponent implements OnInit{
+export class EtablissementComponent implements OnInit, AfterViewInit{
 
   schoolId : string = "";
   schoolData : any;
   subscription : Subscription;
   schoolShortName : string = "";
   schoolLongName : string = "";
+  canDisplay : boolean = false;
 
   constructor(private route : ActivatedRoute,
               private publicService : PublicService,
@@ -43,12 +44,15 @@ export class EtablissementComponent implements OnInit{
       )
   }
 
+  ngAfterViewInit(){
+
+  }
+
   runScript(){
     $('.slickjs').slick({
       arrows : false,
       slidesToShow: 4,
     });
-      
   }
 
   getSchoolById(){
@@ -64,6 +68,7 @@ export class EtablissementComponent implements OnInit{
             this.schoolLongName=this.schoolData.longName;
             this.schoolShortName=this.schoolData.shortName;
             console.log(this.schoolData);
+            this.canDisplay=true;
             this.runScript()
           }
         }
