@@ -91,7 +91,7 @@ export class AccueilComponent implements OnInit {
     $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').removeClass('open');
     $('#'+wheelNavId).addClass('open');
     if ($('.'+contentName+'-content').hasClass('fadeIn')) {
-      if(contentName!="ecole" && contentName!="college" && contentName!="lycee"){
+      if(contentName!="ecole" && contentName!="college" && contentName!="lycee" && contentName!="internat" && contentName!="enseignement"){
         console.log("Need to navigate", contentName);
         self.onNavigate(contentName);
       }
