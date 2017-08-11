@@ -13,6 +13,7 @@ import { SchoolChoiceComponent } from '../school-choice/school-choice.component'
 export class SchoolCardComponent implements OnInit {
 
   @Input() SchoolData : any;
+  @Input() pathName : any;
   brochureData={brochure : ""}
   config: MdDialogConfig;
 
@@ -23,13 +24,14 @@ export class SchoolCardComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(()=>{
-      // console.log(this.SchoolData);
+      console.log(this.pathName);
       this.getSchoolBrochureById();
     }, 500)
   }
 
   onSchoolDetail(){
     console.log("Click on school detail")
+    this.publicService.storePath(this.pathName)
     this.router.navigate(['etablissement', this.SchoolData._id]);
   }
    

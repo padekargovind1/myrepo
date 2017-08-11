@@ -72,6 +72,7 @@ export class PublicService {
     "Accueil",
     "Architecture, Aménagement d'intérieur"
   ]
+  nbSlick = 1;
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http : Http) { 
@@ -195,5 +196,18 @@ export class PublicService {
 
   getDomaines(){
     return this.domaines;
+  }
+
+  storePath(data){
+    localStorage.setItem('pathBack', data)
+  }
+
+  getStorePath(){
+    return localStorage.getItem('pathBack')
+  }
+
+  getNbSlick(){
+    this.nbSlick++;
+    return this.nbSlick
   }
 }

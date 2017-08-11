@@ -740,7 +740,7 @@
                                     <input type="checkbox" class="checkbox filled-in" id="school-1" />
                                     <label for="school-1">&nbsp;</label>
                                 </div>-->
-                                <app-school-card [SchoolData]="school"></app-school-card>
+                                <app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card>
                                 
                             </div>
 
@@ -764,8 +764,8 @@
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                     <div class="footer-ads hidden animated" style="margin-top:10px">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1  wrapper  slickjs">
+                            <!--<div class="row">
+                                <div class="col-md-10 col-md-offset-1  wrapper" [(ng-class)]="'slickjs'nbSlick">
                                     <div><img src="assets/images/ad/ads-footer_r1_c1.jpg" alt="ads" /></div>
                                     <div><img src="assets/images/ad/ads-footer_r1_c2.jpg" alt="ads" /></div>
                                     <div><img src="assets/images/ad/ads-footer_r1_c3.jpg" alt="ads" /></div>
@@ -776,7 +776,7 @@
                                     <div><img src="assets/images/ad/ads-footer_r1_c10.jpg" alt="ads" /></div>
                                     <div><img src="assets/images/ad/ads-footer_r1_c12.jpg" alt="ads" /></div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div><!-- footer-ads -->
 

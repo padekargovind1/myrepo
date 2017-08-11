@@ -76,7 +76,9 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   }
 
   navigateBack(){
-    this.location.back();
+    // this.location.back();
+    let path = this.publicService.getStorePath()
+    this.router.navigate([path])
   }
 
   addToWish(){

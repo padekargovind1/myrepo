@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -17,7 +17,7 @@ declare var $ :any;
   styleUrls: ['./school.component.scss'],
   providers: []
 })
-export class SchoolComponent implements OnInit {
+export class SchoolComponent implements OnInit, AfterViewInit {
 
   schoolList : any;
   schoolListFilter = [];
@@ -74,7 +74,6 @@ export class SchoolComponent implements OnInit {
               private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.runScript();
     this.setBackgroundImage();
     this.buildForm();
     for (let list of this.filterList){
@@ -84,6 +83,10 @@ export class SchoolComponent implements OnInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+  }
+
+  ngAfterViewInit(){
+    this.runScript()
   }
 
   runScript(){
@@ -120,13 +123,13 @@ export class SchoolComponent implements OnInit {
       }
     })
     
-    $('.slickjs').slick({
-      arrows : false,
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-    });
+    // $('.slickjs'+this.nbSlick).slick({
+    //   arrows : false,
+    //   slidesToShow: 5,
+    //   slidesToScroll: 1,
+    //   autoplay: true,
+    //   autoplaySpeed: 2000,
+    // });
       
   }
 

@@ -26,6 +26,7 @@ export class ApbCardComponent implements OnInit {
 
   onSchoolDetail(){
     console.log("Click on school detail")
+    this.publicService.storePath('enseignement')
     this.router.navigate(['etablissement', this.SchoolData._id]);
   }
    
