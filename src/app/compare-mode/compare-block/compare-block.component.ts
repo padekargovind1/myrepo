@@ -33,10 +33,8 @@ export class CompareBlockComponent implements OnInit, AfterViewInit {
   }
 
   cycleChanging(event){
-    // console.log(event.srcElement.selectedIndex-1)
-    if(event.srcElement.selectedIndex!=0){
-      this.whichCycle=event.srcElement.selectedIndex-1
-    }
+    // console.log(event.srcElement.selectedIndex)
+    this.whichCycle=event.srcElement.selectedIndex
     // this.whichCycle=nb
   }
 

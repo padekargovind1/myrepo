@@ -85,6 +85,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+    console.log(window.screen.width)
   }
 
   ngAfterViewInit(){
