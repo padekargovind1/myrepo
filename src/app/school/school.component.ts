@@ -65,6 +65,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   ancient: any="";
   regional: any="";
   limit=20;
+  slickNb : number;
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -74,6 +75,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
               private route : ActivatedRoute) { }
 
   ngOnInit() {
+    this.slickNb=this.publicService.getNbSlick();
     this.setBackgroundImage();
     this.buildForm();
     for (let list of this.filterList){
@@ -123,14 +125,17 @@ export class SchoolComponent implements OnInit, AfterViewInit {
       }
     })
     
-    // $('.slickjs'+this.nbSlick).slick({
-    //   arrows : false,
-    //   slidesToShow: 5,
-    //   slidesToScroll: 1,
-    //   autoplay: true,
-    //   autoplaySpeed: 2000,
-    // });
-      
+    $('.slickjs'+this.slickNb).slick({
+      arrows : false,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+    });
+  }
+
+  getSlickNb(){
+    return 'slickjs'+this.slickNb;
   }
 
   setBackgroundImage(){

@@ -72,7 +72,7 @@ export class PublicService {
     "Accueil",
     "Architecture, Aménagement d'intérieur"
   ]
-  nbSlick = 1;
+  nbSlick = 0;
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http : Http) { 
