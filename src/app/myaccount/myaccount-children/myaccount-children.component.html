@@ -190,7 +190,7 @@
               Terminer</button>
           </div>
         </section><!-- .col-* -->
-        <section class="col-md-6" *ngIf="canDisplay">
+        <section class="col-md-8" *ngIf="canDisplay">
           <div class="wrap-enfant" formArrayName="freresoeur"
             *ngFor="let siblings of childrenForm.controls['freresoeur']['controls']; let i=index">
             <h4>Frère / Soeur {{ i + 1 }}</h4>
