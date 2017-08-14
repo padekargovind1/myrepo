@@ -1,623 +1,625 @@
-<div class="popup-ad-holder fadeInDown animated">
-    <img src="assets/images/ad/ad-336x280-st.jpg" alt="" />
-</div>
+<div (click)="clickOnBody($event)">
+    <div class="popup-ad-holder fadeInDown animated">
+        <img src="assets/images/ad/ad-336x280-st.jpg" alt="" />
+    </div>
 
-<div class="popup-ad-holder-mobile fadeInDown animated">
-    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <img src="assets/images/ad/ad-336x280-st.jpg" alt="" />
-</div>
-<div class="filter-form-holder">
+    <div class="popup-ad-holder-mobile fadeInDown animated">
+        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <img src="assets/images/ad/ad-336x280-st.jpg" alt="" />
+    </div>
+    <div class="filter-form-holder">
 
-    <form class="form-inline searchform  school-page">
-        <h2 class="featured-title">{{schoolComponentTitle}}</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-11">
-                    <div class="form-wrap row">
-                        <div class="col-md-11">
-                            <div class="row">
-                                <form [formGroup]="searchForm">
-                                    <div class="col-md-4  col-xs-6"
-                                        *ngIf="pathName=='ecole'">
-                                        <div class="form-group">
-                                            <label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class"
-                                                    [formControl]="searchForm.controls['classe']">
-                                                    <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                    <option value="" selected>Choisir une classe</option>
-                                                    <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                        <option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                                        <option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                                        <option value="gs">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
-                                                    </optgroup>
-                                                    <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                        <option value="cp">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                                        <option value="ce1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                                        <option value="ce2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
-                                                    </optgroup>
-                                                    <optgroup label="Cycle 3 : Consolidation">
-                                                        <option value="cm1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                                        <option value="cm2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                                        <option value="6e">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
-                                                    </optgroup>
-                                                </select>
-                                            </label>
+        <form class="form-inline searchform  school-page">
+            <h2 class="featured-title">{{schoolComponentTitle}}</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="form-wrap row">
+                            <div class="col-md-11">
+                                <div class="row">
+                                    <form [formGroup]="searchForm">
+                                        <div class="col-md-4  col-xs-6"
+                                            *ngIf="pathName=='ecole'">
+                                            <div class="form-group">
+                                                <label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                        [formControl]="searchForm.controls['classe']">
+                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
+                                                        <option value="" selected>Choisir une classe</option>
+                                                        <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                            <option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                            <option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                            <option value="gs">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                        </optgroup>
+                                                        <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                            <option value="cp">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                            <option value="ce1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                            <option value="ce2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                        </optgroup>
+                                                        <optgroup label="Cycle 3 : Consolidation">
+                                                            <option value="cm1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                            <option value="cm2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                            <option value="6e">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </div><!-- .col-* -->
+                                        <div class="col-md-4  col-xs-6"
+                                            *ngIf="pathName=='college'">
+                                            <div class="form-group">
+                                                <label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                        [formControl]="searchForm.controls['classe']">
+                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
+                                                        <option value="" selected>Choisir une classe</option>
+                                                        <optgroup label="Cycle 3 : Consolidation">
+                                                            <option value="sixieme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                                        </optgroup>
+                                                        <optgroup label="Cycle 4 : Approfondissement">
+                                                            <option value="cinquieme">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+                                                            <option value="quatrieme">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+                                                            <option value="troisieme">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </div><!-- .col-* -->
+
+                                        <div class="col-md-4  col-xs-6"
+                                            *ngIf="pathName=='lycee'">
+                                            <div class="form-group">
+                                                <label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                        [formControl]="searchForm.controls['classe']">
+                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
+                                                        <option value="" selected>Choisir une classe</option>
+                                                        <optgroup label="2nde">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="seconde_probation">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
+                                                        </optgroup>
+                                                        <optgroup label="1ere">
+                                                            <option value="premiere_es">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
+                                                            <option value="premiere_l">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
+                                                            <option value="premiere_s">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
+                                                        </optgroup>
+                                                        <optgroup label="Terminale">
+                                                            <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
+                                                            <option value="terminale_l">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
+                                                            <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
+                                                        </optgroup>
+                                                        <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
+                                                        <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
+                                                        <option value="cursus_non_francophone">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
+                                                        <optgroup label="STHR - Hôtellerie et Restauration">
+                                                            <option value="seconde_sthr">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
+                                                            <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
+                                                            <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
+                                                            <option value="terminale_sthr">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
+                                                        </optgroup>
+                                                        <optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_sti2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
+                                                            <option value="premiere_st2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
+                                                            <option value="terminale_st2s">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
+                                                        </optgroup>
+                                                        <optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_std2a">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
+                                                            <option value="terminale_std2a">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
+                                                        </optgroup>
+                                                        <optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
+                                                            <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ST2D – Architecture et Construction</option>
+                                                            <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
+                                                            <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
+                                                            <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
+                                                        </optgroup>
+                                                        <optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
+                                                            <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
+                                                            <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
+                                                            <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
+                                                            <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
+                                                            <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
+                                                        </optgroup>
+                                                        <optgroup label="STL - Sciences et Technologies de Laboratoire">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
+                                                            <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
+                                                            <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
+                                                            <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
+                                                        </optgroup>
+                                                        <optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
+                                                            <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
+                                                            <option value="terminale_stav">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
+                                                        </optgroup>
+                                                        <optgroup label="TMD - Techniques de la Musique et de la Danse">
+                                                            <option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
+                                                            <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
+                                                            <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
+                                                            <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
+                                                            <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </div><!-- .col-* -->
+
+                                        <div class="col-md-4  col-xs-6"
+                                            *ngIf="pathName=='internat'">
+                                            <div class="form-group">
+                                                <label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="class"
+                                                        [formControl]="searchForm.controls['classe']" >
+                                                        <!--<option value="" disabled selected hidden>Classe</option>-->
+                                                        <option value="" selected>Choisir une classe</option>
+                                                        <optgroup label="Cycle 1 : Apprentissages Premiers">
+                                                            <option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
+                                                            <option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
+                                                            <option value="gs">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
+                                                        </optgroup>
+                                                        <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
+                                                            <option value="cp">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
+                                                            <option value="ce1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
+                                                            <option value="ce2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
+                                                        </optgroup>
+                                                        <optgroup label="Cycle 3 : Consolidation">
+                                                            <option value="cm1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
+                                                            <option value="cm2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
+                                                            <option value="6e">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                                        </optgroup>
+                                                        <optgroup label="Cycle 3 : Consolidation">
+                                                            <option value="sixieme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
+                                                        </optgroup>
+                                                        <optgroup label="Cycle 4 : Approfondissement">
+                                                            <option value="cinquieme">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
+                                                            <option value="quatrieme">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
+                                                            <option value="troisieme">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
+                                                        </optgroup>
+                                                        <optgroup label="2nde">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="seconde_probation">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
+                                                        </optgroup>
+                                                        <optgroup label="1ere">
+                                                            <option value="premiere_es">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
+                                                            <option value="premiere_l">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
+                                                            <option value="premiere_s">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
+                                                        </optgroup>
+                                                        <optgroup label="Terminale">
+                                                            <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
+                                                            <option value="terminale_l">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
+                                                            <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
+                                                        </optgroup>
+                                                        <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
+                                                        <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
+                                                        <option value="cursus_non_francophone">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
+                                                        <optgroup label="STHR - Hôtellerie et Restauration">
+                                                            <option value="seconde_sthr">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
+                                                            <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
+                                                            <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
+                                                            <option value="terminale_sthr">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
+                                                        </optgroup>
+                                                        <optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_sti2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
+                                                            <option value="premiere_st2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
+                                                            <option value="terminale_st2s">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
+                                                        </optgroup>
+                                                        <optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_std2a">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
+                                                            <option value="terminale_std2a">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
+                                                        </optgroup>
+                                                        <optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
+                                                            <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ST2D – Architecture et Construction</option>
+                                                            <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
+                                                            <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
+                                                            <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
+                                                        </optgroup>
+                                                        <optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
+                                                            <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
+                                                            <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
+                                                            <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
+                                                            <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
+                                                            <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
+                                                        </optgroup>
+                                                        <optgroup label="STL - Sciences et Technologies de Laboratoire">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
+                                                            <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
+                                                            <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
+                                                            <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
+                                                        </optgroup>
+                                                        <optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
+                                                            <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
+                                                            <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
+                                                            <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
+                                                            <option value="terminale_stav">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
+                                                        </optgroup>
+                                                        <optgroup label="TMD - Techniques de la Musique et de la Danse">
+                                                            <option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
+                                                            <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
+                                                            <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
+                                                            <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
+                                                            <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </div><!-- .col-* -->
+
+                                        <div class="col-md-4  col-xs-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Lieu"
+                                                    [formControl]="searchForm.controls['lieu']" 
+                                                    [mdAutocomplete]="auto"
+                                                    (keyup)="filterLieu($event)"/>
+                                                <md-autocomplete #auto="mdAutocomplete">
+                                                    <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                                    <md-option *ngFor="let option of options.regions" [value]="option">
+                                                        &nbsp;&nbsp;{{ option }}
+                                                    </md-option>
+                                                    <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                                    <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
+                                                        &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                                    </md-option>
+                                                    <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                                    <md-option *ngFor="let option of options.villes" [value]="option.cityName">
+                                                        &nbsp;&nbsp;{{ option.cityName }}
+                                                    </md-option>
+                                                </md-autocomplete>
+                                            </div>
                                         </div>
-                                    </div><!-- .col-* -->
-                                    <div class="col-md-4  col-xs-6"
-                                        *ngIf="pathName=='college'">
-                                        <div class="form-group">
-                                            <label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class"
-                                                    [formControl]="searchForm.controls['classe']">
-                                                    <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                    <option value="" selected>Choisir une classe</option>
-                                                    <optgroup label="Cycle 3 : Consolidation">
-                                                        <option value="sixieme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
-                                                    </optgroup>
-                                                    <optgroup label="Cycle 4 : Approfondissement">
-                                                        <option value="cinquieme">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
-                                                        <option value="quatrieme">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
-                                                        <option value="troisieme">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
-                                                    </optgroup>
-                                                </select>
-                                            </label>
+
+                                        <div class="col-md-4  col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" 
+                                                    placeholder="Nom d'etablissement" 
+                                                    [formControl]="searchForm.controls['etablissement']"
+                                                    [mdAutocomplete]="autoSchool"
+                                                    (keyup)="filterSchool($event)"/>
+                                                <md-autocomplete #autoSchool="mdAutocomplete">
+                                                    <md-option *ngFor="let school of schoolsOptions" 
+                                                        [value]="school.longName">
+                                                        {{ school.longName }}
+                                                    </md-option>
+                                                </md-autocomplete>
+                                            </div>
                                         </div>
-                                    </div><!-- .col-* -->
-
-                                    <div class="col-md-4  col-xs-6"
-                                        *ngIf="pathName=='lycee'">
-                                        <div class="form-group">
-                                            <label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class"
-                                                    [formControl]="searchForm.controls['classe']">
-                                                    <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                    <option value="" selected>Choisir une classe</option>
-                                                    <optgroup label="2nde">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="seconde_probation">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
-                                                    </optgroup>
-                                                    <optgroup label="1ere">
-                                                        <option value="premiere_es">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
-                                                        <option value="premiere_l">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
-                                                        <option value="premiere_s">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
-                                                    </optgroup>
-                                                    <optgroup label="Terminale">
-                                                        <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
-                                                        <option value="terminale_l">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
-                                                        <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
-                                                    </optgroup>
-                                                    <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
-                                                    <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
-                                                    <option value="cursus_non_francophone">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
-                                                    <optgroup label="STHR - Hôtellerie et Restauration">
-                                                        <option value="seconde_sthr">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
-                                                        <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
-                                                        <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
-                                                        <option value="terminale_sthr">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
-                                                    </optgroup>
-                                                    <optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_sti2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
-                                                        <option value="premiere_st2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
-                                                        <option value="terminale_st2s">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
-                                                    </optgroup>
-                                                    <optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_std2a">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
-                                                        <option value="terminale_std2a">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
-                                                    </optgroup>
-                                                    <optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
-                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ST2D – Architecture et Construction</option>
-                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
-                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
-                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                                    </optgroup>
-                                                    <optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
-                                                        <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
-                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
-                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
-                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
-                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                                    </optgroup>
-                                                    <optgroup label="STL - Sciences et Technologies de Laboratoire">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
-                                                        <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
-                                                        <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
-                                                        <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                                    </optgroup>
-                                                    <optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
-                                                        <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
-                                                        <option value="terminale_stav">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
-                                                    </optgroup>
-                                                    <optgroup label="TMD - Techniques de la Musique et de la Danse">
-                                                        <option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
-                                                        <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
-                                                        <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
-                                                        <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
-                                                        <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
-                                                    </optgroup>
-                                                </select>
-                                            </label>
-                                        </div>
-                                    </div><!-- .col-* -->
-
-                                    <div class="col-md-4  col-xs-6"
-                                        *ngIf="pathName=='internat'">
-                                        <div class="form-group">
-                                            <label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class"
-                                                    [formControl]="searchForm.controls['classe']" >
-                                                    <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                    <option value="" selected>Choisir une classe</option>
-                                                    <optgroup label="Cycle 1 : Apprentissages Premiers">
-                                                        <option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
-                                                        <option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
-                                                        <option value="gs">&nbsp;&nbsp;&nbsp;&nbsp;GS</option>
-                                                    </optgroup>
-                                                    <optgroup label="Cycle 2 : Apprentissages Fondamentaux">
-                                                        <option value="cp">&nbsp;&nbsp;&nbsp;&nbsp;CP</option>
-                                                        <option value="ce1">&nbsp;&nbsp;&nbsp;&nbsp;CE1</option>
-                                                        <option value="ce2">&nbsp;&nbsp;&nbsp;&nbsp;CE2</option>
-                                                    </optgroup>
-                                                    <optgroup label="Cycle 3 : Consolidation">
-                                                        <option value="cm1">&nbsp;&nbsp;&nbsp;&nbsp;CM1</option>
-                                                        <option value="cm2">&nbsp;&nbsp;&nbsp;&nbsp;CM2</option>
-                                                        <option value="6e">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
-                                                    </optgroup>
-                                                    <optgroup label="Cycle 3 : Consolidation">
-                                                        <option value="sixieme">&nbsp;&nbsp;&nbsp;&nbsp;6ème</option>
-                                                    </optgroup>
-                                                    <optgroup label="Cycle 4 : Approfondissement">
-                                                        <option value="cinquieme">&nbsp;&nbsp;&nbsp;&nbsp;5ème</option>
-                                                        <option value="quatrieme">&nbsp;&nbsp;&nbsp;&nbsp;4ème</option>
-                                                        <option value="troisieme">&nbsp;&nbsp;&nbsp;&nbsp;3ème</option>
-                                                    </optgroup>
-                                                    <optgroup label="2nde">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="seconde_probation">&nbsp;&nbsp;&nbsp;&nbsp;2nde de probation (ou méthodo.)</option>
-                                                    </optgroup>
-                                                    <optgroup label="1ere">
-                                                        <option value="premiere_es">&nbsp;&nbsp;&nbsp;&nbsp;1ere ES - Economique et Sociale</option>
-                                                        <option value="premiere_l">&nbsp;&nbsp;&nbsp;&nbsp;1ere L - Littéraire</option>
-                                                        <option value="premiere_s">&nbsp;&nbsp;&nbsp;&nbsp;1ere S - Scientifique</option>
-                                                    </optgroup>
-                                                    <optgroup label="Terminale">
-                                                        <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle ES - Economique et Sociale</option>
-                                                        <option value="terminale_l">&nbsp;&nbsp;&nbsp;&nbsp;Tle L - Littéraire</option>
-                                                        <option value="terminale_s">&nbsp;&nbsp;&nbsp;&nbsp;Tle S - Scientifique</option>
-                                                    </optgroup>
-                                                    <option value="CI">&nbsp;&nbsp;&nbsp;&nbsp;Cursus International</option>
-                                                    <option value="BAC-I">&nbsp;&nbsp;&nbsp;&nbsp;Cursus Bac. International</option>
-                                                    <option value="cursus_non_francophone">&nbsp;&nbsp;&nbsp;&nbsp;Cursus non francophone (GB-US)</option>
-                                                    <optgroup label="STHR - Hôtellerie et Restauration">
-                                                        <option value="seconde_sthr">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique STHR</option>
-                                                        <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STHR</option>
-                                                        <option value="premiere_sthr">&nbsp;&nbsp;&nbsp;&nbsp;1ere STHR</option>
-                                                        <option value="terminale_sthr">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STHR</option>
-                                                    </optgroup>
-                                                    <optgroup label="STI2S  - Sciences et Technologies de la Santé et du Social">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_sti2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere d’adaptation STI2S</option>
-                                                        <option value="premiere_st2s">&nbsp;&nbsp;&nbsp;&nbsp;1ere STI2S</option>
-                                                        <option value="terminale_st2s">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2S</option>
-                                                    </optgroup>
-                                                    <optgroup label="STID2A - Sciences et Technologies du Design et des Arts Appliqués">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_std2a">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2A</option>
-                                                        <option value="terminale_std2a">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2A</option>
-                                                    </optgroup>
-                                                    <optgroup label="STI2D - Sciences et Technologies de l'Industrie et du Développement Durable">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;1ère STI2D</option>
-                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale ST2D – Architecture et Construction</option>
-                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Energie et Environnement</option>
-                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
-                                                        <option value="terminale_sti2d">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                                    </optgroup>
-                                                    <optgroup label="STMG - Sciences et Technologies du Management et de la Gestion ">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STMG</option>
-                                                        <option value="premiere_stmg">&nbsp;&nbsp;&nbsp;&nbsp;1ère STMG</option>
-                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Gestion et Finance</option>
-                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Mercatique</option>
-                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
-                                                        <option value="terminale_stmg">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                                    </optgroup>
-                                                    <optgroup label="STL - Sciences et Technologies de Laboratoire">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STL</option>
-                                                        <option value="premiere_stl">&nbsp;&nbsp;&nbsp;&nbsp;1ère STL</option>
-                                                        <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Biotechnologies</option>
-                                                        <option value="terminale_stl">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                                    </optgroup>
-                                                    <optgroup label="STAV - Sciences et Technologies de l'Agronomie et du Vivant">
-                                                        <option value="seconde_techno">&nbsp;&nbsp;&nbsp;&nbsp;2nde générale et techno.</option>
-                                                        <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation STAV</option>
-                                                        <option value="premiere_stav">&nbsp;&nbsp;&nbsp;&nbsp;1ère STAV</option>
-                                                        <option value="terminale_stav">&nbsp;&nbsp;&nbsp;&nbsp;Terminale STAV</option>
-                                                    </optgroup>
-                                                    <optgroup label="TMD - Techniques de la Musique et de la Danse">
-                                                        <option value="2ndeTMD">&nbsp;&nbsp;&nbsp;&nbsp;2nde spécifique TMD</option>
-                                                        <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère d’adaptation TMD</option>
-                                                        <option value="premiere_tmd">&nbsp;&nbsp;&nbsp;&nbsp;1ère TMD</option>
-                                                        <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Danse</option>
-                                                        <option value="terminale_tmd">&nbsp;&nbsp;&nbsp;&nbsp;Terminale TMD - Musique</option>
-                                                    </optgroup>
-                                                </select>
-                                            </label>
-                                        </div>
-                                    </div><!-- .col-* -->
-
-                                    <div class="col-md-4  col-xs-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Lieu"
-                                                [formControl]="searchForm.controls['lieu']" 
-                                                [mdAutocomplete]="auto"
-                                                (keyup)="filterLieu($event)"/>
-                                            <md-autocomplete #auto="mdAutocomplete">
-                                                <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                <md-option *ngFor="let option of options.regions" [value]="option">
-                                                    &nbsp;&nbsp;{{ option }}
-                                                </md-option>
-                                                <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                                    &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
-                                                </md-option>
-                                                <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                                    &nbsp;&nbsp;{{ option.cityName }}
-                                                </md-option>
-                                            </md-autocomplete>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4  col-xs-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" 
-                                                placeholder="Nom d'etablissement" 
-                                                [formControl]="searchForm.controls['etablissement']"
-                                                [mdAutocomplete]="autoSchool"
-                                                (keyup)="filterSchool($event)"/>
-                                            <md-autocomplete #autoSchool="mdAutocomplete">
-                                                <md-option *ngFor="let school of schoolsOptions" 
-                                                    [value]="school.longName">
-                                                    {{ school.longName }}
-                                                </md-option>
-                                            </md-autocomplete>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div><!-- .row -->
-                        </div><!-- .col-* -->
-                        
-                        <div class="col-md-1">
-                        <!-- <div class="form-group"> -->
-                            <button class="btn btn-search" type="submit"
-                                [disabled]="(searchForm.controls['etablissement'].value==null || searchForm.controls['etablissement'].value.length==0) && 
-                                ((searchForm.controls['lieu'].value ==null || searchForm.controls['lieu'].value.length==0) || 
-                                (searchForm.controls['classe'].value==null || searchForm.controls['classe'].value.length==0))"
-                                (click)="onSubmitSearch()">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        <!-- </div> -->
-                        </div>
-
-
-                    </div><!-- .form-wrap -->
-                
-                </div><!-- .col-* -->
-
-                <div class="col-md-1">
-                    <div class="filter-wrapper">
-                        <i class="fa fa-filter filter-holder"
-                            data-toggle="tooltip" data-placement="right" 
-                            title="Affinez votre recherche avec plus de critères"></i>
-                        <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
-                        <div class="inline-text pull-right hidden-lg hidden-md hidden-sm visible-xs">
-                            <i class="fa fa-filter"></i> Filtre avancé
-                            <div class="switch  mobile">
-                                <input id="filter-trigger" class="cmn-toggle cmn-toggle-round" type="checkbox">
-                                <label for="filter-trigger" id="mobileFilter"></label>
+                                    </form>
+                                </div><!-- .row -->
+                            </div><!-- .col-* -->
+                            
+                            <div class="col-md-1">
+                            <!-- <div class="form-group"> -->
+                                <button class="btn btn-search" type="submit"
+                                    [disabled]="(searchForm.controls['etablissement'].value==null || searchForm.controls['etablissement'].value.length==0) && 
+                                    ((searchForm.controls['lieu'].value ==null || searchForm.controls['lieu'].value.length==0) || 
+                                    (searchForm.controls['classe'].value==null || searchForm.controls['classe'].value.length==0))"
+                                    (click)="onSubmitSearch()">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            <!-- </div> -->
                             </div>
-                        </div>
-                        <div class="advance-filter open" style="display:none">
-                            <ul>
-                                <li><a class="advancedFilter">Specialités</a> 
-                                    <ul (click)="onAdvancedClick($event, 'speciality')" 
-                                        class="adv-filt left-popup">
-                                        <li><input type="checkbox" name="handicapped" class="handicapped checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li> 
-                                        <li><input type="checkbox" name="finance" class="finance checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
-                                        <li><input type="checkbox" name="frenchAsForeign" class="frenchAsForeign checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
-                                        <li><input type="checkbox" name="advanced" class="advanced checkbox filled-in" id="filter-4" /><label for="filter-4">Dispositif d'accueil pour élèves à haut potentiel (EIP)</label></li>
-                                        <li><input type="checkbox" name="flexible" class="flexible checkbox filled-in" id="filter-5" /><label for="filter-5">Horaires Aménagés</label></li>
-                                    </ul>
-                                </li>
-                                <li><a class="advancedFilter">Internat</a>
-                                    <ul (click)="onAdvancedClick($event, 'boarding')" *ngIf="pathName!='internat'"
-                                        class="adv-filt">
-                                        <li><input type="checkbox" name="onSite" class="onSite checkbox filled-in" id="filter-8" /><label for="filter-8">Internat sur Place</label></li>
-                                        <li><input type="checkbox" name="notOnSite" class="notOnSite checkbox filled-in" id="filter-9" /><label for="filter-9">Internat externe</label></li>
-                                        <li><input type="checkbox" name="residence" class="residence checkbox filled-in" id="filter-10" /><label for="filter-10">Résidence Etudiante</label></li>
-                                        <!-- <li><input type="checkbox" name="weekdays" class="checkbox filled-in" id="filter-11" /><label for="filter-11">Internat de semaine</label></li> -->
-                                        <li><input type="checkbox" name="fulltime" class="fulltime checkbox filled-in" id="filter-12" /><label for="filter-12">Internat Permanent</label></li>
-                                        <!-- <li><input type="checkbox" name="someweekends" class="checkbox filled-in" id="filter-13" /><label for="filter-13">Internat Certains Weekend</label></li> -->
-                                        <li><input type="checkbox" name="mixed" class="mixed checkbox filled-in" id="filter-14" /><label for="filter-14">Internat mixte</label></li>
-                                        <li><input type="checkbox" name="girls" class="girls checkbox filled-in" id="filter-15" /><label for="filter-15">Internat filles</label></li>
-                                        <li><input type="checkbox" name="boys" class="boys checkbox filled-in" id="filter-16" /><label for="filter-16">Internat garçons</label></li>
-                                        <!-- <li><input type="checkbox" name="individual" class="checkbox filled-in" id="filter-17" /><label for="filter-17">Chambres individuelles</label></li>
-                                        <li><input type="checkbox" name="'2to4'" class="checkbox filled-in" id="filter-18" /><label for="filter-18">Chambres 2 a 4 lits</label></li>
-                                        <li><input type="checkbox" name="'5to8'" class="checkbox filled-in" id="filter-19" /><label for="filter-19">chambres 5 a 8 lits</label></li>
-                                        <li><input type="checkbox" name="domitories" class="checkbox filled-in" id="filter-20" /><label for="filter-20">Dortoirs</label></li> --> 
-                                        
-                                    </ul>
-                                </li>
-                                <li><a class="advancedFilter">Stages</a>
-                                    <ul (click)="onAdvancedClick($event, 'curriculum')"
-                                        class="adv-filt left-popup">
-                                        <li><input type="checkbox" name="preintake" class="preintake checkbox filled-in" id="filter-21" /><label for="filter-21">stage pre-rentree</label></li>
-                                        <li><input type="checkbox" name="smallholidays" class="smallholidays checkbox filled-in" id="filter-22" /><label for="filter-22">stages petites vacances</label></li>
-                                        <li><input type="checkbox" name="bigholidays" class="bigholidays checkbox filled-in" id="filter-23" /><label for="filter-23">stages de grandes vacances</label></li> 
-                                    </ul>
-                                </li>
-                                <li><a class="advancedFilter">Restauration</a>
-                                    <ul (click)="onAdvancedClick($event, 'canteen')"
-                                        class="adv-filt">
-                                        <li><input type="checkbox" name="self-service" class="self-service checkbox filled-in" id="filter-24" /><label for="filter-24">self-service</label></li>
-                                        <li><input type="checkbox" name="serviceAtTable" class="serviceAtTable checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
-                                        <li><input type="checkbox" name="cafeteria" class="cafeteria checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="advancedFilter"
-                                        class="adv-filt left-popup">Externat</a>
-                                     <ul (click)="onAdvancedClick($event, 'external')">
-                                        <li><input type="checkbox" name="half-board_mixed" class="half-board_mixed checkbox filled-in" id="filter-27" /><label for="filter-27">demi-pension mixte</label></li>
-                                        <li><input type="checkbox" name="half-board_boys" class="half-board_boys checkbox filled-in" id="filter-28" /><label for="filter-28">demi-pension garcons</label></li>
-                                        <li><input type="checkbox" name="half-board_girls" class="half-board_girls checkbox filled-in" id="filter-29" /><label for="filter-29">demi-pension filles</label></li> 
-                                    </ul> 
-                                </li>
-                                <li><a class="advancedFilter">Status</a>
-                                    <ul (click)="onAdvancedClick($event, 'status')"
-                                        class="adv-filt">
-                                        <li>
-                                            <input type="checkbox" name="public" class="public checkbox filled-in" id="filter-33" />
-                                            <label for="filter-33">Public</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="private" class="private checkbox filled-in" id="filter-34" />
-                                            <label for="filter-34">Prive</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="CCI" class="CCI checkbox filled-in" id="filter-35" />
-                                            <label for="filter-35">CCI</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="association" class="association checkbox filled-in" id="filter-36" />
-                                            <label for="filter-36">Sous Contrat D'association</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="outContract" class="outContract checkbox filled-in" id="filter-37" />
-                                            <label for="filter-37">Hors contrat</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="CFA" class="CFA checkbox filled-in" id="filter-38" />
-                                            <label for="filter-38">CFA</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="UFA" class="UFA checkbox filled-in" id="filter-39" />
-                                            <label for="filter-39">UFA</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="recognized" class="recognized checkbox filled-in" id="filter-40" />
-                                            <label for="filter-40">Reconnue par l'Etat</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="convention" class="convention checkbox filled-in" id="filter-41" />
-                                            <label for="filter-41">en convention avec l'Etat</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="higherEducationFree" class="higherEducationFree checkbox filled-in" id="filter-42" />
-                                            <label for="filter-42">Enseignement supérieur Libre</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="higherEducation" class="higherEducation checkbox filled-in" id="filter-43" />
-                                            <label for="filter-43">Enseignement supérieur</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="technical" class="technical checkbox filled-in" id="filter-44" />
-                                            <label for="filter-44">Enseignement supérieur technique</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="simple" class="simple checkbox filled-in" id="filter-45" />
-                                            <label for="filter-45">Sous contrat simple</label>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="advancedFilter">Ens. Confessionel</a>
-                                    <ul (click)="onAdvancedClick($event, 'religious')"
-                                        class="adv-filt left-popup">
-                                        <li>
-                                            <input type="checkbox" name="secular" class="secular checkbox filled-in" id="laic" />
-                                            <label for="laic">Laic</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="religious" class="religious checkbox filled-in" 
-                                                id="confessionel" (click)="onConfessionClick()"/>
-                                            <label for="confessionel">Confessionel</label>
-                                        </li>
-                                        <div *ngIf="confessionChecked">
+
+
+                        </div><!-- .form-wrap -->
+                    
+                    </div><!-- .col-* -->
+
+                    <div class="col-md-1 advancedFilter"
+                        (click)="showAdvanced()">
+                        <div class="filter-wrapper">
+                            <i class="fa fa-filter filter-holder"
+                                data-toggle="tooltip" data-placement="right" 
+                                title="Affinez votre recherche avec plus de critères"></i>
+                            <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
+                            <div class="inline-text pull-right hidden-lg hidden-md hidden-sm visible-xs">
+                                <i class="fa fa-filter"></i> Filtre avancé
+                                <div class="switch  mobile">
+                                    <input id="filter-trigger" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                                    <label for="filter-trigger" id="mobileFilter"></label>
+                                </div>
+                            </div>
+                            <div class="advance-filter open" style="display:none">
+                                <ul>
+                                    <li><a class="advancedFilter">Specialités</a> 
+                                        <ul (click)="onAdvancedClick($event, 'speciality')" 
+                                            class="adv-filt left-popup">
+                                            <li><input type="checkbox" name="handicapped" class="handicapped checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li> 
+                                            <li><input type="checkbox" name="finance" class="finance checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
+                                            <li><input type="checkbox" name="frenchAsForeign" class="frenchAsForeign checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
+                                            <li><input type="checkbox" name="advanced" class="advanced checkbox filled-in" id="filter-4" /><label for="filter-4">Dispositif d'accueil pour élèves à haut potentiel (EIP)</label></li>
+                                            <li><input type="checkbox" name="flexible" class="flexible checkbox filled-in" id="filter-5" /><label for="filter-5">Horaires Aménagés</label></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter">Internat</a>
+                                        <ul (click)="onAdvancedClick($event, 'boarding')" *ngIf="pathName!='internat'"
+                                            class="adv-filt">
+                                            <li><input type="checkbox" name="onSite" class="onSite checkbox filled-in" id="filter-8" /><label for="filter-8">Internat sur Place</label></li>
+                                            <li><input type="checkbox" name="notOnSite" class="notOnSite checkbox filled-in" id="filter-9" /><label for="filter-9">Internat externe</label></li>
+                                            <li><input type="checkbox" name="residence" class="residence checkbox filled-in" id="filter-10" /><label for="filter-10">Résidence Etudiante</label></li>
+                                            <!-- <li><input type="checkbox" name="weekdays" class="checkbox filled-in" id="filter-11" /><label for="filter-11">Internat de semaine</label></li> -->
+                                            <li><input type="checkbox" name="fulltime" class="fulltime checkbox filled-in" id="filter-12" /><label for="filter-12">Internat Permanent</label></li>
+                                            <!-- <li><input type="checkbox" name="someweekends" class="checkbox filled-in" id="filter-13" /><label for="filter-13">Internat Certains Weekend</label></li> -->
+                                            <li><input type="checkbox" name="mixed" class="mixed checkbox filled-in" id="filter-14" /><label for="filter-14">Internat mixte</label></li>
+                                            <li><input type="checkbox" name="girls" class="girls checkbox filled-in" id="filter-15" /><label for="filter-15">Internat filles</label></li>
+                                            <li><input type="checkbox" name="boys" class="boys checkbox filled-in" id="filter-16" /><label for="filter-16">Internat garçons</label></li>
+                                            <!-- <li><input type="checkbox" name="individual" class="checkbox filled-in" id="filter-17" /><label for="filter-17">Chambres individuelles</label></li>
+                                            <li><input type="checkbox" name="'2to4'" class="checkbox filled-in" id="filter-18" /><label for="filter-18">Chambres 2 a 4 lits</label></li>
+                                            <li><input type="checkbox" name="'5to8'" class="checkbox filled-in" id="filter-19" /><label for="filter-19">chambres 5 a 8 lits</label></li>
+                                            <li><input type="checkbox" name="domitories" class="checkbox filled-in" id="filter-20" /><label for="filter-20">Dortoirs</label></li> --> 
+                                            
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter">Stages</a>
+                                        <ul (click)="onAdvancedClick($event, 'curriculum')"
+                                            class="adv-filt left-popup">
+                                            <li><input type="checkbox" name="preintake" class="preintake checkbox filled-in" id="filter-21" /><label for="filter-21">stage pre-rentree</label></li>
+                                            <li><input type="checkbox" name="smallholidays" class="smallholidays checkbox filled-in" id="filter-22" /><label for="filter-22">stages petites vacances</label></li>
+                                            <li><input type="checkbox" name="bigholidays" class="bigholidays checkbox filled-in" id="filter-23" /><label for="filter-23">stages de grandes vacances</label></li> 
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter">Restauration</a>
+                                        <ul (click)="onAdvancedClick($event, 'canteen')"
+                                            class="adv-filt">
+                                            <li><input type="checkbox" name="self-service" class="self-service checkbox filled-in" id="filter-24" /><label for="filter-24">self-service</label></li>
+                                            <li><input type="checkbox" name="serviceAtTable" class="serviceAtTable checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
+                                            <li><input type="checkbox" name="cafeteria" class="cafeteria checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="advancedFilter"
+                                            class="adv-filt left-popup">Externat</a>
+                                        <ul (click)="onAdvancedClick($event, 'external')">
+                                            <li><input type="checkbox" name="half-board_mixed" class="half-board_mixed checkbox filled-in" id="filter-27" /><label for="filter-27">demi-pension mixte</label></li>
+                                            <li><input type="checkbox" name="half-board_boys" class="half-board_boys checkbox filled-in" id="filter-28" /><label for="filter-28">demi-pension garcons</label></li>
+                                            <li><input type="checkbox" name="half-board_girls" class="half-board_girls checkbox filled-in" id="filter-29" /><label for="filter-29">demi-pension filles</label></li> 
+                                        </ul> 
+                                    </li>
+                                    <li><a class="advancedFilter">Status</a>
+                                        <ul (click)="onAdvancedClick($event, 'status')"
+                                            class="adv-filt">
                                             <li>
-                                                <input type="checkbox" name="catholic" class="catholic checkbox filled-in" id="catholique" />
-                                                <label for="catholique">Catholique</label>        
+                                                <input type="checkbox" name="public" class="public checkbox filled-in" id="filter-33" />
+                                                <label for="filter-33">Public</label>
                                             </li>
                                             <li>
-                                                <input type="checkbox" name="protestant" class="protestant checkbox filled-in" id="protestant" />
-                                                <label for="protestant">Protestant</label>        
+                                                <input type="checkbox" name="private" class="private checkbox filled-in" id="filter-34" />
+                                                <label for="filter-34">Prive</label>
                                             </li>
                                             <li>
-                                                <input type="checkbox" name="muslim" class="muslim checkbox filled-in" id="musulman" />
-                                                <label for="musulman">Musulman</label>        
+                                                <input type="checkbox" name="CCI" class="CCI checkbox filled-in" id="filter-35" />
+                                                <label for="filter-35">CCI</label>
                                             </li>
                                             <li>
-                                                <input type="checkbox" name="jew" class="jew checkbox filled-in" id="juif" />
-                                                <label for="juif">Juif</label>        
+                                                <input type="checkbox" name="association" class="association checkbox filled-in" id="filter-36" />
+                                                <label for="filter-36">Sous Contrat D'association</label>
                                             </li>
                                             <li>
-                                                <input type="checkbox" name="boudhist" class="boudhist checkbox filled-in" id="boudhiste" />
-                                                <label for="boudhiste">Boudhiste</label>        
+                                                <input type="checkbox" name="outContract" class="outContract checkbox filled-in" id="filter-37" />
+                                                <label for="filter-37">Hors contrat</label>
                                             </li>
-                                        </div>
-                                    </ul>
-                                </li>
-                                <li><a class="advancedFilter">Langues</a>
-                                    <ul class="adv-filt">
-                                        <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="lv1" 
-                                                    (click)="filterLanguage($event, 'lv1')" [(ngModel)]="lv1">
-                                                    <option value="" selected >LV1</option>
-                                                    <option *ngFor="let langue of langues" value="{{langue}}">
-                                                        {{ langue }}
-                                                    </option>
-                                                </select>
-                                            </label>
-                                        </li>
-                                        <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="lv2" 
-                                                    (click)="filterLanguage($event, 'lv2')" [(ngModel)]="lv2">
-                                                    <option value="" selected>LV2</option>
-                                                    <option *ngFor="let langue of langues" value="{{langue}}">
-                                                        {{ langue }}
-                                                    </option>
-                                                </select>
-                                            </label>
-                                        </li>
-                                        <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="lv3" 
-                                                    (click)="filterLanguage($event, 'lv3')" [(ngModel)]="lv3">
-                                                    <option value="" selected>LV3</option>
-                                                    <option *ngFor="let langue of langues" value="{{langue}}">
-                                                        {{ langue }}
-                                                    </option>
-                                                </select>
-                                            </label>
-                                        </li>
-                                        <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="ancient"
-                                                    (click)="filterLanguage($event, 'ancient')" [(ngModel)]="ancient">
-                                                    <option value="" selected>LA - Langues Anciennes</option>
-                                                    <option value="Grec">Grec</option>
-                                                    <option value="Latin">Latin</option>
-                                                </select>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="regional"
-                                                    (click)="filterLanguage($event, 'regional')" [(ngModel)]="regional">
-                                                    <option value="" selected>LR - Langues Regionales</option>
-                                                    <option *ngFor="let langue of languesRegio" value="{{langue}}">
-                                                        {{ langue }}
-                                                    </option>
-                                                </select>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="advancedFilter">Sections</a>
-                                    <ul (click)="onAdvancedClick($event, 'sections')"
-                                        class="adv-filt left-popup">
-                                        <li><input type="checkbox" name="european" class="european checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
-                                        <li><input type="checkbox" name="international" class="international checkbox filled-in" id="filter-52" /><label for="filter-52">Section Internationnale</label></li>
-                                        <li><input type="checkbox" name="bilingual" class="bilingual checkbox filled-in" id="filter-53" /><label for="filter-53">Section bilingue</label></li>
-                                        <li><input type="checkbox" name="sport" class="sport checkbox filled-in" id="filter-54" /><label for="filter-54">Section Sportive</label></li>
-                                    </ul>
-                                </li>
-                                <li><a class="advancedFilter">Diplomes</a>
-                                    <ul class="adv-filt">
-                                        <li><label class="select-custom" for="class">
-                                                <select name="class" class="form-control" id="class" 
-                                                    (click)="onAdvancedClick($event, 'diplomas')">
-                                                    <option value="" disabled selected hidden>Diplôme</option>
-                                                    <option *ngFor="let diplome of diplomes" value="{{diplome}}">
-                                                        {{ diplome }}
-                                                    </option>
-                                                </select>
-                                            </label>
-                                        </li> 
-                                    </ul>
-                                </li>
-                                <li><a class="advancedFilter">Options</a>
-                                    <ul class="adv-filt left-popup">
-                                        <li>
-                                            <input type="text" name="" placeholder="Nom de L'option" 
-                                                class="form-control" (keyup)="addOptionFilter($event)">
-                                            <!--<button class="btn btn-confirm" (click)="addOptionFilter($event)">Entrer</button>-->
-                                        </li>
-                                    </ul>
-                                <li><a class="advancedFilter">Places disponibles</a>
-                                    <ul (click)="onAdvancedClick($event, 'seats')"
-                                        class="adv-filt">
-                                        <li>
-                                            <input type="checkbox" name="available" class="available checkbox filled-in" id="filter-60" />
-                                            <label for="filter-60">Places disponibles</label>
-                                        </li>
-                                    </ul>  
-                                </li>
-                            </ul>
-                            <!-- <img src="assets/images/ad/ads-filter.jpg" alt="ads" class="ad-filter" /> -->
-                        </div><!-- .advance-filter -->
-                    </div><!-- .filter-wrap -->
-                </div><!-- .col -->
-        
-            </div><!-- .row -->
+                                            <li>
+                                                <input type="checkbox" name="CFA" class="CFA checkbox filled-in" id="filter-38" />
+                                                <label for="filter-38">CFA</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="UFA" class="UFA checkbox filled-in" id="filter-39" />
+                                                <label for="filter-39">UFA</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="recognized" class="recognized checkbox filled-in" id="filter-40" />
+                                                <label for="filter-40">Reconnue par l'Etat</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="convention" class="convention checkbox filled-in" id="filter-41" />
+                                                <label for="filter-41">en convention avec l'Etat</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="higherEducationFree" class="higherEducationFree checkbox filled-in" id="filter-42" />
+                                                <label for="filter-42">Enseignement supérieur Libre</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="higherEducation" class="higherEducation checkbox filled-in" id="filter-43" />
+                                                <label for="filter-43">Enseignement supérieur</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="technical" class="technical checkbox filled-in" id="filter-44" />
+                                                <label for="filter-44">Enseignement supérieur technique</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="simple" class="simple checkbox filled-in" id="filter-45" />
+                                                <label for="filter-45">Sous contrat simple</label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter">Ens. Confessionel</a>
+                                        <ul (click)="onAdvancedClick($event, 'religious')"
+                                            class="adv-filt left-popup">
+                                            <li>
+                                                <input type="checkbox" name="secular" class="secular checkbox filled-in" id="laic" />
+                                                <label for="laic">Laic</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="religious" class="religious checkbox filled-in" 
+                                                    id="confessionel" (click)="onConfessionClick()"/>
+                                                <label for="confessionel">Confessionel</label>
+                                            </li>
+                                            <div *ngIf="confessionChecked">
+                                                <li>
+                                                    <input type="checkbox" name="catholic" class="catholic checkbox filled-in" id="catholique" />
+                                                    <label for="catholique">Catholique</label>        
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="protestant" class="protestant checkbox filled-in" id="protestant" />
+                                                    <label for="protestant">Protestant</label>        
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="muslim" class="muslim checkbox filled-in" id="musulman" />
+                                                    <label for="musulman">Musulman</label>        
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="jew" class="jew checkbox filled-in" id="juif" />
+                                                    <label for="juif">Juif</label>        
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="boudhist" class="boudhist checkbox filled-in" id="boudhiste" />
+                                                    <label for="boudhiste">Boudhiste</label>        
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter">Langues</a>
+                                        <ul class="adv-filt">
+                                            <li><label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="lv1" 
+                                                        (click)="filterLanguage($event, 'lv1')" [(ngModel)]="lv1">
+                                                        <option value="" selected >LV1</option>
+                                                        <option *ngFor="let langue of langues" value="{{langue}}">
+                                                            {{ langue }}
+                                                        </option>
+                                                    </select>
+                                                </label>
+                                            </li>
+                                            <li><label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="lv2" 
+                                                        (click)="filterLanguage($event, 'lv2')" [(ngModel)]="lv2">
+                                                        <option value="" selected>LV2</option>
+                                                        <option *ngFor="let langue of langues" value="{{langue}}">
+                                                            {{ langue }}
+                                                        </option>
+                                                    </select>
+                                                </label>
+                                            </li>
+                                            <li><label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="lv3" 
+                                                        (click)="filterLanguage($event, 'lv3')" [(ngModel)]="lv3">
+                                                        <option value="" selected>LV3</option>
+                                                        <option *ngFor="let langue of langues" value="{{langue}}">
+                                                            {{ langue }}
+                                                        </option>
+                                                    </select>
+                                                </label>
+                                            </li>
+                                            <li><label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="ancient"
+                                                        (click)="filterLanguage($event, 'ancient')" [(ngModel)]="ancient">
+                                                        <option value="" selected>LA - Langues Anciennes</option>
+                                                        <option value="Grec">Grec</option>
+                                                        <option value="Latin">Latin</option>
+                                                    </select>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="regional"
+                                                        (click)="filterLanguage($event, 'regional')" [(ngModel)]="regional">
+                                                        <option value="" selected>LR - Langues Regionales</option>
+                                                        <option *ngFor="let langue of languesRegio" value="{{langue}}">
+                                                            {{ langue }}
+                                                        </option>
+                                                    </select>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter">Sections</a>
+                                        <ul (click)="onAdvancedClick($event, 'sections')"
+                                            class="adv-filt left-popup">
+                                            <li><input type="checkbox" name="european" class="european checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
+                                            <li><input type="checkbox" name="international" class="international checkbox filled-in" id="filter-52" /><label for="filter-52">Section Internationnale</label></li>
+                                            <li><input type="checkbox" name="bilingual" class="bilingual checkbox filled-in" id="filter-53" /><label for="filter-53">Section bilingue</label></li>
+                                            <li><input type="checkbox" name="sport" class="sport checkbox filled-in" id="filter-54" /><label for="filter-54">Section Sportive</label></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter">Diplomes</a>
+                                        <ul class="adv-filt">
+                                            <li><label class="select-custom" for="class">
+                                                    <select name="class" class="form-control" id="class" 
+                                                        (click)="onAdvancedClick($event, 'diplomas')">
+                                                        <option value="" disabled selected hidden>Diplôme</option>
+                                                        <option *ngFor="let diplome of diplomes" value="{{diplome}}">
+                                                            {{ diplome }}
+                                                        </option>
+                                                    </select>
+                                                </label>
+                                            </li> 
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter">Options</a>
+                                        <ul class="adv-filt left-popup">
+                                            <li>
+                                                <input type="text" name="" placeholder="Nom de L'option" 
+                                                    class="form-control" (keyup)="addOptionFilter($event)">
+                                                <!--<button class="btn btn-confirm" (click)="addOptionFilter($event)">Entrer</button>-->
+                                            </li>
+                                        </ul>
+                                    <li><a class="advancedFilter">Places disponibles</a>
+                                        <ul (click)="onAdvancedClick($event, 'seats')"
+                                            class="adv-filt">
+                                            <li>
+                                                <input type="checkbox" name="available" class="available checkbox filled-in" id="filter-60" />
+                                                <label for="filter-60">Places disponibles</label>
+                                            </li>
+                                        </ul>  
+                                    </li>
+                                </ul>
+                                <!-- <img src="assets/images/ad/ads-filter.jpg" alt="ads" class="ad-filter" /> -->
+                            </div><!-- .advance-filter -->
+                        </div><!-- .filter-wrap -->
+                    </div><!-- .col -->
+            
+                </div><!-- .row -->
 
-        </div><!-- .container -->
+            </div><!-- .container -->
 
-    </form>
+        </form>
 
-    </div><!-- .filter-form-holder -->
+        </div><!-- .filter-form-holder -->
 
-    <main class="main" role="main">
-        <div class="ads-area">
-            <img src="assets/images/ad/ads-728x90-sainte.jpg" alt="" class="ads-after-search-form">
-            <section class="ads-left from-popup hidden">
-                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
-            </section>
-            <section class="ads-right from-popup hidden">
-                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
-            </section>
-            <section class="ads-left fixed-ad hidden">
-                <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
-            </section>
-            <section class="ads-right fixed-ad hidden">
-                <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
-            </section>
-        </div>
-        
-    <!--<div class="white-background">-->
+        <main class="main" role="main">
+            <div class="ads-area">
+                <img src="assets/images/ad/ads-728x90-sainte.jpg" alt="" class="ads-after-search-form">
+                <section class="ads-left from-popup hidden">
+                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
+                </section>
+                <section class="ads-right from-popup hidden">
+                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
+                </section>
+                <section class="ads-left fixed-ad hidden">
+                    <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
+                </section>
+                <section class="ads-right fixed-ad hidden">
+                    <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
+                </section>
+            </div>
+            
+        <!--<div class="white-background">-->
 
-        <div class="modal fade" id="confirm-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img src="assets/images/ad/cide-vote.png" class="icon" alt="Vote" width="140" />
-                        <p><strong>Nous transmettons votre dossier au lycee Excellensia Sa direction vous contactera dans les meilliuers delais</strong></p>
-                        <p>Nous venons de vous envoyer un mel de confimation</p>
-                        <button class="btn btn-lg btn-block btn-appointment" data-dismiss="modal">J'AI COMPRIS</button>
-                    </div><!-- .modal-body -->
-                </div><!-- .modal-content -->
-            </div><!-- .modal-dialog -->
-        </div><!-- modal -->
+            <div class="modal fade" id="confirm-popup" tabindex="-1" role="dialog" aria-labelledby="apply-popup">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img src="assets/images/ad/cide-vote.png" class="icon" alt="Vote" width="140" />
+                            <p><strong>Nous transmettons votre dossier au lycee Excellensia Sa direction vous contactera dans les meilliuers delais</strong></p>
+                            <p>Nous venons de vous envoyer un mel de confimation</p>
+                            <button class="btn btn-lg btn-block btn-appointment" data-dismiss="modal">J'AI COMPRIS</button>
+                        </div><!-- .modal-body -->
+                    </div><!-- .modal-content -->
+                </div><!-- .modal-dialog -->
+            </div><!-- modal -->
 
             <div class="container">
 
@@ -695,7 +697,7 @@
                                     data-target="#filter-popup"
                                     [disabled]="!canCompare">Je Compare</button>
                             </div>
- 
+
                             
                             <div class="modal fade compare-modal" id="filter-popup" tabindex="-1" role="dialog" aria-labelledby="filter-popup">
                                 <div class="modal-dialog" role="document">
@@ -703,13 +705,13 @@
                                         <div class="modal-body">
                                             <h3>Ce que vous voulez compare?</h3>
 
-                                                <div class="filter-option" *ngFor="let filter of filterList; let i=index">
-                                                    <md-checkbox  name="" 
-                                                        class="checkbox filled-in"
-                                                        (click)="onFilterCheckbox(i)">
-                                                    {{ filter }}
-                                                    </md-checkbox>
-                                                </div><!-- .filter-option -->
+                                            <div class="filter-option" *ngFor="let filter of filterList; let i=index">
+                                                <md-checkbox  name="" 
+                                                    class="checkbox filled-in"
+                                                    (click)="onFilterCheckbox(i)">
+                                                {{ filter }}
+                                                </md-checkbox>
+                                            </div><!-- .filter-option -->
 
                                             <button class="btn btn-filter-pop-up btn-block btn-lg" 
                                                 data-dismiss="modal"
@@ -749,16 +751,15 @@
                             <p style="width:100%;
                                 text-align:center; font-size : 35px">Il n'y a pas d'école pour la recherche demandé.</p>
                         </div>
-                        <div class="row">
-                            <button type="button" 
-                                class="btn btn-appointment" style="margin-left: 46%"
-                                (click)="showMore()" *ngIf="schoolListFilter.length==limit || schoolListFilter.length!=0"
-                                >Voir plus
-                            </button>
-                        </div>
-                            
-
                     </div><!-- .list-schools -->
+
+                    <div class="row white-background">
+                        <button type="button" 
+                            class="btn btn-appointment" style="margin-left: 46%"
+                            (click)="showMore()" *ngIf="schoolListFilter.length==limit || schoolListFilter.length!=0"
+                            >Voir plus
+                        </button>
+                    </div>
 
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -784,3 +785,5 @@
                 </div></div><!-- .row .col-* -->
 
             </div><!-- .container -->
+        </main>
+</div>

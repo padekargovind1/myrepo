@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -66,6 +66,8 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   regional: any="";
   limit=20;
   slickNb : number;
+  nbBodyClick : number =0;
+  nbAdvancedClick : number = 0;
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -111,12 +113,17 @@ export class SchoolComponent implements OnInit, AfterViewInit {
       }
     });
     $('body').on('mousedown', function($event){
-      // console.log($event.target.attributes)
-      if(typeof $event.target.attributes['class']!='undefined'){
-        if($event.target.attributes['class'].value == 'main' || $event.target.attributes['class'].value == 'filter-form-holder' || $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'){
-          $('.advance-filter').hide();
-        }
-      }
+      // console.log($(this).attr('id'))
+      // if(typeof $event.target.attributes['class']!='undefined'){
+      //   if($event.target.attributes['class'].value == 'main' || 
+      //     $event.target.attributes['class'].value == 'filter-form-holder' || 
+      //     $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'|| 
+      //     $event.target.attributes['class'].value == "col-md-3" ||  
+      //     $event.target.attributes['class'].value == "list-schools  row  white-background" ||
+      //     $event.target.attributes['class'].value == 'row'){
+      //     $('.advance-filter').hide();
+      //   }
+      // }
     })
     $('#mobileFilter').on('click', function(e){
       if($('.advance-filter').is(':visible')){
@@ -133,6 +140,23 @@ export class SchoolComponent implements OnInit, AfterViewInit {
       autoplay: true,
       autoplaySpeed: 2000,
     });
+  }
+
+  clickOnBody(event){
+    // console.log(event.srcElement.attributes['class'].textContent)
+    // if(event.srcElement)
+    setTimeout(()=>{
+      this.nbBodyClick++;
+      if(this.nbBodyClick!=this.nbAdvancedClick){
+        $('.advance-filter').hide();
+        this.nbAdvancedClick=this.nbBodyClick
+      }
+    }, 1)
+  }
+
+  showAdvanced(){
+    this.nbAdvancedClick++
+    $('.advance-filter').show();
   }
 
   getSlickNb(){
