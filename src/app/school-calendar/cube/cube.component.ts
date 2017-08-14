@@ -121,13 +121,15 @@ export class CubeComponent implements OnInit, AfterViewInit {
 
   makeSchoolDetailProfil(schoolData){
     // console.log(window.screen.width)
+    let screenWidth :string = ((window.screen.width/3)*2).toString()+'px';
+    let screenHeight :string = ((window.screen.height/3)*2).toString()+'px';
     this.configSchoolDetail= {
       data:{
         schoolData : schoolData
       },
       disableClose: false,
-      width: '1400px',
-      height: '800px',
+      width: screenWidth,
+      height: screenHeight,
       position: {
       top: '',
       bottom: '',
