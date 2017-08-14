@@ -77,16 +77,18 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
   	(<any> $('.landingpage__additional-content')).mouseenter(function() {
+		if((<any> $(this)).find('.form-wrap').length>0)
+		{
+			(<any> $('.landingpage__additional-content .form-wrap')).removeClass('fadeIn').addClass('fadeOut');
+			(<any> $('.landingpage__additional-content')).css('z-index', 0);
+			
+			(<any> $(this)).css('z-index', 10);
+			(<any> $(this)).find('.form-wrap').removeClass('fadeOut').addClass('fadeIn');
+			var img = (<any> $(this)).data('background'); 
+			// console.log(img);
 
-        (<any> $('.landingpage__additional-content .form-wrap')).removeClass('fadeIn').addClass('fadeOut');
-        (<any> $('.landingpage__additional-content')).css('z-index', 0);
-        
-        (<any> $(this)).css('z-index', 10);
-        (<any> $(this)).find('.form-wrap').removeClass('fadeOut').addClass('fadeIn');
-        var img = (<any> $(this)).data('background'); 
-        // console.log(img);
-
-        (<any> $('body .main')).css({ 'background-image': 'url(' + img + ')', 'background-size': 'cover'});
+			(<any> $('body .main')).css({ 'background-image': 'url(' + img + ')', 'background-size': 'cover'});
+		}
     }).mouseleave(function(){
 		//console.log((<any> $('.landingpage__additional-content .form-wrap')).find("input:focus, select:focus").length);
 		if((<any> $('.landingpage__additional-content .form-wrap')).find("input:focus, select:focus").length==0)
