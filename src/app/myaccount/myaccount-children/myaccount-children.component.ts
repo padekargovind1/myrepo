@@ -31,6 +31,7 @@ export class MyaccountChildrenComponent implements OnInit {
   // children = ["Frère / Sœur 1"];
   canDisplay: boolean = false;
   siblings : any;
+  maxDate = new Date();
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
@@ -48,6 +49,14 @@ export class MyaccountChildrenComponent implements OnInit {
   ngOnInit() {
     let date = new Date().toISOString();
     // console.log(date);
+  }
+
+  ngAfterViewInit(){
+    this.runScript()
+  }
+  runScript(){
+	// Select your input element.
+	
   }
 
   getUserProfile(){
@@ -77,7 +86,7 @@ export class MyaccountChildrenComponent implements OnInit {
       adresse : ['', Validators.required],
       codepostal : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
       ville : ['', Validators.required],
-      datenaissance : ['', Validators.compose([Validators.required, CustomValidators.date])],
+      datenaissance : [new Date(), Validators.compose([Validators.required, CustomValidators.date])],
       lieu : ['', Validators.required],
       freresoeur : this.fb.array([this.createfs()])
     })
@@ -99,6 +108,7 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   patchValue(data: any){
+    console.log("TJ");
     console.log(data);
     this.childrenForm.patchValue({
       nom : data.lastName,
@@ -107,7 +117,7 @@ export class MyaccountChildrenComponent implements OnInit {
       gender : data.gender,
       email : data.email,
       portable : data.mobilePhone,
-      datenaissance : data.birthDate,
+      datenaissance : (data.birthDate!=null && data.birthDate != "") ? new Date(data.birthDate) : new Date(),
       lieu : data.birthPlace,
     })
     if(typeof data.address != "undefined"){

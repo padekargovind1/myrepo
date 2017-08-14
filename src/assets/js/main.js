@@ -1,13 +1,29 @@
 jQuery(document).ready(function($) {
     $('.school-carousel').slick();
 	$(document).on('click', ".mat-tab-label-container .mat-tab-label", function(){
+		console.log("Test 1");
 		if($(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple select").length>0)
 		{
 			$(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple select").select2({
 				placeholder: 'Matières fortes'
 			});
 		}
+		else if($(".mat-tab-body-wrapper >.mat-tab-body-active").find("#txtAge").length>0)
+		{
+			console.log("Test 2");
+			var txtAge = $(".mat-tab-body-wrapper >.mat-tab-body-active").find("#txtAge");
+			// Listen for input event on numInput.
+			txtAge[0].onkeydown = function(e) {
+							
+				if(!((e.keyCode > 95 && e.keyCode < 106)
+				  || (e.keyCode > 47 && e.keyCode < 58) 
+				  || e.keyCode == 8)) {
+					return false;
+				}
+			}
+		}
 	});
+	
 });
 function hideAd() {
 	// console.log('time is up');
