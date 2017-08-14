@@ -13,10 +13,72 @@ const APB_API : string = "https://api2.apbprive.fr/";
 @Injectable()
 export class PublicService {
   numLandingPage : number=null;
-  searchData = ["", "", ""]
+  searchData = ["", "", ""];
+  domaines = [
+    "Action sociale, animation, sciences sociales",
+    "Archives, Bibliothèque, Documentation",
+    "Artisanat, Métiers d'art, Restauration d'art",
+    "Arts (appliqués, décoratifs, plastiques)",
+    "Banque, assurances",
+    "Cosmétique, esthétique, soins personnels",
+    "Droits et sciences politiques",
+    "Ecoles de commerce",
+    "Ecoles d'ingénieurs (CTI)",
+    "Edition, métiers du Livre",
+    "Energie, électricité",
+    "Environnement, développement durable",
+    "Génie civil, bâtiment",
+    "Graphisme, Design, Bande dessinée",
+    "Hôtellerie, restauration",
+    "Immobilier",
+    "Informatique, numérique",
+    "Internet, 3D, multimédia",
+    "Langues étrangères, traduction",
+    "Marché de l'Art - Culture - Patrimoine",
+    "Mécanique, aéronautique",
+    "Photographie, Vidéo, son, cinéma",
+    "Prépa concours administratifs",
+    "Prépa. économiques et commerciales",
+    "Prépa Spécialisées",
+    "Ressources humaines",
+    "Sc. de la matière (chimie, physique, matériaux...)",
+    "Sport, management sportif",
+    "Tourisme, loisirs",
+    "Transport, logistique",
+    "Technologie industrielle",
+    "Secrétariat, assistanat",
+    "Spectacle, Théâtre, Danse, Musique",
+    "Sciences et techniques (divers)",
+    "Santé",
+    "Publicité",
+    "Prépa. scientifiques",
+    "Prépa. littéraires",
+    "Prépa études santé",
+    "Prépa Ecoles d'arts",
+    "Paramédical",
+    "Métiers de la Mode",
+    "Urbanisme, Paysagisme",
+    "Management",
+    "Evénementiel",
+    "Enseignement",
+    "Electronique, automatique",
+    "Humanitaire",
+    "Comptabilité, gestion, audit",
+    "Communication",
+    "Commerce, vente, marketing",
+    "Commerce international",
+    "Mathématiques, statistiques",
+    "Bâtiment, Travaux Publics",
+    "Accueil",
+    "Architecture, Aménagement d'intérieur"
+  ]
+  nbSlick = 0;
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http : Http) { }
+  constructor(private http : Http) { 
+    this.domaines=this.domaines.sort()
+    // console.log(this.domaines)
+  }
 
   // getSchoolsList(limit, codeName) : Observable<any>{
   //   return this.http.post(SCHOOLS_API+"schools?limit="+limit, codeName)
@@ -130,5 +192,22 @@ export class PublicService {
   getAutoCompleteApb(query):Observable<any>{
     return this.http.get(APB_API+'search/schools?keyword='+query)
       .map((response)=>response.json())
+  }
+
+  getDomaines(){
+    return this.domaines;
+  }
+
+  storePath(data){
+    localStorage.setItem('pathBack', data)
+  }
+
+  getStorePath(){
+    return localStorage.getItem('pathBack')
+  }
+
+  getNbSlick(){
+    this.nbSlick++;
+    return this.nbSlick
   }
 }

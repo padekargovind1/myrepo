@@ -14,4 +14,20 @@ export class BrochureService {
     return this.dialogResponse;
   }
 
+  storeSchoolSearch(schoolSearch){
+    localStorage.setItem('schoolSearch', schoolSearch)
+  }
+
+  hasSchoolSearch(){
+    return !! localStorage.getItem('schoolSearch')
+  }
+
+  getSchoolSearch(){
+    return localStorage.getItem('schoolSearch');
+  }
+
+  cleanSchoolSearch(){
+    localStorage.removeItem('schoolSearch')
+  }
+
 }

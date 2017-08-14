@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
+import { SchoolChoiceComponent } from '../school-choice/school-choice.component';
+import { EtablissementComponent } from '../../etablissement/etablissement.component';
 
 @Component({
   selector: 'app-school-card',
@@ -11,11 +14,15 @@ import { PublicService } from '../../services/public.service';
 export class SchoolCardComponent implements OnInit {
 
   @Input() SchoolData : any;
+  @Input() pathName : any;
   brochureData={brochure : ""}
+  config: MdDialogConfig;
+  configSchoolDetail : MdDialogConfig;
 
   constructor(private router : Router,
               private usersService : UsersService,
-              private publicService : PublicService) { }
+              private publicService : PublicService,
+              public dialog:MdDialog) { }
 
   ngOnInit() {
     setTimeout(()=>{
@@ -26,17 +33,67 @@ export class SchoolCardComponent implements OnInit {
 
   onSchoolDetail(){
     console.log("Click on school detail")
-    this.router.navigate(['etablissement', this.SchoolData._id]);
+    this.publicService.storePath(this.pathName)
+    this.makeSchoolDetailProfil();
+    let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
+    // this.router.navigate(['etablissement', this.SchoolData._id]);
   }
    
   applyToSchool(){
-    this.router.navigate(['applyto', this.SchoolData._id]);
+    this.makeProfile()
+    let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
+    // dialogref.afterClosed().subscribe(result => {
+    //   this.lastCloseResult = result;
+    //   // console.log(result)
+    //   dialogref = null;
+    //   const closeResponse = this.brochureService.getResponse();
+    //   console.log(closeResponse)
+    //   if(closeResponse=="submit"){
+    //     this.downloadDialog();
+    //   }
+    // });
+    // this.router.navigate(['applyto', this.SchoolData._id]);
+  }
+
+  makeProfile(){
+    this.config= {
+      data:{
+        schoolData : this.SchoolData
+      },
+      disableClose: false,
+      width: '1000px',
+      height: '400px',
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
+  }
+
+  makeSchoolDetailProfil(){
+    // console.log(window.screen.width)
+    this.configSchoolDetail= {
+      data:{
+        schoolData : this.SchoolData
+      },
+      disableClose: false,
+      width: '1400px',
+      height: '800px',
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
   }
 
   saveInWish(){
     const data = {
       type : "wish",
-      school : this.SchoolData._id
+      schools : [{school : this.SchoolData._id, class:'EE'}]
     }
     this.usersService.postApplication(data)
       .subscribe(

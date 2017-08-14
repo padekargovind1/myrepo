@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { CompareService } from '../../services/compare.service';
 
 declare var jquery:any;
@@ -13,7 +13,9 @@ export class CompareBlockComponent implements OnInit, AfterViewInit {
 
   @Input() schoolDataToDisplay;
   compareListFilter : any;
-  slickCounter: number = 0
+  whichCycle : number = 0;
+  @Output('updateCycle') cycleChange : EventEmitter<any> = new EventEmitter<number>();
+  // slickCounter: number = 0
 
   constructor(private compareService: CompareService) {}
 
@@ -27,7 +29,13 @@ export class CompareBlockComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    (<any> $('.cycleSlick'+this.schoolDataToDisplay.counter)).slick({});
+    // (<any> $('.cycleSlick'+this.schoolDataToDisplay.counter)).slick({});
+  }
+
+  cycleChanging(event){
+    // console.log(event.srcElement.selectedIndex)
+    this.whichCycle=event.srcElement.selectedIndex
+    // this.whichCycle=nb
   }
 
 }

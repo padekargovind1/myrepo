@@ -23,12 +23,6 @@ export class SuperieurComponent implements OnInit {
   defaultSchoolList : any;
   compareList= [];
   compareListFilter = [];
-  filterList = ["Cycles & Classes", "Langues", "Spécialités", 
-                "Internat", "Stages", "Restauration", 
-                "Externat", "Status", "Ens. Confessionel", 
-                "Sections", "Diplôme", "Options", "Places Disponible"]
-  four : boolean = false;
-  canCompare : boolean = false;
   canFilter : boolean = false;
   searchFilter = ["", "", ""];
   searchForm : FormGroup;
@@ -44,33 +38,26 @@ export class SuperieurComponent implements OnInit {
   advancedSearchToDisplay=[];
   advancedSearchCategory=[];
   advancedSearchValue=[];
-  languageAdvancedSearch=[];
-  languageAdvancedSearchName=[];
   religiousChecked : boolean = false;
   langues = [];
   languesRegio = [];
   diplomes = [];
   optionValue: string="";
   schoolComponentTitle = "";
-  pathName ="";
-  confessionChecked : boolean = false;
-  lv1: any="";
-  lv2: any="";
-  lv3: any="";
-  ancient: any="";
-  regional: any="";
   limit=20;
   apbSchools =[];
   searchBody={
     courses : {
       educationLevel : '',
-      professionalSector : ''
+      professionalSector : '',
+      courseType : ''
     },
-    postCode : '',
+    postcode : '',
     departmentNumber : '',
     region : '',
     keyword : ''
   };
+  domaines=[];
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -80,17 +67,15 @@ export class SuperieurComponent implements OnInit {
               private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.getApbSchool();
+    // this.getApbSchool();
     this.runScript();
     this.setBackgroundImage();
     this.buildForm();
-    for (let list of this.filterList){
-      this.compareListFilter.push(false);
-    }
     // console.log(this.advancedSearch);
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+    this.domaines=this.publicService.getDomaines();
   }
 
   getApbSchool(){
@@ -126,7 +111,7 @@ export class SuperieurComponent implements OnInit {
       let i=0
       while(i<this.options['villes'].length){
         if(this.options['villes'][i].postcode==lieu){
-          this.searchBody.postCode=lieu
+          this.searchBody.postcode=lieu
         }
         i++;
       }
@@ -138,7 +123,7 @@ export class SuperieurComponent implements OnInit {
   resetSearchBodyLieu(){
     this.searchBody.region='';
     this.searchBody.departmentNumber='';
-    this.searchBody.postCode='';
+    this.searchBody.postcode='';
   }
 
   runScript(){
@@ -202,7 +187,8 @@ export class SuperieurComponent implements OnInit {
       etablissement : ['']
     })
     // console.log(this.searchForm)
-    this.initOptions()
+    this.initOptions();
+    this.fieldForm()
   }
 
   initOptions(){
@@ -212,56 +198,15 @@ export class SuperieurComponent implements OnInit {
     // console.log(this.options)
   }
 
-  onCheckbox(schoolId){
-    // console.log(schoolId);
-    if(this.compareList.includes(schoolId)){
-      // console.log("remove checkbox");
-      let i = this.compareList.indexOf(schoolId, 0);
-      // console.log(i);
-      this.compareList.splice(i, 1);
-      this.four=false;
-      if(this.compareList.length<=1){
-        this.canCompare=false;
-      }
-    } else if(this.compareList.length >= 4){
-      swal({
-        title: 'Attention',
-        text: "Vous ne pouvez comparer plus de 4 écoles à la fois. Vous pouvez tout de même désélectionner une école déjà sélectionné",
-        type: 'warning',
-        confirmButtonText: 'Ok'
-      })
-      this.four=true;
-    } else {
-      this.compareList.push(schoolId);
-      if(this.compareList.length>1){
-        this.canCompare=true;
-      }
-    }
-  }
-
-  onFilterCheckbox(index){
-    // console.log(index, this.compareListFilter[index]);
-    this.compareListFilter[index] = !this.compareListFilter[index];
-    this.canFilter = this.checkFilterBox();
-    // console.log(this.canFilter);
-  }
-
-  checkFilterBox(){
-    let i = 0;
-    for(let filter of this.compareListFilter){
-      console.log(filter);
-      if(filter==true){
-        return true;
-      }
-      i++;
-    }
-    return false;
-  }
-
-  onCompare(){
-    this.compareService.storeCompareFilter(this.compareListFilter);
-    this.compareService.storeSchoolId(this.compareList)
-    this.router.navigate(['/compare-mode/']);
+  fieldForm(){
+    let data = this.publicService.getSearchSchool()
+    console.log(data);
+    this.searchForm.patchValue({
+      domaine : data[0],
+      lieu : data[1],
+      etablissement : data[2]
+    })
+    this.onSubmitSearch()
   }
 
   filterLieu(event){
@@ -359,70 +304,81 @@ export class SuperieurComponent implements OnInit {
     }
   }
 
-  onAdvancedClick(event, category){
-    // console.log(event);
-    console.log("test&")
-    if(event.srcElement.localName=="input"){
-      console.log(event.srcElement.checked)
+  onLevelRythme(event){
+    console.log(event.srcElement.value)
+    this.searchBody.courses.educationLevel=event.srcElement.value
+    if(event.srcElement.value!=''){
+      this.advancedSearchToDisplay.push(event.srcElement.value)
+    } else {
+      let index = this.advancedSearchToDisplay.indexOf(event.srcElement.value)
+      this.advancedSearchToDisplay.splice(index, 1)
+    }
+    this.getApbSchool();
+  }
+
+  onReconnaissanceClick(event){
+    console.log(event.srcElement.localName,event.srcElement.checked)
+    if(event.srcElement.localName=='input'){
       if(event.srcElement.checked){
-        // console.log("checked!")
-        if(typeof this.advancedSearch[category] == "undefined"){
-          this.advancedSearch[category]={}
-        }
-        this.advancedSearch[category][event.srcElement.name]=true;
-        this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
-        this.advancedSearchCategory.push(category);
-        this.advancedSearchValue.push(event.srcElement.name);
-        console.log(this.advancedSearch);
-        this.limit=20
-        this.postAdvancedFilter();
-      } else{
-        // console.log("unchecked!");
-        console.log(this.advancedSearch[category], event.srcElement.name)
-        if(this.advancedSearch[category]!==undefined){
-          delete this.advancedSearch[category][event.srcElement.name];
-        }
-        this.checkCategory(category);
-        console.log(this.advancedSearch);
-        this.limit=20
-        this.postAdvancedFilter();
-        let index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
-        this.advancedSearchToDisplay.splice(index, 1);
-        this.advancedSearchCategory.splice(index, 1)
-        this.advancedSearchValue.splice(index, 1);
-        
+        this.searchBody['recognizedByState']=true;
+        this.advancedSearchToDisplay.push("Reconnu par l'État");
+      } else {
+        delete this.searchBody['recognizedByState']
+        let index = this.advancedSearchToDisplay.indexOf("Reconnu par l'État")
+        this.advancedSearchToDisplay.splice(index, 1)
       }
-      if(event.srcElement.id=="confessionel" && event.srcElement.checked){
-        this.religiousChecked=true;
-      } else if(event.srcElement.id=="confessionel" && !event.srcElement.checked){
-        this.religiousChecked=false;
-      }
+      this.getApbSchool();
     }
   }
 
-  filterLanguage(event, category){
-    // console.log(event);
-    // this.languageAdvancedSearch.push(category);
-    if(typeof this.advancedSearch['language']=='undefined' && event.srcElement.value!=""){
-      this.advancedSearch['language']={}
-    }
-    if(event.srcElement.value=="" && typeof this.advancedSearch['language']!='undefined'){
-      if(this.advancedSearch['language'][category]!='undefined'){
-        delete this.advancedSearch['language'][category];
-        let index = this.languageAdvancedSearchName.indexOf(category)
-        this.languageAdvancedSearchName.splice(index, 1);
-        this.languageAdvancedSearch.splice(index, 1)
-        this.checkCategory('language')
-        this.postAdvancedFilter();
+  onEtrangerClick(event){
+    console.log(event.srcElement.localName,event.srcElement.checked)
+    if(event.srcElement.localName=='input'){
+      if(event.srcElement.checked){
+        this.searchBody.courses['curriculumAbroad']=true
+        this.advancedSearchToDisplay.push("Cursus avec une période à l'étranger");
+      } else {
+        delete this.searchBody.courses['curriculumAbroad'];
+        let index = this.advancedSearchToDisplay.indexOf("Cursus avec une période à l'étranger")
+        this.advancedSearchToDisplay.splice(index, 1)
       }
-    } else if(event.srcElement.value!=""){
-      this.advancedSearch['language'][category]=event.srcElement.value
-      this.languageAdvancedSearch.push(category);
-      this.languageAdvancedSearchName.push(event.srcElement.value);
-      // console.log("test", this.languageAdvancedSearch, this.languageAdvancedSearchName)
-      this.postAdvancedFilter();
+      this.getApbSchool();
     }
-    // console.log(this.advancedSearch)
+  }
+
+  onAdvancedClick(event, category){
+    console.log(event, category);
+    // if(event.srcElement.localName=="input"){
+    //   console.log(event.srcElement.checked)
+    //   if(event.srcElement.checked){
+    //     // console.log("checked!")
+    //     if(typeof this.advancedSearch[category] == "undefined"){
+    //       this.advancedSearch[category]={}
+    //     }
+    //     this.advancedSearch[category][event.srcElement.name]=true;
+    //     this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
+    //     this.advancedSearchCategory.push(category);
+    //     this.advancedSearchValue.push(event.srcElement.name);
+    //     console.log(this.advancedSearch);
+    //     this.limit=20
+    //     this.postAdvancedFilter();
+    //   } else{
+    //     // console.log("unchecked!");
+    //     console.log(this.advancedSearch[category], event.srcElement.name)
+    //     if(this.advancedSearch[category]!==undefined){
+    //       delete this.advancedSearch[category][event.srcElement.name];
+    //     }
+    //     this.checkCategory(category);
+    //     console.log(this.advancedSearch);
+    //     this.limit=20
+    //     this.postAdvancedFilter();
+    //     let index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
+    //     this.advancedSearchToDisplay.splice(index, 1);
+    //     this.advancedSearchCategory.splice(index, 1)
+    //     this.advancedSearchValue.splice(index, 1);
+        
+    //   }
+    // }
   }
 
   checkCategory(category){
@@ -448,8 +404,6 @@ export class SuperieurComponent implements OnInit {
 
   cleanSearch(){
     // console.log("clean search")
-    this.languageAdvancedSearch=[];
-    this.languageAdvancedSearchName=[]
     delete this.advancedSearch;
     // this.advancedSearchToDisplay=[];
     // this.advancedSearchCategory=[];
@@ -458,13 +412,13 @@ export class SuperieurComponent implements OnInit {
     this.buildForm();
     this.searchFilter = ["", "", ""];
     this.searchBody.courses.professionalSector='';
-    this.searchBody.postCode='';
+    this.searchBody.postcode='';
     this.searchBody.departmentNumber='';
     this.searchBody.region='';
     this.searchBody.keyword='';
     this.publicService.storeSearchSchool(this.searchFilter);
-    this.limit=20
-    this.getApbSchool()
+    this.limit=20;
+    this.getApbSchool();
     // this.getSearchFilter();
   }
 
@@ -476,52 +430,17 @@ export class SuperieurComponent implements OnInit {
     $('.checkbox').prop('checked', false)
   }
 
-  onConfessionClick(){
-    this.confessionChecked=!this.confessionChecked;
-    console.log(this.advancedSearchToDisplay, this.advancedSearch)
-    if(!this.confessionChecked){
-      delete this.advancedSearch['religious']
-      console.log(this.advancedSearchCategory)
-      for(let i =0; i< this.advancedSearchCategory.length; i++){
-        console.log("test1")
-        if(this.advancedSearchCategory[i]=='religious'){
-          this.advancedSearchCategory.splice(i, 1)
-          i--;
-        }
-      }
-      for(let i=0; i<this.advancedSearchToDisplay.length; i++){
-        if(this.advancedSearchToDisplay[i]=="Catholique" || this.advancedSearchToDisplay[i]=="Protestant" || this.advancedSearchToDisplay[i]=="Musulman" || this.advancedSearchToDisplay[i]=="Juif" || this.advancedSearchToDisplay[i]=="Boudhiste"){
-          this.advancedSearchToDisplay.splice(i, 1)
-          i--;
-        }
-      }
-      for(let i=0; i<this.advancedSearchValue.length; i++){
-        if(this.advancedSearchValue[i]=="catholic" || this.advancedSearchValue[i]=="protestant" || this.advancedSearchValue[i]=="muslim" || this.advancedSearchValue[i]=="jew" || this.advancedSearchValue[i]=="boudhist"){
-          this.advancedSearchValue.splice(i, 1);
-          i--;
-        }
-      }
-      console.log(this.advancedSearchToDisplay, this.advancedSearchCategory, this.advancedSearchValue)
-    }
-  }
-
   onRemoveFilter(index, advanced){
     // console.log("click sur la croix", advanced)
-    this.advancedSearchToDisplay.splice(index, 1)
-    delete this.advancedSearch[this.advancedSearchCategory[index]][this.advancedSearchValue[index]]
-    this.checkCategory(this.advancedSearchCategory[index]);
-    $('.'+this.advancedSearchValue).prop('checked', false)
-    this.advancedSearchCategory.splice(index, 1);
-    this.advancedSearchValue.splice(index, 1);
-    this.limit=20;
-    this.postAdvancedFilter();
-  }
-
-  onRemoveLanguageFilter(index){
-    // console.log("click")
-    this[this.languageAdvancedSearch[index]]=""
-    this.languageAdvancedSearch.splice(index, 1);
-    this.languageAdvancedSearchName.splice(index, 1);
+    // this.advancedSearchToDisplay.splice(index, 1)
+    // this.getApbSchool()
+    // delete this.advancedSearch[this.advancedSearchCategory[index]][this.advancedSearchValue[index]]
+    // this.checkCategory(this.advancedSearchCategory[index]);
+    // $('.'+this.advancedSearchValue).prop('checked', false)
+    // this.advancedSearchCategory.splice(index, 1);
+    // this.advancedSearchValue.splice(index, 1);
+    // this.limit=20;
+    // this.postAdvancedFilter();
   }
 
   showMore(){

@@ -3,8 +3,11 @@
     <li (click)="saveInWish()">
         <i style="cursor:pointer" class="fa fa-bookmark" aria-hidden="true"></i>
     </li>
-    <li (click)="applyToSchool()">
-        <i style="cursor:pointer" class="fa fa-paper-plane" aria-hidden="true"></i>
+    <li >
+        <a href="https://api2.apbprive.fr/">
+            <i style="cursor:pointer" class="fa fa-paper-plane" aria-hidden="true">
+            </i>
+        </a>
     </li>
     <li>
         <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
@@ -43,8 +46,12 @@
       </address>
     </ng-template>
 
-    <button class="btn btn-highlighted"
-        (click)="onSchoolDetail()">Détail</button>
+    <a href="https://api2.apbprive.fr/">
+        <button class="btn btn-highlighted">Détail</button>
+    </a>
+
+    <a href="https://api2.apbprive.fr/">
+        <button type="button" class="btn btn-secondary">Postuler</button> 
+    </a>
     
-    <button type="button" class="btn btn-secondary"  (click)="applyToSchool()">Postuler</button> 
 </div>

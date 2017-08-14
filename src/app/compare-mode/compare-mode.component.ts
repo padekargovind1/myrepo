@@ -120,7 +120,7 @@ export class CompareModeComponent implements OnInit, OnDestroy {
   saveInWish(index){
     const data = {
       type : "wish",
-      school : this.schoolDataToDisplay[index]._id
+      schools : [{school : this.schoolDataToDisplay[index]._id, class :'EE'}]
     }
     this.usersService.postApplication(data)
       .subscribe(

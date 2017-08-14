@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
@@ -46,6 +46,7 @@ export class ApplytoComponent implements OnInit {
   parents : any;
   siblings:any;
   metiers : any;
+  @ViewChild('tabGroup') tabGroup;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -333,7 +334,7 @@ export class ApplytoComponent implements OnInit {
     console.log(this.userData)
     const data = {
       type : "apply",
-      school : this.schoolID
+      schools : [{school : this.schoolID, class : 'EEE'}]
     }
 
     this.usersService.postApplication(data)
@@ -377,7 +378,7 @@ export class ApplytoComponent implements OnInit {
     console.log("test")
     swal({
       title: 'Erreur',
-      text: message,
+      text: 'Merci de vérifier le formulaire',
       type: 'error',
       confirmButtonText: 'Ok'
     })
@@ -425,5 +426,9 @@ export class ApplytoComponent implements OnInit {
   onRemoveJob(index){
     this.metiers = this.applytoForm.get('job') as FormArray;
     this.metiers.removeAt(index, 1);
+  }
+
+  nextTab(nb){
+    this.tabGroup.selectedIndex=nb;
   }
 }

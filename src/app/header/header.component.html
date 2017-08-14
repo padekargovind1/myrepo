@@ -31,13 +31,13 @@
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-inbox"></i></span>
-                                <a href="http://www.amazaon.fr" class="ln-tr link">Commande du Guide des écoles privées</a>
+                                <a target="_blank" href="http://www.amazaon.fr" class="ln-tr link">Commande du Guide des écoles privées</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-inbox"></i></span>
-                                <a href="http://www.guide-des-ecoles-privees.info/2016_2017" class="ln-tr link">Guide interactif des écoles privées</a>
+                                <a target="_blank" href="http://www.guide-des-ecoles-privees.info/2016_2017" class="ln-tr link">Guide interactif des écoles privées</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
@@ -103,7 +103,9 @@
             src="assets/images/cide-white-just-logo.png" alt=""
             style="display: none; width: 32px; float: left;">-->
     </a>
-    <h1 class="sitename">Avec le CIDE, je trouve</h1>
+    <h1 (click)="onNavigateHome()" class="sitename" style="cursor:pointer">
+        Avec le CIDE, je trouve
+    </h1>
 
     <ul class="mobile-login">
         <li><i class=" fa fa-file-text" data-target="#download-popup"></i></li>

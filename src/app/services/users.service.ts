@@ -132,7 +132,7 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
-  deleteApplciation(data): Observable<any>{
+  deleteApplication(data): Observable<any>{
     return this.http.delete(APPLICATION_API+'?token='+this.token, data)
       .map((response)=>response.json())
   }
@@ -144,6 +144,7 @@ export class UsersService {
 
   storeTabNb(data){
     localStorage.setItem('myaccountTab', data);
+    console.log(data)
   }
 
   getTabNb(){

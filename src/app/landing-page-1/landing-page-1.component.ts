@@ -19,15 +19,18 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   };
   schoolsOptions: any;
   rateId : string ="";
+  apbForm: FormGroup;
+  domaines=[];
   constructor(private fb : FormBuilder,
               private publicService : PublicService,
               private router : Router) { 
     this.buildForm();
-    
+    this.buildApbForm();
   }
 
   ngOnInit() {
     this.initRate();
+    this.domaines=this.publicService.getDomaines();
   }
 
   buildForm(){
@@ -38,6 +41,15 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       etablissement : ['']
     })
     this.initOptions();
+  }
+
+  buildApbForm(){
+    this.apbForm = this.fb.group({
+      domaine : [''],
+      lieu : [''],
+      etablissement : ['']
+    })
+    this.initOptions()
   }
 
   initOptions(){
@@ -89,11 +101,20 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 
   onSubmitSearch(path){
     // console.log("on submit", this.searchForm.value)
-    let data = [
-      this.searchForm.controls.classe.value,
-      this.searchForm.controls.lieu.value,
-      this.searchForm.controls.etablissement.value
-    ]
+    let data;
+    if(path!="enseignement"){
+      data = [
+        this.searchForm.controls.classe.value,
+        this.searchForm.controls.lieu.value,
+        this.searchForm.controls.etablissement.value
+      ]
+    } else {
+      data = [
+        this.apbForm.controls.domaine.value,
+        this.apbForm.controls.lieu.value,
+        this.apbForm.controls.etablissement.value
+      ]
+    }
     this.publicService.storeSearchSchool(data);
     this.onNavigate(path);
   }
@@ -159,6 +180,37 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
           let data = response.data;
           // console.log(data);
           this.schoolsOptions=data
+        }
+      )
+  }
+
+  filterApbSchool(event){
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+      this.getApbSchoolFilter(filter)
+    }else {
+      this.schoolsOptions=null;
+    }
+  }
+
+  getApbSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.getAutoCompleteApb(filter)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.schoolsOptions=[]
+            for(let i = 0; i<response.data.length; i++){
+              if(this.schoolsOptions.indexOf(response.data[i].longName)==-1){
+                this.schoolsOptions.push(response.data[i].longName)
+              }
+            }
+            console.log(this.schoolsOptions)
+          }
         }
       )
   }

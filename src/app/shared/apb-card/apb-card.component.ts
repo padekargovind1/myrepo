@@ -24,19 +24,20 @@ export class ApbCardComponent implements OnInit {
     // }, 500)
   }
 
-  onSchoolDetail(){
-    console.log("Click on school detail")
-    this.router.navigate(['etablissement', this.SchoolData._id]);
-  }
+  // onSchoolDetail(){
+  //   console.log("Click on school detail")
+  //   this.publicService.storePath('enseignement')
+  //   this.router.navigate(['etablissement', this.SchoolData._id]);
+  // }
    
-  applyToSchool(){
-    this.router.navigate(['applyto', this.SchoolData._id]);
-  }
+  // applyToSchool(){
+  //   this.router.navigate(['applyto', this.SchoolData._id]);
+  // }
 
   saveInWish(){
     const data = {
       type : "wish",
-      school : this.SchoolData._id
+      schools : [{school : this.SchoolData._id, class:'EE'}]
     }
     this.usersService.postApplication(data)
       .subscribe(

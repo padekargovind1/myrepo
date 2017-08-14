@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { PublicService } from '../../services/public.service';
+import { MdDialogConfig, MdDialog } from '@angular/material';
+import { EtablissementComponent } from '../../etablissement/etablissement.component';
 
 declare var jquery:any;
 declare var $ :any;
@@ -20,11 +23,12 @@ export class CubeComponent implements OnInit, AfterViewInit {
   @Input() counter: any;
   cube;
   video;
+  configSchoolDetail : MdDialogConfig;
 
   constructor(private sanitizer : DomSanitizer,
-                private route : Router) {
-    
-  }
+                private route : Router,
+                private publicService : PublicService,
+                public dialog:MdDialog) {}
 
   ngOnInit() {    
     this.video="https://www.youtube.com/embed/"+this.eventData.video;
@@ -103,8 +107,35 @@ export class CubeComponent implements OnInit, AfterViewInit {
   }
 
     onClickCube(){
-    this.route.navigate(['/etablissement/'+this.eventData.school]);
+        this.publicService.getSchoolById(this.eventData.school)
+            .subscribe(
+                response=>{
+                    if(response.code!=400){
+                        this.makeSchoolDetailProfil(response.data)
+                        let dialogref = this.dialog.open(EtablissementComponent,this.configSchoolDetail);
+                    }
+                }
+            )
+    // this.route.navigate(['/etablissement/'+this.eventData.school]);
   }  
+
+  makeSchoolDetailProfil(schoolData){
+    // console.log(window.screen.width)
+    this.configSchoolDetail= {
+      data:{
+        schoolData : schoolData
+      },
+      disableClose: false,
+      width: '1400px',
+      height: '800px',
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
+  }
 
 }
 

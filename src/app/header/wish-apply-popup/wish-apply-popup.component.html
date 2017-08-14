@@ -54,7 +54,7 @@
             {{apply.school.address.city}} <br /> 
             Tel: {{apply.school.address.phone}}
           </address>
-          <a (click)="onSchoolDetail(apply.school._id)" class="btn btn-highlighted btn-block">
+          <a (click)="onSchoolDetail(apply)" class="btn btn-highlighted btn-block">
             Détails
           </a>
         </div><!-- .card-content -->
@@ -64,7 +64,7 @@
   
   <md-tab label="Ma liste d'envies">
     <div *ngIf="wishList.length!=0" style="max-height:400px">
-      <div class="card  school-list" *ngFor="let wish of wishList">                               
+      <div class="card  school-list" *ngFor="let wish of wishList; let i=index">                               
         <div class="card-content" style="max-width:476px">
           <img src="assets/images/school-1.jpg" alt="School 1" style="height:124px"/>
           <h3>{{wish.school.shortName}}</h3>
@@ -77,11 +77,11 @@
             {{wish.school.address.city}} <br /> 
             Tel: {{wish.school.address.phone}}
           </address>
-          <a (click)="onSchoolDetail(wish.school._id)" 
+          <a (click)="onSchoolDetail(wish)" 
             class="btn btn-highlighted btn-block">
             Détails
           </a>
-          <button (click)="onSchoolApply(wish.school._id)" type="button" 
+          <button (click)="onSchoolApply(wish.school._id, i)" type="button" 
             class="btn btn-secondary btn-block">
             Je postule
           </button>

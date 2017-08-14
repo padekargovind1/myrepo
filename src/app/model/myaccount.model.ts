@@ -4,7 +4,7 @@ export class MyAccountMdl{
   firstName1: string = "A compléter";
   firstName2: string = "A compléter";
   gender: string = "A compléter";
-  birthDate : string = "A compléter";
+  birthDate : string = "01/01/1970";
   birthPlace : string = "A compléter";
   nationality : string = "A compléter";
   disabilityStatus : boolean=true;
@@ -16,13 +16,13 @@ export class MyAccountMdl{
   emailValidationCode: string = "A compléter";
   currentClass: string = "A compléter";
   currentClassType: string = "A compléter";
-  age : string ="A compléter";
+  age : number =1;
   parents = [];
   address : any;
   socialAddresses : any;
   academicHistories: [any] = [null];
   bulletins :[any] = [null];
-  siblings :[MyAccountSiblingsMdl] = [null];
+  siblings :[any] = [null];
 }
 
 export class MyAccountAdresse{

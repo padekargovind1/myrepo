@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -17,7 +17,7 @@ declare var $ :any;
   styleUrls: ['./school.component.scss'],
   providers: []
 })
-export class SchoolComponent implements OnInit {
+export class SchoolComponent implements OnInit, AfterViewInit {
 
   schoolList : any;
   schoolListFilter = [];
@@ -40,7 +40,10 @@ export class SchoolComponent implements OnInit {
   };
   schoolsOptions: any;
   advancedSearch={
-    code : []
+    code : [],
+    class : '',
+    name : '',
+    place : ''
   };
   advancedSearchToDisplay=[];
   advancedSearchCategory=[];
@@ -62,6 +65,9 @@ export class SchoolComponent implements OnInit {
   ancient: any="";
   regional: any="";
   limit=20;
+  slickNb : number;
+  nbBodyClick : number =0;
+  nbAdvancedClick : number = 0;
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -71,7 +77,7 @@ export class SchoolComponent implements OnInit {
               private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.runScript();
+    this.slickNb=this.publicService.getNbSlick();
     this.setBackgroundImage();
     this.buildForm();
     for (let list of this.filterList){
@@ -81,6 +87,11 @@ export class SchoolComponent implements OnInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+    console.log(window.screen.width)
+  }
+
+  ngAfterViewInit(){
+    this.runScript()
   }
 
   runScript(){
@@ -102,12 +113,17 @@ export class SchoolComponent implements OnInit {
       }
     });
     $('body').on('mousedown', function($event){
-      // console.log($event.target.attributes)
-      if(typeof $event.target.attributes['class']!='undefined'){
-        if($event.target.attributes['class'].value == 'main' || $event.target.attributes['class'].value == 'filter-form-holder' || $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'){
-          $('.advance-filter').hide();
-        }
-      }
+      // console.log($(this).attr('id'))
+      // if(typeof $event.target.attributes['class']!='undefined'){
+      //   if($event.target.attributes['class'].value == 'main' || 
+      //     $event.target.attributes['class'].value == 'filter-form-holder' || 
+      //     $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'|| 
+      //     $event.target.attributes['class'].value == "col-md-3" ||  
+      //     $event.target.attributes['class'].value == "list-schools  row  white-background" ||
+      //     $event.target.attributes['class'].value == 'row'){
+      //     $('.advance-filter').hide();
+      //   }
+      // }
     })
     $('#mobileFilter').on('click', function(e){
       if($('.advance-filter').is(':visible')){
@@ -117,7 +133,7 @@ export class SchoolComponent implements OnInit {
       }
     })
     
-    $('.slickjs').slick({
+    $('.slickjs'+this.slickNb).slick({
       arrows : false,
       slidesToShow: 5,
       slidesToScroll: 1,
@@ -128,6 +144,27 @@ export class SchoolComponent implements OnInit {
 	window.setTimeout("hideSideAd()", 13000);
 
 	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { $(this).parent().addClass('fadeOutDown'); });
+  }
+
+  clickOnBody(event){
+    // console.log(event.srcElement.attributes['class'].textContent)
+    // if(event.srcElement)
+    setTimeout(()=>{
+      this.nbBodyClick++;
+      if(this.nbBodyClick!=this.nbAdvancedClick){
+        $('.advance-filter').hide();
+        this.nbAdvancedClick=this.nbBodyClick
+      }
+    }, 1)
+  }
+
+  showAdvanced(){
+    this.nbAdvancedClick++
+    $('.advance-filter').show();
+  }
+
+  getSlickNb(){
+    return 'slickjs'+this.slickNb;
   }
 
   setBackgroundImage(){
@@ -153,7 +190,6 @@ export class SchoolComponent implements OnInit {
             this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
             this.schoolComponentTitle="Un Internat Maternelle au Lycée"
             $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
-            this.postAdvancedFilter()
           } else {
             this.advancedSearch.code=["enseignement"]
             this.schoolComponentTitle="Enseignement Supérieur";
@@ -255,26 +291,31 @@ export class SchoolComponent implements OnInit {
       name : this.searchForm.controls.etablissement.value
     }
     this.searchFilter=[data.class, data.place, data.name]
+    this.advancedSearch.class = this.searchForm.controls.classe.value;
+    this.advancedSearch.place = this.searchForm.controls.lieu.value;
+    this.advancedSearch.name = this.searchForm.controls.etablissement.value;
     // console.log(data);
     this.publicService.storeSearchSchool(this.searchFilter);
-    this.postFastSearch(data)
+    // this.postFastSearch(data)
     // this.getSearchFilter();
+    this.postAdvancedFilter()
   }
 
-  postFastSearch(data){
-    this.publicService.postFastSearch(data, this.limit)
-      .subscribe(
-        response => {
-          // console.log(response);
-          if(response.code==400){
-            // console.log(response.message)
-          } else {
-            this.schoolListFilter=response.data
-            // console.log(this.schoolListFilter)
-          }
-        }
-      )
-  }
+  // postFastSearch(data){
+  //   console.log(data)
+  //   this.publicService.postFastSearch(data, this.limit)
+  //     .subscribe(
+  //       response => {
+  //         // console.log(response);
+  //         if(response.code==400){
+  //           // console.log(response.message)
+  //         } else {
+  //           this.schoolListFilter=response.data
+  //           // console.log(this.schoolListFilter)
+  //         }
+  //       }
+  //     )
+  // }
 
   filterLieu(event){
     // console.log(event.target.value);
@@ -328,7 +369,7 @@ export class SchoolComponent implements OnInit {
   }
 
   postAdvancedFilter(){
-    // console.log(this.advancedSearch)
+    console.log(this.advancedSearch)
     this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
         response=>{
@@ -337,9 +378,9 @@ export class SchoolComponent implements OnInit {
           if(response.code==400){
             // console.log(response.message)
           } else {
-            this.defaultSchoolList=response.data;
+            this.defaultSchoolList=data;
             this.schoolListFilter=data;
-            // console.log(this.schoolListFilter)
+            console.log(this.schoolListFilter)
             // this.filterCycleSchool(data)
           }
         }
@@ -423,7 +464,7 @@ export class SchoolComponent implements OnInit {
         this.checkCategory('language')
         this.postAdvancedFilter();
       }
-    } else if(event.srcElement.value!=""){
+    } else if(event.srcElement.value!="" && this.languageAdvancedSearchName.indexOf(event.srcElement.value)==-1){
       this.advancedSearch['language'][category]=event.srcElement.value
       this.languageAdvancedSearch.push(category);
       this.languageAdvancedSearchName.push(event.srcElement.value);
@@ -459,27 +500,40 @@ export class SchoolComponent implements OnInit {
     this.languageAdvancedSearch=[];
     this.languageAdvancedSearchName=[]
     delete this.advancedSearch;
+    this.initAdvancedSearch();
     this.setCodeName();
     this.advancedSearchToDisplay=[];
     this.advancedSearchCategory=[];
     this.advancedSearchValue=[]
     this.searchForm.reset();
-    this.buildForm();
     this.searchFilter = ["", "", ""];
     this.publicService.storeSearchSchool(this.searchFilter);
+    this.buildForm();
     this.limit=20
+    console.log(this.advancedSearch)
     this.postAdvancedFilter();
     // this.getSearchFilter();
   }
 
+  initAdvancedSearch(){
+    this.advancedSearch={
+      code : [],
+      class : '',
+      name : '',
+      place : ''
+    };
+  }
+
   setCodeName(){
     if(this.pathName=="ecole"){
-      this.advancedSearch={
-        code:["maternelle", "primaire"]
-      }
-    } else {
-      this.advancedSearch={
-        code:[this.pathName]
+      this.advancedSearch.code=["maternelle", "primaire"]
+    } else if(this.pathName=="college" || this.pathName=="lycee"){
+      this.advancedSearch.code=[this.pathName]
+    } else if(this.pathName="internat"){
+      this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
+      this.advancedSearch['boarding']={
+        notOnSite : true,
+        onSite : true
       }
     }
   }
@@ -488,7 +542,7 @@ export class SchoolComponent implements OnInit {
     // console.log("Clean all search");
     this.cleanSearch();
     this.optionValue="";
-    console.log($('.checkbox'));
+    // console.log($('.checkbox'));
     $('.checkbox').prop('checked', false)
   }
 
