@@ -1,10 +1,22 @@
 jQuery(document).ready(function($) {
     $('.school-carousel').slick();
 	$(document).on('click', ".mat-tab-label-container .mat-tab-label", function(){
-		if($(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple select").length>0)
+		if($(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple-forte select").length>0)
 		{
-			$(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple select").select2({
+			$(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple-forte select").select2({
 				placeholder: 'Matières fortes'
+			});
+		}
+		if($(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple-faible select").length>0)
+		{
+			$(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple-faible select").select2({
+				placeholder: 'Matières faibles'
+			});
+		}
+		if($(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple-gout select").length>0)
+		{
+			$(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple-gout select").select2({
+				placeholder: 'Vos goût pour les matières'
 			});
 		}
 	});

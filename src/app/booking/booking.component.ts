@@ -37,8 +37,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
               private router : ActivatedRoute) { }
 
   ngOnInit() {
-    this.tokenLog=this.authService.isUserLoggedIn()
-    if(!this.tokenLog){
+    if(!this.authService.isUserLoggedIn()){
       swal({
         title: 'Attention',
         text: 'Vous devez être connecté afin de prendre un rendez-vous.',

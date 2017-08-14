@@ -260,6 +260,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       schoolHelpSubject : ['', Validators.required],
       bestSubject : ['', Validators.required],
       weakSubject : ['', Validators.required],
+      interestSubject : ['', Validators.required],
       job : this.fb.array([this.createJob()]),
       yourInterest : ['', Validators.required],
       practiceInterest : ['', Validators.required],

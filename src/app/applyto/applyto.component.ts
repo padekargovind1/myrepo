@@ -69,9 +69,8 @@ export class ApplytoComponent implements OnInit {
               }
 
  ngOnInit() {
-    this.tokenLog=this.authService.getToken();
     // console.log(this.tokenLog)
-    if(this.tokenLog=="" || this.tokenLog == null){
+    if(!this.authService.isUserLoggedIn()){
       swal({
         title: 'Attention',
         text: 'Vous devez être connecté afin de prendre un rendez-vous.',
@@ -223,6 +222,7 @@ export class ApplytoComponent implements OnInit {
       schoolLv3: [''],
       bestSubject : ['', Validators.required],
       weakSubject : ['', Validators.required],
+      interestSubject : ['', Validators.required],
       job : this.fb.array([this.createJob()]),
       yourInterest : ['', Validators.required],
       practiceInterest : ['', Validators.required],

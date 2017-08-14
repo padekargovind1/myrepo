@@ -21,10 +21,13 @@ export class EtablissementFormationComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(()=>{
-      console.log(this.schoolDataRef)
-      for(let i = 0; i<this.schoolDataRef.cycles.length; i++){
-        this.schoolDataToDisplay.push(this.schoolDataRef.cycles[i])
-      }
+      console.log(this.schoolDataRef);
+	  if(this.schoolDataRef!==undefined && this.schoolDataRef!=null && this.schoolDataRef.cycles!==undefined && this.schoolDataRef.cycles!=null)
+	  {
+		  for(let i = 0; i<this.schoolDataRef.cycles.length; i++){
+			this.schoolDataToDisplay.push(this.schoolDataRef.cycles[i])
+		  }
+	  }
       console.log(this.schoolDataToDisplay)
     }, 500)
   }
