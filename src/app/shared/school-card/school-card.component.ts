@@ -4,6 +4,7 @@ import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
 import { SchoolChoiceComponent } from '../school-choice/school-choice.component';
+import { EtablissementComponent } from '../../etablissement/etablissement.component';
 
 @Component({
   selector: 'app-school-card',
@@ -16,6 +17,7 @@ export class SchoolCardComponent implements OnInit {
   @Input() pathName : any;
   brochureData={brochure : ""}
   config: MdDialogConfig;
+  configSchoolDetail : MdDialogConfig;
 
   constructor(private router : Router,
               private usersService : UsersService,
@@ -24,7 +26,7 @@ export class SchoolCardComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(()=>{
-      // console.log(this.pathName);
+      console.log(this.SchoolData);
       this.getSchoolBrochureById();
     }, 500)
   }
@@ -32,7 +34,9 @@ export class SchoolCardComponent implements OnInit {
   onSchoolDetail(){
     console.log("Click on school detail")
     this.publicService.storePath(this.pathName)
-    this.router.navigate(['etablissement', this.SchoolData._id]);
+    this.makeSchoolDetailProfil();
+    let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
+    // this.router.navigate(['etablissement', this.SchoolData._id]);
   }
    
   applyToSchool(){
@@ -59,6 +63,24 @@ export class SchoolCardComponent implements OnInit {
       disableClose: false,
       width: '1000px',
       height: '400px',
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
+  }
+
+  makeSchoolDetailProfil(){
+    // console.log(window.screen.width)
+    this.configSchoolDetail= {
+      data:{
+        schoolData : this.SchoolData
+      },
+      disableClose: false,
+      width: '1400px',
+      height: '800px',
       position: {
       top: '',
       bottom: '',

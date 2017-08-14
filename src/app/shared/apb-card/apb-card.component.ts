@@ -24,11 +24,11 @@ export class ApbCardComponent implements OnInit {
     // }, 500)
   }
 
-  onSchoolDetail(){
-    console.log("Click on school detail")
-    this.publicService.storePath('enseignement')
-    this.router.navigate(['etablissement', this.SchoolData._id]);
-  }
+  // onSchoolDetail(){
+  //   console.log("Click on school detail")
+  //   this.publicService.storePath('enseignement')
+  //   this.router.navigate(['etablissement', this.SchoolData._id]);
+  // }
    
   // applyToSchool(){
   //   this.router.navigate(['applyto', this.SchoolData._id]);

@@ -3,6 +3,7 @@ import { MdDialogRef, MD_DIALOG_DATA, MdDialog, MdDialogConfig } from '@angular/
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { SchoolChoiceComponent } from '../../shared/school-choice/school-choice.component';
+import { EtablissementComponent } from '../../etablissement/etablissement.component';
 
 @Component({
   selector: 'app-wish-apply-popup',
@@ -15,6 +16,7 @@ export class WishApplyPopupComponent implements OnInit {
   wishList = [];
   applyList = [];
   config: MdDialogConfig;
+  configSchoolDetail : MdDialogConfig;
 
   constructor(public dialogref:MdDialogRef<WishApplyPopupComponent>,
               @Inject(MD_DIALOG_DATA) private data: {tabNb : number},
@@ -54,9 +56,29 @@ export class WishApplyPopupComponent implements OnInit {
       )
   }
 
-  onSchoolDetail(schoolId){
-    this.route.navigate(['/etablissement', schoolId]);
+  onSchoolDetail(school){
+    // this.route.navigate(['/etablissement', schoolId]);
+    this.makeSchoolDetailProfil(school)
     this.dialogref.close();
+    let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
+  }
+
+  makeSchoolDetailProfil(school){
+    // console.log(window.screen.width)
+    this.configSchoolDetail= {
+      data:{
+        schoolData : school.school
+      },
+      disableClose: false,
+      width: '1400px',
+      height: '800px',
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
   }
 
   onSchoolApply(schoolId, index){

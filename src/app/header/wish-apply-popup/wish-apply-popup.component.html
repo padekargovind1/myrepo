@@ -54,7 +54,7 @@
             {{apply.school.address.city}} <br /> 
             Tel: {{apply.school.address.phone}}
           </address>
-          <a (click)="onSchoolDetail(apply.school._id)" class="btn btn-highlighted btn-block">
+          <a (click)="onSchoolDetail(apply)" class="btn btn-highlighted btn-block">
             Détails
           </a>
         </div><!-- .card-content -->
@@ -77,7 +77,7 @@
             {{wish.school.address.city}} <br /> 
             Tel: {{wish.school.address.phone}}
           </address>
-          <a (click)="onSchoolDetail(wish.school._id)" 
+          <a (click)="onSchoolDetail(wish)" 
             class="btn btn-highlighted btn-block">
             Détails
           </a>

@@ -9,25 +9,27 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./etablissement-essentiel.component.scss']
 })
 export class EtablissementEssentielComponent implements OnInit {
+  @Input() schoolData : any;
   schoolId = "";
   subscription : Subscription;
-  schoolData : any;
   gettingSchool : boolean = false;
   constructor(private publicService : PublicService,
               private route : ActivatedRoute) { 
   }
 
   ngOnInit() {
-    this.subscription = this.route.params
-      .subscribe(
-        params =>{
-          if(params.hasOwnProperty('schoolId')){
-            this.schoolId=params['schoolId'];
-            this.getSchoolById();
-            // console.log(this.schoolId);
-          }
-        }
-      )
+    console.log(this.schoolData)
+    this.gettingSchool=true;
+    // this.subscription = this.route.params
+    //   .subscribe(
+    //     params =>{
+    //       if(params.hasOwnProperty('schoolId')){
+    //         this.schoolId=params['schoolId'];
+    //         this.getSchoolById();
+    //         // console.log(this.schoolId);
+    //       }
+    //     }
+    //   )
     
   }
 

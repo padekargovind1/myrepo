@@ -176,7 +176,8 @@ import { SchoolChoiceComponent } from './shared/school-choice/school-choice.comp
        BrochpopupComponent,
        BrochureDownloadComponent,
        WishApplyPopupComponent,
-       SchoolChoiceComponent
+       SchoolChoiceComponent,
+       EtablissementComponent
     ],
   bootstrap: [AppComponent]
 })
