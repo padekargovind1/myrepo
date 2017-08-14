@@ -9,33 +9,21 @@ jQuery(document).ready(function($) {
 		}
 	});
 });
+function hideAd() {
+	// console.log('time is up');
+	// $('body').hover(function() {
+		$('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
+		$('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');//.delay(16000).removeClass('fadeInDown').addClass('fadeOutDown');
+	// });
+}
+
+function hideSideAd() {
+	$('.from-popup').delay(13000).removeClass('fadeInDown').addClass('fadeOutDown');
+	$('.fixed-ad').delay(26000).removeClass('hidden').addClass('fadeIn animated');
+}
+
 window.onload= function() { 
 	jQuery(function($) {
-		/**
-		 * Show ads bases on delay time
-		 *
-		 */
-		window.setTimeout(hideAd, 3000);
-
-		function hideAd() {
-			// console.log('time is up');
-			// $('body').hover(function() {
-				$('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
-				$('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');//.delay(16000).removeClass('fadeInDown').addClass('fadeOutDown');
-			// });
-		}
-
-		window.setTimeout(hideSideAd, 13000);
-
-		function hideSideAd() {
-			$('.from-popup').delay(13000).removeClass('fadeInDown').addClass('fadeOutDown');
-			$('.fixed-ad').delay(26000).removeClass('hidden').addClass('fadeIn animated');
-		}
-
-
-		$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { $(this).parent().addClass('fadeOutDown'); });
-
-
 		// listen scrolling, in 500 px height will show footer ads
 		$(document).scroll(function() {
 			var y = $(this).scrollTop();
