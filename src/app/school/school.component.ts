@@ -151,17 +151,16 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   clickOnBody(event){
     // console.log(event.srcElement.attributes['class'].textContent)
     // if(event.srcElement)
-    setTimeout(()=>{
-      this.nbBodyClick++;
-      if(this.nbBodyClick!=this.nbAdvancedClick){
-        $('.advance-filter').hide();
-        this.nbAdvancedClick=this.nbBodyClick
-      }
-    }, 1)
+    this.nbBodyClick++;
+    if(this.nbBodyClick!=this.nbAdvancedClick){
+      $('.advance-filter').hide();
+      this.nbAdvancedClick=this.nbBodyClick
+    }
   }
 
   showAdvanced(){
-    this.nbAdvancedClick++
+    console.log("test1")
+    this.nbAdvancedClick++;
     $('.advance-filter').show();
   }
 

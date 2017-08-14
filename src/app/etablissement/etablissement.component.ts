@@ -8,6 +8,7 @@ import { PublicService } from '../services/public.service';
 import { UsersService } from '../services/users.service';
 import { BrochureService } from '../services/brochure.service';
 declare var $ :any;
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-etablissement',
@@ -109,10 +110,19 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
           if(response.code==400){
             console.log(response.message)
           } else {
+            this.successApply();
             console.log("apply successful")
           }
         }
       )
+  }
+
+  successApply(){
+    swal({
+      title: "L'école a été ajouté à la liste des voeux",
+      type: 'success',
+      confirmButtonText: "J'AI COMPRIS"
+    })
   }
 
   applyTo(){

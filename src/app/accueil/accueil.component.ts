@@ -20,6 +20,7 @@ export class AccueilComponent implements OnInit {
     villes : []
   };
   schoolsOptions: any;
+  apbOptions : any
   searchForm: FormGroup;
   apbForm: FormGroup;
   rateId : string = '';
@@ -199,13 +200,13 @@ export class AccueilComponent implements OnInit {
         response=>{
           console.log(response)
           if(response.code!=400){
-            this.schoolsOptions=[]
+            this.apbOptions=[]
             for(let i = 0; i<response.data.length; i++){
-              if(this.schoolsOptions.indexOf(response.data[i].longName)==-1){
-                this.schoolsOptions.push(response.data[i].longName)
+              if(this.apbOptions.indexOf(response.data[i].longName)==-1){
+                this.apbOptions.push(response.data[i].longName)
               }
             }
-            console.log(this.schoolsOptions)
+            console.log(this.apbOptions)
           }
         }
       )

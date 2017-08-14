@@ -79,6 +79,7 @@ import { RandomLandingComponent } from './random-landing/random-landing.componen
 import { SuperieurComponent } from './superieur/superieur.component';
 import { ApbCardComponent } from './shared/apb-card/apb-card.component';
 import { SchoolChoiceComponent } from './shared/school-choice/school-choice.component';
+import { CapitalPipe } from './pipes/capital.pipe';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { SchoolChoiceComponent } from './shared/school-choice/school-choice.comp
     RandomLandingComponent,
     SuperieurComponent,
     ApbCardComponent,
-    SchoolChoiceComponent
+    SchoolChoiceComponent,
+    CapitalPipe
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,7 @@ export class WishApplyPopupComponent implements OnInit {
   applyList = [];
   config: MdDialogConfig;
   configSchoolDetail : MdDialogConfig;
+  schoolApplyToList=[];
 
   constructor(public dialogref:MdDialogRef<WishApplyPopupComponent>,
               @Inject(MD_DIALOG_DATA) private data: {tabNb : number},
@@ -105,6 +106,20 @@ export class WishApplyPopupComponent implements OnInit {
       right: ''
       }
     };
+  }
+
+  applyOnMultiple(){
+    this.onSchoolApply(this.schoolApplyToList, 0)
+  }
+
+  onSchoolCheckbox(school){
+    console.log(school)
+    let index = this.schoolApplyToList.indexOf(school)
+    if(index==-1){
+      this.schoolApplyToList.push(school)
+    } else{
+      this.schoolApplyToList.splice(index, 1) 
+    }
   }
 
 }

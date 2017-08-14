@@ -6,7 +6,7 @@
 
             <div class="row wrapper border-bottom white-bg">
 
-                <div style="cursor : pointer"
+                <div style="cursor : pointer ; margin-bottom:15px"
                     (click)="navigateBack()">
                     <button type="button" class="btn button-return">
                         <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
@@ -40,11 +40,10 @@
                 </div>
 
                 <div class="row">
-					<div class="col-md-12 slickjs">
-						<div><img src="assets/images/etablissement/cesacom_8.jpg" alt=""></div>
-						<div><img src="assets/images/etablissement/cesacom_7.jpg" alt="ads" /></div>
-						<div><img src="assets/images/etablissement/cesacom_6.jpg" alt="ads" /></div>
-						<div><img src="assets/images/etablissement/cesacom_5.jpg" alt="ads" /></div>
+					<div class="col-md-12 slickjs" *ngIf="schoolData.pictures.length!=0">
+						<div *ngFor="let photo of schoolData.pictures">
+                            <img src="http://54.254.203.172/cideapi{{photo}}" alt="">
+                        </div>
 					</div>
                     <!--<ul id="owl-apb-school" class="owl-carousel">
                         <li class="item"><img src="assets/images/etablissement/cesacom_8.jpg" alt=""></li>
