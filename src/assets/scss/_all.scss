@@ -1764,3 +1764,20 @@ a:hover { text-decoration: none;}
 .mat-tooltip{
   font-size:20px!important
 }
+@media (max-width: 1100px) {
+.conseil-item .conseil-content { padding: 10px 5px;}
+.conseil-item .conseil-content  .btn-conseil {font-size: 11px;}
+.conseil-item .conseil-content .conseil-item {width: 31%;}
+}
+
+
+@media (max-width: 1023px) {
+.conseil-centering .conseil-item {width: 31%;}
+.compareCont {padding-left: 18%;}
+.col-md-12.compare-table-wrap {
+    width: 100%;
+  }
+}
+.compareCont .content-compare-table {
+  width: 33%;
+}

@@ -18,8 +18,22 @@ jQuery(document).ready(function($) {
 			$(".mat-tab-body-wrapper >.mat-tab-body-active").find(".select-custom-multiple-gout select").select2({
 				placeholder: 'Vos goût pour les matières'
 			});
+		}else if($(".mat-tab-body-wrapper >.mat-tab-body-active").find("#txtAge").length>0)
+		{
+			console.log("Test 2");
+			var txtAge = $(".mat-tab-body-wrapper >.mat-tab-body-active").find("#txtAge");
+			// Listen for input event on numInput.
+			txtAge[0].onkeydown = function(e) {
+							
+				if(!((e.keyCode > 95 && e.keyCode < 106)
+				  || (e.keyCode > 47 && e.keyCode < 58) 
+				  || e.keyCode == 8)) {
+					return false;
+				}
+			}
 		}
 	});
+	
 });
 function hideAd() {
 	// console.log('time is up');

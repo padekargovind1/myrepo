@@ -33,7 +33,7 @@
           <div class="row">
             <div class="col-sm-3  col-xs-6">
               <div class="form-group">
-                <input type="number" class="form-control" max="100" min="1" placeholder="Age"
+                <input id="txtAge" type="number" class="form-control" max="100" min="1" placeholder="Age"
                   [formControl]="childrenForm.controls['age']"
                   pattern="[0-9]+" maxlength="2">
                 <small *ngIf="childrenForm.controls['age'].hasError('required') && 
@@ -155,9 +155,9 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <div class="datepicker-holder">
-                  <input type="date" id="birthdate" class="form-control"
-                     placeholder="Date de naissance"
-                    [formControl]="childrenForm.controls['datenaissance']">
+                  <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker" [max]="maxDate"
+                  placeholder="Date de naissance"
+                  [formControl]="childrenForm.controls['datenaissance']">
                   <md-datepicker #myDatepicker></md-datepicker>
                   <small *ngIf="childrenForm.controls['datenaissance'].hasError('required') && 
                     childrenForm.controls['datenaissance'].touched" 
@@ -191,7 +191,7 @@
               Terminer</button>
           </div>
         </section><!-- .col-* -->
-        <section class="col-md-6" *ngIf="canDisplay">
+        <section class="col-md-8" *ngIf="canDisplay">
           <div class="wrap-enfant" formArrayName="freresoeur"
             *ngFor="let siblings of childrenForm.controls['freresoeur']['controls']; let i=index">
             <h4>Frère / Soeur {{ i + 1 }}</h4>
