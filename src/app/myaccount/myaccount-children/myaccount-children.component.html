@@ -125,7 +125,8 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Code postal"
-                  [formControl]="childrenForm.controls['codepostal']" maxlength="5">
+                  [formControl]="childrenForm.controls['codepostal']" maxlength="5"
+                  minlength="5">
                 <small *ngIf="childrenForm.controls['codepostal'].hasError('required') && 
                   childrenForm.controls['codepostal'].touched" 
                   class="mat-text-warn"> 
@@ -154,9 +155,9 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <div class="datepicker-holder">
-                  <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
-                  placeholder="Date de naissance"
-                  [formControl]="childrenForm.controls['datenaissance']">
+                  <input type="date" id="birthdate" class="form-control"
+                     placeholder="Date de naissance"
+                    [formControl]="childrenForm.controls['datenaissance']">
                   <md-datepicker #myDatepicker></md-datepicker>
                   <small *ngIf="childrenForm.controls['datenaissance'].hasError('required') && 
                     childrenForm.controls['datenaissance'].touched" 
@@ -209,14 +210,9 @@
                   </small>
                 </div>
                 <div class="col-sm-2">
-                  <input type="number" 
-                    max="120" 
-                    min="1" 
-                    class="form-control gap-for-radio" 
-                    placeholder="Age" 
-                    formControlName="age"
-                    pattern="[0-9]+"
-                    />
+                  <input type="text" max="50" maxLength="2"
+                    min="2" minLength="1" class="form-control gap-for-radio" 
+                    placeholder="Age" formControlName="age" pattern="[0-9]+"/>
                   <small *ngIf="childrenForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
                     childrenForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
                     class="mat-text-warn"> 

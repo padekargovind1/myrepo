@@ -402,7 +402,7 @@
 														<select name="class" class="form-control" id="class"
 															[formControl]="searchForm.controls['classe']" >
 															<!--<option value="" disabled selected hidden>Classe</option>-->
-															<option value="" selected>Choisir une classe</option>
+															<option value="" selected>Classe</option>
 															<optgroup label="Cycle 1 : Apprentissages Premiers">
 																<option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
 																<option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
@@ -573,7 +573,7 @@
 													<label class="select-custom" for="class">
                                                         <select name="class" class="form-control" id="class"
                                                             [formControl]="apbForm.controls['domaine']">
-                                                            <option value="" selected>Choisir un domaine</option>
+                                                            <option value="" selected>Domaine</option>
                                                             <option *ngFor="let domaine of domaines" 
                                                                 [value]="domaine" selected>&nbsp;&nbsp;{{domaine}}</option>
                                                         </select>

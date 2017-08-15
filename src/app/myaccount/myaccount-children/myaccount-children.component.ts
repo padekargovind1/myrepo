@@ -31,6 +31,8 @@ export class MyaccountChildrenComponent implements OnInit {
   // children = ["Frère / Sœur 1"];
   canDisplay: boolean = false;
   siblings : any;
+  minDate : Date = new Date(1917, 0, 1);
+  maxDate ;
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
@@ -43,6 +45,10 @@ export class MyaccountChildrenComponent implements OnInit {
       console.log("navigate back");
       this.route.navigate(['/login']);
     } 
+    console.log(Date.now().toString())
+    let date = new Date();
+    this.maxDate = date.getFullYear()+'/0'+date.getMonth()+'/0'+date.getDay();
+    console.log(this.maxDate)
   }
 
   ngOnInit() {

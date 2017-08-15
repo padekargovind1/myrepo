@@ -25,7 +25,7 @@
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['domaine']">
-                                                        <option value="" selected>Choisir un domaine</option>
+                                                        <option value="" selected>Domaine</option>
                                                         <option *ngFor="let domaine of domaines" 
                                                             [value]="domaine" selected>&nbsp;&nbsp;{{domaine}}</option>
                                                     </select>
