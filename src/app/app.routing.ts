@@ -42,7 +42,6 @@ export const AppRoutes: Routes = [
     { path: 'lycee', component: SchoolComponent },
     { path: 'internat', component: SchoolComponent },
     { path: 'enseignement', component: SuperieurComponent },
-    { path: 'etablissement/:schoolId', component: EtablissementComponent },
     { path: 'compare-mode', component: CompareModeComponent },
     { path: 'detail-appointment', component: DetailAppointmentComponent },
     { path: 'wizard', component: WizardComponent},

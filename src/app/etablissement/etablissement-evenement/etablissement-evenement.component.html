@@ -9,12 +9,18 @@
           <div class="ibox-content">
             <!-- <div id="calendar"></div> -->
           </div>
-          <div class="calendar-wrap">
+          <div class="calendar-wrap" *ngIf="events.length!=0; else noEvent">
             <h4>Calendrier</h4>
             <div id="calendar-detail-school"></div>
           </div>
+          <ng-template #noEvent>
+            <h2 style="text-align:center">
+              Il y a aucun événement de prévu
+            </h2>
+          </ng-template>
         </div>
       </div>
     </div>
   </div>
 </div>
+          

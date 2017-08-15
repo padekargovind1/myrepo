@@ -29,13 +29,16 @@
 </ng-template>
 
 <div class="card-content">
-    <h3 style="height:30px">{{ SchoolData.longName | school:42 }}
+    <h3 style="height:30px"
+        mdTooltip="{{ SchoolData.longName }}">{{ SchoolData.longName | school:42 }}
     </h3>
     <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
         {{ SchoolData.cycles[0].cycle.status2 }} <br />
         {{ SchoolData.cycles[0].cycle.status3 }}</p>-->
     <address *ngIf="SchoolData.addresses.length!=0; else empty1"> 
-        {{ SchoolData.addresses[0].address | school:35  }} <br /> 
+        <span mdTooltip="{{ SchoolData.addresses[0].address }}">
+            {{ SchoolData.addresses[0].address | school:35  }} 
+        </span><br /> 
         {{ SchoolData.addresses[0].postCode }} {{ SchoolData.addresses[0].city }}<br /> 
         Tel: {{ SchoolData.addresses[0].phoneNumber }}</address>
     <ng-template #empty1>

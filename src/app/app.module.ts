@@ -60,7 +60,7 @@ import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component'
 import { ApplytoComponent } from './applyto/applyto.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
-import {BrochureDownloadComponent} from './brochure/brochure-download/brochure-download.component';
+import { BrochureDownloadComponent } from './brochure/brochure-download/brochure-download.component';
 import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
 import { SchoolComponent } from './school/school.component';
 

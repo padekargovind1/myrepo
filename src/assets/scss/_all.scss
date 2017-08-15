@@ -32,7 +32,7 @@ h1 { font-weight: 300; }
 
     .bar { width: 100%; height: 20px; text-align: left; padding-top: 14px;}
         .bar span { background: #747F87; animation-name: move; animation-duration: 5s; animation-iteration-count: 1; display: inline-table; height: 100%; width: 0; }
-    .menu-holder { float: left; font-size: 34px; margin: 18px 40px 0 0; }
+    .menu-holder { float: left; font-size: 34px; margin: 18px 18px 0 0; }
 
 .btn span.glyphicon { opacity: 1 !important;}
 
@@ -48,7 +48,7 @@ h1 { font-weight: 300; }
 }
     .school .header { background: none; }
     .header:after { content: ""; display: table; clear: both;}
-    .cide-logo { width: 220px; height: auto; float: left;}
+    .cide-logo { width: 260px; height: auto; float: left;}
     .sitename { position: absolute; top: 46%; left: 50%; margin: 0 -111px; animation-duration: 1s; animation-fill-mode: both; animation-name: tada; animation-delay: 6s; font-size: 24px;}
     .school .cide-logo { width: 220px;}
     .school .cide-logo-mobile { display: none; }
@@ -1760,3 +1760,7 @@ a:hover { text-decoration: none;}
  
   } 
 .calendar-wrap{ color:#fff; }
+
+.mat-tooltip{
+  font-size:20px!important
+}

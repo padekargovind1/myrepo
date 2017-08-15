@@ -163,7 +163,7 @@
                               <div class="col-sm-12">
                                 <div class="select-custom">
                                   <select name="" class="form-control" formControlName="horaireJoignable">
-                                      <option value="" disabled selected hidden>Horaires pour me contacter</option>
+                                      <option value="" disabled selected>Horaires pour me contacter</option>
                                       <option value="9h-12h">9h-12h</option>
                                       <option value="12h-14h">12h-14h</option>
                                       <option value="14h-18h">14h-18h</option>
@@ -172,7 +172,7 @@
                                   <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.horaireJoignable.hasError('required') && 
                                     applytoForm.controls['parents']['controls'][i].controls.horaireJoignable.touched" 
                                     class="mat-text-warn"> 
-                                    Profession Obligatoire
+                                    Horaire Obligatoire
                                   </small>
                                 </div>
                               </div>
@@ -208,12 +208,12 @@
                 </div>
                 <!-- #tab1 -->
               </md-tab>
-              <md-tab label="Enfant">
+              <md-tab label="Écolier">
                 <div class="tab-pane" id="tab2">
                   <div class="container-fluid">
                     <div class="row">
                       <div class="col-md-12">
-                        <h3>Enfant</h3>
+                        <h3>Écolier</h3>
                       </div>
                       <div class="col-md-4">
 

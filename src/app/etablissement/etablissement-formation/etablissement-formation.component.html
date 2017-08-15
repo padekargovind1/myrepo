@@ -26,7 +26,7 @@
                             <tr>
                                 <td>
                                     <strong>CP</strong><br />
-                                    {{cycle.address.postalcode}}
+                                    {{cycle.address.postcode}}
                                 </td>
                                 <td>
                                     <strong>Ville</strong><br />
@@ -40,15 +40,15 @@
                             <tr>
                                 <td>
                                     <strong>Academie</strong><br />
-                                    {{cycle.address.academy}}
+                                    {{cycle.address.academy.name}}
                                 </td>
                                 <td>
                                     <strong>Departement</strong><br />
-                                    {{cycle.address.departementName}}
+                                    {{cycle.address.academy.department}}
                                 </td>
                                 <td>
                                     <strong>Region</strong><br />
-                                    {{cycle.address.region}}
+                                    {{cycle.address.academy.region}}
                                 </td>
                             </tr>
                             <tr>
@@ -314,13 +314,11 @@
                             <tr>
                                 <td>
                                     <strong>Lien contact</strong><br />
-                                    <!--+33 {{cycle.autoContact}}-->
-                                    +33 0123456789
+                                    +33 {{cycle.contactLink}}
                                 </td>
                                 <td>
                                     <strong>Priorite Web</strong><br />
-                                    <!--<a href="#">{{cycle.autoWebsite}}</a>-->
-                                    <a >www.website.fr</a>
+                                    <a href="{{cycle.link}}">{{cycle.link}}</a>
                                 </td>
                                 <td>
                                     <strong>Autorisation Web 1</strong><br />

@@ -159,7 +159,6 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   }
 
   showAdvanced(){
-    console.log("test1")
     this.nbAdvancedClick++;
     $('.advance-filter').show();
   }

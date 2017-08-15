@@ -7,13 +7,15 @@
         <li><span class="subtitle">&nbsp;</span>
             <div class="collapse in ecole">
                 <ul class="compare-item">
-                    <li *ngIf="schoolDataToDisplay.cycles[0]; else cycle1">
+                    <li *ngIf="schoolDataToDisplay.cycles[0]; else cycle1"
+                        mdTooltip="{{schoolDataToDisplay.cycles[0].classes[0].name}}">
                         {{ schoolDataToDisplay.cycles[0].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle1>
                         <li >&nbsp;</li>
                     </ng-template>
-                    <li *ngIf="schoolDataToDisplay.cycles[1]; else cycle2">
+                    <li *ngIf="schoolDataToDisplay.cycles[1]; else cycle2"
+                        mdTooltip="{{schoolDataToDisplay.cycles[1].classes[0].name}}">
                         {{ schoolDataToDisplay.cycles[1].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle2>
@@ -25,13 +27,15 @@
         <li><span class="subtitle">&nbsp;</span>
             <div class="collapse in college">
                 <ul class="compare-item">
-                    <li *ngIf="schoolDataToDisplay.cycles[2]; else cycle3">
+                    <li *ngIf="schoolDataToDisplay.cycles[2]; else cycle3"
+                        mdTooltip="{{schoolDataToDisplay.cycles[2].classes[0].name}}">
                         {{ schoolDataToDisplay.cycles[2].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle3>
                         <li >&nbsp;</li>
                     </ng-template>
-                    <li *ngIf="schoolDataToDisplay.cycles[3]; else cycle4">
+                    <li *ngIf="schoolDataToDisplay.cycles[3]; else cycle4"
+                        mdTooltip="{{schoolDataToDisplay.cycles[3].classes[0].name}}">
                         {{ schoolDataToDisplay.cycles[3].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle4>
@@ -43,13 +47,15 @@
         <li><span class="subtitle">&nbsp;</span>
             <div class="collapse in college">
                 <ul class="compare-item">
-                    <li *ngIf="schoolDataToDisplay.cycles[4]; else cycle5">
+                    <li *ngIf="schoolDataToDisplay.cycles[4]; else cycle5"
+                        mdTooltip="{{schoolDataToDisplay.cycles[4].classes[0].name}}">
                         {{ schoolDataToDisplay.cycles[4].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle5>
                         <li >&nbsp;</li>
                     </ng-template>
-                    <li *ngIf="schoolDataToDisplay.cycles[5]; else cycle6">
+                    <li *ngIf="schoolDataToDisplay.cycles[5]; else cycle6"
+                        mdTooltip="{{schoolDataToDisplay.cycles[5].classes[0].name}}">
                         {{ schoolDataToDisplay.cycles[5].classes[0].name | school:42 }}
                     </li>
                     <ng-template #cycle6>
@@ -502,7 +508,8 @@
             <ul class="compare-item center class-cycle"
                 *ngIf="compareListFilter[10]=='true'">
                 <li class="title">
-                    <h5 *ngIf="schoolDataToDisplay.cycles[whichCycle].classes[0].diplomas[0].name!=''; else field50">
+                    <h5 *ngIf="schoolDataToDisplay.cycles[whichCycle].classes[0].diplomas[0].name!=''; else field50"
+                        mdTooltip="{{schoolDataToDisplay.cycles[whichCycle].classes[0].diplomas[0].name}}">
                         {{ schoolDataToDisplay.cycles[whichCycle].classes[0].diplomas[0].name |school:15 }}
                     </h5>
                     <ng-template #field50>
@@ -522,7 +529,8 @@
             <ul class="compare-item center class-cycle"
                 *ngIf="compareListFilter[11]=='true'">
                 <li class="title">
-                    <h5 *ngIf="schoolDataToDisplay.cycles[whichCycle].classes[0].option[0].name!=''; else field51">
+                    <h5 *ngIf="schoolDataToDisplay.cycles[whichCycle].classes[0].option[0].name!=''; else field51"
+                        mdTooltip="{{schoolDataToDisplay.cycles[whichCycle].classes[0].option[0].name }}" >
                         {{ schoolDataToDisplay.cycles[whichCycle].classes[0].option[0].name | school:15 }}
                     </h5>
                     <ng-template #field51>

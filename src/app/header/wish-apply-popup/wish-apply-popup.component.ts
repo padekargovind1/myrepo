@@ -66,8 +66,8 @@ export class WishApplyPopupComponent implements OnInit {
 
   makeSchoolDetailProfil(school){
     // console.log(window.screen.width)
-    let screenWidth :string = ((window.screen.width/3)*2).toString()+'px';
-    let screenHeight :string = ((window.screen.height/3)*2).toString()+'px';
+    let screenWidth :string = ((window.screen.width/5)*4).toString()+'px';
+    let screenHeight :string = ((window.screen.height/5)*4).toString()+'px';
     this.configSchoolDetail= {
       data:{
         schoolData : school.school
@@ -92,13 +92,15 @@ export class WishApplyPopupComponent implements OnInit {
   }
 
   makeProfile(schoolData){
+    let screenWidth : string = (window.screen.width/2).toString()+'px';
+    let screenHeight : string = (window.screen.height/3).toString()+'px';
     this.config= {
       data:{
         schoolData : schoolData.school
       },
       disableClose: false,
-      width: '1000px',
-      height: '400px',
+      width: screenWidth,
+      height: screenHeight,
       position: {
       top: '',
       bottom: '',

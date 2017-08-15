@@ -17,11 +17,13 @@ export class EtablissementEvenementComponent implements OnInit, AfterViewInit {
   constructor(private publicService : PublicService) { }
 
   ngOnInit() {
-    this.getEvent();
   }
 
   ngAfterViewInit(){
     this.initCalendar();
+    console.log(this.schoolData)
+    this.events = this.schoolData.events;
+    this.initEventData();
   }
 
   initCalendar(){
@@ -32,21 +34,6 @@ export class EtablissementEvenementComponent implements OnInit, AfterViewInit {
       }, 
       events:this.eventToDisplay
     });
-  }
-
-  getEvent(){
-    this.publicService.getEvent()
-      .subscribe(
-        (response)=>{
-          let data = response.data;
-          if(response.code==400){
-            console.log(response.message)
-          } else {
-            this.events=data;
-            this.initEventData();
-          }
-        }
-      )
   }
 
   initEventData(){

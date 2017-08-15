@@ -173,7 +173,7 @@ export class ApplytoComponent implements OnInit {
         ville : IsAdress ? userData.parents[i].address.city : "",
         pays : IsAdress ? userData.parents[i].address.country : "",
         job : userData.parents[i].profession,
-        horaireJoignable : userData.parents[i].availability
+        // horaireJoignable : userData.parents[i].availability
         })
       }
     }

@@ -7,9 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EtablissementInfoComponent implements OnInit {
   @Input() schoolData : any;
+  canDisplay : boolean = false;
   constructor() { }
 
   ngOnInit() {
+    setTimeout(
+      ()=>{
+        console.log(this.schoolData)
+        this.canDisplay=true;
+      }, 500
+    )
   }
 
 }

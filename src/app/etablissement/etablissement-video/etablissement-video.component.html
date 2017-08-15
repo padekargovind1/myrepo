@@ -1,40 +1,28 @@
 <div class="panel-body">
   <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-      <div class="col-md-6">
+    <div class="row" *ngIf="schoolData.video.length!=0; else noVideo">
+      <div class="col-md-6" *ngFor="let video of schoolData.video">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
             <h5>Description de la Video</h5>
             <div class="ibox-tools">
-              <a class="close-link" data-toggle="tooltip" data-placement="top" title="supprimer cette video">
+              <a class="close-link" data-toggle="tooltip" 
+                data-placement="top" title="supprimer cette video">
                 <i class="fa fa-times"></i>
               </a>
             </div>
           </div>
           <div class="ibox-content">
             <figure>
-              <iframe width="560" height="280" src="./APB PRIVE - ETABLISSEMENT_files/hQ4dGdN1sko.html" frameborder="0" allowfullscreen=""></iframe>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="ibox float-e-margins">
-          <div class="ibox-title">
-            <h5>Description de la Video</h5>
-            <div class="ibox-tools">
-              <a class="close-link" data-toggle="tooltip" data-placement="top" title="supprimer cette video">
-                <i class="fa fa-times"></i>
-              </a>
-            </div>
-          </div>
-          <div class="ibox-content">
-            <figure>
-              <!-- <iframe width="560" height="280" src="./APB PRIVE - ETABLISSEMENT_files/pq4MUoy3eM0.html" frameborder="0" allowfullscreen=""></iframe> -->
+              <iframe src="http://54.254.203.172/cideapi{{video}}" 
+                frameborder="0" allowfullscreen=""></iframe>
             </figure>
           </div>
         </div>
       </div>
     </div><!-- /.row -->
+    <ng-template #noVideo>
+      <h2 style="text-align:center">Il n'y a pas de vidéos</h2>
+    </ng-template>
   </div>
 </div>

@@ -13,7 +13,7 @@
                       </td>
                       <td>
                           <strong>Nombre D'Eleves</strong><br />
-                          {{schoolData['nb_Student_total']}}
+                          {{schoolData.nbrStudents}}
                       </td>
                   </tr>
                   <tr>
@@ -23,23 +23,23 @@
                       </td>
                       <td>
                           <strong>Academie</strong><br />
-                          {{schoolData.address.academy}}
+                          {{schoolData.cycles[0].address.academy.name}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Departement</strong><br />
-                          {{schoolData.address.departmentName}}
+                          {{schoolData.cycles[0].address.academy.department}}
                       </td>
                       <td>
                           <strong>Tel</strong><br />
-                          +33 {{schoolData.address.phoneNumber}}
+                          +33 {{schoolData.address.phone}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Site Internet</strong><br />
-                          {{schoolData.address.url}}
+                          {{schoolData.url}}
                       </td>
                       <td>
                           <strong>Mél</strong><br />
@@ -51,7 +51,7 @@
       </div>
       
 
-      <h4>Contacts</h4>
+      <!--<h4>Contacts</h4>
 
       <div class="table-responsive">
           
@@ -60,29 +60,24 @@
                   <tr>
                       <td>
                           <strong>Titre</strong><br />
-                          <!--{{schoolData.title}}-->
                           Mme
                       </td>
                       <td>
                           <strong>Prénom</strong><br />
-                          <!--{{schoolData.firstName}}-->
                           Anita
                       </td>
                       <td>
                           <strong>Nom</strong><br />
-                          <!--{{schoolData.lastName}}-->
                           Lubies
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Fonction</strong><br />
-                          <!--{{schoolData.fonction}}-->
                           Directeur
                       </td>
                       <td>
                           <strong>Dir. Cycles</strong><br />
-                          <!--{{schoolData.dirCycle}}-->
                           Ecole
                       </td>
                       <td>&nbsp;
@@ -91,7 +86,7 @@
               </tbody>
           </table>
           
-      </div>
+      </div>-->
 
   </div><!-- .wrapper -->
 
