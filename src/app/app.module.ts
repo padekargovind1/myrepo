@@ -80,6 +80,8 @@ import { SuperieurComponent } from './superieur/superieur.component';
 import { ApbCardComponent } from './shared/apb-card/apb-card.component';
 import { SchoolChoiceComponent } from './shared/school-choice/school-choice.component';
 import { CapitalPipe } from './pipes/capital.pipe';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -160,7 +162,10 @@ import { CapitalPipe } from './pipes/capital.pipe';
     CustomFormsModule,
     FileUploadModule,
     NgxDatatableModule,
-    JsonpModule
+    JsonpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD_gjvXL9pHaSq50qqiKv73IodUxJh8NCU'
+    })
   ],
   providers: [
     SchoolService,

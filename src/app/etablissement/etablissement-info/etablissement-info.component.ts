@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class EtablissementInfoComponent implements OnInit {
   @Input() schoolData : any;
   canDisplay : boolean = false;
+  title: string = 'My first AGM project';
+  lat: number ;
+  lng: number ;
   constructor() { }
 
   ngOnInit() {
@@ -15,6 +18,12 @@ export class EtablissementInfoComponent implements OnInit {
       ()=>{
         console.log(this.schoolData)
         this.canDisplay=true;
+        let i= 0;
+        do{
+          this.lat=this.schoolData.cycles[i].address.lat;
+          this.lng=this.schoolData.cycles[i].address.long;
+          i++;
+        }while(this.lat==0.0 && this.lng==0.0)        
       }, 500
     )
   }

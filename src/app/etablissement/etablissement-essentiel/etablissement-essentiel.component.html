@@ -22,8 +22,18 @@
                           {{schoolData.creationYear}}
                       </td>
                       <td>
-                          <strong>Academie</strong><br />
-                          {{schoolData.cycles[0].address.academy.name}}
+                          <strong>Adresse 1</strong><br />
+                          {{schoolData.address.ad1}}
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Code Postal</strong><br />
+                          {{schoolData.address.postcode}}
+                      </td>
+                      <td>
+                          <strong>Ville</strong><br />
+                          {{schoolData.address.city}}
                       </td>
                   </tr>
                   <tr>
@@ -38,12 +48,12 @@
                   </tr>
                   <tr>
                       <td>
-                          <strong>Site Internet</strong><br />
-                          {{schoolData.url}}
+                          <strong>Academie</strong><br />
+                          {{schoolData.cycles[0].address.academy.name}}
                       </td>
                       <td>
-                          <strong>Mél</strong><br />
-                          {{schoolData.address.email}}
+                          <strong>Site Internet</strong><br />
+                          <a href="{{schoolData.url}}"></a>
                       </td>
                   </tr>
               </tbody>
@@ -51,7 +61,7 @@
       </div>
       
 
-      <!--<h4>Contacts</h4>
+      <h4>Contacts</h4>
 
       <div class="table-responsive">
           
@@ -60,33 +70,35 @@
                   <tr>
                       <td>
                           <strong>Titre</strong><br />
-                          Mme
+                          {{schoolData.contact.gender}}
                       </td>
                       <td>
                           <strong>Prénom</strong><br />
-                          Anita
+                          {{schoolData.contact.firstName}}
                       </td>
                       <td>
                           <strong>Nom</strong><br />
-                          Lubies
+                          {{schoolData.contact.lastName}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Fonction</strong><br />
-                          Directeur
+                          {{schoolData.contact.job}}
                       </td>
                       <td>
-                          <strong>Dir. Cycles</strong><br />
-                          Ecole
+                          <strong>Mél</strong><br />
+                          {{schoolData.contact.email}}
                       </td>
-                      <td>&nbsp;
+                      <td>
+                          <strong>Tél </strong><br />
+                          {{schoolData.contact.tel}}
                       </td>
                   </tr>
               </tbody>
           </table>
           
-      </div>-->
+      </div>
 
   </div><!-- .wrapper -->
 

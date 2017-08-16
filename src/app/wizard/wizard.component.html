@@ -304,7 +304,8 @@
                                                         <div class="col-sm-3  col-xs-6">
                                                             <div class="form-group">
                                                                 <input type="number" class="form-control" max="120" min="1" placeholder="Age"
-                                                                  [formControl]="wizardForm.controls['childAge']" maxlength="2">
+                                                                  [formControl]="wizardForm.controls['childAge']" maxlength="2"
+                                                                  pattern="[0-9]+" id="txtAge">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-3  hidden-xs">&nbsp;</div>
@@ -380,7 +381,7 @@
                                                     <div class="form-group">
                                                         <div class="datepicker-holder">
                                                             <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
-                                                                placeholder="Date de naissance"
+                                                                placeholder="Date de naissance" [max]="maxDate"
                                                                 [formControl]="wizardForm.controls['childBirthDay']">
                                                                 <md-datepicker #myDatepicker></md-datepicker>
                                                         </div>

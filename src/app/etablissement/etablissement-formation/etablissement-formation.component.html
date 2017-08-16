@@ -4,7 +4,7 @@
             <div class="panel-body-course">
                 
                 <div class="wrapper wrapper-content animated fadeInRight">
-                    
+                    <h4>Contact</h4>
                     <div class="table-responsive">
 
                     <table class="table table-stripped table-bordered  identity  formation-table">
@@ -25,44 +25,30 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>CP</strong><br />
-                                    {{cycle.address.postcode}}
+                                    <strong>Titre</strong><br />
+                                    {{cycle.contact.gender}}
                                 </td>
                                 <td>
-                                    <strong>Ville</strong><br />
-                                    {{cycle.address.city}}
+                                    <strong>Prénom</strong><br />
+                                    {{cycle.contact.firstName}}
                                 </td>
                                 <td>
-                                    <strong>Pays</strong><br />
-                                    {{cycle.address.country}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Academie</strong><br />
-                                    {{cycle.address.academy.name}}
-                                </td>
-                                <td>
-                                    <strong>Departement</strong><br />
-                                    {{cycle.address.academy.department}}
-                                </td>
-                                <td>
-                                    <strong>Region</strong><br />
-                                    {{cycle.address.academy.region}}
+                                    <strong>Nom</strong><br />
+                                    {{cycle.contact.lastName}}
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Tel</strong><br />
-                                    +33 {{cycle.address.phoneNumber}}
-                                </td>
-                                <td>
-                                    <strong>Url Web</strong><br />
-                                    <a href="#">{{cycle.address.url}}</a>
+                                    <strong>Fonction</strong><br />
+                                    {{cycle.contact.job}}
                                 </td>
                                 <td>
                                     <strong>Mél</strong><br />
-                                    <a href="mailto:{{cycle.address.email}}">{{cycle.address.email}}</a>
+                                    {{cycle.contact.email}}
+                                </td>
+                                <td>
+                                    <strong>Tél</strong><br />
+                                    {{cycle.contact.phone}}
                                 </td>
                             </tr>
                         </tbody>
@@ -383,11 +369,11 @@
                 <h4>Statut</h4>
                 <div class="table-responsive">
 
+                    <h5>Statut 1</h5>
                     <table class="table table-stripped table-bordered  specification">
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Statut 1</strong><br />
                                     <span *ngFor="let status of cycle.status1">
                                         {{status}}<br>
                                     </span>

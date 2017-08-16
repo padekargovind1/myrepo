@@ -13,6 +13,11 @@
                             Position de L'Etablissement sur la carte Google.
                         </p>
                         <div class="row">
+                            <agm-map [latitude]="lat" [longitude]="lng">
+                                <agm-marker [latitude]="lat" [longitude]="lng">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </agm-marker>
+                            </agm-map>
                             <!--<img src="assets/images/etablissement/cesacom map.png">-->
                         </div>
                     </div>

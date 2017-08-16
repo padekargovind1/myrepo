@@ -142,8 +142,8 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   }
 
   makeProfile(){
-    let screenWidth : string = (window.screen.width/2).toString()+'px';
-    let screenHeight : string = (window.screen.height/3).toString()+'px';
+    let screenWidth : string = (((window.screen.width/3)*2)).toString()+'px';
+    let screenHeight : string = (window.screen.height/2).toString()+'px';
     this.config= {
       data:{
         schoolData : this.schoolData
