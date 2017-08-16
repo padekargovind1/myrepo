@@ -11,7 +11,7 @@ import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { CustomValidators } from 'ng2-validation';
 import swal from 'sweetalert2';
 
-const URL = 'http://54.254.203.172/cideapi/uploads/';
+const URL = 'http://54.254.203.172/cide-school/';
 
 @Component({
   selector: 'app-applyto',

@@ -76,7 +76,7 @@ export class SchoolCardComponent implements OnInit {
 
   makeSchoolDetailProfil(){
     // console.log(window.screen.width)
-    let screenWidth :string = ((window.screen.width/7)*6).toString()+'px';
+    let screenWidth :string = ((window.screen.width/5)*4).toString()+'px';
     let screenHeight :string = ((window.screen.height/7)*6).toString()+'px';
     this.configSchoolDetail= {
       data:{

@@ -103,6 +103,7 @@
 
                                             <div class="form-group">
                                                 <div class="select-custom">
+                                                    Lien de parenté* 
                                                 <md-select placeholder="Lien de Parenté" class="form-control" 
                                                     formControlName="lienParent">
                                                     <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
@@ -116,20 +117,20 @@
                                                 </small>
                                                 </div>
                                             </div>
-
                                             <div class="form-group horizontal-radio clearfix">
                                                 <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
                                                                     <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
                                                                     <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
+                                                
                                                 <md-radio-group formControlName="titre">
-                                                <md-radio-button value="Mme">Mme</md-radio-button>
-                                                <md-radio-button value="Mlle">Mlle</md-radio-button>
-                                                <md-radio-button value="M">M</md-radio-button>
+                                                    <md-radio-button value="ms">Mme</md-radio-button>
+                                                    <md-radio-button value="mrs">Mlle</md-radio-button>
+                                                    <md-radio-button value="m">M</md-radio-button>
                                                 </md-radio-group>
                                                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
-                                                wizardForm.controls['parents']['controls'][i].controls.titre.touched" 
-                                                class="mat-text-warn"> 
-                                                Titre Obligatoire
+                                                    wizardForm.controls['parents']['controls'][i].controls.titre.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Titre Obligatoire
                                                 </small>
                                             </div>
 
@@ -137,6 +138,7 @@
                                             <div class="row">
                                                 <div class="col-sm-6  col-xs-6">
                                                 <div class="form-group">
+                                                    Nom de famille* 
                                                     <input type="text" class="form-control" placeholder="Nom" 
                                                     formControlName="nom"
                                                     maxlength="25">
@@ -149,6 +151,7 @@
                                                 </div>
                                                 <div class="col-sm-6  col-xs-6">
                                                 <div class="form-group">
+                                                    Prénom*
                                                     <input type="text" class="form-control" placeholder="Prénom" 
                                                     formControlName="prenom"
                                                     maxlength="25">
@@ -165,58 +168,61 @@
                                             <div class="form-group">
                                                 <div class="row">
 
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" 
-                                                    placeholder="Profession / Secteur d'activité" 
-                                                    formControlName="job"
-                                                    maxlength="25">
-                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.job.hasError('required') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.job.touched" 
-                                                    class="mat-text-warn"> 
-                                                    Profession Obligatoire
-                                                    </small>
-                                                </div>
+                                                    <div class="col-sm-12">
+                                                        Profession*
+                                                        <input type="text" class="form-control" 
+                                                            placeholder="Profession / Secteur d'activité" 
+                                                            formControlName="job"
+                                                            maxlength="25">
+                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.job.hasError('required') && 
+                                                            wizardForm.controls['parents']['controls'][i].controls.job.touched" 
+                                                            class="mat-text-warn"> 
+                                                            Profession Obligatoire
+                                                        </small>
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
+                                                Email*
                                                 <input type="email" class="form-control" placeholder="Email" 
-                                                formControlName="email">
+                                                    formControlName="email">
                                                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.hasError('required') && 
-                                                wizardForm.controls['parents']['controls'][i].controls.email.touched" 
-                                                class="mat-text-warn"> 
-                                                Email Obligatoire
+                                                    wizardForm.controls['parents']['controls'][i].controls.email.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Email Obligatoire
                                                 </small>
                                                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.errors?.email && 
-                                                wizardForm.controls['parents']['controls'][i].controls.email.touched" 
-                                                class="mat-text-warn"> 
-                                                Email Invalide
+                                                    wizardForm.controls['parents']['controls'][i].controls.email.touched" 
+                                                    class="mat-text-warn"> 
+                                                    Email Invalide
                                                 </small>
                                             </div>
 
                                             <div class="form-group">
                                                 <div class="row">
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" 
-                                                    placeholder="Téléphone auquel je suis joignable" 
-                                                    formControlName="portable"
-                                                    pattern="[0-9]+" maxlength="10">
-                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('required') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
-                                                    class="mat-text-warn"> 
-                                                    Numéro de Portable Obligatoire
-                                                    </small>
-                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
-                                                    class="mat-text-warn"> 
-                                                    Numéro de Portable Invalide (max 10)
-                                                    </small>
-                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
-                                                    class="mat-text-warn"> 
-                                                    Numéro de Portable Invalide (Doit être des chiffres)
-                                                    </small>
-                                                </div>
+                                                    <div class="col-sm-12">
+                                                        Numéro de portable*
+                                                        <input type="text" class="form-control" 
+                                                            placeholder="Téléphone auquel je suis joignable" 
+                                                            formControlName="portable"
+                                                            pattern="[0-9]+" maxlength="10">
+                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('required') && 
+                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                                            class="mat-text-warn"> 
+                                                            Numéro de Portable Obligatoire
+                                                        </small>
+                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
+                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                                            class="mat-text-warn"> 
+                                                            Numéro de Portable Invalide (max 10)
+                                                        </small>
+                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
+                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
+                                                            class="mat-text-warn"> 
+                                                            Numéro de Portable Invalide (Doit être des chiffres)
+                                                        </small>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -224,6 +230,7 @@
                                                 <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="select-custom">
+                                                    Horaire joignable*
                                                     <select name="" class="form-control" formControlName="horaireJoignable">
                                                         <option value="" disabled selected hidden>Horaires pour me contacter</option>
                                                         <option value="9h-12h">9h-12h</option>
@@ -234,7 +241,7 @@
                                                     <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.hasError('required') && 
                                                         wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.touched" 
                                                         class="mat-text-warn"> 
-                                                        Profession Obligatoire
+                                                        Horaire obligatoire
                                                     </small>
                                                     </div>
                                                 </div>
@@ -282,6 +289,7 @@
                                             <div class="row">
                                                 <div class="col-sm-6  col-xs-6">
                                                     <div class="form-group">
+                                                        Nom de famille*
                                                         <input type="text" class="form-control" placeholder="Nom"
                                                           [formControl]="wizardForm.controls['childLastName']"
                                                           maxlength="25">
@@ -289,6 +297,7 @@
                                                 </div>
                                                 <div class="col-sm-6  col-xs-6">
                                                     <div class="form-group">
+                                                        Prénom*
                                                         <input type="text" class="form-control" placeholder="Prénom"
                                                           [formControl]="wizardForm.controls['childFirstName']"
                                                           maxlength="25">
@@ -303,9 +312,24 @@
                                                     <div class="row"> -->
                                                         <div class="col-sm-3  col-xs-6">
                                                             <div class="form-group">
-                                                                <input type="number" class="form-control" max="120" min="1" placeholder="Age"
+                                                                Age*
+                                                                <input type="number" class="form-control" max="50" min="1" placeholder="Age"
                                                                   [formControl]="wizardForm.controls['childAge']" maxlength="2"
                                                                   pattern="[0-9]+" id="txtAge">
+                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('required') && 
+                                                                    wizardForm.controls['childAge'].touched" 
+                                                                    class="mat-text-warn"> 
+                                                                    Age Obligatoire
+                                                                </small>
+                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('max')" 
+                                                                    class="mat-text-warn"> 
+                                                                    L'âge est incorrect
+                                                                </small>
+                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('min') && 
+                                                                    wizardForm.controls['childAge'].touched" 
+                                                                    class="mat-text-warn"> 
+                                                                    L'âge ne doit pas être négatif
+                                                                </small>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-3  hidden-xs">&nbsp;</div>
@@ -317,10 +341,11 @@
                                                         <div class="col-sm-6  col-xs-6">
                                                             <div class="form-group">
                                                                 <div class="horizontal-radio">
-                                                                  <md-radio-group [formControl]="wizardForm.controls['childTitle']">
-                                                                    <md-radio-button value="garçon">Garçon</md-radio-button>
-                                                                    <md-radio-button value="fille">Fille</md-radio-button>
-                                                                  </md-radio-group>
+                                                                    
+                                                                    <md-radio-group [formControl]="wizardForm.controls['childTitle']">
+                                                                        <md-radio-button value="garçon">Garçon</md-radio-button>
+                                                                        <md-radio-button value="fille">Fille</md-radio-button>
+                                                                    </md-radio-group>
 
                                                                     <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Garçon</span></label>
                                                                     <label class="custom-radio"><input type="radio" name="gender"> <span>Fille</span></label>-->
@@ -336,12 +361,14 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
+                                                        Mél*
                                                         <input type="email" class="form-control" placeholder="Mel"
                                                           [formControl]="wizardForm.controls['childMel']">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
+                                                        Numéro de Portable*
                                                         <input type="text" class="form-control" placeholder="Portable"
                                                           [formControl]="wizardForm.controls['childTel']" maxlength="10">
                                                     </div>
@@ -352,6 +379,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
+                                                        Adresse*
                                                         <textarea class="form-control" placeholder="Adresse"
                                                           [formControl]="wizardForm.controls['childAddr']"
                                                           maxlength="125"></textarea>
@@ -364,12 +392,14 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
+                                                        Code postal*
                                                         <input type="text" class="form-control" placeholder="Code postal"
                                                           [formControl]="wizardForm.controls['childPostalCode']" maxlength="5">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
+                                                        Ville*
                                                         <input type="text" class="form-control" placeholder="Ville"
                                                           [formControl]="wizardForm.controls['childCity']" maxlength="25">
                                                     </div>
@@ -380,6 +410,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="datepicker-holder">
+                                                            Date de naissance*
                                                             <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
                                                                 placeholder="Date de naissance" [max]="maxDate"
                                                                 [formControl]="wizardForm.controls['childBirthDay']">
@@ -389,6 +420,7 @@
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
+                                                        Lieu de naissance*
                                                         <input type="text" class="form-control" placeholder="Lieu"
                                                             [formControl]="wizardForm.controls['childBirthPlace']"
                                                             maxlength="30">
@@ -424,7 +456,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <input type="number" max="120" min="1" class="form-control gap-for-radio" 
+                                                    Age*
+                                                    <input type="number" max="50" min="1" class="form-control gap-for-radio" 
                                                         placeholder="Age" formControlName="age"
                                                         maxlength="2" style="margin-top:0px"/>
                                                     <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
@@ -432,13 +465,18 @@
                                                         class="mat-text-warn"> 
                                                         Age Obligatoire
                                                     </small>
-                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('pattern') && 
+                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('max')" 
+                                                        class="mat-text-warn"> 
+                                                        L'âge est incorrect
+                                                    </small>
+                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('min') && 
                                                         wizardForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
                                                         class="mat-text-warn"> 
-                                                        Seulement des chiffres
+                                                        L'âge ne doit pas être négatif
                                                     </small>
                                                 </div>
                                                 <div class="col-sm-3">
+                                                    Niveau d'étude*
                                                     <input type="text" class="form-control gap-for-radio" 
                                                         placeholder="Niveau d'étude" 
                                                         formControlName="niveau"
@@ -485,6 +523,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
+                                                        Nom de l'établissement*
                                                         <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
                                                           [formControl]="wizardForm.controls['schoolName']" maxlength="50">
                                                     </div>
@@ -495,6 +534,7 @@
                                                 <div class="form-group  col-sm-12  col-xs-6">
                                                     <div class="row">
                                                         <div class="col-sm-12">
+                                                            Ville de l'établissement*
                                                             <input type="text" class="form-control" placeholder="Ville"
                                                               [formControl]="wizardForm.controls['schoolCity']" maxlength="35">
                                                         </div>
@@ -505,6 +545,7 @@
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <div class="select-custom">
+                                                                Classe actuelle*
                                                                 <select name="" class="form-control"
                                                                   [formControl]="wizardForm.controls['schoolClasse']">
                                                                     <option value="" selected>Classe</option>
@@ -612,6 +653,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
+                                                        Options*
                                                         <input type="text" class="form-control" placeholder="Options"
                                                           [formControl]="wizardForm.controls['schoolOption']"
                                                           maxlength="50">
@@ -624,6 +666,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom">
+                                                            Lv1*
                                                             <select name="" class="form-control"
                                                               [formControl]="wizardForm.controls['schoolLv1']">
                                                                 <option value="" disabled selected hidden>Lv1</option>
@@ -638,6 +681,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom">
+                                                            Lv2
                                                             <select name="" class="form-control"
                                                               [formControl]="wizardForm.controls['schoolLv2']">
                                                                 <option value="" disabled selected hidden>Lv2</option>
@@ -652,6 +696,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom">
+                                                            Lv3
                                                             <select name="" class="form-control"
                                                               [formControl]="wizardForm.controls['schoolLv3']">
                                                                 <option value="" disabled selected hidden>Lv3</option>
@@ -702,7 +747,7 @@
                                                         <div class="select-custom dans-quelles">
                                                             <select name="" class="form-control multiselect" 
                                                               id="dans-quelles" *ngIf="checked">
-                                                                <option value="">Dans quelles matières</option>
+                                                                <option value="">Dans quelles matières*</option>
                                                                 <option *ngFor="let subject of subjectSchool" value="subject">
                                                                     <md-checkbox>{{subject}}</md-checkbox>
                                                                 </option>
@@ -738,6 +783,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom-multiple-forte">
+                                                            Matières fortes*
  															<select class="form-control matery" 
                                                                 multiple="multiple" placeholder="Matières Fortes"
                                                                 [formControl]="wizardForm.controls['bestSubject']">
@@ -767,6 +813,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                       <div class="select-custom-multiple-faible">
+                                                            Matières faibles*
  															<select class="form-control matery" 
                                                                 multiple="multiple" placeholder="Matières Faibles"
                                                                 [formControl]="wizardForm.controls['weakSubject']">
@@ -796,6 +843,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom-multiple-gout">
+                                                            Matières préférées*
                                                             <select class="form-control matery" 
                                                                 multiple="multiple" 
                                                                 [formControl]="wizardForm.controls['interestSubject']">
@@ -834,12 +882,12 @@
                             </div><!-- #tab5 -->
                         </md-tab>
 
-                        <md-tab label="Vos centres d’intérêts">
+                        <md-tab label="Centres d’intérêts">
                             <div class="tab-pane" id="tab6">
                                 <div class="container-fluid">
                                     <div class="row">
                                        <div class="col-md-6">
-                                            <h3>Vos centres d’intérêts</h3>
+                                            <h3>Centres d’intérêts</h3>
 
                                             <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
                     
@@ -847,20 +895,22 @@
                                                     *ngFor="let parent of wizardForm.controls['job']['controls']; let i = index">
                                                 <div [formGroupName]="i">
                                                     <div class="col-sm-6">
-                                                    <h4>Métier {{i+1}}</h4>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Job" 
-                                                        formControlName="interestJob"
-                                                        maxlength="25">
-                                                    </div>
+                                                        <h4>Métier {{i+1}}</h4>
+                                                        <div class="form-group">
+                                                            Job*
+                                                            <input type="text" class="form-control" placeholder="Job" 
+                                                            formControlName="interestJob"
+                                                            maxlength="25">
+                                                        </div>
                                                     </div>
                                                     <div class="col-sm-3">
-                                                    <h4>&nbsp;</h4>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Age" 
-                                                        formControlName="interestAge"
-                                                        maxlength="2">
-                                                    </div>
+                                                        <h4>&nbsp;</h4>
+                                                        <div class="form-group">
+                                                            Age*
+                                                            <input type="text" class="form-control" placeholder="Age" 
+                                                            formControlName="interestAge" max="50" min="1"
+                                                            maxlength="2">
+                                                        </div>
                                                     </div>
                                                     <div class="col-sm-3">
                                                     <h4>&nbsp;</h4>
@@ -884,6 +934,7 @@
                                             <div class="form-group different-gap">
                                                 <div class="row">
                                                     <div class="col-sm-9">
+                                                        Vos centres d'intérêts*
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels sont vos centres d’interets"
                                                           [formControl]="wizardForm.controls['yourInterest']"
@@ -895,6 +946,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-9">
+                                                        Que pratiquez-vous?*
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels loisirs et activités pratiquez-vous"
                                                           [formControl]="wizardForm.controls['practiceInterest']"
@@ -928,6 +980,7 @@
                                                         <h4 style="margin-left:15px">Primaire {{i+1}}</h4>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
+                                                                Nom de l'établissement*
                                                                 <input type="text" class="form-control" placeholder="Nom"
                                                                 formControlName="primarySchoolName"
                                                                 maxlength="100">
@@ -936,6 +989,7 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 <div class="select-custom">
+                                                                    Classe redoubler*
                                                                     <select name="" class="form-control"
                                                                         formControlName="primarySchoolRepeat">
                                                                         <option value="" disabled selected hidden>Classe redoublée</option>
@@ -946,6 +1000,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
+                                                                Cause du redoublement*
                                                                 <input type="text" class="form-control" placeholder="Cause du redoublement"
                                                                 formControlName="causeOfRepeatPrimary"
                                                                 maxlength="100">
@@ -972,6 +1027,7 @@
                                                         <h4 style="margin-left:15px">Secondaire {{i+1}}</h4>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
+                                                                Nom de l'établissement*
                                                                 <input type="text" class="form-control" placeholder="Nom"
                                                                 formControlName="secondarySchoolName"
                                                                 maxlength="100">
@@ -980,6 +1036,7 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 <div class="select-custom">
+                                                                    Classe redoubler*
                                                                     <select name="" class="form-control"
                                                                         formControlName="secondarySchoolRepeat">
                                                                         <option value="" disabled selected hidden>Classe redoublée</option>
@@ -990,9 +1047,10 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
+                                                                Cause du redoublement*
                                                                 <input type="text" class="form-control" placeholder="Cause du redoublement"
-                                                                formControlName="causeOfRepeatSecondary"
-                                                                maxlength="100">
+                                                                    formControlName="causeOfRepeatSecondary"
+                                                                    maxlength="100">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-3">
@@ -1025,13 +1083,13 @@
                             </div><!-- #tab7 -->
                         </md-tab>
 
-                        <md-tab label="Vos professions favorites">
+                        <md-tab label="Professions souhaitées">
                             <div class="tab-pane" id="tab8">
                                 <div class="container-fluid">
                                     <div class="row">
                                        <div class="col-md-12">
 
-                                            <h3>Vos professions favorites</h3>
+                                            <h3>Professions souhaitées</h3>
                                             
                                             <div class="job-group-content">
                                                 <h4>Groupe A</h4>
@@ -1501,6 +1559,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
+                                                        Motif du diagnostic*
                                                         <input type="text" class="form-control" placeholder="Motif du Diagnostic"
                                                           [formControl]="wizardForm.controls['reasonDiagnostic']"
                                                           maxlength="50">
@@ -1511,6 +1570,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
+                                                        Remarques*
                                                         <input type="text" class="form-control" placeholder="Remarques Particulières"
                                                           [formControl]="wizardForm.controls['note']">
                                                     </div>

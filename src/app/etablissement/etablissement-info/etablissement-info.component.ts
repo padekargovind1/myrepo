@@ -22,6 +22,7 @@ export class EtablissementInfoComponent implements OnInit {
         do{
           this.lat=this.schoolData.cycles[i].address.lat;
           this.lng=this.schoolData.cycles[i].address.long;
+          console.log(this.lat, this.lng)
           i++;
         }while(this.lat==0.0 && this.lng==0.0)        
       }, 500

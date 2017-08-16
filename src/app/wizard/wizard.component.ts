@@ -406,7 +406,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe(
         response=>{
           console.log(response)
-          if(response.code!=400){
+          if(response.code==400){
             this.failSubmit(response.message);
           } else {
             this.successSubmit()
@@ -428,9 +428,9 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   failSubmit(message){
     swal({
       title: 'Erreur',
-      text: message,
+      text: 'Il nous manque des informations',
       type: 'error',
-      confirmButtonText: 'Ok'
+      confirmButtonText: "J'AI COMPRIS"
     })
   }
 

@@ -41,6 +41,7 @@
 
                           <div class="form-group">
                             <div class="select-custom">
+                              Lien de parenté*
                               <md-select placeholder="Lien de Parenté" class="form-control" 
                                 formControlName="lienParent">
                                 <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
@@ -60,8 +61,8 @@
                                                   <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
                                                   <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
                             <md-radio-group formControlName="titre">
-                              <md-radio-button value="Ms">Mme</md-radio-button>
-                              <md-radio-button value="Mrs">Mlle</md-radio-button>
+                              <md-radio-button value="ms">Mme</md-radio-button>
+                              <md-radio-button value="mrs">Mlle</md-radio-button>
                               <md-radio-button value="m">M</md-radio-button>
                             </md-radio-group>
                             <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
@@ -75,6 +76,7 @@
                           <div class="row">
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
+                                Nom de famille*
                                 <input type="text" class="form-control" placeholder="Nom" 
                                   formControlName="nom"
                                   maxlength="25">
@@ -87,6 +89,7 @@
                             </div>
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
+                                Prénom*
                                 <input type="text" class="form-control" placeholder="Prénom" 
                                   formControlName="prenom"
                                   maxlength="25">
@@ -104,6 +107,7 @@
                             <div class="row">
 
                               <div class="col-sm-12">
+                                Profession*
                                 <input type="text" class="form-control" 
                                   placeholder="Profession / Secteur d'activité" 
                                   formControlName="job"
@@ -118,6 +122,7 @@
                           </div>
 
                           <div class="form-group">
+                            Mél*
                             <input type="email" class="form-control" placeholder="Email" 
                               formControlName="email">
                             <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.email.hasError('required') && 
@@ -135,6 +140,7 @@
                           <div class="form-group">
                             <div class="row">
                               <div class="col-sm-12">
+                                Téléphone joignable*
                                 <input type="text" class="form-control" 
                                   placeholder="Téléphone auquel je suis joignable" 
                                   formControlName="portable"
@@ -162,6 +168,7 @@
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="select-custom">
+                                  Horaires pour me contacter*
                                   <select name="" class="form-control" formControlName="horaireJoignable">
                                       <option value="" disabled selected>Horaires pour me contacter</option>
                                       <option value="9h-12h">9h-12h</option>
@@ -221,6 +228,7 @@
                         <div class="row">
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
+                              Nom de famille*
                               <input type="text" class="form-control" placeholder="Nom" 
                                 [formControl]="applytoForm.controls['childLastName']"
                                 maxlength="25">
@@ -228,6 +236,7 @@
                           </div>
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
+                              Prénom*
                               <input type="text" class="form-control" placeholder="Prénom" 
                                 [formControl]="applytoForm.controls['childFirstName']"
                                 maxlength="25">
@@ -242,6 +251,7 @@
                                                     <div class="row"> -->
                           <div class="col-sm-3  col-xs-6">
                             <div class="form-group">
+                              Age*
                               <input type="number" class="form-control" max="50" min="1" id="txtAge"
                                 placeholder="Age" [formControl]="applytoForm.controls['childAge']"
                                 maxlength="2">
@@ -265,12 +275,14 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
+                              Mél*
                               <input type="email" class="form-control" placeholder="Mel" 
                                 [formControl]="applytoForm.controls['childMel']">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
+                              Numéro de portable*
                               <input type="text" class="form-control" placeholder="Portable" 
                                 [formControl]="applytoForm.controls['childTel']"
                                 maxlength="10">
@@ -282,6 +294,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
+                              Adresse*
                               <textarea class="form-control" placeholder="Adresse" 
                                 [formControl]="applytoForm.controls['childAddr']">
                               </textarea>
@@ -294,6 +307,7 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <div class="form-group">
+                              Code postal*
                               <input type="text" class="form-control" placeholder="Code postal" 
                                 [formControl]="applytoForm.controls['childPostalCode']"
                                 maxlength="5">
@@ -301,6 +315,7 @@
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
+                              Ville*
                               <input type="text" class="form-control" placeholder="Ville" 
                                 [formControl]="applytoForm.controls['childCity']"
                                 maxlength="25">
@@ -313,6 +328,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               <div class="datepicker-holder">
+                                Date de naissance*
                                 <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
                                   placeholder="Date de naissance" [max]="maxDate"
                                   [formControl]="applytoForm.controls['childBirthDay']">
@@ -322,6 +338,7 @@
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
+                              Lieu de naissance*
                               <input type="text" class="form-control" placeholder="Lieu" 
                                 [formControl]="applytoForm.controls['childBirthPlace']"
                                 maxlength="50">
@@ -360,9 +377,10 @@
                                 </div>
                               </div>
                               <div class="col-sm-2">
-                                <input type="number" max="120" min="1" class="form-control gap-for-radio" 
-                                placeholder="Age" formControlName="age"
-                                maxlength="2" style="margin-top:0px"/>
+                                Age*
+                                <input type="number" max="50" min="1" class="form-control gap-for-radio" 
+                                  placeholder="Age" formControlName="age"
+                                  maxlength="2" style="margin-top:0px"/>
                                 <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
                                   applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
                                   class="mat-text-warn"> 
@@ -375,15 +393,16 @@
                                 </small>
                               </div>
                               <div class="col-sm-3">
+                                Niveau d'étude*
                                 <input type="text" class="form-control gap-for-radio" 
                                   placeholder="Niveau d'étude" 
                                   formControlName="niveau"
                                   maxlength="25" style="margin-top:0px">
-                                  <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') && 
-                                    applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].touched" 
-                                    class="mat-text-warn"> 
-                                    Niveau d'étude Obligatoire
-                                  </small>
+                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') && 
+                                  applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].touched" 
+                                  class="mat-text-warn"> 
+                                  Niveau d'étude Obligatoire
+                                </small>
                               </div>
                               <div class="col-sm-2">
                                 <button class="btn  btn-danger" style="float:right" 
@@ -417,6 +436,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
+                              Nom de l'établissement*
                               <input type="text" class="form-control" placeholder="Nom Etablissement Actuel" 
                                 [formControl]="applytoForm.controls['schoolName']"
                                 maxlength="50">
@@ -428,6 +448,7 @@
                           <div class="form-group  col-sm-12  col-xs-6">
                             <div class="row">
                               <div class="col-sm-12">
+                                Ville de l'établissement*
                                 <input type="text" class="form-control" placeholder="Ville" 
                                   [formControl]="applytoForm.controls['schoolCity']"
                                   maxlength="50">
@@ -439,6 +460,7 @@
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="select-custom">
+                                  Classe*
                                   <select name="" class="form-control" [formControl]="applytoForm.controls['schoolClasse']">
                                     <option value="" disabled selected hidden>Classe</option>
                                     <optgroup label="Cycle 1 : Apprentissages Premiers">
@@ -545,6 +567,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-12">
+                              Options*
                               <input type="text" class="form-control" placeholder="Options" 
                                 [formControl]="applytoForm.controls['schoolOption']"
                                 maxlength="50">
@@ -557,6 +580,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom">
+                                Lv1*
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv1']">
                                     <option value="" disabled selected hidden>Lv1</option>
                                     <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
@@ -570,6 +594,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom">
+                                Lv2
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv2']">
                                     <option value="" disabled selected hidden>Lv2</option>
                                     <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
@@ -583,6 +608,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom">
+                                Lv3
                                 <select name="" class="form-control" [formControl]="applytoForm.controls['schoolLv3']">
                                     <option value="" disabled selected hidden>Lv3</option>
                                     <option [value]="langue" *ngFor="let langue of langues">{{langue}}</option>
@@ -679,6 +705,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom-multiple-forte">
+                                Matières Fortes*
               									<select class="form-control matery" multiple="multiple" 
                                   [formControl]="applytoForm.controls['bestSubject']">
               										<option value="Maths">Maths</option>
@@ -707,6 +734,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom-multiple-faible">
+                                Matières faibles*
               									<select class="form-control matery" 
                                   multiple="multiple" 
                                   [formControl]="applytoForm.controls['weakSubject']">
@@ -736,6 +764,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               <div class="select-custom-multiple-gout">
+                                Matières préférées*
               									<select class="form-control matery" 
                                   multiple="multiple" 
                                   [formControl]="applytoForm.controls['interestSubject']">
@@ -789,6 +818,7 @@
                             <div class="col-sm-6">
                               <h4>Métier {{i+1}}</h4>
                               <div class="form-group">
+                                Job*
                                 <input type="text" class="form-control" placeholder="Job" 
                                   formControlName="interestJob"
                                   maxlength="25">
@@ -797,8 +827,9 @@
                             <div class="col-sm-3">
                               <h4>&nbsp;</h4>
                               <div class="form-group">
+                                Age*
                                 <input type="text" class="form-control" placeholder="Age" 
-                                  formControlName="interestAge"
+                                  formControlName="interestAge" max="50" min="1"
                                   maxlength="2">
                               </div>
                             </div>
@@ -823,6 +854,7 @@
                         <div class="form-group different-gap">
                           <div class="row">
                             <div class="col-sm-9">
+                              Centres d'intérêts*
                               <input type="text" class="form-control" 
                                 placeholder="Quels sont vos centres d’interets" 
                                 [formControl]="applytoForm.controls['yourInterest']"
@@ -834,6 +866,7 @@
                         <div class="form-group">
                           <div class="row">
                             <div class="col-sm-9">
+                              Que pratiquez-vous?*
                               <input type="text" class="form-control" 
                                 placeholder="Quels loisirs et activités pratiquez-vous" 
                                 [formControl]="applytoForm.controls['practiceInterest']"
