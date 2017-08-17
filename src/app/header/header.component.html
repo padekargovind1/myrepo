@@ -109,20 +109,29 @@
 
     <ul class="mobile-login">
         <li><i class=" fa fa-file-text" data-target="#download-popup"></i></li>
-        <li><i class="fa fa-bookmark" data-target="#download-popup"></i></li>
-        <li><i class="fa fa-user"></i>
+        <li><i class="fa fa-bookmark" data-target="#download-popup"><sup class="wishcount">{{wishCount}}</sup></i></li>
+        <li *ngIf="!userLogin; else moblog"><i class="fa fa-user"></i>
             <ul class="login">
                 <li><a (click)="onSignUp()">S'inscrire</a></li>
                 <li><a (click)="onSignIn()">S'identifier</a></li>
             </ul>
         </li>
+		<ng-template #moblog>
+			<li><i class="fa fa-user"></i>
+				<ul class="login">
+					<li><a (click)="onSignUp()">S'inscrire</a></li>
+					<li><a (click)="onSignOut()">Fermer la Session</a></li>
+					<li><a (click)="onMyAccount('0')">Mon compte</a></li>
+				</ul>
+			</li>
+        </ng-template>
     </ul>
     <ul class="right-top-menu pull-right">
         <li style="cursor:pointer" (click)="wishApplyDialog(0)">
             <i class=" fa fa-file-text"></i>
         </li>
         <li style="cursor:pointer" (click)="wishApplyDialog(1)">
-            <i class="fa fa-bookmark"></i>
+            <i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i>
         </li>
         <li class="login-text" *ngIf="!userLogin; else log">
             <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 

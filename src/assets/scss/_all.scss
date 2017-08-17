@@ -1869,3 +1869,22 @@ a:hover { text-decoration: none;}
 .compareCont .content-compare-table {
   width: 33%;
 }
+
+.wishcount{
+    font-size: 12px;
+    background: #F1001C;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding-top: 3px;
+	z-index:2;
+	line-height: 11px;
+}
+.mobile-login i.fa-bookmark{
+	position:relative;
+}

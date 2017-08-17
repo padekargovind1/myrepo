@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userApplication : any;
   schoolApply = [];
   schoolWish = [];
+  wishCount = 0;
   userLastName : string = "";
   userFirstName : string = "";
   wishList= [];
@@ -43,7 +44,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private route : ActivatedRoute) {}
 
   ngOnInit() {
-    this.runScript()
     this.router.events
       .filter((event) => event instanceof NavigationEnd)
       .subscribe((event) => {
@@ -52,8 +52,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         if(this.userLogin){
           this.getUserName();
           this.getApplication();
+          //this.getSchoolsData();
         }
       });
+    this.runScript();
   }
   openNav() {
         document.getElementById("mySidenav").style.width = "250px";
@@ -68,7 +70,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
   runScript(){
-    $('.mobile-login .fa-user').on('click', function() {
+    $('.mobile-login').on('click', '.fa-user', function() {
         $('.login').toggle('slow');
     });
      function detectmob() {
@@ -139,12 +141,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.usersService.getApplication()
       .subscribe(
         response => {
-          // console.log(response.data)
+           //console.log(response.data.length)
           if(response.code==400){
             console.log(response.message);
           } else {
             // console.log(response.data)
-            this.wishList=response.data
+            this.wishList=response.data;
+			this.wishCount = this.wishList.length;
           }
         }
       )
