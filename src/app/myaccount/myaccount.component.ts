@@ -20,10 +20,7 @@ export class MyaccountComponent implements OnInit {
   }
 
   ngOnInit() {
-    const token = this.authService.getToken();
-    // console.log(token);
-    if(token == ''){
-      // console.log("navigate back");
+    if(!this.authService.isUserLoggedIn()){
       this.route.navigate(['/login']);
     } else {
       this.goTabNb(this.usersService.getTabNb());

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { AuthService } from '../../services/auth.service';
+import { PublicService } from '../../services/public.service';
 import swal from 'sweetalert2';
 
 import {MyAccountMdl, 
@@ -32,6 +33,7 @@ export class MyaccountParentsComponent implements OnInit {
                 "Grand-Mère", 
                 "Tuteur", 
                 "Tutrice"];
+  country = [];
   @Output() goToChild = new EventEmitter<boolean>();
   parents: any;
   canDisplay : boolean = false;
@@ -39,7 +41,8 @@ export class MyaccountParentsComponent implements OnInit {
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
               private route : Router,
-              private authService : AuthService) { 
+              private authService : AuthService,
+              private publicService : PublicService) { 
     if(this.authService.getToken() != ""){
       this.getUserProfile();
     } else {
@@ -50,6 +53,7 @@ export class MyaccountParentsComponent implements OnInit {
 
   ngOnInit() {
     this.myProfile.address=new MyAccountAdresse();
+    this.country = this.publicService.getCountry();
   }
 
   getUserProfile(){

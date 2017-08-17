@@ -99,8 +99,6 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     });
   }
 
-  
-
   onSubmitSearch(path){
     // console.log("on submit", this.searchForm.value)
     let data;

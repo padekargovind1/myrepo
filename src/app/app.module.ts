@@ -60,7 +60,7 @@ import { BrochpopupComponent } from './brochure/brochpopup/brochpopup.component'
 import { ApplytoComponent } from './applyto/applyto.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EditorialContComponent } from './editorial-cont/editorial-cont.component';
-import {BrochureDownloadComponent} from './brochure/brochure-download/brochure-download.component';
+import { BrochureDownloadComponent } from './brochure/brochure-download/brochure-download.component';
 import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-det.component';
 import { SchoolComponent } from './school/school.component';
 
@@ -79,6 +79,9 @@ import { RandomLandingComponent } from './random-landing/random-landing.componen
 import { SuperieurComponent } from './superieur/superieur.component';
 import { ApbCardComponent } from './shared/apb-card/apb-card.component';
 import { SchoolChoiceComponent } from './shared/school-choice/school-choice.component';
+import { CapitalPipe } from './pipes/capital.pipe';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -131,7 +134,8 @@ import { SchoolChoiceComponent } from './shared/school-choice/school-choice.comp
     RandomLandingComponent,
     SuperieurComponent,
     ApbCardComponent,
-    SchoolChoiceComponent
+    SchoolChoiceComponent,
+    CapitalPipe
   ],
   imports: [
     BrowserModule,
@@ -158,7 +162,10 @@ import { SchoolChoiceComponent } from './shared/school-choice/school-choice.comp
     CustomFormsModule,
     FileUploadModule,
     NgxDatatableModule,
-    JsonpModule
+    JsonpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD_gjvXL9pHaSq50qqiKv73IodUxJh8NCU'
+    })
   ],
   providers: [
     SchoolService,

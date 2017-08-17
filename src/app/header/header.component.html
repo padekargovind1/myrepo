@@ -97,7 +97,7 @@
         <li><a href="#"><i class="fa fa-viadeo"></i></a></li>
     </ul>-->
     <a (click)="onNavigateHome()">
-        <img class="cide-logo" src="assets/images/cide-white.png" alt="CIDE Logo" 
+        <img class="cide-logo" src="assets/images/logo_cide.png" alt="CIDE Logo" 
             *ngIf="!onMobile"/>
         <!--<img class="cide-logo-mobile" 
             src="assets/images/cide-white-just-logo.png" alt=""
@@ -118,10 +118,10 @@
         </li>
     </ul>
     <ul class="right-top-menu pull-right">
-        <li (click)="wishApplyDialog(0)">
+        <li style="cursor:pointer" (click)="wishApplyDialog(0)">
             <i class=" fa fa-file-text"></i>
         </li>
-        <li (click)="wishApplyDialog(1)">
+        <li style="cursor:pointer" (click)="wishApplyDialog(1)">
             <i class="fa fa-bookmark"></i>
         </li>
         <li class="login-text" *ngIf="!userLogin; else log">

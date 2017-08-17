@@ -12,21 +12,25 @@
                         <p>
                             Position de L'Etablissement sur la carte Google.
                         </p>
-                        <img src="assets/images/etablissement/cesacom map.png" width="550">
+                        <div class="row">
+                            <agm-map [latitude]="lat" [longitude]="lng">
+                                <agm-marker [latitude]="lat" [longitude]="lng">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </agm-marker>
+                            </agm-map>
+                            <!--<img src="assets/images/etablissement/cesacom map.png">-->
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>Acces par Transport</h5>
+                        <h5>Accès par Transport</h5>
                     </div>
-                    <div class="ibox-content">
-                        <p>
-                            info Transports
-                        </p>
-                        <p>
-                            Metro / Bus sauf jours de greve
+                    <div class="ibox-content" *ngIf="canDisplay">
+                        <p *ngFor="let transport of schoolData.cycles[0].specifications.transports">
+                            {{transport}}
                         </p>
                     </div>
                 </div>

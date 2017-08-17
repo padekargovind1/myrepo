@@ -1,32 +1,45 @@
 <div class="row">
   <div class="col-md-2">
     <md-list>
-      <md-list-item><strong>Classe</strong></md-list-item>
+      <md-list-item>
+        <h3>Classe</h3>
+        <!--<strong>Classe</strong>-->
+      </md-list-item>
     </md-list>
   </div>
   <div class="col-md-2">
     <md-list>
-      <md-list-item><strong>Lv1</strong></md-list-item>
+      <md-list-item>
+        <strong>Lv1</strong>
+      </md-list-item>
     </md-list>
   </div>
   <div class="col-md-2">
     <md-list>
-      <md-list-item><strong>Lv2</strong></md-list-item>
+      <md-list-item>
+        <strong>Lv2</strong>
+      </md-list-item>
     </md-list>
   </div>
   <div class="col-md-2">
     <md-list>
-      <md-list-item><strong>Lv3</strong></md-list-item>
+      <md-list-item>
+        <strong>Lv3</strong>
+      </md-list-item>
     </md-list>
   </div>
   <div class="col-md-2">
     <md-list>
-      <md-list-item><strong>Options</strong></md-list-item>
+      <md-list-item>
+        <strong>Options</strong>
+      </md-list-item>
     </md-list>
   </div>
   <div class="col-md-2">
     <md-list>
-      <md-list-item><strong>Je choisis</strong></md-list-item>
+      <md-list-item>
+        <strong>Je choisis</strong>
+      </md-list-item>
     </md-list>
   </div>
   <div class="row" *ngFor="let cycle of schoolData.cycles; let i=index">
@@ -34,67 +47,81 @@
       <div class="row">
          <div class="col-md-2">
             <md-list>
-              <md-list-item>{{class.code}}</md-list-item>
+              <md-list-item mdTooltip="{{class.code | capital}}">
+                {{class.code | capital | school:'13'}}
+              </md-list-item>
             </md-list>
           </div>
           <div class="col-md-2">
             <md-list *ngIf="cycle.language.lv1.value[0]!=''; else empty1">
-              <button md-button [mdMenuTriggerFor]="menu">
-                Lv1 <i class="fa fa-sort-desc" aria-hidden="true"></i>
-              </button>
-              <md-menu #menu="mdMenu">
-                <button md-menu-item *ngFor="let lv1 of cycle.language.lv1.value; let i=index">
-                  {{lv1}}
-                </button>
-              </md-menu>
+              <md-list-item>
+                <md-select placeholder="Lv1">
+                  <md-option *ngFor="let lv1 of cycle.language.lv1.value; let i=index" [value]="lv1">
+                    {{ lv1 }}
+                  </md-option>
+                </md-select>
+              </md-list-item>
             </md-list>
             <ng-template #empty1>
-              -
+              <md-list>
+                <md-list-item>
+                  -
+                </md-list-item>
+              </md-list>
             </ng-template>
           </div>
           <div class="col-md-2">
             <md-list *ngIf="cycle.language.lv2.value[0]!=''; else empty2">
-              <button md-button [mdMenuTriggerFor]="menu">
-                Lv2 <i class="fa fa-sort-desc" aria-hidden="true"></i>
-              </button>
-              <md-menu #menu="mdMenu">
-                <button md-menu-item *ngFor="let lv2 of cycle.language.lv2.value; let i=index">
-                  {{lv2}}
-                </button>
-              </md-menu>
+              <md-list-item>
+                <md-select placeholder="Lv2">
+                  <md-option *ngFor="let lv2 of cycle.language.lv2.value; let i=index" [value]="lv2">
+                    {{ lv2 }}
+                  </md-option>
+                </md-select>
+              </md-list-item>
             </md-list>
             <ng-template #empty2>
-              -
+              <md-list>
+                <md-list-item>
+                  -
+                </md-list-item>
+              </md-list>
             </ng-template>
           </div>
           <div class="col-md-2">
             <md-list *ngIf="cycle.language.lv3.value[0]!=''; else empty3">
-              <button md-button [mdMenuTriggerFor]="menu">
-                Lv3 <i class="fa fa-sort-desc" aria-hidden="true"></i>
-              </button>
-              <md-menu #menu="mdMenu">
-                <button md-menu-item *ngFor="let lv1 of cycle.language.lv3.value; let i=index">
-                  {{lv1}}
-                </button>
-              </md-menu>
+              <md-list-item>
+                <md-select placeholder="Lv3">
+                  <md-option *ngFor="let lv3 of cycle.language.lv3.value; let i=index" [value]="lv3">
+                    {{ lv3 }}
+                  </md-option>
+                </md-select>
+              </md-list-item>
             </md-list>
             <ng-template #empty3>
-              -
+              <md-list>
+                <md-list-item>
+                  -
+                </md-list-item>
+              </md-list>
             </ng-template>
           </div>
           <div class="col-md-2">
             <md-list *ngIf="class.option[0].name!=''; else empty4">
-              <button md-button [mdMenuTriggerFor]="menu">
-                Options <i class="fa fa-sort-desc" aria-hidden="true"></i>
-              </button>
-              <md-menu #menu="mdMenu">
-                <button md-menu-item *ngFor="let option of class.option; let i=index">
-                  {{option.name}}
-                </button>
-              </md-menu>
+              <md-list-item>
+                <md-select placeholder="Options">
+                  <md-option *ngFor="let option of class.option; let i=index" value="{{option.name}}">
+                    {{option.name}}
+                  </md-option>
+                </md-select>
+              </md-list-item>
             </md-list>
             <ng-template #empty4>
-              -
+              <md-list>
+                <md-list-item>
+                  -
+                </md-list-item>
+              </md-list>
             </ng-template>
           </div>
           <div class="col-md-2">
@@ -109,7 +136,6 @@
   </div>
   
 </div>
-
 
 <div class="row">
   <section class="col-md-6">

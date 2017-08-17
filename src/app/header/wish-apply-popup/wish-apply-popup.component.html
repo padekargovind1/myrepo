@@ -64,7 +64,8 @@
   
   <md-tab label="Ma liste d'envies">
     <div *ngIf="wishList.length!=0" style="max-height:400px">
-      <div class="card  school-list" *ngFor="let wish of wishList; let i=index">                               
+      <div class="card  school-list" *ngFor="let wish of wishList; let i=index">    
+        <md-checkbox (click)="onSchoolCheckbox(wish.school._id)"></md-checkbox>                           
         <div class="card-content" style="max-width:476px">
           <img src="assets/images/school-1.jpg" alt="School 1" style="height:124px"/>
           <h3>{{wish.school.shortName}}</h3>
@@ -87,6 +88,12 @@
           </button>
         </div><!-- .card-content -->
       </div>
+      <button (click)="applyOnMultiple()" type="button" 
+        class="btn btn-primary btn-block"
+        style="margin-bottom:10px"
+        [disabled]="schoolApplyToList.length==0">
+        Je postule aux écoles sélectionnées
+      </button>
     </div>
   </md-tab>
 

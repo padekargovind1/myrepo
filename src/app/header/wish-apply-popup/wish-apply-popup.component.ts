@@ -17,6 +17,7 @@ export class WishApplyPopupComponent implements OnInit {
   applyList = [];
   config: MdDialogConfig;
   configSchoolDetail : MdDialogConfig;
+  schoolApplyToList=[];
 
   constructor(public dialogref:MdDialogRef<WishApplyPopupComponent>,
               @Inject(MD_DIALOG_DATA) private data: {tabNb : number},
@@ -65,19 +66,21 @@ export class WishApplyPopupComponent implements OnInit {
 
   makeSchoolDetailProfil(school){
     // console.log(window.screen.width)
+    let screenWidth :string = ((window.screen.width/5)*4).toString()+'px';
+    let screenHeight :string = ((window.screen.height/7)*6).toString()+'px';
     this.configSchoolDetail= {
       data:{
         schoolData : school.school
       },
       disableClose: false,
-      width: '1400px',
-      height: '800px',
-      position: {
-      top: '',
-      bottom: '',
-      left: '',
-      right: ''
-      }
+      width: screenWidth,
+      height: screenHeight,
+      // position: {
+      // top: '',
+      // bottom: '',
+      // left: '',
+      // right: ''
+      // }
     };
   }
 
@@ -89,13 +92,15 @@ export class WishApplyPopupComponent implements OnInit {
   }
 
   makeProfile(schoolData){
+    let screenWidth : string = (((window.screen.width/3)*2)).toString()+'px';
+    let screenHeight : string = (window.screen.height/2).toString()+'px';
     this.config= {
       data:{
         schoolData : schoolData.school
       },
       disableClose: false,
-      width: '1000px',
-      height: '400px',
+      width: screenWidth,
+      height: screenHeight,
       position: {
       top: '',
       bottom: '',
@@ -103,6 +108,20 @@ export class WishApplyPopupComponent implements OnInit {
       right: ''
       }
     };
+  }
+
+  applyOnMultiple(){
+    this.onSchoolApply(this.schoolApplyToList, 0)
+  }
+
+  onSchoolCheckbox(school){
+    console.log(school)
+    let index = this.schoolApplyToList.indexOf(school)
+    if(index==-1){
+      this.schoolApplyToList.push(school)
+    } else{
+      this.schoolApplyToList.splice(index, 1) 
+    }
   }
 
 }

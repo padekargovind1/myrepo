@@ -385,6 +385,7 @@
                                 </form>
 
                             </div><!-- .form-wrap -->
+                            <h2></h2>
                         </div>
                         <div class="internat-content  content-holder   animated" data-image="img/new-landing-page-2/internat.jpg">
 							<h2>Internat</h2>
@@ -401,7 +402,7 @@
 														<select name="class" class="form-control" id="class"
 															[formControl]="searchForm.controls['classe']" >
 															<!--<option value="" disabled selected hidden>Classe</option>-->
-															<option value="" selected>Choisir une classe</option>
+															<option value="" selected>Classe</option>
 															<optgroup label="Cycle 1 : Apprentissages Premiers">
 																<option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
 																<option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
@@ -572,7 +573,7 @@
 													<label class="select-custom" for="class">
                                                         <select name="class" class="form-control" id="class"
                                                             [formControl]="apbForm.controls['domaine']">
-                                                            <option value="" selected>Choisir un domaine</option>
+                                                            <option value="" selected>Domaine</option>
                                                             <option *ngFor="let domaine of domaines" 
                                                                 [value]="domaine" selected>&nbsp;&nbsp;{{domaine}}</option>
                                                         </select>
@@ -613,7 +614,7 @@
 														[formControl]="apbForm.controls['etablissement']"/>
 													
 													<md-autocomplete #autoSchoolApb="mdAutocomplete">
-														<md-option *ngFor="let school of schoolsOptions" 
+														<md-option *ngFor="let school of apbOptions" 
 															[value]="school">
 															{{ school }}
 														</md-option>

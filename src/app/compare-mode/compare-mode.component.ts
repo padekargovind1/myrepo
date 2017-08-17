@@ -1,11 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MdDialogConfig, MdDialog } from '@angular/material';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { UsersService } from '../services/users.service';
 import swal from 'sweetalert2';
 var self = this;
+import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
+
 @Component({
   selector: 'app-compare-mode',
   templateUrl: './compare-mode.component.html',
@@ -28,13 +31,15 @@ export class CompareModeComponent implements OnInit, OnDestroy {
   schoolIdToCompare : string = "";
   counterId : number = 0;
   schoolBrochure=[];
+  config: MdDialogConfig;
 
   constructor(private location : Location,
               private route : ActivatedRoute,
               private publicService : PublicService,
               private compareService : CompareService,
               private router : Router,
-              private usersService : UsersService) { }
+              private usersService : UsersService,
+              public dialog:MdDialog) { }
 
   ngOnInit() {
     if(!this.compareService.haveSchoolId()){
@@ -106,7 +111,41 @@ export class CompareModeComponent implements OnInit, OnDestroy {
 
   applyToSchool(){
     console.log('click', this.applytoSchool);
-    this.router.navigate(['applyto', this.applytoSchool.id]);
+    this.getSchoolById()
+    // this.router.navigate(['applyto', this.applytoSchool.id]);
+  }
+
+  makeProfile(school){
+    let screenWidth : string = (((window.screen.width/3)*2)).toString()+'px';
+    let screenHeight : string = (window.screen.height/2).toString()+'px';
+    console.log(this.applytoSchool)
+    this.config= {
+      data:{
+        schoolData : school
+      },
+      disableClose: false,
+      width: screenWidth,
+      height: screenHeight,
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
+  }
+
+  getSchoolById(){
+    this.publicService.getSchoolById(this.applytoSchool.id)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.makeProfile(response.data)
+            let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
+          }
+        }
+      )
   }
 
   onApply(school){

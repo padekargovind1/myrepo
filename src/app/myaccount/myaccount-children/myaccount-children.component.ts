@@ -44,6 +44,10 @@ export class MyaccountChildrenComponent implements OnInit {
       console.log("navigate back");
       this.route.navigate(['/login']);
     } 
+    console.log(Date.now().toString())
+    // let date = new Date();
+    // this.maxDate = date.getFullYear()+'/0'+date.getMonth()+'/0'+date.getDay();
+    // console.log(this.maxDate)
   }
 
   ngOnInit() {

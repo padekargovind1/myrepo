@@ -140,26 +140,26 @@ export class SchoolComponent implements OnInit, AfterViewInit {
       autoplay: true,
       autoplaySpeed: 2000,
     });
-	window.setTimeout("hideAd()", 3000);
-	window.setTimeout("hideSideAd()", 13000);
-
-	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { $(this).parent().addClass('fadeOutDown'); });
+    window.setTimeout("hideAd()", 3000);
+  	window.setTimeout("hideSideAd()", 13000);
+   
+  	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { 
+      $(this).parent().addClass('fadeOutDown'); 
+    });
   }
 
   clickOnBody(event){
     // console.log(event.srcElement.attributes['class'].textContent)
     // if(event.srcElement)
-    setTimeout(()=>{
-      this.nbBodyClick++;
-      if(this.nbBodyClick!=this.nbAdvancedClick){
-        $('.advance-filter').hide();
-        this.nbAdvancedClick=this.nbBodyClick
-      }
-    }, 1)
+    this.nbBodyClick++;
+    if(this.nbBodyClick!=this.nbAdvancedClick){
+      $('.advance-filter').hide();
+      this.nbAdvancedClick=this.nbBodyClick
+    }
   }
 
   showAdvanced(){
-    this.nbAdvancedClick++
+    this.nbAdvancedClick++;
     $('.advance-filter').show();
   }
 

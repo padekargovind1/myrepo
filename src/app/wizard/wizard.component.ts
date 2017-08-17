@@ -51,6 +51,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   canDisplayWizard : boolean = false;
   canDisplaySchool : boolean = false;
   @ViewChild('tabGroup') tabGroup;
+  maxDate = new Date();
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -154,14 +155,14 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       childAddr : IsAdress ? userData.address.address1 : "",
       childPostalCode : IsAdress ? userData.address.postCode : "",
       childCity : IsAdress ? userData.address.city : "",
-      childBirthDay : IsAdress ? userData.birthDate : "",
+      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
       childBirthPlace : IsAdress ? userData.birthPlace : "",
       //Current Institution
-      schoolName : userData.academicHistories[0].schoolName,
-      schoolCity : userData.academicHistories[0].city,
-      schoolClasse : userData.academicHistories[0].class,
-      schoolOption : userData.academicHistories[0].classType,
-      schoolLv1 : userData.academicHistories[0].languages[0],
+      schoolName : userData.academicHistories[0].schoolName=="A compléter" ? "" : userData.academicHistories[0].schoolName,
+      schoolCity : userData.academicHistories[0].city=="A compléter" ? "" : userData.academicHistories[0].city,
+      schoolClasse : userData.academicHistories[0].class=="A compléter" ? "" :userData.academicHistories[0].class,
+      schoolOption : userData.academicHistories[0].classType=="A compléter" ? "" :userData.academicHistories[0].classType,
+      schoolLv1 : userData.academicHistories[0].languages[0]=="A compléter" ? "" : userData.academicHistories[0].languages[0],
       schoolLv2 : haveLv1 ? userData.academicHistories[0].languages[1] : "",
       schoolLv3 : haveLv2 ? userData.academicHistories[0].languages[2] : "",
       //Strong and weak subject
@@ -246,7 +247,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       childAddr : ['', Validators.required],
       childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
       childCity : ['', Validators.required],
-      childBirthDay : ['', Validators.required],
+      childBirthDay : [new Date(), Validators.compose([Validators.required, CustomValidators.date])],
       childBirthPlace : ['', Validators.required],
       freresoeur : this.fb.array([this.createfs()]),
       schoolName:['', Validators.required],
@@ -260,6 +261,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       schoolHelpSubject : ['', Validators.required],
       bestSubject : ['', Validators.required],
       weakSubject : ['', Validators.required],
+      interestSubject : ['', Validators.required],
       job : this.fb.array([this.createJob()]),
       yourInterest : ['', Validators.required],
       practiceInterest : ['', Validators.required],
@@ -404,7 +406,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe(
         response=>{
           console.log(response)
-          if(response.code!=400){
+          if(response.code==400){
             this.failSubmit(response.message);
           } else {
             this.successSubmit()
@@ -426,9 +428,9 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   failSubmit(message){
     swal({
       title: 'Erreur',
-      text: message,
+      text: 'Il nous manque des informations',
       type: 'error',
-      confirmButtonText: 'Ok'
+      confirmButtonText: "J'AI COMPRIS"
     })
   }
 

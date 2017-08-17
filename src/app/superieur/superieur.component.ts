@@ -58,6 +58,8 @@ export class SuperieurComponent implements OnInit {
     keyword : ''
   };
   domaines=[];
+  nbBodyClick : number =0;
+  nbAdvancedClick : number = 0;
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -79,6 +81,7 @@ export class SuperieurComponent implements OnInit {
   }
 
   getApbSchool(){
+    console.log(this.searchBody)
     this.publicService.getApbSchool(this.limit, this.searchBody)
       .subscribe(
         response=>{
@@ -167,11 +170,13 @@ export class SuperieurComponent implements OnInit {
       autoplay: true,
       autoplaySpeed: 2000,
     });
-	window.setTimeout("hideAd()", 3000);
-	window.setTimeout("hideSideAd()", 13000);
-
-	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { $(this).parent().addClass('fadeOutDown'); });
-      
+    
+    window.setTimeout("hideAd()", 3000);
+  	window.setTimeout("hideSideAd()", 13000);
+   
+  	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { 
+      $(this).parent().addClass('fadeOutDown'); 
+    });
   }
 
   setBackgroundImage(){
@@ -308,10 +313,22 @@ export class SuperieurComponent implements OnInit {
     console.log(event.srcElement.value)
     this.searchBody.courses.educationLevel=event.srcElement.value
     if(event.srcElement.value!=''){
-      this.advancedSearchToDisplay.push(event.srcElement.value)
+      if(event.srcElement.value=="Alternance" || event.srcElement.value=="Classique"){
+        this.advancedSearchToDisplay[0]=event.srcElement.value;
+        this.searchBody.courses.courseType=event.srcElement.value
+      } else {
+        this.advancedSearchToDisplay[1]=event.srcElement.value;
+        this.searchBody.courses.educationLevel=event.srcElement.value
+      }
+      console.log(this.searchBody)
     } else {
       let index = this.advancedSearchToDisplay.indexOf(event.srcElement.value)
       this.advancedSearchToDisplay.splice(index, 1)
+      if(event.srcElement.value=="Alternance" || event.srcElement.value=="Classique"){
+        this.searchBody.courses.courseType=''
+      } else {
+        this.searchBody.courses.educationLevel=''
+      }
     }
     this.getApbSchool();
   }
@@ -321,11 +338,10 @@ export class SuperieurComponent implements OnInit {
     if(event.srcElement.localName=='input'){
       if(event.srcElement.checked){
         this.searchBody['recognizedByState']=true;
-        this.advancedSearchToDisplay.push("Reconnu par l'État");
+        this.advancedSearchToDisplay[2]="Reconnu par l'État";
       } else {
         delete this.searchBody['recognizedByState']
-        let index = this.advancedSearchToDisplay.indexOf("Reconnu par l'État")
-        this.advancedSearchToDisplay.splice(index, 1)
+        this.advancedSearchToDisplay.splice(2, 1)
       }
       this.getApbSchool();
     }
@@ -336,49 +352,13 @@ export class SuperieurComponent implements OnInit {
     if(event.srcElement.localName=='input'){
       if(event.srcElement.checked){
         this.searchBody.courses['curriculumAbroad']=true
-        this.advancedSearchToDisplay.push("Cursus avec une période à l'étranger");
+        this.advancedSearchToDisplay[2]="Cursus avec une période à l'étranger";
       } else {
         delete this.searchBody.courses['curriculumAbroad'];
-        let index = this.advancedSearchToDisplay.indexOf("Cursus avec une période à l'étranger")
-        this.advancedSearchToDisplay.splice(index, 1)
+        this.advancedSearchToDisplay.splice(2, 1)
       }
       this.getApbSchool();
     }
-  }
-
-  onAdvancedClick(event, category){
-    console.log(event, category);
-    // if(event.srcElement.localName=="input"){
-    //   console.log(event.srcElement.checked)
-    //   if(event.srcElement.checked){
-    //     // console.log("checked!")
-    //     if(typeof this.advancedSearch[category] == "undefined"){
-    //       this.advancedSearch[category]={}
-    //     }
-    //     this.advancedSearch[category][event.srcElement.name]=true;
-    //     this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
-    //     this.advancedSearchCategory.push(category);
-    //     this.advancedSearchValue.push(event.srcElement.name);
-    //     console.log(this.advancedSearch);
-    //     this.limit=20
-    //     this.postAdvancedFilter();
-    //   } else{
-    //     // console.log("unchecked!");
-    //     console.log(this.advancedSearch[category], event.srcElement.name)
-    //     if(this.advancedSearch[category]!==undefined){
-    //       delete this.advancedSearch[category][event.srcElement.name];
-    //     }
-    //     this.checkCategory(category);
-    //     console.log(this.advancedSearch);
-    //     this.limit=20
-    //     this.postAdvancedFilter();
-    //     let index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
-    //     this.advancedSearchToDisplay.splice(index, 1);
-    //     this.advancedSearchCategory.splice(index, 1)
-    //     this.advancedSearchValue.splice(index, 1);
-        
-    //   }
-    // }
   }
 
   checkCategory(category){
@@ -431,21 +411,38 @@ export class SuperieurComponent implements OnInit {
   }
 
   onRemoveFilter(index, advanced){
-    // console.log("click sur la croix", advanced)
-    // this.advancedSearchToDisplay.splice(index, 1)
-    // this.getApbSchool()
-    // delete this.advancedSearch[this.advancedSearchCategory[index]][this.advancedSearchValue[index]]
-    // this.checkCategory(this.advancedSearchCategory[index]);
-    // $('.'+this.advancedSearchValue).prop('checked', false)
-    // this.advancedSearchCategory.splice(index, 1);
-    // this.advancedSearchValue.splice(index, 1);
-    // this.limit=20;
-    // this.postAdvancedFilter();
+    console.log(advanced)
+    this.advancedSearchToDisplay.splice(index, 1);
+    if(advanced=="Alternance" || advanced=="Classique"){
+      this.searchBody.courses.courseType='';
+    } else if (advanced=="Reconnu par l'État"){
+      delete this.searchBody['recognizedByState'];
+    } else if (advanced=="Cursus avec une période à l'étranger"){
+      delete this.searchBody['curriculumAbroad'];
+    } else {
+      this.searchBody.courses.educationLevel='';
+    }
+    this.getApbSchool();
   }
 
   showMore(){
     this.limit+=20
     this.getApbSchool()
+  }
+
+  clickOnBody(event){
+    // console.log(event.srcElement.attributes['class'].textContent)
+    // if(event.srcElement)
+    this.nbBodyClick++;
+    if(this.nbBodyClick!=this.nbAdvancedClick){
+      $('.advance-filter').hide();
+      this.nbAdvancedClick=this.nbBodyClick
+    }
+  }
+
+  showAdvanced(){
+    this.nbAdvancedClick++
+    $('.advance-filter').show();
   }
 
 }

@@ -26,10 +26,10 @@
                 </a>
             </div><!-- .landingpage__image-holder -->
 
-            <div class="form-wrap row  animated fadeOut">
+            <div class="form-wrap row  animated fadeOut" style="margin-bottom:200px">
 
                 <form [formGroup]="searchForm" 
-                    (ngSubmit)="onSubmitSearch('ecole')">
+                    (ngSubmit)="onSubmitSearch('ecole')" >
                     <div class="col-md-11">
                         <div class="row">
                             <div class="col-md-4">
@@ -139,7 +139,7 @@
                                         <select name="class" class="form-control" id="class"
 											[formControl]="searchForm.controls['classe']" >
 											<!--<option value="" disabled selected hidden>Classe</option>-->
-											<option value="" selected>Choisir une classe</option>
+											<option value="" selected>Classe</option>
 											<optgroup label="Cycle 1 : Apprentissages Premiers">
 												<option value="ps">&nbsp;&nbsp;&nbsp;&nbsp;PS</option>
 												<option value="ms">&nbsp;&nbsp;&nbsp;&nbsp;MS</option>
@@ -584,7 +584,7 @@
                                     <label class="select-custom" for="class">
                                         <select name="class" class="form-control" id="class"
                                             [formControl]="apbForm.controls['domaine']">
-                                            <option value="" selected>Choisir un domaine</option>
+                                            <option value="" selected>Domaine</option>
                                             <option *ngFor="let domaine of domaines" 
                                                 [value]="domaine" selected>&nbsp;&nbsp;{{domaine}}</option>
                                         </select>

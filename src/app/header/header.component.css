@@ -61,3 +61,18 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+.right-top-menu .fa-bookmark:after {
+    content: "2";
+    font-size: 12px;
+    background: #F1001C;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding-top: 3px; 
+}
