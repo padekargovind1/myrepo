@@ -1888,3 +1888,14 @@ a:hover { text-decoration: none;}
 .mobile-login i.fa-bookmark{
 	position:relative;
 }
+
+@media (max-width:767px){ 
+.list-schools h3 { max-width: 71%;}
+.booking-appointment .advisors-wrap {position:relative !important; top:0 !important; }
+.conseil-centering { background:#343642;  color: #fff;}
+.conseil-centering .title-page {color:#fff; }
+
+.landingpage__additional-content .form-wrap {width: 300px;left: 0;top: 0;} 
+.landingpage__wrapper .landingpage__additional-content:nth-child(odd) .form-wrap {right:0; left:auto;}
+
+}
