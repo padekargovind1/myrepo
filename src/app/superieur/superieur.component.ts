@@ -149,19 +149,25 @@ export class SuperieurComponent implements OnInit {
     });
     $('body').on('mousedown', function($event){
       // console.log($event.target.attributes)
-      if(typeof $event.target.attributes['class']!='undefined'){
-        if($event.target.attributes['class'].value == 'main' || $event.target.attributes['class'].value == 'filter-form-holder' || $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'){
-          $('.advance-filter').hide();
-        }
-      }
+      //if(typeof $event.target.attributes['class']!='undefined'){
+        //if($event.target.attributes['class'].value == 'main' || $event.target.attributes['class'].value == 'filter-form-holder' || //$event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'){
+         // $('.advance-filter').hide();
+        //}
+      //}
     })
     $('#mobileFilter').on('click', function(e){
-      if($('.advance-filter').is(':visible')){
-        $('.advance-filter').hide();
-      } else {
-        $('.advance-filter').show();
-      }
-    })
+		e.stopPropagation();
+        $('.advance-filter').toggle();
+    });
+	$('*').click(function(e){
+		var a = e.target;
+		if ($(a).parents('.filter-wrapper').length === 0) {
+			if($('.advance-filter').is(':visible')){
+				$('.advance-filter').hide();
+				$('.switch.mobile #filter-trigger').trigger("click");
+			  }
+		}
+	});
     
     $('.slickjs').slick({
       arrows : false,
@@ -433,16 +439,16 @@ export class SuperieurComponent implements OnInit {
   clickOnBody(event){
     // console.log(event.srcElement.attributes['class'].textContent)
     // if(event.srcElement)
-    this.nbBodyClick++;
-    if(this.nbBodyClick!=this.nbAdvancedClick){
-      $('.advance-filter').hide();
-      this.nbAdvancedClick=this.nbBodyClick
-    }
+    //this.nbBodyClick++;
+    //if(this.nbBodyClick!=this.nbAdvancedClick){
+      //$('.advance-filter').hide();
+      //this.nbAdvancedClick=this.nbBodyClick
+    //}
   }
 
   showAdvanced(){
-    this.nbAdvancedClick++
-    $('.advance-filter').show();
+    //this.nbAdvancedClick++
+    //$('.advance-filter').show();
   }
 
 }

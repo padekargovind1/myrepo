@@ -126,12 +126,18 @@ export class SchoolComponent implements OnInit, AfterViewInit {
       // }
     })
     $('#mobileFilter').on('click', function(e){
-      if($('.advance-filter').is(':visible')){
-        $('.advance-filter').hide();
-      } else {
-        $('.advance-filter').show();
-      }
-    })
+		e.stopPropagation();
+        $('.advance-filter').toggle();
+    });
+	$('*').click(function(e){
+		var a = e.target;
+		if ($(a).parents('.advancedFilter').length === 0) {
+			if($('.advance-filter').is(':visible')){
+				$('.advance-filter').hide();
+				$('.switch.mobile #filter-trigger').trigger("click");
+			  }
+		}
+	});
     
     $('.slickjs'+this.slickNb).slick({
       arrows : false,
@@ -151,16 +157,16 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   clickOnBody(event){
     // console.log(event.srcElement.attributes['class'].textContent)
     // if(event.srcElement)
-    this.nbBodyClick++;
-    if(this.nbBodyClick!=this.nbAdvancedClick){
-      $('.advance-filter').hide();
-      this.nbAdvancedClick=this.nbBodyClick
-    }
+    //this.nbBodyClick++;
+    //if(this.nbBodyClick!=this.nbAdvancedClick){
+      //$('.advance-filter').hide();
+      //this.nbAdvancedClick=this.nbBodyClick
+    //}
   }
 
   showAdvanced(){
-    this.nbAdvancedClick++;
-    $('.advance-filter').show();
+    //this.nbAdvancedClick++;
+    //$('.advance-filter').show();
   }
 
   getSlickNb(){
