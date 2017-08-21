@@ -70,6 +70,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
   runScript(){
+    var self = this;
     $('.mobile-login').on('click', '.fa-user', function() {
         $('.login').toggle('slow');
     });
@@ -104,21 +105,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
       self.onMobile=false;
     }
 	
-	var winWidth = $(window).width();
+	  var winWidth = $(window).width();
 	
-	if(winWidth < 767){
-	//alert('sdf');
-		$('.courses-menu .menu-holder').click(function(){
-		if($('.submenutBt').css('visibility')=='visible'){
-			$('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
-			
-		}else{
-			$('.submenutBt').css({'opacity': '1','visibility': 'visible','-moz-transform': 'scaleY(1)','-webkit-transform': 'scaleY(1)','-o-transform': 'scaleY(1)','-ms-transform': 'scaleY(1)','transform': 'scaleY(1)'});
-		}
-			
-		});
-	}
-	
+    if(winWidth < 767){
+    //alert('sdf');
+      $('.courses-menu .menu-holder').click(function(){
+      if($('.submenutBt').css('visibility')=='visible'){
+        $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
+        
+      }else{
+        $('.submenutBt').css({'opacity': '1','visibility': 'visible','-moz-transform': 'scaleY(1)','-webkit-transform': 'scaleY(1)','-o-transform': 'scaleY(1)','-ms-transform': 'scaleY(1)','transform': 'scaleY(1)'});
+      }
+        
+      });
+    }
+  
+    $('body').on('click', function($event){
+      console.log(event.srcElement.className)
+      if(event.srcElement.className=='fa fa-bookmark' || event.srcElement.className=='btn btn-success btn-outline btn-sm '){
+        setTimeout(function(){
+          self.getApplication()
+        }, 1000)
+      }
+    })
 	
   }
 
@@ -164,7 +173,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           } else {
             // console.log(response.data)
             this.wishList=response.data;
-			this.wishCount = this.wishList.length;
+			      this.wishCount = this.wishList.length;
           }
         }
       )
