@@ -173,7 +173,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
           } else {
             // console.log(response.data)
             this.wishList=response.data;
-			      this.wishCount = this.wishList.length;
+            this.wishCount=0;
+            for (let wish of this.wishList){
+              if(wish.type=="wish"){
+                this.wishCount++;
+              }
+            }
           }
         }
       )

@@ -133,7 +133,7 @@ export class UsersService {
   }
 
   deleteApplication(data): Observable<any>{
-    return this.http.delete(APPLICATION_API+'?token='+this.token, data)
+    return this.http.delete(APPLICATION_API+'?token='+this.token+'&school='+data.school, {headers: this.headers})
       .map((response)=>response.json())
   }
 

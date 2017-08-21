@@ -112,7 +112,6 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   patchValue(data: any){
-    console.log("TJ");
     console.log(data);
     this.childrenForm.patchValue({
       nom : data.lastName,
@@ -121,7 +120,7 @@ export class MyaccountChildrenComponent implements OnInit {
       gender : data.gender,
       email : data.email,
       portable : data.mobilePhone,
-      datenaissance : (data.birthDate!=null && data.birthDate != "") ? new Date(data.birthDate) : new Date(),
+      datenaissance : (data.birthDate!=null || data.birthDate != "") ? new Date(data.birthDate) : new Date(),
       lieu : data.birthPlace,
     })
     if(typeof data.address != "undefined"){
@@ -130,6 +129,7 @@ export class MyaccountChildrenComponent implements OnInit {
         codepostal : data.address.postCode,
         ville : data.address.city,
       })
+    console.log(new Date(data.birthDate), this.childrenForm.value)
     // this.childrenForm.controls['freresoeur'].patchValue({
     //   age : data.siblings
     // })
