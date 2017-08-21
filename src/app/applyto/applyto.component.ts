@@ -41,10 +41,10 @@ export class ApplytoComponent implements OnInit {
   schoolName : string ="";
   schoolID : string ="";
   schoolLogo : string ="";
-  canDisplaySiblings : boolean = false;
+  // canDisplaySiblings : boolean = false;
   canDisplayApply : boolean = false;
   parents : any;
-  siblings:any;
+  // siblings:any;
   metiers : any;
   @ViewChild('tabGroup') tabGroup;
   maxDate = new Date();
@@ -139,9 +139,9 @@ export class ApplytoComponent implements OnInit {
       childTitle : userData.gender,
       childMel : userData.email,
       childTel : userData.mobilePhone,
-      childAddr : IsAdress ? userData.address.address1 : "",
-      childPostalCode : IsAdress ? userData.address.postCode : "",
-      childCity : IsAdress ? userData.address.city : "",
+      // childAddr : IsAdress ? userData.address.address1 : "",
+      // childPostalCode : IsAdress ? userData.address.postCode : "",
+      // childCity : IsAdress ? userData.address.city : "",
       childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
       childBirthPlace : IsAdress ? userData.birthPlace : "",
       //Current Institution
@@ -178,15 +178,15 @@ export class ApplytoComponent implements OnInit {
         })
       }
     }
-    for (let i = 0; i<this.applytoForm.controls['freresoeur']['controls'].length; i++){
-      if(userData.siblings!==undefined && userData.siblings!=null && userData.siblings.length!=0){
-        this.applytoForm.controls['freresoeur']['controls'][i].patchValue({
-          gender : userData.siblings[i].gender,
-          age : userData.siblings[i].age,
-          niveau : userData.siblings[i].study
-        })
-      }
-    }
+    // for (let i = 0; i<this.applytoForm.controls['freresoeur']['controls'].length; i++){
+    //   if(userData.siblings!==undefined && userData.siblings!=null && userData.siblings.length!=0){
+    //     this.applytoForm.controls['freresoeur']['controls'][i].patchValue({
+    //       gender : userData.siblings[i].gender,
+    //       age : userData.siblings[i].age,
+    //       niveau : userData.siblings[i].study
+    //     })
+    //   }
+    // }
 	//Jobs
     for (let i = 0; i<this.applytoForm.controls['job']['controls'].length; i++){
       if(userData.jobs!==undefined && userData.jobs!=null && userData.jobs.length!=0){
@@ -196,7 +196,7 @@ export class ApplytoComponent implements OnInit {
         })
       }
     }
-    this.canDisplaySiblings=true;
+    // this.canDisplaySiblings=true;
   }
 
   buildForm(data){
@@ -208,12 +208,12 @@ export class ApplytoComponent implements OnInit {
       childTitle : ['', Validators.required],
       childMel : ['', Validators.compose([Validators.required, CustomValidators.email])],
       childTel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
-      childAddr : ['', Validators.required],
-      childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
-      childCity : ['', Validators.required],
+      // childAddr : ['', Validators.required],
+      // childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
+      // childCity : ['', Validators.required],
       childBirthDay : ['', Validators.required],
       childBirthPlace : ['', Validators.required],
-      freresoeur : this.fb.array([this.createfs()]),
+      // freresoeur : this.fb.array([this.createfs()]),
       schoolName:['', Validators.required],
       schoolCity : ['', Validators.required],
       schoolClasse : ['', Validators.required],
@@ -229,11 +229,11 @@ export class ApplytoComponent implements OnInit {
       practiceInterest : ['', Validators.required],
     })
     console.log(data)
-    if(data.siblings.length>1){
-      for(let i = 1; i<data.siblings.length; i++){
-        this.applytoForm.controls['freresoeur']['controls'].push((this.createfs()))
-      }
-    }
+    // if(data.siblings.length>1){
+    //   for(let i = 1; i<data.siblings.length; i++){
+    //     this.applytoForm.controls['freresoeur']['controls'].push((this.createfs()))
+    //   }
+    // }
     if(data.parents.length>1){
       for(let i = 1; i<data.parents.length; i++){
         this.applytoForm.controls['parents']['controls'].push(this.createParent())
@@ -260,13 +260,13 @@ export class ApplytoComponent implements OnInit {
     })
   }
 
-  createfs(){
-    return this.fb.group({
-      gender : ['', Validators.required],
-      age : ['', Validators.required],
-      niveau : ['', Validators.required]
-    })
-  }
+  // createfs(){
+  //   return this.fb.group({
+  //     gender : ['', Validators.required],
+  //     age : ['', Validators.required],
+  //     niveau : ['', Validators.required]
+  //   })
+  // }
 
   createJob(){
     return this.fb.group({
@@ -294,17 +294,17 @@ export class ApplytoComponent implements OnInit {
     this.userData.gender = this.applytoForm.value.childTitle
     this.userData.email = this.applytoForm.value.childMel
     this.userData.mobilePhone = this.applytoForm.value.childTel
-    this.userData.address.address1 = this.applytoForm.value.childAddr
-    this.userData.address.postCode = this.applytoForm.value.childPostalCode
-    this.userData.address.city = this.applytoForm.value.childCity
+    // this.userData.address.address1 = this.applytoForm.value.childAddr
+    // this.userData.address.postCode = this.applytoForm.value.childPostalCode
+    // this.userData.address.city = this.applytoForm.value.childCity
     this.userData.birthDate = this.applytoForm.value.childBirthDay
     this.userData.birthPlace = this.applytoForm.value.childBirthPlace
 
-    for(let i = 0; i<this.applytoForm.value.freresoeur.length; i++){
-      this.userData.siblings[i].age = this.applytoForm.value.freresoeur[i].age
-      this.userData.siblings[i].gender = this.applytoForm.value.freresoeur[i].gender
-      this.userData.siblings[i].study = this.applytoForm.value.freresoeur[i].niveau
-    }
+    // for(let i = 0; i<this.applytoForm.value.freresoeur.length; i++){
+    //   this.userData.siblings[i].age = this.applytoForm.value.freresoeur[i].age
+    //   this.userData.siblings[i].gender = this.applytoForm.value.freresoeur[i].gender
+    //   this.userData.siblings[i].study = this.applytoForm.value.freresoeur[i].niveau
+    // }
 
     this.userData.academicHistories[0].city = this.applytoForm.value.schoolCity
     this.userData.academicHistories[0].class = this.applytoForm.value.schoolClasse
@@ -409,15 +409,15 @@ export class ApplytoComponent implements OnInit {
     this.parents.removeAt(index, 1);
   }
 
-  onAddFrSo(){
-    this.siblings = this.applytoForm.get('freresoeur') as FormArray;
-    this.siblings.push(this.createfs());
-  }
+  // onAddFrSo(){
+  //   this.siblings = this.applytoForm.get('freresoeur') as FormArray;
+  //   this.siblings.push(this.createfs());
+  // }
 
-  onRemoveFrSo(index){
-    this.siblings = this.applytoForm.get('freresoeur') as FormArray;
-    this.siblings.removeAt(index, 1);
-  }
+  // onRemoveFrSo(index){
+  //   this.siblings = this.applytoForm.get('freresoeur') as FormArray;
+  //   this.siblings.removeAt(index, 1);
+  // }
 
   onAddJob(){
     this.metiers = this.applytoForm.get('job') as FormArray;

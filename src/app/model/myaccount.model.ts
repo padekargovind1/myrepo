@@ -16,7 +16,7 @@ export class MyAccountMdl{
   emailValidationCode: string = "A compléter";
   currentClass: string = "A compléter";
   currentClassType: string = "A compléter";
-  age : number =1;
+  age : number =2;
   parents = [];
   address : any;
   socialAddresses : any;
@@ -28,7 +28,7 @@ export class MyAccountMdl{
 export class MyAccountAdresse{
     address1: string="A compléter";
     address2: string="A compléter";
-    postCode: string="A compléter";
+    postCode: string="99999";
     city: string="A compléter";
     country: string="A compléter"
 }

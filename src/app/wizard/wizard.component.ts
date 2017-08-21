@@ -43,11 +43,11 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   addParents : boolean = true;
   newAppointment={}
   parents : any;
-  siblings : any;
+  // siblings : any;
   metiers : any;
   primaires : any;
   secondaires : any;
-  canDisplaySiblings : boolean = false;
+  // canDisplaySiblings : boolean = false;
   canDisplayWizard : boolean = false;
   canDisplaySchool : boolean = false;
   @ViewChild('tabGroup') tabGroup;
@@ -194,15 +194,15 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
 		  })
 		}
     }
-    for (let i = 0; i<this.wizardForm.controls['freresoeur']['controls'].length; i++){
-      if(userData.siblings!==undefined && userData.siblings!=null && userData.siblings.length!=0){
-        this.wizardForm.controls['freresoeur']['controls'][i].patchValue({
-          gender : userData.siblings[i].gender,
-          age : userData.siblings[i].age,
-          niveau : userData.siblings[i].study
-        })
-      }
-    }
+    // for (let i = 0; i<this.wizardForm.controls['freresoeur']['controls'].length; i++){
+    //   if(userData.siblings!==undefined && userData.siblings!=null && userData.siblings.length!=0){
+    //     this.wizardForm.controls['freresoeur']['controls'][i].patchValue({
+    //       gender : userData.siblings[i].gender,
+    //       age : userData.siblings[i].age,
+    //       niveau : userData.siblings[i].study
+    //     })
+    //   }
+    // }
 	//Jobs
     for (let i = 0; i<this.wizardForm.controls['job']['controls'].length; i++){
       if(userData.jobs!==undefined && userData.jobs!=null && userData.jobs.length!=0){
@@ -232,7 +232,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
         //})
       //}
     //}
-    this.canDisplaySiblings=true;
+    // this.canDisplaySiblings=true;
   }
 
   buildForm(data){
@@ -249,7 +249,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       childCity : ['', Validators.required],
       childBirthDay : [new Date(), Validators.compose([Validators.required, CustomValidators.date])],
       childBirthPlace : ['', Validators.required],
-      freresoeur : this.fb.array([this.createfs()]),
+      // freresoeur : this.fb.array([this.createfs()]),
       schoolName:['', Validators.required],
       schoolCity : ['', Validators.required],
       schoolClasse : ['', Validators.required],
@@ -270,11 +270,11 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       reasonDiagnostic : ['', Validators.required],
       note :['', Validators.required],
     });
-    if(data.siblings!==undefined && data.siblings!=null && data.siblings.length>1){
-      for(let i = 1; i<data.siblings.length; i++){
-        this.wizardForm.controls['freresoeur']['controls'].push((this.createfs()))
-      }
-    }
+    // if(data.siblings!==undefined && data.siblings!=null && data.siblings.length>1){
+    //   for(let i = 1; i<data.siblings.length; i++){
+    //     this.wizardForm.controls['freresoeur']['controls'].push((this.createfs()))
+    //   }
+    // }
     if(data.parents!==undefined && data.parents!=null && data.parents.length>1){
       for(let i = 1; i<data.parents.length; i++){
         this.wizardForm.controls['parents']['controls'].push(this.createParent())
@@ -302,13 +302,13 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  createfs(){
-    return this.fb.group({
-      gender : ['', Validators.required],
-      age : ['', Validators.required],
-      niveau : ['', Validators.required]
-    })
-  }
+  // createfs(){
+  //   return this.fb.group({
+  //     gender : ['', Validators.required],
+  //     age : ['', Validators.required],
+  //     niveau : ['', Validators.required]
+  //   })
+  // }
 
   createJob(){
     return this.fb.group({
@@ -357,11 +357,11 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.userData.birthDate = this.wizardForm.value.childBirthDay
     this.userData.birthPlace = this.wizardForm.value.childBirthPlace
 
-    for(let i = 0; i<this.wizardForm.value.freresoeur.length; i++){
-      this.userData.siblings[i].age = this.wizardForm.value.freresoeur[i].age
-      this.userData.siblings[i].gender = this.wizardForm.value.freresoeur[i].gender
-      this.userData.siblings[i].study = this.wizardForm.value.freresoeur[i].niveau
-    }
+    // for(let i = 0; i<this.wizardForm.value.freresoeur.length; i++){
+    //   this.userData.siblings[i].age = this.wizardForm.value.freresoeur[i].age
+    //   this.userData.siblings[i].gender = this.wizardForm.value.freresoeur[i].gender
+    //   this.userData.siblings[i].study = this.wizardForm.value.freresoeur[i].niveau
+    // }
 
     this.userData.academicHistories[0].city = this.wizardForm.value.schoolCity
     this.userData.academicHistories[0].class = this.wizardForm.value.schoolClasse
@@ -483,15 +483,15 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.parents.removeAt(index, 1);
   }
 
-  onAddFrSo(){
-    this.siblings = this.wizardForm.get('freresoeur') as FormArray;
-    this.siblings.push(this.createfs());
-  }
+  // onAddFrSo(){
+  //   this.siblings = this.wizardForm.get('freresoeur') as FormArray;
+  //   this.siblings.push(this.createfs());
+  // }
 
-  onRemoveFrSo(index){
-    this.siblings = this.wizardForm.get('freresoeur') as FormArray;
-    this.siblings.removeAt(index, 1);
-  }
+  // onRemoveFrSo(index){
+  //   this.siblings = this.wizardForm.get('freresoeur') as FormArray;
+  //   this.siblings.removeAt(index, 1);
+  // }
 
   onAddJob(){
     this.metiers = this.wizardForm.get('job') as FormArray;
