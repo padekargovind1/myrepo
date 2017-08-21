@@ -32,9 +32,15 @@
               <div>
                 <md-radio-group formControlName="titre"
                   style="border-color:white">
-                  <md-radio-button value="m" class="rdmark">M</md-radio-button>
-                  <md-radio-button value="mrs" class="rdmark">Mlle</md-radio-button>
-                  <md-radio-button value="ms" class="rdmark">Mme</md-radio-button>
+                  <md-radio-button value="m" class="rdmark">
+                    M
+                  </md-radio-button>
+                  <md-radio-button value="mrs" class="rdmark">
+                    Mlle
+                  </md-radio-button>
+                  <md-radio-button value="ms" class="rdmark">
+                    Mme
+                  </md-radio-button>
                 </md-radio-group>
                 <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
                   parentAccountForm.controls['parents']['controls'][i].controls.titre.touched" 
