@@ -1,56 +1,57 @@
 <header class="header" >
     <nav class="main-navigation">
-        <ul class="clearfix">
-            <li class="parent-item haschild courses-menu">
-                <a class="ln-tr"><i class="fa fa-bars menu-holder"></i></a>
-                <ul class="clearfix submenutBt">
-                    <li class="course-menu-item col-md-12 col-sm-12">
-                        <div class="single-item">
-                            <span class="item-icon"><i class="fa fa-download"></i></span>
-                            <a routerLink="/brochure" class="ln-tr link">Les documentations des écoles</a>
-                        </div>
-                    </li><!-- end course menu item -->
-                    <li class="course-menu-item col-md-12 col-sm-12">
-                        <div class="single-item">
-                            <span class="item-icon"><i class="fa fa-calendar-check-o"></i></span>
-                            <a routerLink="/conseil" class="ln-tr link">Orientation</a>
-                        </div>
-                    </li><!-- end course menu item -->
-                    <li class="course-menu-item col-md-12 col-sm-12">
-                        <div class="single-item">
-                            <span class="item-icon"><i class="fa fa-bullhorn"></i></span>
-                            <a routerLink="/school-calendar" class="ln-tr link">Agenda des écoles</a>
-                        </div>
-                    </li><!-- end course menu item -->
-                    <li class="course-menu-item col-md-12 col-sm-12">
-                        <div class="single-item">
-                            <span class="item-icon"><i class="fa fa-bookmark"></i></span>
-                            <a (click)="onMyAccount('3')" class="ln-tr link">Mes voeux / Inscriptions</a>
-                        </div>
-                    </li><!-- end course menu item -->
-                    <li class="course-menu-item col-md-12 col-sm-12">
-                        <div class="single-item">
-                            <span class="item-icon"><i class="fa fa-inbox"></i></span>
-                            <a target="_blank" href="http://www.amazaon.fr" class="ln-tr link">Commande du Guide des écoles privées</a>
-                        </div>
-                    </li><!-- end course menu item -->
-                    <li class="course-menu-item col-md-12 col-sm-12">
-                        <div class="single-item">
-                            <span class="item-icon"><i class="fa fa-inbox"></i></span>
-                            <a target="_blank" href="http://www.guide-des-ecoles-privees.info/2016_2017" class="ln-tr link">Guide interactif des écoles privées</a>
-                        </div>
-                    </li><!-- end course menu item -->
-                    <li class="course-menu-item col-md-12 col-sm-12">
-                        <div class="single-item">
-                            <span class="item-icon"><i class="fa fa-suitcase"></i></span>
-                            <a routerLink="/linguistic" class="ln-tr link">Guide Sejours Linguistiques</a>
-                        </div>
-                    </li><!-- end course menu item -->
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <!--<a routerLink="/">
+            <ul class="clearfix">
+                <li class="parent-item haschild courses-menu">
+                    <a class="ln-tr"><i class="fa fa-bars menu-holder"></i></a>
+                    <ul class="clearfix submenutBt">
+                        <li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-download"></i></span>
+                                <a routerLink="/brochure" class="ln-tr link">Les documentations des écoles</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-calendar-check-o"></i></span>
+                                <a routerLink="/conseil" class="ln-tr link">Orientation</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-bullhorn"></i></span>
+                                <a routerLink="/school-calendar" class="ln-tr link">Agenda des écoles</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-bookmark"></i></span>
+                                <a (click)="onMyAccount('3')" class="ln-tr link">Mes voeux / Inscriptions</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-inbox"></i></span>
+                                <a target="_blank" href="http://www.amazaon.fr" class="ln-tr link">Commande du Guide des écoles privées</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-inbox"></i></span>
+                                <a target="_blank" href="http://www.guide-des-ecoles-privees.info/2016_2017" class="ln-tr link">Guide interactif des écoles privées</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                        <li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-suitcase"></i></span>
+                                <a routerLink="/linguistic" class="ln-tr link">Guide Sejours Linguistiques</a>
+                            </div>
+                        </li><!-- end course menu item -->
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    
+	<!--<a routerLink="/">
         <img class="cide-logo" src="assets/images/cide-white.png" alt="cide logo"/>
     </a>
 
@@ -99,9 +100,9 @@
     <a (click)="onNavigateHome()">
         <img class="cide-logo" src="assets/images/logo_cide.png" alt="CIDE Logo" 
             *ngIf="!onMobile"/>
-        <!--<img class="cide-logo-mobile" 
+       <img class="cide-logo-mobile" 
             src="assets/images/cide-white-just-logo.png" alt=""
-            style="display: none; width: 32px; float: left;">-->
+            style="display: none; width: 32px; float: left;">
     </a>
     <h1 (click)="onNavigateHome()" class="sitename" 
         style="cursor:pointer; text-align:center; margin-left:40%">
