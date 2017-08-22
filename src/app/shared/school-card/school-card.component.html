@@ -27,9 +27,9 @@
     <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
         {{ SchoolData.cycles[0].cycle.status2 }} <br />
         {{ SchoolData.cycles[0].cycle.status3 }}</p>-->
-    <address> {{ SchoolData.address.ad1 }} <br /> 
+    <address style="font-size:14px; height : 72px"> {{ SchoolData.address.ad1 }} <br /> 
         {{ SchoolData.address.postcode }} {{ SchoolData.address.city }}<br /> 
-        Tel: {{ SchoolData.address.phone }}</address>
+        Tel : {{ SchoolData.address.phone | phone }}</address>
 
     <button class="btn btn-highlighted"
         (click)="onSchoolDetail()">Détail</button>

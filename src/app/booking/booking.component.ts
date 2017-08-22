@@ -201,7 +201,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
         let fin = day.to[0].substr(11, 2);
         // console.log(debut, fin, day.from[0].substr(0, 10))
         this.calendarData.push({
-          title:'Disponible', 
+          title:'h - Disponible', 
           start: day.from[0].substr(0, 10)+' '+debut+':00:00',
           end: day.to[0].substr(0, 10)+' '+ fin + ':00:00',
           adviserId: adviser._id,
