@@ -72,6 +72,7 @@ import { CompareService } from './services/compare.service';
 import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
+import { ConseilService } from './services/conseil.service';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
 import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
@@ -81,6 +82,7 @@ import { ApbCardComponent } from './shared/apb-card/apb-card.component';
 import { SchoolChoiceComponent } from './shared/school-choice/school-choice.component';
 import { CapitalPipe } from './pipes/capital.pipe';
 import { AgmCoreModule } from '@agm/core';
+import { ConseilPopupComponent } from './conseil/conseil-popup/conseil-popup.component';
 
 
 @NgModule({
@@ -135,7 +137,8 @@ import { AgmCoreModule } from '@agm/core';
     SuperieurComponent,
     ApbCardComponent,
     SchoolChoiceComponent,
-    CapitalPipe
+    CapitalPipe,
+    ConseilPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -177,14 +180,16 @@ import { AgmCoreModule } from '@agm/core';
     BookingService,
     EditorService,
     SweetAlertService,
-    BrochureService
+    BrochureService,
+    ConseilService
   ],
     entryComponents: [
        BrochpopupComponent,
        BrochureDownloadComponent,
        WishApplyPopupComponent,
        SchoolChoiceComponent,
-       EtablissementComponent
+       EtablissementComponent,
+       ConseilPopupComponent
     ],
   bootstrap: [AppComponent]
 })
