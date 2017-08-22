@@ -66,22 +66,27 @@ export class MyaccountParentsComponent implements OnInit {
           this.createProfile();
           this.canDisplay=true;
           if (response.data[0].parents.length!=0){
-            this.patchValue(response.data[0].parents);
+            this.patchValue(response.data[0]);
             this.completeProfile();
+          } else if(this.usersService.getUserType()=="Parent"){
+            this.parentAccountForm.controls['parents']['controls'][0].patchValue({
+              email : response.data[0].email,
+            })
           }
         }
       )
   }
 
-  patchValue(parentData: any){
-    // console.log(parentData);
+  patchValue(data: any){
+    let parentData=data.parents
+    console.log(data, parentData);
     for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){
       this.parentAccountForm.controls['parents']['controls'][i].patchValue({
         lienParent : parentData[i].relationship,
         titre : parentData[i].gender,
         nom : parentData[i].lastName,
         prenom : parentData[i].firstName,
-        email : parentData[i].email,
+        email : data.email,
         portable : parentData[i].phoneNumber,
         adresse : parentData[i].address.address1,
         codepostal : parentData[i].address.postCode,

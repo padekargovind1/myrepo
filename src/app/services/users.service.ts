@@ -154,4 +154,16 @@ export class UsersService {
   cleanTabNb(){
     localStorage.removeItem('myaccountTab');
   }
+
+  storeUserType(userT){
+    localStorage.setItem('userType', userT);
+  }
+
+  getUserType(){
+    return localStorage.getItem('userType');
+  }
+
+  cleanUserType(){
+    localStorage.removeItem('userType');
+  }
 }

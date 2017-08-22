@@ -82,7 +82,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   getListAdviser(){
-    // console.log(this.appointmentPackage[this.bookingData[3]]._id)
+    console.log(this.bookingData)
     this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]]._id)
       .subscribe(
         (response)=>{
@@ -141,8 +141,42 @@ export class BookingComponent implements OnInit, AfterViewInit {
     for(let appointData of this.bookingDate){
       data.push(appointData);
     }
+    // console.log(data)
     this.bookingService.storeBookingData(data);
-    this.route.navigate(['/wizard']);
+    console.log(this.bookingData)
+    if(this.bookingData[3]!=0){
+      this.route.navigate(['/wizard']);
+    } else {
+      this.applyEntretien()
+    }
+  }
+
+  applyEntretien(){
+    console.log(this.appointmentData);
+    const newAppointment = {
+      adviser : this.appointmentData[0],
+      from: this.appointmentData[2],
+      to:this.appointmentData[3]
+    }
+    this.usersService.postCreateNewAppointment(newAppointment, this.appointmentPackage[this.bookingData[3]]._id)
+      .subscribe(
+        response=>{
+          console.log(response);
+          if(response.code!=400){
+            this.successSubmit();
+          }
+        }
+      )
+  }
+
+  successSubmit(){
+    swal({
+      title: 'Votre rendez-vous à bien été enregistré.',
+      text: '',
+      type: 'success',
+      confirmButtonText: "J'AI COMPRIS"
+    })
+    this.route.navigate(['/'])
   }
 
   ngAfterViewInit() {
@@ -165,7 +199,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
       for(let day of adviser.calendar){
         let debut = day.from[0].substr(11, 2);
         let fin = day.to[0].substr(11, 2);
-        console.log(debut, fin, day.from[0].substr(0, 10))
+        // console.log(debut, fin, day.from[0].substr(0, 10))
         this.calendarData.push({
           title:'Disponible', 
           start: day.from[0].substr(0, 10)+' '+debut+':00:00',

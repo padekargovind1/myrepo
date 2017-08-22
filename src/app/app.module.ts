@@ -72,7 +72,6 @@ import { CompareService } from './services/compare.service';
 import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
-import { ConseilService } from './services/conseil.service';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
 import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
@@ -180,8 +179,7 @@ import { ConseilPopupComponent } from './conseil/conseil-popup/conseil-popup.com
     BookingService,
     EditorService,
     SweetAlertService,
-    BrochureService,
-    ConseilService
+    BrochureService
   ],
     entryComponents: [
        BrochpopupComponent,

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
@@ -15,7 +15,7 @@ import swal from 'sweetalert2';
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.scss']
 })
-export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
+export class WizardComponent implements OnInit, AfterViewInit {
 
   tokenLog : boolean = false;
   bookingData:any;
@@ -103,11 +103,6 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.checked = false;
   }
 
-  ngOnDestroy(){
-    this.bookingService.cleanBooking()
-    console.log("destroy")
-  }
-
   /*
   Remove this method if the api work
   */
@@ -141,8 +136,14 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
   patchValue(userData){
     console.log(userData)
 	  var IsAdress = (userData.address!==undefined && userData.address!=null) ? true : false;
-    var haveLv1 = (userData.academicHistories[0].languages[1]!==undefined && userData.academicHistories[0].languages[1]!=null) ? true : false;
-    var haveLv2 = (userData.academicHistories[0].languages[2]!==undefined && userData.academicHistories[0].languages[2]!=null) ? true : false;
+    var haveLanguage = (userData.academicHistories.length!=0) ? true : false;
+    if(haveLanguage){
+      var haveLv1 = (userData.academicHistories[0].languages[1]!==undefined && userData.academicHistories[0].languages[1]!=null) ? true : false;
+      var haveLv2 = (userData.academicHistories[0].languages[2]!==undefined && userData.academicHistories[0].languages[2]!=null) ? true : false;
+    } else {
+      var haveLv1 = false;
+      var haveLv2 = false;
+    }
     var hobbies = (userData.hobbies!==undefined && userData.hobbies!=null) ? true : false;
     var interest = (userData.interest!==undefined && userData.interest!=null) ? true : false;
     this.wizardForm.patchValue({
@@ -157,14 +158,6 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       childCity : IsAdress ? userData.address.city : "",
       childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
       childBirthPlace : IsAdress ? userData.birthPlace : "",
-      //Current Institution
-      schoolName : userData.academicHistories[0].schoolName=="A compléter" ? "" : userData.academicHistories[0].schoolName,
-      schoolCity : userData.academicHistories[0].city=="A compléter" ? "" : userData.academicHistories[0].city,
-      schoolClasse : userData.academicHistories[0].class=="A compléter" ? "" :userData.academicHistories[0].class,
-      schoolOption : userData.academicHistories[0].classType=="A compléter" ? "" :userData.academicHistories[0].classType,
-      schoolLv1 : userData.academicHistories[0].languages[0]=="A compléter" ? "" : userData.academicHistories[0].languages[0],
-      schoolLv2 : haveLv1 ? userData.academicHistories[0].languages[1] : "",
-      schoolLv3 : haveLv2 ? userData.academicHistories[0].languages[2] : "",
       //Strong and weak subject
       bestSubject : userData.attractionToSubjects,
       weakSubject : userData.weakAtSubjects,
@@ -177,6 +170,18 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
       reasonDiagnostic : '',
       note : ''
     });
+    if(haveLanguage){
+      this.wizardForm.patchValue({
+        //Current Institution 
+        schoolName : userData.academicHistories[0].schoolName=="A compléter" ? "" : userData.academicHistories[0].schoolName,
+        schoolCity : userData.academicHistories[0].city=="A compléter" ? "" : userData.academicHistories[0].city,
+        schoolClasse : userData.academicHistories[0].class=="A compléter" ? "" :userData.academicHistories[0].class,
+        schoolOption : userData.academicHistories[0].classType=="A compléter" ? "" :userData.academicHistories[0].classType,
+        schoolLv1 : userData.academicHistories[0].languages[0]=="A compléter" ? "" : userData.academicHistories[0].languages[0],
+        schoolLv2 : haveLv1 ? userData.academicHistories[0].languages[1] : "",
+        schoolLv3 : haveLv2 ? userData.academicHistories[0].languages[2] : "",
+      })
+    }
     for (let i = 0; i<this.wizardForm.controls['parents']['controls'].length; i++){
 		if(userData.parents!==undefined && userData.parents!=null && userData.parents.length!=0){
 			IsAdress = (userData.parents[i].address!==undefined && userData.parents[i].address!=null) ? true : false;
@@ -185,7 +190,7 @@ export class WizardComponent implements OnInit, AfterViewInit, OnDestroy {
 			titre : userData.parents[i].gender,
 			nom : userData.parents[i].lastName,
 			prenom : userData.parents[i].firstName,
-			email : userData.parents[i].email,
+			email : this.usersService.getUserType()=="Parent" ? userData.email : '',
 			portable : userData.parents[i].phoneNumber,
 			adresse : IsAdress ? userData.parents[i].address.address1 : "",
 			codepostal : IsAdress ? userData.parents[i].address.postCode : "",
