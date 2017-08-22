@@ -39,14 +39,20 @@
                                             [formControl]="searchForm.controls['classe']">
                                             <option value="" disabled selected hidden>Classe</option>
                                             <option value="">&nbsp;Indifférent</option>
-                                            <option value="ps">&nbsp;Petite section</option>
-                                            <option value="ms">&nbsp;Moyenne section</option>
-                                            <option value="gs">&nbsp;Grande Section</option>
-                                            <option value="cp">&nbsp;CP</option>
-                                            <option value="ce1">&nbsp;CE1</option>
-                                            <option value="ce2">&nbsp;CE2</option>
-                                            <option value="cm1">&nbsp;CM1</option>
-                                            <option value="cm2">&nbsp;CM2</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;Classes maternelles
+                                            </option>
+                                            <option value="ps">&nbsp;Petite section (PS)</option>
+                                            <option value="ms">&nbsp;Moyenne section (MS)</option>
+                                            <option value="gs">&nbsp;Grande Section (GS)</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;Classes élémentaires
+                                            </option>
+                                            <option value="cp">&nbsp;Cours préparatoire (CP)</option>
+                                            <option value="ce1">&nbsp;Cours élémentaire 1er année(CE1)</option>
+                                            <option value="ce2">&nbsp;Cours élémentaire 2è année (CE2)</option>
+                                            <option value="cm1">&nbsp;Cours Moyen 1er année(CM1)</option>
+                                            <option value="cm2">&nbsp;Cours Moyen 2è année(CM2)</option>
                                         </select>
                                     </label>
                                 </div>
@@ -62,15 +68,15 @@
                                     <md-autocomplete #auto="mdAutocomplete">
                                         <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
                                         <md-option *ngFor="let option of options.regions" [value]="option">
-                                            &nbsp;&nbsp;{{ option }}
+                                            &nbsp;{{ option }}
                                         </md-option>
                                         <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
                                         <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                            &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                            &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
                                         </md-option>
                                         <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
                                         <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                            &nbsp;&nbsp;{{ option.cityName }}
+                                            &nbsp;{{ option.cityName }}
                                         </md-option>
                                     </md-autocomplete>
                                 </div>
@@ -135,62 +141,104 @@
 											<!--<option value="" disabled selected hidden>Classe</option>-->
 											<option value="" selected hidden>Classe</option>
                                             <option value="">&nbsp;Indifférent</option>
-                                            <option value="ps">&nbsp;Petite section</option>
-                                            <option value="ms">&nbsp;Moyenne section</option>
-                                            <option value="gs">&nbsp;Grande Section</option>
-                                            <option value="cp">&nbsp;CP</option>
-                                            <option value="ce1">&nbsp;CE1</option>
-                                            <option value="ce2">&nbsp;CE2</option>
-                                            <option value="cm1">&nbsp;CM1</option>
-                                            <option value="cm2">&nbsp;CM2</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;Classes maternelles
+                                            </option>
+                                            <option value="ps">&nbsp;Petite section (PS)</option>
+                                            <option value="ms">&nbsp;Moyenne section (MS)</option>
+                                            <option value="gs">&nbsp;Grande Section (GS)</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;Classes élémentaires
+                                            </option>
+                                            <option value="cp">&nbsp;Cours préparatoire (CP)</option>
+                                            <option value="ce1">&nbsp;Cours élémentaire 1er année(CE1)</option>
+                                            <option value="ce2">&nbsp;Cours élémentaire 2è année (CE2)</option>
+                                            <option value="cm1">&nbsp;Cours Moyen 1er année(CM1)</option>
+                                            <option value="cm2">&nbsp;Cours Moyen 2è année(CM2)</option>
                                             <option value="6e">&nbsp;6ème</option>
                                             <option value="cinquieme">&nbsp;5ème</option>
                                             <option value="quatrieme">&nbsp;4ème</option>
                                             <option value="troisieme">&nbsp;3ème</option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
-                                            <option value="seconde_probation">&nbsp;2nde de probation (ou méthodo.)</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;Classes de seconde
+                                            </option>
+                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
+                                            <option value="seconde_probation">&nbsp;2nde de probation (ou méthodologique)</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;Classes de première
+                                            </option>
                                             <option value="premiere_es">&nbsp;1ere ES - Economique et Sociale</option>
                                             <option value="premiere_l">&nbsp;1ere L - Littéraire</option>
                                             <option value="premiere_s">&nbsp;1ere S - Scientifique</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;Classes de terminale
+                                            </option>
                                             <option value="terminale_s">&nbsp;Tle ES - Economique et Sociale</option>
                                             <option value="terminale_l">&nbsp;Tle L - Littéraire</option>
                                             <option value="terminale_s">&nbsp;Tle S - Scientifique</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;Cursus international
+                                            </option>
                                             <option value="CI">&nbsp;Cursus International</option>
                                             <option value="BAC-I">&nbsp;Cursus Bac. International</option>
                                             <option value="cursus_non_francophone">&nbsp;Cursus non francophone (GB-US)</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                            </option>
                                             <option value="seconde_sthr">&nbsp;2nde spécifique STHR</option>
                                             <option value="premiere_sthr">&nbsp;1ere d’adaptation STHR</option>
                                             <option value="premiere_sthr">&nbsp;1ere STHR</option>
                                             <option value="terminale_sthr">&nbsp;Terminale STHR</option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
-                                            <option value="premiere_sti2s">&nbsp;1ere d’adaptation STI2S</option>
-                                            <option value="premiere_st2s">&nbsp;1ere STI2S</option>
-                                            <option value="terminale_st2s">&nbsp;Terminale STI2S</option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;ST2S - Sciences et Technologies de la santé et du social
+                                            </option>
+                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
+                                            <option value="premiere_sti2s">&nbsp;1ere d’adaptation ST2S</option>
+                                            <option value="premiere_st2s">&nbsp;1ere ST2S</option>
+                                            <option value="terminale_st2s">&nbsp;Terminale STIS</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
+                                            </option>
+                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                             <option value="premiere_std2a">&nbsp;1ère STI2A</option>
                                             <option value="terminale_std2a">&nbsp;Terminale STI2A</option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
+                                            </option>
+                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                             <option value="premiere_sti2d">&nbsp;1ère STI2D</option>
                                             <option value="terminale_sti2d">&nbsp;Terminale ST2D – Architecture et Construction</option>
                                             <option value="terminale_sti2d">&nbsp;Terminale STI2D – Energie et Environnement</option>
                                             <option value="terminale_sti2d">&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
                                             <option value="terminale_sti2d">&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
+                                            </option>
+                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                             <option value="premiere_stmg">&nbsp;1ère d’adaptation STMG</option>
                                             <option value="premiere_stmg">&nbsp;1ère STMG</option>
                                             <option value="terminale_stmg">&nbsp;Terminale STMG – Gestion et Finance</option>
                                             <option value="terminale_stmg">&nbsp;Terminale STMG – Mercatique</option>
                                             <option value="terminale_stmg">&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
                                             <option value="terminale_stmg">&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;STL - Sciences et Technologies de Laboratoire
+                                            </option>
+                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                             <option value="premiere_stl">&nbsp;1ère d’adaptation STL</option>
                                             <option value="premiere_stl">&nbsp;1ère STL</option>
                                             <option value="terminale_stl">&nbsp;Terminale STL – Biotechnologies</option>
                                             <option value="terminale_stl">&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
+                                            </option>
+                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                             <option value="premiere_stav">&nbsp;1ère d’adaptation STAV</option>
                                             <option value="premiere_stav">&nbsp;1ère STAV</option>
                                             <option value="terminale_stav">&nbsp;Terminale STAV</option>
+                                            <option value="" disabled style="color:red">
+                                                &nbsp;TMD - Techniques de la Musique et de la Danse
+                                            </option>
                                             <option value="2ndeTMD">&nbsp;2nde spécifique TMD</option>
                                             <option value="premiere_tmd">&nbsp;1ère d’adaptation TMD</option>
                                             <option value="premiere_tmd">&nbsp;1ère TMD</option>
@@ -211,15 +259,15 @@
                                     <md-autocomplete #auto="mdAutocomplete">
                                         <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
                                         <md-option *ngFor="let option of options.regions" [value]="option">
-                                            &nbsp;&nbsp;{{ option }}
+                                            &nbsp;{{ option }}
                                         </md-option>
                                         <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
                                         <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                            &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                            &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
                                         </md-option>
                                         <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
                                         <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                            &nbsp;&nbsp;{{ option.cityName }}
+                                            &nbsp;{{ option.cityName }}
                                         </md-option>
                                     </md-autocomplete>
                                 </div>
@@ -304,15 +352,15 @@
                                     <md-autocomplete #auto="mdAutocomplete">
                                         <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
                                         <md-option *ngFor="let option of options.regions" [value]="option">
-                                            &nbsp;&nbsp;{{ option }}
+                                            &nbsp;{{ option }}
                                         </md-option>
                                         <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
                                         <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                            &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                            &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
                                         </md-option>
                                         <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
                                         <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                            &nbsp;&nbsp;{{ option.cityName }}
+                                            &nbsp;{{ option.cityName }}
                                         </md-option>
                                     </md-autocomplete>
                                 </div>
@@ -387,50 +435,86 @@
                                     <select name="class" class="form-control" id="class"
                                         [formControl]="searchForm.controls['classe']">
                                         <option value="" disabled selected hidden>Classe</option>
-                                        <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
-                                        <option value="seconde_probation">&nbsp;2nde de probation (ou méthodo.)</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;Classes de seconde
+                                        </option>
+                                        <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
+                                        <option value="seconde_probation">&nbsp;2nde de probation (ou méthodologique)</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;Classes de première
+                                        </option>
                                         <option value="premiere_es">&nbsp;1ere ES - Economique et Sociale</option>
                                         <option value="premiere_l">&nbsp;1ere L - Littéraire</option>
                                         <option value="premiere_s">&nbsp;1ere S - Scientifique</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;Classes de terminale
+                                        </option>
                                         <option value="terminale_s">&nbsp;Tle ES - Economique et Sociale</option>
                                         <option value="terminale_l">&nbsp;Tle L - Littéraire</option>
                                         <option value="terminale_s">&nbsp;Tle S - Scientifique</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;Cursus international
+                                        </option>
                                         <option value="CI">&nbsp;Cursus International</option>
                                         <option value="BAC-I">&nbsp;Cursus Bac. International</option>
                                         <option value="cursus_non_francophone">&nbsp;Cursus non francophone (GB-US)</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                        </option>
                                         <option value="seconde_sthr">&nbsp;2nde spécifique STHR</option>
                                         <option value="premiere_sthr">&nbsp;1ere d’adaptation STHR</option>
                                         <option value="premiere_sthr">&nbsp;1ere STHR</option>
                                         <option value="terminale_sthr">&nbsp;Terminale STHR</option>
-                                        <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
-                                        <option value="premiere_sti2s">&nbsp;1ere d’adaptation STI2S</option>
-                                        <option value="premiere_st2s">&nbsp;1ere STI2S</option>
-                                        <option value="terminale_st2s">&nbsp;Terminale STI2S</option>
-                                        <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;ST2S - Sciences et Technologies de la santé et du social
+                                        </option>
+                                        <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
+                                        <option value="premiere_sti2s">&nbsp;1ere d’adaptation ST2S</option>
+                                        <option value="premiere_st2s">&nbsp;1ere ST2S</option>
+                                        <option value="terminale_st2s">&nbsp;Terminale STIS</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
+                                        </option>
+                                        <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                         <option value="premiere_std2a">&nbsp;1ère STI2A</option>
                                         <option value="terminale_std2a">&nbsp;Terminale STI2A</option>
-                                        <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
+                                        </option>
+                                        <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                         <option value="premiere_sti2d">&nbsp;1ère STI2D</option>
                                         <option value="terminale_sti2d">&nbsp;Terminale ST2D – Architecture et Construction</option>
                                         <option value="terminale_sti2d">&nbsp;Terminale STI2D – Energie et Environnement</option>
                                         <option value="terminale_sti2d">&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
                                         <option value="terminale_sti2d">&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                        <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
+                                        </option>
+                                        <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                         <option value="premiere_stmg">&nbsp;1ère d’adaptation STMG</option>
                                         <option value="premiere_stmg">&nbsp;1ère STMG</option>
                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Gestion et Finance</option>
                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Mercatique</option>
                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                        <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;STL - Sciences et Technologies de Laboratoire
+                                        </option>
+                                        <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                         <option value="premiere_stl">&nbsp;1ère d’adaptation STL</option>
                                         <option value="premiere_stl">&nbsp;1ère STL</option>
                                         <option value="terminale_stl">&nbsp;Terminale STL – Biotechnologies</option>
                                         <option value="terminale_stl">&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                        <option value="seconde_techno">&nbsp;2nde générale et techno.</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
+                                        </option>
+                                        <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                         <option value="premiere_stav">&nbsp;1ère d’adaptation STAV</option>
                                         <option value="premiere_stav">&nbsp;1ère STAV</option>
                                         <option value="terminale_stav">&nbsp;Terminale STAV</option>
+                                        <option value="" disabled style="color:red">
+                                            &nbsp;TMD - Techniques de la Musique et de la Danse
+                                        </option>
                                         <option value="2ndeTMD">&nbsp;2nde spécifique TMD</option>
                                         <option value="premiere_tmd">&nbsp;1ère d’adaptation TMD</option>
                                         <option value="premiere_tmd">&nbsp;1ère TMD</option>
@@ -451,15 +535,15 @@
                                 <md-autocomplete #auto="mdAutocomplete">
                                 <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
                                 <md-option *ngFor="let option of options.regions" [value]="option">
-                                    &nbsp;&nbsp;{{ option }}
+                                    &nbsp;{{ option }}
                                 </md-option>
                                 <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
                                 <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                    &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                    &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
                                 </md-option>
                                 <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
                                 <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                    &nbsp;&nbsp;{{ option.cityName }}
+                                    &nbsp;{{ option.cityName }}
                                 </md-option>
                                 </md-autocomplete>
                             </div>
@@ -540,15 +624,15 @@
                                     <md-autocomplete #auto="mdAutocomplete">
                                         <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
                                         <md-option *ngFor="let option of options.regions" [value]="option">
-                                            &nbsp;&nbsp;{{ option }}
+                                            &nbsp;{{ option }}
                                         </md-option>
                                         <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
                                         <md-option *ngFor="let option of options.departements" [value]="option.departmentNumber">
-                                            &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                            &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
                                         </md-option>
                                         <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
                                         <md-option *ngFor="let option of options.villes" [value]="option.postcode">
-                                            &nbsp;&nbsp;{{ option.cityName }}
+                                            &nbsp;{{ option.cityName }}
                                         </md-option>
                                     </md-autocomplete>
                                 </div>

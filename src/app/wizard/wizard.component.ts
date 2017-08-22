@@ -153,9 +153,9 @@ export class WizardComponent implements OnInit, AfterViewInit {
       childTitle : userData.gender,
       childMel : userData.email,
       childTel : userData.mobilePhone,
-      childAddr : IsAdress ? userData.address.address1 : "",
-      childPostalCode : IsAdress ? userData.address.postCode : "",
-      childCity : IsAdress ? userData.address.city : "",
+      // childAddr : IsAdress ? userData.address.address1 : "",
+      // childPostalCode : IsAdress ? userData.address.postCode : "",
+      // childCity : IsAdress ? userData.address.city : "",
       childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
       childBirthPlace : IsAdress ? userData.birthPlace : "",
       //Strong and weak subject
@@ -249,9 +249,9 @@ export class WizardComponent implements OnInit, AfterViewInit {
       childTitle : ['', Validators.required],
       childMel : ['', Validators.compose([Validators.required, CustomValidators.email])],
       childTel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
-      childAddr : ['', Validators.required],
-      childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
-      childCity : ['', Validators.required],
+      // childAddr : ['', Validators.required],
+      // childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
+      // childCity : ['', Validators.required],
       childBirthDay : [new Date(), Validators.compose([Validators.required, CustomValidators.date])],
       childBirthPlace : ['', Validators.required],
       // freresoeur : this.fb.array([this.createfs()]),
@@ -356,9 +356,9 @@ export class WizardComponent implements OnInit, AfterViewInit {
     this.userData.gender = this.wizardForm.value.childTitle
     this.userData.email = this.wizardForm.value.childMel
     this.userData.mobilePhone = this.wizardForm.value.childTel
-    this.userData.address.address1 = this.wizardForm.value.childAddr
-    this.userData.address.postCode = this.wizardForm.value.childPostalCode
-    this.userData.address.city = this.wizardForm.value.childCity
+    // this.userData.address.address1 = this.wizardForm.value.childAddr
+    // this.userData.address.postCode = this.wizardForm.value.childPostalCode
+    // this.userData.address.city = this.wizardForm.value.childCity
     this.userData.birthDate = this.wizardForm.value.childBirthDay
     this.userData.birthPlace = this.wizardForm.value.childBirthPlace
 
