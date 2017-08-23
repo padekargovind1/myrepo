@@ -182,7 +182,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
           // console.log(params[0].path);
           this.pathName = params[0].path
           if(this.pathName == "ecole"){
-            this.schoolComponentTitle="Rechercher une école Maternelle / Primaire"
+            this.schoolComponentTitle="ECOLE Maternelle / Primaire"
             $('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')")
             this.advancedSearch.code=["maternelle", "primaire"]
           } else if (this.pathName == "college"){
