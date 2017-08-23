@@ -216,7 +216,7 @@
                             <label for="download">&nbsp;</label>
                         </div>
                         <div class="cbp-caption">
-                            <div>
+                            <div class="cbp-caption-defaultWrap">
                                 <div class="image-wrap">
                                     <span class="vertical-helper"></span>
                                     <img src="http://54.254.203.172/cideapi/{{cycle.logo1}}" alt="" />
@@ -233,9 +233,9 @@
                                     </div>
                                 </div>
                             </div>-->
-                            <div>
-                                <div>
-                                    <div>
+                            <div class="cbp-caption-activeWrap">
+								<div class="cbp-l-caption-alignCenter">
+									<div class="cbp-l-caption-body">
                                         <a href="http://54.254.203.172/cideapi{{cycle.brochure}}" download="brochure.pdf" target="_self"
                                             class="btn-appointment btn red uppercase btn red uppercase"
                                             rel="nofollow"> <i class="fa fa-download"></i>
@@ -244,15 +244,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
-                                {{brochure.shortName}}
-                            </div>
-                            <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
-                                Nom du Cycle : {{cycle.cycle.nom}}
-                            </div>
-                            
                         </div>
                             
+						<div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+							{{brochure.shortName}}
+						</div>
+						<div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+							Nom du Cycle : {{cycle.cycle.nom}}
+						</div>
                     </div><!-- end second for -->
               
                 </div><!-- end first for -->
