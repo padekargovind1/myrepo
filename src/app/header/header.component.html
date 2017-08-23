@@ -110,8 +110,8 @@
     </h1>
 
     <ul class="mobile-login">
-        <li><i class=" fa fa-file-text" data-target="#download-popup"></i></li>
-        <li><i class="fa fa-bookmark" data-target="#download-popup"><sup class="wishcount">{{wishCount}}</sup></i></li>
+        <li (click)="wishApplyDialog(0)"><i class=" fa fa-file-text"><sup class="wishcount">{{applyCount}}</sup></i></li>
+        <li (click)="wishApplyDialog(1)"><i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i></li>
         <li *ngIf="!userLogin; else moblog"><i class="fa fa-user"></i>
             <ul class="login">
                 <li><a (click)="onSignUp()">S'inscrire</a></li>
@@ -130,7 +130,7 @@
     </ul>
     <ul class="right-top-menu pull-right">
         <li style="cursor:pointer" (click)="wishApplyDialog(0)">
-            <i class=" fa fa-file-text"></i>
+            <i class=" fa fa-file-text"><sup class="wishcount">{{applyCount}}</sup></i>
         </li>
         <li style="cursor:pointer" (click)="wishApplyDialog(1)">
             <i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i>
