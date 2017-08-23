@@ -39,7 +39,7 @@
 
 <md-tab-group #tabGroup>
 
-  <md-tab label="Ma candidature">
+  <md-tab label="Mes sélection d'écoles">
     <div *ngIf="applyList.length!=0" style="max-height:400px">
       <div class="card  school-list" *ngFor="let apply of applyList">                               
         <div class="card-content" style="max-width:476px">
@@ -62,7 +62,7 @@
     </div>
   </md-tab>
   
-  <md-tab label="Ma liste d'envies">
+  <md-tab label="Mes recherches">
     <div *ngIf="wishList.length!=0" style="max-height:400px">
       <div class="card  school-list" *ngFor="let wish of wishList; let i=index">    
         <md-checkbox (click)="onSchoolCheckbox(wish.school._id)"></md-checkbox>                           

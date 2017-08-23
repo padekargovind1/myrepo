@@ -122,7 +122,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   
     $('body').on('click', function($event){
-      console.log(event.srcElement.className)
+      // console.log(event.srcElement.className)
       if(event.srcElement.className=='fa fa-bookmark' || event.srcElement.className=='btn btn-success btn-outline btn-sm '){
         setTimeout(function(){
           self.getApplication()
@@ -162,6 +162,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.userLogin=false;
     this.router.navigate(['/']);
+    console.log(this.authService.getToken())
   }
 
   getApplication(){

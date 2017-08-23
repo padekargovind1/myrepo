@@ -33,7 +33,6 @@ export class SchoolCardComponent implements OnInit {
 
   onSchoolDetail(){
     console.log("Click on school detail")
-    this.publicService.storePath(this.pathName)
     this.makeSchoolDetailProfil();
     let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
     // this.router.navigate(['etablissement', this.SchoolData._id]);

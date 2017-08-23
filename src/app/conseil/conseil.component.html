@@ -23,14 +23,18 @@
       <h3 class="conseil-title  color-1  overload">ENTRETIEN CONSEILS POUR CHOISIR SON ÉCOLE</h3>
       
       <div class="conseil-content">
-          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée:</span><br />1 heure</div>
-          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public:</span><br />Tout Public</div>
+          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />1 heure</div>
+          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />Tout Public</div>
 
           <div class="conseil-price">80<sup>€</sup></div>
 
+          <a (click)="openInfoDialog(1)" class="btn  btn-conseil  btn-block  color-1">
+            En savoir plus
+          </a>
+
           <a (click)="navigateToBooking('1', 'Entretien Conseil', 'Pour choisir son école', '0')" 
             class="btn  btn-conseil  btn-block  color-1">
-            Je Reserve Maintenant
+            Prendre rendez-vous
           </a>
       </div>
 
@@ -56,13 +60,17 @@
       <h3 class="conseil-title  color-2  overload">ORIENTATION COLLÈGE QUE FAIRE APRÈS UNE CLASSE DE TROISIÈME ?</h3>
       
       <div class="conseil-content">
-          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée:</span><br />2 heures</div>
-          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public:</span><br />Élève de 3ème</div>
+          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />2 heures</div>
+          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />Élève de 3ème</div>
 
           <div class="conseil-price">160<sup>€</sup></div>
 
+          <a (click)="openInfoDialog(2)" class="btn  btn-conseil  btn-block  color-2">
+            En savoir plus
+          </a>
+
           <a (click)="navigateToBooking('2', 'Orientation Collège', 'Que faire après une classe de troisième', '1')" 
-            class="btn  btn-conseil  btn-block  color-2">Je Reserve Maintenant</a>
+            class="btn  btn-conseil  btn-block  color-2">Prendre rendez-vous</a>
       </div>
 
   </div><!-- .conseil-item -->
@@ -82,13 +90,17 @@
       <h3 class="conseil-title  color-3 overload">ORIENTATION LYCÉE ET ENSEIGNEMENT SUPÉRIEUR</h3>
       
       <div class="conseil-content">
-          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée:</span><br />De 3 à 4 heures</div>
-          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public:</span><br />De la 2nde à bac+2/3</div>
+          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />De 3 à 4 heures</div>
+          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />De la 2nde à bac+2/3</div>
 
           <div class="conseil-price">350<sup>€</sup></div>
 
+          <a (click)="openInfoDialog(3)" class="btn  btn-conseil  btn-block  color-3">
+            En savoir plus
+          </a>
+
           <a (click)="navigateToBooking('3', 'Orientation', 'Lycée et Enseignement Supérieur', '2')" 
-            class="btn  btn-conseil  btn-block  color-3">Je Reserve Maintenant</a>
+            class="btn  btn-conseil  btn-block  color-3">Prendre rendez-vous</a>
       </div>
 
   </div><!-- .conseil-item -->
@@ -111,13 +123,17 @@
       <h3 class="conseil-title  color-4  overload">ENTRETIEN CONSEILS ACCOMPAGNEMENT ORIENTATION POST BAC</h3>
       
       <div class="conseil-content">
-          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée:</span><br />Entretiens individuels de 2 heures</div>
-          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public:</span><br />Lycéens</div>
+          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />Entretiens individuels de 2 heures</div>
+          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />Lycéens</div>
 
           <div class="conseil-price">250<sup>€</sup></div>
 
+          <a (click)="openInfoDialog(4)" class="btn  btn-conseil  btn-block  color-4">
+            En savoir plus
+          </a>
+
           <a (click)="navigateToBooking('2', 'Entretien Conseils', 'Accompagnement orientation post-bac', '3')" 
-            class="btn  btn-conseil  btn-block  color-4">Je Reserve Maintenant</a>
+            class="btn  btn-conseil  btn-block  color-4">Prendre rendez-vous</a>
       </div>
 
   </div><!-- .conseil-item -->
@@ -161,14 +177,18 @@
       <h3 class="conseil-title  color-5  overload">BILAN PSYCHOPEDAGOGIQUE COMPLET</h3>
       
       <div class="conseil-content">
-          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée:</span><br />2 demi-journées + 1 heure d'entretien de restitution</div>
-          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public:</span><br />Tout Public
+          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />2 demi-journées + 1 heure d'entretien de restitution</div>
+          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />Tout Public
           </div>
 
           <div class="conseil-price">590<sup>€</sup></div>
 
+          <a (click)="openInfoDialog(5)" class="btn  btn-conseil  btn-block  color-5">
+            En savoir plus
+          </a>
+
           <a (click)="navigateToBooking('2 demi-journées + 1 heure', 'Bilan', 'Psychopédagogique', '4')" 
-            class="btn  btn-conseil  btn-block  color-5">Je Reserve Maintenant</a>
+            class="btn  btn-conseil  btn-block  color-5">Prendre rendez-vous</a>
       </div>
 
   </div><!-- .conseil-item -->
@@ -196,8 +216,12 @@
 
                   <div class="conseil-price">80<sup>€</sup></div>
 
+                  <a (click)="openMobileInfoDialog(1)" class="btn  btn-conseil  btn-block  color-1">
+                        En savoir plus
+                    </a>
+
                   <a (click)="navigateToBooking('1', 'Entretien Conseil', 'Pour choisir son école', '0')"
-                    class="btn  btn-conseil  btn-block  color-1">Je Reserve Maintenant</a>
+                    class="btn  btn-conseil  btn-block  color-1">Prendre rendez-vous</a>
               </div>
           </div>
       </div><!-- .panel -->
@@ -226,8 +250,12 @@
 
                   <div class="conseil-price">160<sup>€</sup></div>
 
+                  <a (click)="openMobileInfoDialog(2)" class="btn  btn-conseil  btn-block  color-2">
+                    En savoir plus
+                </a>
+
                   <a (click)="navigateToBooking('2', 'Orientation Collège', 'Que faire après une classe de troisième', '1')" 
-                    class="btn  btn-conseil  btn-block  color-2">Je Reserve Maintenant</a>
+                    class="btn  btn-conseil  btn-block  color-2">Prendre rendez-vous</a>
               </div>
           </div>
       </div><!-- .panel -->
@@ -251,8 +279,12 @@
 
                   <div class="conseil-price">350<sup>€</sup></div>
 
+                  <a (click)="openMobileInfoDialog(3)" class="btn  btn-conseil  btn-block  color-3">
+                        En savoir plus
+                    </a>
+
                   <a (click)="navigateToBooking('3', 'Orientation', 'Lycée et Enseignement Supérieur', '2')" 
-                    class="btn  btn-conseil  btn-block  color-3">Je Reserve Maintenant</a>
+                    class="btn  btn-conseil  btn-block  color-3">Prendre rendez-vous</a>
               </div>
           </div>
       </div><!-- .panel -->
@@ -279,8 +311,12 @@
 
                   <div class="conseil-price">250<sup>€</sup></div>
 
+                  <a (click)="openMobileInfoDialog(4)" class="btn  btn-conseil  btn-block  color-4">
+                        En savoir plus
+                    </a>
+
                   <a (click)="navigateToBooking('2', 'Entretien Conseils', 'Accompagnement orientation post-bac', '3')" 
-                    class="btn  btn-conseil  btn-block  color-4">Je Reserve Maintenant</a>
+                    class="btn  btn-conseil  btn-block  color-4">Prendre rendez-vous</a>
               </div>
           </div>
       </div><!-- .panel -->
@@ -329,8 +365,12 @@
 
                   <div class="conseil-price">590<sup>€</sup></div>
 
+                  <a (click)="openMobileInfoDialog(5)" class="btn  btn-conseil  btn-block  color-5">
+                        En savoir plus
+                    </a>
+
                   <a (click)="navigateToBooking('2 demi-journées + 1 heure', 'Bilan', 'Psychopédagogique', '4')" 
-                    class="btn  btn-conseil  btn-block  color-5">Je Reserve Maintenant</a>
+                    class="btn  btn-conseil  btn-block  color-5">Prendre rendez-vous</a>
               </div>
           </div>
       </div><!-- .panel -->

@@ -214,14 +214,6 @@ export class PublicService {
     return this.domaines;
   }
 
-  storePath(data){
-    localStorage.setItem('pathBack', data)
-  }
-
-  getStorePath(){
-    return localStorage.getItem('pathBack')
-  }
-
   getNbSlick(){
     this.nbSlick++;
     return this.nbSlick
@@ -230,4 +222,5 @@ export class PublicService {
   getCountry(){
     return this.country;
   }
+
 }

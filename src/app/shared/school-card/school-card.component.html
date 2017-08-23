@@ -21,15 +21,15 @@
     style="width:213.75px; height:213.75px"/>
 
 <div class="card-content">
-    <h3 style="height:30px" mdTooltip="{{SchoolData.longName}}">
-        {{ SchoolData.longName | school:42 }}
+    <h3 style="height:30px" mdTooltip="{{SchoolData.shortName}}">
+        {{ SchoolData.shortName | school:50 }}
     </h3>
     <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
         {{ SchoolData.cycles[0].cycle.status2 }} <br />
         {{ SchoolData.cycles[0].cycle.status3 }}</p>-->
-    <address> {{ SchoolData.address.ad1 }} <br /> 
+    <address style="font-size:14px; height : 72px"> {{ SchoolData.address.ad1 }} <br /> 
         {{ SchoolData.address.postcode }} {{ SchoolData.address.city }}<br /> 
-        Tel: {{ SchoolData.address.phone }}</address>
+        Tel : {{ SchoolData.address.phone | phone }}</address>
 
     <button class="btn btn-highlighted"
         (click)="onSchoolDetail()">Détail</button>

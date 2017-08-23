@@ -182,21 +182,21 @@ export class SchoolComponent implements OnInit, AfterViewInit {
           // console.log(params[0].path);
           this.pathName = params[0].path
           if(this.pathName == "ecole"){
-            this.schoolComponentTitle="École Maternelle / Primaire"
+            this.schoolComponentTitle="Rechercher une école Maternelle / Primaire"
             $('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')")
             this.advancedSearch.code=["maternelle", "primaire"]
           } else if (this.pathName == "college"){
-              this.schoolComponentTitle="Un collège 6ème-3ème"
+              this.schoolComponentTitle="Rechercher un collège (6ème-3ème)"
               $('.filter-form-holder').css('background-image', "url('./assets/images/secondary-school.jpg')")
               this.advancedSearch.code=[this.pathName]
           } else if(this.pathName == "lycee"){
-            this.schoolComponentTitle="Un lycée 2nde-Tle"
+            this.schoolComponentTitle="Rechercher un lycée (Seconde-Terminale)"
             $('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
             this.advancedSearch.code=[this.pathName]
           } else if(this.pathName == "internat"){
             this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
             this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
-            this.schoolComponentTitle="Un Internat Maternelle au Lycée"
+            this.schoolComponentTitle="Rechercher un Internat (Maternelle au Lycée)"
             $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
           } else {
             this.advancedSearch.code=["enseignement"]

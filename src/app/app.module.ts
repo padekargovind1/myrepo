@@ -47,12 +47,7 @@ import { LandingPage1Component } from './landing-page-1/landing-page-1.component
 import { EtablissementEssentielComponent } from './etablissement/etablissement-essentiel/etablissement-essentiel.component';
 import { EtablissementFormationComponent } from './etablissement/etablissement-formation/etablissement-formation.component';
 import { EtablissementEvenementComponent } from './etablissement/etablissement-evenement/etablissement-evenement.component';
-import { EtablissementFaqComponent } from './etablissement/etablissement-faq/etablissement-faq.component';
-import { EtablissementVideoComponent } from './etablissement/etablissement-video/etablissement-video.component';
-import { EtablissementAssoComponent } from './etablissement/etablissement-asso/etablissement-asso.component';
 import { EtablissementInfoComponent } from './etablissement/etablissement-info/etablissement-info.component';
-import { EtablissementArticlesComponent } from './etablissement/etablissement-articles/etablissement-articles.component';
-import { EtablissementMediaComponent } from './etablissement/etablissement-media/etablissement-media.component';
 import { LandingPage3Component } from './landing-page-3/landing-page-3.component';
 import { CompareBlockComponent } from './compare-mode/compare-block/compare-block.component';
 import { WizardComponent } from './wizard/wizard.component';
@@ -81,6 +76,8 @@ import { ApbCardComponent } from './shared/apb-card/apb-card.component';
 import { SchoolChoiceComponent } from './shared/school-choice/school-choice.component';
 import { CapitalPipe } from './pipes/capital.pipe';
 import { AgmCoreModule } from '@agm/core';
+import { ConseilPopupComponent } from './conseil/conseil-popup/conseil-popup.component';
+import { PhonePipe } from './pipes/phone.pipe';
 
 
 @NgModule({
@@ -112,12 +109,7 @@ import { AgmCoreModule } from '@agm/core';
     EtablissementEssentielComponent,
     EtablissementFormationComponent,
     EtablissementEvenementComponent,
-    EtablissementFaqComponent,
-    EtablissementVideoComponent,
-    EtablissementAssoComponent,
     EtablissementInfoComponent,
-    EtablissementArticlesComponent,
-    EtablissementMediaComponent,
     LandingPage3Component,
     CompareBlockComponent,
     WizardComponent,
@@ -135,7 +127,9 @@ import { AgmCoreModule } from '@agm/core';
     SuperieurComponent,
     ApbCardComponent,
     SchoolChoiceComponent,
-    CapitalPipe
+    CapitalPipe,
+    ConseilPopupComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
@@ -184,7 +178,8 @@ import { AgmCoreModule } from '@agm/core';
        BrochureDownloadComponent,
        WishApplyPopupComponent,
        SchoolChoiceComponent,
-       EtablissementComponent
+       EtablissementComponent,
+       ConseilPopupComponent
     ],
   bootstrap: [AppComponent]
 })

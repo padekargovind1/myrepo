@@ -71,7 +71,7 @@
                 <h3 class="title-confirm-modal">Rendez-vous</h3>
                 <p class="appointment-date"><strong>avec {{bookingDate[4]}} {{bookingDate[3]}}</strong></p>
 
-                <time class="appointment-date">Le {{bookingDate[0]}} de {{bookingDate[1]}} à {{bookingDate[2]}} </time><br>
+                <time class="appointment-date">Le {{bookingDate[0] | date:"dd/MM/yyyy"}} de {{bookingDate[1]}} à {{bookingDate[2]}} </time><br>
             
                 <p>
                 pour un entretien : {{bookingDate}}<br />

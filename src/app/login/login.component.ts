@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
+import { UsersService } from '../services/users.service';
+import { BookingService } from '../services/booking.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -17,17 +19,23 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb : FormBuilder,
               private router : Router,
-              private authService : AuthService) {
+              private authService : AuthService,
+              private userService : UsersService,
+              private bookingService : BookingService) {
     this.buildFormGroup();
   }
 
   ngOnInit() {
+    if(this.authService.isUserLoggedIn()){
+      this.router.navigate(['/']);
+    }
   }
 
   buildFormGroup(){
     this.loginForm = this.fb.group({
       email : ['' , Validators.compose([Validators.required, CustomValidators.email])],
-      password : ['', Validators.required]
+      password : ['', Validators.required],
+      userType : ['', Validators.required]
     })
   }
 
@@ -35,6 +43,7 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       const email = this.loginForm.controls.email.value;
       const password = this.loginForm.controls.password.value;
+      const userType = this.loginForm.controls.userType.value;
 
       const data = ({ email, password });
 
@@ -56,11 +65,20 @@ export class LoginComponent implements OnInit {
             }
             else {
               console.log(response);
-              this.router.navigate(['/'])
+              this.storeUserType(userType)
+              if(this.bookingService.isForBooking() || this.bookingService.isForFastBooking()){
+                this.bookingService.makeAppointment();
+              } else {
+                this.router.navigate(['/']);
+              }
             }        
           }
         );
     }
+  }
+
+  storeUserType(userType){
+    this.userService.storeUserType(userType);
   }
 
   onNewAccount(){
@@ -70,5 +88,4 @@ export class LoginComponent implements OnInit {
   onForgotPassword(){
     this.router.navigate(['/forgot-password']);
   }
-
 }
