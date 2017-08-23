@@ -37,15 +37,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
               private router : ActivatedRoute) { }
 
   ngOnInit() {
-    if(!this.authService.isUserLoggedIn()){
-      swal({
-        title: 'Attention',
-        text: 'Vous devez être connecté afin de prendre un rendez-vous.',
-        type: 'warning',
-        confirmButtonText: "J'ai compris"
-      })
-      this.route.navigate(['/login']);
-    } else if(!this.bookingService.haveBookingPackage()){
+    if(!this.bookingService.haveBookingPackage()){
       swal({
         title: 'Attention',
         text: 'Vous devez sélectionner le type du rendez-vous avant de pouvoir choisir un conseiller',
@@ -147,7 +139,18 @@ export class BookingComponent implements OnInit, AfterViewInit {
     if(this.bookingData[3]!=0){
       this.route.navigate(['/wizard']);
     } else {
-      this.applyEntretien()
+      if(this.authService.isUserLoggedIn()){
+        this.applyEntretien()
+      } else {
+        const newAppointment = {
+          adviser : this.appointmentData[0],
+          from: this.appointmentData[2],
+          to:this.appointmentData[3]
+        }
+        const packageIndex = this.bookingData[3];
+        this.bookingService.storeFastAppointment(newAppointment, packageIndex);
+        this.route.navigate(['/login']);
+      }
     }
   }
 

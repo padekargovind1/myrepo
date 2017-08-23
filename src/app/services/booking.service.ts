@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '../services/users.service';
+import swal from 'sweetalert2';
 
 @Injectable()
 export class BookingService {
   bookingData = ["", "", "", ""]
   adviserData = ["", "", "", "", ""];
+  forBooking : boolean = false;
+  forFastBooking : boolean = false;
+  newAppointment : any = null;
+  packageIndex : any = '';
+  userData : any = null;
 
-  constructor() { }
+  constructor(private usersService : UsersService,
+              private router : Router) { }
 
   storeBookingData(data){
     console.log(data);
@@ -87,6 +96,104 @@ export class BookingService {
     }
     // console.log(dataFiltered);
     return dataFiltered;
+  }
+
+  storeAppointmentData(newAppointment, packageIndex, userData){
+    console.log(newAppointment, packageIndex, userData)
+    this.userData = userData;
+    this.newAppointment=newAppointment;
+    this.packageIndex=packageIndex;
+    this.forBooking=true;
+  }
+
+  storeFastAppointment(newAppointment, packageIndex){
+    this.newAppointment=newAppointment;
+    this.packageIndex=packageIndex;
+    this.forFastBooking=true;
+  }
+
+  isForBooking(){
+    return this.forBooking==true;
+  }
+
+  isForFastBooking(){
+    return this.forFastBooking==true;
+  }
+
+  getUserData(){
+    return this.userData;
+  }
+
+  getPackageIndex(){
+    return this.packageIndex;
+  }
+
+  getNewAppointment(){
+    return this.newAppointment;
+  }
+
+  cleanAppointmentData(){
+    this.userData = null;
+    this.newAppointment=null;
+    this.packageIndex=null;
+    this.forBooking=false;
+  }
+
+  makeAppointment(){
+    this.usersService.getAppointmentsPackage()
+      .subscribe(
+        response=>{
+          console.log(response);
+          if(response.code!=400){
+            let packageId = response.data[this.getPackageIndex()]._id;
+            this.postCreateNewAppointment(packageId);
+            if(this.forBooking){
+              this.updateProfile();
+            }
+          }
+        }
+      )
+  }
+
+  postCreateNewAppointment(packageId){
+    console.log(packageId)
+    this.usersService.postCreateNewAppointment(this.getNewAppointment(), packageId)
+      .subscribe(
+        response=>{
+          console.log(response);
+          if(response.code==400){
+            console.log(response.message);
+          } else {
+            console.log('Appointement register');
+            if(this.forFastBooking){
+              this.router.navigate(['/']);
+            }
+          }
+        }
+      )
+  }
+
+  updateProfile(){
+    this.usersService.putProfile(this.getUserData())
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.successSubmit();
+            this.cleanBooking();
+          }
+        }
+      )
+  }
+
+  successSubmit(){
+    swal({
+      title: "Merci d'avoir choisi CIDE",
+      text: 'Votre Rendez-vous à bien été enregistré dans notre base de donnée. A bientôt!',
+      type: 'success',
+      confirmButtonText: "J'AI COMPRIS"
+    })
+    this.router.navigate(['/'])
   }
 
 }

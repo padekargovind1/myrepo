@@ -11,8 +11,8 @@ import {MyAccountMdl,
         MyAccountBulletin } from '../model/myaccount.model';
 
 const PROFILE_API : string = "http://54.254.203.172/cideapi/api/common/profile";
-const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/users/appointments";
-const PACKAGE_API : string = "http://54.254.203.172/cideapi/api/users/package";
+const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/public";
+const PACKAGE_API : string = "http://54.254.203.172/cideapi/api/public/package";
 const APPLICATION_API : string = "http://54.254.203.172/cideapi/api/users/apply";
 const TRIPS_API: string = "http://54.254.203.172/cideapi/api/users/trips";
 
@@ -98,12 +98,12 @@ export class UsersService {
   // }
   
   getAdviserFreeTime(adviserId):Observable<any>{
-    return this.http.get(APPOINTMENTS_API+'/adviserdata?token='+this.token+'&id='+adviserId, {headers: this.headers})
+    return this.http.get(APPOINTMENTS_API+'/adviserdata?id='+adviserId, {headers: this.headers})
       .map((response)=>response.json());
   }
 
   getAdviserData(adviserId): Observable<any>{
-    return this.http.get(APPOINTMENTS_API+'/adviser?token='+this.token+'&id='+adviserId, {headers: this.headers})
+    return this.http.get(APPOINTMENTS_API+'/adviser?id='+adviserId, {headers: this.headers})
       .map((response)=>response.json());
   }
 
@@ -113,7 +113,7 @@ export class UsersService {
   }
 
   postCreateNewAppointment(data, packageId): Observable<any>{
-    return this.http.post(APPOINTMENTS_API+'/'+packageId+'?token='+this.token, data)
+    return this.http.post('http://54.254.203.172/cideapi/api/users/appointments/'+packageId+'?token='+this.getToken(), data)
       .map((response)=>response.json());
   }
 

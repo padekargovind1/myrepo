@@ -103,7 +103,7 @@
 
                                             <div class="form-group">
                                                 <div class="select-custom">
-                                                    Lien de parenté* 
+                                                    Lien de parenté
                                                 <md-select placeholder="Lien de Parenté" class="form-control" 
                                                     formControlName="lienParent">
                                                     <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
@@ -117,6 +117,7 @@
                                                 </small>
                                                 </div>
                                             </div>
+                                            Titre
                                             <div class="form-group horizontal-radio clearfix">
                                                 <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
                                                                     <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
@@ -138,7 +139,7 @@
                                             <div class="row">
                                                 <div class="col-sm-6  col-xs-6">
                                                 <div class="form-group">
-                                                    Nom de famille* 
+                                                    Nom de famille
                                                     <input type="text" class="form-control" placeholder="Nom" 
                                                     formControlName="nom"
                                                     maxlength="25">
@@ -151,7 +152,7 @@
                                                 </div>
                                                 <div class="col-sm-6  col-xs-6">
                                                 <div class="form-group">
-                                                    Prénom*
+                                                    Prénom
                                                     <input type="text" class="form-control" placeholder="Prénom" 
                                                     formControlName="prenom"
                                                     maxlength="25">
@@ -169,7 +170,7 @@
                                                 <div class="row">
 
                                                     <div class="col-sm-12">
-                                                        Profession*
+                                                        Profession
                                                         <input type="text" class="form-control" 
                                                             placeholder="Profession / Secteur d'activité" 
                                                             formControlName="job"
@@ -184,7 +185,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                Email*
+                                                Email
                                                 <input type="email" class="form-control" placeholder="Email" 
                                                     formControlName="email">
                                                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.hasError('required') && 
@@ -202,7 +203,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        Numéro de portable*
+                                                        Numéro de portable
                                                         <input type="text" class="form-control" 
                                                             placeholder="Téléphone auquel je suis joignable" 
                                                             formControlName="portable"
@@ -230,7 +231,7 @@
                                                 <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="select-custom">
-                                                    Horaire joignable*
+                                                    Horaire joignable
                                                     <select name="" class="form-control" formControlName="horaireJoignable">
                                                         <option value="" disabled selected hidden>Horaires pour me contacter</option>
                                                         <option value="9h-12h">9h-12h</option>
@@ -312,7 +313,7 @@
                                                     <div class="row"> -->
                                                         <div class="col-sm-3  col-xs-6">
                                                             <div class="form-group">
-                                                                Age*
+                                                                Age
                                                                 <input type="number" class="form-control" max="50" min="1" placeholder="Age"
                                                                   [formControl]="wizardForm.controls['childAge']" maxlength="2"
                                                                   pattern="[0-9]+" id="txtAge">
@@ -410,7 +411,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="datepicker-holder">
-                                                            Date de naissance*
+                                                            Date de naissance
                                                             <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
                                                                 placeholder="Date de naissance" [max]="maxDate"
                                                                 [formControl]="wizardForm.controls['childBirthDay']">
@@ -420,7 +421,7 @@
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        Lieu de naissance*
+                                                        Lieu de naissance
                                                         <input type="text" class="form-control" placeholder="Lieu"
                                                             [formControl]="wizardForm.controls['childBirthPlace']"
                                                             maxlength="30">
@@ -523,7 +524,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        Nom de l'établissement*
+                                                        Nom de l'établissement
                                                         <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
                                                           [formControl]="wizardForm.controls['schoolName']" maxlength="50">
                                                     </div>
@@ -534,7 +535,7 @@
                                                 <div class="form-group  col-sm-12  col-xs-6">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            Ville de l'établissement*
+                                                            Ville de l'établissement
                                                             <input type="text" class="form-control" placeholder="Ville"
                                                               [formControl]="wizardForm.controls['schoolCity']" maxlength="35">
                                                         </div>
@@ -663,7 +664,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        Options*
+                                                        Options
                                                         <input type="text" class="form-control" placeholder="Options"
                                                           [formControl]="wizardForm.controls['schoolOption']"
                                                           maxlength="50">
@@ -676,7 +677,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom">
-                                                            Lv1*
+                                                            Lv1
                                                             <select name="" class="form-control"
                                                               [formControl]="wizardForm.controls['schoolLv1']">
                                                                 <option value="" disabled selected hidden>Lv1</option>
@@ -757,7 +758,7 @@
                                                         <div class="select-custom dans-quelles">
                                                             <select name="" class="form-control multiselect" 
                                                               id="dans-quelles" *ngIf="checked">
-                                                                <option value="">Dans quelles matières*</option>
+                                                                <option value="">Dans quelles matières</option>
                                                                 <option *ngFor="let subject of subjectSchool" value="subject">
                                                                     <md-checkbox>{{subject}}</md-checkbox>
                                                                 </option>
@@ -793,7 +794,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom-multiple-forte">
-                                                            Matières fortes*
+                                                            Matières fortes
  															<select class="form-control matery" 
                                                                 multiple="multiple" placeholder="Matières Fortes"
                                                                 [formControl]="wizardForm.controls['bestSubject']">
@@ -823,7 +824,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                       <div class="select-custom-multiple-faible">
-                                                            Matières faibles*
+                                                            Matières faibles
  															<select class="form-control matery" 
                                                                 multiple="multiple" placeholder="Matières Faibles"
                                                                 [formControl]="wizardForm.controls['weakSubject']">
@@ -853,7 +854,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom-multiple-gout">
-                                                            Matières préférées*
+                                                            Matières préférées
                                                             <select class="form-control matery" 
                                                                 multiple="multiple" 
                                                                 [formControl]="wizardForm.controls['interestSubject']">
@@ -907,7 +908,7 @@
                                                     <div class="col-sm-6">
                                                         <h4>Métier {{i+1}}</h4>
                                                         <div class="form-group">
-                                                            Job*
+                                                            Job
                                                             <input type="text" class="form-control" placeholder="Job" 
                                                             formControlName="interestJob"
                                                             maxlength="25">
@@ -916,7 +917,7 @@
                                                     <div class="col-sm-3">
                                                         <h4>&nbsp;</h4>
                                                         <div class="form-group">
-                                                            Age*
+                                                            Age
                                                             <input type="text" class="form-control" placeholder="Age" 
                                                             formControlName="interestAge" max="50" min="1"
                                                             maxlength="2">
@@ -944,7 +945,7 @@
                                             <div class="form-group different-gap">
                                                 <div class="row">
                                                     <div class="col-sm-9">
-                                                        Vos centres d'intérêts*
+                                                        Vos centres d'intérêts
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels sont vos centres d’interets"
                                                           [formControl]="wizardForm.controls['yourInterest']"
@@ -956,7 +957,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-9">
-                                                        Que pratiquez-vous?*
+                                                        Que pratiquez-vous?
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels loisirs et activités pratiquez-vous"
                                                           [formControl]="wizardForm.controls['practiceInterest']"
@@ -990,7 +991,7 @@
                                                         <h4 style="margin-left:15px">Primaire {{i+1}}</h4>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
-                                                                Nom de l'établissement*
+                                                                Nom de l'établissement
                                                                 <input type="text" class="form-control" placeholder="Nom"
                                                                 formControlName="primarySchoolName"
                                                                 maxlength="100">
@@ -999,7 +1000,7 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 <div class="select-custom">
-                                                                    Classe redoubler*
+                                                                    Classe redoubler
                                                                     <select name="" class="form-control"
                                                                         formControlName="primarySchoolRepeat">
                                                                         <option value="" disabled selected hidden>Classe redoublée</option>
@@ -1010,7 +1011,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
-                                                                Cause du redoublement*
+                                                                Cause du redoublement
                                                                 <input type="text" class="form-control" placeholder="Cause du redoublement"
                                                                 formControlName="causeOfRepeatPrimary"
                                                                 maxlength="100">
@@ -1037,7 +1038,7 @@
                                                         <h4 style="margin-left:15px">Secondaire {{i+1}}</h4>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
-                                                                Nom de l'établissement*
+                                                                Nom de l'établissement
                                                                 <input type="text" class="form-control" placeholder="Nom"
                                                                 formControlName="secondarySchoolName"
                                                                 maxlength="100">
@@ -1046,7 +1047,7 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 <div class="select-custom">
-                                                                    Classe redoubler*
+                                                                    Classe redoubler
                                                                     <select name="" class="form-control"
                                                                         formControlName="secondarySchoolRepeat">
                                                                         <option value="" disabled selected hidden>Classe redoublée</option>
@@ -1057,7 +1058,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
-                                                                Cause du redoublement*
+                                                                Cause du redoublement
                                                                 <input type="text" class="form-control" placeholder="Cause du redoublement"
                                                                     formControlName="causeOfRepeatSecondary"
                                                                     maxlength="100">
@@ -1569,7 +1570,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        Motif du diagnostic*
+                                                        Motif du diagnostic
                                                         <input type="text" class="form-control" placeholder="Motif du Diagnostic"
                                                           [formControl]="wizardForm.controls['reasonDiagnostic']"
                                                           maxlength="50">
@@ -1580,7 +1581,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        Remarques*
+                                                        Remarques
                                                         <input type="text" class="form-control" placeholder="Remarques Particulières"
                                                           [formControl]="wizardForm.controls['note']">
                                                     </div>

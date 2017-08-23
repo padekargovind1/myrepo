@@ -5,6 +5,15 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { BookingService } from '../services/booking.service';
+import { PublicService } from '../services/public.service';
+
+import {MyAccountMdl, 
+        MyAccountParentMdl, 
+        MyAccountAdresse,
+        MyAccountSocialAdrMdl,
+        MyAccountHistoryMdl,
+        MyAccountBulletin,
+        MyAccountSiblingsMdl } from '../model/myaccount.model';
 
 import { CustomValidators } from 'ng2-validation';
 import swal from 'sweetalert2';
@@ -58,27 +67,24 @@ export class WizardComponent implements OnInit, AfterViewInit {
               private bookingService : BookingService,
               private route : Router,
               private fb : FormBuilder,
-              private router : ActivatedRoute) { 
-                this.initAdviserData();
-                
-                this.getUserProfile();
-                
-              }
+              private router : ActivatedRoute,
+              private publicService : PublicService) { 
+    this.initAdviserData();
+    if(this.authService.isUserLoggedIn()){
+      this.getUserProfile();
+    }else{
+      let data = null;
+      this.buildForm(data);
+      this.canDisplayWizard=true;
+      this.makeUserDataProfile();
+    }
+  }
 
   ngOnInit() {
-    this.tokenLog=this.authService.isUserLoggedIn()
-    if(!this.tokenLog){
+    if(!this.bookingService.haveBookingData()){
       swal({
         title: 'Attention',
-        text: "Vous devez être connecté afin de prendre un rendez-vous.",
-        type: 'warning',
-        confirmButtonText: "J'ai compris"
-      })
-      this.route.navigate(['/login']);
-    } else if(!this.bookingService.haveBookingData()){
-      swal({
-        title: 'Attention',
-        text: "Vous devez hoisir un conseiller avant de remplri le formulaire",
+        text: "Vous devez hoisir un conseiller avant de remplir le formulaire",
         type: 'warning',
         confirmButtonText: "J'ai compris"
       })
@@ -113,6 +119,18 @@ export class WizardComponent implements OnInit, AfterViewInit {
       lastName : "",
       photo : ""
     }
+  }
+
+  makeUserDataProfile(){
+    this.userData=new MyAccountMdl();
+    this.userData.parents=[];
+    this.userData.parents.push(new MyAccountParentMdl());
+    this.userData.address= new MyAccountAdresse();
+    this.userData.socialAddresses = new MyAccountSocialAdrMdl();
+    this.userData.academicHistories[0]={};
+    this.userData.academicHistories[0] = new MyAccountHistoryMdl(); 
+    this.userData.bulletins[0] = new MyAccountBulletin();
+    this.userData.siblings[0]=new MyAccountSiblingsMdl();
   }
 
   getUserProfile(){
@@ -245,49 +263,51 @@ export class WizardComponent implements OnInit, AfterViewInit {
       parents : this.fb.array([this.createParent()]),
       childLastName: ['', Validators.required],
       childFirstName : ['', Validators.required],
-      childAge : ['', Validators.required],
-      childTitle : ['', Validators.required],
-      childMel : ['', Validators.compose([Validators.required, CustomValidators.email])],
-      childTel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
+      childAge : [''],
+      childTitle : [''],
+      childMel : ['', Validators.compose([CustomValidators.email])],
+      childTel : ['', Validators.compose([Validators.maxLength(10)])],
       // childAddr : ['', Validators.required],
       // childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
       // childCity : ['', Validators.required],
-      childBirthDay : [new Date(), Validators.compose([Validators.required, CustomValidators.date])],
-      childBirthPlace : ['', Validators.required],
+      childBirthDay : [new Date(), Validators.compose([CustomValidators.date])],
+      childBirthPlace : [''],
       // freresoeur : this.fb.array([this.createfs()]),
-      schoolName:['', Validators.required],
-      schoolCity : ['', Validators.required],
+      schoolName:[''],
+      schoolCity : [''],
       schoolClasse : ['', Validators.required],
-      schoolOption : ['', Validators.required],
-      schoolLv1 : ['', Validators.required],
+      schoolOption : [''],
+      schoolLv1 : [''],
       schoolLv2: [''],
       schoolLv3: [''],
       schoolHelp : [false],
-      schoolHelpSubject : ['', Validators.required],
-      bestSubject : ['', Validators.required],
-      weakSubject : ['', Validators.required],
-      interestSubject : ['', Validators.required],
+      schoolHelpSubject : [''],
+      bestSubject : [''],
+      weakSubject : [''],
+      interestSubject : [''],
       job : this.fb.array([this.createJob()]),
-      yourInterest : ['', Validators.required],
-      practiceInterest : ['', Validators.required],
+      yourInterest : [''],
+      practiceInterest : [''],
       primary : this.fb.array([this.createPrimaireSchool()]),
       secondary : this.fb.array([this.createSecondarySchool()]),
-      reasonDiagnostic : ['', Validators.required],
-      note :['', Validators.required],
+      reasonDiagnostic : [''],
+      note :[''],
     });
     // if(data.siblings!==undefined && data.siblings!=null && data.siblings.length>1){
     //   for(let i = 1; i<data.siblings.length; i++){
     //     this.wizardForm.controls['freresoeur']['controls'].push((this.createfs()))
     //   }
     // }
-    if(data.parents!==undefined && data.parents!=null && data.parents.length>1){
-      for(let i = 1; i<data.parents.length; i++){
-        this.wizardForm.controls['parents']['controls'].push(this.createParent())
+    if(data!=null){
+      if(data.parents!==undefined && data.parents!=null && data.parents.length>1){
+        for(let i = 1; i<data.parents.length; i++){
+          this.wizardForm.controls['parents']['controls'].push(this.createParent())
+        }
       }
-    }
-    if(data.jobs!==undefined && data.jobs!=null && data.jobs.length>1){
-      for(let i = 1; i<data.jobs.length; i++){
-        this.wizardForm.controls['job']['controls'].push(this.createJob())
+      if(data.jobs!==undefined && data.jobs!=null && data.jobs.length>1){
+        for(let i = 1; i<data.jobs.length; i++){
+          this.wizardForm.controls['job']['controls'].push(this.createJob())
+        }
       }
     }
     this.canDisplaySchool=true;
@@ -295,15 +315,14 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
   createParent(){
     return this.fb.group({
-      lienParent : ['', Validators.required],
-      titre : ['', Validators.required],
-      nom : ['', Validators.required],
-      prenom : ['', Validators.required],
-      job : ['', Validators.required],
-      email : ['', Validators.compose([CustomValidators.email, Validators.required])],
-      portable : ['', Validators.compose([Validators.required,
-                                          Validators.maxLength(10)])],
-      horaireJoignable : ['', Validators.required]
+      lienParent : [''],
+      titre : [''],
+      nom : [''],
+      prenom : [''],
+      job : [''],
+      email : ['', Validators.compose([CustomValidators.email])],
+      portable : ['', Validators.compose([Validators.maxLength(10)])],
+      horaireJoignable : ['']
     })
   }
 
@@ -317,8 +336,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
   createJob(){
     return this.fb.group({
-      interestJob : ['', Validators.required],
-      interestAge : ['', Validators.required]
+      interestJob : [''],
+      interestAge : ['']
     })
   }
 
@@ -338,22 +357,23 @@ export class WizardComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(){
-    console.log(this.wizardForm);
-    for(let i = 0; i<this.wizardForm.value.parents.length; i++){
-      this.userData.parents[i].profession = this.wizardForm.value.parents[i].job;
-      this.userData.parents[i].relationship = this.wizardForm.value.parents[i].lienParent
-      this.userData.parents[i].gender = this.wizardForm.value.parents[i].titre
-      this.userData.parents[i].lastName = this.wizardForm.value.parents[i].nom
-      this.userData.parents[i].firstName = this.wizardForm.value.parents[i].prenom
-      this.userData.parents[i].email = this.wizardForm.value.parents[i].email
-      this.userData.parents[i].phonenumber = this.wizardForm.value.parents[i].portable
-      this.userData.parents[i].availability = this.wizardForm.value.parents[i].horaireJoignable
+    console.log(this.wizardForm, this.userData);
+    if(this.userData.parents.length!=0){
+      for(let i = 0; i<this.wizardForm.value.parents.length; i++){
+        this.userData.parents[i].profession = this.wizardForm.value.parents[i].job;
+        this.userData.parents[i].relationship = this.wizardForm.value.parents[i].lienParent
+        this.userData.parents[i].gender = this.wizardForm.value.parents[i].titre
+        this.userData.parents[i].lastName = this.wizardForm.value.parents[i].nom
+        this.userData.parents[i].firstName = this.wizardForm.value.parents[i].prenom
+        this.userData.parents[i].email = this.wizardForm.value.parents[i].email
+        this.userData.parents[i].phonenumber = this.wizardForm.value.parents[i].portable
+        this.userData.parents[i].availability = this.wizardForm.value.parents[i].horaireJoignable
+      }
     }
-
     this.userData.lastName = this.wizardForm.value.childLastName
     this.userData.firstName = this.wizardForm.value.childFirstName
-    this.userData.age = this.wizardForm.value.childAge
-    this.userData.gender = this.wizardForm.value.childTitle
+    this.userData.age = this.wizardForm.value.childAge!==undefined ? this.wizardForm.value.childAge : 2;
+    this.userData.gender = this.wizardForm.value.childTitle!==undefined ? this.wizardForm.value.childTitle : 'A compléter'
     this.userData.email = this.wizardForm.value.childMel
     this.userData.mobilePhone = this.wizardForm.value.childTel
     // this.userData.address.address1 = this.wizardForm.value.childAddr
@@ -367,16 +387,17 @@ export class WizardComponent implements OnInit, AfterViewInit {
     //   this.userData.siblings[i].gender = this.wizardForm.value.freresoeur[i].gender
     //   this.userData.siblings[i].study = this.wizardForm.value.freresoeur[i].niveau
     // }
-
-    this.userData.academicHistories[0].city = this.wizardForm.value.schoolCity
-    this.userData.academicHistories[0].class = this.wizardForm.value.schoolClasse
-    this.userData.academicHistories[0].classType = this.wizardForm.value.schoolOption
-    this.userData.academicHistories[0].schoolName = this.wizardForm.value.schoolName
-    this.userData.academicHistories[0].languages = []
-    this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv1)
-    this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv2)
-    this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv3)
-
+    if(this.userData.academicHistories.length!=0){
+      this.userData.academicHistories[0].city = this.wizardForm.value.schoolCity
+      this.userData.academicHistories[0].class = this.wizardForm.value.schoolClasse
+      this.userData.academicHistories[0].classType = this.wizardForm.value.schoolOption
+      this.userData.academicHistories[0].schoolName = this.wizardForm.value.schoolName
+      this.userData.academicHistories[0].languages = []
+      this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv1)
+      this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv2)
+      this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv3)
+    }
+      
     this.userData.attractionToSubjects = [];
     this.userData.attractionToSubjects.push(this.wizardForm.value.bestSubject)
     this.userData.weakAtSubjects = [];
@@ -387,26 +408,33 @@ export class WizardComponent implements OnInit, AfterViewInit {
     for(let i = 0; i<this.wizardForm.value.job.length; i++){
       this.userData.jobs[i]={};
       console.log(this.userData.jobs[i])
-      this.userData.jobs[i].profession=this.wizardForm.value.job[i].interestJob
-      this.userData.jobs[i].age=this.wizardForm.value.job[i].interestAge
+      this.userData.jobs[i].profession=this.wizardForm.value.job[i].interestJob;
+      this.userData.jobs[i].age=this.wizardForm.value.job[i].interestAge!='' ? this.wizardForm.value.job[i].interestAge : 0
     }
 
     this.userData.interest = this.wizardForm.value.yourInterest;
     this.userData.hobbies = this.wizardForm.value.practiceInterest;
-    this.initNewAppointment();
-    this.putProfile();
-  }
-
-  initNewAppointment(){
+    this.userData.photo = false;
+    this.userData.disabilityStatus = false;
+    this.userData.address = new MyAccountAdresse();
     this.newAppointment = {
       adviser : this.appointmentData[5],
       from: this.appointmentData[0],
       to:this.appointmentData[0]
     }
-    this.getPackageById(this.appointmentData[9]);
+    if(this.authService.isUserLoggedIn()){
+      this.getPackageById(this.appointmentData[9]);
+      this.putProfile();
+    } else {
+      var packageIndex = this.bookingService.getBookingPackage()[3];
+      console.log(packageIndex);
+      this.bookingService.storeAppointmentData(this.newAppointment, packageIndex, this.userData);
+      this.route.navigate(['/login']);
+    }
   }
 
   putProfile(){
+    console.log(this.userData)
     this.usersService.putProfile(this.userData)
       .subscribe(
         response=>{
@@ -422,8 +450,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
   successSubmit(){
     swal({
-      title: 'Votre rendez-vous à bien été enregistré.',
-      text: '',
+      title: "Merci d'avoir choisi CIDE",
+      text: 'Votre Rendez-vous à bien été enregistré dans notre base de donnée. A bientôt!',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
     })

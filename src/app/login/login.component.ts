@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
+import { BookingService } from '../services/booking.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -19,11 +20,15 @@ export class LoginComponent implements OnInit {
   constructor(private fb : FormBuilder,
               private router : Router,
               private authService : AuthService,
-              private userService : UsersService) {
+              private userService : UsersService,
+              private bookingService : BookingService) {
     this.buildFormGroup();
   }
 
   ngOnInit() {
+    if(this.authService.isUserLoggedIn()){
+      this.router.navigate(['/']);
+    }
   }
 
   buildFormGroup(){
@@ -61,7 +66,11 @@ export class LoginComponent implements OnInit {
             else {
               console.log(response);
               this.storeUserType(userType)
-              this.router.navigate(['/'])
+              if(this.bookingService.isForBooking() || this.bookingService.isForFastBooking()){
+                this.bookingService.makeAppointment();
+              } else {
+                this.router.navigate(['/']);
+              }
             }        
           }
         );
@@ -79,5 +88,4 @@ export class LoginComponent implements OnInit {
   onForgotPassword(){
     this.router.navigate(['/forgot-password']);
   }
-
 }
