@@ -65,6 +65,8 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   ancient: any="";
   regional: any="";
   limit=20;
+  totalRecords=20;
+  isLoader=false;
   slickNb : number;
   nbBodyClick : number =0;
   nbAdvancedClick : number = 0;
@@ -375,17 +377,20 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   }
 
   postAdvancedFilter(){
-    console.log(this.advancedSearch)
+    console.log(this.advancedSearch);
+	this.isLoader=true;
     this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
         response=>{
           console.log(response);
-          let data = response.data
+          let data = response.data;
+		  this.isLoader=false;
           if(response.code==400){
             // console.log(response.message)
           } else {
             this.defaultSchoolList=data;
             this.schoolListFilter=data;
+			this.totalRecords = response.total;
             console.log(this.schoolListFilter)
             // this.filterCycleSchool(data)
           }
