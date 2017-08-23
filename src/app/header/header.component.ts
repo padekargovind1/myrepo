@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   schoolApply = [];
   schoolWish = [];
   wishCount = 0;
+  applyCount = 0;
   userLastName : string = "";
   userFirstName : string = "";
   wishList= [];
@@ -173,7 +174,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
           } else {
             // console.log(response.data)
             this.wishList=response.data;
-			      this.wishCount = this.wishList.length;
+			var wcount = 0;
+			var acount=0;
+			for(let data of response.data){
+              if(data.type=='wish'){
+                wcount++;
+              } else {
+                acount++;
+              }
+            }
+			this.wishCount = wcount;
+			this.applyCount = acount;
           }
         }
       )
