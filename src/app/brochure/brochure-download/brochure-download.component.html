@@ -5,23 +5,32 @@
 
     <ul class="files-to-download">
         <li *ngFor="let brochure of brochureList; let i=index">
-            <img src="assets/images/school-logo/lycee-francois-d-estaing.png" alt="" width="20" />
-            <span>{{ brochure.brochure }}</span>
+            <img src="http://54.254.203.172/cideapi/{{brochure.logo1}}" alt="" width="20" />
+            <span>{{ brochure.nom }} / Cycle : {{ brochure.cycle.nom }} </span>
             <span class="remove" (click)="onRemoveBrochure(i)"
               style="cursor:pointer">X</span>
             <!--<a class="remove">x</a>-->
         </li>
     </ul>
 
-    <button type="button" 
-      data-dismiss="modal" 
-      class="btn btn-highlighted"
-      (click)="onCancel()">Annuler</button>
-      <a href="../../assets/brochure/1.pdf" download="1.pdf" target="_self">
-        <button type="button" 
-        data-dismiss="modal" 
-        class="btn btn-secondary"
-        (click)="onSubmit()">Télécharger</button>
+    <div *ngIf="brochureList[0]!==undefined" style="float : right">
+
+      <a href="http://54.254.203.172/cideapi/{{brochureList[0].brochure}}" 
+        class="btn btn-secondary" (click)="onSubmit()"
+        download="1.pdf" target="_self">
+        Télécharger
+        <!--<button type="button" 
+          data-dismiss="modal" 
+          class="btn btn-secondary"
+          (click)="onSubmit()">Télécharger
+        </button>-->
       </a>
 
+      <button type="button" style="float : right"
+        data-dismiss="modal" 
+        class="btn btn-highlighted"
+        (click)="onCancel()">Annuler
+      </button>
+    </div>
+      
 </div><!-- .modal-body -->

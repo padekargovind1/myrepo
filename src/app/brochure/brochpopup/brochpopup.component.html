@@ -1,42 +1,45 @@
 <md-tab-group class="download-modal" #tabGroup>
   <md-tab label="Formulaire">
-     <div role="tabpanel"  id="Formulaire" class="modal-download">
+     <div role="tabpanel" style="width:95%; margin-left:2%">
          <form [formGroup]="brochureForm">
-            <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
+            <p class="note">
+                Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
             <h3>Parents</h3>
-            <div class="form-group">
-                <div class="select-custom">
-                    <div style="margin-bottom:10px">
-                        <span>Lien de Parenté</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="select-custom">
+                        <div style="margin-bottom:10px">
+                            <span>Lien de Parenté</span>
+                        </div>
+                        <select name="" class="form-control"
+                            [formControl]="brochureForm.controls['lienParent']">
+                            <option value="" disabled selected hidden>Lien de Parenté</option>
+                            <option value="Père">Père</option>
+                            <option value="Mère">Mère</option>
+                            <option value="Oncle">Oncle</option>
+                            <option value="Tante">Tante</option>
+                            <option value="Grand-Père">Grand-Père</option>
+                            <option value="Grand-Mère">Grand-Mère</option>
+                            <option value="Tuteur">Tuteur</option>
+                            <option value="Tutrice">Tutrice</option>
+                        </select>
                     </div>
-                    <select name="" class="form-control"
-                        [formControl]="brochureForm.controls['lienParent']">
-                        <option value="" disabled selected hidden>Lien de Parenté</option>
-                        <option value="Père">Père</option>
-                        <option value="Mère">Mère</option>
-                        <option value="Oncle">Oncle</option>
-                        <option value="Tante">Tante</option>
-                        <option value="Grand-Père">Grand-Père</option>
-                        <option value="Grand-Mère">Grand-Mère</option>
-                        <option value="Tuteur">Tuteur</option>
-                        <option value="Tutrice">Tutrice</option>
-                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div style="margin-bottom:10px">
+                        <span>Titre</span>
+                    </div>
+                    <div class="form-group horizontal-radio clearfix">
+                        
+                        <md-radio-group [formControl]="brochureForm.controls['title']"
+                    style="border-color:white">
+                            <md-radio-button value="m" class="rdmark">M</md-radio-button>
+                            <md-radio-button value="mrs" class="rdmark">Mlle</md-radio-button>
+                            <md-radio-button value="ms" class="rdmark">Mme</md-radio-button>
+                        </md-radio-group>
+                    </div>
                 </div>
             </div>
-            <div style="margin-bottom:10px">
-                <span>Titre</span>
-            </div>
-            <div class="form-group horizontal-radio clearfix">
-                
-                <md-radio-group [formControl]="brochureForm.controls['title']"
-              style="border-color:white">
-                    <md-radio-button value="m" class="rdmark">M</md-radio-button>
-                    <md-radio-button value="mrs" class="rdmark">Mlle</md-radio-button>
-                    <md-radio-button value="ms" class="rdmark">Mme</md-radio-button>
-                </md-radio-group>
-            </div>
-
-            
             <div class="row">
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
@@ -95,6 +98,9 @@
                 </div>
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
+                        <div style="margin-bottom:10px">
+                            <span>Prénom*</span>
+                        </div>
                         <input type="text" class="form-control" placeholder="Prénom"
                             [formControl]="brochureForm.controls['childFirstName']"
                             maxlength="25">
@@ -105,56 +111,11 @@
             <div class="row">
                 <!-- <div class="col-sm-12">
                     <div class="row"> -->
-                        <div class="col-sm-3  col-xs-6">
-                            <div class="form-group">
-                                <input type="number" class="form-control" max="20" min="1" placeholder="Age"
-                                    [formControl]="brochureForm.controls['childAge']"
-                                    maxlength="2">
-                            </div>
-                        </div>
-                        <div class="col-sm-3  hidden-xs">&nbsp;</div>
-                    
                         <div class="col-sm-6  col-xs-6">
-                            <div class="form-group">
-                                <div class="horizontal-radio">
-                                    <md-radio-group [formControl]="brochureForm.controls['childTitle']"
-                                        style="border-color:white">
-                                        <md-radio-button value="Garçon" >Garçon</md-radio-button>
-                                        <md-radio-button value="Fille">Fille</md-radio-button>
-                                    </md-radio-group>
-                                </div>
-                            </div>
-                        </div>
-                    <!-- </div>
-                </div> -->
-            </div>
-
-
-            <!--<div class="form-group">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
-                            [formControl]="brochureForm.controls['etablissement']"
-                            maxlength="50">
-                    </div>
-                </div>
-            </div>-->
-            
-            <div class="row">
-                <!--<div class="form-group  col-sm-12  col-xs-6">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" placeholder="Ville"
-                                [formControl]="brochureForm.controls['city']"
-                                maxlength="50">
-                        </div>
-                    </div>
-                </div>-->
-
-                <div class="form-group  col-sm-12  col-xs-6">
-                    <div class="row">
-                        <div class="col-sm-12">
                             <div class="select-custom">
+                                <div style="margin-bottom:10px">
+                                    <span>Classe actuelle</span>
+                                </div>
                                 <select name="" class="form-control"
                                     [formControl]="brochureForm.controls['classe']">
                                     <option value="" disabled selected hidden>Classe</option>
@@ -265,9 +226,35 @@
                                 </select>
                             </div>
                         </div>
+                    
+                        <div class="col-sm-6  col-xs-6">
+                            <div class="form-group">
+                                <div class="horizontal-radio">
+                                    <div style="margin-bottom:10px">
+                                        <span>Sexe</span>
+                                    </div>
+                                    <md-radio-group [formControl]="brochureForm.controls['childTitle']"
+                                        style="border-color:white">
+                                        <md-radio-button value="garçon" >Garçon</md-radio-button>
+                                        <md-radio-button value="fille">Fille</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </div>
+                </div> -->
+            </div>
+
+
+            <!--<div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
+                            [formControl]="brochureForm.controls['etablissement']"
+                            maxlength="50">
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <div class="form-group">
                 <div class="row">
@@ -279,17 +266,20 @@
                 </div>
             </div>
 
-            <button type="button" data-dismiss="modal" class="btn btn-highlighted"
-                (click)="onCancel()">Annuler</button>
-            <a (click)="toSecondTab()" data-toggle="tab" class="btn btn-secondary">
-                Suivant
-            </a>
+            <div style="float : right">
+                <button type="button" data-dismiss="modal" class="btn btn-highlighted"
+                    (click)="onCancel()">Annuler</button>
+                <a (click)="toSecondTab()" data-toggle="tab" class="btn btn-secondary">
+                    Suivant
+                </a>
+            </div>
+                
          </form>
     </div>
   </md-tab>
 
   <md-tab label="ProfilScolaire" id="tab2">
-    <div role="tabpanel"  id="ProfilScolaire" class="modal-download">
+    <div role="tabpanel">
         <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
 
         <div class="form-group horizontal-radio clearfix">
@@ -343,14 +333,14 @@
               (art. 34 de la loi "informatique et libertés" - Numéro de déclaration CNIL 1271917).
                Formulez votre demande par écrit au CIDE, 84, boulevard Saint-Michel 75006 Paris.
             </p>
-            <button type="button" data-dismiss="modal" 
-                class="btn btn-highlighted"
-                (click)="onCancel()">Annuler</button>
-            <button class="btn btn-secondary 
-                close-download"
-                (click)="onSubmit()">Valider</button>
-
-                <!--[disabled]="!brochureForm.valid"-->
+            <div style="float : right">
+                <button type="button" data-dismiss="modal" 
+                    class="btn btn-highlighted"
+                    (click)="onCancel()">Annuler</button>
+                <button class="btn btn-secondary 
+                    close-download"
+                    (click)="onSubmit()">Valider</button>
+            </div>
         </div>
     </md-tab>
 </md-tab-group>

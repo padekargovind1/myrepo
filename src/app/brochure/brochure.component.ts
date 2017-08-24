@@ -18,8 +18,8 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
     lastCloseResult: string;
     config: MdDialogConfig = {
         disableClose: false,
-        width: '350',
-        height: '550',
+        width: '400px',
+        height: '550px',
         position: {
         top: '',
         bottom: '',
@@ -36,6 +36,7 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
     };
     schoolsOptions: any;
     downloadList = [];
+    downloadSchoolList = [];
     searchBrochure = {
         class : "",
         place : "",
@@ -46,10 +47,10 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
               public dialog:MdDialog,
               private fb : FormBuilder,
               private brochureService : BrochureService) { 
-      this.getBrochure()
+      this.getBrochure();
       this.buildForm();
-      this.makeProfile()
-      this.getSearch()
+      this.makeProfile();
+      this.getSearch();
       // this.doBrochure();
   }
   ngOnInit() {
@@ -172,9 +173,23 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     makeProfile(){
+        let screenWidth : string = (window.screen.width/3).toString()+'px';
+        let screenHeight : string = ((window.screen.height/3)*2).toString()+'px';
+        this.config= {
+            disableClose: false,
+            width: screenWidth,
+            height: screenHeight,
+            position: {
+            top: '',
+            bottom: '',
+            left: '',
+            right: ''
+            }
+        };
         this.config2 = {
             data:{
-                brochureList : this.downloadList
+                brochureList : this.downloadList,
+                schoolList : this.downloadSchoolList
             },
             disableClose: false,
             width: '',
@@ -286,17 +301,26 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    onCheckbox(brochureId){
+    onCheckbox(schoolId, brochureId){
         // console.log(brochureId);
         if(this.downloadList.includes(brochureId)){
             // console.log("remove checkbox");
             let i = this.downloadList.indexOf(brochureId, 0);
             // console.log(i);
             this.downloadList.splice(i, 1);
-            } else {
+            this.downloadSchoolList.splice(i, 1);
+        } else {
             this.downloadList.push(brochureId);
+            this.downloadSchoolList.push(schoolId)
         }
         console.log(this.downloadList);
+    }
+
+    onDownloadBrochure(schoolId, brochureId){
+        console.log(brochureId)
+        this.downloadList[0]=brochureId;
+        this.downloadSchoolList[0]=schoolId;
+        this.brochDialog();
     }
 
 }
