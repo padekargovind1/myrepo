@@ -142,8 +142,8 @@ export class ApplytoComponent implements OnInit {
       // childAddr : IsAdress ? userData.address.address1 : "",
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
-      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
-      childBirthPlace : IsAdress ? userData.birthPlace : "",
+      // childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
+      // childBirthPlace : IsAdress ? userData.birthPlace : "",
       //Current Institution
       schoolName : userData.academicHistories[0].schoolName=="A compléter" ? "" : userData.academicHistories[0].schoolName,
       schoolCity : userData.academicHistories[0].city=="A compléter" ? "" : userData.academicHistories[0].city,
@@ -204,29 +204,29 @@ export class ApplytoComponent implements OnInit {
       parents : this.fb.array([this.createParent()]),
       childLastName: ['', Validators.required],
       childFirstName : ['', Validators.required],
-      childAge : ['', Validators.required],
-      childTitle : ['', Validators.required],
+      childAge : [''],
+      childTitle : [''],
       childMel : ['', Validators.compose([Validators.required, CustomValidators.email])],
       childTel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
       // childAddr : ['', Validators.required],
       // childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
       // childCity : ['', Validators.required],
-      childBirthDay : ['', Validators.required],
-      childBirthPlace : ['', Validators.required],
+      // childBirthDay : ['', Validators.required],
+      // childBirthPlace : ['', Validators.required],
       // freresoeur : this.fb.array([this.createfs()]),
-      schoolName:['', Validators.required],
-      schoolCity : ['', Validators.required],
+      schoolName:[''],
+      schoolCity : [''],
       schoolClasse : ['', Validators.required],
-      schoolOption : ['', Validators.required],
-      schoolLv1 : ['', Validators.required],
+      schoolOption : [''],
+      schoolLv1 : [''],
       schoolLv2: [''],
       schoolLv3: [''],
-      bestSubject : ['', Validators.required],
-      weakSubject : ['', Validators.required],
-      interestSubject : ['', Validators.required],
+      bestSubject : [''],
+      weakSubject : [''],
+      interestSubject : [''],
       job : this.fb.array([this.createJob()]),
-      yourInterest : ['', Validators.required],
-      practiceInterest : ['', Validators.required],
+      yourInterest : [''],
+      practiceInterest : [''],
     })
     console.log(data)
     // if(data.siblings.length>1){
@@ -248,15 +248,14 @@ export class ApplytoComponent implements OnInit {
 
   createParent(){
     return this.fb.group({
-      lienParent : ['', Validators.required],
-      titre : ['', Validators.required],
-      nom : ['', Validators.required],
-      prenom : ['', Validators.required],
-      job : ['', Validators.required],
-      email : ['', Validators.compose([CustomValidators.email, Validators.required])],
-      portable : ['', Validators.compose([Validators.required,
-                                          Validators.maxLength(10)])],
-      horaireJoignable : ['', Validators.required]
+      lienParent : [''],
+      titre : [''],
+      nom : [''],
+      prenom : [''],
+      job : [''],
+      email : ['', Validators.compose([CustomValidators.email])],
+      portable : ['', Validators.compose([Validators.maxLength(10)])],
+      horaireJoignable : ['']
     })
   }
 
@@ -270,8 +269,8 @@ export class ApplytoComponent implements OnInit {
 
   createJob(){
     return this.fb.group({
-      interestJob : ['', Validators.required],
-      interestAge : ['', Validators.required]
+      interestJob : [''],
+      interestAge : ['']
     })
   }
 
@@ -297,8 +296,8 @@ export class ApplytoComponent implements OnInit {
     // this.userData.address.address1 = this.applytoForm.value.childAddr
     // this.userData.address.postCode = this.applytoForm.value.childPostalCode
     // this.userData.address.city = this.applytoForm.value.childCity
-    this.userData.birthDate = this.applytoForm.value.childBirthDay
-    this.userData.birthPlace = this.applytoForm.value.childBirthPlace
+    // this.userData.birthDate = this.applytoForm.value.childBirthDay
+    // this.userData.birthPlace = this.applytoForm.value.childBirthPlace
 
     // for(let i = 0; i<this.applytoForm.value.freresoeur.length; i++){
     //   this.userData.siblings[i].age = this.applytoForm.value.freresoeur[i].age
