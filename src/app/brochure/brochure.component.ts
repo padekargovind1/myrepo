@@ -18,8 +18,8 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
     lastCloseResult: string;
     config: MdDialogConfig = {
         disableClose: false,
-        width: '300',
-        height: '450',
+        width: '350',
+        height: '550',
         position: {
         top: '',
         bottom: '',

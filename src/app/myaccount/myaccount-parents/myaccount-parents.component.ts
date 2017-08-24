@@ -111,18 +111,16 @@ export class MyaccountParentsComponent implements OnInit {
 
   createParent(){
     return this.fb.group({
-      lienParent : ['', Validators.required],
-      titre : ['', Validators.required],
-      nom : ['', Validators.required],
-      prenom : ['', Validators.required],
-      email : ['', Validators.compose([CustomValidators.email, Validators.required])],
-      portable : ['', Validators.compose([Validators.required,
-                                          Validators.maxLength(10)])],
-      adresse : ['', Validators.required],
-      codepostal : ['', Validators.compose([Validators.required,  
-                                            Validators.maxLength(5)])],
-      ville: ['', Validators.required],
-      pays: ['', Validators.required]
+      lienParent : [''],
+      titre : [''],
+      nom : [''],
+      prenom : [''],
+      email : ['', Validators.compose([CustomValidators.email])],
+      portable : ['', Validators.compose([Validators.maxLength(10)])],
+      adresse : [''],
+      codepostal : ['', Validators.compose([Validators.maxLength(5)])],
+      ville: [''],
+      pays: ['']
     })
   }
 

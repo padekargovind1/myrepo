@@ -83,15 +83,15 @@ export class MyaccountChildrenComponent implements OnInit {
     this.childrenForm = this.fb.group({
       nom : ['', Validators.required],
       prenom : ['', Validators.required],
-      age : ['', Validators.required],
+      age : [''],
       gender : ['', Validators.required],
       email : ['', Validators.compose([Validators.required, CustomValidators.email])],
       portable : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
       // adresse : ['', Validators.required],
       // codepostal : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
       // ville : ['', Validators.required],
-      datenaissance : [new Date(), Validators.compose([Validators.required, CustomValidators.date])],
-      lieu : ['', Validators.required],
+      // datenaissance : [new Date(), Validators.compose([Validators.required, CustomValidators.date])],
+      // lieu : ['', Validators.required],
       // freresoeur : this.fb.array([this.createfs()])
     })
     // if(siblings.length>1){
@@ -114,14 +114,14 @@ export class MyaccountChildrenComponent implements OnInit {
   patchValue(data: any){
     console.log(data);
     this.childrenForm.patchValue({
-      nom : data.lastName,
-      prenom : data.firstName,
+      nom : data.lastName=='A compléter' ? '' : data.lastName,
+      prenom : data.firstName=='A compléter' ? '' : data.firstName,
       age : data.age,
       gender : data.gender,
-      email : data.email,
-      portable : data.mobilePhone,
-      datenaissance : (data.birthDate!=null || data.birthDate != "") ? new Date(data.birthDate) : new Date(),
-      lieu : data.birthPlace,
+      email : data.email=='A compléter' ? '' : data.email,
+      portable : data.mobilePhone=='A compléter' ? '' : data.mobilePhone,
+      // datenaissance : (data.birthDate!=null || data.birthDate != "") ? new Date(data.birthDate) : new Date(),
+      // lieu : data.birthPlace,
     })
     // if(typeof data.address != "undefined"){
     //   this.childrenForm.patchValue({
@@ -156,8 +156,8 @@ export class MyaccountChildrenComponent implements OnInit {
     // this.myProfile.address.address1 = this.childrenForm.controls.adresse.value;
     // this.myProfile.address.postCode = this.childrenForm.controls.codepostal.value.toString();
     // this.myProfile.address.city = this.childrenForm.controls.ville.value;
-    this.myProfile.birthDate = this.childrenForm.controls.datenaissance.value;
-    this.myProfile.birthPlace = this.childrenForm.controls.lieu.value;
+    // this.myProfile.birthDate = this.childrenForm.controls.datenaissance.value;
+    // this.myProfile.birthPlace = this.childrenForm.controls.lieu.value;
     // console.log(this.myProfile.siblings)
     // for(let i = 0; i<this.childrenForm.controls['freresoeur']['controls'].length; i++){
     //   this.myProfile.siblings[i].age=this.childrenForm.controls['freresoeur']['controls'][i].controls.age.value;

@@ -6,6 +6,9 @@
             <h3>Parents</h3>
             <div class="form-group">
                 <div class="select-custom">
+                    <div style="margin-bottom:10px">
+                        <span>Lien de Parenté</span>
+                    </div>
                     <select name="" class="form-control"
                         [formControl]="brochureForm.controls['lienParent']">
                         <option value="" disabled selected hidden>Lien de Parenté</option>
@@ -20,8 +23,11 @@
                     </select>
                 </div>
             </div>
-
+            <div style="margin-bottom:10px">
+                <span>Titre</span>
+            </div>
             <div class="form-group horizontal-radio clearfix">
+                
                 <md-radio-group [formControl]="brochureForm.controls['title']"
               style="border-color:white">
                     <md-radio-button value="m" class="rdmark">M</md-radio-button>
@@ -34,6 +40,9 @@
             <div class="row">
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
+                        <div style="margin-bottom:10px">
+                            <span>Nom de famille</span>
+                        </div>
                         <input type="text" class="form-control" placeholder="Nom"
                             [formControl]="brochureForm.controls['lastName']"
                             maxlength="25">
@@ -41,6 +50,9 @@
                 </div>
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
+                        <div style="margin-bottom:10px">
+                            <span>Prénom</span>
+                        </div>
                         <input type="text" class="form-control" placeholder="Prénom"
                             [formControl]="brochureForm.controls['firstName']"
                             maxlength="25">
@@ -49,13 +61,18 @@
             </div>
 
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email"
-                    [formControl]="brochureForm.controls['mel']">
-            </div>
-
-            <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div style="margin-bottom:10px">
+                            <span>Mél*</span>
+                        </div>
+                        <input type="email" class="form-control" placeholder="Email"
+                            [formControl]="brochureForm.controls['mel']">
+                    </div>
+                    <div class="col-sm-6">
+                        <div style="margin-bottom:10px">
+                            <span>Téléphone*</span>
+                        </div>
                         <input type="text" class="form-control" 
                             placeholder="Téléphone auquel je suis joignable"
                             [formControl]="brochureForm.controls['tel']"
@@ -68,6 +85,9 @@
             <div class="row">
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
+                        <div style="margin-bottom:10px">
+                            <span>Nom de famille*</span>
+                        </div>
                         <input type="text" class="form-control" placeholder="Nom"
                             [formControl]="brochureForm.controls['childLastName']"
                             maxlength="25">
@@ -99,8 +119,8 @@
                                 <div class="horizontal-radio">
                                     <md-radio-group [formControl]="brochureForm.controls['childTitle']"
                                         style="border-color:white">
-                                        <md-radio-button value="Garçon" class="rdmark">Garçon</md-radio-button>
-                                        <md-radio-button value="Fille" class="rdmark">Fille</md-radio-button>
+                                        <md-radio-button value="Garçon" >Garçon</md-radio-button>
+                                        <md-radio-button value="Fille">Fille</md-radio-button>
                                     </md-radio-group>
                                 </div>
                             </div>
@@ -110,7 +130,7 @@
             </div>
 
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
@@ -118,10 +138,10 @@
                             maxlength="50">
                     </div>
                 </div>
-            </div>
+            </div>-->
             
             <div class="row">
-                <div class="form-group  col-sm-12  col-xs-6">
+                <!--<div class="form-group  col-sm-12  col-xs-6">
                     <div class="row">
                         <div class="col-sm-12">
                             <input type="text" class="form-control" placeholder="Ville"
@@ -129,7 +149,7 @@
                                 maxlength="50">
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="form-group  col-sm-12  col-xs-6">
                     <div class="row">

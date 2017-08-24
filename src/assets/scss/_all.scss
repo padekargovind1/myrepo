@@ -1889,22 +1889,7 @@ a:hover { text-decoration: none;}
 	position:relative;
 }
 
-@media (max-width:767px){ 
-.list-schools h3 { max-width: 71%;}
-.booking-appointment .advisors-wrap {position:relative !important; top:0 !important; }
-.conseil-centering { background:#343642;  color: #fff;}
-.conseil-centering .title-page {color:#fff; }
 
-.landingpage__additional-content .form-wrap {width: 300px;left: 0;top: 0;} 
-.landingpage__wrapper .landingpage__additional-content:nth-child(odd) .form-wrap {right:0; left:auto;}
-.customBtnClass .btn {padding: 10px 8px;
-    font-size: 14px;}
-.btn-conseil , a.btn-conseil   { border-radius: 130px !important;    max-width: 60%;    display: block;    text-align: center; margin: 0 auto 20px; }
-
-.content-holder[_ngcontent-c2]{width: 90% !important; background: rgba(0, 0, 0, 0.4) !important ;}
-img.cide-logo-mobile { display:inline-block !important}
-
-}
 
 .mat-radio-label-content{
   padding-right:15px !important;
@@ -1920,3 +1905,42 @@ img.cide-logo-mobile { display:inline-block !important}
 }
 
 .cbp-caption:hover .cbp-caption-activeWrap{z-index:6;}
+
+
+@media (max-width:767px){ 
+.list-schools h3 { max-width: 71%;}
+.booking-appointment .advisors-wrap {position:relative !important; top:0 !important; }
+.conseil-centering { background:#343642;  color: #fff;}
+.conseil-centering .title-page {color:#fff; }
+
+.landingpage__additional-content .form-wrap {width: 300px;left: 0;top: 0;} 
+.landingpage__wrapper .landingpage__additional-content:nth-child(odd) .form-wrap {right:0; left:auto;}
+.customBtnClass .btn {padding: 10px 8px;
+    font-size: 14px;}
+.btn-conseil , a.btn-conseil   { border-radius: 130px !important;    max-width: 60%;    display: block;    text-align: center; margin: 0 auto 20px; }
+
+.content-holder[_ngcontent-c2]{width: 90% !important; background: rgba(0, 0, 0, 0.4) !important ;}
+img.cide-logo-mobile { display:inline-block !important}
+
+.booking-appointment .advisors-wrap .deselect-all-advisor { display:block; }
+
+}
+
+header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}
+.select-custom md-select.mat-select { background: #fff url(./assets/images/cide-dropbox-arrow.png) no-repeat 97% 48%; }
+
+@media (max-width:639px){ 
+.fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
+
+.fc-prev-button.fc-state-default.fc-corner-left {  left: 20px !important;  position: absolute;  top: 60px;}
+.fc-next-button.fc-state-default.fc-corner-right {  right: 20px !important;  position: absolute;  top: 60px;}
+.fc-toolbar .fc-left {width:100%; text-align:center; margin-bottom: -24px;    margin-top: 24px;    text-align: center;    width: 100%;}
+.fc-toolbar .fc-left h2 {width:100%; text-align:center;}
+.calendar-wrap > h4 {text-align:center; }
+.fc-event-container a.fc-day-grid-event {  font-size: 9px;  padding: 4px 0 4px 1px;}
+
+.landingpage__image-holder .landingpage__caption h2 { text-align:center;}
+.landingpage__image-holder .landingpage__caption h3 { text-align:center;}
+.appointment-text .text-with-icon h3{ font-weight: 100; }
+.landingpage__image-holder img.landingpage__image { width: 100%; top: 0;left: 0; }
+}

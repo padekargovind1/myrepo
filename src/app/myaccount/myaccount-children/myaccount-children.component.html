@@ -35,15 +35,10 @@
           <div class="row">
             <div class="col-sm-3  col-xs-6">
               <div class="form-group">
-                Age*
+                Age
                 <input id="txtAge" type="number" class="form-control" max="50" min="1" placeholder="Age"
                   [formControl]="childrenForm.controls['age']"
                   pattern="[0-9]+" maxlength="2">
-                <small *ngIf="childrenForm.controls['age'].hasError('required') && 
-                  childrenForm.controls['age'].touched" 
-                  class="mat-text-warn"> 
-                  Age Obligatoire
-                </small>
                 <small *ngIf="childrenForm.controls['nom'].hasError('pattern') && 
                   childrenForm.controls['nom'].touched" 
                   class="mat-text-warn"> 
@@ -160,19 +155,14 @@
             </div>
           </div>-->
           <div class="row">
-            <div class="col-sm-6">
+            <!--<div class="col-sm-6">
               <div class="form-group">
                 <div class="datepicker-holder">
-                  Date de naissance*
+                  Date de naissance
                   <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker" [max]="maxDate"
                   placeholder="Date de naissance"
                   [formControl]="childrenForm.controls['datenaissance']">
                   <md-datepicker #myDatepicker></md-datepicker>
-                  <small *ngIf="childrenForm.controls['datenaissance'].hasError('required') && 
-                    childrenForm.controls['datenaissance'].touched" 
-                    class="mat-text-warn"> 
-                    Date de Naissance Obligatoire
-                  </small>
                   <small *ngIf="childrenForm.controls['datenaissance'].hasError('date') && 
                     childrenForm.controls['datenaissance'].touched" 
                     class="mat-text-warn"> 
@@ -183,16 +173,11 @@
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                Lieu de naissance*
+                Lieu de naissance
                 <input type="text" class="form-control" placeholder="Lieu"
                   [formControl]="childrenForm.controls['lieu']" maxlength="50">
-                <small *ngIf="childrenForm.controls['lieu'].hasError('required') && 
-                  childrenForm.controls['lieu'].touched" 
-                  class="mat-text-warn"> 
-                  Lieu Obligatoire
-                </small>
               </div>
-            </div>
+            </div>-->
           </div>
           <div class="form-group">
             <button class="btn  btn-appointment terminer" type="submit"

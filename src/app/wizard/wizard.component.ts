@@ -174,8 +174,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
       // childAddr : IsAdress ? userData.address.address1 : "",
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
-      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
-      childBirthPlace : IsAdress ? userData.birthPlace : "",
+      // childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
+      // childBirthPlace : IsAdress ? userData.birthPlace : "",
       //Strong and weak subject
       bestSubject : userData.attractionToSubjects,
       weakSubject : userData.weakAtSubjects,
@@ -270,8 +270,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
       // childAddr : ['', Validators.required],
       // childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
       // childCity : ['', Validators.required],
-      childBirthDay : [new Date(), Validators.compose([CustomValidators.date])],
-      childBirthPlace : [''],
+      // childBirthDay : [new Date(), Validators.compose([CustomValidators.date])],
+      // childBirthPlace : [''],
       // freresoeur : this.fb.array([this.createfs()]),
       schoolName:[''],
       schoolCity : [''],
@@ -379,8 +379,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
     // this.userData.address.address1 = this.wizardForm.value.childAddr
     // this.userData.address.postCode = this.wizardForm.value.childPostalCode
     // this.userData.address.city = this.wizardForm.value.childCity
-    this.userData.birthDate = this.wizardForm.value.childBirthDay
-    this.userData.birthPlace = this.wizardForm.value.childBirthPlace
+    // this.userData.birthDate = this.wizardForm.value.childBirthDay
+    // this.userData.birthPlace = this.wizardForm.value.childBirthPlace
 
     // for(let i = 0; i<this.wizardForm.value.freresoeur.length; i++){
     //   this.userData.siblings[i].age = this.wizardForm.value.freresoeur[i].age
