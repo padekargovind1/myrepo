@@ -1943,15 +1943,18 @@ img.cide-logo-mobile { display:inline-block !important}
 
 .btn.btn-appointment.disabled, .btn.btn-appointment[disabled] {background:#fff !important; color:#00bc50  !important	; }
 
-.list-of-research p {
-  overflow-wrap: normal;
-  width: 100%;
-}
+.list-of-research p {  overflow-wrap: normal;  width: 100%; max-width: 100%;}
+md-radio-group {  float: left;  width: 100%;}
+
+.mat-radio-label-content {  padding-left: 5px !important;}
+.mat-radio-button {  display: inline-block;  float: left;}
+
 
 }
 
 header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}
 .select-custom md-select.mat-select { background: #fff url(./assets/images/cide-dropbox-arrow.png) no-repeat 97% 48%; }
+
 
 @media (max-width:639px){ 
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
