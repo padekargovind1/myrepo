@@ -1924,6 +1924,30 @@ img.cide-logo-mobile { display:inline-block !important}
 
 .booking-appointment .advisors-wrap .deselect-all-advisor { display:block; }
 
+#wizard .mat-tab-header .mat-tab-list{transform: none;}
+#wizard .mat-tab-header .mat-tab-labels {  display: block;  float: left;  width: 100%;}
+#wizard .mat-tab-header .mat-tab-label {
+  display: block;
+  float: left;
+  height: auto;
+  line-height: 150%;
+  max-width: 100%;
+  min-width: 72px;
+  padding: 3px 10px;
+  position: static;
+  text-align: left;
+  width: 100%;
+}
+.cdk-overlay-container .cdk-overlay-pane {left:0 !important; min-width:100% !important; max-width:100% !important;} 
+
+
+.btn.btn-appointment.disabled, .btn.btn-appointment[disabled] {background:#fff !important; color:#00bc50  !important	; }
+
+.list-of-research p {
+  overflow-wrap: normal;
+  width: 100%;
+}
+
 }
 
 header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}
