@@ -163,13 +163,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userLogin=false;
     this.router.navigate(['/']);
     console.log(this.authService.getToken())
+    this.wishCount = 0;
+    this.applyCount = 0;
   }
 
   getApplication(){
     this.usersService.getApplication()
       .subscribe(
         response => {
-           //console.log(response.data.length)
+           console.log(response)
           if(response.code==400){
             console.log(response.message);
           } else {
