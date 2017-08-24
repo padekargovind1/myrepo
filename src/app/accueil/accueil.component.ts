@@ -167,7 +167,7 @@ export class AccueilComponent implements OnInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(data);
+          // console.log(data);
           if(response.code!=400){
             this.options['regions']=data.regions
             this.options['departements']=data.departments
@@ -184,9 +184,11 @@ export class AccueilComponent implements OnInit {
     this.publicService.postAutocompleteSchool(data)
       .subscribe(
         (response)=>{
-          let data = response.data;
-          console.log(data);
-          this.schoolsOptions=data
+          if(response.code==200){
+            let data = response.data;
+            // console.log(data);
+            this.schoolsOptions=data
+          }
         }
       )
   }

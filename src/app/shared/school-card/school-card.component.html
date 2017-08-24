@@ -1,5 +1,5 @@
 
-<ul class="school-action">
+<!--<ul class="school-action">
     <li (click)="saveInWish()">
         <i style="cursor:pointer" class="fa fa-bookmark" aria-hidden="true"></i>
     </li>
@@ -15,14 +15,14 @@
         </a>
         
     </li>
-</ul>
+</ul>-->
 
 <img src="http://54.254.203.172/cideapi/{{SchoolData.cycles[0].logo1}}" alt="School 1" 
-    style="width:213.75px; height:213.75px"/>
+    style="width:70%; height:70%; margin-left:15%; margin-top:30px"/>
 
 <div class="card-content">
-    <h3 style="height:30px" mdTooltip="{{SchoolData.shortName}}">
-        {{ SchoolData.shortName | school:50 }}
+    <h3 style="height:30px" mdTooltip="{{SchoolData.longName}}">
+        {{ SchoolData.longName | school:50 }}
     </h3>
     <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
         {{ SchoolData.cycles[0].cycle.status2 }} <br />

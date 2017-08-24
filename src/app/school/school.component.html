@@ -332,9 +332,18 @@
                                 </button>
                             <!-- </div> -->
                             </div>
+                            <div>
+                                <a style="float:right; color : white"
+                                    *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' 
+                                    || searchFilter[0]!='' || languageAdvancedSearch.length!=0"
+                                    (click)="cleanAdvancedSearch()">
+                                    Nouvelle recherche
+                                </a>
+                            </div>
 
 
                         </div><!-- .form-wrap -->
+                                
                     
                     </div><!-- .col-* -->
 
@@ -696,11 +705,11 @@
                                 <ng-template #empty2>
                                     <p>&nbsp;</p>
                                 </ng-template>
-                                <span class="fa fa-times advancedSearchFont" style="cursor: pointer; margin-bottom:20px" 
+                                <!--<span class="fa fa-times advancedSearchFont" style="cursor: pointer; margin-bottom:20px" 
                                     *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' 
                                         || searchFilter[0]!='' || languageAdvancedSearch.length!=0"
                                     (click)="cleanAdvancedSearch()">Effacer la recherche
-                                </span>
+                                </span>-->
                             </div>
 
                             <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->
@@ -764,7 +773,26 @@
                                     <input type="checkbox" class="checkbox filled-in" id="school-1" />
                                     <label for="school-1">&nbsp;</label>
                                 </div>-->
-                                <app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card>
+                                <ul class="school-action" style="margin-top:5px; margin-right:5px">
+                                    <li (click)="saveInWish(school._id)">
+                                        <i style="cursor:pointer; color:#393649" 
+                                        class="fa fa-bookmark" aria-hidden="true"></i>
+                                    </li>
+                                    <li >
+                                        <i style="cursor:pointer; color:#393649" 
+                                        class="fa fa-paper-plane" aria-hidden="true"></i>
+                                    </li>
+                                    <!--<li>
+                                        <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
+                                    </li>-->
+                                    <li (click)="goToBrochure(school.shortName)">
+                                        <i class="fa fa-download" aria-hidden="true" 
+                                        style="cursor:pointer; color:#393649"></i>
+                                    </li>
+                                </ul>
+                                <div>
+                                    <app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card>
+                                </div>
                                 
                             </div>
 

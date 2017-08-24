@@ -11,7 +11,7 @@
           <ul class="list-of-research">
             <li *ngFor="let wish of wishList">
               <app-mysearch-card [cardData]="wish" ></app-mysearch-card>
-              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(wish.school._id)">
+              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(wish.school._id, wish._id)">
                 <i class="fa fa-trash"></i>
               </button>
             </li>
@@ -25,7 +25,7 @@
           <ul class="list-of-research">
             <li *ngFor="let apply of applyList">
               <app-mysearch-card [cardData]="apply" ></app-mysearch-card>
-              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(apply.school._id)">
+              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(apply.school._id, apply._id)">
                 <i class="fa fa-trash"></i>
               </button>
             </li>
@@ -39,7 +39,7 @@
           <ul class="list-of-research">
             <li *ngFor="let history of historyList">
               <app-mysearch-card [cardData]="history" ></app-mysearch-card>
-              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(history.school._id)">
+              <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(history.school._id, history._id)">
                 <i class="fa fa-trash"></i>
               </button>
             </li>

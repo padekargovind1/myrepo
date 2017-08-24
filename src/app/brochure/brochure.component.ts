@@ -47,7 +47,6 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
               public dialog:MdDialog,
               private fb : FormBuilder,
               private brochureService : BrochureService) { 
-      this.getBrochure();
       this.buildForm();
       this.makeProfile();
       this.getSearch();
@@ -73,7 +72,9 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
             etablissement : data
         })  
         this.onSubmitSearch();
-    }        
+    } else {
+        this.getBrochure();
+    }
   }
 
   doBrochure() {

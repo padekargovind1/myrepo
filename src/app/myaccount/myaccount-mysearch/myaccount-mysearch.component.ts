@@ -48,12 +48,15 @@ export class MyaccountMysearchComponent implements OnInit {
         return application.type == "history"
       }
     )
+    console.log(this.wishList)
   }
 
-  onDeleteApplication(schoolId){
+  onDeleteApplication(schoolId, applyId){
     let data = {
-      'school' : schoolId
+      'school' : schoolId,
+      'id' : applyId
     }
+    console.log(data)
     this.usersService.deleteApplication(data)
       .subscribe(
         response=>{

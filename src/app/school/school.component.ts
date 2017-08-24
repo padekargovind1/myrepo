@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { SchoolService } from '../services/school.service';
+import { UsersService } from '../services/users.service';
+import { BrochureService } from '../services/brochure.service'
 import { AdvancedSearchMdl } from '../model/advanced-search.model';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
@@ -74,6 +76,8 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
               private compareService : CompareService,
+              private usersService : UsersService,
+              private brochureService : BrochureService,
               private router : Router,
               private fb : FormBuilder,
               private route : ActivatedRoute) { }
@@ -553,6 +557,12 @@ export class SchoolComponent implements OnInit, AfterViewInit {
     // console.log("Clean all search");
     this.cleanSearch();
     this.optionValue="";
+    this.schoolsOptions=null;
+    this.options={
+      regions : [],
+      departements : [],
+      villes : []
+    };
     // console.log($('.checkbox'));
     $('.checkbox').prop('checked', false)
   }
@@ -608,6 +618,25 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   showMore(){
     this.limit+=20
     this.postAdvancedFilter()
+  }
+
+  saveInWish(schoolId){
+    const data = {
+      type : "wish",
+      schools : [{school : schoolId, class:'EE'}]
+    }
+    this.usersService.postApplication(data)
+      .subscribe(
+        response=>{
+          console.log(response)
+        }
+      )
+  }
+
+  goToBrochure(schoolName){
+    console.log(schoolName)
+    this.brochureService.storeSchoolSearch(schoolName);
+    this.router.navigate(['/brochure']);
   }
 
 }
