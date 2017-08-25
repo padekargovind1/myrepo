@@ -174,6 +174,7 @@ export class BookingService {
   }
 
   updateProfile(){
+    console.log(this.getUserData())
     this.usersService.putProfile(this.getUserData())
       .subscribe(
         response=>{
@@ -187,9 +188,14 @@ export class BookingService {
   }
 
   successSubmit(){
+    let appointmentData = this.getBookingData();
+    let frenchDate : string = appointmentData[0].substr(8, 2)+'/'+appointmentData[0].substr(5, 2)+'/'+appointmentData[0].substr(0, 4)
+    let type : string = appointmentData[7]+' ' +appointmentData[8];
+    let date : string = frenchDate+' de '+appointmentData[1]+' à '+appointmentData[2];
+    let adviser : string = appointmentData[4]+' '+appointmentData[3];
     swal({
       title: "Merci d'avoir choisi CIDE",
-      text: 'Votre Rendez-vous à bien été enregistré dans notre base de donnée. A bientôt!',
+      text: 'Votre Rendez-vous pour un(e) '+type+' est bien confirmé le '+date+' avec notre conseiller d\'orientation '+adviser+'. \nUn mail de confirmation vient de vous être adressé. A bientôt!',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
     })

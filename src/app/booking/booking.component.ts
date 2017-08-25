@@ -173,9 +173,14 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   successSubmit(){
+    let appointmentData = this.bookingService.getBookingData();
+    let frenchDate : string = appointmentData[0].substr(8, 2)+'/'+appointmentData[0].substr(5, 2)+'/'+appointmentData[0].substr(0, 4)
+    let type : string = appointmentData[7]+' ' +appointmentData[8];
+    let date : string = frenchDate+' de '+appointmentData[1]+' à '+appointmentData[2];
+    let adviser : string = appointmentData[4]+' '+appointmentData[3];
     swal({
-      title: 'Votre rendez-vous à bien été enregistré.',
-      text: '',
+      title: "Merci d'avoir choisi CIDE",
+      text: 'Votre Rendez-vous pour un(e) '+type+' est bien confirmé le '+date+' avec notre conseiller d\'orientation '+adviser+'. \nUn mail de confirmation vient de vous être adressé. A bientôt!',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
     })

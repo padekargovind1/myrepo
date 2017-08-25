@@ -125,7 +125,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
     this.userData=new MyAccountMdl();
     this.userData.parents=[];
     this.userData.parents.push(new MyAccountParentMdl());
-    this.userData.address= new MyAccountAdresse();
+    this.userData.parents[0].address = new MyAccountAdresse();
+    this.userData.address = new MyAccountAdresse();
     this.userData.socialAddresses = new MyAccountSocialAdrMdl();
     this.userData.academicHistories[0]={};
     this.userData.academicHistories[0] = new MyAccountHistoryMdl(); 
@@ -372,7 +373,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
     }
     this.userData.lastName = this.wizardForm.value.childLastName
     this.userData.firstName = this.wizardForm.value.childFirstName
-    this.userData.age = this.wizardForm.value.childAge!==undefined ? this.wizardForm.value.childAge : 2;
+    this.userData.age = this.wizardForm.value.childAge===undefined || this.wizardForm.value.childAge==' '? this.wizardForm.value.childAge : 2;
     this.userData.gender = this.wizardForm.value.childTitle!==undefined ? this.wizardForm.value.childTitle : 'A compléter'
     this.userData.email = this.wizardForm.value.childMel
     this.userData.mobilePhone = this.wizardForm.value.childTel
@@ -449,9 +450,13 @@ export class WizardComponent implements OnInit, AfterViewInit {
   }
 
   successSubmit(){
+    let frenchDate : string = this.appointmentData[0].substr(8, 2)+'/'+this.appointmentData[0].substr(5, 2)+'/'+this.appointmentData[0].substr(0, 4)
+    let type : string = this.appointmentData[7]+' ' +this.appointmentData[8];
+    let date : string = frenchDate+' de '+this.appointmentData[1]+' à '+this.appointmentData[2];
+    let adviser : string = this.appointmentData[4]+' '+this.appointmentData[3];
     swal({
       title: "Merci d'avoir choisi CIDE",
-      text: 'Votre Rendez-vous à bien été enregistré dans notre base de donnée. A bientôt!',
+      text: 'Votre Rendez-vous pour un(e) '+type+' est bien confirmé le '+date+' avec notre conseiller d\'orientation '+adviser+'. \nUn mail de confirmation vient de vous être adressé. A bientôt!',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
     })
