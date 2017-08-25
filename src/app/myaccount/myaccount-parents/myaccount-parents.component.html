@@ -150,7 +150,7 @@
         <div class="form-group clearfix">
           <button class="btn  btn-appointment" (click)="onAddParent()"
             [disabled]="parentAccountForm.controls['parents']['controls'].length==2">
-            Ajouter un parent
+            <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
           </button>
           <button class="btn btn-appointment" 
             type="submit" (click)="onSubmit()"

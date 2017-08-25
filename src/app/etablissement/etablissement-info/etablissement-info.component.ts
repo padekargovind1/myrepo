@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { GoogleMapsAPIWrapper } from '@agm/core';
+
+declare var google:any;
 
 @Component({
   selector: 'app-etablissement-info',
@@ -11,6 +14,7 @@ export class EtablissementInfoComponent implements OnInit {
   title: string = 'My first AGM project';
   lat: number ;
   lng: number ;
+  map: any;
   constructor() { }
 
   ngOnInit() {
@@ -27,6 +31,15 @@ export class EtablissementInfoComponent implements OnInit {
         }while(this.lat==0.0 && this.lng==0.0)        
       }, 500
     )
+  }
+  
+  public loadAPIWrapper(map) {
+    this.map = map;
+  }
+
+  public markerClicked = (markerObj) => {
+    const position = new google.maps.LatLng(markerObj.latitude, markerObj.longitude);
+    this.map.panTo(position);
   }
 
 }

@@ -263,7 +263,7 @@
                                         <button class="btn  btn-appointment" (click)="onAddParent()"
                                             [disabled]="wizardForm.controls['parents']['controls'].length==2"
                                             style="margin-left:0px">
-                                            Ajouter un parent
+                                            <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
                                         </button>
                                     </div>
                                     <div class="row">
@@ -925,6 +925,7 @@
                                                     </div>
                                                     <div class="col-sm-3">
                                                     <h4>&nbsp;</h4>
+													&nbsp;
                                                     <button class="btn  btn-danger" style="float:right" 
                                                         (click)="onRemoveJob(i)"
                                                         [disabled]="wizardForm.controls['job']['controls'].length==0">
@@ -936,9 +937,7 @@
 
                                                 <div class="row">
                                                 <button class="btn  btn-appointment" (click)="onAddJob()"
-                                                    style="margin-left:15px">
-                                                    Ajouter un métier
-                                                </button>
+                                                    style="margin-left:15px"><i class="fa fa-plus" aria-hidden="true"></i>Ajouter un métier</button>
                                                 </div>
                                             
 
