@@ -61,7 +61,7 @@ export class MyaccountDocumentationsComponent implements OnInit {
     this.publicService.getBrochurebyId(schoolId, cycleId)
       .subscribe(
         response=>{
-          // console.log(response.data)
+          console.log(response.data)
           if(response.code==400){
             console.log(response.message)
           } else {
