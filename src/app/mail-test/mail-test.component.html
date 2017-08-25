@@ -1,0 +1,48 @@
+<div style="background-color : grey; padding-left : 50%">
+  <form [formGroup]="mailForm">
+    <div class="row">
+      <md-input-container>
+        <input [formControl]="mailForm.controls['sender']" 
+          mdInput placeholder="Expéditeur">
+      </md-input-container>
+    </div>
+    <div class="row">
+      <md-input-container>
+        <input [formControl]="mailForm.controls['receiver']" 
+          mdInput placeholder="Destinataire">
+      </md-input-container>
+    </div>
+    <div class="row">
+      <md-input-container>
+        <input [formControl]="mailForm.controls['subject']" 
+          mdInput placeholder="Sujet">
+      </md-input-container>
+    </div>
+    <div class="row">
+      <md-input-container>
+        <input [formControl]="mailForm.controls['message']" 
+          mdInput placeholder="Message">
+      </md-input-container>
+    </div>
+    <div class="row">
+      <md-select placeholder="Mail Type"
+        [formControl]="mailForm.controls['mailType']" >
+        <md-option *ngFor="let option of mailType" [value]="option">
+          {{option}}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="row">
+      <md-select placeholder="Rank"
+        [formControl]="mailForm.controls['rank']" >
+        <md-option *ngFor="let option of rank" [value]="option">
+          {{option}}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary" (click)="onSubmit()">Click me!</button>
+    </div>
+  </form>
+</div>
+  

@@ -91,7 +91,7 @@ export class MyaccountParentsComponent implements OnInit {
         adresse : parentData[i].address.address1,
         codepostal : parentData[i].address.postCode,
         ville : parentData[i].address.city,
-        pays : parentData[i].address.country
+        pays : parentData[i].address.country==' '?'France' : parentData[i].address.country
       })
     }
     console.log(this.parentAccountForm);
@@ -120,7 +120,7 @@ export class MyaccountParentsComponent implements OnInit {
       adresse : [''],
       codepostal : ['', Validators.compose([Validators.maxLength(5)])],
       ville: [''],
-      pays: ['']
+      pays: ['France']
     })
   }
 

@@ -77,6 +77,7 @@ import { CapitalPipe } from './pipes/capital.pipe';
 import { AgmCoreModule } from '@agm/core';
 import { ConseilPopupComponent } from './conseil/conseil-popup/conseil-popup.component';
 import { PhonePipe } from './pipes/phone.pipe';
+import { MailTestComponent } from './mail-test/mail-test.component';
 
 
 @NgModule({
@@ -127,7 +128,8 @@ import { PhonePipe } from './pipes/phone.pipe';
     SchoolChoiceComponent,
     CapitalPipe,
     ConseilPopupComponent,
-    PhonePipe
+    PhonePipe,
+    MailTestComponent
   ],
   imports: [
     BrowserModule,
