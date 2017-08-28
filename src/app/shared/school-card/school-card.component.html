@@ -17,19 +17,34 @@
     </li>
 </ul>-->
 
-<img src="http://54.254.203.172/cideapi/{{SchoolData.cycles[0].logo1}}" alt="School 1" 
-    style="width:70%; height:70%; margin-left:15%; margin-top:30px"/>
+
 
 <div class="card-content">
-    <h3 style="height:30px" mdTooltip="{{SchoolData.longName}}">
-        {{ SchoolData.longName | school:50 }}
+    <h3 style="height:30px" mdTooltip="{{ SchoolData.longName | schoolName}}">
+        {{ SchoolData.longName | schoolName | school:50 }}
     </h3>
     <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
         {{ SchoolData.cycles[0].cycle.status2 }} <br />
         {{ SchoolData.cycles[0].cycle.status3 }}</p>-->
-    <address style="font-size:14px; height : 72px"> {{ SchoolData.address.ad1 }} <br /> 
+    <address style="font-size:14px; height : 90px"> {{ SchoolData.address.ad1 }} <br /> 
         {{ SchoolData.address.postcode }} {{ SchoolData.address.city }}<br /> 
-        Tel : {{ SchoolData.address.phone | phone }}</address>
+        Tel : {{ SchoolData.address.phoneNumber | phone }}<br/>
+        <p style="margin-top :5px">
+            <span *ngFor="let name of schoolTag" class="school-tags {{name.toLowerCase() | schoolTag}}-tag">
+                <strong>{{name | schoolTag}}</strong>
+            </span>
+            <!--<span class="ecole-tag">
+                <strong>École</strong>
+            </span>
+            <span class="college-tag">
+                <strong>Collège</strong>
+            </span>
+            <span class="lycee-tag">
+                <strong>Lycée</strong>
+            </span>-->
+        </p>
+        
+    </address>
 
     <button class="btn btn-highlighted"
         (click)="onSchoolDetail()">Détail</button>

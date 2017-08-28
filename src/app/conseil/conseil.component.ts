@@ -27,14 +27,14 @@ export class ConseilComponent implements OnInit {
     this.router.navigate(['booking']);
   }
 
-  makeProfile(nb : number, screenWidth : string, screenHeight : string){
+  makeProfile(nb : number){
     this.config= {
       data:{
         conseilDesc : nb
       },
       disableClose: false,
-      width: screenWidth,
-      height: screenHeight,
+      width: '',
+      height: '',
       position: {
       top: '',
       bottom: '',
@@ -45,16 +45,12 @@ export class ConseilComponent implements OnInit {
   }
 
   openInfoDialog(nb : number){
-    let screenWidth : string = (window.screen.width/3).toString()+'px';
-    let screenHeight : string = (window.screen.height/4).toString()+'px';
-    this.makeProfile(nb, screenWidth, screenHeight);
+    this.makeProfile(nb);
     let dialogref = this.dialog.open(ConseilPopupComponent,this.config);
   }
 
   openMobileInfoDialog(nb : number){
-    let screenWidth : string = ((window.screen.width/5)*4).toString()+'px';
-    let screenHeight : string = (window.screen.height/2).toString()+'px';
-    this.makeProfile(nb, screenWidth, screenHeight);
+    this.makeProfile(nb);
     let dialogref = this.dialog.open(ConseilPopupComponent,this.config);
   }
 

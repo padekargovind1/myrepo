@@ -78,6 +78,8 @@ import { AgmCoreModule } from '@agm/core';
 import { ConseilPopupComponent } from './conseil/conseil-popup/conseil-popup.component';
 import { PhonePipe } from './pipes/phone.pipe';
 import { MailTestComponent } from './mail-test/mail-test.component';
+import { SchoolNamePipe } from './pipes/school-name.pipe';
+import { SchoolTagPipe } from './pipes/school-tag.pipe';
 
 
 @NgModule({
@@ -129,7 +131,9 @@ import { MailTestComponent } from './mail-test/mail-test.component';
     CapitalPipe,
     ConseilPopupComponent,
     PhonePipe,
-    MailTestComponent
+    MailTestComponent,
+    SchoolNamePipe,
+    SchoolTagPipe
   ],
   imports: [
     BrowserModule,

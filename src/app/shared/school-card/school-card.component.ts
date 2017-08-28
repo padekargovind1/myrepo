@@ -18,6 +18,7 @@ export class SchoolCardComponent implements OnInit {
   brochureData={brochure : ""}
   config: MdDialogConfig;
   configSchoolDetail : MdDialogConfig;
+  schoolTag=[];
 
   constructor(private router : Router,
               private usersService : UsersService,
@@ -28,6 +29,7 @@ export class SchoolCardComponent implements OnInit {
     setTimeout(()=>{
       // console.log(this.SchoolData);
       this.getSchoolBrochureById();
+      this.getSchoolTag();
     }, 500)
   }
 
@@ -62,8 +64,8 @@ export class SchoolCardComponent implements OnInit {
         schoolData : this.SchoolData
       },
       disableClose: false,
-      width: screenWidth,
-      height: screenHeight,
+      width: '',
+      height: '',
       position: {
       top: '',
       bottom: '',
@@ -119,6 +121,34 @@ export class SchoolCardComponent implements OnInit {
           }
         }
       )
+  }
+
+  getSchoolTag(){
+    for(let cycle of this.SchoolData.cycles){
+      var name : string = cycle.cycle.nom;
+      if(name.substring(0, 5)=='Lycée'){
+        name='Lycée';
+      }
+      if(this.schoolTag.indexOf(name)==-1){
+        this.schoolTag.push(name)
+      }
+    }
+    this.schoolTag.sort(
+        (a : any, b : any)=>{
+          if(a<b) return -1;
+          if(a>b) return 1;
+          return 0
+      })
+    if(this.schoolTag[2]=='École'){
+      this.schoolTag[0]='École';
+      this.schoolTag[1]='Collège';
+      this.schoolTag[2]='Lycée';
+    } else if (this.schoolTag[1]=='École'){
+      let name = this.schoolTag[0];
+      this.schoolTag[0] = 'École';
+      this.schoolTag[1] = name;
+    }
+    // console.log(this.schoolTag);
   }
   
 }

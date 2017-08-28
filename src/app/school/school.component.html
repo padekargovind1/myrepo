@@ -25,7 +25,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['classe']">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <option value="" selected>Classe</option>
+                                                        <option value="" selected hidden>Classe</option>
                                                         <option value="">&nbsp;Indifférent</option>
                                                         <option value="" disabled style="color:red">
                                                             &nbsp;Classes maternelles
@@ -52,7 +52,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['classe']">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <option value="" selected>Classe</option>
+                                                        <option value="" hidden selected>Classe</option>
                                                         <option value="">&nbsp;Indifférent</option>
                                                         <option value="sixieme">&nbsp;6ème</option>
                                                         <option value="cinquieme">&nbsp;5ème</option>
@@ -70,7 +70,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['classe']">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <option value="" selected>Classe</option>
+                                                        <option value="" hidden selected>Classe</option>
                                                         <option value="">&nbsp;Indifférent</option>
                                                         <option value="" disabled style="color:red">
                                                             &nbsp;Classes de seconde
@@ -169,7 +169,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['classe']" >
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <option value="" selected>Classe</option>
+                                                        <option value="" hidden selected>Classe</option>
                                                         <option value="">&nbsp;Indifférent</option>
                                                         <option value="" disabled style="color:red">
                                                             &nbsp;Classes maternelles
@@ -763,12 +763,7 @@
                                 <!--<div class="checkbox-custom">
                                     <md-checkbox [disabled]="four" (click)="onCheckbox(school.school._id)"></md-checkbox>
                                 </div>-->
-                                <div class="checkbox-custom">
-                                    <input type="checkbox" [disabled]="four" 
-                                    class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
-                                    <label [for]="'school-'+i"
-                                        (click)="onCheckbox(school._id)">&nbsp;</label>
-                                </div>
+                                
                                 <!--<div class="checkbox-custom">
                                     <input type="checkbox" class="checkbox filled-in" id="school-1" />
                                     <label for="school-1">&nbsp;</label>
@@ -790,6 +785,14 @@
                                         style="cursor:pointer; color:#393649"></i>
                                     </li>
                                 </ul>
+                                <div class="checkbox-custom" style="margin-left:30px; margin-top:30px">
+                                    <input type="checkbox" [disabled]="four" style="width:5px; height:5px"
+                                    class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
+                                    <label [for]="'school-'+i" style="width:5px; height:5px"
+                                        (click)="onCheckbox(school._id)">&nbsp;</label>
+                                </div>
+                                <img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1" 
+                                    style="width:70%; height:70%; margin-left:15%; margin-top:30px"/>
                                 <div>
                                     <app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card>
                                 </div>
