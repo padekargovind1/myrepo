@@ -7,7 +7,7 @@
       <section class="col-md-4">
         <div class="card-mobile">
           <h4>Mes souhaits</h4>
-          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black"><i class="fa fa-sort"></i></button></p>
+          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('wish')"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
             <li *ngFor="let wish of wishList">
               <app-mysearch-card [cardData]="wish" ></app-mysearch-card>
@@ -21,7 +21,7 @@
       <section class="col-md-4">
         <div class="card-mobile">
           <h4>Mes demandes d'inscription</h4>
-          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black"><i class="fa fa-sort"></i></button></p>
+          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('apply')"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
             <li *ngFor="let apply of applyList">
               <app-mysearch-card [cardData]="apply" ></app-mysearch-card>
@@ -35,7 +35,7 @@
       <section class="col-md-4">
         <div class="card-mobile">
           <h4>Les écoles vues</h4>
-          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black"><i class="fa fa-sort"></i></button></p>
+          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('history')"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
             <li *ngFor="let history of historyList">
               <app-mysearch-card [cardData]="history" ></app-mysearch-card>
