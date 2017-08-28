@@ -29,24 +29,21 @@ export class BrochpopupComponent implements OnInit {
 
   buildFormGroup(){
     this.brochureForm = this.fb.group({
-      lienParent : ['', Validators.required],
-      title : ['', Validators.required],
-      lastName : ['', Validators.required],
-      firstName : ['', Validators.required],
+      lienParent : [''],
+      title : [''],
+      lastName : [''],
+      firstName : [''],
       mel : ['', Validators.compose([Validators.required, CustomValidators.email])],
       tel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
       childLastName : ['', Validators.required],
       childFirstName : ['', Validators.required],
-      childAge : ['', Validators.required],
-      childTitle : ['', Validators.required],
-      etablissement : ['', Validators.required],
-      city : ['', Validators.required],
+      childTitle : [''],
       classe : ['', Validators.required],
-      copy : [false, Validators.required],
-      status : ['', Validators.required],
-      niveauActuel : ['', Validators.required],
-      niveauConcern : ['', Validators.required],
-      info : ['', Validators.required]
+      copy : [false],
+      status : [''],
+      niveauActuel : [''],
+      niveauConcern : [''],
+      info : ['']
     });
   }
 
@@ -78,7 +75,6 @@ export class BrochpopupComponent implements OnInit {
       tel : profile.parents[0].phoneNumber,
       childLastName : profile.lastName,
       childFirstName : profile.firstName,
-      childAge : profile.age,
       childTitle : profile.gender,
       etablissement : profile.academicHistories[0].schoolName,
       city : profile.academicHistories[0].schoolName

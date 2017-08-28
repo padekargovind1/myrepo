@@ -212,7 +212,7 @@
                 <div *ngFor="let brochure of listBrochuresFiltered" >
                     <div *ngFor="let cycle of brochure.cycles" class="graphic brochure-item col-md-3">
                         <div class="checkbox-custom">
-                            <md-checkbox (click)="onCheckbox(brochure._id)" class="download"></md-checkbox>
+                            <md-checkbox (click)="onCheckbox(cycle._id)" class="download"></md-checkbox>
                             <label for="download">&nbsp;</label>
                         </div>
                         <div class="cbp-caption">
@@ -236,8 +236,8 @@
                             <div class="cbp-caption-activeWrap">
 								<div class="cbp-l-caption-alignCenter">
 									<div class="cbp-l-caption-body">
-                                        <a href="http://54.254.203.172/cideapi{{cycle.brochure}}" download="brochure.pdf" target="_self"
-                                            class="btn-appointment btn red uppercase btn red uppercase"
+                                        <a class="btn-appointment btn red uppercase btn red uppercase"
+                                            (click)="onDownloadBrochure(brochure._id, cycle._id)"
                                             rel="nofollow"> <i class="fa fa-download"></i>
                                             Télécharger
                                         </a>
@@ -261,7 +261,7 @@
         </div><!-- .row -->
         <div *ngIf="listBrochuresFiltered.length==0" class="row">
             <p style="width:100%;
-                text-align:center; font-size : 35px">Il n'y a pas de documention pour cette recherche.</p>
+                text-align:center; font-size : 35px">Il n'y a pas de documentation pour cette recherche.</p>
         </div>
     
     </div><!-- .container-fluid -->

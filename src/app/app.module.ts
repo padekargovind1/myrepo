@@ -34,7 +34,6 @@ import { MyaccountParentsComponent } from './myaccount/myaccount-parents/myaccou
 import { MyaccountChildrenComponent } from './myaccount/myaccount-children/myaccount-children.component';
 import { MyaccountDocumentationsComponent } from './myaccount/myaccount-documentations/myaccount-documentations.component';
 import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myaccount-mysearch.component';
-import { MysearchCardComponent } from './myaccount/myaccount-mysearch/mysearch-card/mysearch-card.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { CubeComponent } from './school-calendar/cube/cube.component';
 import { FilterComponent } from './filter/filter.component';
@@ -78,6 +77,9 @@ import { CapitalPipe } from './pipes/capital.pipe';
 import { AgmCoreModule } from '@agm/core';
 import { ConseilPopupComponent } from './conseil/conseil-popup/conseil-popup.component';
 import { PhonePipe } from './pipes/phone.pipe';
+import { MailTestComponent } from './mail-test/mail-test.component';
+import { SchoolNamePipe } from './pipes/school-name.pipe';
+import { SchoolTagPipe } from './pipes/school-tag.pipe';
 
 
 @NgModule({
@@ -121,7 +123,6 @@ import { PhonePipe } from './pipes/phone.pipe';
     SchoolComponent,
     ShortenPipe,
     SchoolPipe,
-    MysearchCardComponent,
     WishApplyPopupComponent,
     RandomLandingComponent,
     SuperieurComponent,
@@ -129,7 +130,10 @@ import { PhonePipe } from './pipes/phone.pipe';
     SchoolChoiceComponent,
     CapitalPipe,
     ConseilPopupComponent,
-    PhonePipe
+    PhonePipe,
+    MailTestComponent,
+    SchoolNamePipe,
+    SchoolTagPipe
   ],
   imports: [
     BrowserModule,

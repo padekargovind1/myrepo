@@ -73,8 +73,8 @@ export class WishApplyPopupComponent implements OnInit {
         schoolData : school.school
       },
       disableClose: false,
-      width: screenWidth,
-      height: screenHeight,
+      width: '',
+      height: '',
       // position: {
       // top: '',
       // bottom: '',

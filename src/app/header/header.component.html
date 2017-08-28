@@ -46,6 +46,12 @@
                                 <a routerLink="/linguistic" class="ln-tr link">Guide Sejours Linguistiques</a>
                             </div>
                         </li><!-- end course menu item -->
+                        <!--<li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-outdent"></i></span>
+                                <a routerLink="/editorial" class="ln-tr link">Contenu Éditorial</a>
+                            </div>
+                        </li> end course menu item -->
                     </ul>
                 </li>
             </ul>
@@ -61,7 +67,7 @@
         <li><i class="fa fa-user"></i>
             <ul class="login">
                 <li><a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a></li>
-                <li><a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier / Fermer la Session</a></li>
+                <li><a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> Se connecter / Fermer la Session</a></li>
             </ul>
         </li>
     </ul>
@@ -74,7 +80,7 @@
         </li>
         <li class="login-text" *ngIf="!userLogin; else log">
             <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
-            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
+            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> Se connecter</a>
         </li>
         <ng-template #log>
             <li class="login-text" 
@@ -114,7 +120,7 @@
         <li *ngIf="!userLogin; else moblog"><i class="fa fa-user"></i>
             <ul class="login">
                 <li><a (click)="onSignUp()">S'inscrire</a></li>
-                <li><a (click)="onSignIn()">S'identifier</a></li>
+                <li><a (click)="onSignIn()">Se connecter</a></li>
             </ul>
         </li>
 		<ng-template #moblog>
@@ -136,7 +142,7 @@
         </li>
         <li class="login-text" *ngIf="!userLogin; else log">
             <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
-            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> S'identifier</a>
+            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> Se connecter</a>
         </li>
         <ng-template #log>
             <li class="login-text" 

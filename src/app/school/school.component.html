@@ -25,7 +25,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['classe']">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <option value="" selected>Classe</option>
+                                                        <option value="" selected hidden>Classe</option>
                                                         <option value="">&nbsp;Indifférent</option>
                                                         <option value="" disabled style="color:red">
                                                             &nbsp;Classes maternelles
@@ -52,7 +52,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['classe']">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <option value="" selected>Classe</option>
+                                                        <option value="" hidden selected>Classe</option>
                                                         <option value="">&nbsp;Indifférent</option>
                                                         <option value="sixieme">&nbsp;6ème</option>
                                                         <option value="cinquieme">&nbsp;5ème</option>
@@ -70,7 +70,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['classe']">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <option value="" selected>Classe</option>
+                                                        <option value="" hidden selected>Classe</option>
                                                         <option value="">&nbsp;Indifférent</option>
                                                         <option value="" disabled style="color:red">
                                                             &nbsp;Classes de seconde
@@ -169,7 +169,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['classe']" >
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
-                                                        <option value="" selected>Classe</option>
+                                                        <option value="" hidden selected>Classe</option>
                                                         <option value="">&nbsp;Indifférent</option>
                                                         <option value="" disabled style="color:red">
                                                             &nbsp;Classes maternelles
@@ -332,9 +332,18 @@
                                 </button>
                             <!-- </div> -->
                             </div>
+                            <div>
+                                <a style="float:right; color : white"
+                                    *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' 
+                                    || searchFilter[0]!='' || languageAdvancedSearch.length!=0"
+                                    (click)="cleanAdvancedSearch()">
+                                    Nouvelle recherche
+                                </a>
+                            </div>
 
 
                         </div><!-- .form-wrap -->
+                                
                     
                     </div><!-- .col-* -->
 
@@ -696,11 +705,11 @@
                                 <ng-template #empty2>
                                     <p>&nbsp;</p>
                                 </ng-template>
-                                <span class="fa fa-times advancedSearchFont" style="cursor: pointer; margin-bottom:20px" 
+                                <!--<span class="fa fa-times advancedSearchFont" style="cursor: pointer; margin-bottom:20px" 
                                     *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' 
                                         || searchFilter[0]!='' || languageAdvancedSearch.length!=0"
                                     (click)="cleanAdvancedSearch()">Effacer la recherche
-                                </span>
+                                </span>-->
                             </div>
 
                             <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->
@@ -725,7 +734,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <h3>Ce que vous voulez compare?</h3>
+                                            <h3>Que voulez-vous comparer?</h3>
 
                                             <div class="filter-option" *ngFor="let filter of filterList; let i=index">
                                                 <md-checkbox  name="" 
@@ -754,17 +763,39 @@
                                 <!--<div class="checkbox-custom">
                                     <md-checkbox [disabled]="four" (click)="onCheckbox(school.school._id)"></md-checkbox>
                                 </div>-->
-                                <div class="checkbox-custom">
-                                    <input type="checkbox" [disabled]="four" 
-                                    class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
-                                    <label [for]="'school-'+i"
-                                        (click)="onCheckbox(school._id)">&nbsp;</label>
-                                </div>
+                                
                                 <!--<div class="checkbox-custom">
                                     <input type="checkbox" class="checkbox filled-in" id="school-1" />
                                     <label for="school-1">&nbsp;</label>
                                 </div>-->
-                                <app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card>
+                                <ul class="school-action" style="margin-top:5px; margin-right:5px">
+                                    <li (click)="saveInWish(school._id)">
+                                        <i style="cursor:pointer; color:#393649" 
+                                        class="fa fa-bookmark" aria-hidden="true"></i>
+                                    </li>
+                                    <li >
+                                        <i style="cursor:pointer; color:#393649" 
+                                        class="fa fa-paper-plane" aria-hidden="true"></i>
+                                    </li>
+                                    <!--<li>
+                                        <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
+                                    </li>-->
+                                    <li (click)="goToBrochure(school.shortName)">
+                                        <i class="fa fa-download" aria-hidden="true" 
+                                        style="cursor:pointer; color:#393649"></i>
+                                    </li>
+                                </ul>
+                                <div class="checkbox-custom" style="margin-left:30px; margin-top:30px">
+                                    <input type="checkbox" [disabled]="four" style="width:5px; height:5px"
+                                    class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
+                                    <label [for]="'school-'+i" style="width:5px; height:5px"
+                                        (click)="onCheckbox(school._id)">&nbsp;</label>
+                                </div>
+                                <img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1" 
+                                    style="width:70%; height:70%; margin-left:15%; margin-top:30px"/>
+                                <div>
+                                    <app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card>
+                                </div>
                                 
                             </div>
 
