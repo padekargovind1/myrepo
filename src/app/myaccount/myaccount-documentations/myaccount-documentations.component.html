@@ -6,20 +6,26 @@
           <h3>Documentations</h3>
           <ul class="files-to-download">
             <li *ngFor="let doc of docList; let i=index">
-              <div class="image-wrapper">
-                <img src="assets/images/myaccount/lycee-francois-d-estaing.png" alt="" />
+              <div class="row">
+                <div class="col-md-10">
+                  <div class="image-wrapper">
+                    <img src="http://54.254.203.172/cideapi/{{brochureList[i].cycles[0].logo1}}" 
+                      alt="" *ngIf="showDownload"/>
+                  </div>
+                  <span style="width:65%">
+                    <strong>{{doc.school.shortName | schoolName}}</strong><br>{{doc.school.longName | schoolName}}
+                  </span>
+                </div>
+                <div class="col-md-2">
+                  <a href="" *ngIf="!showDownload; else show1"></a>
+                  <ng-template #show1>
+                    <a href="http://54.254.203.172/cideapi/{{brochureList[i].brochure}}" download="1.pdf" target="_self"
+                      class="btn btn-appointment  download-brochure">
+                      <i class="fa fa-download" aria-hidden="true"></i>
+                    </a>
+                  </ng-template>
+                </div>
               </div>
-              <p>
-                <strong>{{doc.school.shortName}}</strong><br>{{doc.school.longName}}
-              </p>
-              <a href="" *ngIf="!showDownload; else show1"></a>
-              <ng-template #show1>
-                <a href="http://54.254.203.172/cideapi/{{brochureList[i].brochure}}" download="1.pdf" target="_self"
-                  class="btn btn-appointment  download-brochure">
-                  <i class="fa fa-download" aria-hidden="true"></i>
-                </a>
-              </ng-template>
-              
             </li>
           </ul>
         </div>

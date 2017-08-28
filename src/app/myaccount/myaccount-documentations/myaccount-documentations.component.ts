@@ -51,7 +51,8 @@ export class MyaccountDocumentationsComponent implements OnInit {
             }
             setTimeout(()=>{
               this.showDownload=true;
-            }, 2000)
+              console.log(this.brochureList, this.docList)
+            }, 1000)
           }
         }
       )
