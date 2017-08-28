@@ -12,11 +12,15 @@ export class MailTestComponent implements OnInit {
   mailType = ["inbox", "sent", "important", "draft", "trash", "any"];
   rank = ["a","cc","c"];
   mailForm : FormGroup;
+  mailList = [];
   constructor(private fb : FormBuilder,
               private mailService : MailService) { }
 
   ngOnInit() {
     this.buildForm();
+    setTimeout(()=>{
+      this.getMail('inbox')
+    }, 500)
   }
 
   buildForm(){
@@ -51,4 +55,19 @@ export class MailTestComponent implements OnInit {
         }
       )
   } 
+  getMail(type){
+    this.mailService.getMail(type)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.mailList=response.data
+          }
+        }
+      )
+  }
+
+  clickOnSelect(type: string){
+    this.getMail(type);
+  }
 }
