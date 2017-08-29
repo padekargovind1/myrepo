@@ -108,7 +108,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	
 	  var winWidth = $(window).width();
 	
-    if(winWidth < 767){
+    if(this.onMobile){
     //alert('sdf');
       $('.menu-holder').click(function(){
         console.log("test")
@@ -275,8 +275,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   
   hideHeaderSubMenus(){
-    $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
-    $('.login').hide();
+	if(this.onMobile){
+		$('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
+		$('.login').hide();
+	}
   }
 
 }

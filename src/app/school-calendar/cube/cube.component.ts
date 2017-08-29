@@ -36,7 +36,9 @@ export class CubeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+	setTimeout(()=>{
       this.createCube();
+	  },500);
   }
 
   getUrl(){

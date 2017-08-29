@@ -21,6 +21,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   rateId : string ="";
   apbForm: FormGroup;
   domaines=[];
+  onMobile:boolean=false;
   constructor(private fb : FormBuilder,
               private publicService : PublicService,
               private router : Router) { 
@@ -31,7 +32,31 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   ngOnInit() {
     this.initRate();
     this.domaines=this.publicService.getDomaines();
+    this.runScript();
   }
+  runScript(){
+	  function detectmob() {
+			if( navigator.userAgent.match(/Android/i)
+			 || navigator.userAgent.match(/webOS/i)
+			 || navigator.userAgent.match(/iPhone/i)
+			 || navigator.userAgent.match(/iPad/i)
+			 || navigator.userAgent.match(/iPod/i)
+			 || navigator.userAgent.match(/BlackBerry/i)
+			 || navigator.userAgent.match(/Windows Phone/i)
+			 ){
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		var checkMobile = detectmob();
+		if (checkMobile) {
+		  this.onMobile=true;
+		}else {
+		  this.onMobile=false;
+		}
+	}
 
   buildForm(){
     // console.log('build form')
