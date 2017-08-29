@@ -1,16 +1,19 @@
 
 <ul class="school-action">
     <li (click)="saveInWish()">
-        <i style="cursor:pointer" class="fa fa-bookmark" aria-hidden="true"></i>
+        <i style="cursor:pointer" class="fa fa-bookmark" aria-hidden="true"
+            style="color: #393649;"></i>
     </li>
     <li >
         <a href="https://api2.apbprive.fr/">
-            <i style="cursor:pointer" class="fa fa-paper-plane" aria-hidden="true">
+            <i style="cursor:pointer" class="fa fa-paper-plane" aria-hidden="true"
+                style="color: #393649;">
             </i>
         </a>
     </li>
     <li>
-        <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
+        <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"
+            style="color: #393649;"></i>
     </li>
     <!--<li>
         <a href="http://54.254.203.172/cideapi{{brochureData.brochure}}" download="brochure.pdf" target="_self">
@@ -22,10 +25,10 @@
 
 <img *ngIf="SchoolData.logo!='' && SchoolData.logo!=null; else emptyLogo"
     src="https://media.apbprive.fr/{{SchoolData.logo}}" alt="School 1" 
-    style="width:213.75px; height:213.75px"/>
+    style="width:70%; height:70%; margin-left:15%; margin-top:30px"/>
 <ng-template #emptyLogo>
   <img src="assets/images/logoEmpty.png" alt="School 1" 
-      style="width:213.75px; height:213.75px"/>
+      style="width:70%; height:70%; margin-left:15%; margin-top:30px"/>
 </ng-template>
 
 <div class="card-content">
@@ -40,7 +43,7 @@
             {{ SchoolData.addresses[0].address | school:35  }} 
         </span><br /> 
         {{ SchoolData.addresses[0].postCode }} {{ SchoolData.addresses[0].city }}<br /> 
-        Tel: {{ SchoolData.addresses[0].phoneNumber }}</address>
+        Tel: {{ SchoolData.addresses[0].phoneNumber | phone }}</address>
     <ng-template #empty1>
       <address>
         &nbsp;<br /> 

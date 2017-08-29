@@ -64,8 +64,8 @@ export class SchoolCardComponent implements OnInit {
         schoolData : this.SchoolData
       },
       disableClose: false,
-      width: '',
-      height: '',
+      width: screenWidth,
+      height: screenHeight,
       position: {
       top: '',
       bottom: '',

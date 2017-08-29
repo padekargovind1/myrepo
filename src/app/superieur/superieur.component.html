@@ -86,6 +86,14 @@
                                 </button>
                             <!-- </div> -->
                             </div>
+                            <div>
+                                <a style="float:right; color : white"
+                                    *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' || 
+                                        searchFilter[0]!='' || searchFilter[1]!=''"
+                                    (click)="cleanAdvancedSearch()">
+                                    Nouvelle recherche
+                                </a>
+                            </div>
 
 
                         </div><!-- .form-wrap -->
@@ -257,10 +265,6 @@
                                     <ng-template #empty2>
                                         <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                     </ng-template>
-                                    <span class="fa fa-times" style="cursor: pointer" 
-                                        *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' || searchFilter[0]!='' || searchFilter[1]!=''"
-                                        (click)="cleanAdvancedSearch()">Effacer la recherche
-                                    </span>
                                 </div>
 
                                 <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->
