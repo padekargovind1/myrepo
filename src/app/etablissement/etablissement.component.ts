@@ -71,6 +71,12 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
       slidesToShow: 4,
     });
   }
+  
+  loadMap(){
+	setTimeout(function(){
+		window.dispatchEvent(new Event("resize"));
+	}, 1);
+  }
 
   // getSchoolById(){
   //   this.publicService.getSchoolById(this.schoolId)

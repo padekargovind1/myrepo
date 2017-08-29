@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, HostListener } from '@angular/core';
+import { AgmMap, AgmCoreModule } from '@agm/core';
 
 @Component({
   selector: 'app-etablissement-info',
@@ -12,7 +13,7 @@ export class EtablissementInfoComponent implements OnInit {
   lat: number = 51.678418;
   lng: number = 7.809007;
   mapURL : string;
-  map: any;
+  @ViewChild(AgmMap) private map: any;
   constructor() {	}
 
   ngOnInit() {
@@ -28,9 +29,10 @@ export class EtablissementInfoComponent implements OnInit {
           i++;
         }while(this.lat==0.0 && this.lng==0.0);
 		
-		//this.gMaps.setCenter({ lat: markerObj.latitude, lng: markerObj.longitude });
-		
-		//this.mapURL = "https://maps.google.com/maps?q="+this.lat+","+this.lng+"&hl=es;z=14&amp;output=embed";
+		window.onresize = (e) =>
+		{
+			this.map.triggerResize().then(() => this.map._mapsWrapper.setCenter({lat: this.lat, lng: this.lng}));
+		}
       }, 500
     )
   }
