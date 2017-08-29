@@ -39,7 +39,7 @@
                         <div class="text-with-icon">
                             <i class="fa fa-calendar big-calendar"></i>
                             <h3>Vous avez rendez-vous</h3>
-                            <p class="appointment-date"><strong>avec {{appointmentData[4]}} {{ appointmentData[3] }}</strong></p>
+                            <p class="appointment-date">avec {{appointmentData[4]}} {{ appointmentData[3] }}</p>
 
                             <time class="appointment-date">Le {{ appointmentData[0] | date:'dd/MM/yyyy' }} de {{ appointmentData[1] }} à {{ appointmentData[2] }}</time>
                         </div>                        
@@ -101,7 +101,7 @@
                                         <section class="col-md-6" formArrayName="parents"
                                             *ngFor="let parent of wizardForm.controls['parents']['controls']; let i = index">
                                             <div [formGroupName]="i">
-                                            <h3 *ngIf="!onMobile">Parents {{i+1}}</h3>
+                                            <h3 *ngIf="!onMobile">Parents</h3>
 											<br *ngIf="onMobile"/>
 
                                             <div class="form-group">

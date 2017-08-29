@@ -110,7 +110,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	
     if(winWidth < 767){
     //alert('sdf');
-      $('.courses-menu .menu-holder').click(function(){
+      $('.menu-holder').click(function(){
+        console.log("test")
       if($('.submenutBt').css('visibility')=='visible'){
         $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
         
@@ -146,22 +147,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onNavigateHome(){
     this.cleanLocalStorage();
-	this.hideHeaderSubMenus();
+	  this.hideHeaderSubMenus();
     this.router.navigate( ['/'] );
   }
 
   onSignUp(){
-	this.hideHeaderSubMenus();
+	  this.hideHeaderSubMenus();
     this.router.navigate(['/register']);
   }
 
   onSignIn(){
-	this.hideHeaderSubMenus();
+	  this.hideHeaderSubMenus();
     this.router.navigate(['/login']);
   }
   
   navigateToURL(url){
-	this.hideHeaderSubMenus();
+	  this.hideHeaderSubMenus();
     this.router.navigate([url]);
   }
 
@@ -274,8 +275,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   
   hideHeaderSubMenus(){
-	$('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
-	$('.login').hide();
+    $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
+    $('.login').hide();
   }
 
 }

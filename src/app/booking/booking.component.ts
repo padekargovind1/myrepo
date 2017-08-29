@@ -223,16 +223,15 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   onCheckbox(adviserId){
-    // console.log(adviserId);
     let index = this.adviserIdList.indexOf(adviserId);
     if(index==-1){
       this.adviserIdList.push(adviserId);
     } else {
       this.adviserIdList.splice(index, 1);
     }
-    // console.log(this.adviserIdList);
+    console.log(this.adviserIdList);
     this.adviserToDisplay = this.bookingService.filterBooking(this.calendarData, this.adviserIdList)
-    // console.log(this.adviserToDisplay);
+    console.log(this.adviserToDisplay);
     this.refreshCalendar();
   }
 
@@ -276,11 +275,16 @@ export class BookingComponent implements OnInit, AfterViewInit {
     console.log($('.checkbox').attr('class'))
     this.allChecked=true;
     this.adviserToDisplay = this.calendarData;
+    for(let adviser of this.adviserList){
+      this.adviserIdList.push(adviser._id)
+    }
+    console.log(this.adviserIdList, this.allChecked);
     this.refreshCalendar();
   }
 
   onUnselectAll(){
     this.adviserToDisplay = [];
+    this.adviserIdList=[];
     this.refreshCalendar();
     this.allChecked=false;
   }
