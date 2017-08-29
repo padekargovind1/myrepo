@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
+import { SchoolDetailSuperieurComponent } from '../../superieur/school-detail-superieur/school-detail-superieur.component';
 
 @Component({
   selector: 'app-apb-card',
@@ -11,11 +13,13 @@ import { PublicService } from '../../services/public.service';
 export class ApbCardComponent implements OnInit {
 
   @Input() SchoolData : any;
-  brochureData={brochure : ""}
+  brochureData={brochure : ""};
+  config: MdDialogConfig;
 
   constructor(private router : Router,
               private usersService : UsersService,
-              private publicService : PublicService) { }
+              private publicService : PublicService,
+              public dialog:MdDialog) { }
 
   ngOnInit() {
     // setTimeout(()=>{
@@ -60,6 +64,30 @@ export class ApbCardComponent implements OnInit {
           }
         }
       )
+  }
+
+  makeProfile(){
+    let screenWidth : string = (((window.screen.width/5)*4)).toString()+'px';
+    let screenHeight : string = (window.screen.height/1.5).toString()+'px';
+    this.config= {
+      data:{
+        schoolData : this.SchoolData
+      },
+      disableClose: false,
+      width: screenWidth,
+      height: screenHeight,
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
+  }
+
+  onApbDetail(){
+    this.makeProfile();
+    let dialogref = this.dialog.open(SchoolDetailSuperieurComponent,this.config);
   }
 
 }

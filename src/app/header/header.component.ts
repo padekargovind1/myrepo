@@ -180,7 +180,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.usersService.getApplication()
       .subscribe(
         response => {
-           console.log(response)
+          //  console.log(response)
           if(response.code==400){
             console.log(response.message);
           } else {

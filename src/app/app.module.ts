@@ -80,6 +80,11 @@ import { PhonePipe } from './pipes/phone.pipe';
 import { MailTestComponent } from './mail-test/mail-test.component';
 import { SchoolNamePipe } from './pipes/school-name.pipe';
 import { SchoolTagPipe } from './pipes/school-tag.pipe';
+import { SchoolDetailSuperieurComponent } from './superieur/school-detail-superieur/school-detail-superieur.component';
+import { SuperieurEssentielComponent } from './superieur/school-detail-superieur/superieur-essentiel/superieur-essentiel.component';
+import { SuperieurEvenementComponent } from './superieur/school-detail-superieur/superieur-evenement/superieur-evenement.component';
+import { SuperieurFormationComponent } from './superieur/school-detail-superieur/superieur-formation/superieur-formation.component';
+import { SuperieurInfoComponent } from './superieur/school-detail-superieur/superieur-info/superieur-info.component';
 
 
 @NgModule({
@@ -133,7 +138,12 @@ import { SchoolTagPipe } from './pipes/school-tag.pipe';
     PhonePipe,
     MailTestComponent,
     SchoolNamePipe,
-    SchoolTagPipe
+    SchoolTagPipe,
+    SchoolDetailSuperieurComponent,
+    SuperieurEssentielComponent,
+    SuperieurEvenementComponent,
+    SuperieurFormationComponent,
+    SuperieurInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -183,7 +193,8 @@ import { SchoolTagPipe } from './pipes/school-tag.pipe';
        WishApplyPopupComponent,
        SchoolChoiceComponent,
        EtablissementComponent,
-       ConseilPopupComponent
+       ConseilPopupComponent,
+       SchoolDetailSuperieurComponent
     ],
   bootstrap: [AppComponent]
 })

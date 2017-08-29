@@ -81,11 +81,11 @@ export class SuperieurComponent implements OnInit {
   }
 
   getApbSchool(){
-    console.log(this.searchBody)
+    // console.log(this.searchBody)
     this.publicService.getApbSchool(this.limit, this.searchBody)
       .subscribe(
         response=>{
-          console.log(response)
+          // console.log(response)
           if(response.code!=400){
             this.apbSchools = response.data;
           }
@@ -100,7 +100,7 @@ export class SuperieurComponent implements OnInit {
     this.searchFilter[1]=this.searchBody.keyword;
     let lieu = this.searchForm.controls.lieu.value;
     this.searchFilter[2]=lieu
-    console.log(this.searchForm.value, this.options)
+    // console.log(this.searchForm.value, this.options)
     this.resetSearchBodyLieu()
     if(lieu!=''){
       if(this.options['regions'].indexOf(lieu)!=-1){
@@ -119,7 +119,7 @@ export class SuperieurComponent implements OnInit {
         i++;
       }
     }
-    console.log(this.searchBody)
+    // console.log(this.searchBody)
     this.getApbSchool();
   }
 
@@ -211,7 +211,7 @@ export class SuperieurComponent implements OnInit {
 
   fieldForm(){
     let data = this.publicService.getSearchSchool()
-    console.log(data);
+    // console.log(data);
     this.searchForm.patchValue({
       domaine : data[0],
       lieu : data[1],
@@ -261,7 +261,7 @@ export class SuperieurComponent implements OnInit {
     this.publicService.getAutoCompleteApb(filter)
       .subscribe(
         response=>{
-          console.log(response)
+          // console.log(response)
           if(response.code!=400){
             this.schoolsOptions=[]
             for(let i = 0; i<response.data.length; i++){
@@ -269,7 +269,7 @@ export class SuperieurComponent implements OnInit {
                 this.schoolsOptions.push(response.data[i].longName)
               }
             }
-            console.log(this.schoolsOptions)
+            // console.log(this.schoolsOptions)
           }
         }
       )

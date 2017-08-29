@@ -13,7 +13,7 @@
                       </td>
                       <td>
                           <strong>Nombre D'Eleves</strong><br />
-                          {{schoolData.nbrStudents}}
+                          {{schoolData.numberOfStudents}}
                       </td>
                   </tr>
                   <tr>
@@ -23,30 +23,30 @@
                       </td>
                       <td>
                           <strong>Adresse 1</strong><br />
-                          {{schoolData.address.ad1}}
+                          {{schoolData.addresses[0].address}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Code Postal</strong><br />
-                          {{schoolData.address.postcode}}
+                          {{schoolData.addresses[0].postcode}}
                       </td>
                       <td>
                           <strong>Ville</strong><br />
-                          {{schoolData.address.city}}
+                          {{schoolData.addresses[0].city}}
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <strong>Departement</strong><br />
-                          {{schoolData.cycles[0].address.academy.department}}
+                          {{schoolData.addresses[0].departmentName}}
                       </td>
                       <td>
                           <strong>Tel</strong><br />
-                          +33 {{schoolData.address.phone}}
+                          +33 {{schoolData.addresses[0].phoneNumber}}
                       </td>
                   </tr>
-                  <tr>
+                  <!--<tr>
                       <td>
                           <strong>Academie</strong><br />
                           {{schoolData.cycles[0].address.academy.name}}
@@ -55,12 +55,12 @@
                           <strong>Site Internet</strong><br />
                           <a href="{{schoolData.url}}"></a>
                       </td>
-                  </tr>
+                  </tr>-->
               </tbody>
           </table>
       </div>
 
-      <div *ngIf="schoolData.contact!==undefined">
+      <div *ngIf="schoolData.contacts.length!=0">
         <h4>Contacts</h4>
 
         <div class="table-responsive">
@@ -70,29 +70,29 @@
                     <tr>
                         <td>
                             <strong>Titre</strong><br />
-                            {{schoolData.contact.gender}}
+                            {{schoolData.contacts[0].title | capital}}
                         </td>
                         <td>
                             <strong>Prénom</strong><br />
-                            {{schoolData.contact.firstName}}
+                            {{schoolData.contacts[0].firstName}}
                         </td>
                         <td>
                             <strong>Nom</strong><br />
-                            {{schoolData.contact.lastName}}
+                            {{schoolData.contacts[0].lastName}}
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <strong>Fonction</strong><br />
-                            {{schoolData.contact.job}}
+                            {{schoolData.contacts[0].position | capital}}
                         </td>
                         <td>
                             <strong>Mél</strong><br />
-                            {{schoolData.contact.email}}
+                            {{schoolData.contacts[0].email}}
                         </td>
                         <td>
                             <strong>Tél </strong><br />
-                            {{schoolData.contact.tel}}
+                            {{schoolData.contacts[0].landlinePhone}}
                         </td>
                     </tr>
                 </tbody>
