@@ -6,18 +6,8 @@
       </section>
       <section class="col-md-4">
         <div class="card-mobile">
-          <div class="row">
-            <div class="col-md-7">
-              <h4>Mes souhaits</h4>
-            </div>
-            <div class="col-md-5">
-              <p class="text-right">Trier Par Dates 
-              <button class="btn btn-sort btn-black" (click)="sortWishArray()">
-                <i class="fa fa-sort"></i>
-              </button>
-            </p>
-            </div>
-          </div>
+          <h4>Mes souhaits</h4>
+          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('wish')"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
             <!--<ngx-datatable 
               #mydatatable
@@ -79,18 +69,8 @@
       </section>
       <section class="col-md-4">
         <div class="card-mobile">
-          <div class="row">
-            <div class="col-md-7">
-              <h4>Mes demandes d'inscription</h4>
-            </div>
-            <div class="col-md-5">
-              <p class="text-right">Trier Par Dates 
-                <button class="btn btn-sort btn-black" (click)="sortApplyArray()">
-                  <i class="fa fa-sort"></i>
-                </button>
-              </p>
-            </div>
-          </div>
+          <h4>Mes demandes d'inscription</h4>
+          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('apply')"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
             <li *ngFor="let apply of applyList">
               <div class="row">
@@ -119,18 +99,8 @@
       </section>
       <section class="col-md-4">
         <div class="card-mobile">
-          <div class="row">
-            <div class="col-md-7">
-              <h4>Les écoles vues</h4>
-            </div>
-            <div class="col-md-5">
-              <p class="text-right">Trier Par Dates 
-                <button class="btn btn-sort btn-black" (click)="sortHistoryArray()">
-                  <i class="fa fa-sort"></i>
-                </button>
-              </p>
-            </div>
-          </div>
+          <h4>Les écoles vues</h4>
+          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('history')"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
             <li *ngFor="let history of historyList">
               <div class="row">

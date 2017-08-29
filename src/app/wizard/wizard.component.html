@@ -101,7 +101,8 @@
                                         <section class="col-md-6" formArrayName="parents"
                                             *ngFor="let parent of wizardForm.controls['parents']['controls']; let i = index">
                                             <div [formGroupName]="i">
-                                            <h3>Parents {{i+1}}</h3>
+                                            <h3 *ngIf="!onMobile">Parents {{i+1}}</h3>
+											<br *ngIf="onMobile"/>
 
                                             <div class="form-group">
                                                 <div class="select-custom">

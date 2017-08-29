@@ -145,16 +145,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onNavigateHome(){
-    this.cleanLocalStorage()
+    this.cleanLocalStorage();
+	this.hideHeaderSubMenus();
     this.router.navigate( ['/'] );
   }
 
   onSignUp(){
+	this.hideHeaderSubMenus();
     this.router.navigate(['/register']);
   }
 
   onSignIn(){
+	this.hideHeaderSubMenus();
     this.router.navigate(['/login']);
+  }
+  
+  navigateToURL(url){
+	this.hideHeaderSubMenus();
+    this.router.navigate([url]);
   }
 
   onSignOut(){
@@ -263,6 +271,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.publicService.cleanNumLanding();
+  }
+  
+  hideHeaderSubMenus(){
+	$('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
+	$('.login').hide();
   }
 
 }

@@ -11,9 +11,9 @@ export class MyaccountMysearchComponent implements OnInit {
   wishList = [];
   applyList = [];
   historyList = [];
-  sortWish : boolean = false;
-  sortApply : boolean = false;
-  sortHistory : boolean = false;
+  wishAsc: boolean = false;
+  applyAsc: boolean = false;
+  historyAsc: boolean = false;
   constructor(private usersService : UsersService) { }
 
   ngOnInit() {
@@ -72,39 +72,45 @@ export class MyaccountMysearchComponent implements OnInit {
         }
       )
   }
-
-  sortWishArray(){
-    this.sortWish = !this.sortWish;
-    this.wishList = this.sortArray(this.wishList, this.sortWish)
+  custom_sort_asc(a, b) {
+	return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+  }
+  custom_sort_desc(a, b) {
+	return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   }
 
-  sortApplyArray(){
-    this.sortApply = !this.sortApply;
-    this.applyList = this.sortArray(this.applyList, this.sortApply)
+  onSortClick(sortType){
+	switch(sortType){
+		case "wish" : 
+			if(this.wishAsc){ 
+				this.wishList = this.wishList.sort(this.custom_sort_desc); 
+				this.wishAsc=false;
+			} 
+			else{ 
+				this.wishList = this.wishList.sort(this.custom_sort_asc);				
+				this.wishAsc=true;
+			}
+			break;
+		case "apply" : 
+			if(this.applyAsc){ 
+				this.applyList = this.applyList.sort(this.custom_sort_desc); 
+				this.applyAsc=false;
+			} 
+			else{ 
+				this.applyList = this.applyList.sort(this.custom_sort_asc);				
+				this.applyAsc=true;
+			}
+			break;
+		case "history" : 
+			if(this.historyAsc){ 
+				this.historyList = this.historyList.sort(this.custom_sort_desc); 
+				this.historyAsc=false;
+			} 
+			else{ 
+				this.historyList = this.historyList.sort(this.custom_sort_asc);				
+				this.historyAsc=true;
+			}
+			break;
+	}
   }
-
-  sortHistoryArray(){
-    this.sortHistory = !this.sortHistory;
-    this.historyList = this.sortArray(this.historyList, this.sortHistory)
-  }
-
-  sortArray(arrayToSort : any, async : boolean){
-    if(async){
-      arrayToSort.sort(
-        (a : any, b : any)=>{
-          if(a.createdAt.substr(0, 19)<b.createdAt.substr(0, 19)) return -1;
-          if(a.createdAt.substr(0, 19)>b.createdAt.substr(0, 19)) return 1;
-          return 0
-      });
-    } else {
-      arrayToSort.sort(
-        (a : any, b : any)=>{
-          if(a.createdAt.substr(0, 19)>b.createdAt.substr(0, 19)) return -1;
-          if(a.createdAt.substr(0, 19)<b.createdAt.substr(0, 19)) return 1;
-          return 0
-      });
-    }
-    return arrayToSort
-  }
-
 }

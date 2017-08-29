@@ -1935,7 +1935,7 @@ img.cide-logo-mobile { display:inline-block !important}
   min-width: 72px;
   padding: 3px 10px;
   position: static;
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 .cdk-overlay-container .cdk-overlay-pane {left:0 !important; min-width:100% !important; max-width:100% !important;} 
@@ -1949,7 +1949,10 @@ md-radio-group {  float: left;  width: 100%;}
 .mat-radio-label-content {  padding-left: 5px !important;}
 .mat-radio-button {  display: inline-block;  float: left;}
 
-
+.landingpage__wrapper .landingpage__additional-content .form-wrap  {display:none !important; }
+ 
+.landing-page-2 .main {min-height:0 !important;}
+button.deselect-all-advisor {border:1px solid #ed5565; background:none;}
 }
 
 header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}
@@ -1961,7 +1964,7 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 
 .fc-prev-button.fc-state-default.fc-corner-left {  left: 20px !important;  position: absolute;  top: 60px;}
 .fc-next-button.fc-state-default.fc-corner-right {  right: 20px !important;  position: absolute;  top: 60px;}
-.fc-toolbar .fc-left {width:100%; text-align:center; margin-bottom: -24px;    margin-top: 24px;    text-align: center;    width: 100%;}
+.fc-toolbar .fc-left {width:100%; text-align:center; margin-bottom: -24px;    margin-top: 64px;    text-align: center;    width: 100%;}
 .fc-toolbar .fc-left h2 {width:100%; text-align:center;}
 .calendar-wrap > h4 {text-align:center; }
 .fc-event-container a.fc-day-grid-event {  font-size: 9px;  padding: 4px 0 4px 1px;}
@@ -1970,6 +1973,13 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 .landingpage__image-holder .landingpage__caption h3 { text-align:center;}
 .appointment-text .text-with-icon h3{ font-weight: 100; }
 .landingpage__image-holder img.landingpage__image { width: 100%; top: 0;left: 0; }
+#calendar .fc-button-group {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.calendar-wrap h4 {display:none;}
+.fc-toolbar .fc-left {margin-top: 64px;}
 }
 
 .wizard-button-align{margin-left:15px}

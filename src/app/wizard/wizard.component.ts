@@ -61,6 +61,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
   canDisplaySchool : boolean = false;
   @ViewChild('tabGroup') tabGroup;
   maxDate = new Date();
+  onMobile:boolean=false;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -94,6 +95,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       console.log(this.appointmentData);
     }
     this.loadScript('assets/js/select2.min.js'); 
+	this.runScript();
   }
   
    loadScript(url) {
@@ -108,6 +110,38 @@ export class WizardComponent implements OnInit, AfterViewInit {
     // this.datePicker();
     this.checked = false;
   }
+  runScript(){
+		function detectmob() {
+			if( navigator.userAgent.match(/Android/i)
+			 || navigator.userAgent.match(/webOS/i)
+			 || navigator.userAgent.match(/iPhone/i)
+			 || navigator.userAgent.match(/iPad/i)
+			 || navigator.userAgent.match(/iPod/i)
+			 || navigator.userAgent.match(/BlackBerry/i)
+			 || navigator.userAgent.match(/Windows Phone/i)
+			 ){
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		var checkMobile = detectmob();
+		if (checkMobile) {
+		  console.log(checkMobile)
+		  this.onMobile=true;
+		  $('.select-all-advisor').on('click', function() {
+			  $(this).hide();
+			  $('.deselect-all-advisor').show();
+		  });
+		  $('.deselect-all-advisor').on('click', function() {
+			  $(this).hide();
+			  $('.select-all-advisor').show();
+		  });
+		}else {
+		  this.onMobile=false;
+		}
+	}
 
   /*
   Remove this method if the api work
