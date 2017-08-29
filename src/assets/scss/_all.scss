@@ -1926,18 +1926,7 @@ img.cide-logo-mobile { display:inline-block !important}
 
 #wizard .mat-tab-header .mat-tab-list{transform: none;}
 #wizard .mat-tab-header .mat-tab-labels {  display: block;  float: left;  width: 100%;}
-#wizard .mat-tab-header .mat-tab-label {
-  display: block;
-  float: left;
-  height: auto;
-  line-height: 150%;
-  max-width: 100%;
-  min-width: 72px;
-  padding: 3px 10px;
-  position: static;
-  text-align: center;
-  width: 100%;
-}
+#wizard .mat-tab-header .mat-tab-label {  display: block;  float: left;  height: auto;  line-height: 150%;  max-width: 100%;  min-width: 72px;  padding: 3px 10px;  position: static;  text-align: center;  width: 100%;}
 .cdk-overlay-container .cdk-overlay-pane {left:0 !important; min-width:100% !important; max-width:100% !important;} 
 
 
@@ -1953,6 +1942,9 @@ md-radio-group {  float: left;  width: 100%;}
  
 .landing-page-2 .main {min-height:0 !important;}
 button.deselect-all-advisor {border:1px solid #ed5565; background:none;}
+#login-form .col-md-6 ,#login-form .col-md-12 {float:left; width:100%;}
+.landingpage__caption h2 br{display:none; }
+.mat-tab-label[_ngcontent-c3]{padding: 0 15px !important;}
 }
 
 header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}

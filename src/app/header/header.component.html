@@ -2,7 +2,7 @@
     <nav class="main-navigation">
             <ul class="clearfix">
                 <li class="parent-item haschild courses-menu">
-                    <a class="ln-tr"><i class="fa fa-bars menu-holder"></i></a>
+                    <a class="ln-tr" href="javascript:void(0);"><i class="fa fa-bars menu-holder"></i></a>
                     <ul class="clearfix submenutBt">
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
@@ -119,16 +119,16 @@
         <li (click)="wishApplyDialog(1)"><i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i></li>
         <li *ngIf="!userLogin; else moblog"><i class="fa fa-user"></i>
             <ul class="login">
-                <li><a (click)="onSignUp()">S'inscrire</a></li>
-                <li><a (click)="onSignIn()">Se connecter</a></li>
+                <li><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; S'inscrire</a></li>
+                <li><a (click)="onSignIn()"><i class="fa fa-sign-in"></i>&nbsp;&nbsp; Se connecter</a></li>
             </ul>
         </li>
 		<ng-template #moblog>
 			<li><i class="fa fa-user"></i>
 				<ul class="login">
-					<li style="display:none"><a (click)="onSignUp()">S'inscrire</a></li>
-					<li><a (click)="onSignOut()">Fermer la Session</a></li>
-					<li><a (click)="onMyAccount('0')">Mon compte</a></li>
+					<li style="display:none"><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; S'inscrire</a></li>
+					<li><a (click)="onSignOut()"><i class="fa fa-sign-out"></i>&nbsp;&nbsp; Fermer la Session</a></li>
+					<li><a (click)="onMyAccount('0')"><i class="fa fa-user-circle-o"></i>&nbsp;&nbsp; Mon compte</a></li>
 				</ul>
 			</li>
         </ng-template>
