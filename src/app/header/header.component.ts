@@ -166,6 +166,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSignOut(){
+	this.hideHeaderSubMenus();
     this.cleanLocalStorage();
     this.authService.logout();
     this.userLogin=false;
@@ -231,6 +232,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onMyAccount(nb){
+	this.hideHeaderSubMenus();
     this.cleanLocalStorage();
     if(this.userLogin){
       this.usersService.storeTabNb(nb)
@@ -274,6 +276,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   
   hideHeaderSubMenus(){
+  console.log(this.onMobile);
 	if(this.onMobile){
 		$('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
 		$('.login').hide();
