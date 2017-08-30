@@ -2,59 +2,116 @@
 
     <div class="main" role="main">
 
-    <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <defs>
-            <pattern id="ecole-inactive" patternUnits="userSpaceOnUse" x="150" y="140" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/ecole-inactive.png" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="college-inactive" patternUnits="userSpaceOnUse" x="100" y="30" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/college-inactive.png" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="lycee-inactive" patternUnits="userSpaceOnUse" x="69" y="20" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/lycee-inactive.png" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="internat-inactive" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/internat-inactive.png" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="enseignement-inactive" patternUnits="userSpaceOnUse" x="-82" y="-120" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/enseignement-inactive.png" x="0" y="0" width="500" height="334" />
-            </pattern>
-             <pattern id="sejour-inactive" patternUnits="userSpaceOnUse" x="80" y="-24" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/sejour-inactive.png" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="orientation-inactive" patternUnits="userSpaceOnUse" x="110" y="-93" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/orientation-inactive.png" x="0" y="0" width="500" height="334" />
-            </pattern>
+        <div *ngIf="onMobile; else notOnMobile">
+            <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <pattern id="ecole-inactive" patternUnits="userSpaceOnUse" x="0" y="0" width="380" height="240">
+                    <image xlink:href="assets/images/new-landing-page-2/ecole-inactive.png" x="40" y="60" width="350" height="200" />
+                </pattern>
+                <pattern id="college-inactive" patternUnits="userSpaceOnUse" x="100" y="20" width="380" height="240">
+                    <image xlink:href="assets/images/new-landing-page-2/college-inactive.png" x="-100" y="-15" width="350" height="200" />
+                </pattern>
+                <pattern id="lycee-inactive" patternUnits="userSpaceOnUse" x="59" y="17" width="380" height="240">
+                    <image xlink:href="assets/images/new-landing-page-2/lycee-inactive.png" x="-70" y="-20" width="350" height="200" />
+                </pattern>
+                <pattern id="internat-inactive" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
+                    <image xlink:href="assets/images/new-landing-page-2/internat-inactive.png" x="50" y="-25" width="350" height="200" />
+                </pattern>
+                <pattern id="enseignement-inactive" patternUnits="userSpaceOnUse" x="-82" y="-185" width="500" height="334">
+                    <image xlink:href="assets/images/new-landing-page-2/enseignement-inactive.png" x="-10" y="-50" width="350" height="200" />
+                </pattern>
+                <pattern id="sejour-inactive" patternUnits="userSpaceOnUse" x="60" y="-24" width="500" height="334">
+                    <image xlink:href="assets/images/new-landing-page-2/sejour-inactive.png" x="-70" y="180" width="350" height="200" />
+                </pattern>
+                <pattern id="orientation-inactive" patternUnits="userSpaceOnUse" x="-5" y="-190" width="500" height="334">
+                    <image xlink:href="assets/images/new-landing-page-2/orientation-inactive.png" x="0" y="-40" width="350" height="200" />
+                </pattern>
 
-          </defs>
-        </svg>
+            </defs>
+            </svg>
 
-        <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <defs>
-            <pattern id="ecole-active" patternUnits="userSpaceOnUse" x="150" y="140" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/ecole.jpg" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="college-active" patternUnits="userSpaceOnUse" x="164" y="30" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/college.jpg" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="lycee-active" patternUnits="userSpaceOnUse" x="69" y="20" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/lycee.jpg" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="internat-active" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/internat.jpg" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="enseignement-active" patternUnits="userSpaceOnUse" x="-82" y="-120" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/enseignement.jpg" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="sejour-active" patternUnits="userSpaceOnUse" x="80" y="-24" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/sejour.jpg" x="0" y="0" width="500" height="334" />
-            </pattern>
-            <pattern id="orientation-active" patternUnits="userSpaceOnUse" x="110" y="-93" width="500" height="334">
-                <image xlink:href="assets/images/new-landing-page-2/orientation.jpg" x="0" y="0" width="500" height="334" />
-            </pattern>
-          </defs>
-        </svg>
-        
+            <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <pattern id="ecole-active" patternUnits="userSpaceOnUse" x="0" y="0" width="380" height="240">
+                    <image xlink:href="assets/images/new-landing-page-2/ecole.jpg" x="40" y="60" width="350" height="200"/>
+                </pattern>
+                <pattern id="college-active" patternUnits="userSpaceOnUse" x="100" y="20" width="380" height="240">
+                    <image xlink:href="assets/images/new-landing-page-2/college.jpg" x="-70" y="0" width="350" height="200" />
+                </pattern>
+                <pattern id="lycee-active" patternUnits="userSpaceOnUse" x="59" y="17" width="380" height="240">
+                    <image xlink:href="assets/images/new-landing-page-2/lycee.jpg" x="-70" y="-20" width="350" height="200" />
+                </pattern>
+                <pattern id="internat-active" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
+                    <image xlink:href="assets/images/new-landing-page-2/internat.jpg" x="50" y="-25" width="350" height="200" />
+                </pattern>
+                <pattern id="enseignement-active" patternUnits="userSpaceOnUse" x="-82" y="-185" width="500" height="334">
+                    <image xlink:href="assets/images/new-landing-page-2/enseignement.jpg" x="-10" y="-50" width="350" height="200" />
+                </pattern>
+                <pattern id="sejour-active" patternUnits="userSpaceOnUse" x="60" y="-24" width="500" height="334">
+                    <image xlink:href="assets/images/new-landing-page-2/sejour.jpg" x="-70" y="180" width="350" height="200" />
+                </pattern>
+                <pattern id="orientation-active" patternUnits="userSpaceOnUse" x="-5" y="-190" width="500" height="334">
+                    <image xlink:href="assets/images/new-landing-page-2/orientation.jpg" x="0" y="-40" width="350" height="200" />
+                </pattern>
+            </defs>
+            </svg>
+        </div>
+            
+
+        <ng-template #notOnMobile>
+            <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <pattern id="ecole-inactive" patternUnits="userSpaceOnUse" x="0" y="0" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/ecole-inactive.png" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="college-inactive" patternUnits="userSpaceOnUse" x="164" y="30" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/college-inactive.png" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="lycee-inactive" patternUnits="userSpaceOnUse" x="69" y="20" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/lycee-inactive.png" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="internat-inactive" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/internat-inactive.png" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="enseignement-inactive" patternUnits="userSpaceOnUse" x="-82" y="-120" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/enseignement-inactive.png" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="sejour-inactive" patternUnits="userSpaceOnUse" x="80" y="-24" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/sejour-inactive.png" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="orientation-inactive" patternUnits="userSpaceOnUse" x="110" y="-93" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/orientation-inactive.png" x="0" y="0" width="500" height="334" />
+                    </pattern>
+
+                </defs>
+            </svg>
+
+            <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <pattern id="ecole-active" patternUnits="userSpaceOnUse" x="150" y="140" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/ecole.jpg" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="college-active" patternUnits="userSpaceOnUse" x="164" y="30" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/college.jpg" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="lycee-active" patternUnits="userSpaceOnUse" x="69" y="20" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/lycee.jpg" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="internat-active" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/internat.jpg" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="enseignement-active" patternUnits="userSpaceOnUse" x="-82" y="-120" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/enseignement.jpg" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="sejour-active" patternUnits="userSpaceOnUse" x="80" y="-24" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/sejour.jpg" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                    <pattern id="orientation-active" patternUnits="userSpaceOnUse" x="110" y="-93" width="500" height="334">
+                        <image xlink:href="assets/images/new-landing-page-2/orientation.jpg" x="0" y="0" width="500" height="334" />
+                    </pattern>
+                </defs>
+            </svg>
+        </ng-template>
             <div class="container-fluid">
         
             <div class="row">

@@ -25,11 +25,13 @@ export class AccueilComponent implements OnInit {
   apbForm: FormGroup;
   rateId : string = '';
   domaines=[];
+  onMobile : boolean = false;
   constructor(private router: Router,
               private route: ActivatedRoute,
               private publicService: PublicService,
               private fb: FormBuilder
               ) {
+    this.runScript();
     this.buildForm();
     this.buildApbForm();
   }
@@ -38,8 +40,8 @@ export class AccueilComponent implements OnInit {
     this.wheel = new wheelnav("tabwheel");
     this.wheel.spreaderInTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
     this.wheel.spreaderOutTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
-    this.wheel.spreaderInTitleWidth = 130;
-    this.wheel.spreaderOutTitleWidth = 130;
+    this.wheel.spreaderInTitleWidth = 100;
+    this.wheel.spreaderOutTitleWidth = 100;
     this.wheel.spreaderEnable = true;
     this.wheel.spreaderRadius = 0;
                     //This is the place for code snippets from the documentation -> http://wheelnavjs.softwaretailoring.net/documentation.html
@@ -50,6 +52,40 @@ export class AccueilComponent implements OnInit {
     this.wheelNavigation();
     this.initRate();
     this.domaines=this.publicService.getDomaines();
+  }
+
+  runScript(){
+    var self = this;
+    function detectmob() {
+      if( navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+        ){
+          return true;
+      }
+      else {
+          return false;
+      }
+    }
+    var checkMobile = detectmob();
+    if (checkMobile) {
+      console.log(checkMobile)
+      self.onMobile=true;
+      $('.select-all-advisor').on('click', function() {
+          $(this).hide();
+          $('.deselect-all-advisor').show();
+      });
+      $('.deselect-all-advisor').on('click', function() {
+          $(this).hide();
+          $('.select-all-advisor').show();
+      });
+    }else {
+      self.onMobile=false;
+    }
   }
 
   wheelNavigation(){

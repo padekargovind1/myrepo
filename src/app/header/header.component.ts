@@ -9,6 +9,7 @@ import { CompareService } from '../services/compare.service';
 import { WishApplyPopupComponent } from './wish-apply-popup/wish-apply-popup.component';
 import 'rxjs/add/operator/filter';
 import { Subscription } from 'rxjs/Subscription';
+import swal from 'sweetalert2';
 
 var self = this;
 
@@ -75,20 +76,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
     $('.mobile-login').on('click', '.fa-user', function() {
         $('.login').toggle('slow');
     });
-     function detectmob() {
-        if( navigator.userAgent.match(/Android/i)
-         || navigator.userAgent.match(/webOS/i)
-         || navigator.userAgent.match(/iPhone/i)
-         || navigator.userAgent.match(/iPad/i)
-         || navigator.userAgent.match(/iPod/i)
-         || navigator.userAgent.match(/BlackBerry/i)
-         || navigator.userAgent.match(/Windows Phone/i)
-         ){
-            return true;
-        }
-        else {
-            return false;
-        }
+    function detectmob() {
+      if( navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+        ){
+          return true;
+      }
+      else {
+          return false;
+      }
     }
     var checkMobile = detectmob();
     if (checkMobile) {
@@ -277,11 +278,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   
   hideHeaderSubMenus(){
-  console.log(this.onMobile);
-	if(this.onMobile){
-		$('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
-		$('.login').hide();
-	}
+    console.log(this.onMobile);
+    if(this.onMobile){
+      $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
+      $('.login').hide();
+    }
+  }
+
+  onMobileGuide(){
+    swal({
+      title: "CIDE",
+      text: 'Désolé, notre guide intéractif n\'est pas disponible sur les appareils mobiles.',
+      type: 'warning',
+      confirmButtonText: "J'AI COMPRIS"
+    })
   }
 
 }
