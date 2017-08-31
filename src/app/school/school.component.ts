@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -19,7 +19,7 @@ declare var $ :any;
   styleUrls: ['./school.component.scss'],
   providers: []
 })
-export class SchoolComponent implements OnInit, AfterViewInit {
+export class SchoolComponent implements OnInit {
 
   schoolList : any;
   schoolListFilter = [];
@@ -95,14 +95,13 @@ export class SchoolComponent implements OnInit, AfterViewInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
-	this.runScriptOnInit()
+	  this.runScriptOnInit()
     console.log(window.screen.width)
+    setTimeout(()=>{
+      this.runScript()
+    })
   }
 
-  ngAfterViewInit(){
-    this.runScript()
-  }
-  
   runScriptOnInit(){
     function detectmob() {
       if( navigator.userAgent.match(/Android/i)
