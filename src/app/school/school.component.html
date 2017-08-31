@@ -650,6 +650,25 @@
                     </div><!-- .modal-content -->
                 </div><!-- .modal-dialog -->
             </div><!-- modal -->
+			
+			<div class="mobileads-carousal-top" *ngIf="onMobile" >
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1  wrapper"
+							[class]="getSlickNb()">
+							<div><img src="assets/images/ad/ads-footer_r1_c1.jpg" alt="ads" /></div>
+							<div><img src="assets/images/ad/ads-footer_r1_c2.jpg" alt="ads" /></div>
+							<div><img src="assets/images/ad/ads-footer_r1_c3.jpg" alt="ads" /></div>
+							<div><img src="assets/images/ad/ads-footer_r1_c4.jpg" alt="ads" /></div>
+							<div><img src="assets/images/ad/ads-footer_r1_c6.jpg" alt="ads" /></div>
+							<div><img src="assets/images/ad/ads-footer_r1_c8.jpg" alt="ads" /></div>
+							<div><img src="assets/images/ad/ads-footer_r1_c9.jpg" alt="ads" /></div>
+							<div><img src="assets/images/ad/ads-footer_r1_c10.jpg" alt="ads" /></div>
+							<div><img src="assets/images/ad/ads-footer_r1_c12.jpg" alt="ads" /></div>
+						</div>
+					</div>
+				</div>
+			</div><!-- footer-ads -->
 
             <div class="container">
 
@@ -817,7 +836,7 @@
 
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
-                    <div class="footer-ads hidden animated" style="margin-top:10px">
+                    <div class="{{bottomAdCarousalClasses}}" style="margin-top:10px">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1  wrapper"
