@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -19,7 +19,7 @@ declare var $ :any;
   styleUrls: ['./school.component.scss'],
   providers: []
 })
-export class SchoolComponent implements OnInit, AfterViewInit {
+export class SchoolComponent implements OnInit {
 
   schoolList : any;
   schoolListFilter = [];
@@ -73,6 +73,8 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   nbBodyClick : number =0;
   nbAdvancedClick : number = 0;
   forAdvancedSearch : boolean = false;
+  onMobile : boolean = false;
+  bottomAdCarousalClasses : string = "footer-ads hidden animated";
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -94,10 +96,36 @@ export class SchoolComponent implements OnInit, AfterViewInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+	  this.runScriptOnInit()
+    console.log(window.screen.width)
+    setTimeout(()=>{
+      this.runScript()
+    })
   }
 
-  ngAfterViewInit(){
-    this.runScript()
+  runScriptOnInit(){
+    function detectmob() {
+      if( navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+        ){
+          return true;
+      }
+      else {
+          return false;
+      }
+    }
+    var checkMobile = detectmob();
+    if (checkMobile) {
+      console.log(checkMobile)
+      this.onMobile=true;
+    }else {
+      this.onMobile=false;
+    }
   }
 
   runScript(){
@@ -144,19 +172,28 @@ export class SchoolComponent implements OnInit, AfterViewInit {
 			  }
 		}
 	});
-    
-    $('.slickjs'+this.slickNb).slick({
-      arrows : false,
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-    });
+	
     window.setTimeout("hideAd()", 3000);
   	window.setTimeout("hideSideAd()", 13000);
    
   	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { 
       $(this).parent().addClass('fadeOutDown'); 
+    });
+	
+	
+	var bottomadds_count=5;
+	if(this.onMobile)
+	{
+		this.bottomAdCarousalClasses = "mobileads-carousal-bottom";
+		bottomadds_count=2;
+	}
+	
+    $('.slickjs'+this.slickNb).slick({
+      arrows : false,
+      slidesToShow: bottomadds_count,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
     });
   }
 
