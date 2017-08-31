@@ -2,8 +2,10 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
+import swal from 'sweetalert2';
 declare var jquery:any;
 declare var $ :any;
+
 @Component({
   selector: 'app-landing-page-1',
   templateUrl: './landing-page-1.component.html',
@@ -125,23 +127,35 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   }
 
   onSubmitSearch(path){
-    // console.log("on submit", this.searchForm.value)
-    let data;
-    if(path!="enseignement"){
-      data = [
-        this.searchForm.controls.classe.value,
-        this.searchForm.controls.lieu.value,
-        this.searchForm.controls.etablissement.value
-      ]
-    } else {
-      data = [
-        this.apbForm.controls.domaine.value,
-        this.apbForm.controls.lieu.value,
-        this.apbForm.controls.etablissement.value
-      ]
+    console.log("on submit", this.searchForm.value)
+    if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement==""){
+      swal({
+        title: 'Attention',
+        text: 'Vous devez choisir une classe et un lieu ou entrer le nom d\'un établissement afin d\'effectuer une recherche rapide. Merci',
+        type: 'warning',
+        confirmButtonText: "J'AI COMPRIS"
+      })
+    }else{
+      let data;
+      if(path!="enseignement"){
+        data = [
+          this.searchForm.controls.classe.value,
+          this.searchForm.controls.lieu.value,
+          this.searchForm.controls.etablissement.value
+        ]
+      } else {
+        data = [
+          this.apbForm.controls.domaine.value,
+          this.apbForm.controls.lieu.value,
+          this.apbForm.controls.etablissement.value
+        ]
+      }
+      if(data[0]=="Indifférent"){
+        data[0]="";
+      }
+      this.publicService.storeSearchSchool(data);
+      this.onNavigate(path);
     }
-    this.publicService.storeSearchSchool(data);
-    this.onNavigate(path);
   }
 
   onNavigate(path){

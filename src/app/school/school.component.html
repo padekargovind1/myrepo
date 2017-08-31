@@ -324,9 +324,6 @@
                             <div class="col-md-1">
                             <!-- <div class="form-group"> -->
                                 <button class="btn btn-search" type="submit"
-                                    [disabled]="(searchForm.controls['etablissement'].value==null || searchForm.controls['etablissement'].value.length==0) && 
-                                    ((searchForm.controls['lieu'].value ==null || searchForm.controls['lieu'].value.length==0) || 
-                                    (searchForm.controls['classe'].value==null || searchForm.controls['classe'].value.length==0))"
                                     (click)="onSubmitSearch()">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -660,7 +657,7 @@
                         <div class="col-md-12">
                             
                             <div class="result-text" class="col-md-11">
-                                <h3 *ngIf="searchFilter[0]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour : 
+                                <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour : 
                                     <span *ngIf="searchFilter[0]!=''">
                                         {{ 'Classe ' + searchFilter[0] }}
                                     </span> 
@@ -802,7 +799,7 @@
                         </div><!-- .col-* -->
                         <div *ngIf="schoolListFilter.length==0" class="row">
                             <p style="width:100%;
-                                text-align:center; font-size : 35px">Il n'y a pas d'école pour la recherche demandé.</p>
+                                text-align:center; font-size : 35px">Il n'y a pas d'école pour la recherche demandée.</p>
                         </div>
                     </div><!-- .list-schools -->
 

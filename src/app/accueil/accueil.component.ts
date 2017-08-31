@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PublicService } from '../services/public.service';
 import * as $ from 'jquery';
+import swal from 'sweetalert2';
 
 declare var wheelnav: any;
 declare var sliceTransform: any;
@@ -277,22 +278,34 @@ export class AccueilComponent implements OnInit {
 
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
-    let data;
-    if(path!="enseignement"){
-      data = [
-        this.searchForm.controls.classe.value,
-        this.searchForm.controls.lieu.value,
-        this.searchForm.controls.etablissement.value
-      ]
-    } else {
-      data = [
-        this.apbForm.controls.domaine.value,
-        this.apbForm.controls.lieu.value,
-        this.apbForm.controls.etablissement.value
-      ]
+    if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement==""){
+      swal({
+        title: 'Attention',
+        text: 'Vous devez choisir une classe et un lieu ou entrer le nom d\'un établissement afin d\'effectuer une recherche rapide. Merci',
+        type: 'warning',
+        confirmButtonText: "J'AI COMPRIS"
+      })
+    }else{
+      let data;
+      if(path!="enseignement"){
+        data = [
+          this.searchForm.controls.classe.value,
+          this.searchForm.controls.lieu.value,
+          this.searchForm.controls.etablissement.value
+        ]
+      } else {
+        data = [
+          this.apbForm.controls.domaine.value,
+          this.apbForm.controls.lieu.value,
+          this.apbForm.controls.etablissement.value
+        ]
+      }
+      if(data[0]=="Indifférent"){
+        data[0]="";
+      }
+      this.publicService.storeSearchSchool(data);
+      this.onNavigate(path);
     }
-    this.publicService.storeSearchSchool(data);
-    this.onNavigate(path);
   }
 
   navigateTo(index){

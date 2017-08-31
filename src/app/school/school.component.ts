@@ -72,6 +72,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   slickNb : number;
   nbBodyClick : number =0;
   nbAdvancedClick : number = 0;
+  forAdvancedSearch : boolean = false;
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -93,7 +94,6 @@ export class SchoolComponent implements OnInit, AfterViewInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
-    console.log(window.screen.width)
   }
 
   ngAfterViewInit(){
@@ -190,9 +190,9 @@ export class SchoolComponent implements OnInit, AfterViewInit {
             $('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')")
             this.advancedSearch.code=["maternelle", "primaire"]
           } else if (this.pathName == "college"){
-              this.schoolComponentTitle="Rechercher un collège (6ème-3ème)"
-              $('.filter-form-holder').css('background-image', "url('./assets/images/secondary-school.jpg')")
-              this.advancedSearch.code=[this.pathName]
+            this.schoolComponentTitle="Rechercher un collège (6ème-3ème)"
+            $('.filter-form-holder').css('background-image', "url('./assets/images/secondary-school.jpg')")
+            this.advancedSearch.code=[this.pathName]
           } else if(this.pathName == "lycee"){
             this.schoolComponentTitle="Rechercher un lycée (Seconde-Terminale)"
             $('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
@@ -232,6 +232,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
       lieu : data[1],
       etablissement : data[2]
     })
+    this.forAdvancedSearch=true;
     this.onSubmitSearch()
   }
 
@@ -297,10 +298,24 @@ export class SchoolComponent implements OnInit, AfterViewInit {
 
   onSubmitSearch(){
     // console.log(this.searchForm)
+    if(!this.forAdvancedSearch){
+      if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement==""){
+        swal({
+          title: 'Attention',
+          text: 'Vous devez choisir une classe et un lieu ou entrer le nom d\'un établissement afin d\'effectuer une recherche rapide. Merci',
+          type: 'warning',
+          confirmButtonText: "J'AI COMPRIS"
+        })
+        return;
+      }
+    }
     let data = {
       class : this.searchForm.controls.classe.value,
       place : this.searchForm.controls.lieu.value,
       name : this.searchForm.controls.etablissement.value
+    }
+    if(data.class=="Indifférent"){
+      data.class="";
     }
     this.searchFilter=[data.class, data.place, data.name]
     this.advancedSearch.class = this.searchForm.controls.classe.value;
@@ -308,9 +323,8 @@ export class SchoolComponent implements OnInit, AfterViewInit {
     this.advancedSearch.name = this.searchForm.controls.etablissement.value;
     // console.log(data);
     this.publicService.storeSearchSchool(this.searchFilter);
-    // this.postFastSearch(data)
-    // this.getSearchFilter();
-    this.postAdvancedFilter()
+    this.postAdvancedFilter();
+    this.forAdvancedSearch=false;
   }
 
   // postFastSearch(data){
@@ -381,22 +395,21 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   }
 
   postAdvancedFilter(){
-    console.log(this.advancedSearch);
-	this.isLoader=true;
+    // console.log(this.advancedSearch);
+    this.isLoader=true;
     this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
         response=>{
           console.log(response);
           let data = response.data;
-		  this.isLoader=false;
+		      this.isLoader=false;
           if(response.code==400){
             // console.log(response.message)
           } else {
             this.defaultSchoolList=data;
             this.schoolListFilter=data;
-			this.totalRecords = response.total;
-            console.log(this.schoolListFilter)
-            // this.filterCycleSchool(data)
+			      this.totalRecords = response.total;
+            // console.log(this.schoolListFilter)
           }
         }
       )
@@ -425,9 +438,8 @@ export class SchoolComponent implements OnInit, AfterViewInit {
 
   onAdvancedClick(event, category){
     // console.log(event);
-    console.log("test&")
     if(event.srcElement.localName=="input"){
-      console.log(event.srcElement.checked)
+      // console.log(event.srcElement.checked)
       if(event.srcElement.checked){
         // console.log("checked!")
         if(typeof this.advancedSearch[category] == "undefined"){
@@ -441,13 +453,12 @@ export class SchoolComponent implements OnInit, AfterViewInit {
         this.limit=20
         this.postAdvancedFilter();
       } else{
-        // console.log("unchecked!");
-        console.log(this.advancedSearch[category], event.srcElement.name)
+        // console.log(this.advancedSearch[category], event.srcElement.name)
         if(this.advancedSearch[category]!==undefined){
           delete this.advancedSearch[category][event.srcElement.name];
         }
         this.checkCategory(category);
-        console.log(this.advancedSearch);
+        // console.log(this.advancedSearch);
         this.limit=20
         this.postAdvancedFilter();
         let index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
@@ -569,12 +580,11 @@ export class SchoolComponent implements OnInit, AfterViewInit {
 
   onConfessionClick(){
     this.confessionChecked=!this.confessionChecked;
-    console.log(this.advancedSearchToDisplay, this.advancedSearch)
+    // console.log(this.advancedSearchToDisplay, this.advancedSearch)
     if(!this.confessionChecked){
       delete this.advancedSearch['religious']
-      console.log(this.advancedSearchCategory)
+      // console.log(this.advancedSearchCategory)
       for(let i =0; i< this.advancedSearchCategory.length; i++){
-        console.log("test1")
         if(this.advancedSearchCategory[i]=='religious'){
           this.advancedSearchCategory.splice(i, 1)
           i--;
@@ -592,7 +602,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
           i--;
         }
       }
-      console.log(this.advancedSearchToDisplay, this.advancedSearchCategory, this.advancedSearchValue)
+      // console.log(this.advancedSearchToDisplay, this.advancedSearchCategory, this.advancedSearchValue)
     }
   }
 
@@ -634,7 +644,7 @@ export class SchoolComponent implements OnInit, AfterViewInit {
   }
 
   goToBrochure(schoolName){
-    console.log(schoolName)
+    // console.log(schoolName)
     this.brochureService.storeSchoolSearch(schoolName);
     this.router.navigate(['/brochure']);
   }
