@@ -1952,8 +1952,8 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 @media (max-width:639px){ 
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
 
-.fc-prev-button.fc-state-default.fc-corner-left {  left: 20px !important;  position: absolute;  top: 60px;}
-.fc-next-button.fc-state-default.fc-corner-right {  right: 20px !important;  position: absolute;  top: 60px;}
+.fc-prev-button.fc-state-default.fc-corner-left {  left: 10px !important;  position: absolute;  top: 60px;}
+.fc-next-button.fc-state-default.fc-corner-right {  right: 0px !important;  position: absolute;  top: 50px;}
 .fc-toolbar .fc-left {width:100%; text-align:center; margin-bottom: -24px;    margin-top: 64px;    text-align: center;    width: 100%;}
 .fc-toolbar .fc-left h2 {width:100%; text-align:center;}
 .calendar-wrap > h4 {text-align:center; }
@@ -1969,8 +1969,11 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
   top: 10px;
 }
 .calendar-wrap h4 {display:none;}
-.fc-toolbar .fc-left {margin-top: 64px;}
+.fc-toolbar .fc-left {margin-top: 53px;padding-left: 10px;}
 .searchform .select-custom .form-control { height: auto;}
+.enfantCls  section.col-md-4 { padding-left:0; padding-right:0;}
+.brouchreCls  div.col-sm-6 { padding: 0 0 0 11px; }
+.brouchreCls div.col-sm-6 .select-custom { margin-right: 0px; }
 }
 
 .wizard-button-align{margin-left:15px}
@@ -1981,3 +1984,7 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 .lycée-tag{background-color:#FF9E00;}
 .mat-option{font-size:10px}
 .parentButton{ margin : 5px}
+.customBtnClassClose section{
+text-align:center;
+}
+
