@@ -1974,6 +1974,78 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 .enfantCls  section.col-md-4 { padding-left:0; padding-right:0;}
 .brouchreCls  div.col-sm-6 { padding: 0 0 0 11px; }
 .brouchreCls div.col-sm-6 .select-custom { margin-right: 0px; }
+app-landing-page-3 .container.landing-page-3{ margin-top:-30px; }
+.tabs-container .tab-content > .active, .tabs-container .pill-content > .active, .main .container-fluid, .cdk-global-overlay-wrapper  md-dialog-container.mat-dialog-container, .tab-pane.active .panel-body{ padding:0;}
+.mat-tab-labels div.mat-tab-label { min-width: fit-content; padding: 0 7px !important; }
+.mat-radio-button {
+    float: left;
+    width: 50%;
+}
+
+
+
+.mat-radio-label-content {
+    padding-left: 6px !important;
+    padding-right: 0 !important;
+}
+
+.compare-table-cls .content-compare-table {
+    width: 33.33%;
+}
+
+.compare-table-cls .ad-holder {
+    width: 100%;
+    position: relative;
+    top: 0;
+    float: left;
+}
+
+.compare-table-cls .top-compare-table .school-action {
+    position: relative;
+    top: 0;
+}
+
+.compare-table-cls .school-item .card-content h3 {
+    display: block;
+    line-height: 100%;
+    height: auto !important;
+}
+
+.compare-table-cls .school-item address, .compare-table-cls .school-item p {
+    height: auto !important;
+}
+
+.compare-table-cls .compare-item .compare-item li {
+    height: auto;
+}
+
+.compare-table-cls .collapse.in {
+    display: block;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+
+.compare-table-cls .compare-item.class-cycle > li {
+    height: auto;
+    overflow: hidden;
+}
+
+.compare-table-cls .btn_sec_1, .compare-table-cls .btn_sec_2 {
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.compare-table-cls .btn_sec_2 a {
+    float: none !important;
+    margin: 0 auto;
+}
+
+.compare-table-cls .top-compare-table {
+    height: 344px;
+}
+
 }
 
 .wizard-button-align{margin-left:15px}
