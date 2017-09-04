@@ -413,7 +413,7 @@
                                             <li><input type="checkbox" name="half-board_girls" class="half-board_girls checkbox filled-in" id="filter-29" /><label for="filter-29">Demi-pension filles</label></li> 
                                         </ul> 
                                     </li>
-                                    <li><a class="advancedFilter advancedFilterCenter">Statut</a>
+                                    <li><a class="advancedFilter advancedFilterCenter">Status</a>
                                         <ul (click)="onAdvancedClick($event, 'status')"
                                             class="adv-filt">
                                             <li>
@@ -470,7 +470,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a class="advancedFilter advancedFilterCenter">Ens. Confessionel</a>
+                                    <li><a class="advancedFilter advancedFilterCenter">Enseignement Confessionel</a>
                                         <ul (click)="onAdvancedClick($event, 'religious')"
                                             class="adv-filt left-popup">
                                             <li>
@@ -786,18 +786,18 @@
                                 </div>-->
                                 <ul class="school-action" style="margin-top:5px; margin-right:5px">
                                     <li (click)="saveInWish(school._id)">
-                                        <i style="cursor:pointer; color:#393649" 
+                                        <i style="cursor:pointer; color:#393649" mdTooltip="Ajouter à la liste des voeux"
                                         class="fa fa-bookmark" aria-hidden="true"></i>
                                     </li>
                                     <li >
-                                        <i style="cursor:pointer; color:#393649" 
+                                        <i style="cursor:pointer; color:#393649" mdTooltip="Envoyer un message"
                                         class="fa fa-paper-plane" aria-hidden="true"></i>
                                     </li>
                                     <!--<li>
                                         <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
                                     </li>-->
                                     <li (click)="goToBrochure(school.shortName)">
-                                        <i class="fa fa-download" aria-hidden="true" 
+                                        <i class="fa fa-download" aria-hidden="true" mdTooltip="Télécharger une brochure"
                                         style="cursor:pointer; color:#393649"></i>
                                     </li>
                                 </ul>
