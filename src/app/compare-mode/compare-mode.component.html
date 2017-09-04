@@ -33,7 +33,7 @@
     </div>
 </div>
     
-    <main class="main" role="main">
+    <main class="main compare-table-cls" role="main">
         
     <!--<div class="white-background">-->
 
@@ -63,12 +63,12 @@
                             </md-autocomplete>
                             
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 btn_sec_1">
                             <input type="button" class="btn btn-success" 
                                 value="Ajouter à la comparaison"
                                 [disabled]="!canAddSchool" (click)="onAddSchool()">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 btn_sec_2">
                             <a (click)="onNavigateBack()" class="pull-right btn btn-success btn-back">Retour à la liste <img src="assets/images/back.png" alt="" /></a>
                         </div>
 

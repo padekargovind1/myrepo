@@ -57,5 +57,8 @@ export class SchoolChoiceComponent implements OnInit {
     }
     console.log(this.classList)
   }
+  navigateBack(){
+    this.dialogref.close()
+  }
 
 }

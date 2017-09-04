@@ -1952,8 +1952,8 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 @media (max-width:639px){ 
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
 
-.fc-prev-button.fc-state-default.fc-corner-left {  left: 20px !important;  position: absolute;  top: 60px;}
-.fc-next-button.fc-state-default.fc-corner-right {  right: 20px !important;  position: absolute;  top: 60px;}
+.fc-prev-button.fc-state-default.fc-corner-left {  left: 10px !important;  position: absolute;  top: 60px;}
+.fc-next-button.fc-state-default.fc-corner-right {  right: 0px !important;  position: absolute;  top: 50px;}
 .fc-toolbar .fc-left {width:100%; text-align:center; margin-bottom: -24px;    margin-top: 64px;    text-align: center;    width: 100%;}
 .fc-toolbar .fc-left h2 {width:100%; text-align:center;}
 .calendar-wrap > h4 {text-align:center; }
@@ -1969,8 +1969,83 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
   top: 10px;
 }
 .calendar-wrap h4 {display:none;}
-.fc-toolbar .fc-left {margin-top: 64px;}
+.fc-toolbar .fc-left {margin-top: 53px;padding-left: 10px;}
 .searchform .select-custom .form-control { height: auto;}
+.enfantCls  section.col-md-4 { padding-left:0; padding-right:0;}
+.brouchreCls  div.col-sm-6 { padding: 0 0 0 11px; }
+.brouchreCls div.col-sm-6 .select-custom { margin-right: 0px; }
+app-landing-page-3 .container.landing-page-3{ margin-top:-30px; }
+.tabs-container .tab-content > .active, .tabs-container .pill-content > .active, .main .container-fluid, .cdk-global-overlay-wrapper  md-dialog-container.mat-dialog-container, .tab-pane.active .panel-body{ padding:0;}
+.mat-tab-labels div.mat-tab-label { min-width: fit-content; padding: 0 7px !important; }
+.mat-radio-button {
+    float: left;
+    width: 50%;
+}
+
+
+
+.mat-radio-label-content {
+    padding-left: 6px !important;
+    padding-right: 0 !important;
+}
+
+.compare-table-cls .content-compare-table {
+    width: 33.33%;
+}
+
+.compare-table-cls .ad-holder {
+    width: 100%;
+    position: relative;
+    top: 0;
+    float: left;
+}
+
+.compare-table-cls .top-compare-table .school-action {
+    position: relative;
+    top: 0;
+}
+
+.compare-table-cls .school-item .card-content h3 {
+    display: block;
+    line-height: 100%;
+    height: auto !important;
+}
+
+.compare-table-cls .school-item address, .compare-table-cls .school-item p {
+    height: auto !important;
+}
+
+.compare-table-cls .compare-item .compare-item li {
+    height: auto;
+}
+
+.compare-table-cls .collapse.in {
+    display: block;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+
+.compare-table-cls .compare-item.class-cycle > li {
+    height: auto;
+    overflow: hidden;
+}
+
+.compare-table-cls .btn_sec_1, .compare-table-cls .btn_sec_2 {
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.compare-table-cls .btn_sec_2 a {
+    float: none !important;
+    margin: 0 auto;
+}
+
+.compare-table-cls .top-compare-table {
+    height: 344px;
+}
+
 }
 
 .wizard-button-align{margin-left:15px}
@@ -1982,3 +2057,9 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 .mat-option{font-size:15px}
 .parentButton{ margin : 5px}
 .center-tooltip{text-align : center;}
+.mat-option{font-size:10px}
+.parentButton{ margin : 5px}
+.customBtnClassClose section{
+text-align:center;
+}
+

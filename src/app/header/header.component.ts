@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userFirstName : string = "";
   wishList= [];
   onMobile:boolean=false;
+  isLandingPage:boolean = false;
   subscription : Subscription
 
   config: MdDialogConfig;
@@ -50,6 +51,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .filter((event) => event instanceof NavigationEnd)
       .subscribe((event) => {
         // console.log(event);
+		
+		let currentRoute = this.route.root;
+		while (currentRoute.children[0] !== undefined) {
+			currentRoute = currentRoute.children[0];
+		}
+		//console.log(currentRoute.routeConfig.path);
+		var pathname = currentRoute.routeConfig.path;
+		this.isLandingPage = pathname.indexOf("landing-page")>=0;
+		
         this.userLogin=this.authService.isUserLoggedIn();
         if(this.userLogin){
           this.getUserName();
