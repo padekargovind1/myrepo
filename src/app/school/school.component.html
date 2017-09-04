@@ -751,13 +751,18 @@
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <h3>Que voulez-vous comparer?</h3>
-
                                             <div class="filter-option" *ngFor="let filter of filterList; let i=index">
-                                                <md-checkbox  name="" 
+                                                <input type="checkbox" value="" (click)="onFilterCheckbox(i)">
+                                                <!--<md-checkbox  name="" style="width:20px; height:20px; bottom:13px; left:-15px"
                                                     class="checkbox filled-in"
                                                     (click)="onFilterCheckbox(i)">
-                                                {{ filter }}
-                                                </md-checkbox>
+                                                </md-checkbox>-->
+                                                <div class="row">
+                                                    <p style="text-align:center">
+                                                        {{filter}}
+                                                    </p>
+                                                </div>
+                                                
                                             </div><!-- .filter-option -->
 
                                             <button class="btn btn-filter-pop-up btn-block btn-lg" 
