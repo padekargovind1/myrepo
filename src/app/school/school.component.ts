@@ -676,6 +676,15 @@ export class SchoolComponent implements OnInit {
       .subscribe(
         response=>{
           console.log(response)
+		  // Bad Request.
+		  if(response.code==400){
+			  swal({
+					title: 'Attention',
+					text: response.message,
+					type: 'warning',
+					confirmButtonText: "J'ai compris"
+				  })
+		  }
         }
       )
   }
