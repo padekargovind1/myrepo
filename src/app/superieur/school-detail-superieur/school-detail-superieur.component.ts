@@ -54,6 +54,7 @@ export class SchoolDetailSuperieurComponent implements OnInit {
     // this.schoolId=this.data.schoolId;
     // this.getSchoolById()
     this.schoolData = this.data.schoolData;
+	this.schoolId=this.schoolData._id;
     this.schoolLongName=this.schoolData.longName;
     this.schoolShortName=this.schoolData.shortName;
     console.log(this.schoolData);
@@ -100,7 +101,8 @@ export class SchoolDetailSuperieurComponent implements OnInit {
   }
 
   addToWish(){
-    const data = {
+    /*
+	const data = {
       type : "wish",
       schools : [{school : this.schoolId, class:'EE'}]
     }
@@ -118,6 +120,8 @@ export class SchoolDetailSuperieurComponent implements OnInit {
           }
         }
       )
+	 */
+	window.open(this.publicService.ABPPriveURL+this.schoolId+"/wish", "_blank");
   }
 
   successApply(){
@@ -129,10 +133,13 @@ export class SchoolDetailSuperieurComponent implements OnInit {
   }
 
   applyTo(){
-    this.dialogref.close()
+    /*
+	this.dialogref.close()
     this.makeProfile()
     let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
     // this.router.navigate(['applyto', this.schoolId])
+	*/
+	window.open(this.publicService.ABPPriveURL+this.schoolId+"/apply", "_blank");
   }
 
   downloadBrochure(){
