@@ -2045,7 +2045,7 @@ app-landing-page-3 .container.landing-page-3{ margin-top:-30px; }
 .compare-table-cls .top-compare-table {
     height: 344px;
 }
-
+.files-to-download li span{ display: inline; }
 }
 
 .wizard-button-align{margin-left:15px}
@@ -2060,3 +2060,4 @@ app-landing-page-3 .container.landing-page-3{ margin-top:-30px; }
 text-align:center;
 }
 
+.files-to-download .remove { display: inline; }
