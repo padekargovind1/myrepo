@@ -140,7 +140,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
           self.getApplication()
         }, 1000)
       }
-    })
+    });
+	
+	setInterval(()=>{
+		this.getApplication();
+	},2000);
 	
   }
 
