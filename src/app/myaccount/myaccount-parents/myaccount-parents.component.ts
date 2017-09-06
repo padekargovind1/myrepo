@@ -37,6 +37,7 @@ export class MyaccountParentsComponent implements OnInit {
   @Output() goToChild = new EventEmitter<boolean>();
   parents: any;
   canDisplay : boolean = false;
+  mainEmail : string = '';
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
@@ -80,13 +81,13 @@ export class MyaccountParentsComponent implements OnInit {
   patchValue(data: any){
     let parentData=data.parents
     console.log(data, parentData);
-    for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){
+    for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){ 
       this.parentAccountForm.controls['parents']['controls'][i].patchValue({
         lienParent : parentData[i].relationship,
         titre : parentData[i].gender,
         nom : parentData[i].lastName,
         prenom : parentData[i].firstName,
-        email : data.email,
+        email :  (parentData[i].email===undefined || parentData[i].email=='A compléter' || parentData[i].email.trim()=='') ? (data.email=='A compléter' ? '' : data.email) : parentData[i].email,
         portable : parentData[i].phoneNumber,
         adresse : parentData[i].address.address1,
         codepostal : parentData[i].address.postCode,
