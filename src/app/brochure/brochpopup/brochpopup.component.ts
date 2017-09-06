@@ -65,20 +65,24 @@ export class BrochpopupComponent implements OnInit {
   }
 
   patchValue(profile){
-    console.log(profile)
-    this.brochureForm.patchValue({
-      lienParent : profile.parents[0].relationship,
-      title : profile.parents[0].gender,
-      lastName : profile.parents[0].lastName,
-      firstName : profile.parents[0].firstName,
-      mel : profile.parents[0].email,
-      tel : profile.parents[0].phoneNumber,
-      childLastName : profile.lastName,
-      childFirstName : profile.firstName,
-      childTitle : profile.gender,
-      etablissement : profile.academicHistories[0].schoolName,
-      city : profile.academicHistories[0].schoolName
-    })
+    console.log(profile);
+	if(profile.parents!==undefined && profile.parents.length>0)
+	{
+		this.brochureForm.patchValue({
+			  lienParent : profile.parents[0].relationship === undefined ? "" : profile.parents[0].relationship,
+			  title : profile.parents[0].gender === undefined ? "" : profile.parents[0].gender,
+			  lastName : profile.parents[0].lastName === undefined ? "" : profile.parents[0].lastName,
+			  firstName : profile.parents[0].firstName === undefined ? "" : profile.parents[0].firstName,
+			  mel : profile.parents[0].email === undefined ? "" : profile.parents[0].email,
+			  tel : profile.parents[0].phoneNumber === undefined ? "" : profile.parents[0].phoneNumber,
+			  childLastName : profile.lastName,
+			  childFirstName : profile.firstName,
+			  childTitle : profile.gender,
+			  etablissement : profile.academicHistories[0].schoolName,
+			  city : profile.academicHistories[0].schoolName
+				  
+		});
+	}
   }
 
   onCancel(){
