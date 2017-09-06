@@ -12,6 +12,7 @@ const APB_API : string = "https://api2.apbprive.fr/";
 
 @Injectable()
 export class PublicService {
+  public ABPPriveURL : string='http://54.254.203.172/dossier/view/';
   numLandingPage : number=null;
   searchData = ["", "", ""];
   domaines = [

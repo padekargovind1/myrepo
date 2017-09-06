@@ -90,4 +90,9 @@ export class ApbCardComponent implements OnInit {
     let dialogref = this.dialog.open(SchoolDetailSuperieurComponent,this.config);
   }
 
+  onApbApply(SchoolId){
+	console.log(SchoolId);
+    window.open(this.publicService.ABPPriveURL+SchoolId+"/apply", "_blank");
+  }
+
 }
