@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
               private router : Router,
               private authService : AuthService,
               private userService : UsersService,
-              private bookingService : BookingService) {
+              private bookingService : BookingService,
+              private location : Location) {
     this.buildFormGroup();
   }
 
@@ -87,5 +89,9 @@ export class LoginComponent implements OnInit {
 
   onForgotPassword(){
     this.router.navigate(['/forgot-password']);
+  }
+
+  onNavigateBack(){
+    this.location.back();
   }
 }

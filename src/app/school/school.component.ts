@@ -28,7 +28,7 @@ export class SchoolComponent implements OnInit {
   compareListFilter = [];
   filterList = ["Cycles & Classes", "Langues", "Spécialités", 
                 "Internat", "Stages", "Restauration", 
-                "Externat", "Status", "Ens. Confessionel", 
+                "Externat", "Status", "Enseignement Confessionel", 
                 "Sections", "Diplôme", "Options", "Places Disponible"]
   four : boolean = false;
   canCompare : boolean = false;
