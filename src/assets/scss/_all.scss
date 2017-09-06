@@ -1977,21 +1977,13 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 app-landing-page-3 .container.landing-page-3{ margin-top:-30px; }
 .tabs-container .tab-content > .active, .tabs-container .pill-content > .active, .main .container-fluid, .cdk-global-overlay-wrapper  md-dialog-container.mat-dialog-container, .tab-pane.active .panel-body{ padding:0;}
 .mat-tab-labels div.mat-tab-label { min-width: fit-content; padding: 0 7px !important; }
-.mat-radio-button {
-    float: left;
-    width: 50%;
-}
+.mat-radio-button {    float: left;    width: 50%;}
 
 
-
-.mat-radio-label-content {
-    padding-left: 6px !important;
-    padding-right: 0 !important;
-}
+.mat-radio-label-content {    padding-left: 6px !important;    padding-right: 0 !important;}
 
 .compare-table-cls .content-compare-table {
-    width: 33.33%;
-}
+    width: 33.33%;}
 
 .compare-table-cls .ad-holder {
     width: 100%;
@@ -2047,6 +2039,10 @@ app-landing-page-3 .container.landing-page-3{ margin-top:-30px; }
 }
 .files-to-download li span{ display: inline; }
 .landing-page-2 .main { height: 100vh; }
+
+.btn-appointment{margin-top:15px !important;}
+.top-compare-table.first > img {  max-width: 100%;}
+.genderRadio {margin-bottom:10px; display:block;}
 }
 
 .wizard-button-align{margin-left:15px}
