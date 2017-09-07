@@ -117,9 +117,9 @@ export class MyaccountParentsComponent implements OnInit {
       nom : [''],
       prenom : [''],
       email : ['', Validators.compose([CustomValidators.email])],
-      portable : ['', Validators.compose([Validators.maxLength(10)])],
+      portable : ['', Validators.compose([Validators.maxLength(10),Validators.minLength(10)])],
       adresse : [''],
-      codepostal : ['', Validators.compose([Validators.maxLength(5)])],
+      codepostal : ['', Validators.compose([Validators.maxLength(5),Validators.minLength(5)])],
       ville: [''],
       pays: ['France']
     })

@@ -77,13 +77,18 @@
                 <div class="col-sm-6  col-xs-6">
                   <div class="form-group">
                     Numéro de portable
-                    <input type="text" class="form-control" placeholder="Portable" 
+                    <input type="text" class="form-control" placeholder="Portable" [min]="10"
                       formControlName="portable"
                       pattern="[0-9]+" maxlength="10"/>
                     <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
                       parentAccountForm.controls['parents']['controls'][i].controls.portable.touched" 
                       class="mat-text-warn"> 
                       Numéro de Portable Invalide (max 10)
+                    </small>
+					<small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('mins') && 
+                      parentAccountForm.controls['parents']['controls'][i].controls.portable.touched" 
+                      class="mat-text-warn"> 
+                      Numéro de Portable Invalide (min 10)
                     </small>
                     <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
                       parentAccountForm.controls['parents']['controls'][i].controls.portable.touched" 
@@ -102,13 +107,18 @@
                 <div class="col-sm-4  col-xs-6">
                   <div class="form-group">
                     Code postal
-                    <input type="text" class="form-control" placeholder="Code Postal" 
+                    <input type="text" class="form-control" placeholder="Code Postal" [min]="5"
                       formControlName="codepostal"
                       pattern="[0-9 ]+" maxlength="5" minlength="5"/>
                     <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('maxLength') && 
                       parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched" 
                       class="mat-text-warn"> 
                       Code Postal Invalide (Max 5)
+                    </small>
+					<small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('min') && 
+                      parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched" 
+                      class="mat-text-warn"> 
+                      Code Postal Invalide (MIN 5)
                     </small>
                     <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('pattern') && 
                       parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched" 
