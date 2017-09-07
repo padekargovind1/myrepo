@@ -308,7 +308,7 @@
                                                     placeholder="Nom d'etablissement" 
                                                     [formControl]="searchForm.controls['etablissement']"
                                                     [mdAutocomplete]="autoSchool"
-                                                    (keyup)="filterSchool($event)"/>
+                                                    (keyup)="filterSchool($event)" style="width:90%;"/>
                                                 <md-autocomplete #autoSchool="mdAutocomplete">
                                                     <md-option *ngFor="let school of schoolsOptions" 
                                                         [value]="school.longName">
