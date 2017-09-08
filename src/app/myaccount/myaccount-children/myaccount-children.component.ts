@@ -118,7 +118,7 @@ export class MyaccountChildrenComponent implements OnInit {
       prenom : data.firstName=='A compléter' ? '' : data.firstName,
       age : data.age,
       gender : data.gender,
-      email : data.email=='A compléter' ? '' : data.email,
+      email : (data.email===undefined || data.email=='A compléter' || data.email.trim()=='') ? '' : data.email,
       portable : data.mobilePhone=='A compléter' ? '' : data.mobilePhone,
       // datenaissance : (data.birthDate!=null || data.birthDate != "") ? new Date(data.birthDate) : new Date(),
       // lieu : data.birthPlace,

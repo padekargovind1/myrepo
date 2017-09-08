@@ -212,7 +212,7 @@
                 <div *ngFor="let brochure of listBrochuresFiltered" >
                     <div *ngFor="let cycle of brochure.cycles" class="graphic brochure-item col-md-3">
                         <div class="checkbox-custom">
-                            <md-checkbox (click)="onCheckbox(cycle._id)" class="download"></md-checkbox>
+                            <md-checkbox (click)="onCheckbox(brochure._id, cycle._id)" class="download"></md-checkbox>
                             <label for="download">&nbsp;</label>
                         </div>
                         <div class="cbp-caption">

@@ -795,7 +795,7 @@
                                         class="fa fa-bookmark" aria-hidden="true"></i>
                                     </li>
                                     <li >
-                                        <i style="cursor:pointer; color:#393649" mdTooltip="Envoyer un message"
+                                        <i style="cursor:pointer; color:#393649" mdTooltip="6"
                                         class="fa fa-paper-plane" aria-hidden="true"></i>
                                     </li>
                                     <!--<li>
@@ -821,7 +821,7 @@
                             </div>
 
                         </div><!-- .col-* -->
-                        <div *ngIf="schoolListFilter.length==0" class="row">
+                        <div *ngIf="schoolListFilter.length==0 && !isLoader" class="row">
                             <p style="width:100%;
                                 text-align:center; font-size : 35px">Il n'y a pas d'école pour la recherche demandée.</p>
                         </div>

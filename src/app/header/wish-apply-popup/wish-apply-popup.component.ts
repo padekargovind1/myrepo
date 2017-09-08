@@ -61,7 +61,8 @@ export class WishApplyPopupComponent implements OnInit {
     // this.route.navigate(['/etablissement', schoolId]);
     this.makeSchoolDetailProfil(school)
     this.dialogref.close();
-    let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
+	let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
+    
   }
 
   makeSchoolDetailProfil(school){
@@ -73,8 +74,10 @@ export class WishApplyPopupComponent implements OnInit {
         schoolData : school.school
       },
       disableClose: false,
-      width: '',
-      height: '',
+      width: screenWidth,
+      height: screenHeight,
+	  //width: '',
+      //height: '',
       // position: {
       // top: '',
       // bottom: '',

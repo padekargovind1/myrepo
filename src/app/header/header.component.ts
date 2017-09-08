@@ -140,7 +140,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
           self.getApplication()
         }, 1000)
       }
-    })
+    });
+	
+	setInterval(()=>{
+		if(this.userLogin){ this.getApplication(); }
+	},2000);
 	
   }
 
@@ -275,12 +279,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  wishApplyDialog(nb : number){  
-    this.makeProfile(nb)
-    let dialogref = this.dialog.open(WishApplyPopupComponent,this.config);
-    // dialogref.afterClosed().subscribe(result => {
-    //   console.log(result)
-    // });
+  wishApplyDialog(nb : number){ 
+	if(this.userLogin){
+		this.makeProfile(nb)
+		let dialogref = this.dialog.open(WishApplyPopupComponent,this.config);
+		// dialogref.afterClosed().subscribe(result => {
+		//   console.log(result)
+		// });
+	}
+	else
+	{
+		this.router.navigate(['/login']);
+	}
   }
 
   ngOnDestroy(){
