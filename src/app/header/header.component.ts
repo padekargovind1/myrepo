@@ -141,11 +141,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }, 1000)
       }
     });
-	
+	/*
 	setInterval(()=>{
 		if(this.userLogin){ this.getApplication(); }
 	},2000);
-	
+	*/
   }
 
   getUserName(){
