@@ -2046,7 +2046,7 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 .genderRadio {margin-bottom:10px; display:block;}
 .row.customBtnClassClose { margin-top: 15px; }
 
-.input.userType_radio{ padding: 11px 0; margin-bottom: 7px; }
+.input.userType_radio{ padding: 11px 0; margin-bottom: 7px; margin-top: 0; }
 }
 
 .wizard-button-align{margin-left:15px}
@@ -2068,3 +2068,4 @@ text-align:center;
   height:50px
 }
 .files-to-download .remove { display: inline; }
+.input.userType_radio{ margin-top: 15px; }
