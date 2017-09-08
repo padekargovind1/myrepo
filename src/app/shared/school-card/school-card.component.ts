@@ -5,6 +5,7 @@ import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
 import { SchoolChoiceComponent } from '../school-choice/school-choice.component';
 import { EtablissementComponent } from '../../etablissement/etablissement.component';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-school-card',
@@ -91,19 +92,6 @@ export class SchoolCardComponent implements OnInit {
       right: ''
       }
     };
-  }
-
-  saveInWish(){
-    const data = {
-      type : "wish",
-      schools : [{school : this.SchoolData._id, class:'EE'}]
-    }
-    this.usersService.postApplication(data)
-      .subscribe(
-        response=>{
-          console.log(response)
-        }
-      )
   }
 
   getSchoolBrochureById(){

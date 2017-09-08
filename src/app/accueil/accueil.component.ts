@@ -278,10 +278,17 @@ export class AccueilComponent implements OnInit {
 
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
-    if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement==""){
+    if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement=="" && path!="enseignement"){
       swal({
         title: 'Attention',
         text: 'Vous devez choisir une classe et un lieu ou entrer le nom d\'un établissement afin d\'effectuer une recherche rapide. Merci',
+        type: 'warning',
+        confirmButtonText: "J'AI COMPRIS"
+      })
+    }else if ((this.apbForm.value.domaine=="" || this.apbForm.value.lieu=="") && this.apbForm.value.etablissement=="" && path=="enseignement"){
+      swal({
+        title: 'Attention',
+        text: 'Vous devez choisir un domaine et un lieu ou entrer le nom d\'un établissement afin d\'effectuer une recherche rapide. Merci',
         type: 'warning',
         confirmButtonText: "J'AI COMPRIS"
       })

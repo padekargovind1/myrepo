@@ -135,9 +135,11 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   }
 
   applyTo(){
-    this.dialogref.close()
-    this.makeProfile()
+    this.makeProfile(this.schoolData);
     let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
+    dialogref.afterClosed().subscribe(result => {
+      this.dialogref.close();
+    });
     // this.router.navigate(['applyto', this.schoolId])
   }
 
@@ -147,16 +149,14 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
     this.router.navigate(['brochure']);
   }
 
-  makeProfile(){
-    let screenWidth : string = (((window.screen.width/3)*2)).toString()+'px';
-    let screenHeight : string = (window.screen.height/2).toString()+'px';
+  makeProfile(school){
     this.config= {
       data:{
-        schoolData : this.schoolData
+        schoolData : school
       },
       disableClose: false,
-      width: screenWidth,
-      height: screenHeight,
+      width: '800px',
+      height: '',
       position: {
       top: '',
       bottom: '',

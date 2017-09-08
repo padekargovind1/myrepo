@@ -676,15 +676,22 @@ export class SchoolComponent implements OnInit {
       .subscribe(
         response=>{
           console.log(response)
-		  // Bad Request.
-		  if(response.code==400){
-			  swal({
-					title: 'Attention',
-					text: response.message,
-					type: 'warning',
-					confirmButtonText: "J'ai compris"
-				  })
-		  }
+          // Bad Request.
+          if(response.code==200){
+            swal({
+              title: 'Ajout à la liste des voeux',
+              text: "L'école séléctionné a bien été ajouté à votre liste des voeux",
+              type: 'warning',
+              confirmButtonText: "J'ai compris"
+              })
+          }else {
+            swal({
+              title: 'Attention',
+              text: response.message,
+              type: 'warning',
+              confirmButtonText: "J'ai compris"
+              })
+          }
         }
       )
   }
