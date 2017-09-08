@@ -69,7 +69,7 @@ export class ApplytoComponent implements OnInit {
                   )
               }
 
- ngOnInit() {
+  ngOnInit() {
     // console.log(this.tokenLog)
     if(!this.authService.isUserLoggedIn()){
       swal({
@@ -82,6 +82,7 @@ export class ApplytoComponent implements OnInit {
     }
     this.loadScript('assets/js/select2.min.js');
   }
+
   loadScript(url) {
     console.log('preparing to load...')
     let node = document.createElement('script');

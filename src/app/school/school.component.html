@@ -821,7 +821,7 @@
                             </div>
 
                         </div><!-- .col-* -->
-                        <div *ngIf="schoolListFilter.length==0" class="row">
+                        <div *ngIf="schoolListFilter.length==0 && !isLoader" class="row">
                             <p style="width:100%;
                                 text-align:center; font-size : 35px">Il n'y a pas d'école pour la recherche demandée.</p>
                         </div>

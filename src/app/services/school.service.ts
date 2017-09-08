@@ -22,6 +22,7 @@ export class SchoolService {
   languesRegio = ["Alsacien", "Auvergnat", "Basque", "Breton", "Catalan", "Corse", "Nicois", "Occitan", "Pays Mosel", "Provençal"]
 
   diplomes = [];
+  onApply : boolean =false;
 
   constructor(private http: Http) { }
 
@@ -62,5 +63,13 @@ export class SchoolService {
 
   getDiplomes(){
     return this.diplomes;
+  }
+
+  onApplyTo(onApp : boolean){
+    this.onApply=onApp;
+  }
+
+  isOnApply(){
+    return this.onApply;
   }
 }

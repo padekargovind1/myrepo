@@ -2039,7 +2039,8 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 }
 .files-to-download li span{ display: inline; }
 .landing-page-2 .main { height: 100vh; }
-
+.white-background { padding: 0; }
+.voir-plus { text-align: center; }
 .btn-appointment{margin-top:15px !important;}
 .top-compare-table.first > img {  max-width: 100%;}
 .genderRadio {margin-bottom:10px; display:block;}
@@ -2063,4 +2064,7 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 text-align:center;
 }
 
+.school-choice-height{
+  height:50px
+}
 .files-to-download .remove { display: inline; }

@@ -285,6 +285,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
     console.log($('.checkbox').attr('class'))
     this.allChecked=true;
     this.adviserToDisplay = this.calendarData;
+	this.adviserIdList=[];
     for(let adviser of this.adviserList){
       this.adviserIdList.push(adviser._id)
     }
@@ -295,8 +296,11 @@ export class BookingComponent implements OnInit, AfterViewInit {
   onUnselectAll(){
     this.adviserToDisplay = [];
     this.adviserIdList=[];
+    this.allChecked=true;
+	setTimeout(()=>{
+		this.allChecked=false;
+	},10);
     this.refreshCalendar();
-    this.allChecked=false;
   }
 
 }

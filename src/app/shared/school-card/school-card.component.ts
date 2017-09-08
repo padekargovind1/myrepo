@@ -5,6 +5,7 @@ import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
 import { SchoolChoiceComponent } from '../school-choice/school-choice.component';
 import { EtablissementComponent } from '../../etablissement/etablissement.component';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-school-card',
@@ -57,15 +58,13 @@ export class SchoolCardComponent implements OnInit {
   }
 
   makeProfile(){
-    let screenWidth : string = (((window.screen.width/3)*2)).toString()+'px';
-    let screenHeight : string = (window.screen.height/2).toString()+'px';
     this.config= {
       data:{
         schoolData : this.SchoolData
       },
       disableClose: false,
-      width: screenWidth,
-      height: screenHeight,
+      width: '800px',
+      height: '',
       position: {
       top: '',
       bottom: '',
@@ -93,19 +92,6 @@ export class SchoolCardComponent implements OnInit {
       right: ''
       }
     };
-  }
-
-  saveInWish(){
-    const data = {
-      type : "wish",
-      schools : [{school : this.SchoolData._id, class:'EE'}]
-    }
-    this.usersService.postApplication(data)
-      .subscribe(
-        response=>{
-          console.log(response)
-        }
-      )
   }
 
   getSchoolBrochureById(){

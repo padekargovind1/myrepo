@@ -85,6 +85,7 @@ import { SuperieurEssentielComponent } from './superieur/school-detail-superieur
 import { SuperieurEvenementComponent } from './superieur/school-detail-superieur/superieur-evenement/superieur-evenement.component';
 import { SuperieurFormationComponent } from './superieur/school-detail-superieur/superieur-formation/superieur-formation.component';
 import { SuperieurInfoComponent } from './superieur/school-detail-superieur/superieur-info/superieur-info.component';
+import { ClassChoiceComponent } from './shared/class-choice/class-choice.component';
 
 
 @NgModule({
@@ -143,7 +144,8 @@ import { SuperieurInfoComponent } from './superieur/school-detail-superieur/supe
     SuperieurEssentielComponent,
     SuperieurEvenementComponent,
     SuperieurFormationComponent,
-    SuperieurInfoComponent
+    SuperieurInfoComponent,
+    ClassChoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -194,7 +196,8 @@ import { SuperieurInfoComponent } from './superieur/school-detail-superieur/supe
        SchoolChoiceComponent,
        EtablissementComponent,
        ConseilPopupComponent,
-       SchoolDetailSuperieurComponent
+       SchoolDetailSuperieurComponent,
+       ClassChoiceComponent
     ],
   bootstrap: [AppComponent]
 })
