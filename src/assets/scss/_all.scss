@@ -1974,7 +1974,7 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 .enfantCls  section.col-md-4 { padding-left:0; padding-right:0;}
 .brouchreCls  div.col-sm-6 { padding: 0 0 0 11px; }
 .brouchreCls div.col-sm-6 .select-custom { margin-right: 0px; }
-app-landing-page-3 .container.landing-page-3{ margin-top:-30px; }
+app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 .tabs-container .tab-content > .active, .tabs-container .pill-content > .active, .main .container-fluid, .cdk-global-overlay-wrapper  md-dialog-container.mat-dialog-container, .tab-pane.active .panel-body{ padding:0;}
 .mat-tab-labels div.mat-tab-label { min-width: fit-content; padding: 0 7px !important; }
 .mat-radio-button {    float: left;    width: 50%;}
@@ -2044,6 +2044,8 @@ app-landing-page-3 .container.landing-page-3{ margin-top:-30px; }
 .top-compare-table.first > img {  max-width: 100%;}
 .genderRadio {margin-bottom:10px; display:block;}
 .row.customBtnClassClose { margin-top: 15px; }
+
+.input.userType_radio{ padding: 11px 0; margin-bottom: 7px; }
 }
 
 .wizard-button-align{margin-left:15px}
