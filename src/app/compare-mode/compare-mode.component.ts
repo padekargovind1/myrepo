@@ -191,4 +191,8 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     }
   }
 
+  sendMessage(){
+    //pop-up to send message
+  }
+
 }

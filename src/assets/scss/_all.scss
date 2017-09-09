@@ -662,7 +662,7 @@ z-index: 10;
     .conseil-item:after { position: absolute; content: ""; width: 100%; box-shadow: 0px 79px 0px rgba(53,50,64,.8); height: 40px; bottom: 0; border-radius: 50%; z-index: -1;}
     .conseil-item > .hover-holder:hover .conseil-hover { visibility: visible; height: auto;}
     .conseil-item img { width: 100%; height: auto; }
-    .conseil-title { font-size: 20px; text-transform: uppercase; color: #fff; padding: 16px 10px; text-align: center; font-weight: 700; margin: 0; height: 100px;}
+    .conseil-title { font-size: 18px; text-transform: uppercase; color: #fff; padding: 16px 10px; text-align: center; font-weight: 700; margin: 0; height: 100px;}
     .conseil-content { background: #C4C6C5; padding: 20px; color: #666; border-radius: 0 0 5px 5px;}
     .conseil-info { margin-bottom: 20px; font-size: 15px;}
         .conseil-info .conseil-label { font-size: 20px; font-weight: 700;}

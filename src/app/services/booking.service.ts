@@ -166,6 +166,7 @@ export class BookingService {
           } else {
             console.log('Appointement register');
             if(this.forFastBooking){
+              this.successSubmit()
               this.router.navigate(['/']);
             }
           }
@@ -195,7 +196,7 @@ export class BookingService {
     let adviser : string = appointmentData[4]+' '+appointmentData[3];
     swal({
       title: "Merci d'avoir choisi CIDE",
-      text: 'Votre Rendez-vous pour un(e) '+type+' est bien confirmé le '+date+' avec notre conseiller d\'orientation '+adviser+'. \nUn mail de confirmation vient de vous être adressé. A bientôt!',
+      text: 'Votre Rendez-vous pour un(e) \n'+type+' \nest bien confirmé \nLe '+date+' \nAvec notre conseiller d\'orientation \n'+adviser+'. \nUn mail de confirmation vient de vous être adressé. \n\nA bientôt!',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
     })

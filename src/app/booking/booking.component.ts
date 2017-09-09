@@ -166,25 +166,10 @@ export class BookingComponent implements OnInit, AfterViewInit {
         response=>{
           console.log(response);
           if(response.code!=400){
-            this.successSubmit();
+            this.bookingService.successSubmit();
           }
         }
       )
-  }
-
-  successSubmit(){
-    let appointmentData = this.bookingService.getBookingData();
-    let frenchDate : string = appointmentData[0].substr(8, 2)+'/'+appointmentData[0].substr(5, 2)+'/'+appointmentData[0].substr(0, 4)
-    let type : string = appointmentData[7]+' ' +appointmentData[8];
-    let date : string = frenchDate+' de '+appointmentData[1]+' à '+appointmentData[2];
-    let adviser : string = appointmentData[4]+' '+appointmentData[3];
-    swal({
-      title: "Merci d'avoir choisi CIDE",
-      text: 'Votre Rendez-vous pour un(e) \n'+type+' \nest bien confirmé \nLe '+date+' \nAvec notre conseiller d\'orientation \n'+adviser+'. \nUn mail de confirmation vient de vous être adressé. \n\nA bientôt!',
-      type: 'success',
-      confirmButtonText: "J'AI COMPRIS"
-    })
-    this.route.navigate(['/'])
   }
 
   ngAfterViewInit() {

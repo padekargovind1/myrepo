@@ -28,8 +28,8 @@ export class SchoolComponent implements OnInit {
   compareListFilter = [];
   filterList = ["Cycles & Classes", "Langues", "Spécialités", 
                 "Internat", "Stages", "Restauration", 
-                "Externat", "Status", "Enseignement Confessionel", 
-                "Sections", "Diplôme", "Options", "Places Disponible"]
+                "Externat", "Statut", "Enseignement Confessionel", 
+                "Sections", "Diplôme", "Options", "Places Disponibles"]
   four : boolean = false;
   canCompare : boolean = false;
   canFilter : boolean = false;
@@ -358,7 +358,7 @@ export class SchoolComponent implements OnInit {
     this.advancedSearch.class = this.searchForm.controls.classe.value;
     this.advancedSearch.place = this.searchForm.controls.lieu.value;
     this.advancedSearch.name = this.searchForm.controls.etablissement.value;
-    // console.log(data);
+    console.log(this.advancedSearch);
     this.publicService.storeSearchSchool(this.searchFilter);
     this.postAdvancedFilter();
     this.forAdvancedSearch=false;

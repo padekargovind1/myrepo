@@ -143,10 +143,16 @@
     </ul>
     <ul class="right-top-menu pull-right">
         <li style="cursor:pointer" (click)="wishApplyDialog(0)">
-            <i class=" fa fa-file-text"><sup class="wishcount">{{applyCount}}</sup></i>
+            <i class=" fa fa-file-text" mdTooltip="Liste des sélections des écoles"
+                mdTooltipClass="center-tooltip">
+                <sup class="wishcount">{{applyCount}}</sup>
+            </i>
         </li>
         <li style="cursor:pointer" (click)="wishApplyDialog(1)">
-            <i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i>
+            <i class="fa fa-bookmark" mdTooltip="Liste des voeux des écoles"
+                mdTooltipClass="center-tooltip">
+                <sup class="wishcount" >{{wishCount}}</sup>
+            </i>
         </li>
         <li class="login-text" *ngIf="!userLogin; else log">
             <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
