@@ -180,7 +180,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
     let adviser : string = appointmentData[4]+' '+appointmentData[3];
     swal({
       title: "Merci d'avoir choisi CIDE",
-      text: 'Votre Rendez-vous pour un(e) '+type+' est bien confirmé le '+date+' avec notre conseiller d\'orientation '+adviser+'. \nUn mail de confirmation vient de vous être adressé. A bientôt!',
+      text: 'Votre Rendez-vous pour un(e) \n'+type+' \nest bien confirmé \nLe '+date+' \nAvec notre conseiller d\'orientation \n'+adviser+'. \nUn mail de confirmation vient de vous être adressé. \n\nA bientôt!',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
     })
@@ -252,30 +252,27 @@ export class BookingComponent implements OnInit, AfterViewInit {
 	},
       eventClick: function(calEvent) {
         console.log(calEvent);
-		var check = new Date(calEvent.start._i);
-		var today = new Date();
-		if(check < today)
-		{
-			// Previous Day. show message if you want otherwise do nothing.
-			// So it will be unselectable
-		}
-		else
-		{
-			$('#appointment').modal('show');
-			self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
-			self.bookingDate[0] = calEvent.start._i.substr(0, 10)
-			self.bookingDate[1] = calEvent.start._i.substr(11, 5)
-			self.bookingDate[2] = calEvent.end._i.substr(11, 5)
-			self.bookingDate[3] = calEvent.adviserName
-			if(calEvent.adviserGender=="Male"){
-			  self.bookingDate[4] = "M"
-			} else {
-			  self.bookingDate[4] = "Mme"
-			}
-			self.bookingDate[5] = calEvent.adviserId
-			self.bookingDate[6] = calEvent.adviserImage
-			console.log(self.bookingDate);
-		}
+        var check = new Date(calEvent.start._i);
+        var today = new Date();
+        if(check < today)
+        {
+          // Previous Day. show message if you want otherwise do nothing.
+          // So it will be unselectable
+        }
+        $('#appointment').modal('show');
+        self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
+        self.bookingDate[0] = calEvent.start._i.substr(0, 10)
+        self.bookingDate[1] = calEvent.start._i.substr(11, 5)
+        self.bookingDate[2] = calEvent.end._i.substr(11, 5)
+        self.bookingDate[3] = calEvent.adviserName
+        if(calEvent.adviserGender=="Male"){
+          self.bookingDate[4] = "M"
+        } else {
+          self.bookingDate[4] = "Mme"
+        }
+        self.bookingDate[5] = calEvent.adviserId
+        self.bookingDate[6] = calEvent.adviserImage
+        console.log(self.bookingDate);
       }, 
       events:this.adviserToDisplay
     });
