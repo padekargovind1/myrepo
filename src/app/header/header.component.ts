@@ -142,9 +142,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     });
 	
-	setInterval(()=>{
-		if(this.userLogin){ this.getApplication(); }
-	},2000);
+	// setInterval(()=>{
+	// 	if(this.userLogin){ this.getApplication(); }
+	// },2000);
 	
   }
 
@@ -193,6 +193,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getApplication(){
+    console.log("test1")
     this.usersService.getApplication()
       .subscribe(
         response => {
