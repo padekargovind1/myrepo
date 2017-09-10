@@ -66,6 +66,7 @@ import { CompareService } from './services/compare.service';
 import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
+import { SendService } from './services/send.service';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
 import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
@@ -86,7 +87,7 @@ import { SuperieurEvenementComponent } from './superieur/school-detail-superieur
 import { SuperieurFormationComponent } from './superieur/school-detail-superieur/superieur-formation/superieur-formation.component';
 import { SuperieurInfoComponent } from './superieur/school-detail-superieur/superieur-info/superieur-info.component';
 import { ClassChoiceComponent } from './shared/class-choice/class-choice.component';
-
+import { SendMessageComponent } from './shared/send-message/send-message.component';
 
 @NgModule({
   declarations: [
@@ -145,7 +146,8 @@ import { ClassChoiceComponent } from './shared/class-choice/class-choice.compone
     SuperieurEvenementComponent,
     SuperieurFormationComponent,
     SuperieurInfoComponent,
-    ClassChoiceComponent
+    ClassChoiceComponent,
+    SendMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -187,7 +189,8 @@ import { ClassChoiceComponent } from './shared/class-choice/class-choice.compone
     BookingService,
     EditorService,
     SweetAlertService,
-    BrochureService
+    BrochureService,
+    SendService
   ],
     entryComponents: [
        BrochpopupComponent,
@@ -197,7 +200,8 @@ import { ClassChoiceComponent } from './shared/class-choice/class-choice.compone
        EtablissementComponent,
        ConseilPopupComponent,
        SchoolDetailSuperieurComponent,
-       ClassChoiceComponent
+       ClassChoiceComponent,
+       SendMessageComponent
     ],
   bootstrap: [AppComponent]
 })

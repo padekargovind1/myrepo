@@ -1,13 +1,16 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { SchoolService } from '../services/school.service';
 import { UsersService } from '../services/users.service';
-import { BrochureService } from '../services/brochure.service'
+import { BrochureService } from '../services/brochure.service';
+import { SendService } from '../services/send.service';
 import { AdvancedSearchMdl } from '../model/advanced-search.model';
+import { SendMessageComponent } from '../shared/send-message/send-message.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
 declare var jquery:any;
@@ -83,7 +86,9 @@ export class SchoolComponent implements OnInit {
               private brochureService : BrochureService,
               private router : Router,
               private fb : FormBuilder,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              private sendService : SendService,
+              public dialog:MdDialog) { }
 
   ngOnInit() {
     this.slickNb=this.publicService.getNbSlick();
@@ -700,6 +705,11 @@ export class SchoolComponent implements OnInit {
     // console.log(schoolName)
     this.brochureService.storeSchoolSearch(schoolName);
     this.router.navigate(['/brochure']);
+  }
+
+  sendMessage(school){
+    let config = this.sendService.makeProfile(school)
+    let dialogref = this.dialog.open(SendMessageComponent, config);
   }
 
 }
