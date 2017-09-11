@@ -119,9 +119,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	
 	  var winWidth = $(window).width();
 	
-    if(this.onMobile){
-    //alert('sdf');
-      $('.menu-holder').click(function(){
+    if(self.onMobile){
+      $(document).on('click', '.menu-holder', function(){
         console.log("test")
       if($('.submenutBt').css('visibility')=='visible'){
         $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
@@ -131,6 +130,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
         
       });
+	  $('*').click(function(e){
+		var a = e.target;
+		if ($(a).parents('.main-navigation').length === 0) {
+			$('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
+		}
+	});
     }
   
     $('body').on('click', function($event){
@@ -145,7 +150,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	// setInterval(()=>{
 	// 	if(this.userLogin){ this.getApplication(); }
 	// },2000);
-	
   }
 
   getUserName(){
@@ -302,6 +306,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     console.log(this.onMobile);
     if(this.onMobile){
       $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
+	  //$('header .main-navigation li.courses-menu').trigger('mouseout');
       $('.login').hide();
     }
   }

@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
       email: ['' , Validators.compose([Validators.required, CustomValidators.email])],
+      userType: ['' , Validators.compose([Validators.required])],
       password: password,
       repeated: repeated
     })
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid){
       const email = this.registerForm.controls.email.value;
       const name = this.registerForm.controls.username.value;
-      const type = "candidate";
+      const type = "candidate";//this.registerForm.controls.userType.value;//"candidate";
       const password = this.registerForm.controls.password.value;
       const repeated = this.registerForm.controls.repeated.value;
 
