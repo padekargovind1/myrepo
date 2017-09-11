@@ -1917,7 +1917,7 @@ a:hover { text-decoration: none;}
     font-size: 14px;}
 .btn-conseil , a.btn-conseil   { border-radius: 130px !important;    max-width: 60%;    display: block;    text-align: center; margin: 0 auto 20px; }
 
-.content-holder[_ngcontent-c2]{width: 90% !important; background: rgba(0, 0, 0, 0.4) !important ;}
+.landing-page-2 .content-holder{width: 90% !important; background: rgba(0, 0, 0, 0.4) !important ;margin-top: 10px;}
 img.cide-logo-mobile { display:inline-block !important}
 
 .booking-appointment .advisors-wrap .deselect-all-advisor { display:block; }
@@ -2047,6 +2047,7 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 .row.customBtnClassClose { margin-top: 15px; }
 
 .input.userType_radio{ padding: 11px 0; margin-bottom: 7px; margin-top: 0; }
+.landing-page-2 .content-holder .btn.btn-search { right: 5px; padding: 6px; }
 }
 
 .wizard-button-align{margin-left:15px}
