@@ -288,7 +288,7 @@ header .main-navigation li.courses-menu li .single-item .courses-num {
   color: #383c4b;
 }
 
-.header .social-media-list { float: right; padding-top: 22px;}
+.header .social-media-list { float: right; padding-top: 12px;top:69px!important}
 .header .social-media-list a { font-size: 14px; padding: 3px 5px; position: relative; overflow: hidden; height: auto; width: auto; transition: ease .5 all;}
 /*.header .social-media-list a:after { content: ''; width: 100%; height: 100%; background: #00bc50; position: absolute; top: 120%; left: 0; display: block; transition: ease .5 all; z-index: -1; opacity: 0; }*/
 .header .social-media-list a:hover { background: #00bc50; }
@@ -662,7 +662,7 @@ z-index: 10;
     .conseil-item:after { position: absolute; content: ""; width: 100%; box-shadow: 0px 79px 0px rgba(53,50,64,.8); height: 40px; bottom: 0; border-radius: 50%; z-index: -1;}
     .conseil-item > .hover-holder:hover .conseil-hover { visibility: visible; height: auto;}
     .conseil-item img { width: 100%; height: auto; }
-    .conseil-title { font-size: 20px; text-transform: uppercase; color: #fff; padding: 16px 10px; text-align: center; font-weight: 700; margin: 0; height: 100px;}
+    .conseil-title { font-size: 18px; text-transform: uppercase; color: #fff; padding: 16px 10px; text-align: center; font-weight: 700; margin: 0; height: 100px;}
     .conseil-content { background: #C4C6C5; padding: 20px; color: #666; border-radius: 0 0 5px 5px;}
     .conseil-info { margin-bottom: 20px; font-size: 15px;}
         .conseil-info .conseil-label { font-size: 20px; font-weight: 700;}
@@ -2058,7 +2058,7 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 .mat-option{font-size:15px}
 .parentButton{ margin : 5px}
 .center-tooltip{text-align : center;}
-.mat-option{font-size:10px}
+.mat-option{font-size:14px}
 .parentButton{ margin : 5px}
 .customBtnClassClose section{
 text-align:center;
@@ -2069,3 +2069,6 @@ text-align:center;
 }
 .files-to-download .remove { display: inline; }
 .input.userType_radio{ margin-top: 15px; }
+
+.search-title-calendar{color : white; font-size :20px; margin-bottom : 0px; height:30px; margin-top:5px; text-align:center}
+.form-calendar{height:40px; width:100%!important; font-weight:400!important; font-size:18px}

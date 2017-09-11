@@ -5,9 +5,11 @@ import { MdDialogConfig, MdDialog } from '@angular/material';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { UsersService } from '../services/users.service';
+import { SendService } from '../services/send.service';
 import swal from 'sweetalert2';
 var self = this;
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
+import { SendMessageComponent } from '../shared/send-message/send-message.component';
 
 @Component({
   selector: 'app-compare-mode',
@@ -39,7 +41,8 @@ export class CompareModeComponent implements OnInit, OnDestroy {
               private compareService : CompareService,
               private router : Router,
               private usersService : UsersService,
-              public dialog:MdDialog) { }
+              public dialog:MdDialog,
+              private sendService : SendService) { }
 
   ngOnInit() {
     if(!this.compareService.haveSchoolId()){
@@ -190,5 +193,12 @@ export class CompareModeComponent implements OnInit, OnDestroy {
       })
     }
   }
+
+  sendMessage(school){
+    let config = this.sendService.makeProfile(school)
+    let dialogref = this.dialog.open(SendMessageComponent, config);
+  }
+
+  
 
 }

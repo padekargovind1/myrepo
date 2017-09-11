@@ -1,9 +1,71 @@
 <main class="main white-background" role="main">
 
 	<h2 class="title-page">Agenda des écoles</h2>
-	
-	<div *ngFor="let event of events; let i=index">
-	    <app-cube [eventData]="event" [counter]="i+1"></app-cube>
+
+	<div class="row" style="width:60%; margin-left:20%">
+		<section class="col-md-12">
+			<form class="form-inline searchform" [formGroup]="searchForm"
+				(ngSubmit)="searchSubmit()">
+				<div class="form-wrap row">
+					
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-3">
+								<p class="search-title-calendar">
+									Recherche : 
+								</p>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<input type="date" id="birthdate" class="form-control form-calendar" 
+									[mdDatepicker]="myDatepicker" placeholder="Date de naissance" 
+									[formControl]="searchForm.controls['date']" [min]="minDate">
+									<md-datepicker #myDatepicker></md-datepicker>
+								</div>
+							</div><!-- .col-* -->
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="select-custom" for="class">
+										<select name="class" class="form-control" id="class" style="font-weight:400"
+											[formControl]="searchForm.controls['period']">
+											<option value="" hidden disabled selected>Période</option>
+											<option value="today">Aujourd'hui</option>
+											<option value="week">Cette semaine</option>
+											<option value="month">Ce mois-ci</option>
+										</select>
+									</label>
+								</div>
+							</div><!-- .col-* -->
+							<div class="col-md-1">
+								<button class="btn btn-search" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+							</div>
+							<div>
+                                <a style="float:right; color : white"
+                                    *ngIf="searchForm.value.date!='' || searchForm.value.period!=''"
+                                    (click)="cleanSearch()">
+                                    Nouvelle recherche
+                                </a>
+                            </div>
+						</div><!-- .row -->
+					</div><!-- .col-* -->
+
+				</div><!-- .form-wrap -->
+			</form>
+		</section>
+	</div><!-- .row -->
+	<div class="row">
+		&nbsp;<br>&nbsp;
 	</div>
-	
+
+	<div *ngIf="eventsToDisplay.length!=0; else noEvents">
+		<div *ngFor="let event of eventsToDisplay; let i=index">
+			<app-cube [eventData]="event" [counter]="i+1"></app-cube>
+		</div>
+	</div>
+	<ng-template #noEvents>
+		<p style="width:100%;
+                text-align:center; font-size : 35px">Il n'y a pas d'évènement pour cette recherche.</p>
+	</ng-template>
 </main>

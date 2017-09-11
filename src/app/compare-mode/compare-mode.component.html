@@ -290,7 +290,7 @@
                                         <div class="card  school-item">
                                             <ul class="school-action">
                                                 <li><a (click)="saveInWish(i)"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
-                                                <li><a (click)="applyToSchool()"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                                <li><a (click)="sendMessage(school)"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
                                                 <li><a ><i class="fa fa-share" aria-hidden="true"></i></a></li>
                                                 <li *ngIf="schoolBrochure.length!=0">
                                                     <a href="http://54.254.203.172/cideapi{{schoolBrochure[i].brochure}}" download="brochure.pdf" target="_self">
@@ -317,8 +317,8 @@
                                                 <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
                                                 <button type="button" class="btn btn-secondary btn-block" 
                                                     (click)="onApply(school)">
-                                                    Postuler</button>
-                                                <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Postuler</button> -->
+                                                    Sélectionner</button>
+                                                <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Sélectionner</button> -->
                                             </div><!-- .card-content -->
 
                                         </div><!-- .card -->

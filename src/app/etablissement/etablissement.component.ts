@@ -7,9 +7,11 @@ import { Subscription } from 'rxjs/Subscription';
 import { PublicService } from '../services/public.service';
 import { UsersService } from '../services/users.service';
 import { BrochureService } from '../services/brochure.service';
+import { SendService } from '../services/send.service';
 declare var $ :any;
 import swal from 'sweetalert2';
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
+import { SendMessageComponent } from '../shared/send-message/send-message.component';
 
 @Component({
   selector: 'app-etablissement',
@@ -34,7 +36,8 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
               private brochureService : BrochureService,
               public dialogref:MdDialogRef<EtablissementComponent>,
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any},
-              public dialog:MdDialog) { 
+              public dialog:MdDialog,
+              private sendService : SendService) { 
     console.log(this.data)
   }
 
@@ -164,6 +167,11 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
       right: ''
       }
     };
+  }
+
+  sendMessage(){
+    let config = this.sendService.makeProfile(this.schoolData)
+    let dialogref = this.dialog.open(SendMessageComponent, config);
   }
 
 }

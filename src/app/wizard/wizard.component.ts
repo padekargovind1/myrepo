@@ -477,24 +477,10 @@ export class WizardComponent implements OnInit, AfterViewInit {
           if(response.code==400){
             this.failSubmit(response.message);
           } else {
-            this.successSubmit()
+            this.bookingService.successSubmit();
           }
         }
       )
-  }
-
-  successSubmit(){
-    let frenchDate : string = this.appointmentData[0].substr(8, 2)+'/'+this.appointmentData[0].substr(5, 2)+'/'+this.appointmentData[0].substr(0, 4)
-    let type : string = this.appointmentData[7]+' ' +this.appointmentData[8];
-    let date : string = frenchDate+' de '+this.appointmentData[1]+' à '+this.appointmentData[2];
-    let adviser : string = this.appointmentData[4]+' '+this.appointmentData[3];
-    swal({
-      title: "Merci d'avoir choisi CIDE",
-      text: 'Votre Rendez-vous pour un(e) '+type+' est bien confirmé le '+date+' avec notre conseiller d\'orientation '+adviser+'. \nUn mail de confirmation vient de vous être adressé. A bientôt!',
-      type: 'success',
-      confirmButtonText: "J'AI COMPRIS"
-    })
-    this.route.navigate(['/'])
   }
 
   failSubmit(message){
