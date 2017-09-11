@@ -626,7 +626,7 @@
                                 {{ row?.file?.size/1024/1024 | number:'.2' }} MB
                               </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="Progression" *ngIf="uploader.options.isHTML5" [flexGrow]="2">
+                            <ngx-datatable-column name="Progression" *ngIf="uploader.options.isHTML5" [flexGrow]="3">
                               <ng-template let-row="row" ngx-datatable-cell-template>
                                 <md-progress-bar mode="determinate" value="{{row.progress}}"></md-progress-bar>
                               </ng-template>
