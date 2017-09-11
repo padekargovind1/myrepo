@@ -69,9 +69,15 @@ export class MyaccountParentsComponent implements OnInit {
           if (response.data[0].parents.length!=0){
             this.patchValue(response.data[0]);
             this.completeProfile();
-          } else if(this.usersService.getUserType()=="Parent"){
+          } 
+		  /*else if(this.usersService.getUserType()=="Parent"){
             this.parentAccountForm.controls['parents']['controls'][0].patchValue({
-              email : response.data[0].email,
+              email : this.usersService.getUserEmail(),
+            })
+          }*/
+		  if(this.usersService.getUserType()=="Parent"){
+            this.parentAccountForm.controls['parents']['controls'][0].patchValue({
+              email : this.usersService.getUserEmail(),
             })
           }
         }

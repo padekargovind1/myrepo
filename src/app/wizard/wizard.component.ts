@@ -243,7 +243,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
 			titre : userData.parents[i].gender,
 			nom : userData.parents[i].lastName,
 			prenom : userData.parents[i].firstName,
-			email : this.usersService.getUserType()=="Parent" ? userData.email : '',
+			email : this.usersService.getUserType()=="Parent" ? this.usersService.getUserEmail() : '',
 			portable : userData.parents[i].phoneNumber,
 			adresse : IsAdress ? userData.parents[i].address.address1 : "",
 			codepostal : IsAdress ? userData.parents[i].address.postCode : "",
