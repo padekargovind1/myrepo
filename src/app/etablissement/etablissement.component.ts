@@ -7,9 +7,11 @@ import { Subscription } from 'rxjs/Subscription';
 import { PublicService } from '../services/public.service';
 import { UsersService } from '../services/users.service';
 import { BrochureService } from '../services/brochure.service';
+import { SendService } from '../services/send.service';
 declare var $ :any;
 import swal from 'sweetalert2';
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
+import { SendMessageComponent } from '../shared/send-message/send-message.component';
 
 @Component({
   selector: 'app-etablissement',
@@ -34,7 +36,8 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
               private brochureService : BrochureService,
               public dialogref:MdDialogRef<EtablissementComponent>,
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any},
-              public dialog:MdDialog) { 
+              public dialog:MdDialog,
+              private sendService : SendService) { 
     console.log(this.data)
   }
 
@@ -135,9 +138,11 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   }
 
   applyTo(){
-    this.dialogref.close()
-    this.makeProfile()
+    this.makeProfile(this.schoolData);
     let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
+    dialogref.afterClosed().subscribe(result => {
+      this.dialogref.close();
+    });
     // this.router.navigate(['applyto', this.schoolId])
   }
 
@@ -147,16 +152,14 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
     this.router.navigate(['brochure']);
   }
 
-  makeProfile(){
-    let screenWidth : string = (((window.screen.width/3)*2)).toString()+'px';
-    let screenHeight : string = (window.screen.height/2).toString()+'px';
+  makeProfile(school){
     this.config= {
       data:{
-        schoolData : this.schoolData
+        schoolData : school
       },
       disableClose: false,
-      width: screenWidth,
-      height: screenHeight,
+      width: '800px',
+      height: '',
       position: {
       top: '',
       bottom: '',
@@ -164,6 +167,11 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
       right: ''
       }
     };
+  }
+
+  sendMessage(){
+    let config = this.sendService.makeProfile(this.schoolData)
+    let dialogref = this.dialog.open(SendMessageComponent, config);
   }
 
 }

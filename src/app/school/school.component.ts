@@ -1,13 +1,16 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { SchoolService } from '../services/school.service';
 import { UsersService } from '../services/users.service';
-import { BrochureService } from '../services/brochure.service'
+import { BrochureService } from '../services/brochure.service';
+import { SendService } from '../services/send.service';
 import { AdvancedSearchMdl } from '../model/advanced-search.model';
+import { SendMessageComponent } from '../shared/send-message/send-message.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
 declare var jquery:any;
@@ -28,8 +31,8 @@ export class SchoolComponent implements OnInit {
   compareListFilter = [];
   filterList = ["Cycles & Classes", "Langues", "Spécialités", 
                 "Internat", "Stages", "Restauration", 
-                "Externat", "Status", "Enseignement Confessionel", 
-                "Sections", "Diplôme", "Options", "Places Disponible"]
+                "Externat", "Statut", "Enseignement Confessionel", 
+                "Sections", "Diplôme", "Options", "Places Disponibles"]
   four : boolean = false;
   canCompare : boolean = false;
   canFilter : boolean = false;
@@ -83,7 +86,9 @@ export class SchoolComponent implements OnInit {
               private brochureService : BrochureService,
               private router : Router,
               private fb : FormBuilder,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              private sendService : SendService,
+              public dialog:MdDialog) { }
 
   ngOnInit() {
     this.slickNb=this.publicService.getNbSlick();
@@ -358,7 +363,7 @@ export class SchoolComponent implements OnInit {
     this.advancedSearch.class = this.searchForm.controls.classe.value;
     this.advancedSearch.place = this.searchForm.controls.lieu.value;
     this.advancedSearch.name = this.searchForm.controls.etablissement.value;
-    // console.log(data);
+    console.log(this.advancedSearch);
     this.publicService.storeSearchSchool(this.searchFilter);
     this.postAdvancedFilter();
     this.forAdvancedSearch=false;
@@ -676,15 +681,22 @@ export class SchoolComponent implements OnInit {
       .subscribe(
         response=>{
           console.log(response)
-		  // Bad Request.
-		  if(response.code==400){
-			  swal({
-					title: 'Attention',
-					text: response.message,
-					type: 'warning',
-					confirmButtonText: "J'ai compris"
-				  })
-		  }
+          // Bad Request.
+          if(response.code==200){
+            swal({
+              title: 'Ajout à la liste des voeux',
+              text: "L'école séléctionné a bien été ajouté à votre liste des voeux",
+              type: 'warning',
+              confirmButtonText: "J'ai compris"
+              })
+          }else {
+            swal({
+              title: 'Attention',
+              text: response.message,
+              type: 'warning',
+              confirmButtonText: "J'ai compris"
+              })
+          }
         }
       )
   }
@@ -693,6 +705,11 @@ export class SchoolComponent implements OnInit {
     // console.log(schoolName)
     this.brochureService.storeSchoolSearch(schoolName);
     this.router.navigate(['/brochure']);
+  }
+
+  sendMessage(school){
+    let config = this.sendService.makeProfile(school)
+    let dialogref = this.dialog.open(SendMessageComponent, config);
   }
 
 }

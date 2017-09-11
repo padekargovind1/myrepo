@@ -1,0 +1,54 @@
+<div class="row">
+  <h2 style="text-align:center">Je sélectionne ma classe :</h2>
+  <div class="col-md-4" 
+    *ngFor="let class of schoolData.cycles[schoolIndex].classes; let i = index">
+    <div class="row school-choice-height">
+      <h3 style="text-align : center; width:80%; margin-left:10%; height:50px"
+        mdTooltip="{{class.name}}" mdTooltipClass="center-tooltip">
+        {{class.name | school:55}}
+      </h3>
+    </div>
+    <div class="row school-choice-height">
+      <!--<md-select placeholder="Liste des options disponibles pour ce cycle" style="margin-left:5%"
+        [style.width]="'90%'">
+        <md-option value="">
+          Indifférent
+        </md-option>
+        <md-option *ngFor="let option of class.option" value="{{option | capital}}">
+          {{ option.name | capital }}
+        </md-option>
+      </md-select>-->
+      
+      <select name="class" class="form-control" id="class"
+        style="width:80%; margin-left:10%">
+        <option value="" selected hidden>Liste des options disponibles</option>
+        <option value="">Indifférent</option>
+        <option *ngFor="let option of class.option" 
+          value="{{option | capital}}">
+          {{ option.name | capital }}
+        </option>
+      </select>
+    </div>
+    <!--<div class="row school-choice-height">
+      <p style="text-align:center">{{cycle.address.ad1}}</p>
+    </div>
+    <div class="row school-choice-height">
+      <p style="text-align:center">{{cycle.address.postcode}} {{cycle.address.city}}</p>
+    </div>-->
+    <div class="row school-choice-height">
+      <button class="btn btn-appointment" style="margin-left : 34%"
+        (click)="onselect()">
+        Je sélectionne
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row customBtnClassClose">
+  <section class="col-md-12">
+    <button type="button" class="btn button-return" (click)="navigateBack()"
+      style="float:right; background-color: #ec4758">
+      Annuler
+    </button>
+  </section>
+</div>

@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
               } else {
                 this.router.navigate(['/']);
               }
+              this.userService.getProfile();
             }        
           }
         );

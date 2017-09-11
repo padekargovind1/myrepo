@@ -67,6 +67,21 @@
                       </small>
                     </div>
                   </div><!-- end confirm password -->
+				  <div class="col-md-12">
+					<div class="input userType_radio"> 
+						  <md-radio-group [formControl]="registerForm.controls['userType']">
+							<md-radio-button value="Parent">Parent</md-radio-button>
+							<md-radio-button value="Etudiant">Étudiant</md-radio-button>
+							<!--md-radio-button value="Enfant">Enfant</md-radio-button-->
+						  </md-radio-group>
+						  <small 
+							*ngIf="registerForm.controls['userType'].errors?.equalTo && 
+							registerForm.controls['userType'].touched" 
+							class="mat-text-warn"> 
+							Mot de passe différent
+						  </small>
+						</div>
+					</div>
                   <div class="col-md-12">
                     <div class="input clearfix">
                       <input type="submit" id="reg_submit" 

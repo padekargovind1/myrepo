@@ -1,160 +1,29 @@
 <div class="row">
-  <div class="col-md-2">
-    <md-list>
-      <md-list-item>
-        <h3>Classe</h3>
-        <!--<strong>Classe</strong>-->
-      </md-list-item>
-    </md-list>
+  <h2 style="text-align:center">Je postule pour :</h2>
+  <div class="col-md-4" 
+    *ngFor="let cycle of schoolData.cycles; let i = index">
+    <div class="row school-choice-height">
+      <h3 style="text-align : center; width:80%; margin-left:10%">{{cycle.cycle.cycleType}}</h3>
+    </div>
+    <div class="row school-choice-height">
+      <p style="text-align:center">{{cycle.address.ad1}}</p>
+    </div>
+    <div class="row school-choice-height">
+      <p style="text-align:center">{{cycle.address.postcode}} {{cycle.address.city}}</p>
+    </div>
+    <div class="row school-choice-height">
+      <button class="btn btn-appointment" style="margin-left : 28%"
+        (click)="selectTo(i)">
+        Étape suivante
+      </button>
+    </div>
   </div>
-  <div class="col-md-2">
-    <md-list>
-      <md-list-item>
-        <strong>Lv1</strong>
-      </md-list-item>
-    </md-list>
-  </div>
-  <div class="col-md-2">
-    <md-list>
-      <md-list-item>
-        <strong>Lv2</strong>
-      </md-list-item>
-    </md-list>
-  </div>
-  <div class="col-md-2">
-    <md-list>
-      <md-list-item>
-        <strong>Lv3</strong>
-      </md-list-item>
-    </md-list>
-  </div>
-  <div class="col-md-2">
-    <md-list>
-      <md-list-item>
-        <strong>Options</strong>
-      </md-list-item>
-    </md-list>
-  </div>
-  <div class="col-md-2">
-    <md-list>
-      <md-list-item>
-        <strong>Je choisis</strong>
-      </md-list-item>
-    </md-list>
-  </div>
-  <div class="row" *ngFor="let cycle of schoolData.cycles; let i=index">
-    <div class="col-md-12" *ngFor="let class of cycle.classes">
-      <div class="row">
-         <div class="col-md-2">
-            <md-list>
-              <md-list-item mdTooltip="{{class.code | capital}}">
-                {{class.code | capital | school:'13'}}
-              </md-list-item>
-            </md-list>
-          </div>
-          <div class="col-md-2">
-            <md-list *ngIf="cycle.language.lv1.value[0]!=''; else empty1">
-              <md-list-item>
-                <md-select placeholder="Lv1">
-                  <md-option *ngFor="let lv1 of cycle.language.lv1.value; let i=index" [value]="lv1">
-                    {{ lv1 }}
-                  </md-option>
-                </md-select>
-              </md-list-item>
-            </md-list>
-            <ng-template #empty1>
-              <md-list>
-                <md-list-item>
-                  -
-                </md-list-item>
-              </md-list>
-            </ng-template>
-          </div>
-          <div class="col-md-2">
-            <md-list *ngIf="cycle.language.lv2.value[0]!=''; else empty2">
-              <md-list-item>
-                <md-select placeholder="Lv2">
-                  <md-option *ngFor="let lv2 of cycle.language.lv2.value; let i=index" [value]="lv2">
-                    {{ lv2 }}
-                  </md-option>
-                </md-select>
-              </md-list-item>
-            </md-list>
-            <ng-template #empty2>
-              <md-list>
-                <md-list-item>
-                  -
-                </md-list-item>
-              </md-list>
-            </ng-template>
-          </div>
-          <div class="col-md-2">
-            <md-list *ngIf="cycle.language.lv3.value[0]!=''; else empty3">
-              <md-list-item>
-                <md-select placeholder="Lv3">
-                  <md-option *ngFor="let lv3 of cycle.language.lv3.value; let i=index" [value]="lv3">
-                    {{ lv3 }}
-                  </md-option>
-                </md-select>
-              </md-list-item>
-            </md-list>
-            <ng-template #empty3>
-              <md-list>
-                <md-list-item>
-                  -
-                </md-list-item>
-              </md-list>
-            </ng-template>
-          </div>
-          <div class="col-md-2">
-            <md-list *ngIf="class.option[0].name!=''; else empty4">
-              <md-list-item>
-                <md-select placeholder="Options">
-                  <md-option *ngFor="let option of class.option; let i=index" value="{{option.name}}">
-                    {{option.name}}
-                  </md-option>
-                </md-select>
-              </md-list-item>
-            </md-list>
-            <ng-template #empty4>
-              <md-list>
-                <md-list-item>
-                  -
-                </md-list-item>
-              </md-list>
-            </ng-template>
-          </div>
-          <div class="col-md-2">
-            <md-list>
-              <md-list-item>
-                <md-checkbox  (click)="onCheckBox($event, class.code)"></md-checkbox>
-              </md-list-item>
-            </md-list>
-          </div>
-       </div>
-     
-  </div>
-  
 </div>
-
-<div class="row customBtnClass">
-  <section class="col-md-6">
-    <button class="btn btn-lg btn-block btn-register" data-dismiss="modal"
-      (click)="saveOnWish()">
-      J'ENREGISTRE POUR PLUS TARD
-    </button>
-  </section>
-  <section class="col-md-6">
-    <button class="btn btn-lg btn-block btn-appointment close-class"
-      (click)="applyTo()" [disabled]="classList.length==0">
-      Je souhaite une inscription
-    </button>
-  </section>
-</div><!-- .row --> 
 <div class="row customBtnClassClose">
-<section class="col-md-12">
-<button type="button" class="btn button-return" (click)="navigateBack()">
-	Annuler
-</button>
-</section>
+  <section class="col-md-12">
+    <button type="button" class="btn button-return" (click)="navigateBack()"
+      style="float:right; background-color: #ec4758">
+      Annuler
+    </button>
+  </section>
 </div>

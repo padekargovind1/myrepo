@@ -66,6 +66,7 @@ import { CompareService } from './services/compare.service';
 import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
+import { SendService } from './services/send.service';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
 import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
@@ -85,7 +86,8 @@ import { SuperieurEssentielComponent } from './superieur/school-detail-superieur
 import { SuperieurEvenementComponent } from './superieur/school-detail-superieur/superieur-evenement/superieur-evenement.component';
 import { SuperieurFormationComponent } from './superieur/school-detail-superieur/superieur-formation/superieur-formation.component';
 import { SuperieurInfoComponent } from './superieur/school-detail-superieur/superieur-info/superieur-info.component';
-
+import { ClassChoiceComponent } from './shared/class-choice/class-choice.component';
+import { SendMessageComponent } from './shared/send-message/send-message.component';
 
 @NgModule({
   declarations: [
@@ -143,7 +145,9 @@ import { SuperieurInfoComponent } from './superieur/school-detail-superieur/supe
     SuperieurEssentielComponent,
     SuperieurEvenementComponent,
     SuperieurFormationComponent,
-    SuperieurInfoComponent
+    SuperieurInfoComponent,
+    ClassChoiceComponent,
+    SendMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -185,7 +189,8 @@ import { SuperieurInfoComponent } from './superieur/school-detail-superieur/supe
     BookingService,
     EditorService,
     SweetAlertService,
-    BrochureService
+    BrochureService,
+    SendService
   ],
     entryComponents: [
        BrochpopupComponent,
@@ -194,7 +199,9 @@ import { SuperieurInfoComponent } from './superieur/school-detail-superieur/supe
        SchoolChoiceComponent,
        EtablissementComponent,
        ConseilPopupComponent,
-       SchoolDetailSuperieurComponent
+       SchoolDetailSuperieurComponent,
+       ClassChoiceComponent,
+       SendMessageComponent
     ],
   bootstrap: [AppComponent]
 })

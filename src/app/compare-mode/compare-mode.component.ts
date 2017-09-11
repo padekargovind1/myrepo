@@ -5,9 +5,11 @@ import { MdDialogConfig, MdDialog } from '@angular/material';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { UsersService } from '../services/users.service';
+import { SendService } from '../services/send.service';
 import swal from 'sweetalert2';
 var self = this;
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
+import { SendMessageComponent } from '../shared/send-message/send-message.component';
 
 @Component({
   selector: 'app-compare-mode',
@@ -39,7 +41,8 @@ export class CompareModeComponent implements OnInit, OnDestroy {
               private compareService : CompareService,
               private router : Router,
               private usersService : UsersService,
-              public dialog:MdDialog) { }
+              public dialog:MdDialog,
+              private sendService : SendService) { }
 
   ngOnInit() {
     if(!this.compareService.haveSchoolId()){
@@ -109,23 +112,20 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     // console.log(this.schoolDataToDisplay);
   }
 
-  applyToSchool(){
-    console.log('click', this.applytoSchool);
-    this.getSchoolById()
-    // this.router.navigate(['applyto', this.applytoSchool.id]);
+  onApply(school){
+    console.log(school);
+    this.makeProfile(school);
+    let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
   }
 
   makeProfile(school){
-    let screenWidth : string = (((window.screen.width/3)*2)).toString()+'px';
-    let screenHeight : string = (window.screen.height/2).toString()+'px';
-    console.log(this.applytoSchool)
     this.config= {
       data:{
         schoolData : school
       },
       disableClose: false,
-      width: screenWidth,
-      height: screenHeight,
+      width: '800px',
+      height: '',
       position: {
       top: '',
       bottom: '',
@@ -133,27 +133,6 @@ export class CompareModeComponent implements OnInit, OnDestroy {
       right: ''
       }
     };
-  }
-
-  getSchoolById(){
-    this.publicService.getSchoolById(this.applytoSchool.id)
-      .subscribe(
-        response=>{
-          console.log(response)
-          if(response.code!=400){
-            this.makeProfile(response.data)
-            let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
-          }
-        }
-      )
-  }
-
-  onApply(school){
-    console.log(school)
-    this.applytoSchool.id=school._id;
-    this.applytoSchool.lName=school.longName;
-    this.applytoSchool.sName=school.shortName;
-    this.applytoSchool.photo="school-1.jpg";
   }
 
   saveInWish(index){
@@ -214,5 +193,12 @@ export class CompareModeComponent implements OnInit, OnDestroy {
       })
     }
   }
+
+  sendMessage(school){
+    let config = this.sendService.makeProfile(school)
+    let dialogref = this.dialog.open(SendMessageComponent, config);
+  }
+
+  
 
 }

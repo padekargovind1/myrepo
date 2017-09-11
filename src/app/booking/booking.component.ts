@@ -166,25 +166,10 @@ export class BookingComponent implements OnInit, AfterViewInit {
         response=>{
           console.log(response);
           if(response.code!=400){
-            this.successSubmit();
+            this.bookingService.successSubmit();
           }
         }
       )
-  }
-
-  successSubmit(){
-    let appointmentData = this.bookingService.getBookingData();
-    let frenchDate : string = appointmentData[0].substr(8, 2)+'/'+appointmentData[0].substr(5, 2)+'/'+appointmentData[0].substr(0, 4)
-    let type : string = appointmentData[7]+' ' +appointmentData[8];
-    let date : string = frenchDate+' de '+appointmentData[1]+' à '+appointmentData[2];
-    let adviser : string = appointmentData[4]+' '+appointmentData[3];
-    swal({
-      title: "Merci d'avoir choisi CIDE",
-      text: 'Votre Rendez-vous pour un(e) '+type+' est bien confirmé le '+date+' avec notre conseiller d\'orientation '+adviser+'. \nUn mail de confirmation vient de vous être adressé. A bientôt!',
-      type: 'success',
-      confirmButtonText: "J'AI COMPRIS"
-    })
-    this.route.navigate(['/'])
   }
 
   ngAfterViewInit() {
@@ -252,30 +237,27 @@ export class BookingComponent implements OnInit, AfterViewInit {
 	},
       eventClick: function(calEvent) {
         console.log(calEvent);
-		var check = new Date(calEvent.start._i);
-		var today = new Date();
-		if(check < today)
-		{
-			// Previous Day. show message if you want otherwise do nothing.
-			// So it will be unselectable
-		}
-		else
-		{
-			$('#appointment').modal('show');
-			self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
-			self.bookingDate[0] = calEvent.start._i.substr(0, 10)
-			self.bookingDate[1] = calEvent.start._i.substr(11, 5)
-			self.bookingDate[2] = calEvent.end._i.substr(11, 5)
-			self.bookingDate[3] = calEvent.adviserName
-			if(calEvent.adviserGender=="Male"){
-			  self.bookingDate[4] = "M"
-			} else {
-			  self.bookingDate[4] = "Mme"
-			}
-			self.bookingDate[5] = calEvent.adviserId
-			self.bookingDate[6] = calEvent.adviserImage
-			console.log(self.bookingDate);
-		}
+        var check = new Date(calEvent.start._i);
+        var today = new Date();
+        if(check < today)
+        {
+          // Previous Day. show message if you want otherwise do nothing.
+          // So it will be unselectable
+        }
+        $('#appointment').modal('show');
+        self.storeData(calEvent.adviserId, calEvent.start._i, calEvent.end._i)
+        self.bookingDate[0] = calEvent.start._i.substr(0, 10)
+        self.bookingDate[1] = calEvent.start._i.substr(11, 5)
+        self.bookingDate[2] = calEvent.end._i.substr(11, 5)
+        self.bookingDate[3] = calEvent.adviserName
+        if(calEvent.adviserGender=="Male"){
+          self.bookingDate[4] = "M"
+        } else {
+          self.bookingDate[4] = "Mme"
+        }
+        self.bookingDate[5] = calEvent.adviserId
+        self.bookingDate[6] = calEvent.adviserImage
+        console.log(self.bookingDate);
       }, 
       events:this.adviserToDisplay
     });
