@@ -129,10 +129,18 @@ export class ApplytoComponent implements OnInit {
 
   patchValue(userData){
 	  var IsAdress = (userData.address!==undefined && userData.address!=null) ? true : false;
-    var haveLv1 = (userData.academicHistories[0].languages[1]!==undefined && userData.academicHistories[0].languages[1]!=null) ? true : false;
-    var haveLv2 = (userData.academicHistories[0].languages[2]!==undefined && userData.academicHistories[0].languages[2]!=null) ? true : false;
+    var haveLv1 = false;
+    var haveLv2 = false;
+	if(userData.academicHistories.length>0 && userData.academicHistories[0].languages !== undefined)
+	{
+		haveLv1 = (userData.academicHistories[0].languages[1]!==undefined && userData.academicHistories[0].languages[1]!=null) ? true : false;
+		haveLv2 = (userData.academicHistories[0].languages[2]!==undefined && userData.academicHistories[0].languages[2]!=null) ? true : false;
+	}
     var hobbies = (userData.hobbies!==undefined && userData.hobbies!=null) ? true : false;
     var interest = (userData.interest!==undefined && userData.interest!=null) ? true : false;
+	
+	var isAcademicHistories = userData.academicHistories.length>0;
+	var AcademicHistoriesFirst = userData.academicHistories[0];
     this.applytoForm.patchValue({
       childLastName : userData.lastName,
       childFirstName : userData.firstName,
@@ -146,11 +154,11 @@ export class ApplytoComponent implements OnInit {
       // childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
       // childBirthPlace : IsAdress ? userData.birthPlace : "",
       //Current Institution
-      schoolName : userData.academicHistories[0].schoolName=="A compléter" ? "" : userData.academicHistories[0].schoolName,
-      schoolCity : userData.academicHistories[0].city=="A compléter" ? "" : userData.academicHistories[0].city,
-      schoolClasse : userData.academicHistories[0].class=="A compléter" ? "" :userData.academicHistories[0].class,
-      schoolOption : userData.academicHistories[0].classType=="A compléter" ? "" :userData.academicHistories[0].classType,
-      schoolLv1 : userData.academicHistories[0].languages[0]=="A compléter" ? "" : userData.academicHistories[0].languages[0],
+      schoolName : (!isAcademicHistories || AcademicHistoriesFirst.schoolName===undefined || userData.academicHistories[0].schoolName=="A compléter") ? "" : userData.academicHistories[0].schoolName,
+      schoolCity : (!isAcademicHistories || AcademicHistoriesFirst.city===undefined || userData.academicHistories[0].city=="A compléter") ? "" : userData.academicHistories[0].city,
+      schoolClasse : (!isAcademicHistories || AcademicHistoriesFirst.class===undefined || userData.academicHistories[0].class=="A compléter") ? "" :userData.academicHistories[0].class,
+      schoolOption : (!isAcademicHistories || AcademicHistoriesFirst.classType===undefined || userData.academicHistories[0].classType=="A compléter") ? "" :userData.academicHistories[0].classType,
+      schoolLv1 : (!isAcademicHistories || AcademicHistoriesFirst.languages===undefined || userData.academicHistories[0].languages[0]=="A compléter") ? "" : userData.academicHistories[0].languages[0],
       schoolLv2 : haveLv1 ? userData.academicHistories[0].languages[1] : "",
       schoolLv3 : haveLv2 ? userData.academicHistories[0].languages[2] : "",
       //Strong and weak subject

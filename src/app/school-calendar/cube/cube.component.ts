@@ -23,6 +23,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
   @Input() counter: any;
   cube;
   video;
+  safeUrl: any;
   configSchoolDetail : MdDialogConfig;
 
   constructor(private sanitizer : DomSanitizer,
@@ -32,6 +33,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {    
     this.video="https://www.youtube.com/embed/"+this.eventData.video;
+	this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video);
     console.log(this.video);
   }
 

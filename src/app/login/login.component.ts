@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
             }
             else {
               console.log(response);
-              this.storeUserType(userType)
+              this.storeUserType(userType,email);
               if(this.bookingService.isForBooking() || this.bookingService.isForFastBooking()){
                 this.bookingService.makeAppointment();
               } else {
@@ -80,8 +80,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  storeUserType(userType){
+  storeUserType(userType,email){
     this.userService.storeUserType(userType);
+    this.userService.storeUserEmail(email);
   }
 
   onNewAccount(){

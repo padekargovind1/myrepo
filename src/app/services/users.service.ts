@@ -166,4 +166,16 @@ export class UsersService {
   cleanUserType(){
     localStorage.removeItem('userType');
   }
+  
+  storeUserEmail(userE){
+    localStorage.setItem('userEmail', userE);
+  }
+
+  getUserEmail(){
+    return localStorage.getItem('userEmail');
+  }
+
+  cleanUserEmail(){
+    localStorage.removeItem('userEmail');
+  }
 }

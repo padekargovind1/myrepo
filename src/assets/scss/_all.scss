@@ -1917,7 +1917,7 @@ a:hover { text-decoration: none;}
     font-size: 14px;}
 .btn-conseil , a.btn-conseil   { border-radius: 130px !important;    max-width: 60%;    display: block;    text-align: center; margin: 0 auto 20px; }
 
-.content-holder[_ngcontent-c2]{width: 90% !important; background: rgba(0, 0, 0, 0.4) !important ;}
+.landing-page-2 .content-holder{width: 90% !important; background: rgba(0, 0, 0, 0.4) !important ;margin-top: 10px;}
 img.cide-logo-mobile { display:inline-block !important}
 
 .booking-appointment .advisors-wrap .deselect-all-advisor { display:block; }
@@ -1948,6 +1948,7 @@ button.deselect-all-advisor {border:1px solid #ed5565; background:none;}
 header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}
 .select-custom md-select.mat-select { background: #fff url(./assets/images/cide-dropbox-arrow.png) no-repeat 97% 48%; }
 
+.ConseillersTxt , .ConseillersTxtRight{ display:none;}
 
 @media (max-width:639px){ 
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
@@ -2047,6 +2048,8 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 .row.customBtnClassClose { margin-top: 15px; }
 
 .input.userType_radio{ padding: 11px 0; margin-bottom: 7px; margin-top: 0; }
+.landing-page-2 .content-holder .btn.btn-search { right: 5px; padding: 6px; }
+app-school-choice .selectApplyClass{     max-height: 82vh; height: 100vh; overflow: auto; position: relative; }
 }
 
 .wizard-button-align{margin-left:15px}

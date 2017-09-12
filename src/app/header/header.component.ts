@@ -188,6 +188,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onSignOut(){
 	this.hideHeaderSubMenus();
     this.cleanLocalStorage();
+    this.cleanUserLocalStorage();
     this.authService.logout();
     this.userLogin=false;
     this.router.navigate(['/']);
@@ -265,6 +266,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.bookingService.cleanBooking();
     this.compareService.cleanCompareFilter();
     this.compareService.cleanSchoolCompare();
+  }
+
+  cleanUserLocalStorage(){
+    this.usersService.cleanUserType();
+    this.usersService.cleanUserEmail();
   }
 
   makeProfile(tabNbSelected : number){
