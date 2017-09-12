@@ -46,7 +46,7 @@ export class SchoolCalendarComponent implements OnInit {
 
   buildForm(){
     this.searchForm = this.fb.group({
-      date : [''],
+      date : [null],
       period : ['']
     })
   }

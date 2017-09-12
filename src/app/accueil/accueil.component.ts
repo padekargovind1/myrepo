@@ -296,7 +296,7 @@ export class AccueilComponent implements OnInit {
       let data;
       if(path!="enseignement"){
         data = [
-          this.searchForm.controls.classe.value,
+          this.searchForm.controls.classe.value=='' || this.searchForm.controls.classe.value=='Indifférent' ? '' : this.searchForm.controls.classe.value,
           this.searchForm.controls.lieu.value,
           this.searchForm.controls.etablissement.value
         ]
@@ -306,9 +306,6 @@ export class AccueilComponent implements OnInit {
           this.apbForm.controls.lieu.value,
           this.apbForm.controls.etablissement.value
         ]
-      }
-      if(data[0]=="Indifférent"){
-        data[0]="";
       }
       this.publicService.storeSearchSchool(data);
       this.onNavigate(path);

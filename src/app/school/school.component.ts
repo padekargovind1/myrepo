@@ -352,17 +352,14 @@ export class SchoolComponent implements OnInit {
       }
     }
     let data = {
-      class : this.searchForm.controls.classe.value,
+      class : this.searchForm.controls.classe.value=='' || this.searchForm.controls.classe.value=='Indifférent' ? '' : this.searchForm.controls.classe.value,
       place : this.searchForm.controls.lieu.value,
       name : this.searchForm.controls.etablissement.value
     }
-    if(data.class=="Indifférent"){
-      data.class="";
-    }
     this.searchFilter=[data.class, data.place, data.name]
-    this.advancedSearch.class = this.searchForm.controls.classe.value;
-    this.advancedSearch.place = this.searchForm.controls.lieu.value;
-    this.advancedSearch.name = this.searchForm.controls.etablissement.value;
+    this.advancedSearch.class = data.class;
+    this.advancedSearch.place = data.place;
+    this.advancedSearch.name = data.name;
     console.log(this.advancedSearch);
     this.publicService.storeSearchSchool(this.searchFilter);
     this.postAdvancedFilter();
@@ -416,7 +413,7 @@ export class SchoolComponent implements OnInit {
             this.options['regions']=data.regions
             this.options['departements']=data.departments
             this.options['villes']=data.cities
-            console.log(this.options)
+            // console.log(this.options)
           }
         }
       )
