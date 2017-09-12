@@ -600,7 +600,7 @@
                                             </li>
                                         </ul>  
                                     </li>
-									<li><a class="advancedFilter advancedFilterCenter">Prestige</a>
+									<li *ngIf="pathName!='enseignement'"><a class="advancedFilter advancedFilterCenter">Prestige</a>
                                         <ul (click)="onAdvancedClick($event, 'Prestige')"
                                             class="adv-filt">
                                             <li>
