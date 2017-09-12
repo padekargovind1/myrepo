@@ -134,12 +134,12 @@ export class ApplytoComponent implements OnInit {
     var hobbies = (userData.hobbies!==undefined && userData.hobbies!=null) ? true : false;
     var interest = (userData.interest!==undefined && userData.interest!=null) ? true : false;
     this.applytoForm.patchValue({
-      childLastName : userData.lastName,
-      childFirstName : userData.firstName,
+      childLastName : userData.lastName=="A compléter" ? "" :userData.lastName,
+      childFirstName : userData.firstName=="A compléter" ? "" : userData.firstName,
       childAge : userData.age,
       childTitle : userData.gender,
-      childMel : userData.email,
-      childTel : userData.mobilePhone,
+      childMel : userData.email=="A compléter" ? "" :userData.email,
+      childTel : userData.mobilePhone=="A compléter" ? "" :userData.mobilePhone,
       // childAddr : IsAdress ? userData.address.address1 : "",
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
@@ -174,7 +174,7 @@ export class ApplytoComponent implements OnInit {
         codepostal : IsAdress ? userData.parents[i].address.postCode : "",
         ville : IsAdress ? userData.parents[i].address.city : "",
         pays : IsAdress ? userData.parents[i].address.country : "",
-        job : userData.parents[i].profession,
+        job : userData.parents[i].profession=="A compléter" ? "" :userData.parents[i].profession,
         // horaireJoignable : userData.parents[i].availability
         })
       }
