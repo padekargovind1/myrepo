@@ -1948,6 +1948,7 @@ button.deselect-all-advisor {border:1px solid #ed5565; background:none;}
 header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}
 .select-custom md-select.mat-select { background: #fff url(./assets/images/cide-dropbox-arrow.png) no-repeat 97% 48%; }
 
+.ConseillersTxt , .ConseillersTxtRight{ display:none;}
 
 @media (max-width:639px){ 
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
@@ -2048,6 +2049,8 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 
 .input.userType_radio{ padding: 11px 0; margin-bottom: 7px; margin-top: 0; }
 .landing-page-2 .content-holder .btn.btn-search { right: 5px; padding: 6px; }
+ .ConseillersTxtRight {display:block; text-align: right; line-height:22px;}
+.ConseillersTxt { display: block; float: left; margin-top: 4px; width: 80%; text-align: center; margin-bottom: -20px;}
 }
 
 .wizard-button-align{margin-left:15px}

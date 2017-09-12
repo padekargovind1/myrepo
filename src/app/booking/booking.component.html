@@ -3,6 +3,7 @@
         <div class="row  booking-appointment">
             <section class="col-md-3">
                 <div class="advisors-wrap">
+				<div class="ConseillersTxtRight">Calendar</div>
                     <h3 class="advisor-title">Conseillers d’orientation</h3>
                     <button class="btn btn-appointment btn-block select-all-advisor" (click)="onSelectAll()" 
                         *ngIf="adviserToDisplay.length!=calendarData.length">
@@ -45,6 +46,7 @@
             <section class="col-md-9  calendar-content">
                 <h2 class="title-page">Choisissez votre date et heure de rendez-vous en fonction des plages horaires disponibles.</h2> 
                 <div class="calendar-wrap">
+				<div class="ConseillersTxt">Conseillers</div>
                     <h4>Calendrier</h4>
                     <div id="calendar"></div>
                 </div>
