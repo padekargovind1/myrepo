@@ -95,7 +95,7 @@
                                                         <option value="CI">&nbsp;Cursus International</option>
                                                         <option value="BAC-I">&nbsp;Cursus Bac. International</option>
                                                         <option value="cursus_non_francophone">&nbsp;Cursus non francophone (GB-US)</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="STRH" style="color:red">
                                                             &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
                                                         </option>
                                                         <option value="seconde_sthr">&nbsp;2nde spécifique STHR</option>
@@ -287,12 +287,14 @@
                                                     (keyup)="filterLieu($event)"/>
                                                 <md-autocomplete #auto="mdAutocomplete">
                                                     <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                    <md-option *ngFor="let option of options.regions" [value]="option">
+                                                    <md-option [value]="options.regions"
+                                                    *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>   
+                                                    <!-- <md-option *ngFor="let option of options.regions" [value]="option">
                                                         &nbsp;&nbsp;{{ option }}
-                                                    </md-option>
+                                                    </md-option> -->
                                                     <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                    <md-option *ngFor="let option of options.departements" [value]="option.departmentNumber">
-                                                        &nbsp;&nbsp;({{option.departmentNumber}}) {{ option.departmentName }} 
+                                                    <md-option *ngFor="let option of options.departements" [value]="option">
+                                                        &nbsp;&nbsp;{{option}}
                                                     </md-option>
                                                     <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
                                                     <md-option *ngFor="let option of options.villes" [value]="option.postcode">

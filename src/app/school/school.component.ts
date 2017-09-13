@@ -48,7 +48,7 @@ export class SchoolComponent implements OnInit {
     code : [],
     class : '',
     name : '',
-    place : ''
+    place : []
   };
   advancedSearchToDisplay=[];
   advancedSearchCategory=[];
@@ -353,7 +353,7 @@ export class SchoolComponent implements OnInit {
     }
     let data = {
       class : this.searchForm.controls.classe.value=='' || this.searchForm.controls.classe.value=='Indifférent' ? '' : this.searchForm.controls.classe.value,
-      place : this.searchForm.controls.lieu.value,
+      place : [this.searchForm.controls.lieu.value],
       name : this.searchForm.controls.etablissement.value
     }
     this.searchFilter=[data.class, data.place, data.name]
@@ -408,11 +408,11 @@ export class SchoolComponent implements OnInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          // console.log(data);
+          console.log(data);
           if(response.code!=400){
-            this.options['regions']=data.regions;
-            this.options['departements']=data.departments;
-            this.options['villes']=data.cities;
+            this.options['regions']=data[0].region;
+            this.options['departements']=data[0].departments;
+            // this.options['villes']=data[0].cities;
             console.log(this.options)
           }
         }
@@ -434,7 +434,7 @@ export class SchoolComponent implements OnInit {
   }
 
   postAdvancedFilter(){
-    // console.log(this.advancedSearch);
+    console.log(this.advancedSearch);
     this.isLoader=true;
     this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
@@ -585,7 +585,7 @@ export class SchoolComponent implements OnInit {
       code : [],
       class : '',
       name : '',
-      place : ''
+      place : ['']
     };
   }
 
