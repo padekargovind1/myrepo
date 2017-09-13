@@ -2050,7 +2050,6 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 }
 .files-to-download li span{ display: inline; }
 .landing-page-2 .main { height: 100vh; }
-.white-background { padding: 0;  text-align: center;}
 .voir-plus { text-align: center; }
 .btn-appointment{margin-top:15px !important;}
 .top-compare-table.first > img {  max-width: 100%;}
@@ -2061,6 +2060,8 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 .landing-page-2 .content-holder .btn.btn-search { right: 5px; padding: 6px; }
 app-school-choice .selectApplyClass, app-class-choice .selectApplyClass{     max-height: 82vh; height: 100vh; overflow: auto; position: relative; }
 
+.selectApplyClass  .school-choice-height{ height:auto; }
+.selectApplyClass  .school-choice-height p{        margin: 0 0 5px;}
 }
 
 .wizard-button-align{margin-left:15px}
@@ -2086,3 +2087,5 @@ text-align:center;
 
 .search-title-calendar{color : white; font-size :20px; margin-bottom : 0px; height:30px; margin-top:5px; text-align:center}
 .form-calendar{height:40px; width:100%!important; font-weight:400!important; font-size:18px}
+
+.centerBtn { padding: 0;  text-align: center;}
