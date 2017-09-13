@@ -22,6 +22,7 @@ import { SchoolComponent } from './school/school.component';
 import { RandomLandingComponent } from './random-landing/random-landing.component';
 import { SuperieurComponent } from './superieur/superieur.component';
 import { MailTestComponent } from './mail-test/mail-test.component';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: RandomLandingComponent},
@@ -50,5 +51,6 @@ export const AppRoutes: Routes = [
     { path: 'editorial', component: EditorialContComponent},
     { path: 'editorial-detail',component:EditorialDetComponent},
     { path: 'mail', component:MailTestComponent},
+    { path: 'under-construction', component: UnderConstructionComponent },
     { path: '**', redirectTo: ''}
 ]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SchoolService } from '../services/school.service';
 import { PublicService }from '../services/public.service';
 import { UsersService } from '../services/users.service';
@@ -24,12 +24,14 @@ export class LinguisticComponent implements OnInit{
 
   constructor(private schoolService : SchoolService,
               private location : Location,
+              private router : Router,
               private publicService : PublicService,
               private usersService : UsersService) { 
     
   }
 
   ngOnInit() {
+	this.router.navigate(['/under-construction']);
     this.getTrips();
     this.getLanguage();
     this.getLinguistic();
