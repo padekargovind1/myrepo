@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
               this.errorMessage = msg;
               console.log('message: ', this.errorMessage);
               swal({
-                title: 'Erreur',
+                title: 'Attention',
                 text: "L'identifiant ou le mot de passe est incorrecte",
                 type: 'error',
                 confirmButtonText: 'Ok'

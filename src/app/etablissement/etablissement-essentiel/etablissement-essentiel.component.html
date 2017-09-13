@@ -18,42 +18,42 @@
                   </tr>
                   <tr>
                       <td>
-                          <strong>Création</strong><br />
-                          {{schoolData.creationYear}}
-                      </td>
-                      <td>
                           <strong>Adresse 1</strong><br />
                           {{schoolData.address.ad1}}
                       </td>
+                      <td>
+                        <strong>Code Postal</strong><br />
+                        {{schoolData.address.postcode}}
+                    </td>
                   </tr>
                   <tr>
-                      <td>
-                          <strong>Code Postal</strong><br />
-                          {{schoolData.address.postcode}}
-                      </td>
                       <td>
                           <strong>Ville</strong><br />
                           {{schoolData.address.city}}
                       </td>
+                      <td>
+                        <strong>Departement</strong><br />
+                        {{schoolData.cycles[0].address.academy.department}}
+                    </td>
                   </tr>
                   <tr>
-                      <td>
-                          <strong>Departement</strong><br />
-                          {{schoolData.cycles[0].address.academy.department}}
-                      </td>
                       <td>
                           <strong>Tel</strong><br />
-                          +33 {{schoolData.address.phone}}
+                          +33 {{schoolData.address.phoneNumber}}
                       </td>
+                      <td>
+                        <strong>Academie</strong><br />
+                        {{schoolData.cycles[0].address.academy.name}}
+                    </td>
                   </tr>
                   <tr>
                       <td>
-                          <strong>Academie</strong><br />
-                          {{schoolData.cycles[0].address.academy.name}}
-                      </td>
+                        <strong>Création</strong><br />
+                        {{schoolData.creationYear}}
+                    </td>
                       <td>
                           <strong>Site Internet</strong><br />
-                          <a href="{{schoolData.url}}"></a>
+                          <a href="{{schoolData.url}}">{{schoolData.url}}</a>
                       </td>
                   </tr>
               </tbody>

@@ -149,7 +149,7 @@
 
                         <div class="form-group clearfix">
                           <button class="btn  btn-danger" style="float:right" 
-                            (click)="onRemoveParent(i)" [disabled]="applytoForm.controls['parents']['controls'].length==1">
+                            (click)="onRemoveParent(i)" *ngIf="applytoForm.controls['parents']['controls'].length==2">
                             Retirer un parent
                           </button>
                         </div>
@@ -175,12 +175,12 @@
                 </div>
                 <!-- #tab1 -->
               </md-tab>
-              <md-tab label="Étudiant">
+              <md-tab label="Elève">
                 <div class="tab-pane" id="tab2">
                   <div class="container-fluid">
                     <div class="row">
                       <div class="col-md-12">
-                        <h3>Étudiant</h3>
+                        <h3>Elève</h3>
                       </div>
                       <div class="col-md-4">
 
@@ -664,12 +664,12 @@
                 </div>
               </md-tab>
 
-              <md-tab id="tab5" label="Les matières et vous">
+              <md-tab id="tab5" label="Ses matières préférées">
                 <div class="tab-pane" id="tab5">
                   <div class="container-fluid">
                     <div class="row">
                       <div class="col-md-4">
-                        <h3>Les matières et vous</h3>
+                        <h3>Ses matières préférées</h3>
 
                         <div class="form-group">
                           <div class="row">
@@ -772,12 +772,12 @@
                 </div>
 
               </md-tab>
-              <md-tab id="tab6" label="Vos centres d’intérêts">
+              <md-tab id="tab6" label="Vos intérêts">
                 <div class="tab-pane" id="tab6">
                   <div class="container-fluid">
                     <div class="row">
                       <div class="col-md-6">
-                        <h3>Vos centres d’intérêts</h3>
+                        <h3>Vos intérêts</h3>
 
                         <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
 

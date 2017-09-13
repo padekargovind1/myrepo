@@ -186,7 +186,7 @@ export class CompareModeComponent implements OnInit, OnDestroy {
       this.getSchoolData();
     }else {
       swal({
-        title: 'Erreur',
+        title: 'Attention',
         text: "Vous ne pouvez pas comparer deux mêmes écoles",
         type: 'error',
         confirmButtonText: 'Ok'

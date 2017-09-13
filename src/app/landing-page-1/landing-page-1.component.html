@@ -67,16 +67,17 @@
 
                                     <md-autocomplete #auto="mdAutocomplete">
                                         <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                        <md-option *ngFor="let option of options.regions" [value]="option">
-                                            &nbsp;{{ option }}
-                                        </md-option>
+                                        <md-option [value]="options.regions">{{ options.regions }}</md-option>   
+                                        <!-- <md-option *ngFor="let option of options.regions" [value]="option">
+                                            &nbsp;&nbsp;{{ option }}
+                                        </md-option> -->
                                         <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                        <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                            &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                        <md-option *ngFor="let option of options.departements" [value]="option">
+                                            &nbsp;&nbsp;{{option}}
                                         </md-option>
                                         <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                        <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                            &nbsp;{{ option.cityName }}
+                                        <md-option *ngFor="let option of options.villes" [value]="option.postcode">
+                                            &nbsp;&nbsp;{{ option.cityName }}
                                         </md-option>
                                     </md-autocomplete>
                                 </div>
@@ -255,16 +256,17 @@
 
                                     <md-autocomplete #auto="mdAutocomplete">
                                         <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                        <md-option *ngFor="let option of options.regions" [value]="option">
-                                            &nbsp;{{ option }}
-                                        </md-option>
+                                        <md-option [value]="options.regions">{{ options.regions }}</md-option>   
+                                        <!-- <md-option *ngFor="let option of options.regions" [value]="option">
+                                            &nbsp;&nbsp;{{ option }}
+                                        </md-option> -->
                                         <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                        <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                            &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                        <md-option *ngFor="let option of options.departements" [value]="option">
+                                            &nbsp;&nbsp;{{option}}
                                         </md-option>
                                         <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                        <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                            &nbsp;{{ option.cityName }}
+                                        <md-option *ngFor="let option of options.villes" [value]="option.postcode">
+                                            &nbsp;&nbsp;{{ option.cityName }}
                                         </md-option>
                                     </md-autocomplete>
                                 </div>
@@ -307,7 +309,7 @@
                 <a>
                     <img class="landingpage__image" src="./assets/images/new-landingpage/college.jpg" alt="" />
                     <section class="landingpage__caption">
-                        <h2>College</h2>
+                        <h2>Collège</h2>
                         <h3>6ème-3ème</h3>
                     </section>
                 </a>
@@ -343,20 +345,21 @@
                                         [mdAutocomplete]="auto"
                                         [formControl]="searchForm.controls['lieu']"/>
                                     
-                                    <md-autocomplete #auto="mdAutocomplete">
-                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                        <md-option *ngFor="let option of options.regions" [value]="option">
-                                            &nbsp;{{ option }}
-                                        </md-option>
-                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                        <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                            &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
-                                        </md-option>
-                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                        <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                            &nbsp;{{ option.cityName }}
-                                        </md-option>
-                                    </md-autocomplete>
+                                        <md-autocomplete #auto="mdAutocomplete">
+                                            <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                            <md-option [value]="options.regions">{{ options.regions }}</md-option>   
+                                            <!-- <md-option *ngFor="let option of options.regions" [value]="option">
+                                                &nbsp;&nbsp;{{ option }}
+                                            </md-option> -->
+                                            <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                            <md-option *ngFor="let option of options.departements" [value]="option">
+                                                &nbsp;&nbsp;{{option}}
+                                            </md-option>
+                                            <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                            <md-option *ngFor="let option of options.villes" [value]="option.postcode">
+                                                &nbsp;&nbsp;{{ option.cityName }}
+                                            </md-option>
+                                        </md-autocomplete>
                                 </div>
                             </div>
 
@@ -525,18 +528,19 @@
                                     [formControl]="searchForm.controls['lieu']"/>
                                 
                                 <md-autocomplete #auto="mdAutocomplete">
-                                <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                <md-option *ngFor="let option of options.regions" [value]="option">
-                                    &nbsp;{{ option }}
-                                </md-option>
-                                <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                    &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
-                                </md-option>
-                                <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                    &nbsp;{{ option.cityName }}
-                                </md-option>
+                                    <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                    <md-option [value]="options.regions">{{ options.regions }}</md-option>   
+                                    <!-- <md-option *ngFor="let option of options.regions" [value]="option">
+                                        &nbsp;&nbsp;{{ option }}
+                                    </md-option> -->
+                                    <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                    <md-option *ngFor="let option of options.departements" [value]="option">
+                                        &nbsp;&nbsp;{{option}}
+                                    </md-option>
+                                    <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                    <md-option *ngFor="let option of options.villes" [value]="option.postcode">
+                                        &nbsp;&nbsp;{{ option.cityName }}
+                                    </md-option>
                                 </md-autocomplete>
                             </div>
                         </div>
@@ -612,16 +616,20 @@
 
                                     <md-autocomplete #auto="mdAutocomplete">
                                         <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                        <md-option *ngFor="let option of options.regions" [value]="option">
-                                            &nbsp;{{ option }}
-                                        </md-option>
+                                        <md-option [value]="options.regions"
+                                        *ngIf="options['regions'].length!=0">
+                                            {{ options.regions }}
+                                        </md-option>   
+                                        <!-- <md-option *ngFor="let option of options.regions" [value]="option">
+                                            &nbsp;&nbsp;{{ option }}
+                                        </md-option> -->
                                         <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                        <md-option *ngFor="let option of options.departements" [value]="option.departmentNumber">
-                                            &nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                        <md-option *ngFor="let option of options.departements" [value]="option">
+                                            &nbsp;&nbsp;{{option}}
                                         </md-option>
                                         <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                        <md-option *ngFor="let option of options.villes" [value]="option.cityName">
-                                            &nbsp;{{ option.cityName }}
+                                        <md-option *ngFor="let option of options.villes" [value]="option.postcode">
+                                            &nbsp;&nbsp;{{ option.cityName }}
                                         </md-option>
                                     </md-autocomplete>
                                 </div>

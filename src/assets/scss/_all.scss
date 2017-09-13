@@ -39,7 +39,7 @@ h1 { font-weight: 300; }
  * Header  
  */
 .header {
-    background: center bottom url('./assets/images/header-background.png') no-repeat;
+    background: center bottom url('./assets/images/header-background.png') no-repeat transparent;
     background-size: contain;
     padding: 15px 10px;
     position: relative;
@@ -1905,6 +1905,9 @@ a:hover { text-decoration: none;}
 .cbp-caption:hover .cbp-caption-activeWrap{z-index:6;}
 
 
+.under-construction { width: 100%; text-align: center;  }
+.under-construction .row { margin: 0; }
+.under-construction img { width: 40%; }
 @media (max-width:767px){ 
 .list-schools h3 { max-width: 71%;}
 .booking-appointment .advisors-wrap {position:relative !important; top:0 !important; }
@@ -1943,6 +1946,8 @@ button.deselect-all-advisor {border:1px solid #ed5565; background:none;}
 #login-form .col-md-6 ,#login-form .col-md-12 {float:left; width:100%;}
 .landingpage__caption h2 br{display:none; }
 .mat-tab-label[_ngcontent-c3]{padding: 0 15px !important;}
+.under-construction { color: black; }
+.under-construction img { width: 80%; }
 }
 
 header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}
@@ -2045,7 +2050,6 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 }
 .files-to-download li span{ display: inline; }
 .landing-page-2 .main { height: 100vh; }
-.white-background { padding: 0;  text-align: center;}
 .voir-plus { text-align: center; }
 .btn-appointment{margin-top:15px !important;}
 .top-compare-table.first > img {  max-width: 100%;}
@@ -2055,6 +2059,9 @@ app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 .input.userType_radio{ padding: 11px 0; margin-bottom: 7px; margin-top: 0; }
 .landing-page-2 .content-holder .btn.btn-search { right: 5px; padding: 6px; }
 app-school-choice .selectApplyClass, app-class-choice .selectApplyClass{     max-height: 82vh; height: 100vh; overflow: auto; position: relative; }
+
+.selectApplyClass  .school-choice-height{ height:auto; }
+.selectApplyClass  .school-choice-height p{        margin: 0 0 5px;}
 }
 
 .wizard-button-align{margin-left:15px}
@@ -2080,3 +2087,5 @@ text-align:center;
 
 .search-title-calendar{color : white; font-size :20px; margin-bottom : 0px; height:30px; margin-top:5px; text-align:center}
 .form-calendar{height:40px; width:100%!important; font-weight:400!important; font-size:18px}
+
+.centerBtn { padding: 0 0 20px 0;  text-align: center;}

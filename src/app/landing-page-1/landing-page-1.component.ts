@@ -197,11 +197,11 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(this.options);
+          // console.log(data);
           if(response.code!=400){
-            this.options['regions']=data.regions
-            this.options['departements']=data.departments
-            this.options['villes']=data.cities
+            this.options['regions']=data[0].region
+            this.options['departements']=data[0].departments
+            // this.options['villes']=data.cities
             // console.log(this.options)
           }
         }

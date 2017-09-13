@@ -89,6 +89,7 @@ import { SuperieurInfoComponent } from './superieur/school-detail-superieur/supe
 import { ClassChoiceComponent } from './shared/class-choice/class-choice.component';
 import { SendMessageComponent } from './shared/send-message/send-message.component';
 import { PaymentComponent } from './payment/payment.component';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 @NgModule({
   declarations: [
@@ -149,7 +150,8 @@ import { PaymentComponent } from './payment/payment.component';
     SuperieurInfoComponent,
     ClassChoiceComponent,
     SendMessageComponent,
-	PaymentComponent
+	PaymentComponent,
+	UnderConstructionComponent
   ],
   imports: [
     BrowserModule,

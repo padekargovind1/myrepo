@@ -386,7 +386,7 @@ export class ApplytoComponent implements OnInit {
   failSubmit(message){
     console.log("test")
     swal({
-      title: 'Erreur',
+      title: 'Attention',
       text: 'Merci de vérifier le formulaire',
       type: 'error',
       confirmButtonText: 'Ok'
