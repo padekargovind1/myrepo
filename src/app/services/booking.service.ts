@@ -120,6 +120,10 @@ export class BookingService {
     return this.forFastBooking==true;
   }
 
+  isSkippedWizard(){
+    return this.packageIndex==0;
+  }
+
   getUserData(){
     return this.userData;
   }

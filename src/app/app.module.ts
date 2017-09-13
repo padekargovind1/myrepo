@@ -88,6 +88,7 @@ import { SuperieurFormationComponent } from './superieur/school-detail-superieur
 import { SuperieurInfoComponent } from './superieur/school-detail-superieur/superieur-info/superieur-info.component';
 import { ClassChoiceComponent } from './shared/class-choice/class-choice.component';
 import { SendMessageComponent } from './shared/send-message/send-message.component';
+import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 @NgModule({
@@ -149,6 +150,7 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     SuperieurInfoComponent,
     ClassChoiceComponent,
     SendMessageComponent,
+	PaymentComponent,
 	UnderConstructionComponent
   ],
   imports: [

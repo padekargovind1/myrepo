@@ -74,6 +74,11 @@ export class MyaccountChildrenComponent implements OnInit {
           this.patchValue(response.data[0]);
           this.completeProfile();
           this.canDisplay=true;
+		  if(this.usersService.getUserType()=="Etudiant"){
+            this.childrenForm.patchValue({
+              email : this.usersService.getUserEmail(),
+            })
+          }
           console.log(this.childrenForm)
         }
       )
