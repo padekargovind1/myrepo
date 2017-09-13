@@ -291,11 +291,11 @@
                                                         &nbsp;&nbsp;{{ option }}
                                                     </md-option>
                                                     <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                    <md-option *ngFor="let option of options.departements" [value]="option.departmentName">
-                                                        &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
+                                                    <md-option *ngFor="let option of options.departements" [value]="option.departmentNumber">
+                                                        &nbsp;&nbsp;({{option.departmentNumber}}) {{ option.departmentName }} 
                                                     </md-option>
                                                     <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                    <md-option *ngFor="let option of options.villes" [value]="option.postcode+' '+option.cityName">
+                                                    <md-option *ngFor="let option of options.villes" [value]="option.postcode">
                                                         &nbsp;&nbsp;{{ option.cityName }}
                                                     </md-option>
                                                 </md-autocomplete>

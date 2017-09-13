@@ -436,9 +436,7 @@ export class SchoolComponent implements OnInit {
   postAdvancedFilter(){
     // console.log(this.advancedSearch);
     this.isLoader=true;
-    let postAdvanced = this.advancedSearch;
-    postAdvanced.place = postAdvanced.place.toString().substr(0, 5)
-    this.publicService.postSearchSchool(postAdvanced, this.limit)
+    this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
         response=>{
           console.log(response);
