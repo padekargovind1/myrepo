@@ -64,6 +64,12 @@ export class RegisterComponent implements OnInit {
             if (response.code == 400) {
               let msg = response.message;
               this.errorMessage = msg;
+			  swal({
+                title: msg,
+                text: "",
+                type: 'error',
+                confirmButtonText: 'Ok'
+              })
               console.log('message: ', this.errorMessage);
             }
             else {
@@ -78,8 +84,9 @@ export class RegisterComponent implements OnInit {
               // console.log(response.data.token)
               this.authService.storeToken(response.data.token)
               this.usersService.storeTabNb('0')
-              if(this.bookingService.isForBooking()){
-                this.bookingService.makeAppointment();
+              if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
+                this.router.navigate(['/payment']);
+                //this.bookingService.makeAppointment();
               } else {
                 this.router.navigate(['/my-account'])
               }

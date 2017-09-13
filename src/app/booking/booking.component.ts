@@ -135,23 +135,15 @@ export class BookingComponent implements OnInit, AfterViewInit {
     }
     // console.log(data)
     this.bookingService.storeBookingData(data);
-    console.log(this.bookingData)
-    if(this.bookingData[3]!=0){
-      this.route.navigate(['/wizard']);
-    } else {
-      if(this.authService.isUserLoggedIn()){
-        this.applyEntretien()
-      } else {
-        const newAppointment = {
-          adviser : this.appointmentData[0],
-          from: this.appointmentData[2],
-          to:this.appointmentData[3]
-        }
-        const packageIndex = this.bookingData[3];
-        this.bookingService.storeFastAppointment(newAppointment, packageIndex);
-        this.route.navigate(['/login']);
-      }
-    }
+	console.log(this.bookingData);
+	const newAppointment = {
+		adviser : this.appointmentData[0],
+		from: this.appointmentData[2],
+		to:this.appointmentData[3]
+	}
+	const packageIndex = this.bookingData[3];
+	this.bookingService.storeFastAppointment(newAppointment, packageIndex);
+	this.route.navigate(['/payment']);
   }
 
   applyEntretien(){

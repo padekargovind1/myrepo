@@ -68,8 +68,8 @@ export class LoginComponent implements OnInit {
             else {
               console.log(response);
               this.storeUserType(userType,email);
-              if(this.bookingService.isForBooking() || this.bookingService.isForFastBooking()){
-                this.bookingService.makeAppointment();
+              if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
+                this.router.navigate(['/payment']);
               } else {
                 this.router.navigate(['/']);
               }
