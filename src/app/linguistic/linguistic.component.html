@@ -2,7 +2,7 @@
 
     <div class="container  linguistic">
 
-        <div class="row">
+        <!-- <div class="row" *ngIf="!inBuild; else underBuild">
             <section class="col-md-12">
                 <h2 class="brochure-title">Recherche de séjour linguistique</h2>
             </section>
@@ -35,7 +35,7 @@
                                             </select>
                                         </label>
                                     </div>
-                                </div><!-- .col-* -->
+                                </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -58,7 +58,7 @@
                                             </select>
                                         </label>
                                     </div>
-                                </div><!-- .col-* -->
+                                </div>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
@@ -71,7 +71,7 @@
                                             </select>
                                         </label>
                                     </div>
-                                </div><!-- .col-* -->
+                                </div>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
@@ -101,7 +101,7 @@
                                             </select>
                                         </label>
                                     </div>
-                                </div><!-- .col-* -->
+                                </div>
                                     
                                 <div class="col-md-2">
                                     <div class="form-group">
@@ -113,15 +113,13 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div><!-- .row -->
-                        </div><!-- .col-* -->
+                            </div>
+                        </div>
 
-                        <!-- <button class="btn btn-search"><i class="fa fa-search"></i></button> -->
-
-                    </div><!-- .form-wrap -->
+                    </div>
                 </form>
             </section>
-        </div><!-- .row -->
+        </div>
 
         <div class="row linguistic-content">
 
@@ -140,19 +138,18 @@
                     <input type="checkbox" value="residence" class="checkbox filled-in" id="filter-4" 
                         (click)="onDestinationClick($event, 'place')"/>
                     <label for="filter-4">Résidence</label>
-                </div><!-- -->
+                </div>
 
                 
                 <label class="select-custom" for="class"> Type de sejour<br />
                     <select name="class" class="form-control" id="class"
                         (click)="onDestinationClick($event, 'linguistic')">
-                        <!-- <option value="" disabled selected hidden>Organisme</option> -->
                         <option value="">Indifférent</option>
                         <option *ngFor="let linguistic of linguisticList" [value]="linguistic._id">{{linguistic.name}}</option>
                     </select>
                 </label>
 
-            </div><!-- .col-* -->
+            </div>
             
 
             <div *ngFor="let trip of listTripsFiltered">
@@ -161,13 +158,17 @@
                     <app-linguistic-trips [tripData]="trip"></app-linguistic-trips>
                 </div>
                 </div>
-            </div><!-- .col-* -->
+            </div>
             <div *ngIf="listTripsFiltered.length==0" class="row">
                 <p style="width:100%;
                     text-align:center; font-size : 35px">Il n'y a pas de séjours pour la recherche demandé.</p>
             </div>
 
-        </div><!-- .row -->
+        </div> -->
+        <div class="row">
+            <img src="assets/images/under-construction-2.gif" alt="" style="width:50%; margin-left:25%">
+        </div>
+        
     
     </div><!-- .container-fluid -->
 
