@@ -410,10 +410,10 @@ export class SchoolComponent implements OnInit {
           let data = response.data;
           // console.log(data);
           if(response.code!=400){
-            this.options['regions']=data.regions
-            this.options['departements']=data.departments
-            this.options['villes']=data.cities
-            // console.log(this.options)
+            this.options['regions']=data.regions;
+            this.options['departements']=data.departments;
+            this.options['villes']=data.cities;
+            console.log(this.options)
           }
         }
       )
@@ -436,7 +436,9 @@ export class SchoolComponent implements OnInit {
   postAdvancedFilter(){
     // console.log(this.advancedSearch);
     this.isLoader=true;
-    this.publicService.postSearchSchool(this.advancedSearch, this.limit)
+    let postAdvanced = this.advancedSearch;
+    postAdvanced.place = postAdvanced.place.toString().substr(0, 5)
+    this.publicService.postSearchSchool(postAdvanced, this.limit)
       .subscribe(
         response=>{
           console.log(response);

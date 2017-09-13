@@ -295,7 +295,7 @@
                                                         &nbsp;&nbsp;{{ option.departmentName }} ({{option.departmentNumber}})
                                                     </md-option>
                                                     <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                    <md-option *ngFor="let option of options.villes" [value]="option.cityName">
+                                                    <md-option *ngFor="let option of options.villes" [value]="option.postcode+' '+option.cityName">
                                                         &nbsp;&nbsp;{{ option.cityName }}
                                                     </md-option>
                                                 </md-autocomplete>
