@@ -1951,6 +1951,11 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 .ConseillersTxt , .ConseillersTxtRight{ display:none;}
 
 @media (max-width:639px){ 
+.search-title-calendar {
+    color:#000 !important;
+}
+
+
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
 
 .fc-prev-button.fc-state-default.fc-corner-left {  left: 10px !important;  position: absolute;  top: 60px;}
