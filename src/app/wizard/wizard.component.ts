@@ -485,7 +485,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
 
   failSubmit(message){
     swal({
-      title: 'Erreur',
+      title: 'Attention',
       text: 'Il nous manque des informations',
       type: 'error',
       confirmButtonText: "J'AI COMPRIS"

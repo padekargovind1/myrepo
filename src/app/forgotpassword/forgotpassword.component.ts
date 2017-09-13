@@ -47,8 +47,8 @@ export class ForgotpasswordComponent implements OnInit {
             else {
               console.log(response);
               swal({
-                title: response.data,
-                text: '',
+                title: "Merci d'avoir choisi CIDE",
+                text: response.data,
                 type: 'success',
                 confirmButtonText: 'Ok'
               })

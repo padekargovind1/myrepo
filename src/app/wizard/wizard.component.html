@@ -76,7 +76,7 @@
                                 <li><a href="#tab2" data-toggle="tab" title="Enfant"><span class="helper"></span><span>Enfant</span></a></li>
                                 <li><a href="#tab3" data-toggle="tab" title="Etablissement actuel"><span class="helper"></span><span>Etablissement actuel</span></a></li>
                                 <li><a href="#tab4" data-toggle="tab" title="Aide Scolaire"><span class="helper"></span><span>Aide Scolaire</span></a></li>
-                                <li><a href="#tab5" data-toggle="tab" title="les matières et Vous"><span class="helper"></span><span>Les matières et vous</span></a></li>
+                                <li><a href="#tab5" data-toggle="tab" title="Ses matières préférées"><span class="helper"></span><span>Ses matières préférées</span></a></li>
                                 <li><a href="#tab6" data-toggle="tab" title="Vos centres D’interets"><span class="helper"></span><span>Vos centres d’intérêts</span></a></li>
                                 <li><a href="#tab7" data-toggle="tab" title="Classes Precedentes"><span class="helper"></span><span>Classes précédentes</span></a></li>
                                 <li><a href="#tab8" data-toggle="tab" title="Vos Professions favorites"><span class="helper"></span><span>Vos professions favorites</span></a></li>
@@ -256,7 +256,7 @@
                                             <div class="form-group clearfix">
                                             <button class="btn  btn-danger" style="float:right" 
                                                 (click)="onRemoveParent(i)" 
-                                                [disabled]="wizardForm.controls['parents']['controls'].length==1">
+                                                *ngIf="wizardForm.controls['parents']['controls'].length==2">
                                                 Retirer un parent
                                             </button>
                                             </div>
@@ -280,12 +280,12 @@
                             </div><!-- #tab1 -->
                         </md-tab>
                         
-                        <md-tab label="Étudiant">
+                        <md-tab label="Elève">
                             <div class="tab-pane" id="tab2">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h3>Étudiant</h3>
+                                            <h3>Elève</h3>
                                         </div>
                                         <div class="col-md-4">
 
@@ -786,12 +786,12 @@
                             </div><!-- #tab4 -->
                         </md-tab>
 
-                        <md-tab label="Les matières et vous">
+                        <md-tab label="Ses matières préférées">
                             <div class="tab-pane" id="tab5">
                                 <div class="container-fluid">
                                     <div class="row">
                                        <div class="col-md-4">
-                                            <h3>Les matières et vous</h3>
+                                            <h3>Ses matières préférées</h3>
 
                                             <div class="form-group">
                                                 <div class="row">
@@ -947,7 +947,7 @@
                                             <div class="form-group different-gap">
                                                 <div class="row">
                                                     <div class="col-sm-9">
-                                                        Vos centres d'intérêts
+                                                        Vos intérêts
                                                         <input type="text" class="form-control" 
                                                           placeholder="Quels sont vos centres d’interets"
                                                           [formControl]="wizardForm.controls['yourInterest']"

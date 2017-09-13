@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-          <h2 class="brochure-title">Je me connecte</h2>
+          <h2 class="brochure-title">Pour bénéficier de ce service, vous devez vous inscrire ou vous connecter si vous êtes déjà inscrit, merci</h2>
           <div class="login-form">
             <form [formGroup]="loginForm"  (ngSubmit)="logIn()" 
               id="login-form">
@@ -15,7 +15,7 @@
                   <button type="button" class="btn button-return" (click)="onNavigateBack()"
                     style="margin-left:0px; background-color : #00BC50">
                     <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-                    Retourner en arrière
+                    Retourner aux résultats
                   </button>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                   Je me connecte en tant que : 
                   <md-radio-group [formControl]="loginForm.controls['userType']">
                     <md-radio-button value="Parent">Parent</md-radio-button>
-                    <md-radio-button value="Etudiant">Étudiant</md-radio-button>
+                    <md-radio-button value="Etudiant">Elève</md-radio-button>
                     <!--md-radio-button value="Enfant">Enfant</md-radio-button-->
                   </md-radio-group>
                 </div>

@@ -146,7 +146,7 @@
               </div> 
               <div class="form-group clearfix">
                 <button class="btn  btn-danger" style="float:right" 
-                  (click)="onRemoveParent(i)" [disabled]="parentAccountForm.controls['parents']['controls'].length==1">
+                  (click)="onRemoveParent(i)" *ngIf="parentAccountForm.controls['parents']['controls'].length==2">
                   Retirer un parent
                 </button>
               </div>
@@ -163,7 +163,7 @@
           </button>
           <button class="btn btn-appointment parentButton" 
             type="submit" (click)="onSubmit()"
-            [disabled]="!parentAccountForm.valid">Passer à l'étudiant
+            [disabled]="!parentAccountForm.valid">Passer à l'élève
           </button>
         </div>
           
