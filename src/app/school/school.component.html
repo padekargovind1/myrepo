@@ -287,18 +287,21 @@
                                                     (keyup)="filterLieu($event)"/>
                                                 <md-autocomplete #auto="mdAutocomplete">
                                                     <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                    <md-option [value]="options.regions"
-                                                    *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>   
-                                                    <!-- <md-option *ngFor="let option of options.regions" [value]="option">
-                                                        &nbsp;&nbsp;{{ option }}
-                                                    </md-option> -->
+                                                    <!-- <md-option [value]="options.regions"
+                                                    *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                                    <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                                        (click)="onSelectLieu('R', i)">
+                                                        &nbsp;&nbsp;{{ option.region }}
+                                                    </md-option>
                                                     <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                    <md-option *ngFor="let option of options.departements" [value]="option">
-                                                        &nbsp;&nbsp;{{option}}
+                                                    <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                                        (click)="onSelectLieu('D', i)">
+                                                        &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
                                                     </md-option>
                                                     <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                    <md-option *ngFor="let option of options.villes" [value]="option.postcode">
-                                                        &nbsp;&nbsp;{{ option.cityName }}
+                                                    <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                                        (click)="onSelectLieu('V', i)">
+                                                        &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
                                                     </md-option>
                                                 </md-autocomplete>
                                             </div>
@@ -689,7 +692,7 @@
                             <div class="result-text" class="col-md-11">
                                 <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour : 
                                     <span *ngIf="searchFilter[0]!=''">
-                                        {{ 'Classe ' + searchFilter[0] }}
+                                        {{ 'Classe ' + searchFilter[0] | capital }}
                                     </span> 
                                     <span class="fa fa-map-marker"
                                         *ngIf="searchFilter[1]!=''">

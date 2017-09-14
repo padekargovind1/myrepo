@@ -23,6 +23,7 @@ export class SchoolService {
 
   diplomes = [];
   onApply : boolean =false;
+  selectedLieu = [];
 
   constructor(private http: Http) { }
 
@@ -71,5 +72,17 @@ export class SchoolService {
 
   isOnApply(){
     return this.onApply;
+  }
+
+  storeSelectedLieu(data){
+    this.selectedLieu=data;
+  }
+
+  getSelectedLieu(){
+    return this.selectedLieu;
+  }
+
+  cleanSelectedLieu(){
+    this.selectedLieu=[];
   }
 }
