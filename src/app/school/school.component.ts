@@ -102,6 +102,7 @@ export class SchoolComponent implements OnInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+    this.lieuSelected=this.schoolService.getSelectedLieu();
 	  this.runScriptOnInit()
     console.log(window.screen.width)
     setTimeout(()=>{

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
+import { SchoolService } from '../services/school.service';
 import swal from 'sweetalert2';
 declare var jquery:any;
 declare var $ :any;
@@ -24,9 +25,11 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   apbForm: FormGroup;
   domaines=[];
   onMobile:boolean=false;
+  lieuSelected=[];
   constructor(private fb : FormBuilder,
               private publicService : PublicService,
-              private router : Router) { 
+              private router : Router,
+              private schoolService : SchoolService) { 
     this.buildForm();
     this.buildApbForm();
   }
@@ -163,6 +166,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
         data[0]="";
       }
       this.publicService.storeSearchSchool(data);
+      this.schoolService.storeSelectedLieu(this.lieuSelected);
       this.onNavigate(path);
     }
   }
@@ -199,10 +203,9 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
           let data = response.data;
           // console.log(data);
           if(response.code!=400){
-            this.options['regions']=data[0].region
-            this.options['departements']=data[0].departments
-            // this.options['villes']=data.cities
-            // console.log(this.options)
+            this.options['regions']=data.regions;
+            this.options['departements']=data.departments;
+            this.options['villes']=data.cities;
           }
         }
       )
@@ -265,6 +268,18 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 
   navigateTo(index){
     this.router.navigate(['/landing-page-'+index])
+  }
+
+  onSelectLieu(type:string, index:number){
+    this.lieuSelected=[];
+    if(type=='R'){
+      this.lieuSelected=this.options.regions[index].departments;
+    } else if(type=='D'){
+      this.lieuSelected[0]=this.options.departements[index].departmentNumber;
+    }else {
+      this.lieuSelected[0]=this.options.villes[index].postcode;
+    }
+    console.log(this.lieuSelected);
   }
 
 }
