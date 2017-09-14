@@ -1,6 +1,6 @@
-<md-tab-group *ngIf="schoolDataToDisplay!=[]">
+<md-tab-group *ngIf="schoolDataToDisplay!=[]" class="tabCls">
     <md-tab [label]="cycle.cycle.nom"
-        *ngFor="let cycle of schoolDataToDisplay; let i=index">
+        *ngFor="let cycle of schoolDataToDisplay; let i=index" md-no-pagination="false">
             <div class="panel-body-course">
                 
                 <div class="wrapper wrapper-content animated fadeInRight">

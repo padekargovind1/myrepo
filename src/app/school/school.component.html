@@ -332,7 +332,7 @@
                             <!-- </div> -->
                             </div>
                             <div>
-                                <a style="float:right; color : white"
+                                <a class="newSearch"
                                     *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' 
                                     || searchFilter[1]!='' || languageAdvancedSearch.length!=0"
                                     (click)="cleanAdvancedSearch()">
@@ -844,7 +844,7 @@
                             (click)="showMore()" *ngIf="((schoolListFilter.length==limit || schoolListFilter.length!=0) && !isLoader) && limit<totalRecords"
                             >Voir plus
                         </button>
-						<img class="cide-loader" src="assets/images/loader.gif" alt="" style="margin-left: 44%" *ngIf="isLoader">
+						<img class="cide-loader" src="assets/images/loader.gif" alt="" *ngIf="isLoader">
                     </div>
 
                     <p>&nbsp;</p>

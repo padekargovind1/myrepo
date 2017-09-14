@@ -80,6 +80,13 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
 		window.dispatchEvent(new Event("resize"));
 	}, 1);
   }
+  
+  loadTabs(){
+	setTimeout(function(){
+	console.log("TJ"+ $('.tabCls').find(".mat-tab-label").length);
+		window.dispatchEvent(new Event("resize"));
+	}, 10);
+  }
 
   // getSchoolById(){
   //   this.publicService.getSchoolById(this.schoolId)
