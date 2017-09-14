@@ -357,11 +357,15 @@ export class SchoolComponent implements OnInit {
       place : [this.searchForm.controls.lieu.value],
       name : this.searchForm.controls.etablissement.value
     }
+    console.log(this.lieuSelected, this.advancedSearch)
     this.searchFilter=[data.class, data.place, data.name]
     this.advancedSearch.class = data.class;
     this.advancedSearch.place = this.lieuSelected;
+    if(this.advancedSearch.place.length==0){
+      delete this.advancedSearch.place;
+    }
     this.advancedSearch.name = data.name;
-    console.log(this.advancedSearch);
+    // console.log(this.advancedSearch);
     this.publicService.storeSearchSchool(this.searchFilter);
     this.postAdvancedFilter();
     this.forAdvancedSearch=false;
@@ -618,6 +622,7 @@ export class SchoolComponent implements OnInit {
 
   cleanAdvancedSearch(){
     // console.log("Clean all search");
+    this.lieuSelected=[];
     this.cleanSearch();
     this.optionValue="";
     this.schoolsOptions=null;
