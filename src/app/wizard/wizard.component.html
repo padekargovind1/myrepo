@@ -415,10 +415,14 @@
                                                     <div class="form-group">
                                                         <div class="datepicker-holder">
                                                             Date de naissance
-                                                            <input type="date" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
+                                                            <div class="calendarCont">
+															<input type="text" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
                                                                 placeholder="Date de naissance" [max]="maxDate"
                                                                 [formControl]="wizardForm.controls['childBirthDay']">
+															<button [mdDatepickerToggle]="myDatepicker"></button>
                                                                 <md-datepicker #myDatepicker></md-datepicker>
+																
+																</div>
                                                         </div>
                                                     </div>
                                                 </div>

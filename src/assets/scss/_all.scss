@@ -2062,6 +2062,8 @@ app-school-choice .selectApplyClass, app-class-choice .selectApplyClass{ max-hei
 
 .selectApplyClass  .school-choice-height{ height:auto; }
 .selectApplyClass  .school-choice-height p{ margin: 0 0 5px;}
+.mobile-un-conseil .panel-heading a h3 { text-align: center; }
+#rootwizard #tab2 {padding-bottom:0; }
 }
 
 .wizard-button-align{margin-left:15px}
@@ -2089,3 +2091,12 @@ text-align:center;
 .form-calendar{height:40px; width:100%!important; font-weight:400!important; font-size:18px}
 
 .centerBtn { padding: 0 0 20px 0;  text-align: center; bottom: 26px; position: relative;}
+
+.calendarCont { position:relative;}
+
+.calendarCont button{position:absolute; right:5px;top: 6px; }
+.download-modal .mat-tab-body-content {overflow: inherit;}
+
+.mat-dialog-container {padding:10px 15px !important; }
+
+.horizontal-radio label {    float: left;    margin-right: 0;} 
