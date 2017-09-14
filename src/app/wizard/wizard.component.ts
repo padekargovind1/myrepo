@@ -210,7 +210,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
       childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
-      childBirthPlace : IsAdress ? userData.birthPlace : "",
+      childBirthPlace : (userData.birthPlace!=null && userData.birthPlace!="") ? userData.birthPlace : "",
       //Strong and weak subject
       bestSubject : userData.attractionToSubjects,
       weakSubject : userData.weakAtSubjects,

@@ -79,6 +79,12 @@ export class MyaccountChildrenComponent implements OnInit {
               email : this.usersService.getUserEmail(),
             })
           }
+		  else
+		  {
+			this.childrenForm.patchValue({
+              email : "",
+            })
+		  }
           console.log(this.childrenForm)
         }
       )

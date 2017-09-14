@@ -64,12 +64,15 @@ export class RegisterComponent implements OnInit {
             if (response.code == 400) {
               let msg = response.message;
               this.errorMessage = msg;
-			  swal({
-                title: msg,
-                text: "",
-                type: 'error',
-                confirmButtonText: 'Ok'
-              })
+			  if(msg.indexOf("utilisateur existe")>=0)
+			  {
+				  swal({
+					title: "Un compte utilisant cette adresse email est deja enregistree, merci de vous connecter.",
+					text: "",
+					type: 'error',
+					confirmButtonText: 'Ok'
+				  });
+			  }
               console.log('message: ', this.errorMessage);
             }
             else {
@@ -84,6 +87,7 @@ export class RegisterComponent implements OnInit {
               // console.log(response.data.token)
               this.authService.storeToken(response.data.token)
               this.usersService.storeTabNb('0')
+              this.storeUserType(this.registerForm.controls.userType.value,email);
               if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
                 this.router.navigate(['/payment']);
                 //this.bookingService.makeAppointment();
@@ -94,6 +98,11 @@ export class RegisterComponent implements OnInit {
           }
         )
     }
+  }
+
+  storeUserType(userType,email){
+    this.usersService.storeUserType(userType);
+    this.usersService.storeUserEmail(email);
   }
 
   sendVerificationEmail(email){
