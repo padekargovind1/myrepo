@@ -78,6 +78,7 @@ export class SchoolComponent implements OnInit {
   forAdvancedSearch : boolean = false;
   onMobile : boolean = false;
   bottomAdCarousalClasses : string = "footer-ads hidden animated";
+  lieuSelected=[];
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -101,6 +102,7 @@ export class SchoolComponent implements OnInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
+    this.lieuSelected=this.schoolService.getSelectedLieu();
 	  this.runScriptOnInit()
     console.log(window.screen.width)
     setTimeout(()=>{
@@ -356,11 +358,15 @@ export class SchoolComponent implements OnInit {
       place : [this.searchForm.controls.lieu.value],
       name : this.searchForm.controls.etablissement.value
     }
+    console.log(this.lieuSelected, this.advancedSearch)
     this.searchFilter=[data.class, data.place, data.name]
     this.advancedSearch.class = data.class;
-    this.advancedSearch.place = data.place;
+    this.advancedSearch.place = this.lieuSelected;
+    if(this.advancedSearch.place.length==0){
+      delete this.advancedSearch.place;
+    }
     this.advancedSearch.name = data.name;
-    console.log(this.advancedSearch);
+    // console.log(this.advancedSearch);
     this.publicService.storeSearchSchool(this.searchFilter);
     this.postAdvancedFilter();
     this.forAdvancedSearch=false;
@@ -410,13 +416,25 @@ export class SchoolComponent implements OnInit {
           let data = response.data;
           console.log(data);
           if(response.code!=400){
-            this.options['regions']=data[0].region;
-            this.options['departements']=data[0].departments;
-            // this.options['villes']=data[0].cities;
+            this.options['regions']=data.regions;
+            this.options['departements']=data.departments;
+            this.options['villes']=data.cities;
             console.log(this.options)
           }
         }
       )
+  }
+
+  onSelectLieu(type:string, index:number){
+    this.lieuSelected=[];
+    if(type=='R'){
+      this.lieuSelected=this.options.regions[index].departments;
+    } else if(type=='D'){
+      this.lieuSelected[0]=this.options.departements[index].departmentNumber;
+    }else {
+      this.lieuSelected[0]=this.options.villes[index].postcode;
+    }
+    console.log(this.lieuSelected);
   }
 
   getSchoolFilter(filter: string){
@@ -605,6 +623,7 @@ export class SchoolComponent implements OnInit {
 
   cleanAdvancedSearch(){
     // console.log("Clean all search");
+    this.lieuSelected=[];
     this.cleanSearch();
     this.optionValue="";
     this.schoolsOptions=null;

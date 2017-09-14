@@ -52,13 +52,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((event) => {
         // console.log(event);
 		
-		let currentRoute = this.route.root;
-		while (currentRoute.children[0] !== undefined) {
-			currentRoute = currentRoute.children[0];
-		}
-		//console.log(currentRoute.routeConfig.path);
-		var pathname = currentRoute.routeConfig.path;
-		this.isLandingPage = pathname.indexOf("landing-page")>=0;
+        let currentRoute = this.route.root;
+        while (currentRoute.children[0] !== undefined) {
+          currentRoute = currentRoute.children[0];
+        }
+        //console.log(currentRoute.routeConfig.path);
+        var pathname = currentRoute.routeConfig.path;
+        this.isLandingPage = pathname.indexOf("landing-page")>=0;
 		
         this.userLogin=this.authService.isUserLoggedIn();
         if(this.userLogin){
@@ -159,7 +159,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.usersService.getProfile()
       .subscribe(
         (response)=>{
-          // console.log(response.data[0]);
+          console.log(response.data[0]);
           let data = response.data[0];
           this.userFirstName = data.firstName;
           // this.userLastName = data.lastName;
