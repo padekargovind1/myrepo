@@ -78,6 +78,7 @@ export class SchoolComponent implements OnInit {
   forAdvancedSearch : boolean = false;
   onMobile : boolean = false;
   bottomAdCarousalClasses : string = "footer-ads hidden animated";
+  lieuSelected=[];
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -358,7 +359,7 @@ export class SchoolComponent implements OnInit {
     }
     this.searchFilter=[data.class, data.place, data.name]
     this.advancedSearch.class = data.class;
-    this.advancedSearch.place = data.place;
+    this.advancedSearch.place = this.lieuSelected;
     this.advancedSearch.name = data.name;
     console.log(this.advancedSearch);
     this.publicService.storeSearchSchool(this.searchFilter);
@@ -410,13 +411,25 @@ export class SchoolComponent implements OnInit {
           let data = response.data;
           console.log(data);
           if(response.code!=400){
-            this.options['regions']=data[0].region;
-            this.options['departements']=data[0].departments;
-            // this.options['villes']=data[0].cities;
+            this.options['regions']=data.regions;
+            this.options['departements']=data.departments;
+            this.options['villes']=data.cities;
             console.log(this.options)
           }
         }
       )
+  }
+
+  onSelectLieu(type:string, index:number){
+    this.lieuSelected=[];
+    if(type=='R'){
+      this.lieuSelected=this.options.regions[index].departments;
+    } else if(type=='D'){
+      this.lieuSelected[0]=this.options.departements[index].departmentNumber;
+    }else {
+      this.lieuSelected[0]=this.options.villes[index].postcode;
+    }
+    console.log(this.lieuSelected);
   }
 
   getSchoolFilter(filter: string){
