@@ -80,6 +80,12 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
 		window.dispatchEvent(new Event("resize"));
 	}, 1);
   }
+  
+  loadTabs(){
+	setTimeout(function(){
+		window.dispatchEvent(new Event("resize"));
+	}, 10);
+  }
 
   // getSchoolById(){
   //   this.publicService.getSchoolById(this.schoolId)

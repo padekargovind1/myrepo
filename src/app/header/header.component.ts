@@ -139,12 +139,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   
     $('body').on('click', function($event){
-      // console.log(event.srcElement.className)
-      if(event.srcElement.className=='fa fa-bookmark' || event.srcElement.className=='btn btn-success btn-outline btn-sm '){
-        setTimeout(function(){
-          self.getApplication()
-        }, 1000)
-      }
+      console.log(event)
+	  if(event!==undefined && event.srcElement!==undefined)
+	  {
+		  if(event.srcElement.className=='fa fa-bookmark' || event.srcElement.className=='btn btn-success btn-outline btn-sm '){
+			setTimeout(function(){
+			  self.getApplication()
+			}, 1000)
+		  }
+		 }
     });
 	
 	// setInterval(()=>{
