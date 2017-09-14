@@ -75,6 +75,7 @@ export class MyaccountParentsComponent implements OnInit {
               email : this.usersService.getUserEmail(),
             })
           }*/
+		  console.log(this.usersService.getUserType());
 		  if(this.usersService.getUserType()=="Parent"){
             this.parentAccountForm.controls['parents']['controls'][0].patchValue({
               email : this.usersService.getUserEmail(),
