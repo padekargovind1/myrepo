@@ -3,7 +3,7 @@
      <div role="tabpanel" style="width:95%; margin-left:2%">
          <form [formGroup]="brochureForm" class="brouchreCls">
             <p class="note">
-                Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
+                Pour télécharger la documentation, veuillez saisir vos coordonnées ainsi que le profil scolaire de l'enfant</p>
             <h3>Parents</h3>
             <div class="row">
                 <div class="col-md-6">
@@ -34,7 +34,7 @@
                         <md-radio-group [formControl]="brochureForm.controls['title']"
                     style="border-color:white">
                             <md-radio-button value="m" class="rdmark">M</md-radio-button>
-                            <md-radio-button value="mrs" class="rdmark">Mlle</md-radio-button>
+                            <!--md-radio-button value="mrs" class="rdmark">Mlle</md-radio-button-->
                             <md-radio-button value="ms" class="rdmark">Mme</md-radio-button>
                         </md-radio-group>
                     </div>
@@ -260,7 +260,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <md-checkbox [formControl]="brochureForm.controls['copy']" >
-                            Je souhaite recevoir un copie de votre message
+                            Je souhaite recevoir une copie du mail adressé à l'établissement
                         </md-checkbox>
                     </div>
                 </div>
@@ -278,7 +278,7 @@
     </div>
   </md-tab>
 
-  <md-tab label="ProfilScolaire" id="tab2">
+  <md-tab label="Profil scolaire" id="tab2">
     <div role="tabpanel">
         <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
 
@@ -328,7 +328,7 @@
             </div>
         </div>
             <p class="note">
-              Le CIDE et l'établissement scolaire sélectionné sont les seuls destinataires des informations communiquées. 
+              Le CIDE et l'établissement scolaire sélectionnés sont les seuls destinataires des informations communiquées. 
               Vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données qui vous concernent 
               (art. 34 de la loi "informatique et libertés" - Numéro de déclaration CNIL 1271917).
                Formulez votre demande par écrit au CIDE, 84, boulevard Saint-Michel 75006 Paris.

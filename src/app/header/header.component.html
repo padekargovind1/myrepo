@@ -4,34 +4,40 @@
                 <li class="parent-item haschild courses-menu">
                     <a class="ln-tr" href="javascript:void(0);"><i class="fa fa-bars menu-holder"></i></a>
                     <ul class="clearfix submenutBt">
+						<li class="course-menu-item col-md-12 col-sm-12">
+                            <div class="single-item">
+                                <span class="item-icon"><i class="fa fa-search"></i></span>
+                                <a (click)="navigateToURL('/ecole')" class="ln-tr link">Trouver une école</a>
+                            </div>
+                        </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-download"></i></span>
-                                <a (click)="navigateToURL('/brochure')" class="ln-tr link">Les documentations des écoles</a>
+                                <a (click)="navigateToURL('/brochure')" class="ln-tr link">Télécharger la documentation des écoles</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-calendar-check-o"></i></span>
-                                <a (click)="navigateToURL('/conseil')" class="ln-tr link">Orientation</a>
+                                <a (click)="navigateToURL('/conseil')" class="ln-tr link">Prendre un rdv pour un conseil, un bilan d'Orientation</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-bullhorn"></i></span>
-                                <a (click)="navigateToURL('/school-calendar')" class="ln-tr link">Agenda des écoles</a>
+                                <a (click)="navigateToURL('/school-calendar')" class="ln-tr link">Connaitre les événements des Ecoles</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-bookmark"></i></span>
-                                <a (click)="onMyAccount('3')" class="ln-tr link">Mes voeux / Inscriptions</a>
+                                <a (click)="onMyAccount('3')" class="ln-tr link">Mon compte</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-inbox"></i></span>
-                                <a (click)="hideHeaderSubMenus()"target="_blank" href="http://www.amazon.fr" class="ln-tr link">Commande du Guide des écoles privées</a>
+                                <a (click)="hideHeaderSubMenus()"target="_blank" href="http://www.amazon.fr" class="ln-tr link">Commander le Guide des Ecoles Privées</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-12 col-sm-12">
@@ -39,12 +45,12 @@
                                 <span class="item-icon"><i class="fa fa-inbox"></i></span>
                                 <a (click)="hideHeaderSubMenus()" target="_blank" *ngIf="!onMobile; else mobileGuide"
                                     href="http://www.guide-des-ecoles-privees.info/2016_2017" class="ln-tr link">
-                                    Guide interactif des écoles privées
+                                    Consulter le Guide des Ecoles Privées
                                 </a>
                                 <ng-template #mobileGuide>
                                     <a (click)="hideHeaderSubMenus()" target="_blank" 
                                         class="ln-tr link" (mouseup)="onMobileGuide()">
-                                        Guide interactif des écoles privées
+                                        Consulter le Guide des Ecoles Privées
                                     </a>
                                 </ng-template>
                             </div>
