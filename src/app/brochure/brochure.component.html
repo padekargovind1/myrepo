@@ -199,6 +199,7 @@
                             </button>
                         </section><!-- .col-* -->
 
+						<div class="newSearchDiv" *ngIf="searchBrochure.class!='' || searchBrochure.place!='' || searchBrochure.name!=''" (click)="onClearSearch()"><a class="newSearch">Nouvelle recherche</a></div>
                     </div><!-- .form-wrap -->
                 </form><!-- .col-* -->
 

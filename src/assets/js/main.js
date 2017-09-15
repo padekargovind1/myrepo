@@ -39,6 +39,7 @@ function hideAd() {
 	// console.log('time is up');
 	// $('body').hover(function() {
 		$('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
+		$('.popup-ad-holder-mobile').delay(7000).addClass('fadeOutDown');
 		$('.from-popup').delay(6000).removeClass('hidden').addClass('fadeInDown animated');//.delay(16000).removeClass('fadeInDown').addClass('fadeOutDown');
 	// });
 }

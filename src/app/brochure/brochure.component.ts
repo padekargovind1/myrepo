@@ -279,6 +279,15 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
         this.getBrochure()
     }
 
+    onClearSearch(){
+        console.log("click on clear");
+        this.searchBrochure.class = "";
+        this.searchBrochure.place = "";
+        this.searchBrochure.name = "";
+		this.buildForm();
+        this.getBrochure()
+    }
+
     getSearchFilter(searchFilter){
         if(searchFilter[0]!="" && searchFilter[1]!="" && searchFilter[2]==""){
         this.listBrochuresFiltered = this.listBrochures.filter(
