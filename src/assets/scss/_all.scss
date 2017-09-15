@@ -1909,7 +1909,7 @@ a:hover { text-decoration: none;}
 .under-construction .row { margin: 0; }
 .under-construction img { width: 40%; }
 @media (max-width:767px){ 
-.list-schools h3 { max-width: 71%;}
+.list-schools h3 { max-width: 60%;}
 .booking-appointment .advisors-wrap {position:relative !important; top:0 !important; }
 .conseil-centering { background:#343642;  color: #fff;}
 .conseil-centering .title-page {color:#fff; }
@@ -1987,6 +1987,7 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 .brouchreCls div.col-sm-6 .select-custom { margin-right: 0px; }
 app-landing-page-3 .container.landing-page-3{ margin-top:0; }
 .tabs-container .tab-content > .active, .tabs-container .pill-content > .active, .main .container-fluid, .cdk-global-overlay-wrapper  md-dialog-container.mat-dialog-container, .tab-pane.active .panel-body{ padding:0;}
+md-dialog-container.mat-dialog-container{ height:100%; max-height:85vh;}
 .mat-tab-labels div.mat-tab-label { min-width: fit-content; padding: 0 7px !important; }
 .mat-radio-button {    float: left;    width: 50%;}
 
@@ -2100,3 +2101,5 @@ text-align:center;
 .mat-dialog-container {padding:10px 15px !important; }
 
 .horizontal-radio label {    float: left;    margin-right: 0;} 
+
+.newSearchDiv { padding: 10px 15px 0; float: left; }

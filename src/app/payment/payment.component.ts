@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
     if(!this.authService.isUserLoggedIn()){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/register']);
     }
 	else
 	{
