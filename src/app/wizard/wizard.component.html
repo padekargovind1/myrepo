@@ -419,7 +419,7 @@
 															<input type="text" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
                                                                 placeholder="Date de naissance" [max]="maxDate"
                                                                 [formControl]="wizardForm.controls['childBirthDay']">
-																<md-datepicker-toggle mdSuffix [for]="myDatepicker"></md-datepicker-toggle>
+															<button [mdDatepickerToggle]="myDatepicker"></button>
                                                                 <md-datepicker #myDatepicker></md-datepicker>
 																
 																</div>
