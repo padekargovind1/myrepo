@@ -102,9 +102,8 @@ export class SchoolComponent implements OnInit {
     this.langues=this.schoolService.getLangues();
     this.languesRegio=this.schoolService.getLanguesRegio();
     this.diplomes=this.schoolService.getDiplomes();
-    this.lieuSelected=this.schoolService.getSelectedLieu();
 	  this.runScriptOnInit()
-    console.log(window.screen.width)
+    // console.log(window.screen.width)
     setTimeout(()=>{
       this.runScript()
     })
@@ -277,6 +276,7 @@ export class SchoolComponent implements OnInit {
       etablissement : data[2]
     })
     this.forAdvancedSearch=true;
+    this.lieuSelected=this.schoolService.getSelectedLieu();
     this.onSubmitSearch()
   }
 
@@ -414,12 +414,12 @@ export class SchoolComponent implements OnInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          console.log(data);
+          // console.log(data);
           if(response.code!=400){
             this.options['regions']=data.regions;
             this.options['departements']=data.departments;
             this.options['villes']=data.cities;
-            console.log(this.options)
+            // console.log(this.options)
           }
         }
       )

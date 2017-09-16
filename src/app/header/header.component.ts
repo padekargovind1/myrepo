@@ -139,7 +139,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   
     $('body').on('click', function($event){
-      console.log(event)
+      // console.log(event)
 	  if(event!==undefined && event.srcElement!==undefined)
 	  {
 		  if(event.srcElement.className=='fa fa-bookmark' || event.srcElement.className=='btn btn-success btn-outline btn-sm '){
