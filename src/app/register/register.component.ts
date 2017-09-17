@@ -114,4 +114,8 @@ export class RegisterComponent implements OnInit {
       )
   }
 
+  alreadyAccount(){
+    this.router.navigate(['/login']);
+  }
+
 }

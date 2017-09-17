@@ -583,6 +583,7 @@ export class SchoolComponent implements OnInit {
     this.languageAdvancedSearch=[];
     this.languageAdvancedSearchName=[]
     delete this.advancedSearch;
+    this.schoolService.cleanSelectedLieu();
     this.initAdvancedSearch();
     this.setCodeName();
     this.advancedSearchToDisplay=[];
