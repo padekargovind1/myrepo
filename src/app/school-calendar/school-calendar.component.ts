@@ -17,6 +17,7 @@ export class SchoolCalendarComponent implements OnInit {
   searchForm : FormGroup;
   minDate = new Date();
   weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  schoolsOptions = null;
 
   constructor(private publicService : PublicService,
               private route : Router,
@@ -46,45 +47,64 @@ export class SchoolCalendarComponent implements OnInit {
 
   buildForm(){
     this.searchForm = this.fb.group({
+      eventName : [''],
       date : [null],
       period : ['']
     })
   }
 
   searchSubmit(){
-    console.log("test1", this.searchForm.value);
-    let date='';
-    let period=this.searchForm.value.period;
-    console.log(this.minDate, this.datepipe.transform(this.minDate, 'EEE-yyyy-MM-dd'));
-    if(this.searchForm.value.date!=""){
-      date = this.datepipe.transform(this.searchForm.value.date, 'yyyy-MM-dd'); 
-      console.log(date)
-    } else if(period !=""){
-      period = period=="today" || period=="week" ? this.datepipe.transform(this.minDate, 'yyyy-MM-dd') : period = this.datepipe.transform(this.minDate, 'yyyy-MM');
-    }
-    this.eventsToDisplay = this.events.filter(
-      event=>{
-        // console.log(event)
-        if(date!="" && date>=event.fromDate.substr(0, 10) && date<=event.toDate.substr(0, 10)){
-          return true;
-        } else if (this.searchForm.value.period!="" ){
-          if((this.searchForm.value.period=="today" || this.searchForm.value.period=="week") && period==event.fromDate.substr(0, 10)){
-            return true;
-          } else if(this.searchForm.value.period=="month" && period==event.fromDate.substr(0, 7)){
-            return true;
-          }
-        } else if(this.searchForm.value.date=='' && this.searchForm.value.period==''){
-          return true;
-        }
-        return false;
-    })
-    console.log(this.eventsToDisplay)
+    //wait for API
   }
 
   cleanSearch(){
     this.buildForm();
     this.eventsToDisplay=this.events;
     console.log(this.searchForm.value)
+  }
+
+  filterSchool(event){
+    // console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+      this.getSchoolFilter(filter)
+    }else {
+      this.schoolsOptions=null;
+    }
+  }
+
+  getSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutocompleteSchool(data)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          // console.log(data);
+          this.schoolsOptions=data
+        }
+      )
+  }
+
+  onSelectDate(){
+    console.log(this.searchForm.value.date);
+  }
+
+  onToday(){
+    //wait API
+  }
+
+  onWeek(){
+    //wait API
+  }
+
+  onMonth(){
+    //wait API
+  }
+
+  onNextMonth(){
+    //wait API
   }
 
 }

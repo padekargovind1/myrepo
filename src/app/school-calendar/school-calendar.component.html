@@ -2,10 +2,10 @@
 
 	<h2 class="title-page">Agenda des écoles</h2>
 
-	<div class="row" style="width:60%; margin-left:20%">
+	<div class="row" >
 		<section class="col-md-12">
 			<form class="form-inline searchform" [formGroup]="searchForm"
-				(ngSubmit)="searchSubmit()">
+				(ngSubmit)="searchSubmit()" style="width:40%; margin-left:30%">
 				<div class="form-wrap row">
 					
 					<div class="col-md-12">
@@ -15,15 +15,23 @@
 									Recherche : 
 								</p>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-8">
 								<div class="form-group">
-									<input type="date" id="birthdate" class="form-control form-calendar" 
-									[mdDatepicker]="myDatepicker" placeholder="Date de naissance" 
-									[formControl]="searchForm.controls['date']" [min]="minDate">
-									<md-datepicker #myDatepicker></md-datepicker>
+									<input type="text" class="form-control form-calendar" 
+									placeholder="Nom de l'établissement" 
+									[mdAutocomplete]="autoSchool"
+									[formControl]="searchForm.controls['eventName']"
+									(keyup)="filterSchool($event)">
+									<md-autocomplete #autoSchool="mdAutocomplete">
+										<md-option *ngFor="let school of schoolsOptions" 
+											[value]="school.longName">
+											{{ school.longName }}
+										</md-option>
+									</md-autocomplete>
 								</div>
 							</div><!-- .col-* -->
-							<div class="col-md-4">
+							<!--  -->
+							<!-- <div class="col-md-4">
 								<div class="form-group">
 									<label class="select-custom" for="class">
 										<select name="class" class="form-control" id="class" style="font-weight:400"
@@ -35,7 +43,7 @@
 										</select>
 									</label>
 								</div>
-							</div><!-- .col-* -->
+							</div> -->
 							<div class="col-md-1">
 								<button class="btn btn-search" type="submit">
                                     <i class="fa fa-search"></i>
@@ -43,7 +51,7 @@
 							</div>
 							<div>
                                 <a style="float:right; color : white"
-                                    *ngIf="searchForm.value.date!='' || searchForm.value.period!=''"
+                                    *ngIf="searchForm.value.date!='' && searchForm.value.eventName!=''"
                                     (click)="cleanSearch()">
                                     Nouvelle recherche
                                 </a>
@@ -54,11 +62,37 @@
 				</div><!-- .form-wrap -->
 			</form>
 		</section>
+		<section class="col-md-12">
+			&nbsp;<br>
+			<div class="row">
+				<div class="col-md-6"></div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<input type="date" id="birthdate" class="form-control form-calendar" style="height :52px"
+						[mdDatepicker]="myDatepicker" placeholder="Date de naissance" (change)="onSelectDate()"
+						[formControl]="searchForm.controls['date']" [min]="minDate">
+						<md-datepicker #myDatepicker ></md-datepicker>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<button type="button" class="btn button-return school-calendar-button">
+						Aujourd'hui
+					</button>
+					<button type="button" class="btn button-return school-calendar-button">
+						Cette semaine
+					</button>
+					<button type="button" class="btn button-return school-calendar-button">
+						Ce mois-ci
+					</button>
+					<button type="button" class="btn button-return school-calendar-button">
+						Le mois prochain
+					</button>	
+				</div>
+			</div>
+			&nbsp;<br>
+		</section>
 	</div><!-- .row -->
-	<div class="row">
-		&nbsp;<br>&nbsp;
-	</div>
-
+	
 	<div *ngIf="eventsToDisplay.length!=0; else noEvents">
 		<div *ngFor="let event of eventsToDisplay; let i=index">
 			<app-cube [eventData]="event" [counter]="i+1"></app-cube>
