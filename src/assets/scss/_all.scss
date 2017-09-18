@@ -1955,10 +1955,35 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 
 .ConseillersTxt , .ConseillersTxtRight{ display:none;}
 
+@media (max-width:667px){ 
+
+.ad-holder {
+    position: relative;
+}
+
+.content-compare-table {
+    width: 25%;
+}
+
+
+}
 @media (max-width:639px){ 
 .search-title-calendar {
     color:#000 !important;
 }
+
+@media (max-width:480px){ 
+
+button.mat-raised-button.mat-primary, button.mat-raised-button.mat-warn, button.mat-raised-button.mat-accent {
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+
+}
+
+
 
 
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}

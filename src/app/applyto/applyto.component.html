@@ -607,10 +607,10 @@
                       <!-- progress upload -->
                       <div class="col-md-8">
                         <div fxFlex.gt-sm="80" fxFlex.gt-xs="50" fxFlex="100">
-                          <h6 class="mt-0" fxLayout="row">
+                          <h5 class="mt-0" fxLayout="row">
                             <span fxFlex>File d'attente des téléchargements</span>
                             <span>Nombre de fichier en attente: {{ uploader?.queue?.length }}</span>
-                          </h6>
+                          </h5>
 
                           <ngx-datatable class="material ml-0 mr-0" 
                             [rows]="uploader.queue" [columnMode]="'flex'" 
