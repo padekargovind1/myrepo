@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
+import { SendService } from '../../services/send.service';
 import { BrochureService } from '../../services/brochure.service';
 
 @Component({
@@ -18,13 +19,25 @@ export class BrochpopupComponent implements OnInit {
   constructor(public dialogref:MdDialogRef<BrochpopupComponent>,
               private fb : FormBuilder,
               private usersService : UsersService,
+              private sendService : SendService,
               private brochureService : BrochureService) { 
                 this.buildFormGroup();
                 this.getProfile();
               }
 
   ngOnInit() {
-    
+    if(this.sendService.getMessageStatus()!="Public")
+    {
+      this.brochureForm.patchValue({
+        status : 'Privé'
+      });
+    }
+    else
+    {
+      this.brochureForm.patchValue({
+        status : 'Public'
+      });
+    }
   }
 
   buildFormGroup(){
@@ -56,7 +69,7 @@ export class BrochpopupComponent implements OnInit {
             // console.log(data);
             if(response.code==400){
               console.log(response.message);
-            } else {
+            } else if(response.data!==undefined) {
               this.patchValue(response.data[0]);
             }
           }
@@ -91,6 +104,8 @@ export class BrochpopupComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log(this.brochureForm.controls.status.value);
+    this.sendService.storeMessageStatus(this.brochureForm.controls.status.value);
     this.brochureService.storeResponse("submit")
     this.dialogref.close();
   }

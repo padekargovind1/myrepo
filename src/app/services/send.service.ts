@@ -45,5 +45,17 @@ export class SendService {
       confirmButtonText: 'Ok'
     })
   }
+  
+  storeMessageStatus(messageStatus){
+    localStorage.setItem('messageStatus', messageStatus);
+  }
+
+  getMessageStatus(){
+    return localStorage.getItem('messageStatus');
+  }
+
+  cleanMessageStatus(){
+    localStorage.removeItem('messageStatus');
+  }
 
 }
