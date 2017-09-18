@@ -107,8 +107,8 @@ export class PublicService {
       .map((response)=>response.json());
   }
 
-  getEvent() : Observable<any>{
-    return this.http.get(SCHOOLS_API+'/events')
+  getEvent(data) : Observable<any>{
+    return this.http.post(SCHOOLS_API+'/events', data)
       .map((response)=>response.json());
   }
 
