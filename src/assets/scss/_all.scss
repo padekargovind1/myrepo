@@ -2105,3 +2105,27 @@ text-align:center;
 .newSearchDiv { padding: 10px 15px 0; float: left; }
 
 .school-calendar-button{margin-left:0px; background-color : white; width : 100px;  white-space: normal; height :52px}
+
+.brouchreCls p{ margin-bottom:5px;line-height: 100%;}
+.brouchreCls h3{ margin: 0 0 5px;}
+.titleClass {margin-bottom:5px; }
+
+.brouchreCls  .form-group{margin-bottom: 5px;}
+.brouchreCls  .mat-checkbox-layout .mat-checkbox-label {font-size: 12px;}
+.brouchreCls .mat-tab-label[_ngcontent-c7] {height: 40px;    line-height: 40px;}
+
+.mat-tab-label[_ngcontent-c7]{height: 40px !important;    line-height: 40px !important;}
+
+
+@media (max-width:767px){ 
+.brouchreCls  .col-sm-6.col-xs-6 input.form-control{width: 93%; }
+.brouchreCls  .col-sm-6 input.form-control{width: 96%; }
+
+.newSearch{  float: right;  margin-bottom: 10px;  margin-right: 17px;  margin-top: -11px;}
+
+}
+
+@media (max-width:479px){ 
+.brouchreCls .mat-radio-button {width:100%;}
+
+}
