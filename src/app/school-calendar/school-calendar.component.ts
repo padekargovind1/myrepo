@@ -34,7 +34,11 @@ export class SchoolCalendarComponent implements OnInit {
   }
 
   getEvents(){
-    this.publicService.getEvent()
+    let data = {
+      school : '',
+      data : ''
+    }
+    this.publicService.getEvent(data)
       .subscribe(
         (data)=>{
           let response = data;
