@@ -98,4 +98,16 @@ export class SchoolService {
   resetOnCancel(){
     this.onCancel=false;
   }
+
+  storeClassName(className){
+    localStorage.setItem('ClassName', className);
+  }
+
+  getClassName(){
+    return localStorage.getItem('ClassName');
+  }
+
+  cleanClassName(){
+    localStorage.removeItem('ClassName')
+  }
 }

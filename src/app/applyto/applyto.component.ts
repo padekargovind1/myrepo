@@ -7,6 +7,7 @@ import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { PublicService } from '../services/public.service';
 import { BookingService } from '../services/booking.service';
+import { SchoolService } from '../services/school.service';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { CustomValidators } from 'ng2-validation';
 import swal from 'sweetalert2';
@@ -55,7 +56,8 @@ export class ApplytoComponent implements OnInit {
               private bookingService : BookingService,
               private route : Router,
               private fb : FormBuilder,
-              private router : ActivatedRoute) { 
+              private router : ActivatedRoute,
+              private schoolService : SchoolService) { 
                 
                 this.subscription = this.router.params
                   .subscribe(
@@ -343,33 +345,38 @@ export class ApplytoComponent implements OnInit {
     console.log(this.userData)
     const data = {
       type : "apply",
-      schools : [{school : this.schoolID, class : 'EEE'}]
+      schools : [{
+        school : this.schoolID.toString(), 
+        class : "EEE"
+      }]
     }
+    // console.log(data)
 
-    this.usersService.postApplication(data)
-      .subscribe(
-        response=>{
-          let data = response.data;
-          console.log(response);
-          if(response.code==400){
-            console.log(response.message)
-            this.failSubmit(response.message)
-          } else {
-            console.log("apply successful")
-          }
-        }
-      )
-    this.usersService.putProfile(this.userData)
-      .subscribe(
-        response=>{
-          console.log(response)
-          if(response.code==400){
-            this.failSubmit(response.message);
-          } else {
-            this.successSubmit()
-          }
-        }
-      )
+    // this.usersService.postApplication(data)
+    //   .subscribe(
+    //     response=>{
+    //       let data = response.data;
+    //       console.log(response);
+    //       if(response.code==400){
+    //         console.log(response.message)
+    //         this.failSubmit(response.message)
+    //       } else {
+    //         console.log("apply successful");
+    //       }
+    //     }
+    //   )
+    // this.usersService.putProfile(this.userData)
+    //   .subscribe(
+    //     response=>{
+    //       console.log(response)
+    //       if(response.code==400){
+    //         this.failSubmit(response.message);
+    //       } else {
+    //         this.successSubmit();
+    //         this.schoolService.cleanClassName();
+    //       }
+    //     }
+      // )
     
 }
 
