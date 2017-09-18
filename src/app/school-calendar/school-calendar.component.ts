@@ -18,6 +18,11 @@ export class SchoolCalendarComponent implements OnInit {
   minDate = new Date();
   weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   schoolsOptions = null;
+  dataToSend = {
+    data : '',
+    school : ''
+  }
+  buttonsBool : [boolean] = [false, false, false, false]
 
   constructor(private publicService : PublicService,
               private route : Router,
@@ -34,11 +39,8 @@ export class SchoolCalendarComponent implements OnInit {
   }
 
   getEvents(){
-    let data = {
-      school : '',
-      data : ''
-    }
-    this.publicService.getEvent(data)
+    console.log(this.dataToSend)
+    this.publicService.getEvent(this.dataToSend)
       .subscribe(
         (data)=>{
           let response = data;
@@ -57,14 +59,27 @@ export class SchoolCalendarComponent implements OnInit {
     })
   }
 
+  clickOnSchool(schoolId){
+    // console.log(schoolId)
+    this.dataToSend.school=schoolId;
+  }
+
   searchSubmit(){
     //wait for API
+    this.getEvents();
   }
 
   cleanSearch(){
+    this.dataToSend.data='';
+    this.dataToSend.school='';
+    this.buttonsBool=[false, false, false, false];
+    if(this.dataToSend['date']!== undefined){
+      delete this.dataToSend['date']
+    }
     this.buildForm();
     this.eventsToDisplay=this.events;
-    console.log(this.searchForm.value)
+    console.log(this.searchForm.value);
+    this.getEvents();
   }
 
   filterSchool(event){
@@ -85,7 +100,7 @@ export class SchoolCalendarComponent implements OnInit {
       .subscribe(
         (response)=>{
           let data = response.data;
-          // console.log(data);
+          console.log(data);
           this.schoolsOptions=data
         }
       )
@@ -93,22 +108,22 @@ export class SchoolCalendarComponent implements OnInit {
 
   onSelectDate(){
     console.log(this.searchForm.value.date);
+    if(this.searchForm.value.date!=''){
+      let date = new Date(this.searchForm.value.date);
+      // console.log(date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear())
+      let dateToSend = date.getFullYear()+'/'+date.getMonth()+'/'+date.getDate();
+      this.dataToSend['date']=dateToSend;
+    } else {
+      delete this.dataToSend['date'];
+    }
+    this.getEvents()
   }
 
-  onToday(){
-    //wait API
-  }
-
-  onWeek(){
-    //wait API
-  }
-
-  onMonth(){
-    //wait API
-  }
-
-  onNextMonth(){
-    //wait API
+  onSelectData(data, index){
+    this.dataToSend.data=data;
+    this.getEvents();
+    this.buttonsBool=[false, false, false, false];
+    this.buttonsBool[index]=!this.buttonsBool[index];
   }
 
 }

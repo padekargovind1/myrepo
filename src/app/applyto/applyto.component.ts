@@ -375,8 +375,8 @@ export class ApplytoComponent implements OnInit {
 
   successSubmit(){
     swal({
-      title: 'Nous transmettons votre dossier aux écoles sélectionné. Leurs directions vous contactera dans les meilleurs délais.',
-      text: 'Nous venons de vous envoyer un mél de confirmation',
+      title: 'Merci d\'avoir choisi CIDE',
+      text: 'Nous transmettons votre dossier aux écoles sélectionné. \nLeurs directions vous contactera dans les meilleurs délais.\nNous venons de vous envoyer un mél de confirmation.',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
     })

@@ -24,6 +24,7 @@ export class SchoolService {
   diplomes = [];
   onApply : boolean =false;
   selectedLieu = [];
+  onCancel : boolean = false;
 
   constructor(private http: Http) { }
 
@@ -84,5 +85,17 @@ export class SchoolService {
 
   cleanSelectedLieu(){
     this.selectedLieu=[];
+  }
+
+  isOnCancel(){
+    this.onCancel=true;
+  }
+
+  getPopUpOnCancel(){
+    return this.onCancel;
+  }
+
+  resetOnCancel(){
+    this.onCancel=false;
   }
 }

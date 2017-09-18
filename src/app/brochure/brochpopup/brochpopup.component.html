@@ -34,7 +34,6 @@
                         <md-radio-group [formControl]="brochureForm.controls['title']"
                     style="border-color:white">
                             <md-radio-button value="m" class="rdmark">M</md-radio-button>
-                            <!--md-radio-button value="mrs" class="rdmark">Mlle</md-radio-button-->
                             <md-radio-button value="ms" class="rdmark">Mme</md-radio-button>
                         </md-radio-group>
                     </div>
@@ -280,9 +279,10 @@
 
   <md-tab label="Profil scolaire" id="tab2">
     <div role="tabpanel">
-        <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profile scolaire concerné</p>
+        <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profil scolaire concerné</p>
 
         <div class="form-group horizontal-radio clearfix">
+            <p>Dernier établissement fréquenté</p>
             <md-radio-group [formControl]="brochureForm.controls['status']"
                 style="border-color:white">
                 <md-radio-button value="Privé" class="rdmark">Privé</md-radio-button>

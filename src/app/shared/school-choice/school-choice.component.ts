@@ -89,7 +89,8 @@ export class SchoolChoiceComponent implements OnInit {
   // }
 
   navigateBack(){
-    this.dialogref.close()
+    this.schoolService.isOnCancel();
+    this.dialogref.close();
   }
 
 }
