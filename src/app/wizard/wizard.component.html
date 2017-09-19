@@ -128,7 +128,6 @@
                                                 
                                                 <md-radio-group formControlName="titre">
                                                     <md-radio-button value="ms">Mme</md-radio-button>
-                                                    <md-radio-button value="mrs">Mlle</md-radio-button>
                                                     <md-radio-button value="m">M</md-radio-button>
                                                 </md-radio-group>
                                                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
@@ -901,12 +900,12 @@
                             </div><!-- #tab5 -->
                         </md-tab>
 
-                        <md-tab label="Centres d’intérêts">
+                        <md-tab label="Vos centres d’intérêts">
                             <div class="tab-pane" id="tab6">
                                 <div class="container-fluid">
                                     <div class="row">
                                        <div class="col-md-6">
-                                            <h3>Centres d’intérêts</h3>
+                                            <h3>Vos centres d’intérêts</h3>
 
                                             <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
                     

@@ -5,7 +5,7 @@
 	<div class="row" >
 		<section class="col-md-12">
 			<form class="form-inline searchform" [formGroup]="searchForm"
-				(ngSubmit)="searchSubmit()" style="width:40%; margin-left:30%">
+				style="width:50%; margin-left:25%">
 				<div class="form-wrap row">
 					
 					<div class="col-md-12">
@@ -24,34 +24,22 @@
 									(keyup)="filterSchool($event)">
 									<md-autocomplete #autoSchool="mdAutocomplete">
 										<md-option *ngFor="let school of schoolsOptions" 
-											[value]="school.longName">
+											[value]="school.longName"
+											(click)="clickOnSchool(school._id)">
 											{{ school.longName }}
 										</md-option>
 									</md-autocomplete>
 								</div>
-							</div><!-- .col-* -->
-							<!--  -->
-							<!-- <div class="col-md-4">
-								<div class="form-group">
-									<label class="select-custom" for="class">
-										<select name="class" class="form-control" id="class" style="font-weight:400"
-											[formControl]="searchForm.controls['period']">
-											<option value="" hidden disabled selected>Période</option>
-											<option value="today">Aujourd'hui</option>
-											<option value="week">Cette semaine</option>
-											<option value="month">Ce mois-ci</option>
-										</select>
-									</label>
-								</div>
-							</div> -->
+							</div>
 							<div class="col-md-1">
-								<button class="btn btn-search" type="submit">
+								<button class="btn btn-search" type="submit" (click)="searchSubmit()">
                                     <i class="fa fa-search"></i>
                                 </button>
 							</div>
 							<div>
                                 <a style="float:right; color : white"
-                                    *ngIf="searchForm.value.date!='' && searchForm.value.eventName!=''"
+									*ngIf="searchForm.value.eventName!='' || 
+									dataToSend.data!='' || dataToSend['date']!==undefined" 
                                     (click)="cleanSearch()">
                                     Nouvelle recherche
                                 </a>
@@ -68,23 +56,27 @@
 				<div class="col-md-6"></div>
 				<div class="col-md-2">
 					<div class="form-group">
-						<input type="date" id="birthdate" class="form-control form-calendar" style="height :52px"
+						<input type="date" id="birthdate" class="form-control form-calendar" style="height :52px; margin-left:10px"
 						[mdDatepicker]="myDatepicker" placeholder="Date de naissance" (change)="onSelectDate()"
 						[formControl]="searchForm.controls['date']" [min]="minDate">
 						<md-datepicker #myDatepicker ></md-datepicker>
 					</div>
 				</div>
 				<div class="col-md-4">
-					<button type="button" class="btn button-return school-calendar-button">
+					<button type="button" class="btn button-return school-calendar-button"
+						(click)="onSelectData('today', 0)" [ngClass]="buttonsBool[0] ? 'selected-button-events' : ''">
 						Aujourd'hui
 					</button>
-					<button type="button" class="btn button-return school-calendar-button">
+					<button type="button" class="btn button-return school-calendar-button"
+						(click)="onSelectData('week', 1)" [ngClass]="buttonsBool[1] ? 'selected-button-events' : ''">
 						Cette semaine
 					</button>
-					<button type="button" class="btn button-return school-calendar-button">
+					<button type="button" class="btn button-return school-calendar-button"
+						(click)="onSelectData('month', 2)" [ngClass]="buttonsBool[2] ? 'selected-button-events' : ''">
 						Ce mois-ci
 					</button>
-					<button type="button" class="btn button-return school-calendar-button">
+					<button type="button" class="btn button-return school-calendar-button"
+						(click)="onSelectData('year', 3)" [ngClass]="buttonsBool[3] ? 'selected-button-events' : ''">
 						Le mois prochain
 					</button>	
 				</div>
@@ -100,6 +92,6 @@
 	</div>
 	<ng-template #noEvents>
 		<p style="width:100%;
-                text-align:center; font-size : 35px">Il n'y a pas d'évènement pour cette recherche.</p>
+                text-align:center; font-size : 35px">Il n'y a pas d'évènement pour la recherche demandé.</p>
 	</ng-template>
 </main>

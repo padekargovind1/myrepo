@@ -8,6 +8,7 @@ import { PublicService } from '../services/public.service';
 import { UsersService } from '../services/users.service';
 import { BrochureService } from '../services/brochure.service';
 import { SendService } from '../services/send.service';
+import { SchoolService } from '../services/school.service';
 declare var $ :any;
 import swal from 'sweetalert2';
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
@@ -37,7 +38,8 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
               public dialogref:MdDialogRef<EtablissementComponent>,
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any},
               public dialog:MdDialog,
-              private sendService : SendService) { 
+              private sendService : SendService,
+              private schoolService : SchoolService) { 
     console.log(this.data)
   }
 
@@ -147,7 +149,11 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
     this.makeProfile(this.schoolData);
     let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
     dialogref.afterClosed().subscribe(result => {
-      this.dialogref.close();
+      if(!this.schoolService.getPopUpOnCancel()){
+        this.dialogref.close();
+      } else {
+        this.schoolService.resetOnCancel();
+      }
     });
     // this.router.navigate(['applyto', this.schoolId])
   }
