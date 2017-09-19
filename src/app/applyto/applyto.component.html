@@ -157,14 +157,14 @@
                     </div>
                     <div class="form-group clearfix">
                       <button class="btn  btn-appointment" (click)="onAddParent()"
-                        [disabled]="applytoForm.controls['parents']['controls'].length==2"
+                      *ngIf="applytoForm.controls['parents']['controls'].length==1"
                         style="margin-left:0px">
                         Ajouter un parent
                       </button>
                     </div>
                     <div class="form-group clearfix">
                       <button class="btn  btn-appointment" (click)="nextTab(1)"
-                        style="margin-left:0px">
+                        style="margin-left:0px; float:right">
                         Suivant
                       </button>
                     </div>
@@ -305,15 +305,20 @@
                           </div>
                         </div>-->
 
-                        <div class="row">
+                      </div>
+                      <div class="col-md-12">
                           <div class="form-group clearfix">
-                            <button class="btn  btn-appointment" (click)="nextTab(2)">
+                            <button class="btn  btn-appointment" (click)="nextTab(0)"
+                              style="float:left; margin-left:0px">
+                              Précédent
+                            </button>
+                            <button class="btn  btn-appointment" (click)="nextTab(2)"
+                              style="float:right">
                               Suivant
                             </button>
                           </div>
-                        </div>
-
                       </div>
+                        
                       <!-- .col-* -->
 
                       <!--<div class="col-md-8" *ngIf="canDisplaySiblings">
@@ -591,15 +596,7 @@
                           <label>Télécharger ici le dernier bulletin scolaire</label>
                           <input class="inputTypeFileCk" type="file" ng2FileSelect [uploader]="uploader"/>
                         </div>
-
-                        <div class="row">
-                          <div class="form-group clearfix">
-                            <button class="btn  btn-appointment" (click)="nextTab(3)"
-                              style="margin:10px">
-                              Suivant
-                            </button>
-                          </div>
-                        </div>
+                        
 
                         <!-- end button upload -->
                       </div>
@@ -657,6 +654,18 @@
                         </div>
 
 
+                      </div>
+                      <div class="col-md-12" style="margin-top:10px">
+                        <div class="form-group clearfix">
+                          <button class="btn  btn-appointment" (click)="nextTab(1)"
+                            style="float:left; margin-left:0px">
+                            Précédent
+                          </button>
+                          <button class="btn  btn-appointment" (click)="nextTab(3)"
+                            style="float:right">
+                            Suivant
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -762,7 +771,12 @@
                     </div>
                     <div class="row">
                       <div class="form-group clearfix">
-                        <button class="btn  btn-appointment" (click)="nextTab(4)">
+                        <button class="btn  btn-appointment" (click)="nextTab(2)"
+                          style="float:left; margin-left:0px">
+                          Précédent
+                        </button>
+                        <button class="btn  btn-appointment" (click)="nextTab(4)"
+                          style="float:right">
                           Suivant
                         </button>
                       </div>
@@ -842,16 +856,15 @@
                             </div>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-sm-12">
-                              <button class="btn btn-appointment" 
-                                type="submit" (click)="onSubmit()"
-                                style="margin-left:0px;">Je postule</button>
-                            </div>
-                          </div>
-                        </div>
-
+                      </div>
+                      <div class="col-md-12">
+                        <button class="btn  btn-appointment" (click)="nextTab(3)"
+                          style="float:left; margin-left:0px">
+                          Précédent
+                        </button>
+                        <button class="btn btn-appointment" 
+                          type="submit" (click)="onSubmit()"
+                          style="margin-left:0px; float : right">Je postule</button>
                       </div>
                     </div>
                   </div>

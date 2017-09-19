@@ -155,12 +155,12 @@
       <div class="row">
         <div class="form-group clearfix" style="margin-left:10px">
           <button class="btn  btn-appointment parentButton" (click)="onAddParent()"
-            [disabled]="parentAccountForm.controls['parents']['controls'].length==2">
+            *ngIf="parentAccountForm.controls['parents']['controls'].length==1">
             <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
           </button>
           <button class="btn btn-appointment parentButton" 
-            type="submit" (click)="onSubmit()"
-            [disabled]="!parentAccountForm.valid">Passer à l'élève
+            type="submit" (click)="onSubmit()" style="float:right"
+            *ngIf="parentAccountForm.valid">Passer à l'élève
           </button>
         </div>
           

@@ -263,14 +263,15 @@
                                     </div><!-- .row -->
                                     <div class="form-group clearfix">
                                         <button class="btn  btn-appointment" (click)="onAddParent()"
-                                            [disabled]="wizardForm.controls['parents']['controls'].length==2"
+                                            *ngIf="wizardForm.controls['parents']['controls'].length==1"
                                             style="margin-left:0px">
                                             <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
                                         </button>
                                     </div>
                                     <div class="row">
                                         <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(1)">
+                                            <button class="btn  btn-appointment wizard-button-align" 
+                                                (click)="nextTab(1)" style="float:right">
                                             Suivant
                                             </button>
                                         </div>
@@ -435,14 +436,19 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="form-group clearfix">
-                                                    <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(2)">
-                                                    Suivant
-                                                    </button>
-                                                </div>
-                                            </div>
                                         </div><!-- .col-* -->
+                                        <div class="col-md-12">
+                                            <div class="form-group clearfix">
+                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                    (click)="nextTab(0)" style="float:left; margin-left:0px">
+                                                Précédent
+                                                </button>
+                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                    (click)="nextTab(2)" style="float:right">
+                                                Suivant
+                                                </button>
+                                            </div>
+                                        </div>
 
                                         <!--<div class="col-md-8" *ngIf="canDisplaySiblings">
                                             <div class="wrap-enfant">
@@ -723,16 +729,19 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>   
-
-                                            <div class="row">
-                                                <div class="form-group clearfix">
-                                                    <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(3)">
+                                            </div>    
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group clearfix">
+                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                    (click)="nextTab(1)" style="float:left; margin-left:0px">
+                                                    Précédent
+                                                </button>
+                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                    (click)="nextTab(3)" style="float:right">
                                                     Suivant
-                                                    </button>
-                                                </div>
-                                            </div>   
-                                            
+                                                </button>
+                                            </div>
                                         </div>
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
@@ -774,17 +783,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="row">
-                                                    <div class="form-group clearfix">
-                                                        <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(4)">
-                                                        Suivant
-                                                        </button>
-                                                    </div>
-                                                </div>
                                             </div>
 
                                         </div><!-- .col-* -->
+                                        <div class="col-md-12">
+                                            <div class="form-group clearfix">
+                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                    (click)="nextTab(2)" style="float:left; margin-left:0px">
+                                                    Précédent
+                                                </button>
+                                                <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(4)"
+                                                style="float:right">
+                                                Suivant
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab4 -->
@@ -891,8 +904,13 @@
                                     </div><!-- .row -->
                                     <div class="row">
                                         <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(5)">
-                                            Suivant
+                                            <button class="btn  btn-appointment wizard-button-align" 
+                                                (click)="nextTab(3)" style="float:left; margin-left:0px">
+                                                Précédent
+                                            </button>
+                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(5)"
+                                            style="float:right">
+                                                Suivant
                                             </button>
                                         </div>
                                     </div>
@@ -976,7 +994,12 @@
                                     </div><!-- .row -->
                                     <div class="row">
                                         <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(6)">
+                                            <button class="btn  btn-appointment wizard-button-align" 
+                                                (click)="nextTab(4)" style="float:left; margin-left:0px">
+                                                Précédent
+                                            </button>
+                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(6)"
+                                            style="float:right">
                                             Suivant
                                             </button>
                                         </div>
@@ -1093,8 +1116,13 @@
                                     </div><!-- .row -->
                                     <div class="row">
                                         <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(7)">
-                                            Suivant
+                                            <button class="btn  btn-appointment wizard-button-align" 
+                                                (click)="nextTab(5)" style="float:left; margin-left:0px">
+                                                Précédent
+                                            </button>
+                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(7)"
+                                                style="float:right">
+                                                Suivant
                                             </button>
                                         </div>
                                     </div>
@@ -1557,7 +1585,12 @@
                                        </div><!-- .col-* -->
                                        <div class="row">
                                             <div class="form-group clearfix">
-                                                <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(8)">
+                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                    (click)="nextTab(6)" style="float:left; margin-left:0px">
+                                                    Précédent
+                                                </button>
+                                                <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(8)"
+                                                style="float:right">
                                                 Suivant
                                                 </button>
                                             </div>
@@ -1599,13 +1632,21 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <button class="btn btn-appointment pull-right" 
-                                                          type="submit" (click)="onSubmit()">Terminer</button>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
 
                                        </div><!-- .col-* -->
+                                       <div class="col-md-12">
+                                            <button class="btn  btn-appointment wizard-button-align" 
+                                                (click)="nextTab(7)" style="float:left; margin-left:0px">
+                                                Précédent
+                                            </button>
+                                            <button class="btn btn-appointment pull-right" 
+                                                type="submit" (click)="onSubmit()"
+                                                style="float:right">Terminer</button>
+                                       </div>
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab9 -->

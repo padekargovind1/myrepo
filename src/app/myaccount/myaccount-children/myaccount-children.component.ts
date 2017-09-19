@@ -74,18 +74,6 @@ export class MyaccountChildrenComponent implements OnInit {
           this.patchValue(response.data[0]);
           this.completeProfile();
           this.canDisplay=true;
-		  if(this.usersService.getUserType()=="Etudiant"){
-            this.childrenForm.patchValue({
-              email : this.usersService.getUserEmail(),
-            })
-          }
-		  else
-		  {
-			this.childrenForm.patchValue({
-              email : "",
-            })
-		  }
-          console.log(this.childrenForm)
         }
       )
   }
@@ -129,7 +117,7 @@ export class MyaccountChildrenComponent implements OnInit {
       prenom : data.firstName=='A compléter' ? '' : data.firstName,
       age : data.age,
       gender : data.gender,
-      email : (data.email===undefined || data.email=='A compléter' || data.email.trim()=='') ? '' : data.email,
+      email : (data.email===undefined || data.email=='A compléter') ? '' : data.email,
       portable : data.mobilePhone=='A compléter' ? '' : data.mobilePhone,
       // datenaissance : (data.birthDate!=null || data.birthDate != "") ? new Date(data.birthDate) : new Date(),
       // lieu : data.birthPlace,

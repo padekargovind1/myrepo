@@ -75,7 +75,7 @@ export class MyaccountParentsComponent implements OnInit {
               email : this.usersService.getUserEmail(),
             })
           }*/
-		  console.log(this.usersService.getUserType());
+		  // console.log(this.usersService.getUserType());
 		  if(this.usersService.getUserType()=="Parent"){
             this.parentAccountForm.controls['parents']['controls'][0].patchValue({
               email : this.usersService.getUserEmail(),
@@ -87,7 +87,7 @@ export class MyaccountParentsComponent implements OnInit {
 
   patchValue(data: any){
     let parentData=data.parents
-    console.log(data, parentData);
+    // console.log(data, parentData);
     for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){ 
       this.parentAccountForm.controls['parents']['controls'][i].patchValue({
         lienParent : parentData[i].relationship,
@@ -102,7 +102,7 @@ export class MyaccountParentsComponent implements OnInit {
         pays : parentData[i].address.country==' '?'France' : parentData[i].address.country
       })
     }
-    console.log(this.parentAccountForm);
+    // console.log(this.parentAccountForm);
   }
 
   buildFormGroup(data){
@@ -114,7 +114,7 @@ export class MyaccountParentsComponent implements OnInit {
         this.parentAccountForm.controls['parents']['controls'].push(this.createParent())
       }
     }
-    console.log(this.parentAccountForm);
+    // console.log(this.parentAccountForm);
   }
 
   createParent(){

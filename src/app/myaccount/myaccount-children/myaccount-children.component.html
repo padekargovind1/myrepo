@@ -72,7 +72,7 @@
                 Mél*
                 <input type="email" class="form-control" placeholder="Mél"
                   [formControl]="childrenForm.controls['email']">
-                <small *ngIf="childrenForm.controls['nom'].hasError('required') && 
+                <small *ngIf="childrenForm.controls['email'].hasError('required') && 
                   childrenForm.controls['email'].touched" 
                   class="mat-text-warn"> 
                   Email Obligatoire
@@ -179,13 +179,16 @@
               </div>
             </div>-->
           </div>
+          
+        </section><!-- .col-* -->
+        <section class="col-md-12">
           <div class="form-group">
             <button class="btn  btn-appointment terminer" type="submit"
-              [disabled]="!childrenForm.valid" style="margin-left:0px"
+              [disabled]="!childrenForm.valid" style="margin-left:0px; float : right"
               (click)="onSubmit()">
               Terminer</button>
           </div>
-        </section><!-- .col-* -->
+        </section>
         <!--<section class="col-md-8" *ngIf="canDisplay">
           <div class="wrap-enfant" formArrayName="freresoeur"
             *ngFor="let siblings of childrenForm.controls['freresoeur']['controls']; let i=index">
