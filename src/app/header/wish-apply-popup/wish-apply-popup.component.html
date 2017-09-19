@@ -65,7 +65,7 @@
     </ng-template>
   </md-tab>
   
-  <md-tab label="Mes recherches">
+  <md-tab label="Mes voeux">
     <div *ngIf="wishList.length!=0; else noWish" style="max-height:400px">
       <div class="card  school-list" *ngFor="let wish of wishList; let i=index">    
         <md-checkbox (click)="onSchoolCheckbox(wish.school._id)"></md-checkbox>                           
