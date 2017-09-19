@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+﻿import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA, MdDialogConfig } from '@angular/material';
 import { Router } from '@angular/router';
 import { SchoolService } from '../../services/school.service';
@@ -26,7 +26,7 @@ export class ClassChoiceComponent implements OnInit {
 
   onselect(index){
     this.router.navigate(['applyto', this.schoolData._id]);
-    this.schoolService.onApplyTo(true);
+    //this.schoolService.onApplyTo(true);
     // console.log(this.schoolData)
     this.schoolService.storeClassName(this.schoolData.cycles[this.schoolIndex].classes[index].name)
     this.dialogref.close()

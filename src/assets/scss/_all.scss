@@ -2156,7 +2156,10 @@ text-align:center;
 }
 .landingPage1Bg{ background-image: none !important; background:#fff !important; }
 
-.landing-page-2 .main {background:#fff;}
+.landing-page-2 .main {
+  background: #fff;
+  background-size: cover;
+}
 
 
 
