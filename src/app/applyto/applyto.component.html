@@ -1,5 +1,5 @@
 <div class="main white-background" role="main" *ngIf="canDisplayApply">
-  <div class="container-fluid  appointment-wizard">
+  <div class="container-fluid  appointment-wizard applyToCustomClsCk">
 
     <div class="row">
 
@@ -589,7 +589,7 @@
                         <!-- Button Upload -->
                         <div>
                           <label>Télécharger ici le dernier bulletin scolaire</label>
-                          <input type="file" ng2FileSelect [uploader]="uploader"/>
+                          <input class="inputTypeFileCk" type="file" ng2FileSelect [uploader]="uploader"/>
                         </div>
 
                         <div class="row">
