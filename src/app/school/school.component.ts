@@ -46,7 +46,7 @@ export class SchoolComponent implements OnInit {
   schoolsOptions: any;
   advancedSearch={
     code : [],
-    class : '',
+    class : [''],
     name : '',
     place : []
   };
@@ -359,8 +359,8 @@ export class SchoolComponent implements OnInit {
       name : this.searchForm.controls.etablissement.value
     }
     console.log(this.lieuSelected, this.advancedSearch)
-    this.searchFilter=[data.class, data.place, data.name]
-    this.advancedSearch.class = data.class;
+    this.searchFilter=[this.publicService.getClassName(), data.place, data.name];
+    this.fillAdvancedSearchClass(data);
     this.advancedSearch.place = this.lieuSelected;
     if(this.advancedSearch.place.length==0){
       delete this.advancedSearch.place;
@@ -370,6 +370,17 @@ export class SchoolComponent implements OnInit {
     this.publicService.storeSearchSchool(this.searchFilter);
     this.postAdvancedFilter();
     this.forAdvancedSearch=false;
+  }
+
+  fillAdvancedSearchClass(data){
+    this.advancedSearch.class=[''];
+    if(data.class=="Cursus international"){
+      this.advancedSearch.class[0]="CI";
+      this.advancedSearch.class[1]="BAC-I";
+      this.advancedSearch.class[2]="cursus_non_francophone";
+    }else{
+      this.advancedSearch.class[0] = data.class;
+    }
   }
 
   // postFastSearch(data){
@@ -602,7 +613,7 @@ export class SchoolComponent implements OnInit {
   initAdvancedSearch(){
     this.advancedSearch={
       code : [],
-      class : '',
+      class : [''],
       name : '',
       place : ['']
     };
@@ -727,6 +738,11 @@ export class SchoolComponent implements OnInit {
   sendMessage(school){
     let config = this.sendService.makeProfile(school)
     let dialogref = this.dialog.open(SendMessageComponent, config);
+  }
+
+  storeClassName(event){
+    console.log(event)
+    this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
   }
 
 }

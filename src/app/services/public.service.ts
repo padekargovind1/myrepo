@@ -91,6 +91,7 @@ export class PublicService {
     , "Yemen", "Zambia", "Zimbabwe"];
   nbSlick = 0;
   private headers = new Headers({'Content-Type': 'application/json'});
+  className : [string] =[''];
 
   constructor(private http : Http) { 
     this.domaines=this.domaines.sort()
@@ -222,6 +223,16 @@ export class PublicService {
 
   getCountry(){
     return this.country;
+  }
+
+  storeClassName(data : string){
+    // console.log(data)
+    this.className=['']
+    this.className.push(data);
+  }
+
+  getClassName(){
+    return this.className;
   }
 
 }

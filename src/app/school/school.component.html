@@ -23,17 +23,18 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                        [formControl]="searchForm.controls['classe']">
+                                                        [formControl]="searchForm.controls['classe']"
+                                                        (click)="storeClassName($event)">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
                                                         <option value="" selected hidden>Classe</option>
                                                         <option value="Indifférent">&nbsp;Indifférent</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="ps" style="color:red">
                                                             &nbsp;Classes maternelles
                                                         </option>
                                                         <option value="ps">&nbsp;&nbsp;Petite section (PS)</option>
                                                         <option value="ms">&nbsp;&nbsp;Moyenne section (MS)</option>
                                                         <option value="gs">&nbsp;&nbsp;Grande Section (GS)</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="cp" style="color:red">
                                                             &nbsp;Classes élémentaires
                                                         </option>
                                                         <option value="cp">&nbsp;&nbsp;Cours préparatoire (CP)</option>
@@ -50,7 +51,8 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                        [formControl]="searchForm.controls['classe']">
+                                                        [formControl]="searchForm.controls['classe']"
+                                                        (click)="storeClassName($event)">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
                                                         <option value="" hidden selected>Classe</option>
                                                         <option value="Indifférent">&nbsp;Indifférent</option>
@@ -68,54 +70,55 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                        [formControl]="searchForm.controls['classe']">
+                                                        [formControl]="searchForm.controls['classe']"
+                                                        (click)="storeClassName($event)">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
                                                         <option value="" hidden selected>Classe</option>
                                                         <option value="Indifférent">&nbsp;Indifférent</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="seconde_techno" style="color:red">
                                                             &nbsp;Classes de seconde
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                                         <option value="seconde_probation">&nbsp;2nde de probation (ou méthodologique)</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="premiere_es" style="color:red">
                                                             &nbsp;Classes de première
                                                         </option>
                                                         <option value="premiere_es">&nbsp;1ere ES - Economique et Sociale</option>
                                                         <option value="premiere_l">&nbsp;1ere L - Littéraire</option>
                                                         <option value="premiere_s">&nbsp;1ere S - Scientifique</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="terminale_s" style="color:red">
                                                             &nbsp;Classes de terminale
                                                         </option>
                                                         <option value="terminale_s">&nbsp;Tle ES - Economique et Sociale</option>
                                                         <option value="terminale_l">&nbsp;Tle L - Littéraire</option>
                                                         <option value="terminale_s">&nbsp;Tle S - Scientifique</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="Cursus international" style="color:red">
                                                             &nbsp;Cursus international
                                                         </option>
                                                         <option value="CI">&nbsp;Cursus International</option>
                                                         <option value="BAC-I">&nbsp;Cursus Bac. International</option>
                                                         <option value="cursus_non_francophone">&nbsp;Cursus non francophone (GB-US)</option>
-                                                        <option value="STRH" style="color:red">
+                                                        <option value="seconde_sthr" style="color:red">
                                                             &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
                                                         </option>
                                                         <option value="seconde_sthr">&nbsp;2nde spécifique STHR</option>
                                                         <option value="premiere_sthr">&nbsp;1ere d’adaptation STHR</option>
                                                         <option value="premiere_sthr">&nbsp;1ere STHR</option>
                                                         <option value="terminale_sthr">&nbsp;Terminale STHR</option>
-                                                        <option value="ST2S" style="color:red">
+                                                        <option value="premiere_sti2s" style="color:red">
                                                             &nbsp;ST2S - Sciences et Technologies de la santé et du social
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                                         <option value="premiere_sti2s">&nbsp;1ere d’adaptation ST2S</option>
                                                         <option value="premiere_st2s">&nbsp;1ere ST2S</option>
                                                         <option value="terminale_st2s">&nbsp;Terminale STIS</option>
-                                                        <option value="STD2A" style="color:red">
+                                                        <option value="premiere_std2a" style="color:red">
                                                             &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                                         <option value="premiere_std2a">&nbsp;1ère STI2A</option>
                                                         <option value="terminale_std2a">&nbsp;Terminale STI2A</option>
-                                                        <option value="STI2D" style="color:red">
+                                                        <option value="premiere_sti2d" style="color:red">
                                                             &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
@@ -124,7 +127,7 @@
                                                         <option value="terminale_sti2d">&nbsp;Terminale STI2D – Energie et Environnement</option>
                                                         <option value="terminale_sti2d">&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
                                                         <option value="terminale_sti2d">&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                                        <option value="STMG" style="color:red">
+                                                        <option value="premiere_stmg" style="color:red">
                                                             &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
@@ -134,7 +137,7 @@
                                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Mercatique</option>
                                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
                                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                                        <option value="STL" style="color:red">
+                                                        <option value="premiere_stl" style="color:red">
                                                             &nbsp;STL - Sciences et Technologies de Laboratoire
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
@@ -142,14 +145,14 @@
                                                         <option value="premiere_stl">&nbsp;1ère STL</option>
                                                         <option value="terminale_stl">&nbsp;Terminale STL – Biotechnologies</option>
                                                         <option value="terminale_stl">&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                                        <option value="STAV" style="color:red">
+                                                        <option value="premiere_stav" style="color:red">
                                                             &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                                         <option value="premiere_stav">&nbsp;1ère d’adaptation STAV</option>
                                                         <option value="premiere_stav">&nbsp;1ère STAV</option>
                                                         <option value="terminale_stav">&nbsp;Terminale STAV</option>
-                                                        <option value="TMD" style="color:red">
+                                                        <option value="2ndeTMD" style="color:red">
                                                             &nbsp;TMD - Techniques de la Musique et de la Danse
                                                         </option>
                                                         <option value="2ndeTMD">&nbsp;2nde spécifique TMD</option>
@@ -167,17 +170,18 @@
                                             <div class="form-group">
                                                 <label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class"
-                                                        [formControl]="searchForm.controls['classe']" >
+                                                        [formControl]="searchForm.controls['classe']" 
+                                                        (click)="storeClassName($event)">
                                                         <!--<option value="" disabled selected hidden>Classe</option>-->
                                                         <option value="" hidden selected>Classe</option>
                                                         <option value="Indifférent">&nbsp;Indifférent</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="ps" style="color:red">
                                                             &nbsp;Classes maternelles
                                                         </option>
                                                         <option value="ps">&nbsp;&nbsp;Petite section (PS)</option>
                                                         <option value="ms">&nbsp;&nbsp;Moyenne section (MS)</option>
                                                         <option value="gs">&nbsp;&nbsp;Grande Section (GS)</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="cp" style="color:red">
                                                             &nbsp;Classes élémentaires
                                                         </option>
                                                         <option value="cp">&nbsp;&nbsp;Cours préparatoire (CP)</option>
@@ -189,50 +193,50 @@
                                                         <option value="cinquieme">&nbsp;5ème</option>
                                                         <option value="quatrieme">&nbsp;4ème</option>
                                                         <option value="troisieme">&nbsp;3ème</option>
-                                                        <option value="" disabled style="color:red">
-                                                            &nbsp;Classes de seconde
+                                                        <option value="seconde_techno" style="color:red">
+                                                                &nbsp;Classes de seconde
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                                         <option value="seconde_probation">&nbsp;2nde de probation (ou méthodologique)</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="premiere_es" style="color:red">
                                                             &nbsp;Classes de première
                                                         </option>
                                                         <option value="premiere_es">&nbsp;1ere ES - Economique et Sociale</option>
                                                         <option value="premiere_l">&nbsp;1ere L - Littéraire</option>
                                                         <option value="premiere_s">&nbsp;1ere S - Scientifique</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="terminale_s" style="color:red">
                                                             &nbsp;Classes de terminale
                                                         </option>
                                                         <option value="terminale_s">&nbsp;Tle ES - Economique et Sociale</option>
                                                         <option value="terminale_l">&nbsp;Tle L - Littéraire</option>
                                                         <option value="terminale_s">&nbsp;Tle S - Scientifique</option>
-                                                        <option value="" disabled style="color:red">
+                                                        <option value="Cursus international" style="color:red">
                                                             &nbsp;Cursus international
                                                         </option>
                                                         <option value="CI">&nbsp;Cursus International</option>
                                                         <option value="BAC-I">&nbsp;Cursus Bac. International</option>
                                                         <option value="cursus_non_francophone">&nbsp;Cursus non francophone (GB-US)</option>
-                                                        <option value="STRH" style="color:red">
+                                                        <option value="seconde_sthr" style="color:red">
                                                             &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
                                                         </option>
                                                         <option value="seconde_sthr">&nbsp;2nde spécifique STHR</option>
                                                         <option value="premiere_sthr">&nbsp;1ere d’adaptation STHR</option>
                                                         <option value="premiere_sthr">&nbsp;1ere STHR</option>
                                                         <option value="terminale_sthr">&nbsp;Terminale STHR</option>
-                                                        <option value="ST2S" style="color:red">
+                                                        <option value="premiere_sti2s" style="color:red">
                                                             &nbsp;ST2S - Sciences et Technologies de la santé et du social
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                                         <option value="premiere_sti2s">&nbsp;1ere d’adaptation ST2S</option>
                                                         <option value="premiere_st2s">&nbsp;1ere ST2S</option>
                                                         <option value="terminale_st2s">&nbsp;Terminale STIS</option>
-                                                        <option value="STD2A" style="color:red">
+                                                        <option value="premiere_std2a" style="color:red">
                                                             &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                                         <option value="premiere_std2a">&nbsp;1ère STI2A</option>
                                                         <option value="terminale_std2a">&nbsp;Terminale STI2A</option>
-                                                        <option value="STI2D" style="color:red">
+                                                        <option value="premiere_sti2d" style="color:red">
                                                             &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
@@ -241,7 +245,7 @@
                                                         <option value="terminale_sti2d">&nbsp;Terminale STI2D – Energie et Environnement</option>
                                                         <option value="terminale_sti2d">&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
                                                         <option value="terminale_sti2d">&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                                        <option value="STMG" style="color:red">
+                                                        <option value="premiere_stmg" style="color:red">
                                                             &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
@@ -251,7 +255,7 @@
                                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Mercatique</option>
                                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
                                                         <option value="terminale_stmg">&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                                        <option value="STL" style="color:red">
+                                                        <option value="premiere_stl" style="color:red">
                                                             &nbsp;STL - Sciences et Technologies de Laboratoire
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
@@ -259,14 +263,14 @@
                                                         <option value="premiere_stl">&nbsp;1ère STL</option>
                                                         <option value="terminale_stl">&nbsp;Terminale STL – Biotechnologies</option>
                                                         <option value="terminale_stl">&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                                        <option value="STAV" style="color:red">
+                                                        <option value="premiere_stav" style="color:red">
                                                             &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
                                                         </option>
                                                         <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
                                                         <option value="premiere_stav">&nbsp;1ère d’adaptation STAV</option>
                                                         <option value="premiere_stav">&nbsp;1ère STAV</option>
                                                         <option value="terminale_stav">&nbsp;Terminale STAV</option>
-                                                        <option value="TMD" style="color:red">
+                                                        <option value="2ndeTMD" style="color:red">
                                                             &nbsp;TMD - Techniques de la Musique et de la Danse
                                                         </option>
                                                         <option value="2ndeTMD">&nbsp;2nde spécifique TMD</option>

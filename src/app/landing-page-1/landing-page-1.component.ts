@@ -282,4 +282,9 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     console.log(this.lieuSelected);
   }
 
+  storeClassName(event){
+    console.log(event)
+    this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
+  }
+
 }
