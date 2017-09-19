@@ -346,37 +346,43 @@ export class ApplytoComponent implements OnInit {
     const data = {
       type : "apply",
       schools : [{
-        school : this.schoolID.toString(), 
-        class : "EEE"
+        school : this.schoolID, 
+        class : this.schoolService.getClassName()
       }]
     }
-    // console.log(data)
+    console.log(data)
 
-    // this.usersService.postApplication(data)
-    //   .subscribe(
-    //     response=>{
-    //       let data = response.data;
-    //       console.log(response);
-    //       if(response.code==400){
-    //         console.log(response.message)
-    //         this.failSubmit(response.message)
-    //       } else {
-    //         console.log("apply successful");
-    //       }
-    //     }
-    //   )
-    // this.usersService.putProfile(this.userData)
-    //   .subscribe(
-    //     response=>{
-    //       console.log(response)
-    //       if(response.code==400){
-    //         this.failSubmit(response.message);
-    //       } else {
-    //         this.successSubmit();
-    //         this.schoolService.cleanClassName();
-    //       }
-    //     }
-      // )
+    this.usersService.postApplication(data)
+      .subscribe(
+        response=>{
+          let data = response.data;
+          console.log(response);
+          if(response.code==400){
+            console.log(response.message)
+            this.failSubmit(response.message)
+          } else {
+            console.log("apply successful");
+            this.usersService.deleteApplication(data.schools[0].school)
+              .subscribe(
+                response=>{
+                  console.log(response)
+                }
+              )
+          }
+        }
+      )
+    this.usersService.putProfile(this.userData)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code==400){
+            this.failSubmit(response.message);
+          } else {
+            this.successSubmit();
+            this.schoolService.cleanClassName();
+          }
+        }
+      )
     
 }
 
@@ -394,7 +400,7 @@ export class ApplytoComponent implements OnInit {
     console.log("test")
     swal({
       title: 'Attention',
-      text: 'Merci de vérifier le formulaire',
+      text: message,
       type: 'error',
       confirmButtonText: 'Ok'
     })
