@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
@@ -22,7 +23,8 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',
-  styleUrls: ['./wizard.component.scss']
+  styleUrls: ['./wizard.component.scss'],
+  providers:[DatePipe]
 })
 export class WizardComponent implements OnInit, AfterViewInit {
 
@@ -69,7 +71,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
               private route : Router,
               private fb : FormBuilder,
               private router : ActivatedRoute,
-              private publicService : PublicService) { 
+              private publicService : PublicService,
+              public datepipe: DatePipe) { 
     this.initAdviserData();
     if(this.authService.isUserLoggedIn()){
       this.getUserProfile();
@@ -209,7 +212,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       // childAddr : IsAdress ? userData.address.address1 : "",
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
-      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : new Date(),
+      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? this.datepipe.transform(new Date(userData.birthDate), 'dd/MM/yyyy') : '',
       childBirthPlace : (userData.birthPlace!=null && userData.birthPlace!="") ? userData.birthPlace : "",
       //Strong and weak subject
       bestSubject : userData.attractionToSubjects,
@@ -305,7 +308,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       // childAddr : ['', Validators.required],
       // childPostalCode : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
       // childCity : ['', Validators.required],
-      childBirthDay : [new Date(), Validators.compose([CustomValidators.date])],
+      childBirthDay : [null, Validators.compose([CustomValidators.date])],
       childBirthPlace : [''],
       // freresoeur : this.fb.array([this.createfs()]),
       schoolName:[''],

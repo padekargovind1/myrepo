@@ -94,7 +94,7 @@
                         [(selectedIndex)]="activeTabIndex"  class="wizard-tabs"
                         #tabGroup>
                         <!-- <div class="tab-content"> -->
-                          <md-tab label="Vos coordonnées">
+                          <md-tab label="Parents">
                             <div class="tab-pane" id="tab1">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -233,7 +233,7 @@
                                                 <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="select-custom">
-                                                    Horaire joignable
+                                                    Horaires pour me contacter
                                                     <select name="" class="form-control" formControlName="horaireJoignable">
                                                         <option value="" disabled selected hidden>Horaires pour me contacter</option>
                                                         <option value="9h-12h">9h-12h</option>
@@ -416,12 +416,12 @@
                                                         <div class="datepicker-holder">
                                                             Date de naissance
                                                             <div class="calendarCont">
-															<input type="text" id="birthdate" class="form-control" [mdDatepicker]="myDatepicker"
+															<input type="text" id="birthdate" class="form-control" 
                                                                 placeholder="Date de naissance" [max]="maxDate"
                                                                 [formControl]="wizardForm.controls['childBirthDay']">
 																<!-- <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button> -->
 																<!--md-datepicker-toggle mdSuffix [for]="myDatepicker"></md-datepicker-toggle-->
-                                                                <md-datepicker #myDatepicker></md-datepicker>
+                                                                <!-- <md-datepicker #myDatepicker></md-datepicker> -->
 																
 																</div>
                                                         </div>
@@ -816,7 +816,7 @@
                                                         <div class="select-custom-multiple-forte">
                                                             Matières fortes
  															<select class="form-control matery" 
-                                                                multiple="multiple" placeholder="Matières Fortes"
+                                                                multiple="multiple"
                                                                 [formControl]="wizardForm.controls['bestSubject']">
  																<option value="Maths">Maths</option>
  																<option value="Sciences Physiques">Sciences Physiques</option>
@@ -846,7 +846,7 @@
                                                       <div class="select-custom-multiple-faible">
                                                             Matières faibles
  															<select class="form-control matery" 
-                                                                multiple="multiple" placeholder="Matières Faibles"
+                                                                multiple="multiple"
                                                                 [formControl]="wizardForm.controls['weakSubject']">
  																<option value="Maths">Maths</option>
  																<option value="Sciences Physiques">Sciences Physiques</option>
@@ -918,12 +918,12 @@
                             </div><!-- #tab5 -->
                         </md-tab>
 
-                        <md-tab label="Vos centres d’intérêts">
+                        <md-tab label="Ses centres d'intérêts">
                             <div class="tab-pane" id="tab6">
                                 <div class="container-fluid">
                                     <div class="row">
                                        <div class="col-md-6">
-                                            <h3>Vos centres d’intérêts</h3>
+                                            <h3>Ses centres d'intérêts</h3>
 
                                             <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
                     
@@ -969,9 +969,8 @@
                                             <div class="form-group different-gap">
                                                 <div class="row">
                                                     <div class="col-sm-9">
-                                                        Vos intérêts
+                                                        Ses centres d'intérêts
                                                         <input type="text" class="form-control" 
-                                                          placeholder="Quels sont vos centres d’interets"
                                                           [formControl]="wizardForm.controls['yourInterest']"
                                                           maxlength="60">
                                                     </div>
@@ -981,9 +980,8 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-9">
-                                                        Que pratiquez-vous?
+                                                        Ses activités extra-scolaires
                                                         <input type="text" class="form-control" 
-                                                          placeholder="Quels loisirs et activités pratiquez-vous"
                                                           [formControl]="wizardForm.controls['practiceInterest']"
                                                           maxlength="60">
                                                     </div>
@@ -1029,7 +1027,7 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 <div class="select-custom">
-                                                                    Classe redoubler
+                                                                    Classe redoublée
                                                                     <select name="" class="form-control"
                                                                         formControlName="primarySchoolRepeat">
                                                                         <option value="" disabled selected hidden>Classe redoublée</option>
@@ -1077,7 +1075,7 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 <div class="select-custom">
-                                                                    Classe redoubler
+                                                                    Classe redoublée
                                                                     <select name="" class="form-control"
                                                                         formControlName="secondarySchoolRepeat">
                                                                         <option value="" disabled selected hidden>Classe redoublée</option>
@@ -1136,7 +1134,8 @@
                                     <div class="row">
                                        <div class="col-md-12">
 
-                                            <h3>Professions souhaitées</h3>
+                                            <h3>Professions souhaitées. Cette section du Dossier doit être complétée avec l’élève.
+                                                    Toutes les professions doivent être renseignées</h3>
                                             
                                             <div class="job-group-content">
                                                 <h4>Groupe A</h4>
@@ -1612,9 +1611,9 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         Motif du diagnostic
-                                                        <input type="text" class="form-control" placeholder="Motif du Diagnostic"
-                                                          [formControl]="wizardForm.controls['reasonDiagnostic']"
-                                                          maxlength="50">
+                                                        <textarea class="form-control"
+                                                        [formControl]="wizardForm.controls['reasonDiagnostic']">
+                                                        </textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1623,8 +1622,10 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         Remarques
-                                                        <input type="text" class="form-control" placeholder="Remarques Particulières"
-                                                          [formControl]="wizardForm.controls['note']">
+                                                        <textarea class="form-control"
+                                                        [formControl]="wizardForm.controls['note']">
+
+                                                        </textarea>
                                                     </div>
                                                 </div>
                                             </div>

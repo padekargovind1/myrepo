@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
   buildFormGroup(){
     this.loginForm = this.fb.group({
       email : ['' , Validators.compose([Validators.required, CustomValidators.email])],
-      password : ['', Validators.required],
-      userType : ['']
+      password : ['', Validators.required]
     })
   }
 
@@ -45,7 +44,6 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       const email = this.loginForm.controls.email.value;
       const password = this.loginForm.controls.password.value;
-      const userType = this.loginForm.controls.userType.value;
 
       const data = ({ email, password });
 
@@ -67,7 +65,6 @@ export class LoginComponent implements OnInit {
             }
             else {
               console.log(response);
-              this.storeUserType(userType,email);
               if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
                 this.router.navigate(['/payment']);
               } else {
