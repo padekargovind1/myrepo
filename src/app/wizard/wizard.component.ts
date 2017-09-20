@@ -7,6 +7,7 @@ import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { BookingService } from '../services/booking.service';
 import { PublicService } from '../services/public.service';
+import { DateAdapter } from '@angular/material';
 
 import {MyAccountMdl, 
         MyAccountParentMdl, 
@@ -72,7 +73,9 @@ export class WizardComponent implements OnInit, AfterViewInit {
               private fb : FormBuilder,
               private router : ActivatedRoute,
               private publicService : PublicService,
+			  private dateAdapter: DateAdapter<Date>,
               public datepipe: DatePipe) { 
+			  this.dateAdapter.setLocale('nl');
     this.initAdviserData();
     if(this.authService.isUserLoggedIn()){
       this.getUserProfile();
@@ -212,7 +215,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
       // childAddr : IsAdress ? userData.address.address1 : "",
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
-      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? this.datepipe.transform(new Date(userData.birthDate), 'dd/MM/yyyy') : '',
+      //childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? this.datepipe.transform(new Date(userData.birthDate), 'dd/MM/yyyy') : '',
+      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : '',
       childBirthPlace : (userData.birthPlace!=null && userData.birthPlace!="") ? userData.birthPlace : "",
       //Strong and weak subject
       bestSubject : userData.attractionToSubjects,
