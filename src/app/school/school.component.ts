@@ -79,6 +79,8 @@ export class SchoolComponent implements OnInit {
   onMobile : boolean = false;
   bottomAdCarousalClasses : string = "footer-ads hidden animated";
   lieuSelected=[];
+  imageExtensions = ["png","gif","jpeg"];
+  imagePathPre : string = "http://54.254.203.172/cideapi/";
 
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
@@ -470,7 +472,21 @@ export class SchoolComponent implements OnInit {
         response=>{
           console.log(response);
           let data = response.data;
-		      this.isLoader=false;
+		  for(var j=0;j<data.length;j++)
+		  {
+			  var imgpath = data[j].cycles[0].logo1
+			  for(var i=0;i<this.imageExtensions.length;i++)
+			  {
+				var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
+				if(this.imageExists(this.imagePathPre + tempimgpath))
+				{
+					imgpath = tempimgpath;
+					break;
+				}
+			  }
+			  data[j].cycles[0].logo1 = imgpath;
+		  }
+		  this.isLoader=false;
           if(response.code==400){
             // console.log(response.message)
           } else {
@@ -502,6 +518,12 @@ export class SchoolComponent implements OnInit {
         }
       )
     }
+  }
+  imageExists(image_url){
+    var http = new XMLHttpRequest();
+    http.open('HEAD', image_url, false);
+    http.send();
+    return http.status != 404;
   }
 
   onAdvancedClick(event, category){
