@@ -1,4 +1,4 @@
-<main class="main white-background" role="main">
+﻿<main class="main white-background" role="main">
 
 	<h2 class="title-page">Agenda des écoles</h2>
 
@@ -37,7 +37,7 @@
                                 </button>
 							</div>
 							<div>
-                                <a style="float:right; color : white"
+                                <a class="agenda_newsearch"
 									*ngIf="searchForm.value.eventName!='' || 
 									dataToSend.data!='' || dataToSend['date']!==undefined" 
                                     (click)="cleanSearch()">

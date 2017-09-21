@@ -1,4 +1,4 @@
-<div (click)="clickOnBody($event)">
+﻿<div (click)="clickOnBody($event)">
     <div class="popup-ad-holder fadeInDown animated">
         <img src="assets/images/ad/ad-336x280-st.jpg" alt="" />
     </div>
@@ -694,7 +694,7 @@
                         <div class="col-md-12">
                             
                             <div class="result-text" class="col-md-11">
-                                <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour : 
+                                <h3 class="searchText" *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour : 
                                     <span *ngIf="searchFilter[0]!=''">
                                         {{ 'Classe ' + searchFilter[0] | capital }}
                                     </span> 
@@ -823,13 +823,17 @@
                                         <i class="fa fa-download" aria-hidden="true" mdTooltip="Télécharger une brochure"
                                         style="cursor:pointer; color:#393649"></i>
                                     </li>
+                                    <li class="checkbox-custom-li" mdTooltip="Comparer">
+                                      <input type="checkbox" [disabled]="four" class="checkbox filled-in school-checkbox" [id]="'school-'+i" />
+                                      <label [for]="'school-'+i" (click)="onCheckbox(school._id)">&nbsp;</label>
+                                    </li>
                                 </ul>
-                                <div class="checkbox-custom">
+                                <!--div class="checkbox-custom">
                                     <input type="checkbox" [disabled]="four" style="width:5px; height:5px"
                                     class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
                                     <label [for]="'school-'+i" style="width:5px; height:5px"
                                         (click)="onCheckbox(school._id)">&nbsp;</label>
-                                </div>
+                                </div-->
                                 <img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1"
                                     style="width:155px; height:155px; margin-left:15%; margin-top:30px; margin-bottom:20px"/>
                                 <div>

@@ -1,4 +1,4 @@
-<!--<div class="modal-dialog modal-download">
+﻿<!--<div class="modal-dialog modal-download">
   <div class="modal-content">
     <div class="modal-body  wishlist">
       <ul class="nav nav-tabs" role="tablist">
@@ -40,7 +40,7 @@
 <md-tab-group #tabGroup>
 
   <md-tab label="Mes sélection d'écoles">
-    <div *ngIf="applyList.length!=0; else noApply" style="max-height:400px">
+    <div *ngIf="applyList.length!=0; else noApply" class="topPopInnerScroll" >
       <div class="card  school-list" *ngFor="let apply of applyList">                               
         <div class="card-content" style="max-width:476px">
           <img src="assets/images/school-1.jpg" alt="School 1" style="height:124px"/>
@@ -66,7 +66,7 @@
   </md-tab>
   
   <md-tab label="Mes voeux">
-    <div *ngIf="wishList.length!=0; else noWish" style="max-height:400px">
+    <div *ngIf="wishList.length!=0; else noWish" class="topPopInnerScroll" style="max-height:">
       <div class="card  school-list" *ngFor="let wish of wishList; let i=index">    
         <md-checkbox (click)="onSchoolCheckbox(wish.school._id)"></md-checkbox>                           
         <div class="card-content" style="max-width:476px">

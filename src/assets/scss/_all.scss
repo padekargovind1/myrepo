@@ -1908,46 +1908,159 @@ a:hover { text-decoration: none;}
 .under-construction { width: 100%; text-align: center;  }
 .under-construction .row { margin: 0; }
 .under-construction img { width: 40%; }
-@media (max-width:767px){ 
-.list-schools h3 { max-width: 60%;}
-.booking-appointment .advisors-wrap {position:relative !important; top:0 !important; }
-.conseil-centering { background:#343642;  color: #fff;}
-.conseil-centering .title-page {color:#fff; }
+.agenda_newsearch {
+  float: right;
+  color: white
+}
+@media (max-width:767px) {
+  .list-schools h3 {
+    max-width: 60%;
+  }
+  .agenda_newsearch {
+    float: right;
+    color: black
+  }
 
-.landingpage__additional-content .form-wrap {width: 300px;left: 0;top: 0;} 
-.landingpage__wrapper .landingpage__additional-content:nth-child(odd) .form-wrap {right:0; left:auto;}
-.customBtnClass .btn {padding: 10px 8px;
-    font-size: 14px;}
-.btn-conseil , a.btn-conseil   { border-radius: 130px !important;    max-width: 60%;    display: block;    text-align: center; margin: 0 auto 20px; }
+  .booking-appointment .advisors-wrap {
+    position: relative !important;
+    top: 0 !important;
+  }
 
-.landing-page-2 .content-holder{width: 90% !important; background: rgba(0, 0, 0, 0.4) !important ;margin-top: 10px;}
-img.cide-logo-mobile { display:inline-block !important}
+  .conseil-centering {
+    background: #343642;
+    color: #fff;
+  }
 
-.booking-appointment .advisors-wrap .deselect-all-advisor { display:block; }
+  .conseil-centering .title-page {
+    color: #fff;
+  }
 
-#wizard .mat-tab-header .mat-tab-list{transform: none;}
-#wizard .mat-tab-header .mat-tab-labels {  display: block;  float: left;  width: 100%;}
-#wizard .mat-tab-header .mat-tab-label {  display: block;  float: left;  height: auto;  line-height: 150%;  max-width: 100%;  min-width: 72px;  padding: 3px 10px;  position: static;  text-align: center;  width: 100%;}
-.cdk-overlay-container .cdk-overlay-pane {left:0 !important; min-width:100% !important; max-width:100% !important;} 
+  .landingpage__additional-content .form-wrap {
+    width: 300px;
+    left: 0;
+    top: 0;
+  }
+
+  .landingpage__wrapper .landingpage__additional-content:nth-child(odd) .form-wrap {
+    right: 0;
+    left: auto;
+  }
+
+  .customBtnClass .btn {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .btn-conseil, a.btn-conseil {
+    border-radius: 130px !important;
+    max-width: 60%;
+    display: block;
+    text-align: center;
+    margin: 0 auto 20px;
+  }
+
+  .landing-page-2 .content-holder {
+    width: 90% !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    margin-top: 10px;
+  }
+
+  img.cide-logo-mobile {
+    display: inline-block !important
+  }
+
+  .booking-appointment .advisors-wrap .deselect-all-advisor {
+    display: block;
+  }
+
+  #wizard .mat-tab-header .mat-tab-list {
+    transform: none;
+  }
+
+  #wizard .mat-tab-header .mat-tab-labels {
+    display: block;
+    float: left;
+    width: 100%;
+  }
+
+  #wizard .mat-tab-header .mat-tab-label {
+    display: block;
+    float: left;
+    height: auto;
+    line-height: 150%;
+    max-width: 100%;
+    min-width: 72px;
+    padding: 3px 10px;
+    position: static;
+    text-align: center;
+    width: 100%;
+  }
+
+  .cdk-overlay-container .cdk-overlay-pane {
+    left: 0 !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
 
 
-.btn.btn-appointment.disabled, .btn.btn-appointment[disabled] {background:#fff !important; color:#00bc50  !important	; }
+  .btn.btn-appointment.disabled, .btn.btn-appointment[disabled] {
+    background: #fff !important;
+    color: #00bc50 !important;
+  }
 
-.list-of-research p {  overflow-wrap: normal;  width: 100%; max-width: 100%;}
-md-radio-group {  float: left;  width: 100%;}
+  .list-of-research p {
+    overflow-wrap: normal;
+    width: 100%;
+    max-width: 100%;
+  }
 
-.mat-radio-label-content {  padding-left: 5px !important;}
-.mat-radio-button {  display: inline-block;  float: left;}
+  md-radio-group {
+    float: left;
+    width: 100%;
+  }
 
-.landingpage__wrapper .landingpage__additional-content .form-wrap  {display:none !important; }
- 
-.landing-page-2 .main {min-height:0 !important;}
-button.deselect-all-advisor {border:1px solid #ed5565; background:none;}
-#login-form .col-md-6 ,#login-form .col-md-12 {float:left; width:100%;}
-.landingpage__caption h2 br{display:none; }
-.mat-tab-label[_ngcontent-c3]{padding: 0 15px !important;}
-.under-construction { color: black; }
-.under-construction img { width: 80%; }
+  .mat-radio-label-content {
+    padding-left: 5px !important;
+  }
+
+  .mat-radio-button {
+    display: inline-block;
+    float: left;
+  }
+
+  .landingpage__wrapper .landingpage__additional-content .form-wrap {
+    display: none !important;
+  }
+
+  .landing-page-2 .main {
+    min-height: 0 !important;
+  }
+
+  button.deselect-all-advisor {
+    border: 1px solid #ed5565;
+    background: none;
+  }
+
+  #login-form .col-md-6, #login-form .col-md-12 {
+    float: left;
+    width: 100%;
+  }
+
+  .landingpage__caption h2 br {
+    display: none;
+  }
+
+  .mat-tab-label[_ngcontent-c3] {
+    padding: 0 15px !important;
+  }
+
+  .under-construction {
+    color: black;
+  }
+
+  .under-construction img {
+    width: 80%;
+  }
 }
 
 header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    margin-right: 0;    max-width: 50%;    text-align: center;    width: 100%;}
@@ -2142,35 +2255,150 @@ text-align:center;
 
 .mat-tab-label[_ngcontent-c7]{height: 40px !important;    line-height: 40px !important;}
 
-
-@media (max-width:767px){ 
-.brouchreCls  .col-sm-6.col-xs-6 input.form-control{width: 93%; }
-.brouchreCls  .col-sm-6 input.form-control{width: 96%; }
-
-.newSearch{  float: right;  margin-bottom: 10px;  margin-right: 17px;  margin-top: -11px;}
-select.comSchDropMobFix {max-width:97% !important; width:96% !important;}
-.compare-table-cls .compare-item.class-cycle > li {  height: 120px;}
-.applyToCustomClsCk .ngx-datatable .datatable-body .datatable-body-row > div { display: block !important;}
-.applyToCustomClsCk .ngx-datatable .datatable-body-cell, .ngx-datatable .datatable-header-cell { width:100% !important;}
-.inputTypeFileCk {max-width:98%; }
-.list-schools h3 {padding-top:55px; max-width:100%;}
+.topPopInnerScroll  {max-height:400px;}
+@media (max-width:767px) {
 
 }
+  @media (max-width:767px) {
+    .brouchreCls .col-sm-6.col-xs-6 input.form-control {
+      width: 93%;
+    }
 
-@media (max-width:479px){ 
-.brouchreCls .mat-radio-button {width:100%;}
+    .brouchreCls .col-sm-6 input.form-control {
+      width: 96%;
+    }
 
+    .newSearch {
+      float: right;
+      margin-bottom: 10px;
+      margin-right: 17px;
+      margin-top: -11px;
+    }
+
+    select.comSchDropMobFix {
+      max-width: 97% !important;
+      width: 96% !important;
+    }
+
+    .compare-table-cls .compare-item.class-cycle > li {
+      height: 120px;
+    }
+
+    .applyToCustomClsCk .ngx-datatable .datatable-body .datatable-body-row > div {
+      display: block !important;
+    }
+
+    .applyToCustomClsCk .ngx-datatable .datatable-body-cell, .ngx-datatable .datatable-header-cell {
+      width: 100% !important;
+    }
+
+    .inputTypeFileCk {
+      max-width: 98%;
+    }
+
+    .list-schools h3.searchText {
+      padding-top: 55px;
+      max-width: 100%;
+    }
+
+    app-school-choice .selectApplyClass, app-class-choice .selectApplyClass {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .mat-dialog-container {
+      overflow: hidden;
+    }
+
+    .topPopInnerScroll {
+      max-height: 300px;
+    }
+  }
+
+  @media (max-width:479px) {
+    .brouchreCls .mat-radio-button {
+      width: 100%;
+    }
+  }
+
+  .landingPage1Bg {
+    background-image: none !important;
+  }
+
+  .landing-page-2 .main {
+    background: #393649;
+    background-size: cover !important;
+  }
+
+  .selected-button-events {
+    background-color: green
+  }
+
+  .conseil-content {
+    text-align: center;
+  }
+
+  .new-user {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .conseil-title {
+    max-width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+    font-size: 14px;
+    height: 66px;
+    padding: 10px 0;
+  }
+
+.conseil-item img{ height: 160px; }
+
+  .conseil-item {
+    background: #C4C6C5;
+  }
+
+  .checkbox-custom-li .checkbox[type="checkbox"] + label {
+    padding: 0 5px 0 0;
+  }
+
+  .checkbox.filled-in[type="checkbox"]:not(:checked) + label::after {
+    height: 15px !important;
+    width: 15px !important;
+  }
+
+
+
+.landingpage__additional-content .form-wrap {
+  display: none !important;
 }
-.landingPage1Bg{ background-image: none !important; }
 
-.landing-page-2 .main {
-  background: #393649;
-  background-size: cover !important;
+.landingpage__additional-content .form-wrap.activeForm {
+  display: block !important;
 }
 
-.selected-button-events{background-color : green}
-.conseil-content { text-align: center; }
-.new-user{color:black; font-size: 15px; font-weight: bold;}
+.landingpage__additional-content .form-wrap {
+  position: fixed !important;
+  top: 70px !important;
+  right: 10px !important;
+  max-width: 300px;
+  padding: 0;
+  animation-name: none !important;
+  left: auto !important;
+  z-index: 999 !important;
+}
 
-.conseil-title{max-width:80%; margin-left:10%; margin-top:20px; font-size:14px; height:auto; padding:10px 0;}
-.conseil-item{background: #C4C6C5;}
+.landingpage__additional-content .form-wrap .col-md-4 {
+  margin-bottom: 10px;
+  padding: 0;
+  width: 100%;
+}
+
+.landingpage__additional-content.do-animate {
+  animation-fill-mode: none !important;
+}
+
+.mat-tab-body-content {
+  overflow-x: hidden;
+}

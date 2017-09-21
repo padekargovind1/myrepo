@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+﻿import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
@@ -126,7 +126,23 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 			(<any> $('.landingpage__additional-content .form-wrap')).removeClass('fadeIn').addClass('fadeOut');
 			(<any> $('.landingpage__additional-content')).css('z-index', 0);
 		}
-    });
+          });
+
+        (<any> $('.landingPage1Bg .landingpage__wrapper .landingpage__additional-content .landingpage__image-holder')).click(function () {
+            (<any> $('.landingPage1Bg .landingpage__wrapper .landingpage__additional-content .form-wrap')).removeClass("activeForm");
+            (<any> $(this).parent('.landingpage__additional-content')).find('.form-wrap').toggleClass("activeForm");
+
+        });
+
+        (<any> $(document)).on('click', function (event) {
+            if (!(<any> $(event.target).parents().addBack().is('.landingpage__additional-content'))) {
+                (<any> $('.form-wrap')).removeClass("activeForm");
+            }
+        });
+
+        (<any> $('.landingPage1Bg .landingpage__wrapper .landingpage__additional-content')).on('click', function (event) {
+            event.stopPropagation();
+        });
   }
 
   onSubmitSearch(path){

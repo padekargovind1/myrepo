@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+﻿import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
@@ -229,28 +229,29 @@ export class SchoolComponent implements OnInit {
       .subscribe(
         params =>{
           // console.log(params[0].path);
-          this.pathName = params[0].path
+            this.pathName = params[0].path;
+            $('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')");
           if(this.pathName == "ecole"){
             this.schoolComponentTitle="ECOLE Maternelle / Primaire"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')")
+            //$('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')")
             this.advancedSearch.code=["maternelle", "primaire"]
           } else if (this.pathName == "college"){
             this.schoolComponentTitle="Rechercher un collège (6ème-3ème)"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/secondary-school.jpg')")
+            //$('.filter-form-holder').css('background-image', "url('./assets/images/secondary-school.jpg')")
             this.advancedSearch.code=[this.pathName]
           } else if(this.pathName == "lycee"){
             this.schoolComponentTitle="Rechercher un lycée (Seconde-Terminale)"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
+            //$('.filter-form-holder').css('background-image', "url('./assets/images/high-school.jpg')")
             this.advancedSearch.code=[this.pathName]
           } else if(this.pathName == "internat"){
             this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
             this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
             this.schoolComponentTitle="Rechercher un Internat (Maternelle au Lycée)"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
+            //$('.filter-form-holder').css('background-image', "url('./assets/images/internat-school.jpg')")
           } else {
             this.advancedSearch.code=["enseignement"]
             this.schoolComponentTitle="Enseignement Supérieur";
-            $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
+            //$('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
           }
           // this.getAllSchool(this.limit);
           

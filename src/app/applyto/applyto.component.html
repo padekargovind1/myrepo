@@ -1,4 +1,4 @@
-<div class="main white-background" role="main" *ngIf="canDisplayApply">
+﻿<div class="main white-background" role="main" *ngIf="canDisplayApply">
   <div class="container-fluid  appointment-wizard applyToCustomClsCk">
 
     <div class="row">
@@ -42,12 +42,15 @@
                           <div class="form-group">
                             <div class="select-custom">
                               Lien de parenté
-                              <md-select placeholder="Lien de Parenté" class="form-control" 
+                              <select name="" class="form-control" formControlName="lienParent">
+                                <option *ngFor="let lientparent of lienparents" [value]="lientparent">{{ lientparent }}</option>
+                              </select>
+                              <!--md-select placeholder="Lien de Parenté" class="form-control" 
                                 formControlName="lienParent">
                                 <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
-                                  {{ lientparent }}
+                                  
                                 </md-option>
-                              </md-select>
+                              </md-select-->
                             </div>
                           </div>
 
