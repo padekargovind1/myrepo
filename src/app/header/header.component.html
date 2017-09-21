@@ -1,4 +1,4 @@
-<header class="header" >
+﻿<header class="header" >
     <nav class="main-navigation"  *ngIf="!isLandingPage || !onMobile">
             <ul class="clearfix">
                 <li class="parent-item haschild courses-menu">
@@ -148,7 +148,7 @@
 				<ul class="login">
 					<li style="display:none"><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; S'inscrire</a></li>
 					<li><a (click)="onSignOut()"><i class="fa fa-sign-out"></i>&nbsp;&nbsp; Fermer la Session</a></li>
-					<li><a (click)="onMyAccount('0')"><i class="fa fa-user-circle-o"></i>&nbsp;&nbsp; Mon compte</a></li>
+					<li><a (click)="onMyAccount('0')"><i class="fa fa-user-circle-o"></i>&nbsp;&nbsp; Mon compte{{userFirstNameMobile}}</a></li>
 				</ul>
 			</li>
         </ng-template>
