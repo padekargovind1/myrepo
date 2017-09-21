@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+﻿jQuery(document).ready(function($) {
     $('.school-carousel').slick();
 	$(document).on('click', ".mat-tab-label-container .mat-tab-label", function(){
 		if($(".mat-tab-body-wrapper >.mat-tab-body-active").find("#txtAge").length>0)

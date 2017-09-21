@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -188,7 +188,8 @@ export class SuperieurComponent implements OnInit {
   setBackgroundImage(){
     this.advancedSearch.code=["enseignement"]
     this.schoolComponentTitle="Enseignement Supérieur";
-    $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
+    //$('.filter-form-holder').css('background-image', "url('./assets/images/enseignement-school.jpg')")
+    $('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')");
   }
 
   buildForm(){
