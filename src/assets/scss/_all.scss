@@ -2353,7 +2353,8 @@ text-align:center;
     padding: 10px 0;
   }
 
-.conseil-item img{ height: 160px; }
+.imgBackground {background-repeat:no-repeat; background-size:cover; background-position:center center; width:100%; float:none; display:inline-block; height:160px;}
+.imgBackground img{visibility:hidden; opacity:0;} 
 
   .conseil-item {
     background: #C4C6C5;

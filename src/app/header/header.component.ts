@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { AuthService } from '../services/auth.service';
@@ -29,7 +29,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   wishCount = 0;
   applyCount = 0;
   userLastName : string = "";
-  userFirstName : string = "";
+  userFirstName: string = "";
+  userFirstNameMobile: string = "";
   wishList= [];
   onMobile:boolean=false;
   isLandingPage:boolean = false;
@@ -162,6 +163,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           console.log(response.data[0]);
           let data = response.data[0];
           this.userFirstName = data.firstName;
+          this.userFirstNameMobile = data.firstName.trim() != "" ? " (" + data.firstName.trim() + ")" : "";
           // this.userLastName = data.lastName;
         }
       )
