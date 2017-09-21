@@ -215,8 +215,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
       // childAddr : IsAdress ? userData.address.address1 : "",
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
-      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? this.datepipe.transform(new Date(userData.birthDate), 'dd/MM/yyyy') : '',
-      //childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : '',
+      //childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? this.datepipe.transform(new Date(userData.birthDate), 'dd/MM/yyyy') : '',
+      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : '',
       childBirthPlace : (userData.birthPlace!=null && userData.birthPlace!="") ? userData.birthPlace : "",
       //Strong and weak subject
       bestSubject : userData.attractionToSubjects,
