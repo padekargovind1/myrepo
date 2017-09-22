@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, HostListener } from '@angular/core';
+﻿import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
@@ -22,7 +22,7 @@ declare var $ :any;
   styleUrls: ['./school.component.scss'],
   providers: []
 })
-export class SchoolComponent implements OnInit {
+export class SchoolComponent implements OnInit, OnDestroy {
 
   schoolList : any;
   schoolListFilter = [];
@@ -765,6 +765,10 @@ export class SchoolComponent implements OnInit {
   storeClassName(event){
     console.log(event)
     this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
+  }
+
+  ngOnDestroy(){
+    this.schoolService.cleanSelectedLieu();
   }
 
 }
