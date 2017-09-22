@@ -101,7 +101,21 @@ export class WizardComponent implements OnInit, AfterViewInit {
       console.log(this.appointmentData);
     }
     this.loadScript('assets/js/select2.min.js'); 
-	this.runScript();
+    this.runScript();
+
+    swal({
+        text: "<font color='#fff'>Afin de preparer votre entretien dans les meilleures conditions, merci de bien vouloir completer ce questionnaire 48h avant le rendez-vous.</font>",
+        showCancelButton: true,
+        width: 550,
+        confirmButtonColor: '#70AD47',
+        cancelButtonClass: 'btn-cancel-wizard',
+        confirmButtonText: "Je complete maintenant",
+        cancelButtonText: 'Je complete plus tard',
+        background: '#4472C4',
+        reverseButtons: true
+    }).catch(function () {
+        console.log("Cancel");
+    });
   }
   
    loadScript(url) {
@@ -206,18 +220,18 @@ export class WizardComponent implements OnInit, AfterViewInit {
     var hobbies = (userData.hobbies!==undefined && userData.hobbies!=null) ? true : false;
     var interest = (userData.interest!==undefined && userData.interest!=null) ? true : false;
     this.wizardForm.patchValue({
-      childLastName : userData.lastName,
-      childFirstName : userData.firstName,
-      childAge : userData.age,
-      childTitle : userData.gender,
-      childMel : userData.email,
-      childTel : userData.mobilePhone,
+      childLastName : userData.lastName=="A compléter" ? "" :userData.lastName,
+      childFirstName : userData.firstName=="A compléter" ? "" :userData.firstName,
+      childAge : userData.age=="A compléter" ? "" :userData.age,
+      childTitle : userData.gender=="A compléter" ? "" :userData.gender,
+      childMel : userData.email=="A compléter" ? "" :userData.email,
+      childTel : userData.mobilePhone=="A compléter" ? "" :userData.mobilePhone,
       // childAddr : IsAdress ? userData.address.address1 : "",
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
       //childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? this.datepipe.transform(new Date(userData.birthDate), 'dd/MM/yyyy') : '',
-      childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? new Date(userData.birthDate) : '',
-      childBirthPlace : (userData.birthPlace!=null && userData.birthPlace!="") ? userData.birthPlace : "",
+      childBirthDay: (userData.birthDate != null && userData.birthDate != "" && userData.birthDate != "A compléter") ? new Date(userData.birthDate) : '',
+      childBirthPlace: (userData.birthPlace != null && userData.birthPlace != "" && userData.birthPlace != "A compléter") ? userData.birthPlace : "",
       //Strong and weak subject
       bestSubject : userData.attractionToSubjects,
       weakSubject : userData.weakAtSubjects,

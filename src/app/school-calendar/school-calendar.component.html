@@ -55,10 +55,11 @@
 			<div class="row">
 				<div class="col-md-6"></div>
 				<div class="col-md-2">
-					<div class="form-group">
-						<input type="date" id="birthdate" class="form-control form-calendar" style="height :52px; margin-left:10px"
+					<div class="form-group calendarContSchoolCal">
+						<input type="text" id="birthdate" class="form-control form-calendar"
 						[mdDatepicker]="myDatepicker" placeholder="Date de naissance" (change)="onSelectDate()"
 						[formControl]="searchForm.controls['date']" [min]="minDate">
+                      <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
 						<md-datepicker #myDatepicker ></md-datepicker>
 					</div>
 				</div>
@@ -85,7 +86,7 @@
 		</section>
 	</div><!-- .row -->
 	
-	<div *ngIf="eventsToDisplay.length!=0; else noEvents">
+	<div *ngIf="eventsToDisplay!==undefined && eventsToDisplay.length!=0; else noEvents">
 		<div *ngFor="let event of eventsToDisplay; let i=index">
 			<app-cube [eventData]="event" [counter]="i+1"></app-cube>
 		</div>
