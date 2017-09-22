@@ -478,7 +478,7 @@ export class SchoolComponent implements OnInit {
             this.defaultSchoolList=data;
             this.schoolListFilter=data;
 			      this.totalRecords = response.total;
-            // console.log(this.schoolListFilter)
+            console.log(this.schoolListFilter)
             // for(var j=0;j<data.length;j++)
             // {
             //   var imgpath = data[j].cycles[0].logo1
@@ -491,7 +491,7 @@ export class SchoolComponent implements OnInit {
             //   }
             //     data[j].cycles[0].logo1 = imgpath;
             // }
-            // this.isLoader=false;
+            this.isLoader=false;
           }
         }
       )
@@ -517,6 +517,7 @@ export class SchoolComponent implements OnInit {
       )
     }
   }
+
   imageExists(image_url){
     // console.log("test")
     var http = new XMLHttpRequest();
@@ -599,16 +600,16 @@ export class SchoolComponent implements OnInit {
     }
   }
 
-  addOptionFilter(event){
-    // console.log(event.srcElement.value);  
-    this.advancedSearch['options'] = {option : event.srcElement.value}
-    // console.log(this.advancedSearch['options']['option'])
-    if(this.advancedSearch['options']['option']==""){
-      delete this.advancedSearch['options']
-    }
-    // console.log(this.advancedSearch)
-    this.postAdvancedFilter();
-  }
+  // addOptionFilter(event){
+  //   // console.log(event.srcElement.value);  
+  //   this.advancedSearch['options'] = {option : event.srcElement.value}
+  //   // console.log(this.advancedSearch['options']['option'])
+  //   if(this.advancedSearch['options']['option']==""){
+  //     delete this.advancedSearch['options']
+  //   }
+  //   // console.log(this.advancedSearch)
+  //   this.postAdvancedFilter();
+  // }
 
   cleanSearch(){
     // console.log("clean search")

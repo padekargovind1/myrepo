@@ -230,7 +230,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       // childPostalCode : IsAdress ? userData.address.postCode : "",
       // childCity : IsAdress ? userData.address.city : "",
       //childBirthDay : (userData.birthDate!=null && userData.birthDate!="") ? this.datepipe.transform(new Date(userData.birthDate), 'dd/MM/yyyy') : '',
-      childBirthDay: (userData.birthDate != null && userData.birthDate != "" && userData.birthDate != "A compléter") ? new Date(userData.birthDate) : '',
+      // childBirthDay: (userData.birthDate != null && userData.birthDate != "" && userData.birthDate != "A compléter") ? new Date(userData.birthDate) : '',
       childBirthPlace: (userData.birthPlace != null && userData.birthPlace != "" && userData.birthPlace != "A compléter") ? userData.birthPlace : "",
       //Strong and weak subject
       bestSubject : userData.attractionToSubjects,
@@ -264,7 +264,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
 			titre : userData.parents[i].gender,
 			nom : userData.parents[i].lastName,
 			prenom : userData.parents[i].firstName,
-			email : this.usersService.getUserType()=="Parent" ? this.usersService.getUserEmail() : '',
+			email : userData.parents[i].email,
 			portable : userData.parents[i].phoneNumber,
 			adresse : IsAdress ? userData.parents[i].address.address1 : "",
 			codepostal : IsAdress ? userData.parents[i].address.postCode : "",

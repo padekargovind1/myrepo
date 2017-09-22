@@ -60,6 +60,19 @@
                                                         <option value="cinquieme">&nbsp;5ème</option>
                                                         <option value="quatrieme">&nbsp;4ème</option>
                                                         <option value="troisieme">&nbsp;3ème</option>
+                                                        <option value="" disabled>&nbsp;</option>
+                                                        <option value="">&nbsp;Quatrième d'aide et de soutien</option>
+                                                        <option value="">&nbsp;Troisième d'insertion</option>
+                                                        <option value="">&nbsp;Troisième découverte professionnelle - DP6 (module 6 heures)</option>
+                                                        <option value="">&nbsp;3ème préparatoire aux formations professionnels - Troisième prépa pro (ex DP6)</option>
+                                                        <option value="">&nbsp;DIMA Dispositif d'initiation aux métiers en alternance (en collège)</option>
+                                                        <option value="">&nbsp;SEGPA 6è-5è section d'enseignement général et professionnel adapté</option>
+                                                        <option value="">&nbsp;SEGPA 4è-3è section d'enseignement général et professionnel adapté</option>
+                                                        <option value="">&nbsp;ULIS unités localisées pour l'inclusion solaire (ex UPI)</option>
+                                                        <option value="" disabled>&nbsp;</option>
+                                                        <option value="">&nbsp;Cursus non francophone (GB-US)</option>
+                                                        <option value="">&nbsp;Ecole pratiquant la pédagogie Montessori</option>
+                                                        <option value="">&nbsp;Enseignement à distance</option>
                                                     </select>
                                                 </label>
                                             </div>
@@ -406,14 +419,14 @@
                                             <li><input type="checkbox" name="bigholidays" class="bigholidays checkbox filled-in" id="filter-23" /><label for="filter-23">Stages de grandes vacances</label></li> 
                                         </ul>
                                     </li>
-                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Restauration</a>
+                                    <!-- <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Restauration</a>
                                         <ul (click)="onAdvancedClick($event, 'canteen')"
                                             class="adv-filt">
                                             <li><input type="checkbox" name="self-service" class="self-service checkbox filled-in" id="filter-24" /><label for="filter-24">Self-service</label></li>
                                             <li><input type="checkbox" name="serviceAtTable" class="serviceAtTable checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
                                             <li><input type="checkbox" name="cafeteria" class="cafeteria checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a class="advancedFilter advancedFilterCenter adv-filt left-popup advancedFilterPadding">Externat</a>
                                         <ul (click)="onAdvancedClick($event, 'external')">
@@ -578,7 +591,7 @@
                                             <li><input type="checkbox" name="sport" class="sport checkbox filled-in" id="filter-54" /><label for="filter-54">Section Sportive</label></li>
                                         </ul>
                                     </li>
-                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Diplomes</a>
+                                    <!-- <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Diplomes</a>
                                         <ul class="adv-filt">
                                             <li><label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class" 
@@ -597,9 +610,9 @@
                                             <li>
                                                 <input type="text" name="" placeholder="Nom de L'option" 
                                                     class="form-control" (keyup)="addOptionFilter($event)">
-                                                <!--<button class="btn btn-confirm" (click)="addOptionFilter($event)">Entrer</button>-->
                                             </li>
                                         </ul>
+                                    </li> -->
                                     <li><a class="advancedFilter advancedFilterCenter">Places disponibles</a>
                                         <ul (click)="onAdvancedClick($event, 'seats')"
                                             class="adv-filt">

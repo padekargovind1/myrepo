@@ -54,6 +54,9 @@ export const AppRoutes: Routes = [
     { path: 'mail', component:MailTestComponent},	
     { path: 'payment' , component: PaymentComponent },
     { path: 'mail', component:MailTestComponent},
+    { path: 'enseignement-privee', component: UnderConstructionComponent },
+    { path: 'panorama', component: UnderConstructionComponent },
+    { path: 'contact-us', component: UnderConstructionComponent },
     { path: 'under-construction', component: UnderConstructionComponent },
     { path: '**', redirectTo: ''}
 ]

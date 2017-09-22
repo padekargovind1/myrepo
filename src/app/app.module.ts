@@ -14,7 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
-import { SweetAlertService } from 'ng2-sweetalert2';
+// import { SweetAlertService } from 'ng2-sweetalert2';
 
 import 'hammerjs';
 
@@ -192,7 +192,7 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     CompareService,
     BookingService,
     EditorService,
-    SweetAlertService,
+    // SweetAlertService,
     BrochureService,
     SendService
   ],

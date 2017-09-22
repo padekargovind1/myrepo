@@ -57,10 +57,11 @@
 				<div class="col-md-2">
 					<div class="form-group calendarContSchoolCal">
 						<input type="text" id="birthdate" class="form-control form-calendar"
-						[mdDatepicker]="myDatepicker" placeholder="Date de naissance" (change)="onSelectDate()"
-						[formControl]="searchForm.controls['date']" [min]="minDate">
+						placeholder="Date de naissance" (change)="onSelectDate()"
+						[formControl]="searchForm.controls['date']" [min]="minDate"
+						[mdDatepicker]="picker">
                       <!-- <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button> -->
-						<md-datepicker #myDatepicker ></md-datepicker>
+						<md-datepicker #picker></md-datepicker>
 					</div>
 				</div>
 				<div class="col-md-4">
