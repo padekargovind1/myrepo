@@ -473,21 +473,6 @@ export class SchoolComponent implements OnInit {
         response=>{
           console.log(response);
           let data = response.data;
-		  for(var j=0;j<data.length;j++)
-		  {
-			  var imgpath = data[j].cycles[0].logo1
-			  for(var i=0;i<this.imageExtensions.length;i++)
-			  {
-				var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
-				if(this.imageExists(this.imagePathPre + tempimgpath))
-				{
-					imgpath = tempimgpath;
-					break;
-				}
-			  }
-			  data[j].cycles[0].logo1 = imgpath;
-		  }
-		  this.isLoader=false;
           if(response.code==400){
             // console.log(response.message)
           } else {
@@ -495,6 +480,19 @@ export class SchoolComponent implements OnInit {
             this.schoolListFilter=data;
 			      this.totalRecords = response.total;
             // console.log(this.schoolListFilter)
+            // for(var j=0;j<data.length;j++)
+            // {
+            //   var imgpath = data[j].cycles[0].logo1
+            //   for(var i=0;i<this.imageExtensions.length;i++){
+            //     var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
+            //     if(this.imageExists(this.imagePathPre + tempimgpath)){
+            //       imgpath = tempimgpath;
+            //       break;
+            //     }
+            //   }
+            //     data[j].cycles[0].logo1 = imgpath;
+            // }
+            // this.isLoader=false;
           }
         }
       )
@@ -521,6 +519,7 @@ export class SchoolComponent implements OnInit {
     }
   }
   imageExists(image_url){
+    // console.log("test")
     var http = new XMLHttpRequest();
     http.open('HEAD', image_url, false);
     http.send();
