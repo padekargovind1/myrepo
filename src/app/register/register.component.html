@@ -86,7 +86,8 @@
                     <div class="input clearfix">
                       <input type="submit" id="reg_submit" 
                         class="submit-input btn-appointment grad-btn ln-tr" 
-                        value="Enregistrer" [disabled]="!registerForm.valid">
+                        value="Enregistrer" [mdTooltip]="!registerForm.valid ? 'Tous les champs sont obligatoires' : ''"
+                        mdTooltipClass="center-tooltip">
                     </div>
                     <div>
                       <div class="forgot pull-right">
