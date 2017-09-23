@@ -9,8 +9,8 @@ import { BookingService } from '../services/booking.service';
 import { PublicService } from '../services/public.service';
 import { DateAdapter } from '@angular/material';
 
-import {MyAccountMdl, 
-        MyAccountParentMdl, 
+import {MyAccountMdl,
+        MyAccountParentMdl,
         MyAccountAdresse,
         MyAccountSocialAdrMdl,
         MyAccountHistoryMdl,
@@ -18,7 +18,7 @@ import {MyAccountMdl,
         MyAccountSiblingsMdl } from '../model/myaccount.model';
 
 import { CustomValidators } from 'ng2-validation';
-import swal from 'sweetalert2';
+import swal from "sweetalert2";
 
 
 @Component({
@@ -32,20 +32,20 @@ export class WizardComponent implements OnInit, AfterViewInit {
   tokenLog : boolean = false;
   bookingData:any;
   wizardForm : FormGroup;
-  lienparents = [ "Père", 
-                "Mère", 
-                "Oncle", 
-                "Tante", 
-                "Grand-Père", 
-                "Grand-Mère", 
-                "Tuteur", 
+  lienparents = [ "Père",
+                "Mère",
+                "Oncle",
+                "Tante",
+                "Grand-Père",
+                "Grand-Mère",
+                "Tuteur",
                 "Tutrice"];
   langues = ["Français", "Anglais", "Espagnol", "Allemand", "Italien"];
   primarySchool = ["CP", "CE1", "CE2", "CM1", "CM2"];
   secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"];
-  subjectSchool = ["Maths", "Sciences", "Physiques", "Sciences Naturelles", "Histoire", 
-                  "Géographie", "Instruction Civique", "Sport", "Musique", 
-                  "Arts Plastiques", "Français", "Anglais", "Espagnol", "Allemand", 
+  subjectSchool = ["Maths", "Sciences", "Physiques", "Sciences Naturelles", "Histoire",
+                  "Géographie", "Instruction Civique", "Sport", "Musique",
+                  "Arts Plastiques", "Français", "Anglais", "Espagnol", "Allemand",
                   "Italien"]
   userData : any;
   appointmentData=[];
@@ -74,7 +74,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
               private router : ActivatedRoute,
               private publicService : PublicService,
 			  private dateAdapter: DateAdapter<Date>,
-              public datepipe: DatePipe) { 
+              public datepipe: DatePipe) {
 			  this.dateAdapter.setLocale('nl');
     this.initAdviserData();
     if(this.authService.isUserLoggedIn()){
@@ -100,7 +100,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       this.appointmentData = this.bookingService.getBookingData();
       console.log(this.appointmentData);
     }
-    this.loadScript('assets/js/select2.min.js'); 
+    this.loadScript('assets/js/select2.min.js');
     this.runScript();
 
     swal({
@@ -117,7 +117,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
         console.log("Cancel");
     });
   }
-  
+
    loadScript(url) {
     console.log('preparing to load...')
     let node = document.createElement('script');
@@ -183,7 +183,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
     this.userData.address = new MyAccountAdresse();
     this.userData.socialAddresses = new MyAccountSocialAdrMdl();
     this.userData.academicHistories[0]={};
-    this.userData.academicHistories[0] = new MyAccountHistoryMdl(); 
+    this.userData.academicHistories[0] = new MyAccountHistoryMdl();
     this.userData.bulletins[0] = new MyAccountBulletin();
     this.userData.siblings[0]=new MyAccountSiblingsMdl();
   }
@@ -203,19 +203,18 @@ export class WizardComponent implements OnInit, AfterViewInit {
             this.canDisplayWizard=true;
           }
         }
-      ) 
+      )
   }
 
   patchValue(userData){
     console.log(userData)
 	  var IsAdress = (userData.address!==undefined && userData.address!=null) ? true : false;
     var haveLanguage = (userData.academicHistories.length!=0) ? true : false;
+    var haveLv1 = false;
+    var haveLv2 = false;
     if(haveLanguage){
       var haveLv1 = (userData.academicHistories[0].languages[1]!==undefined && userData.academicHistories[0].languages[1]!=null) ? true : false;
       var haveLv2 = (userData.academicHistories[0].languages[2]!==undefined && userData.academicHistories[0].languages[2]!=null) ? true : false;
-    } else {
-      var haveLv1 = false;
-      var haveLv2 = false;
     }
     var hobbies = (userData.hobbies!==undefined && userData.hobbies!=null) ? true : false;
     var interest = (userData.interest!==undefined && userData.interest!=null) ? true : false;
@@ -246,7 +245,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
     });
     if(haveLanguage){
       this.wizardForm.patchValue({
-        //Current Institution 
+        //Current Institution
         schoolName : userData.academicHistories[0].schoolName=="A compléter" ? "" : userData.academicHistories[0].schoolName,
         schoolCity : userData.academicHistories[0].city=="A compléter" ? "" : userData.academicHistories[0].city,
         schoolClasse : userData.academicHistories[0].class=="A compléter" ? "" :userData.academicHistories[0].class,
@@ -453,7 +452,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
       this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv2)
       this.userData.academicHistories[0].languages.push(this.wizardForm.value.schoolLv3)
     }
-      
+
     this.userData.attractionToSubjects = [];
     this.userData.attractionToSubjects.push(this.wizardForm.value.bestSubject)
     this.userData.weakAtSubjects = [];
@@ -546,7 +545,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
   }
 
   onChecked() {
-    var check = this.wizardForm.controls.schoolHelp.value;
+    var check = this.wizardForm.controls['schoolHelp'].value;
 
     console.log(check);
 
