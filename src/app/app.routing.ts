@@ -31,7 +31,7 @@ export const AppRoutes: Routes = [
     { path: 'landing-page-2', component: AccueilComponent },
     { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'conseil', component: ConseilComponent},
-    { path: 'orientation', component: LinguisticComponent},
+    { path: 'orientation', component: UnderConstructionComponent},
     { path: 'booking' , component: BookingComponent },
     { path: 'linguistic' , component: UnderConstructionComponent },
     { path: 'register' , component: RegisterComponent },
