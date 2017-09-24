@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { PublicService } from '../services/public.service';
-import { BookingService } from '../services/booking.service';
+//import { BookingService } from '../services/booking.service';
 import { SchoolService } from '../services/school.service';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { CustomValidators } from 'ng2-validation';
@@ -20,21 +20,20 @@ const URL = 'http://54.254.203.172/cide-school/upload/';
   styleUrls: ['./applyto.component.scss']
 })
 export class ApplytoComponent implements OnInit {
-  
-  tokenLog : string ="";
+
   applytoForm : FormGroup;
-  lienparents = [ "Père", 
-                "Mère", 
-                "Oncle", 
-                "Tante", 
-                "Grand-Père", 
-                "Grand-Mère", 
-                "Tuteur", 
+  lienparents = [ "Père",
+                "Mère",
+                "Oncle",
+                "Tante",
+                "Grand-Père",
+                "Grand-Mère",
+                "Tuteur",
                 "Tutrice"];
   langues = ["Français", "Anglais", "Espagnol", "Allemand", "Italien"];
-  primarySchool = ["CP", "CE1", "CE2", "CM1", "CM2"];
-  secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"];
-  userId ="";
+  //primarySchool = ["CP", "CE1", "CE2", "CM1", "CM2"];
+  //secondarySchool = ["6ème", "5ème", "4ème", "3ème", "2nde", "1er", "Terminal"];
+  //userId ="";
   activeTabIndex = 0;
   subscription : Subscription;
   schoolId="";
@@ -48,17 +47,17 @@ export class ApplytoComponent implements OnInit {
   // siblings:any;
   metiers : any;
   @ViewChild('tabGroup') tabGroup;
-  maxDate = new Date();
+  //maxDate = new Date();
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
               private publicService : PublicService,
-              private bookingService : BookingService,
+              //private bookingService : BookingService,
               private route : Router,
               private fb : FormBuilder,
               private router : ActivatedRoute,
-              private schoolService : SchoolService) { 
-                
+              private schoolService : SchoolService) {
+
                 this.subscription = this.router.params
                   .subscribe(
                     params => {
@@ -72,7 +71,6 @@ export class ApplytoComponent implements OnInit {
               }
 
   ngOnInit() {
-    // console.log(this.tokenLog)
     if(!this.authService.isUserLoggedIn()){
       swal({
         title: 'Attention',
@@ -92,7 +90,7 @@ export class ApplytoComponent implements OnInit {
     node.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(node);
  }
- 
+
   getSchoolDataById(){
     this.publicService.getSchoolById(this.schoolId)
       .subscribe(
@@ -140,7 +138,7 @@ export class ApplytoComponent implements OnInit {
 	}
     var hobbies = (userData.hobbies!==undefined && userData.hobbies!=null) ? true : false;
     var interest = (userData.interest!==undefined && userData.interest!=null) ? true : false;
-	
+
 	var isAcademicHistories = userData.academicHistories.length>0;
 	var AcademicHistoriesFirst = userData.academicHistories[0];
     this.applytoForm.patchValue({
@@ -346,7 +344,7 @@ export class ApplytoComponent implements OnInit {
     const data = {
       type : "apply",
       schools : [{
-        school : this.schoolID, 
+        school : this.schoolID,
         class : this.schoolService.getClassName()
       }]
     }
@@ -383,7 +381,7 @@ export class ApplytoComponent implements OnInit {
           }
         }
       )
-    
+
 }
 
   successSubmit(){

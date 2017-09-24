@@ -5,8 +5,8 @@ import swal from 'sweetalert2';
 
 @Injectable()
 export class BookingService {
-  bookingData = ["", "", "", ""]
-  adviserData = ["", "", "", "", ""];
+  //bookingData = ["", "", "", ""]
+  //adviserData = ["", "", "", "", ""];
   forBooking : boolean = false;
   forFastBooking : boolean = false;
   newAppointment : any = null;
@@ -42,7 +42,7 @@ export class BookingService {
     const packageTitle = localStorage.getItem("bookingPackageTitle")
     const packageDesc = localStorage.getItem("bookingPackageDesc")
     const packageNumber = localStorage.getItem("bookingPackageNumber")
-    const data = [day, start, end, advName, advGender, advId, 
+    const data = [day, start, end, advName, advGender, advId,
       advPhoto, packageTitle, packageDesc, packageNumber]
 
     return data;
@@ -136,12 +136,12 @@ export class BookingService {
     return this.newAppointment;
   }
 
-  cleanAppointmentData(){
-    this.userData = null;
-    this.newAppointment=null;
-    this.packageIndex=null;
-    this.forBooking=false;
-  }
+  // cleanAppointmentData(){
+  //   this.userData = null;
+  //   this.newAppointment=null;
+  //   this.packageIndex=null;
+  //   this.forBooking=false;
+  // }
 
   makeAppointment(){
     this.usersService.getAppointmentsPackage()

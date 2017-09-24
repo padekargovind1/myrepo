@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA, MdDialogConfig } from '@angular/material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { AuthService } from '../../services/auth.service';
@@ -14,8 +14,8 @@ import { ClassChoiceComponent } from '../class-choice/class-choice.component';
 export class SchoolChoiceComponent implements OnInit {
 
   schoolData : any;
-  classList =[];
-  config: MdDialogConfig;
+  //classList =[];
+  config: any;
   constructor(public dialogref:MdDialogRef<SchoolChoiceComponent>,
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any},
               private usersService : UsersService,
@@ -33,19 +33,19 @@ export class SchoolChoiceComponent implements OnInit {
     this.schoolData=this.data.schoolData
   }
 
-  saveOnWish(){
-    const data = {
-      type : "wish",
-      schools : [{school : this.schoolData._id, class:'EE'}]
-    }
-    this.usersService.postApplication(data)
-      .subscribe(
-        response=>{
-          console.log(response)
-        }
-      )
-    this.dialogref.close()
-  }
+  // saveOnWish(){
+  //   const data = {
+  //     type : "wish",
+  //     schools : [{school : this.schoolData._id, class:'EE'}]
+  //   }
+  //   this.usersService.postApplication(data)
+  //     .subscribe(
+  //       response=>{
+  //         console.log(response)
+  //       }
+  //     )
+  //   this.dialogref.close()
+  // }
 
   selectTo(index){
     // this.router.navigate(['applyto', this.schoolData._id]);
@@ -57,7 +57,7 @@ export class SchoolChoiceComponent implements OnInit {
         this.dialogref.close();
       }
     });
-  } 
+  }
 
   makeProfile(index){
     this.config= {

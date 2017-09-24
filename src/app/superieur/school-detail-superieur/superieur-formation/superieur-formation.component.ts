@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PublicService } from '../../../services/public.service';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+//import { PublicService } from '../../../services/public.service';
+//import { ActivatedRoute } from '@angular/router';
+//import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-superieur-formation',
@@ -12,12 +12,13 @@ export class SuperieurFormationComponent implements OnInit {
 
   @Input() schoolDataRef;
   schoolDataToDisplay =[];
-  subscription : Subscription;
+  //subscription : Subscription;
   schoolData=[];
   schoolId = "";
-  constructor(private publicService : PublicService,
-              private route : ActivatedRoute) { 
-    
+  constructor(//private publicService : PublicService,
+              //private route : ActivatedRoute
+  ) {
+
   }
 
   ngOnInit() {

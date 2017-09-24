@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { CustomValidators } from 'ng2-validation';
@@ -21,7 +21,7 @@ export class SendMessageComponent implements OnInit {
               private usersService : UsersService,
               private sendService : SendService,
               private authService : AuthService,
-              @Inject(MD_DIALOG_DATA) private data: {school : any}) { 
+              @Inject(MD_DIALOG_DATA) private data: {school : any}) {
                 this.buildFormGroup();
                 this.getProfile();
               }

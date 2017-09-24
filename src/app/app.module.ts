@@ -7,7 +7,7 @@ import { HttpModule, Jsonp, JsonpModule } from '@angular/http';
 import {
   MdCardModule, MdButtonModule, MdListModule,
   MdProgressBarModule, MdMenuModule, MdInputModule, MdRadioModule,
-  MdToolbarModule, MdDatepickerModule, MdNativeDateModule, MdSelectModule, 
+  MdToolbarModule, MdDatepickerModule, MdNativeDateModule, MdSelectModule,
   MdIconModule, MdAutocompleteModule,MdTabsModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -78,7 +78,7 @@ import { CapitalPipe } from './pipes/capital.pipe';
 import { AgmCoreModule } from '@agm/core';
 import { ConseilPopupComponent } from './conseil/conseil-popup/conseil-popup.component';
 import { PhonePipe } from './pipes/phone.pipe';
-import { MailTestComponent } from './mail-test/mail-test.component';
+//import { MailTestComponent } from './mail-test/mail-test.component';
 import { SchoolNamePipe } from './pipes/school-name.pipe';
 import { SchoolTagPipe } from './pipes/school-tag.pipe';
 import { SchoolDetailSuperieurComponent } from './superieur/school-detail-superieur/school-detail-superieur.component';
@@ -140,7 +140,7 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     CapitalPipe,
     ConseilPopupComponent,
     PhonePipe,
-    MailTestComponent,
+    //MailTestComponent,
     SchoolNamePipe,
     SchoolTagPipe,
     SchoolDetailSuperieurComponent,
@@ -157,17 +157,17 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     BrowserModule,
     MaterialModule,
     FlexLayoutModule,
-    MdIconModule, 
-    MdCardModule, 
-    MdButtonModule, 
+    MdIconModule,
+    MdCardModule,
+    MdButtonModule,
     MdListModule,
-    MdProgressBarModule, 
-    MdMenuModule, 
-    MdInputModule, 
+    MdProgressBarModule,
+    MdMenuModule,
+    MdInputModule,
     MdRadioModule,
-    MdToolbarModule, 
-    MdDatepickerModule, 
-    MdNativeDateModule, 
+    MdToolbarModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
     MdSelectModule,
     MdTabsModule,
     BrowserAnimationsModule,

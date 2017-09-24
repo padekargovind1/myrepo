@@ -14,6 +14,7 @@ export class LandingPage3Component implements OnInit {
               private publicService : PublicService) { }
 
   ngOnInit() {
+    this.initRate();
   }
 
   navigateTo(index){

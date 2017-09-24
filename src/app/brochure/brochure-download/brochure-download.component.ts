@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { Http, Response } from '@angular/http';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+//import { Http, Response } from '@angular/http';
 
 import { PublicService } from '../../services/public.service';
 
-declare var saveAs:any; 
+//declare var saveAs:any;
 
 @Component({
   selector: 'app-brochure-download',
@@ -20,7 +20,8 @@ export class BrochureDownloadComponent implements OnInit {
                 brochureList : any,
                 schoolList : any},
               private publicService : PublicService,
-              private http : Http) { }
+              //private http : Http
+              ) { }
 
   ngOnInit() {
     console.log(this.data)

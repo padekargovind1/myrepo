@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
 
   logIn(){
     if(this.loginForm.valid){
-      const email = this.loginForm.controls.email.value;
-      const password = this.loginForm.controls.password.value;
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
 
       const data = ({ email, password });
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         .then(
           data => {
             let response = data;
-            // console.log(response);  
+            // console.log(response);
             if (response.code == 400) {
               let msg = response.message;
               this.errorMessage = msg;
@@ -71,15 +71,10 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/']);
               }
               this.userService.getProfile();
-            }        
+            }
           }
         );
     }
-  }
-
-  storeUserType(userType,email){
-    this.userService.storeUserType(userType);
-    this.userService.storeUserEmail(email);
   }
 
   onNewAccount(){

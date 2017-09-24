@@ -1,7 +1,7 @@
 import { Component, OnInit , Output, EventEmitter, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
-import { MyAccountParentMdl, 
-        MyAccountAdresse } from '../model/myaccount.model';
+//import { MyAccountParentMdl,
+//        MyAccountAdresse } from '../model/myaccount.model';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
 
@@ -15,8 +15,8 @@ export class MyaccountComponent implements OnInit {
   @ViewChild('tabGroup') tabGroup;
   constructor(private route : Router,
               private authService : AuthService,
-              private usersService : UsersService) { 
-    
+              private usersService : UsersService) {
+
   }
 
   ngOnInit() {

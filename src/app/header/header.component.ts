@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import { MdDialog } from '@angular/material';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
 import { PublicService } from '../services/public.service';
@@ -8,10 +8,10 @@ import { BookingService } from '../services/booking.service';
 import { CompareService } from '../services/compare.service';
 import { WishApplyPopupComponent } from './wish-apply-popup/wish-apply-popup.component';
 import 'rxjs/add/operator/filter';
-import { Subscription } from 'rxjs/Subscription';
+//import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
 
-var self = this;
+//var self = this;
 
 @Component({
   selector: 'app-header',
@@ -20,23 +20,23 @@ var self = this;
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  Title : String = "Ma Recherche";
+  //Title : String = "Ma Recherche";
 
   userLogin : boolean = false;
-  userApplication : any;
-  schoolApply = [];
-  schoolWish = [];
+  //userApplication : any;
+  //schoolApply = [];
+  //schoolWish = [];
   wishCount = 0;
   applyCount = 0;
-  userLastName : string = "";
+  //userLastName : string = "";
   userFirstName: string = "";
   userFirstNameMobile: string = "";
   wishList= [];
   onMobile:boolean=false;
   isLandingPage:boolean = false;
-  subscription : Subscription
+  //subscription : Subscription
 
-  config: MdDialogConfig;
+  config: any;
 
   constructor(private router : Router,
               private authService : AuthService,
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .filter((event) => event instanceof NavigationEnd)
       .subscribe((event) => {
         // console.log(event);
-		
+
         let currentRoute = this.route.root;
         while (currentRoute.children[0] !== undefined) {
           currentRoute = currentRoute.children[0];
@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         //console.log(currentRoute.routeConfig.path);
         var pathname = currentRoute.routeConfig.path;
         this.isLandingPage = pathname.indexOf("landing-page")>=0;
-		
+
         this.userLogin=this.authService.isUserLoggedIn();
         if(this.userLogin){
           this.getUserName();
@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         document.getElementById("main").style.marginLeft = "250px";
         document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
-  
+
   closeNav() {
         document.getElementById("mySidenav").style.width = "0";
         document.getElementById("main").style.marginLeft = "0";
@@ -117,19 +117,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }else {
       self.onMobile=false;
     }
-	
+
 	  var winWidth = $(window).width();
-	
+
     if(self.onMobile){
       $(document).on('click', '.menu-holder', function(){
         console.log("test")
       if($('.submenutBt').css('visibility')=='visible'){
         $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
-        
+
       }else{
         $('.submenutBt').css({'opacity': '1','visibility': 'visible','-moz-transform': 'scaleY(1)','-webkit-transform': 'scaleY(1)','-o-transform': 'scaleY(1)','-ms-transform': 'scaleY(1)','transform': 'scaleY(1)'});
       }
-        
+
       });
 	  $('*').click(function(e){
 		var a = e.target;
@@ -138,7 +138,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		}
 	});
     }
-  
+
     $('body').on('click', function($event){
       // console.log(event)
 	  if(event!==undefined && event.srcElement!==undefined)
@@ -150,7 +150,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		  }
 		 }
     });
-	
+
 	// setInterval(()=>{
 	// 	if(this.userLogin){ this.getApplication(); }
 	// },2000);
@@ -184,7 +184,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	  this.hideHeaderSubMenus();
     this.router.navigate(['/login']);
   }
-  
+
   navigateToURL(url){
 	  this.hideHeaderSubMenus();
     this.router.navigate([url]);
@@ -229,34 +229,34 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
   }
 
-  getSchoolsData(){
-    for(let school of this.userApplication){
-      this.publicService.getSchoolById(school)
-        .subscribe(
-          (response)=>{
-            let data = response.data;
-            console.log(data);
-            if(response.code==400){
-              console.log(response.message)
-            } else {
-              if(data.type=="wish"){
-                this.schoolWish.push(data);
-              } else {
-                this.schoolApply.push(data);
-              }
-            }
-          }
-        )
-    }
-  }
+  // getSchoolsData(){
+  //   for(let school of this.userApplication){
+  //     this.publicService.getSchoolById(school)
+  //       .subscribe(
+  //         (response)=>{
+  //           let data = response.data;
+  //           console.log(data);
+  //           if(response.code==400){
+  //             console.log(response.message)
+  //           } else {
+  //             if(data.type=="wish"){
+  //               this.schoolWish.push(data);
+  //             } else {
+  //               this.schoolApply.push(data);
+  //             }
+  //           }
+  //         }
+  //       )
+  //   }
+  // }
 
-  onSchoolDetail(schoolId){
-    this.router.navigate(['/etablissement', schoolId]);
-  }
+  // onSchoolDetail(schoolId){
+  //   this.router.navigate(['/etablissement', schoolId]);
+  // }
 
-  onApplyTo(schoolId){
-    this.router.navigate(['/applyto', schoolId]);
-  }
+  // onApplyTo(schoolId){
+  //   this.router.navigate(['/applyto', schoolId]);
+  // }
 
   onMyAccount(nb){
 	this.hideHeaderSubMenus();
@@ -295,10 +295,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  wishApplyDialog(nb : number){ 
+  wishApplyDialog(nb : number){
 	if(this.userLogin){
 		this.makeProfile(nb)
-		let dialogref = this.dialog.open(WishApplyPopupComponent,this.config);
+		this.dialog.open(WishApplyPopupComponent,this.config);
 		// dialogref.afterClosed().subscribe(result => {
 		//   console.log(result)
 		// });
@@ -312,7 +312,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.publicService.cleanNumLanding();
   }
-  
+
   hideHeaderSubMenus(){
     console.log(this.onMobile);
     if(this.onMobile){

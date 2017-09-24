@@ -1,7 +1,7 @@
-﻿import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import { MdDialog} from '@angular/material';
 
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
@@ -9,7 +9,7 @@ import { SchoolService } from '../services/school.service';
 import { UsersService } from '../services/users.service';
 import { BrochureService } from '../services/brochure.service';
 import { SendService } from '../services/send.service';
-import { AdvancedSearchMdl } from '../model/advanced-search.model';
+//import { AdvancedSearchMdl } from '../model/advanced-search.model';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
@@ -24,14 +24,14 @@ declare var $ :any;
 })
 export class SchoolComponent implements OnInit, OnDestroy {
 
-  schoolList : any;
+  //schoolList : any;
   schoolListFilter = [];
   defaultSchoolList : any;
   compareList= [];
   compareListFilter = [];
-  filterList = ["Cycles & Classes", "Langues", "Spécialités", 
-                "Internat", "Stages", "Restauration", 
-                "Externat", "Statut", "Enseignement Confessionel", 
+  filterList = ["Cycles & Classes", "Langues", "Spécialités",
+                "Internat", "Stages", "Restauration",
+                "Externat", "Statut", "Enseignement Confessionel",
                 "Sections", "Diplôme", "Options", "Places Disponibles"]
   four : boolean = false;
   canCompare : boolean = false;
@@ -157,10 +157,10 @@ export class SchoolComponent implements OnInit, OnDestroy {
     $('body').on('mousedown', function($event){
       // console.log($(this).attr('id'))
       // if(typeof $event.target.attributes['class']!='undefined'){
-      //   if($event.target.attributes['class'].value == 'main' || 
-      //     $event.target.attributes['class'].value == 'filter-form-holder' || 
-      //     $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'|| 
-      //     $event.target.attributes['class'].value == "col-md-3" ||  
+      //   if($event.target.attributes['class'].value == 'main' ||
+      //     $event.target.attributes['class'].value == 'filter-form-holder' ||
+      //     $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'||
+      //     $event.target.attributes['class'].value == "col-md-3" ||
       //     $event.target.attributes['class'].value == "list-schools  row  white-background" ||
       //     $event.target.attributes['class'].value == 'row'){
       //     $('.advance-filter').hide();
@@ -180,22 +180,22 @@ export class SchoolComponent implements OnInit, OnDestroy {
 			  }
 		}
 	});
-	
+
     window.setTimeout("hideAd()", 3000);
   	window.setTimeout("hideSideAd()", 13000);
-   
-  	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { 
-      $(this).parent().addClass('fadeOutDown'); 
+
+  	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() {
+      $(this).parent().addClass('fadeOutDown');
     });
-	
-	
+
+
 	var bottomadds_count=5;
 	if(this.onMobile)
 	{
 		this.bottomAdCarousalClasses = "mobileads-carousal-bottom";
 		bottomadds_count=2;
 	}
-	
+
     $('.slickjs'+this.slickNb).slick({
       arrows : false,
       slidesToShow: bottomadds_count,
@@ -253,7 +253,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
             $('.filter-form-holder').css('background-image', "url('./assets/images/autodoc.jpg')")
           }
           // this.getAllSchool(this.limit);
-          
+
         }
       )
   }
@@ -497,34 +497,34 @@ export class SchoolComponent implements OnInit, OnDestroy {
       )
   }
 
-  filterCycleSchool(cycleFromSearch){
-    // console.log(cycleFromSearch)
-    if(cycleFromSearch.length==0){
-      this.schoolListFilter=[];
-    } else {
-      var schoolIdTab =[];
-      for(let schoolId of cycleFromSearch){
-        schoolIdTab.push(schoolId.school._id)
-      }
-      this.schoolListFilter = this.defaultSchoolList.filter(
-        school => {
-          if(schoolIdTab.indexOf(school._id)!=-1){
-            return true
-          } else{
-            return false
-          }
-        }
-      )
-    }
-  }
+  // filterCycleSchool(cycleFromSearch){
+  //   // console.log(cycleFromSearch)
+  //   if(cycleFromSearch.length==0){
+  //     this.schoolListFilter=[];
+  //   } else {
+  //     var schoolIdTab =[];
+  //     for(let schoolId of cycleFromSearch){
+  //       schoolIdTab.push(schoolId.school._id)
+  //     }
+  //     this.schoolListFilter = this.defaultSchoolList.filter(
+  //       school => {
+  //         if(schoolIdTab.indexOf(school._id)!=-1){
+  //           return true
+  //         } else{
+  //           return false
+  //         }
+  //       }
+  //     )
+  //   }
+  // }
 
-  imageExists(image_url){
-    // console.log("test")
-    var http = new XMLHttpRequest();
-    http.open('HEAD', image_url, false);
-    http.send();
-    return http.status != 404;
-  }
+  // imageExists(image_url){
+  //   // console.log("test")
+  //   var http = new XMLHttpRequest();
+  //   http.open('HEAD', image_url, false);
+  //   http.send();
+  //   return http.status != 404;
+  // }
 
   onAdvancedClick(event, category){
     // console.log(event);
@@ -555,7 +555,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
         this.advancedSearchToDisplay.splice(index, 1);
         this.advancedSearchCategory.splice(index, 1)
         this.advancedSearchValue.splice(index, 1);
-        
+
       }
       if(event.srcElement.id=="confessionel" && event.srcElement.checked){
         this.religiousChecked=true;
@@ -594,14 +594,14 @@ export class SchoolComponent implements OnInit, OnDestroy {
     let i = 0;
     for(var prop in this.advancedSearch[category]){
       i++;
-    } 
+    }
     if(i==0){
       delete this.advancedSearch[category];
     }
   }
 
   // addOptionFilter(event){
-  //   // console.log(event.srcElement.value);  
+  //   // console.log(event.srcElement.value);
   //   this.advancedSearch['options'] = {option : event.srcElement.value}
   //   // console.log(this.advancedSearch['options']['option'])
   //   if(this.advancedSearch['options']['option']==""){

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { SchoolService } from '../services/school.service';
 import { PublicService }from '../services/public.service';
 import { UsersService } from '../services/users.service';
@@ -23,11 +23,11 @@ export class LinguisticComponent implements OnInit{
   nbSlick = 0;
 
   constructor(private schoolService : SchoolService,
-              private location : Location,
+              //private location : Location,
               private router : Router,
               private publicService : PublicService,
-              private usersService : UsersService) { 
-    
+              private usersService : UsersService) {
+
   }
 
   ngOnInit() {
@@ -72,7 +72,7 @@ export class LinguisticComponent implements OnInit{
           }
         )
     }
-  
+
   getLinguistic(){
     this.publicService.getLinguistics()
       .subscribe(

@@ -1,12 +1,12 @@
 ﻿import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { BookingService } from '../services/booking.service';
-import { PublicService } from '../services/public.service';
+//import { PublicService } from '../services/public.service';
 import { DateAdapter } from '@angular/material';
 
 import {MyAccountMdl,
@@ -29,8 +29,8 @@ import swal from "sweetalert2";
 })
 export class WizardComponent implements OnInit, AfterViewInit {
 
-  tokenLog : boolean = false;
-  bookingData:any;
+  //tokenLog : boolean = false;
+  //bookingData:any;
   wizardForm : FormGroup;
   lienparents = [ "Père",
                 "Mère",
@@ -52,7 +52,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
   adviserData: any;
   activeTabIndex = 0;
   checked:boolean=false;
-  addParents : boolean = true;
+  //addParents : boolean = true;
   newAppointment={}
   parents : any;
   // siblings : any;
@@ -71,10 +71,11 @@ export class WizardComponent implements OnInit, AfterViewInit {
               private bookingService : BookingService,
               private route : Router,
               private fb : FormBuilder,
-              private router : ActivatedRoute,
-              private publicService : PublicService,
-			  private dateAdapter: DateAdapter<Date>,
-              public datepipe: DatePipe) {
+              //private router : ActivatedRoute,
+              //private publicService : PublicService,
+			        private dateAdapter: DateAdapter<Date>,
+              //public datepipe: DatePipe
+              ) {
 			  this.dateAdapter.setLocale('nl');
     this.initAdviserData();
     if(this.authService.isUserLoggedIn()){

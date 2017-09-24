@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import { AdvancedSearchMdl, SpecialityMdl,
-        BoardingMdl, CurriculumMdl,
-        CanteenMdl, ExternalMdl,
-        StatusMdl, ReligiousMdl,
-        LanguageMdl, SectionMdl,
-        DiplomaMdl, OptionMdl, SeatsMdl } from '../model/advanced-search.model';
+// import { AdvancedSearchMdl, SpecialityMdl,
+//         BoardingMdl, CurriculumMdl,
+//         CanteenMdl, ExternalMdl,
+//         StatusMdl, ReligiousMdl,
+//         LanguageMdl, SectionMdl,
+//         DiplomaMdl, OptionMdl, SeatsMdl } from '../model/advanced-search.model';
 
 const TRIPS_API: string = "http://54.254.203.172/cideapi/api/schools/trips";
 const STATISTICS_API: string = "http://54.254.203.172/cideapi/api/schools/statictics";
@@ -33,10 +33,10 @@ export class SchoolService {
       .map((response) => response.json());
   }
 
-  getStatistics() : Observable<any> {
-    return this.http.get(STATISTICS_API)
-      .map((response)=>response.json());
-  }
+  // getStatistics() : Observable<any> {
+  //   return this.http.get(STATISTICS_API)
+  //     .map((response)=>response.json());
+  // }
 
   // buildAdvancedSearch(){
   //   let advancedSearch : AdvancedSearchMdl = new AdvancedSearchMdl();

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import { MdDialog, MdDialogConfig } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
 import { SchoolChoiceComponent } from '../school-choice/school-choice.component';
 import { EtablissementComponent } from '../../etablissement/etablissement.component';
-import swal from 'sweetalert2';
+//import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-school-card',
@@ -17,12 +17,12 @@ export class SchoolCardComponent implements OnInit {
   @Input() SchoolData : any;
   @Input() pathName : any;
   brochureData={brochure : ""}
-  config: MdDialogConfig;
-  configSchoolDetail : MdDialogConfig;
+  config: any;
+  configSchoolDetail : any;
   schoolTag=[];
 
-  constructor(private router : Router,
-              private usersService : UsersService,
+  constructor(//private router : Router,
+              //private usersService : UsersService,
               private publicService : PublicService,
               public dialog:MdDialog) { }
 
@@ -37,13 +37,13 @@ export class SchoolCardComponent implements OnInit {
   onSchoolDetail(){
     console.log("Click on school detail")
     this.makeSchoolDetailProfil();
-    let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
+    this.dialog.open(EtablissementComponent, this.configSchoolDetail);
     // this.router.navigate(['etablissement', this.SchoolData._id]);
   }
-   
+
   applyToSchool(){
     this.makeProfile()
-    let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
+    this.dialog.open(SchoolChoiceComponent,this.config);
     // dialogref.afterClosed().subscribe(result => {
     //   this.lastCloseResult = result;
     //   // console.log(result)
@@ -136,5 +136,5 @@ export class SchoolCardComponent implements OnInit {
     }
     // console.log(this.schoolTag);
   }
-  
+
 }

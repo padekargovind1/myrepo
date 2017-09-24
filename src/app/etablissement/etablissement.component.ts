@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MdDialogRef, MD_DIALOG_DATA, MdDialogConfig, MdDialog } from '@angular/material';
 
-import { Subscription } from 'rxjs/Subscription';
+//import { Subscription } from 'rxjs/Subscription';
 import { PublicService } from '../services/public.service';
 import { UsersService } from '../services/users.service';
 import { BrochureService } from '../services/brochure.service';
@@ -23,15 +23,15 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
 
   schoolId : string = "";
   schoolData : any;
-  subscription : Subscription;
+  //subscription : Subscription;
   schoolShortName : string = "";
   schoolLongName : string = "";
   canDisplay : boolean = false;
-  config : MdDialogConfig;
+  config : any;
 
-  constructor(private route : ActivatedRoute,
-              private publicService : PublicService,
-              private location : Location,
+  constructor(//private route : ActivatedRoute,
+              //private publicService : PublicService,
+              //private location : Location,
               private usersService : UsersService,
               private router : Router,
               private brochureService : BrochureService,
@@ -39,7 +39,7 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any},
               public dialog:MdDialog,
               private sendService : SendService,
-              private schoolService : SchoolService) { 
+              private schoolService : SchoolService) {
     console.log(this.data)
   }
 
@@ -76,13 +76,13 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
       slidesToShow: 4,
     });
   }
-  
+
   loadMap(){
 	setTimeout(function(){
 		window.dispatchEvent(new Event("resize"));
 	}, 1);
   }
-  
+
   loadTabs(){
 	setTimeout(function(){
 		window.dispatchEvent(new Event("resize"));

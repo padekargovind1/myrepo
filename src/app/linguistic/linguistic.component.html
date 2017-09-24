@@ -2,20 +2,20 @@
 
     <div class="container  linguistic">
 
-        <!-- <div class="row" *ngIf="!inBuild; else underBuild">
+        <div class="row">
             <section class="col-md-12">
                 <h2 class="brochure-title">Recherche de séjour linguistique</h2>
             </section>
             <section class="col-md-12">
                 <form class="form-inline searchform">
                     <div class="form-wrap row">
-                        
+
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="select-custom" for="class">
-                                            <select name="class" class="form-control" id="class"
+                                            <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'destination')">
                                                 <option value="" selected>Destination</option>
                                                 <option value="Allemagne">Allemagne</option>
@@ -40,7 +40,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="select-custom" for="class">
-                                            <select name="class" class="form-control" id="class"
+                                            <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'period')">
                                                 <option value="" selected >Période</option>
                                                 <option value="0">janvier</option>
@@ -63,11 +63,11 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label class="select-custom" for="class">
-                                            <select name="class" class="form-control" id="class"
+                                            <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'language')">
                                                 <option value="" selected>Langue</option>
                                                 <option *ngFor="let language of languageList" [value]="language._id">{{language.name}}</option>
-                                                
+
                                             </select>
                                         </label>
                                     </div>
@@ -76,7 +76,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label class="select-custom" for="class">
-                                            <select name="class" class="form-control" id="class"
+                                            <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'age')">
                                                 <option value="" selected>Âge</option>
                                                 <option value="8">8</option>
@@ -102,11 +102,11 @@
                                         </label>
                                     </div>
                                 </div>
-                                    
+
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label class="select-custom" for="class">
-                                            <select name="class" class="form-control" id="class"
+                                            <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'organisme')">
                                                 <option value="" selected>Organisme</option>
                                             </select>
@@ -126,21 +126,21 @@
             <div class="col-md-12  holder-refine-search">
                 <div class="checkbox-one-line">
                     <span class="label-holder">Hébergement</span><br />
-                    <input type="checkbox" value="apartment" class="checkbox filled-in" id="filter-1" 
+                    <input type="checkbox" value="apartment" class="checkbox filled-in" id="filter-1"
                         (click)="onDestinationClick($event, 'place')"/>
                     <label for="filter-1">Appartement</label>
-                    <input type="checkbox" value="common" class="checkbox filled-in" id="filter-2" 
+                    <input type="checkbox" value="common" class="checkbox filled-in" id="filter-2"
                         (click)="onDestinationClick($event, 'place')"/>
                     <label for="filter-2">Collectif</label>
-                    <input type="checkbox" value="family" class="checkbox filled-in" id="filter-3" 
+                    <input type="checkbox" value="family" class="checkbox filled-in" id="filter-3"
                         (click)="onDestinationClick($event, 'place')"/>
                     <label for="filter-3">Famille</label>
-                    <input type="checkbox" value="residence" class="checkbox filled-in" id="filter-4" 
+                    <input type="checkbox" value="residence" class="checkbox filled-in" id="filter-4"
                         (click)="onDestinationClick($event, 'place')"/>
                     <label for="filter-4">Résidence</label>
                 </div>
 
-                
+
                 <label class="select-custom" for="class"> Type de sejour<br />
                     <select name="class" class="form-control" id="class"
                         (click)="onDestinationClick($event, 'linguistic')">
@@ -150,10 +150,10 @@
                 </label>
 
             </div>
-            
+
 
             <div *ngFor="let trip of listTripsFiltered">
-                <div class="col-md-4" >  
+                <div class="col-md-4" >
                 <div class="card  school-item">
                     <app-linguistic-trips [tripData]="trip"></app-linguistic-trips>
                 </div>
@@ -164,12 +164,9 @@
                     text-align:center; font-size : 35px">Il n'y a pas de séjours pour la recherche demandé.</p>
             </div>
 
-        </div> -->
-        <div class="row">
-            <img src="assets/images/under-construction-2.gif" alt="" style="width:50%; margin-left:25%">
         </div>
-        
-    
+
+
     </div><!-- .container-fluid -->
 
 </div><!-- white -->

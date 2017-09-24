@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AppComponent implements OnInit{
 
-  constructor(private route: ActivatedRoute){}
-  
+  constructor(){}
+
   ngOnInit(){
   }
 

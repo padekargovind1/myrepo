@@ -1,15 +1,15 @@
-import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { MdDialogRef, MD_DIALOG_DATA, MdDialogConfig, MdDialog } from '@angular/material';
+import { MdDialogRef, MD_DIALOG_DATA, MdDialog } from '@angular/material';
 
-import { Subscription } from 'rxjs/Subscription';
+//import { Subscription } from 'rxjs/Subscription';
 import { PublicService } from '../../services/public.service';
-import { UsersService } from '../../services/users.service';
+//import { UsersService } from '../../services/users.service';
 import { BrochureService } from '../../services/brochure.service';
 declare var $ :any;
-import swal from 'sweetalert2';
-import { SchoolChoiceComponent } from '../../shared/school-choice/school-choice.component';
+//import swal from 'sweetalert2';
+//import { SchoolChoiceComponent } from '../../shared/school-choice/school-choice.component';
 
 @Component({
   selector: 'app-school-detail-superieur',
@@ -20,21 +20,21 @@ export class SchoolDetailSuperieurComponent implements OnInit {
 
   schoolId : string = "";
   schoolData : any;
-  subscription : Subscription;
+  //subscription : Subscription;
   schoolShortName : string = "";
   schoolLongName : string = "";
   canDisplay : boolean = false;
-  config : MdDialogConfig;
+  config : any;
 
-  constructor(private route : ActivatedRoute,
+  constructor(//private route : ActivatedRoute,
               private publicService : PublicService,
-              private location : Location,
-              private usersService : UsersService,
+              //private location : Location,
+              //private usersService : UsersService,
               private router : Router,
               private brochureService : BrochureService,
               public dialogref:MdDialogRef<SchoolDetailSuperieurComponent>,
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any},
-              public dialog:MdDialog) { 
+              public dialog:MdDialog) {
     console.log(this.data)
   }
 
@@ -66,12 +66,12 @@ export class SchoolDetailSuperieurComponent implements OnInit {
 
   }
 
-  runScript(){
-    $('.slickjs').slick({
-      arrows : false,
-      slidesToShow: 4,
-    });
-  }
+  // runScript(){
+  //   $('.slickjs').slick({
+  //     arrows : false,
+  //     slidesToShow: 4,
+  //   });
+  // }
 
   // getSchoolById(){
   //   this.publicService.getSchoolById(this.schoolId)
@@ -124,13 +124,13 @@ export class SchoolDetailSuperieurComponent implements OnInit {
 	window.open(this.publicService.ABPPriveURL+this.schoolId+"/wish", "_blank");
   }
 
-  successApply(){
-    swal({
-      title: "L'école a été ajouté à la liste des voeux",
-      type: 'success',
-      confirmButtonText: "J'AI COMPRIS"
-    })
-  }
+  // successApply(){
+  //   swal({
+  //     title: "L'école a été ajouté à la liste des voeux",
+  //     type: 'success',
+  //     confirmButtonText: "J'AI COMPRIS"
+  //   })
+  // }
 
   applyTo(){
     /*

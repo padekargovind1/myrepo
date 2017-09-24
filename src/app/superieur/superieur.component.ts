@@ -5,8 +5,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { SchoolService } from '../services/school.service';
-import { AdvancedSearchMdl } from '../model/advanced-search.model';
-import swal from 'sweetalert2';
+//import { AdvancedSearchMdl } from '../model/advanced-search.model';
+//import swal from 'sweetalert2';
 declare var jquery:any;
 declare var $ :any;
 
@@ -94,11 +94,11 @@ export class SuperieurComponent implements OnInit {
   }
 
   onSubmitSearch(){
-    this.searchBody.courses.professionalSector=this.searchForm.controls.domaine.value;
-    this.searchBody.keyword=this.searchForm.controls.etablissement.value;
+    this.searchBody.courses.professionalSector=this.searchForm.value.domaine;
+    this.searchBody.keyword=this.searchForm.value.etablissement;
     this.searchFilter[0]=this.searchBody.courses.professionalSector;
     this.searchFilter[1]=this.searchBody.keyword;
-    let lieu = this.searchForm.controls.lieu.value;
+    let lieu = this.searchForm.value.lieu;
     this.searchFilter[2]=lieu
     // console.log(this.searchForm.value, this.options)
     this.resetSearchBodyLieu()
@@ -168,7 +168,7 @@ export class SuperieurComponent implements OnInit {
 			  }
 		}
 	});
-    
+
     $('.slickjs').slick({
       arrows : false,
       slidesToShow: 5,
@@ -176,12 +176,12 @@ export class SuperieurComponent implements OnInit {
       autoplay: true,
       autoplaySpeed: 2000,
     });
-    
+
     window.setTimeout("hideAd()", 3000);
   	window.setTimeout("hideSideAd()", 13000);
-   
-  	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() { 
-      $(this).parent().addClass('fadeOutDown'); 
+
+  	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() {
+      $(this).parent().addClass('fadeOutDown');
     });
   }
 
@@ -295,26 +295,26 @@ export class SuperieurComponent implements OnInit {
       )
   }
 
-  filterCycleSchool(cycleFromSearch){
-    // console.log(cycleFromSearch)
-    if(cycleFromSearch.length==0){
-      this.schoolListFilter=[];
-    } else {
-      var schoolIdTab =[];
-      for(let schoolId of cycleFromSearch){
-        schoolIdTab.push(schoolId.school._id)
-      }
-      this.schoolListFilter = this.defaultSchoolList.filter(
-        school => {
-          if(schoolIdTab.indexOf(school._id)!=-1){
-            return true
-          } else{
-            return false
-          }
-        }
-      )
-    }
-  }
+  // filterCycleSchool(cycleFromSearch){
+  //   // console.log(cycleFromSearch)
+  //   if(cycleFromSearch.length==0){
+  //     this.schoolListFilter=[];
+  //   } else {
+  //     var schoolIdTab =[];
+  //     for(let schoolId of cycleFromSearch){
+  //       schoolIdTab.push(schoolId.school._id)
+  //     }
+  //     this.schoolListFilter = this.defaultSchoolList.filter(
+  //       school => {
+  //         if(schoolIdTab.indexOf(school._id)!=-1){
+  //           return true
+  //         } else{
+  //           return false
+  //         }
+  //       }
+  //     )
+  //   }
+  // }
 
   onLevelRythme(event){
     console.log(event.srcElement.value)
@@ -368,26 +368,26 @@ export class SuperieurComponent implements OnInit {
     }
   }
 
-  checkCategory(category){
-    let i = 0;
-    for(var prop in this.advancedSearch[category]){
-      i++;
-    } 
-    if(i==0){
-      delete this.advancedSearch[category];
-    }
-  }
+  // checkCategory(category){
+  //   let i = 0;
+  //   for(var prop in this.advancedSearch[category]){
+  //     i++;
+  //   }
+  //   if(i==0){
+  //     delete this.advancedSearch[category];
+  //   }
+  // }
 
-  addOptionFilter(event){
-    // console.log(event.srcElement.value);  
-    this.advancedSearch['options'] = {option : event.srcElement.value}
-    // console.log(this.advancedSearch['options']['option'])
-    if(this.advancedSearch['options']['option']==""){
-      delete this.advancedSearch['options']
-    }
-    // console.log(this.advancedSearch)
-    this.postAdvancedFilter();
-  }
+  // addOptionFilter(event){
+  //   // console.log(event.srcElement.value);
+  //   this.advancedSearch['options'] = {option : event.srcElement.value}
+  //   // console.log(this.advancedSearch['options']['option'])
+  //   if(this.advancedSearch['options']['option']==""){
+  //     delete this.advancedSearch['options']
+  //   }
+  //   // console.log(this.advancedSearch)
+  //   this.postAdvancedFilter();
+  // }
 
   cleanSearch(){
     // console.log("clean search")
