@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // Build the form
   buildFormGroup(){
     this.loginForm = this.fb.group({
       email : ['' , Validators.compose([Validators.required, CustomValidators.email])],
@@ -40,35 +41,36 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  // After click on Log In
   logIn(){
-    if(this.loginForm.valid){
+    if(this.loginForm.valid){ // Check if the form is valid
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
 
       const data = ({ email, password });
 
-      this.authService.postLogin(data)
+      this.authService.postLogin(data) // Post to API to log in
         .then(
           data => {
             let response = data;
             // console.log(response);
-            if (response.code == 400) {
+            if (response.code == 400) { // If it's incorrect
               let msg = response.message;
               this.errorMessage = msg;
               console.log('message: ', this.errorMessage);
-              swal({
+              swal({ // Sweet alert
                 title: 'Attention',
                 text: "L'identifiant ou le mot de passe est incorrecte",
                 type: 'error',
                 confirmButtonText: 'Ok'
               })
             }
-            else {
+            else {  // Else if it's correct
               console.log(response);
               if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
-                this.router.navigate(['/payment']);
+                this.router.navigate(['/payment']); // If it's for booking an appointment
               } else {
-                this.router.navigate(['/']);
+                this.router.navigate(['/']); // else -> navigate to home page
               }
               this.userService.getProfile();
             }
@@ -77,14 +79,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // If user want to create a new account -> navigate to register page
   onNewAccount(){
     this.router.navigate(['/register']);
   }
 
+  // If user forgot his password
   onForgotPassword(){
     this.router.navigate(['/forgot-password']);
   }
 
+  // Navigate Back
   onNavigateBack(){
     this.location.back();
   }

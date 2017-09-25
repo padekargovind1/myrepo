@@ -4,46 +4,46 @@
             <section class="col-md-3">
                 <div class="advisors-wrap">
                     <h3 class="advisor-title">Conseillers d’orientation</h3>
-                    <button class="btn btn-appointment btn-block select-all-advisor" (click)="onSelectAll()" 
+                    <button class="btn btn-appointment btn-block select-all-advisor" (click)="onSelectAll()"
                         *ngIf="adviserToDisplay.length!=calendarData.length">
                         Sélectionnez tous les conseillers <i class="fa fa-check"></i>
                     </button>
-                    <button class="btn btn-danger btn-block deselect-all-advisor" (click)="onUnselectAll()" 
+                    <button class="btn btn-danger btn-block deselect-all-advisor" (click)="onUnselectAll()"
                         *ngIf="adviserToDisplay.length==calendarData.length || adviserToDisplay.length!=0">
                         Désélectionnez tous les conseillers <i class="fa fa-times"></i>
                     </button>
                     <ul class="advisors">
-                        <li class="active" *ngFor="let adviser of adviserList; let i=index" >           
-                               
+                        <li class="active" *ngFor="let adviser of adviserList; let i=index" >
+
                             <div class="row" >
                                 <section class="col-md-5 col-xs-3">
-                                    <img src="http://54.254.203.172/cideapi{{adviser.photo}}"  
-                                        alt="" class="img-circle img-responsive" 
-                                        style="width:100%; height:100%"/>    
+                                    <img src="http://54.254.203.172/cideapi{{adviser.photo}}"
+                                        alt="" class="img-circle img-responsive"
+                                        style="width:100%; height:100%"/>
                                 </section>
                                 <section class="col-md-7">
                                     <div class="advisor-name col-md-11">
                                         {{adviser.firstName}} {{adviser.lastName}}
-                                    </div>    
+                                    </div>
                                     <div class="checkbox-wrap">
-                                        <!--<input type="checkbox" class="checkbox filled-in" 
+                                        <!--<input type="checkbox" class="checkbox filled-in"
                                             (click)="onCheckbox(adviser.id)"/> -->
                                         <md-checkbox (click)="onCheckbox(adviser._id)"
                                             class="checkbox filled-in test" [checked]="allChecked"
                                             style="margin-right: 10px">
                                         </md-checkbox>
-                                        
+
                                         <label for="anita-lubies" class="">&nbsp;</label>
                                     </div>
                                 </section>
                             </div>
-                            
+
                         </li>
                     </ul>
                 </div><!-- .advisors-wrap -->
             </section>
             <section class="col-md-9  calendar-content">
-                <h2 class="title-page">Choisissez votre date et heure de rendez-vous en fonction des plages horaires disponibles.</h2> 
+                <h2 class="title-page">Choisissez votre date et heure de rendez-vous en fonction des plages horaires disponibles.</h2>
                 <div class="calendar-wrap">
                     <h4>Calendrier</h4>
                     <div id="calendar"></div>
@@ -72,22 +72,22 @@
                 <p class="appointment-date"><strong>avec {{bookingDate[4]}} {{bookingDate[3]}}</strong></p>
 
                 <time class="appointment-date">Le {{bookingDate[0] | date:"dd/MM/yyyy"}} de {{bookingDate[1]}} à {{bookingDate[2]}} </time><br>
-            
+
                 <p>
                 {{bookingData[1]}}<br />
                 {{bookingData[2]}}</p>
 
                 <section class="pull-right">
-                    <a (click)="onCancelAppointment()" 
-                        data-dismiss="modal" 
-                        class="btn btn-danger" >J'annule
-                    </a>
-                    <button class="btn btn-warning" 
-                        data-dismiss="modal" 
+                    <button class="btn danger"
+                            data-dismiss="modal"
+                            type="button">J'annule
+                    </button>
+                    <button class="btn btn-warning"
+                        data-dismiss="modal"
                         type="button">Je préfère un autre rendez-vous
                     </button>
-                    <a (click)="onConfirmAppointment()"  
-                        data-dismiss="modal" 
+                    <a (click)="onConfirmAppointment()"
+                        data-dismiss="modal"
                         class="btn btn-appointment">Je Confirme
                     </a>
                 </section>

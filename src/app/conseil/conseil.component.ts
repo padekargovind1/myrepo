@@ -21,12 +21,14 @@ export class ConseilComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Navigating to the booking page after select a package
   navigateToBooking(time, concernPeople, price, index){
     this.bookingService.storeBookingPackage([time, concernPeople, price, index]);
     console.log("Navigate to booking");
     this.router.navigate(['booking']);
   }
 
+  // Make the config for the md dialog
   makeProfile(nb : number){
     this.config= {
       data:{
@@ -44,6 +46,8 @@ export class ConseilComponent implements OnInit {
     };
   }
 
+
+  // Open the info dialog
   openInfoDialog(nb : number){
     this.makeProfile(nb);
     this.dialog.open(ConseilPopupComponent,this.config);

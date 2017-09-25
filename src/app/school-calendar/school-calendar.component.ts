@@ -107,6 +107,7 @@ export class SchoolCalendarComponent implements OnInit {
       )
   }
 
+  // date change -> search events for this date
   onSelectDate(){
     console.log(this.searchForm.value.date);
     if(this.searchForm.value.date!=''){
@@ -120,6 +121,7 @@ export class SchoolCalendarComponent implements OnInit {
     this.getEvents()
   }
 
+  // Select a button to filter the school events
   onSelectData(data, index){
     this.dataToSend.data=data;
     this.getEvents();

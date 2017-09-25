@@ -26,16 +26,18 @@ export class EtablissementEvenementComponent implements OnInit, AfterViewInit {
     this.initEventData();
   }
 
+  // Init the full calendar
   initCalendar(){
   	(<any> $('#calendar-detail-school')).fullCalendar({
-      locale:'fr', 
+      locale:'fr',
       eventClick: function(calEvent) {
         console.log(calEvent);
-      }, 
+      },
       events:this.eventToDisplay
     });
   }
 
+  // init the data from the school
   initEventData(){
     for(let event of this.events){
       this.eventToDisplay.push(
@@ -49,6 +51,7 @@ export class EtablissementEvenementComponent implements OnInit, AfterViewInit {
     this.refreshCalendar();
   }
 
+  //refreshing the calendar's data
   refreshCalendar(){
     $('#calendar').fullCalendar('removeEvents');
     $('#calendar').fullCalendar('addEventSource', this.eventToDisplay);

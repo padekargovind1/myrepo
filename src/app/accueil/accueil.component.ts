@@ -41,6 +41,9 @@ export class AccueilComponent implements OnInit {
     this.buildApbForm();
   }
 
+  // Init wheel menu
+  // Init rating API
+  // Get domaines for Enseignement supérieur select options
   ngOnInit() {
     this.wheel = new wheelnav('tabwheel');
     this.wheel.spreaderInTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
@@ -59,6 +62,8 @@ export class AccueilComponent implements OnInit {
     this.domaines = this.publicService.getDomaines();
   }
 
+  //Run script
+  // Check if is on mobile or not
   runScript() {
     const self = this;
     const checkMobile = helpers.detectmob();
@@ -79,6 +84,7 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  // Init wheel navigation
   wheelNavigation() {
     const self = this;
     $(this.selectorWheel).mousedown(function(e){
@@ -117,6 +123,7 @@ export class AccueilComponent implements OnInit {
 
   }
 
+  // Swithing item on the wheel nav menu
   switchWheelComponent(wheelNavId: String, contentName: String) {
     const self = this;
     const selector_content = $('.' + contentName + '-content');
@@ -155,6 +162,8 @@ export class AccueilComponent implements OnInit {
     main.css(css);
   }
 
+  // Init rate
+  // Post rate in API
   initRate() {
     const rate = {
       page : '3'
@@ -171,11 +180,15 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  // Navigate to the page name
+  // componentName = page name
   navigate(componentName: String){
     this.publicService.cleanSearch();
     this.router.navigate(['/' + componentName]);
   }
 
+  // Call after keyup detected on location input
+  // if the word is more or equals to 2 letters, it call the function getLieuFilter to get the list
   filterLieu(event) {
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -184,6 +197,8 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  // Call after keyup detected on school input
+  // If they have more or equal to 3 letter then we call API to get school name
   filterSchool(event){
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -194,6 +209,7 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  // Same as filterSchool method except it's for enseignement supérieur
   filterApbSchool(event){
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -204,6 +220,7 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  // Method to get the location list from API
   getLieuFilter(filter: string){
     let data = {
       keyword : filter
@@ -222,6 +239,7 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  // Method to get the school list for before BAC from API
   getSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -238,6 +256,7 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  // Method to get the school list for after BAC from API
   getApbSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -259,6 +278,7 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  // Build form the before BAC search
   buildForm(){
     this.searchForm = this.fb.group({
       classe : [''],
@@ -268,6 +288,7 @@ export class AccueilComponent implements OnInit {
     this.initOptions()
   }
 
+  // Build form the after BAC search
   buildApbForm(){
     this.apbForm = this.fb.group({
       domaine : [''],
@@ -277,6 +298,7 @@ export class AccueilComponent implements OnInit {
     this.initOptions()
   }
 
+  // Init the 3 tabs for location list
   initOptions(){
     this.options['regions']=[];
     this.options['departements']=[];
@@ -284,6 +306,9 @@ export class AccueilComponent implements OnInit {
     console.log(this.options)
   }
 
+  //After submit the fast search
+  // Sweet alert if the form is not correctly field
+  // Else we store the data in the service and go to the component page
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
     if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement=="" && path!="enseignement"){
@@ -325,6 +350,8 @@ export class AccueilComponent implements OnInit {
   //   this.router.navigate(['/landing-page-'+index])
   // }
 
+  // Function to navigate in different page with the path
+  // We also call rate's API
   onNavigate(path){
     let rate = {
       id : this.rateId,
@@ -340,6 +367,8 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/'+path]);
   }
 
+  // function to show the good location name b'cause it's different than the value we send to API
+  // ex : 75001 to send but 75001 Paris to show on the website
   onSelectLieu(type:string, index:number){
     this.lieuSelected=[];
     if(type=='R'){
@@ -352,6 +381,7 @@ export class AccueilComponent implements OnInit {
     console.log(this.lieuSelected);
   }
 
+  // function to store the right name of the class name to show it on the school list
   storeClassName(event){
     console.log(event)
     this.publicService.storeClassName(event.toElement.selectedOptions[0].text);

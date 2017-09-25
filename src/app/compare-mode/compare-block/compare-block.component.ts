@@ -24,14 +24,11 @@ export class CompareBlockComponent implements OnInit, AfterViewInit {
     // console.log(this.compareListFilter);
   }
 
-  onDeleteCompare(){
-    // console.log("click on detele img")
-  }
-
   ngAfterViewInit(){
     // (<any> $('.cycleSlick'+this.schoolDataToDisplay.counter)).slick({});
   }
 
+  // Change the cycle name
   cycleChanging(event){
     // console.log(event.srcElement.selectedIndex)
     this.whichCycle=event.srcElement.selectedIndex

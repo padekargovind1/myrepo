@@ -39,6 +39,8 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     this.domaines=this.publicService.getDomaines();
     this.runScript();
   }
+
+  // Run the script
   runScript(){
 	  function detectmob() {
 			if( navigator.userAgent.match(/Android/i)
@@ -63,6 +65,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 		}
 	}
 
+	// Build the form for before bac inputs
   buildForm(){
     // console.log('build form')
     this.searchForm = this.fb.group({
@@ -73,6 +76,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     this.initOptions();
   }
 
+  // Build the form for after bac inputs
   buildApbForm(){
     this.apbForm = this.fb.group({
       domaine : [''],
@@ -82,6 +86,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     this.initOptions()
   }
 
+  // Init the 3 sections of location search in the search form
   initOptions(){
     this.options['regions']=[];
     this.options['departements']=[];
@@ -89,6 +94,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     // console.log(this.options)
   }
 
+  // Initiate the rate (send data to API)
   initRate(){
     let rate = {
       page : '1'
@@ -105,6 +111,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       )
   }
 
+  //After view init -> run script
   ngAfterViewInit() {
   	(<any> $('.landingpage__additional-content')).mouseenter(function() {
 		if((<any> $(this)).find('.form-wrap').length>0)
@@ -145,6 +152,8 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
         });
   }
 
+  // After submit a search
+  // Store the data to the service and navigate to the page
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
     console.log("on submit", this.apbForm.value)
@@ -187,6 +196,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     }
   }
 
+  // Navigate to the path
   onNavigate(path){
     let rate = {
       id : this.rateId,
@@ -201,6 +211,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     this.router.navigate(['/'+path]);
   }
 
+  // get Location data (after key down)
   filterLieu(event){
     // console.log(event.target.value);
     let filter: string = event.target.value;
@@ -209,7 +220,8 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     }
   }
 
-   getLieuFilter(filter: string){
+  // get Location data from API
+  getLieuFilter(filter: string){
     let data = {
       keyword : filter
     }
@@ -227,6 +239,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       )
   }
 
+  // get before BAC school name (after key down)
   filterSchool(event){
     // console.log(event.target.value);
     let filter: string = event.target.value;
@@ -237,6 +250,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     }
   }
 
+  // get before BAC school name from API
   getSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -251,6 +265,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       )
   }
 
+  // get after BAC school name (after key down)
   filterApbSchool(event){
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -261,6 +276,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     }
   }
 
+  // get after BAC school name from API
   getApbSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -286,6 +302,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   //   this.router.navigate(['/landing-page-'+index])
   // }
 
+  // Use the good location name to send into the body of the API
   onSelectLieu(type:string, index:number){
     this.lieuSelected=[];
     if(type=='R'){
@@ -298,6 +315,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     console.log(this.lieuSelected);
   }
 
+  // Store the right name to display it on the school list
   storeClassName(event){
     console.log(event)
     this.publicService.storeClassName(event.toElement.selectedOptions[0].text);

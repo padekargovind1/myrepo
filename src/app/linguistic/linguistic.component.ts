@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+//import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SchoolService } from '../services/school.service';
 import { PublicService }from '../services/public.service';
@@ -30,13 +30,16 @@ export class LinguisticComponent implements OnInit{
 
   }
 
+  // get the different data from API
+  // Trips data; Language List and Linguistic list
   ngOnInit() {
-	this.router.navigate(['/under-construction']);
+    this.router.navigate(['/under-construction']);
     this.getTrips();
     this.getLanguage();
     this.getLinguistic();
   }
 
+  // Get trips from API
   getTrips(){
     this.schoolService.getTrips()
       .subscribe(
@@ -58,6 +61,7 @@ export class LinguisticComponent implements OnInit{
       )
   }
 
+  // Get language list from API
   getLanguage(){
       this.publicService.getLanguage()
         .subscribe(
@@ -73,6 +77,7 @@ export class LinguisticComponent implements OnInit{
         )
     }
 
+    // Get linguistic trips data from API
   getLinguistic(){
     this.publicService.getLinguistics()
       .subscribe(
@@ -88,6 +93,7 @@ export class LinguisticComponent implements OnInit{
       )
   }
 
+  // Post to API to get the trips filtered
   postTrip(){
     console.log(this.tripFilter);
     this.usersService.postTrip(this.tripFilter)
@@ -110,10 +116,12 @@ export class LinguisticComponent implements OnInit{
       )
   }
 
+  // Called after click on a search option
   onDestinationClick(event, type){
     // console.log(event)
     let filterValue = event.srcElement.value;
     console.log(filterValue, this.tripFilter[type]);
+    // If checkbox for "hebergement"
     if(type=="place"){
       if(typeof this.tripFilter[type]=="undefined"){
         // this.tripFilter[type]=filterValue;
@@ -142,7 +150,7 @@ export class LinguisticComponent implements OnInit{
           delete this.tripFilter[type];
         }
       }
-    } else {
+    } else { // Else other search options
       if(filterValue==""){
         delete this.tripFilter[type]
       }else {

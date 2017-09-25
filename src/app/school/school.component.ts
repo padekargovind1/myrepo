@@ -95,17 +95,20 @@ export class SchoolComponent implements OnInit, OnDestroy {
               private sendService: SendService,
               public dialog: MdDialog) { }
 
+
   ngOnInit() {
-    this.slickNb=this.publicService.getNbSlick();
-    this.setBackgroundImage();
+    this.slickNb=this.publicService.getNbSlick(); // Slick number to have different class name for slick js
+    this.setBackgroundImage(); // Set the background image (ecole, collège etc...)
     this.buildForm();
     // TODO: Marc => what is that ?
+    // When user want to compare schools, he got a modal with multiple checkbox
+    // Init at false. Array will be send to the compare mode page to know which category he want to compare
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
-    this.langues = this.schoolService.getLangues();
-    this.languesRegio = this.schoolService.getLanguesRegio();
-    this.diplomes = this.schoolService.getDiplomes();
+    this.langues = this.schoolService.getLangues(); // options for advanced search
+    this.languesRegio = this.schoolService.getLanguesRegio(); // options for advanced search
+    this.diplomes = this.schoolService.getDiplomes(); // options for advanced search
     this.runScriptOnInit();
 
     setTimeout(() => {
@@ -153,6 +156,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     });
 
     // TODO: Marc => Comment this code
+    // I think to hide the advanced filter (not my code)
     $('*').on('click', function(e){
       const a = e.target;
       if ($(a).parents('.advancedFilter').length === 0) {
@@ -164,6 +168,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     });
 
     // TODO : Marc => Comment this code
+    // ad will be hide after 3 sec and side add will be hide after 13sec
     window.setTimeout('hideAd()', 3000);
     window.setTimeout('hideSideAd()', 13000);
 
@@ -173,6 +178,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     });
 
     // TODO: Marc => Comment this code
+    // desktop bottom ads got 5 but 2 in mobile
     let bottomadds_count = 5;
     if (this.onMobile) {
       this.bottomAdCarousalClasses = 'mobileads-carousal-bottom';
@@ -203,10 +209,12 @@ export class SchoolComponent implements OnInit, OnDestroy {
     // $('.advance-filter').show();
   // }
 
+  // Different class name -> conflict with slick if it's the same class name
   getSlickNb() {
     return 'slickjs' + this.slickNb;
   }
 
+  // Set the different background-image depends on the url (ecole, colleg, lycee etc..)
   setBackgroundImage(){
     this.subscription = this.route.url
       .subscribe(
@@ -239,6 +247,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
       )
   }
 
+  // build the fast search
   buildForm() {
     this.searchForm = this.fb.group({
       classe : [''],
@@ -246,33 +255,35 @@ export class SchoolComponent implements OnInit, OnDestroy {
       etablissement : ['']
     });
     // console.log(this.searchForm)
-    this.fieldSearchForm();
-    this.initOptions();
+    this.fieldSearchForm(); // Field the form
+    this.initOptions(); // Init the options
   }
 
+  // field the form
   fieldSearchForm(){
-    const data = this.publicService.getSearchSchool();
+    const data = this.publicService.getSearchSchool(); // get data from service
     // console.log(data)
-    this.searchForm.patchValue({
+    this.searchForm.patchValue({ // Patch value even if it's empty
       classe : data[0],
       lieu : data[1],
       etablissement : data[2]
     });
     this.forAdvancedSearch=true;
-    this.lieuSelected=this.schoolService.getSelectedLieu();
-    this.onSubmitSearch()
+    this.lieuSelected=this.schoolService.getSelectedLieu(); // Get the right name to display on the page from the service
+    this.onSubmitSearch() // Submit a search to receive the school list
   }
 
-  initOptions(){
+  initOptions(){ // Init the options for location input
     this.options['regions']=[];
     this.options['departements']=[];
     this.options['villes']=[];
     // console.log(this.options)
   }
 
+  // After click on a checkbox (to compare schools)
   onCheckbox(schoolId){
     // console.log(schoolId);
-    if(this.compareList.includes(schoolId)){
+    if(this.compareList.includes(schoolId)){ // If user uncheck a school
       // console.log("remove checkbox");
       let i = this.compareList.indexOf(schoolId, 0);
       // console.log(i);
@@ -281,7 +292,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
       if(this.compareList.length<=1){
         this.canCompare=false;
       }
-    } else if(this.compareList.length >= 4){
+    } else if(this.compareList.length >= 4){ // If the compare list is already 4 -> sweet alert -> max 4
       swal({
         title: 'Attention',
         text: 'Vous ne pouvez comparer plus de 4 écoles à la fois. Vous pouvez tout de même désélectionner une école déjà sélectionné',
@@ -289,7 +300,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
         confirmButtonText: 'Ok'
       });
       this.four = true;
-    } else {
+    } else { // Else -> add the school to the array to compare
       this.compareList.push(schoolId);
       if(this.compareList.length > 1) {
         this.canCompare = true;
@@ -297,15 +308,18 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
   }
 
+  // when user click on a checkbox to select category to compare the schools
   onFilterCheckbox(index) {
     this.compareListFilter[index] = !this.compareListFilter[index];
     this.canFilter = this.checkFilterBox();
   }
 
+  // Check if user can click on Je compare
+  // One category minimum
   checkFilterBox() {
     let i = 0;
     for (const filter of this.compareListFilter){
-      if (filter === true) {
+      if (filter) {
         return true;
       }
       i++;
@@ -313,13 +327,16 @@ export class SchoolComponent implements OnInit, OnDestroy {
     return false;
   }
 
+  // Store the category to compare
+  // Store the school list to compare
+  // Navigate to the compare page
   onCompare() {
     this.compareService.storeCompareFilter(this.compareListFilter);
     this.compareService.storeSchoolId(this.compareList);
     this.router.navigate(['/compare-mode/']);
   }
 
-
+  // Submit on the fast search
   onSubmitSearch() {
     if (!this.forAdvancedSearch) {
       if ((this.searchForm.value.classe === '' || this.searchForm.value.lieu === '')
@@ -341,21 +358,21 @@ export class SchoolComponent implements OnInit, OnDestroy {
       name : this.searchForm.controls.etablissement.value
     };
     console.log(this.lieuSelected, this.advancedSearch);
-    this.searchFilter = [this.publicService.getClassName(), data.place, data.name];
-    this.fillAdvancedSearchClass(data);
-    this.advancedSearch.place = this.lieuSelected;
+    this.searchFilter = [this.publicService.getClassName(), data.place, data.name]; // Data to display on the website
+    this.fillAdvancedSearchClass(data); // fill the class of the advanced Search
+    this.advancedSearch.place = this.lieuSelected;  // Right location to send to APi (ex 75001 and not Paris)
     if(this.advancedSearch.place.length === 0){
       delete this.advancedSearch.place;
     }
     this.advancedSearch.name = data.name;
-    this.publicService.storeSearchSchool(this.searchFilter);
-    this.postAdvancedFilter();
+    this.publicService.storeSearchSchool(this.searchFilter); // store the search to the service
+    this.postAdvancedFilter();  // Get new list of school with the search (fast and advanced search)
     this.forAdvancedSearch = false;
   }
 
   fillAdvancedSearchClass(data) {
     this.advancedSearch.class = [''];
-    if(data.class === 'Cursus international') {
+    if(data.class === 'Cursus international') { // class array only if it's cursus international
       this.advancedSearch.class[0] = 'CI';
       this.advancedSearch.class[1] = 'BAC-I';
       this.advancedSearch.class[2] = 'cursus_non_francophone';
@@ -380,6 +397,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   //     )
   // }
 
+  // get the location list (after key down)
   filterLieu(event) {
     // console.log(event.target.value);
     const filter: string = event.target.value;
@@ -388,6 +406,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
   }
 
+  // get the school list (after key down)
   filterSchool(event){
     // console.log(event.target.value);
     const filter: string = event.target.value;
@@ -398,6 +417,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
   }
 
+  // get the location list from API
   getLieuFilter(filter: string){
     let data = {
       keyword : filter
@@ -417,6 +437,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
       )
   }
 
+  // After select a location name (ex : 75001 Paris 01)
   onSelectLieu(type:string, index:number){
     this.lieuSelected=[];
     if(type=='R'){
@@ -429,6 +450,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     console.log(this.lieuSelected);
   }
 
+  // Get before BAC school list from API
   getSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -443,8 +465,9 @@ export class SchoolComponent implements OnInit, OnDestroy {
       )
   }
 
+  // get the school list
   postAdvancedFilter(){
-    console.log(this.advancedSearch);
+    //console.log(this.advancedSearch);
     this.isLoader=true;
     this.publicService.postSearchSchool(this.advancedSearch, this.limit)
       .subscribe(
@@ -505,23 +528,24 @@ export class SchoolComponent implements OnInit, OnDestroy {
   //   return http.status != 404;
   // }
 
+  // Click on one of the checkbox of the advanced search
   onAdvancedClick(event, category){
     // console.log(event);
     if(event.srcElement.localName=="input"){
       // console.log(event.srcElement.checked)
-      if(event.srcElement.checked){
+      if(event.srcElement.checked){ // if user check the box
         // console.log("checked!")
         if(typeof this.advancedSearch[category] == "undefined"){
           this.advancedSearch[category]={}
         }
-        this.advancedSearch[category][event.srcElement.name]=true;
-        this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent)
-        this.advancedSearchCategory.push(category);
-        this.advancedSearchValue.push(event.srcElement.name);
+        this.advancedSearch[category][event.srcElement.name]=true; // Modify the body to send to API
+        this.advancedSearchToDisplay.push(event.srcElement.parentElement.children[1].textContent) // Data to display on the front
+        this.advancedSearchCategory.push(category); // Category to display on the front
+        this.advancedSearchValue.push(event.srcElement.name); // Values used to uncheck checkboxs if user want a new search
         console.log(this.advancedSearch);
         this.limit=20
         this.postAdvancedFilter();
-      } else{
+      } else{ // If user uncheck the box
         // console.log(this.advancedSearch[category], event.srcElement.name)
         if(this.advancedSearch[category]!==undefined){
           delete this.advancedSearch[category][event.srcElement.name];
@@ -544,11 +568,12 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
   }
 
+  // on filter language in advanced search
   filterLanguage(event, category){
     // console.log(event);
     // this.languageAdvancedSearch.push(category);
     if(typeof this.advancedSearch['language']=='undefined' && event.srcElement.value!=""){
-      this.advancedSearch['language']={}
+      this.advancedSearch['language']={} // Init language in advanced search
     }
     if(event.srcElement.value=="" && typeof this.advancedSearch['language']!='undefined'){
       if(this.advancedSearch['language'][category]!='undefined'){
@@ -569,6 +594,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     // console.log(this.advancedSearch)
   }
 
+  // remove category if it's empty
   checkCategory(category){
     let i = 0;
     for(var prop in this.advancedSearch[category]){
@@ -590,6 +616,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   //   this.postAdvancedFilter();
   // }
 
+  //clean all array
   cleanSearch(){
     // console.log("clean search")
     this.languageAdvancedSearch=[];
@@ -611,6 +638,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     // this.getSearchFilter();
   }
 
+  // Init the advanced search
   initAdvancedSearch(){
     this.advancedSearch={
       code : [],
@@ -620,6 +648,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     };
   }
 
+  // Set the right code to send to the API to get school (ex : college -> receive only college school)
   setCodeName(){
     if(this.pathName=="ecole"){
       this.advancedSearch.code=["maternelle", "primaire"]
@@ -634,6 +663,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
   }
 
+  // clean advanced search
   cleanAdvancedSearch(){
     // console.log("Clean all search");
     this.lieuSelected=[];
@@ -677,6 +707,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
   }
 
+  // remove a filter
   onRemoveFilter(index, advanced){
     // console.log("click sur la croix", advanced)
     this.advancedSearchToDisplay.splice(index, 1)
@@ -689,6 +720,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     this.postAdvancedFilter();
   }
 
+  //remove a language filter
   onRemoveLanguageFilter(index){
     // console.log("click")
     this[this.languageAdvancedSearch[index]]=""
@@ -696,11 +728,13 @@ export class SchoolComponent implements OnInit, OnDestroy {
     this.languageAdvancedSearchName.splice(index, 1);
   }
 
+  //click on showMore button
   showMore(){
     this.limit+=20
     this.postAdvancedFilter()
   }
 
+  // save a school in wish
   saveInWish(schoolId){
     const data = {
       type : "wish",
@@ -730,22 +764,26 @@ export class SchoolComponent implements OnInit, OnDestroy {
       )
   }
 
+  // navigate to brochure page with the school name
   goToBrochure(schoolName){
     // console.log(schoolName)
     this.brochureService.storeSchoolSearch(schoolName);
     this.router.navigate(['/brochure']);
   }
 
+  //open MdDialog to send message
   sendMessage(school){
     let config = this.sendService.makeProfile(school)
     let dialogref = this.dialog.open(SendMessageComponent, config);
   }
 
+  // store class name to display on school list
   storeClassName(event){
     console.log(event)
     this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
   }
 
+  // clean the service when user quit the page
   ngOnDestroy(){
     this.schoolService.cleanSelectedLieu();
   }

@@ -35,6 +35,7 @@ export class WishApplyPopupComponent implements OnInit {
     this.dialogref.close();
   }
 
+  // get the application to display on the MdDialog
   getApplications(){
     this.usersService.getApplication()
       .subscribe(
@@ -57,14 +58,15 @@ export class WishApplyPopupComponent implements OnInit {
       )
   }
 
+  // Open the school detail
   onSchoolDetail(school){
     // this.route.navigate(['/etablissement', schoolId]);
     this.makeSchoolDetailProfil(school)
     this.dialogref.close();
-	let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
-    
+	  let dialogref = this.dialog.open(EtablissementComponent, this.configSchoolDetail);
   }
 
+  // Make the config of the MdDialog of the school detail
   makeSchoolDetailProfil(school){
     // console.log(window.screen.width)
     let screenWidth :string = ((window.screen.width/5)*4).toString()+'px';
@@ -87,6 +89,7 @@ export class WishApplyPopupComponent implements OnInit {
     };
   }
 
+  // On apply to a school -> make the config and open the MdDialog
   onSchoolApply(schoolId, index){
     // this.route.navigate(['/applyto', schoolId])
     this.makeProfile(this.wishList[index])
@@ -94,6 +97,7 @@ export class WishApplyPopupComponent implements OnInit {
     this.dialogref.close();
   }
 
+  // Make the school cycle choice popup
   makeProfile(schoolData){
     let screenWidth : string = (((window.screen.width/3)*2)).toString()+'px';
     let screenHeight : string = (window.screen.height/2).toString()+'px';
@@ -113,17 +117,19 @@ export class WishApplyPopupComponent implements OnInit {
     };
   }
 
+  //After click on apply to
   applyOnMultiple(){
     this.onSchoolApply(this.schoolApplyToList, 0)
   }
 
+  // Add or remove school to apply in schoolApplyTo list
   onSchoolCheckbox(school){
     console.log(school)
     let index = this.schoolApplyToList.indexOf(school)
     if(index==-1){
       this.schoolApplyToList.push(school)
     } else{
-      this.schoolApplyToList.splice(index, 1) 
+      this.schoolApplyToList.splice(index, 1)
     }
   }
 

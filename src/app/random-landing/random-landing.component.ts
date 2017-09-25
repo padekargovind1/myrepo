@@ -12,6 +12,7 @@ export class RandomLandingComponent implements OnInit {
   constructor(private router : Router,
               private publicService : PublicService) { }
 
+  //First page of the website to random the landing page
   ngOnInit() {
     // console.log("random init")
     let nb;
@@ -25,7 +26,7 @@ export class RandomLandingComponent implements OnInit {
       // console.log(nb)
     }
     this.router.navigate(['landing-page-'+nb])
-    
+
   }
 
 }

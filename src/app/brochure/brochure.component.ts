@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PublicService } from '../services/public.service';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import { MdDialog, MdDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {BrochpopupComponent} from './brochpopup/brochpopup.component'
 import { BrochureDownloadComponent } from './brochure-download/brochure-download.component';
@@ -10,7 +10,7 @@ import { BrochureService } from '../services/brochure.service';
   templateUrl: './brochure.component.html',
   styleUrls: ['./brochure.component.scss']
 })
-export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
+export class BrochureComponent implements OnInit, OnDestroy {
 
     listBrochures = [];
     listBrochuresFiltered = [];
@@ -50,20 +50,19 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
       this.buildForm();
       this.makeProfile();
       this.getSearch();
-      // this.doBrochure();
   }
   ngOnInit() {
 
   }
 
-  ngAfterViewInit() {
-  	// this.doBrochure();
-  }
-
+  // Cleaning the school search after user quit the page
   ngOnDestroy(){
     this.brochureService.cleanSchoolSearch()
   }
 
+  // Get search data from service
+  // Then search brochure from the data
+  // if they is no data in the services, we get the brochure
   getSearch(){
     if(this.brochureService.hasSchoolSearch()){
         let data = this.brochureService.getSchoolSearch()
@@ -77,260 +76,279 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  doBrochure() {
-    (<any> $('#js-grid-juicy-projects')).cubeportfolio({
-        filters: '#js-filters-juicy-projects',
-        loadMore: '#js-loadMore-juicy-projects',
-        loadMoreAction: 'click',
-        layoutMode: 'grid',
-        defaultFilter: '*',
-        animationType: 'quicksand',
-        gapHorizontal: 35,
-        gapVertical: 30,
-        gridAdjustment: 'responsive',
-        mediaQueries: [{
-            width: 1500,
-            cols: 5
-        }, {
-            width: 1100,
-            cols: 4
-        }, {
-            width: 800,
-            cols: 3
-        }, {
-            width: 480,
-            cols: 2
-        }, {
-            width: 320,
-            cols: 1
-        }],
-        caption: 'overlayBottomReveal',
-        displayType: 'sequentially',
-        displayTypeSpeed: 80,
+//   doBrochure() {
+//     (<any> $('#js-grid-juicy-projects')).cubeportfolio({
+//         filters: '#js-filters-juicy-projects',
+//         loadMore: '#js-loadMore-juicy-projects',
+//         loadMoreAction: 'click',
+//         layoutMode: 'grid',
+//         defaultFilter: '*',
+//         animationType: 'quicksand',
+//         gapHorizontal: 35,
+//         gapVertical: 30,
+//         gridAdjustment: 'responsive',
+//         mediaQueries: [{
+//             width: 1500,
+//             cols: 5
+//         }, {
+//             width: 1100,
+//             cols: 4
+//         }, {
+//             width: 800,
+//             cols: 3
+//         }, {
+//             width: 480,
+//             cols: 2
+//         }, {
+//             width: 320,
+//             cols: 1
+//         }],
+//         caption: 'overlayBottomReveal',
+//         displayType: 'sequentially',
+//         displayTypeSpeed: 80,
 
-        // lightbox
-        lightboxDelegate: '.cbp-lightbox',
-        lightboxGallery: true,
-        lightboxTitleSrc: 'data-title',
-        lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
+//         // lightbox
+//         lightboxDelegate: '.cbp-lightbox',
+//         lightboxGallery: true,
+//         lightboxTitleSrc: 'data-title',
+//         lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
 
-        // singlePage popup
-        singlePageDelegate: '.cbp-singlePage',
-        singlePageDeeplinking: true,
-        singlePageStickyNavigation: true,
-        singlePageCounter: '<div class="cbp-popup-singlePage-counter">{{current}} of {{total}}</div>',
-        singlePageCallback: function(url, element) {
-            // to update singlePage content use the following method: this.updateSinglePage(yourContent)
-            var t = this;
+//         // singlePage popup
+//         singlePageDelegate: '.cbp-singlePage',
+//         singlePageDeeplinking: true,
+//         singlePageStickyNavigation: true,
+//         singlePageCounter: '<div class="cbp-popup-singlePage-counter">{{current}} of {{total}}</div>',
+//         singlePageCallback: function(url, element) {
+//             // to update singlePage content use the following method: this.updateSinglePage(yourContent)
+//             var t = this;
 
-            console.log('Hi');
+//             console.log('Hi');
 
-            // $.ajax({
-            //         url: url,
-            //         type: 'GET',
-            //         dataType: 'html',
-            //         timeout: 10000
-            //     })
-            //     .done(function(result) {
-            //         t.updateSinglePage(result);
-            //     })
-            //     .fail(function() {
-            //         t.updateSinglePage('AJAX Error! Please refresh the page!');
-            //     });
-        },
+//             // $.ajax({
+//             //         url: url,
+//             //         type: 'GET',
+//             //         dataType: 'html',
+//             //         timeout: 10000
+//             //     })
+//             //     .done(function(result) {
+//             //         t.updateSinglePage(result);
+//             //     })
+//             //     .fail(function() {
+//             //         t.updateSinglePage('AJAX Error! Please refresh the page!');
+//             //     });
+//         },
+//     });
+//   }
+
+  // Getting the brochure with the API
+  // And store the response data in listBrochure
+  getBrochure(){
+    console.log(this.searchBrochure)
+    this.publicService.postBrochure(this.searchBrochure)
+      .subscribe(
+      (data)=>{
+          let response = data;
+          // console.log(response.data);
+          if(response.code==400){
+            console.log(response.message);
+          } else {
+            this.listBrochures=response.data;
+            this.listBrochuresFiltered=response.data;
+            console.log(this.listBrochures);
+          }
+        }
+      )
+    }
+
+  // open the first md dialog to field the form
+  // If submit we open the second dialog to download the brochure
+  brochDialog(){
+    let dialogref = this.dialog.open(BrochpopupComponent,this.config);
+    dialogref.afterClosed().subscribe(result => {
+      this.lastCloseResult = result;
+      // console.log(result)
+      dialogref = null;
+      //const closeResponse = this.brochureService.getResponse();
+      //console.log(closeResponse)
+      if(this.brochureService.getResponse()=="submit"){
+        this.downloadDialog();
+      }
     });
   }
 
-    getBrochure(){
-        console.log(this.searchBrochure)
-        this.publicService.postBrochure(this.searchBrochure)
-            .subscribe(
-                (data)=>{
-                    let response = data;
-                    // console.log(response.data);
-                    if(response.code==400){
-                        console.log(response.message);
-                    } else {
-                        this.listBrochures=response.data;
-                        this.listBrochuresFiltered=response.data;
-                        console.log(this.listBrochures);
-                    }
-                }
-            )
+  // Make the config of the 2 md dialog
+  makeProfile(){
+    let screenWidth : string = (window.screen.width/3).toString()+'px';
+    let screenHeight : string = ((window.screen.height/3)*2).toString()+'px';
+    this.config= {
+      disableClose: false,
+      width: screenWidth,
+      height: screenHeight,
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+      }
+    };
+    this.config2 = {
+      data:{
+        brochureList : this.downloadList,
+        schoolList : this.downloadSchoolList
+      },
+      disableClose: false,
+      width: '',
+      height: '',
+      position: {
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
+      }
     }
+  }
 
-    brochDialog(){
-        let dialogref = this.dialog.open(BrochpopupComponent,this.config);
-        dialogref.afterClosed().subscribe(result => {
-            this.lastCloseResult = result;
-            // console.log(result)
-            dialogref = null;
-            const closeResponse = this.brochureService.getResponse();
-            console.log(closeResponse)
-            if(closeResponse=="submit"){
-                this.downloadDialog();
-            }
-        });
+
+  // Open the md dialog to download the brochure
+  downloadDialog(){
+    let dialogref : MdDialogRef<BrochureDownloadComponent>;
+    dialogref = this.dialog.open(BrochureDownloadComponent, this.config2);
+    dialogref.afterClosed().subscribe(result => {
+      this.lastCloseResult = result;
+      dialogref = null;
+    });
+  }
+
+  // Build the form to search a brochure
+  buildForm(){
+    this.searchForm = this.fb.group({
+      classe : [''],
+      lieu: [''],
+      etablissement : ['']
+    })
+  }
+
+
+  //Getting the location list
+  filterLieu(event){
+    // console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=2){
+      this.getLieuFilter(filter)
     }
+  }
 
-    makeProfile(){
-        let screenWidth : string = (window.screen.width/3).toString()+'px';
-        let screenHeight : string = ((window.screen.height/3)*2).toString()+'px';
-        this.config= {
-            disableClose: false,
-            width: screenWidth,
-            height: screenHeight,
-            position: {
-            top: '',
-            bottom: '',
-            left: '',
-            right: ''
-            }
-        };
-        this.config2 = {
-            data:{
-                brochureList : this.downloadList,
-                schoolList : this.downloadSchoolList
-            },
-            disableClose: false,
-            width: '',
-            height: '',
-            position: {
-                top: '',
-                bottom: '',
-                left: '',
-                right: ''
-            }
+  //Getting the location list from API
+  getLieuFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutoCompleteLieu(data)
+    .subscribe(
+    (response)=>{
+        let data = response.data;
+        // console.log(data);
+        console.log(data);
+        if(response.code!=400){
+          this.options['regions']=data.regions
+          this.options['departements']=data.departments
+          this.options['villes']=data.cities
         }
-    }
+      }
+    )
+  }
 
-    downloadDialog(){
-        let dialogref : MdDialogRef<BrochureDownloadComponent>;
-        dialogref = this.dialog.open(BrochureDownloadComponent, this.config2);
-        dialogref.afterClosed().subscribe(result => {
-            this.lastCloseResult = result;
-            dialogref = null;
-        });
+  // getting the school list
+  filterSchool(event){
+    // console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+    this.getSchoolFilter(filter)
+    }else {
+    this.schoolsOptions=null;
     }
+  }
 
-    buildForm(){
-        this.searchForm = this.fb.group({
-            classe : [''],
-            lieu: [''],
-            etablissement : ['']
-        })
+  //Getting the school list from API
+  getSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
     }
+    this.publicService.postAutocompleteSchool(data)
+    .subscribe(
+      (response)=>{
+      let data = response.data;
+      // console.log(data);
+      this.schoolsOptions=data
+      }
+    )
+  }
 
-    filterLieu(event){
-        // console.log(event.target.value);
-        let filter: string = event.target.value;
-        if(filter.length>=2){
-            this.getLieuFilter(filter)
-        }
-    }
-    getLieuFilter(filter: string){
-        let data = {
-        keyword : filter
-        }
-        this.publicService.postAutoCompleteLieu(data)
-        .subscribe(
-            (response)=>{
-                let data = response.data;
-                // console.log(data);
-                console.log(data);
-                if(response.code!=400){
-                    this.options['regions']=data.regions
-                    this.options['departements']=data.departments
-                    this.options['villes']=data.cities
-                }
-            }
-        )
-    }
+  // After submit search for brochure
+  onSubmitSearch(){
+    console.log("click on submit");
+    this.searchBrochure.class = this.searchForm.value.class;
+    this.searchBrochure.place = this.searchForm.value.lieu;
+    this.searchBrochure.name = this.searchForm.value.etablissement;
+    this.getBrochure()
+  }
 
-    filterSchool(event){
-        // console.log(event.target.value);
-        let filter: string = event.target.value;
-        if(filter.length>=3){
-        this.getSchoolFilter(filter)
-        }else {
-        this.schoolsOptions=null;
-        }
-    }
+  // After click on the clean button
+  onClearSearch(){
+    console.log("click on clear");
+    this.searchBrochure.class = "";
+    this.searchBrochure.place = "";
+    this.searchBrochure.name = "";
+    this.buildForm();
+    this.getBrochure()
+  }
 
-    getSchoolFilter(filter: string){
-        let data = {
-        keyword : filter
-        }
-        this.publicService.postAutocompleteSchool(data)
-        .subscribe(
-            (response)=>{
-            let data = response.data;
-            // console.log(data);
-            this.schoolsOptions=data
-            }
-        )
-    }
+//   getSearchFilter(searchFilter){
+//     if(searchFilter[0]!="" && searchFilter[1]!="" && searchFilter[2]==""){
+//     this.listBrochuresFiltered = this.listBrochures.filter(
+//     school => {
+//         return school.cycle.nom == searchFilter[0] &&
+//         school.address.city == searchFilter[1];
+//     })
+//     } else if (searchFilter[0]=="" && searchFilter[1]=="" && searchFilter[2]!=""){
+//       this.listBrochuresFiltered = this.listBrochures.filter(
+//     school => {
+//         return school.school==searchFilter[2]
+//     })
+//     } else if (searchFilter[0]!="" && searchFilter[1]!="" && searchFilter[2]!=""){
+//       this.listBrochuresFiltered = this.listBrochures.filter(
+//     school => {
+//         return school.school==searchFilter[2] && school.cycle.nom == searchFilter[0] &&
+//         school.address.city == searchFilter[1]
+//     })
+//     } else {
+//       this.listBrochuresFiltered=this.listBrochures;
+//     }
+//   }
 
-    onSubmitSearch(){
-        console.log("click on submit");
-        this.searchBrochure.class = this.searchForm.value.class;
-        this.searchBrochure.place = this.searchForm.value.lieu;
-        this.searchBrochure.name = this.searchForm.value.etablissement;
-        this.getBrochure()
+  // After click on one of the checkbox in the brochure item
+  // Store the id and the school data in the array to use it when user click on download brochure for mutiple brochure
+  onCheckbox(schoolId, brochureId){
+    // console.log(brochureId);
+    if(this.downloadList.includes(brochureId)){
+      // console.log("remove checkbox");
+      let i = this.downloadList.indexOf(brochureId, 0);
+      // console.log(i);
+      this.downloadList.splice(i, 1);
+      this.downloadSchoolList.splice(i, 1);
+    } else {
+      this.downloadList.push(brochureId);
+      this.downloadSchoolList.push(schoolId)
     }
+    console.log(this.downloadList);
+  }
 
-    onClearSearch(){
-        console.log("click on clear");
-        this.searchBrochure.class = "";
-        this.searchBrochure.place = "";
-        this.searchBrochure.name = "";
-		this.buildForm();
-        this.getBrochure()
-    }
-
-    getSearchFilter(searchFilter){
-        if(searchFilter[0]!="" && searchFilter[1]!="" && searchFilter[2]==""){
-        this.listBrochuresFiltered = this.listBrochures.filter(
-        school => {
-            return school.cycle.nom == searchFilter[0] &&
-            school.address.city == searchFilter[1];
-        })
-        } else if (searchFilter[0]=="" && searchFilter[1]=="" && searchFilter[2]!=""){
-        this.listBrochuresFiltered = this.listBrochures.filter(
-        school => {
-            return school.school==searchFilter[2]
-        })
-        } else if (searchFilter[0]!="" && searchFilter[1]!="" && searchFilter[2]!=""){
-        this.listBrochuresFiltered = this.listBrochures.filter(
-        school => {
-            return school.school==searchFilter[2] && school.cycle.nom == searchFilter[0] &&
-            school.address.city == searchFilter[1]
-        })
-        } else {
-        this.listBrochuresFiltered=this.listBrochures;
-        }
-    }
-
-    onCheckbox(schoolId, brochureId){
-        // console.log(brochureId);
-        if(this.downloadList.includes(brochureId)){
-            // console.log("remove checkbox");
-            let i = this.downloadList.indexOf(brochureId, 0);
-            // console.log(i);
-            this.downloadList.splice(i, 1);
-            this.downloadSchoolList.splice(i, 1);
-        } else {
-            this.downloadList.push(brochureId);
-            this.downloadSchoolList.push(schoolId)
-        }
-        console.log(this.downloadList);
-    }
-
-    onDownloadBrochure(schoolId, brochureId){
-        console.log(brochureId)
-        this.downloadList[0]=brochureId;
-        this.downloadSchoolList[0]=schoolId;
-        this.brochDialog();
-    }
+  // After click on the download button (not the button next to the search)
+  onDownloadBrochure(schoolId, brochureId){
+    console.log(brochureId)
+    this.downloadList[0]=brochureId;
+    this.downloadSchoolList[0]=schoolId;
+    this.brochDialog();
+  }
 
 }

@@ -15,7 +15,7 @@ import {MyAccountMdl,
         MyAccountBulletin,
         MyAccountSiblingsMdl } from '../../model/myaccount.model';
 
-const self = this;
+//const self = this;
 @Component({
   selector: 'app-myaccount-children',
   templateUrl: './myaccount-children.component.html',
@@ -31,38 +31,40 @@ export class MyaccountChildrenComponent implements OnInit {
   // children = ["Frère / Sœur 1"];
   canDisplay: boolean = false;
   // siblings : any;
-  maxDate = new Date();
+  //maxDate = new Date();
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
               private route : Router,
               private authService : AuthService) {
-    if(this.authService.getToken() != "") {
-      this.getUserProfile();
+    if(this.authService.getToken() != "") { // If user is logged
+      this.getUserProfile(); // get user profile from API
       this.parentData.address = new MyAccountAdresse();
     } else {
       console.log("navigate back");
       this.route.navigate(['/login']);
     }
-    console.log(Date.now().toString())
+    //console.log(Date.now().toString())
     // let date = new Date();
     // this.maxDate = date.getFullYear()+'/0'+date.getMonth()+'/0'+date.getDay();
     // console.log(this.maxDate)
   }
 
   ngOnInit() {
-    let date = new Date().toISOString();
+    //let date = new Date().toISOString();
     // console.log(date);
   }
 
-  ngAfterViewInit(){
-    this.runScript()
-  }
-  runScript(){
+  // Run the script
+  //ngAfterViewInit(){
+    //this.runScript()
+  //}
+  //runScript(){
 	// Select your input element.
 
-  }
+  //}
 
+  //get User profile from API
   getUserProfile(){
     this.usersService.getProfile()
       .subscribe(
@@ -78,6 +80,7 @@ export class MyaccountChildrenComponent implements OnInit {
       )
   }
 
+  // Build the form
   buildFormGroup(siblings){
     this.childrenForm = this.fb.group({
       nom : ['', Validators.required],
@@ -110,6 +113,7 @@ export class MyaccountChildrenComponent implements OnInit {
   //   })
   // }
 
+  // Patch the value from the API
   patchValue(data: any){
     console.log(data);
     this.childrenForm.patchValue({
@@ -145,6 +149,7 @@ export class MyaccountChildrenComponent implements OnInit {
     console.log(this.childrenForm);
   }
 
+  // Complete the profile to send to the API
   completeProfile(){
     this.myProfile.lastName = this.childrenForm.value.nom;
     this.myProfile.firstName = this.childrenForm.value.prenom;
@@ -176,9 +181,10 @@ export class MyaccountChildrenComponent implements OnInit {
     this.usersService.storeChildData(this.myProfile);
   }
 
+  // After click on submit
   onSubmit(){
     console.log("Click on submit", this.childrenForm.value);
-    this.completeProfile();
+    this.completeProfile(); // Complete the profile to send
     this.save();
     swal({
       title: 'Vos données ont bien été enregistré.',
@@ -189,6 +195,7 @@ export class MyaccountChildrenComponent implements OnInit {
     this.route.navigate(['/'])
   }
 
+  // Call API to send new data of the user
   save(){
     this.myProfile.parents = this.usersService.getParentData();
     // console.log(this.myProfile);
@@ -213,6 +220,7 @@ export class MyaccountChildrenComponent implements OnInit {
   //   this.myProfile.siblings.splice(index, 1);
   // }
 
+  // Create thte profile to send to the API
   createProfile(data){
     console.log(data)
     this.myProfile.parents= [];
