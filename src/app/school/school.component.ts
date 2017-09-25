@@ -217,7 +217,6 @@ export class SchoolComponent implements OnInit, OnDestroy {
             $('.filter-form-holder').css('background-image', "url('./assets/images/ecole.jpg')");
             this.advancedSearch.code = ['maternelle', 'primaire'];
           } else if (this.pathName === 'college') {
-            this.schoolComponentTitle = 'Rechercher un collège (6ème-3ème)';
             $('.filter-form-holder').css('background-image', "url('./assets/images/college.jpg')");
             this.advancedSearch.code = [this.pathName];
           } else if (this.pathName === 'lycee') {
