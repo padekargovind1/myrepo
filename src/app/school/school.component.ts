@@ -9,12 +9,13 @@ import { SchoolService } from '../services/school.service';
 import { UsersService } from '../services/users.service';
 import { BrochureService } from '../services/brochure.service';
 import { SendService } from '../services/send.service';
-//import { AdvancedSearchMdl } from '../model/advanced-search.model';
+// import { AdvancedSearchMdl } from '../model/advanced-search.model';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
-declare var jquery:any;
-declare var $ :any;
+import * as helpers from '../helpers';
+declare const jquery: any;
+declare const $: any;
 
 @Component({
   selector: 'app-school',
@@ -24,126 +25,116 @@ declare var $ :any;
 })
 export class SchoolComponent implements OnInit, OnDestroy {
 
-  //schoolList : any;
   schoolListFilter = [];
   defaultSchoolList : any;
   compareList= [];
   compareListFilter = [];
-  filterList = ["Cycles & Classes", "Langues", "Spécialités",
-                "Internat", "Stages", "Restauration",
-                "Externat", "Statut", "Enseignement Confessionel",
-                "Sections", "Diplôme", "Options", "Places Disponibles"]
-  four : boolean = false;
-  canCompare : boolean = false;
-  canFilter : boolean = false;
-  searchFilter = ["", "", ""];
-  searchForm : FormGroup;
-  options={
-    regions : [],
-    departements : [],
-    villes : []
+  filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
+                'Internat', 'Stages', 'Restauration',
+                'Externat', 'Statut', 'Enseignement Confessionel',
+                'Sections', 'Diplôme', 'Options', 'Places Disponibles']
+  four: boolean = false;
+  canCompare: boolean = false;
+  canFilter: boolean = false;
+  searchFilter = ['', '', ''];
+  searchForm: FormGroup;
+  options = {
+    regions: [],
+    departements: [],
+    villes: []
   };
   schoolsOptions: any;
-  advancedSearch={
+  advancedSearch = {
     code : [],
     class : [''],
     name : '',
     place : []
   };
-  advancedSearchToDisplay=[];
-  advancedSearchCategory=[];
-  advancedSearchValue=[];
-  languageAdvancedSearch=[];
-  languageAdvancedSearchName=[];
-  religiousChecked : boolean = false;
+  advancedSearchToDisplay = [];
+  advancedSearchCategory = [];
+  advancedSearchValue = [];
+  languageAdvancedSearch = [];
+  languageAdvancedSearchName = [];
+  religiousChecked = false;
   langues = [];
   languesRegio = [];
   diplomes = [];
-  optionValue: string="";
-  subscription : Subscription;
-  schoolComponentTitle = "";
-  pathName ="";
+  optionValue = '';
+  subscription: Subscription;
+  schoolComponentTitle = '';
+  pathName = '';
   confessionChecked : boolean = false;
-  lv1: any="";
-  lv2: any="";
-  lv3: any="";
-  ancient: any="";
-  regional: any="";
-  limit=20;
-  totalRecords=20;
-  isLoader=false;
-  slickNb : number;
-  nbBodyClick : number =0;
-  nbAdvancedClick : number = 0;
-  forAdvancedSearch : boolean = false;
-  onMobile : boolean = false;
-  bottomAdCarousalClasses : string = "footer-ads hidden animated";
-  lieuSelected=[];
-  imageExtensions = ["png","gif","jpeg"];
-  imagePathPre : string = "http://54.254.203.172/cideapi/";
+  lv1: any = '';
+  lv2: any = '';
+  lv3: any = '';
+  ancient: any = '';
+  regional: any = '';
+  limit = 20;
+  totalRecords = 20;
+  isLoader = false;
+  slickNb: number;
+  // variables not used
+  // nbBodyClick = 0;
+  // nbAdvancedClick = 0;
+  forAdvancedSearch = false;
+  onMobile = false;
+  bottomAdCarousalClasses: string = 'footer-ads hidden animated';
+  lieuSelected = [];
+  // never used
+  // imageExtensions = ['png','gif','jpeg'];
+  // imagePathPre = 'http://54.254.203.172/cideapi/';
 
-  constructor(private publicService : PublicService,
-              private schoolService : SchoolService,
-              private compareService : CompareService,
-              private usersService : UsersService,
-              private brochureService : BrochureService,
-              private router : Router,
-              private fb : FormBuilder,
-              private route : ActivatedRoute,
-              private sendService : SendService,
-              public dialog:MdDialog) { }
+  constructor(private publicService: PublicService,
+              private schoolService: SchoolService,
+              private compareService: CompareService,
+              private usersService: UsersService,
+              private brochureService: BrochureService,
+              private router: Router,
+              private fb: FormBuilder,
+              private route: ActivatedRoute,
+              private sendService: SendService,
+              public dialog: MdDialog) { }
 
   ngOnInit() {
     this.slickNb=this.publicService.getNbSlick();
     this.setBackgroundImage();
     this.buildForm();
+    // TODO: Marc => what is that ?
     for (let list of this.filterList){
       this.compareListFilter.push(false);
     }
-    // console.log(this.advancedSearch);
-    this.langues=this.schoolService.getLangues();
-    this.languesRegio=this.schoolService.getLanguesRegio();
-    this.diplomes=this.schoolService.getDiplomes();
-	  this.runScriptOnInit()
-    // console.log(window.screen.width)
-    setTimeout(()=>{
-      this.runScript()
-    })
+    this.langues = this.schoolService.getLangues();
+    this.languesRegio = this.schoolService.getLanguesRegio();
+    this.diplomes = this.schoolService.getDiplomes();
+    this.runScriptOnInit();
+
+    setTimeout(() => {
+      this.runScript();
+    });
   }
 
-  runScriptOnInit(){
-    function detectmob() {
-      if( navigator.userAgent.match(/Android/i)
-        || navigator.userAgent.match(/webOS/i)
-        || navigator.userAgent.match(/iPhone/i)
-        || navigator.userAgent.match(/iPad/i)
-        || navigator.userAgent.match(/iPod/i)
-        || navigator.userAgent.match(/BlackBerry/i)
-        || navigator.userAgent.match(/Windows Phone/i)
-        ){
-          return true;
-      }
-      else {
-          return false;
-      }
-    }
-    var checkMobile = detectmob();
-    if (checkMobile) {
-      console.log(checkMobile)
-      this.onMobile=true;
-    }else {
-      this.onMobile=false;
-    }
+  runScriptOnInit() {
+    // return scope value
+    this.onMobile = helpers.detectmob();
   }
 
-  runScript(){
+  /**
+   * Start run script
+   */
+  runScript() {
+    // variables
+    const adv_filter = $('.advance-filter');
+
+    // filter 1
     $('.filter-holder').on('click', function() {
-      if($('.advance-filter').is(':visible')){
-        $('.advance-filter').hide();
+      if (adv_filter.is(':visible')) {
+        adv_filter.hide();
       } else {
-        $('.advance-filter').show();
+        adv_filter.show();
       }
-	  });
+    });
+
+    // filter 2
     $('.advance-filter a').on('click', function(e) {
       if ($(this).hasClass('open')) {
         $(this).siblings('ul').toggleClass('fadeIn open');
@@ -154,47 +145,39 @@ export class SchoolComponent implements OnInit, OnDestroy {
         $(this).addClass('open');
       }
     });
-    $('body').on('mousedown', function($event){
-      // console.log($(this).attr('id'))
-      // if(typeof $event.target.attributes['class']!='undefined'){
-      //   if($event.target.attributes['class'].value == 'main' ||
-      //     $event.target.attributes['class'].value == 'filter-form-holder' ||
-      //     $event.target.attributes['class'].value == 'form-inline searchform  school-page ng-untouched ng-pristine ng-valid'||
-      //     $event.target.attributes['class'].value == "col-md-3" ||
-      //     $event.target.attributes['class'].value == "list-schools  row  white-background" ||
-      //     $event.target.attributes['class'].value == 'row'){
-      //     $('.advance-filter').hide();
-      //   }
-      // }
-    })
+
+    // mobile filter
     $('#mobileFilter').on('click', function(e){
-		e.stopPropagation();
-        $('.advance-filter').toggle();
+      e.stopPropagation();
+      adv_filter.toggle();
     });
-	$('*').click(function(e){
-		var a = e.target;
-		if ($(a).parents('.advancedFilter').length === 0) {
-			if($('.advance-filter').is(':visible')){
-				$('.advance-filter').hide();
-				$('.switch.mobile #filter-trigger').trigger("click");
-			  }
-		}
-	});
 
-    window.setTimeout("hideAd()", 3000);
-  	window.setTimeout("hideSideAd()", 13000);
+    // TODO: Marc => Comment this code
+    $('*').on('click', function(e){
+      const a = e.target;
+      if ($(a).parents('.advancedFilter').length === 0) {
+        if (adv_filter.is(':visible')) {
+          adv_filter.hide();
+          $('.switch.mobile #filter-trigger').trigger('click');
+        }
+      }
+    });
 
-  	$('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() {
+    // TODO : Marc => Comment this code
+    window.setTimeout('hideAd()', 3000);
+    window.setTimeout('hideSideAd()', 13000);
+
+    // Add
+    $('.popup-ad-holder-mobile .close, .from-popup .close').on('click', function() {
       $(this).parent().addClass('fadeOutDown');
     });
 
-
-	var bottomadds_count=5;
-	if(this.onMobile)
-	{
-		this.bottomAdCarousalClasses = "mobileads-carousal-bottom";
-		bottomadds_count=2;
-	}
+    // TODO: Marc => Comment this code
+    let bottomadds_count = 5;
+    if (this.onMobile) {
+      this.bottomAdCarousalClasses = 'mobileads-carousal-bottom';
+      bottomadds_count = 2;
+    }
 
     $('.slickjs'+this.slickNb).slick({
       arrows : false,
@@ -205,52 +188,51 @@ export class SchoolComponent implements OnInit, OnDestroy {
     });
   }
 
-  clickOnBody(event){
+  // clickOnBody(event){
     // console.log(event.srcElement.attributes['class'].textContent)
     // if(event.srcElement)
-    //this.nbBodyClick++;
-    //if(this.nbBodyClick!=this.nbAdvancedClick){
-      //$('.advance-filter').hide();
-      //this.nbAdvancedClick=this.nbBodyClick
-    //}
-  }
+    // this.nbBodyClick++;
+    // if(this.nbBodyClick!=this.nbAdvancedClick){
+      // $('.advance-filter').hide();
+      // this.nbAdvancedClick=this.nbBodyClick
+    // }
+  // }
 
-  showAdvanced(){
-    //this.nbAdvancedClick++;
-    //$('.advance-filter').show();
-  }
+  // showAdvanced() {
+    // this.nbAdvancedClick++;
+    // $('.advance-filter').show();
+  // }
 
-  getSlickNb(){
-    return 'slickjs'+this.slickNb;
+  getSlickNb() {
+    return 'slickjs' + this.slickNb;
   }
 
   setBackgroundImage(){
     this.subscription = this.route.url
       .subscribe(
-        params =>{
-          // console.log(params[0].path);
+        params => {
             this.pathName = params[0].path;
-          if(this.pathName == "ecole"){
-            this.schoolComponentTitle="ECOLE Maternelle / Primaire"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/ecole.jpg')")
-            this.advancedSearch.code=["maternelle", "primaire"]
-          } else if (this.pathName == "college"){
-            this.schoolComponentTitle="Rechercher un collège (6ème-3ème)"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/college.jpg')")
-            this.advancedSearch.code=[this.pathName]
-          } else if(this.pathName == "lycee"){
-            this.schoolComponentTitle="Rechercher un lycée (Seconde-Terminale)"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/lycee.jpg')")
-            this.advancedSearch.code=[this.pathName]
-          } else if(this.pathName == "internat"){
-            this.advancedSearch.code=["maternelle", "primaire", "college", "lycee"]
-            this.advancedSearch['boarding']={ onSite : true, notOnSite : true }
-            this.schoolComponentTitle="Rechercher un Internat (Maternelle au Lycée)"
-            $('.filter-form-holder').css('background-image', "url('./assets/images/internat.jpg')")
+          if (this.pathName === 'ecole'){
+            this.schoolComponentTitle = 'ECOLE Maternelle / Primaire';
+            $('.filter-form-holder').css('background-image', "url('./assets/images/ecole.jpg')");
+            this.advancedSearch.code = ['maternelle', 'primaire'];
+          } else if (this.pathName === 'college') {
+            this.schoolComponentTitle = 'Rechercher un collège (6ème-3ème)';
+            $('.filter-form-holder').css('background-image', "url('./assets/images/college.jpg')");
+            this.advancedSearch.code = [this.pathName];
+          } else if (this.pathName === 'lycee') {
+            this.schoolComponentTitle = 'Rechercher un lycée (Seconde-Terminale)';
+            $('.filter-form-holder').css('background-image', "url('./assets/images/lycee.jpg')");
+            this.advancedSearch.code = [this.pathName];
+          } else if(this.pathName === 'internat') {
+            this.advancedSearch.code = ['maternelle', 'primaire', 'college', 'lycee'];
+            this.advancedSearch['boarding'] = { onSite : true, notOnSite : true };
+            this.schoolComponentTitle = 'Rechercher un Internat (Maternelle au Lycée)';
+            $('.filter-form-holder').css('background-image', "url('./assets/images/internat.jpg')");
           } else {
-            this.advancedSearch.code=["enseignement"]
-            this.schoolComponentTitle="Enseignement Supérieur";
-            $('.filter-form-holder').css('background-image', "url('./assets/images/autodoc.jpg')")
+            this.advancedSearch.code = ['enseignement'];
+            this.schoolComponentTitle = 'Enseignement Supérieur';
+            $('.filter-form-holder').css('background-image', "url('./assets/images/autodoc.jpg')");
           }
           // this.getAllSchool(this.limit);
 
@@ -258,25 +240,25 @@ export class SchoolComponent implements OnInit, OnDestroy {
       )
   }
 
-  buildForm(){
+  buildForm() {
     this.searchForm = this.fb.group({
       classe : [''],
       lieu : [''],
       etablissement : ['']
-    })
+    });
     // console.log(this.searchForm)
-    this.fieldSearchForm()
-    this.initOptions()
+    this.fieldSearchForm();
+    this.initOptions();
   }
 
   fieldSearchForm(){
-    let data = this.publicService.getSearchSchool()
+    const data = this.publicService.getSearchSchool();
     // console.log(data)
     this.searchForm.patchValue({
       classe : data[0],
       lieu : data[1],
       etablissement : data[2]
-    })
+    });
     this.forAdvancedSearch=true;
     this.lieuSelected=this.schoolService.getSelectedLieu();
     this.onSubmitSearch()
@@ -303,31 +285,28 @@ export class SchoolComponent implements OnInit, OnDestroy {
     } else if(this.compareList.length >= 4){
       swal({
         title: 'Attention',
-        text: "Vous ne pouvez comparer plus de 4 écoles à la fois. Vous pouvez tout de même désélectionner une école déjà sélectionné",
+        text: 'Vous ne pouvez comparer plus de 4 écoles à la fois. Vous pouvez tout de même désélectionner une école déjà sélectionné',
         type: 'warning',
         confirmButtonText: 'Ok'
-      })
-      this.four=true;
+      });
+      this.four = true;
     } else {
       this.compareList.push(schoolId);
-      if(this.compareList.length>1){
-        this.canCompare=true;
+      if(this.compareList.length > 1) {
+        this.canCompare = true;
       }
     }
   }
 
-  onFilterCheckbox(index){
-    // console.log(index, this.compareListFilter[index]);
+  onFilterCheckbox(index) {
     this.compareListFilter[index] = !this.compareListFilter[index];
     this.canFilter = this.checkFilterBox();
-    // console.log(this.canFilter);
   }
 
-  checkFilterBox(){
+  checkFilterBox() {
     let i = 0;
-    for(let filter of this.compareListFilter){
-      console.log(filter);
-      if(filter==true){
+    for (const filter of this.compareListFilter){
+      if (filter === true) {
         return true;
       }
       i++;
@@ -335,51 +314,52 @@ export class SchoolComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  onCompare(){
+  onCompare() {
     this.compareService.storeCompareFilter(this.compareListFilter);
-    this.compareService.storeSchoolId(this.compareList)
+    this.compareService.storeSchoolId(this.compareList);
     this.router.navigate(['/compare-mode/']);
   }
 
 
-  onSubmitSearch(){
-    // console.log(this.searchForm)
-    if(!this.forAdvancedSearch){
-      if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement==""){
+  onSubmitSearch() {
+    if (!this.forAdvancedSearch) {
+      if ((this.searchForm.value.classe === '' || this.searchForm.value.lieu === '')
+        && this.searchForm.value.etablissement === '') {
         swal({
           title: 'Attention',
-          text: 'Vous devez choisir une classe et un lieu ou entrer le nom d\'un établissement afin d\'effectuer une recherche rapide. Merci',
+          text: 'Vous devez choisir une classe et un lieu ou entrer le nom d\'un établissement afin ' +
+          'd\'effectuer une recherche rapide. Merci',
           type: 'warning',
-          confirmButtonText: "J'AI COMPRIS"
-        })
+          confirmButtonText: 'J\'AI COMPRIS'
+        });
         return;
       }
     }
-    let data = {
-      class : this.searchForm.controls.classe.value=='' || this.searchForm.controls.classe.value=='Indifférent' ? '' : this.searchForm.controls.classe.value,
+    const data = {
+      class : this.searchForm.controls.classe.value === ''
+      || this.searchForm.controls.classe.value === 'Indifférent' ? '' : this.searchForm.controls.classe.value,
       place : [this.searchForm.controls.lieu.value],
       name : this.searchForm.controls.etablissement.value
-    }
-    console.log(this.lieuSelected, this.advancedSearch)
-    this.searchFilter=[this.publicService.getClassName(), data.place, data.name];
+    };
+    console.log(this.lieuSelected, this.advancedSearch);
+    this.searchFilter = [this.publicService.getClassName(), data.place, data.name];
     this.fillAdvancedSearchClass(data);
     this.advancedSearch.place = this.lieuSelected;
-    if(this.advancedSearch.place.length==0){
+    if(this.advancedSearch.place.length === 0){
       delete this.advancedSearch.place;
     }
     this.advancedSearch.name = data.name;
-    // console.log(this.advancedSearch);
     this.publicService.storeSearchSchool(this.searchFilter);
     this.postAdvancedFilter();
-    this.forAdvancedSearch=false;
+    this.forAdvancedSearch = false;
   }
 
-  fillAdvancedSearchClass(data){
-    this.advancedSearch.class=[''];
-    if(data.class=="Cursus international"){
-      this.advancedSearch.class[0]="CI";
-      this.advancedSearch.class[1]="BAC-I";
-      this.advancedSearch.class[2]="cursus_non_francophone";
+  fillAdvancedSearchClass(data) {
+    this.advancedSearch.class = [''];
+    if(data.class === 'Cursus international') {
+      this.advancedSearch.class[0] = 'CI';
+      this.advancedSearch.class[1] = 'BAC-I';
+      this.advancedSearch.class[2] = 'cursus_non_francophone';
     }else{
       this.advancedSearch.class[0] = data.class;
     }
@@ -401,18 +381,18 @@ export class SchoolComponent implements OnInit, OnDestroy {
   //     )
   // }
 
-  filterLieu(event){
+  filterLieu(event) {
     // console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=2){
-      this.getLieuFilter(filter)
+    const filter: string = event.target.value;
+    if(filter.length >= 2) {
+      this.getLieuFilter(filter);
     }
   }
 
   filterSchool(event){
     // console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=3){
+    const filter: string = event.target.value;
+    if(filter.length >= 3){
       this.getSchoolFilter(filter)
     }else {
       this.schoolsOptions=null;

@@ -5,9 +5,8 @@ import { PublicService } from '../services/public.service';
 import { SchoolService } from '../services/school.service';
 import * as $ from 'jquery';
 import swal from 'sweetalert2';
-
-declare var wheelnav: any;
-//declare var sliceTransform: any;
+import * as helpers from '../helpers';
+declare const wheelnav: any;
 
 @Component({
   selector: 'app-accueil',
@@ -22,15 +21,17 @@ export class AccueilComponent implements OnInit {
     villes : []
   };
   schoolsOptions: any;
-  apbOptions : any
+  apbOptions : any;
   searchForm: FormGroup;
   apbForm: FormGroup;
   rateId : string = '';
   domaines=[];
   onMobile : boolean = false;
   lieuSelected = [];
+  selectorWheel: String = '#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, ' +
+    '#wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6';
+
   constructor(private router: Router,
-              //private route: ActivatedRoute,
               private publicService: PublicService,
               private fb: FormBuilder,
               private schoolService : SchoolService
@@ -41,87 +42,72 @@ export class AccueilComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.wheel = new wheelnav("tabwheel");
+    this.wheel = new wheelnav('tabwheel');
     this.wheel.spreaderInTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
     this.wheel.spreaderOutTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
     this.wheel.spreaderInTitleWidth = 100;
     this.wheel.spreaderOutTitleWidth = 100;
     this.wheel.spreaderEnable = true;
     this.wheel.spreaderRadius = 0;
-                    //This is the place for code snippets from the documentation -> http://wheelnavjs.softwaretailoring.net/documentation.html
+    // This is the place for code snippets from the documentation -> http://wheelnavjs.softwaretailoring.net/documentation.html
     this.wheel.clockwise = false;
     this.wheel.clickModeRotate = false;
-    this.wheel.createWheel(["", "", "", "", "", "", ""]);
+    this.wheel.createWheel(['', '', '', '', '', '', '']);
     // this.wheel.sliceSelectedTransformFunction = sliceTransform().MoveMiddleTransform;
     this.wheelNavigation();
     this.initRate();
-    this.domaines=this.publicService.getDomaines();
+    this.domaines = this.publicService.getDomaines();
   }
 
-  runScript(){
-    var self = this;
-    function detectmob() {
-      if( navigator.userAgent.match(/Android/i)
-        || navigator.userAgent.match(/webOS/i)
-        || navigator.userAgent.match(/iPhone/i)
-        || navigator.userAgent.match(/iPad/i)
-        || navigator.userAgent.match(/iPod/i)
-        || navigator.userAgent.match(/BlackBerry/i)
-        || navigator.userAgent.match(/Windows Phone/i)
-        ){
-          return true;
-      }
-      else {
-          return false;
-      }
-    }
-    var checkMobile = detectmob();
+  runScript() {
+    const self = this;
+    const checkMobile = helpers.detectmob();
+    const selector_select: any = $('.select-all-advisor');
+    const selector_deselect: any = $('.deselect-all-advisor');
     if (checkMobile) {
-      console.log(checkMobile)
-      self.onMobile=true;
-      $('.select-all-advisor').on('click', function() {
+      self.onMobile = true;
+      selector_select.on('click', function() {
           $(this).hide();
           $('.deselect-all-advisor').show();
       });
-      $('.deselect-all-advisor').on('click', function() {
+      selector_deselect.on('click', function() {
           $(this).hide();
-          $('.select-all-advisor').show();
+          selector_select.show();
       });
     }else {
-      self.onMobile=false;
+      self.onMobile = false;
     }
   }
 
-  wheelNavigation(){
-    var self = this;
-    $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').mousedown(function(e){
-      // console.log($(this).attr('id').charAt(24));
-      let wheelNavId : String = $(this).attr('id');
-      let contentName :String;
-      switch ($(this).attr('id').charAt(24)){
+  wheelNavigation() {
+    const self = this;
+    $(this.selectorWheel).mousedown(function(e){
+      const wheelNavId: String = $(this).attr('id');
+      let contentName: String;
+
+      switch ($(this).attr('id').charAt(24)) {
         case '0' :
-          contentName='ecole';
+          contentName = 'ecole';
           break;
         case '1' :
-          contentName='college';
+          contentName = 'college';
           break;
         case '2' :
-          contentName='lycee';
+          contentName = 'lycee';
           break;
         case '3' :
-          contentName='internat';
+          contentName = 'internat';
           break;
         case '4' :
-          contentName='enseignement';
+          contentName = 'enseignement';
           break;
         case '5' :
-          contentName='linguistic';
+          contentName = 'linguistic';
           break;
         case '6' :
-          contentName='orientation';
+          contentName = 'orientation';
           break;
       }
-      console.log(contentName)
       self.switchWheelComponent(wheelNavId, contentName);
     });
 
@@ -131,47 +117,66 @@ export class AccueilComponent implements OnInit {
 
   }
 
-  switchWheelComponent(wheelNavId: String, contentName: String){
-    var self = this;
-    $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').removeClass('open');
-    $('#'+wheelNavId).addClass('open');
-    if ($('.'+contentName+'-content').hasClass('fadeIn')) {
-      if(contentName!="ecole" && contentName!="college" && contentName!="lycee" && contentName!="internat" && contentName!="enseignement"){
-        console.log("Need to navigate", contentName);
+  switchWheelComponent(wheelNavId: String, contentName: String) {
+    const self = this;
+    const selector_content = $('.' + contentName + '-content');
+    const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
+
+    $(this.selectorWheel).removeClass('open');
+    $('#' + wheelNavId).addClass('open');
+
+    if (selector_content.hasClass('fadeIn')) {
+      if (school_name.includes(contentName)) {
+        console.log('Need to navigate', contentName);
         self.onNavigate(contentName);
       }
     }
+
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
-    $('.'+contentName+'-content').removeClass('fadeOut').addClass('fadeIn');
-    console.log($('.'+contentName+'-content'));
+    selector_content.removeClass('fadeOut').addClass('fadeIn');
+
     // var image = $('.'+contentName+'-content').data('image');
     // console.log(image);
-    $('.main').css('background-image', 'url(assets/images/new-landing-page-2/'+ contentName +'.jpg)');
+    const header = $('.header');
+    const header_height = header.height();
+    const windows_height = $(window).height();
+    const main = $('.main');
+
+
+    const css = {
+      'background-image': 'url(assets/images/new-landing-page-2/' + contentName + '.jpg)',
+      'margin': 0,
+      'padding': 0,
+      'height': '100vh',
+      '-webkit-background-size': 'cover', /* pour anciens Chrome et Safari */
+      'background-size': 'cover',
+    };
+
+    main.css(css);
   }
 
-  initRate(){
-    let rate = {
+  initRate() {
+    const rate = {
       page : '3'
-    }
+    };
     this.publicService.postRate(rate)
       .subscribe(
-        response=>{
+        response => {
           // console.log(response);
-          if(response.code!=400){
-            this.rateId=response.data._id;
+          if(response.code != 400) {
+            this.rateId = response.data._id;
             console.log(this.rateId);
           }
         }
       )
   }
 
-  navigate(componentName : String){
-    console.log("routing work!!");
+  navigate(componentName: String){
     this.publicService.cleanSearch();
-    this.router.navigate(['/'+componentName]);
+    this.router.navigate(['/' + componentName]);
   }
 
-  filterLieu(event){
+  filterLieu(event) {
     console.log(event.target.value);
     let filter: string = event.target.value;
     if(filter.length>=2){

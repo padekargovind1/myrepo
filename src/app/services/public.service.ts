@@ -212,7 +212,7 @@ export class PublicService {
       .map((response)=>response.json())
   }
 
-  getDomaines(){
+  getDomaines() {
     return this.domaines;
   }
 
