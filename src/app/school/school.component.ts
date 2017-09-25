@@ -13,6 +13,7 @@ import { AdvancedSearchMdl } from '../model/advanced-search.model';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
+
 declare var jquery:any;
 declare var $ :any;
 
@@ -90,7 +91,7 @@ export class SchoolComponent implements OnInit {
               private router : Router,
               private fb : FormBuilder,
               private route : ActivatedRoute,
-              private sendService : SendService,
+              private sendService: SendService,
               public dialog:MdDialog) { }
 
   ngOnInit() {
@@ -250,7 +251,7 @@ export class SchoolComponent implements OnInit {
           } else {
             this.advancedSearch.code=["enseignement"]
             this.schoolComponentTitle="Enseignement Supérieur";
-            $('.filter-form-holder').css('background-image', "url('./assets/images/autodoc.jpg')")
+            $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement.jpg')")
           }
           // this.getAllSchool(this.limit);
           
@@ -478,7 +479,7 @@ export class SchoolComponent implements OnInit {
 			  for(var i=0;i<this.imageExtensions.length;i++)
 			  {
 				var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
-				if(this.imageExists(this.imagePathPre + tempimgpath))
+                if (this.ImageExisth(this.imagePathPre + tempimgpath))
 				{
 					imgpath = tempimgpath;
 					break;
@@ -525,7 +526,20 @@ export class SchoolComponent implements OnInit {
     http.send();
     return http.status != 404;
   }
-
+  ImageExisth(url) {
+    try {
+     var img = new Image();
+     img.src = url;
+     //return img.height != 0;
+     if (img.height != 0) {
+      return img.height != 0
+     }
+    }
+    catch (err) {
+     return false
+    }
+  }
+  
   onAdvancedClick(event, category){
     // console.log(event);
     if(event.srcElement.localName=="input"){

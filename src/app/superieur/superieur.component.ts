@@ -188,7 +188,7 @@ export class SuperieurComponent implements OnInit {
   setBackgroundImage(){
     this.advancedSearch.code=["enseignement"]
     this.schoolComponentTitle="Enseignement Supérieur";
-    $('.filter-form-holder').css('background-image', "url('./assets/images/sejour.jpg')")
+    $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement.jpg')")
     //$('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')");
   }
 

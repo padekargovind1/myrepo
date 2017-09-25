@@ -2370,12 +2370,12 @@ text-align:center;
     font-weight: bold;
   }
 
-  .conseil-title {
-    max-width: 100%;
-    font-size: 14px;
-    height: 66px;
-   
-  }
+.conseil-title {
+  max-width: 100%;
+  font-size: 14px;
+  height: 66px;
+  width: 100vh;
+}
 .conseilTitleCont {
   max-width: 80%;
   margin-left: 10%;
@@ -2383,6 +2383,7 @@ text-align:center;
   padding: 5px 0;
   display: inline-block;
   overflow: hidden;
+  width: 80%;
 }
 
 .conseilTitleCont .conseil-title {
