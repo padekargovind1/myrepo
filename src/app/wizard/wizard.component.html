@@ -418,12 +418,13 @@
                                                             <div class="calendarCont">
 															<input type="text" id="birthdate" class="form-control" 
                                                                 placeholder="Date de naissance" [max]="maxDate"
-                                                                [formControl]="wizardForm.controls['childBirthDay']" [mdDatepicker]="myDatepicker">
+                                                                [formControl]="wizardForm.controls['childBirthDay']" [mdDatepicker]="picker">
 															
-																<button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
+																<!-- <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button> -->
 																<!--md-datepicker-toggle mdSuffix [for]="myDatepicker"></md-datepicker-toggle-->
-                                                                <md-datepicker #myDatepicker></md-datepicker>
-																
+                                                                <!-- <md-datepicker #myDatepicker></md-datepicker> -->
+																<!-- <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle> -->
+                                                                <md-datepicker #picker></md-datepicker>
 																</div>
                                                         </div>
                                                     </div>

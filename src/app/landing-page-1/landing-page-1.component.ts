@@ -29,7 +29,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   constructor(private fb : FormBuilder,
               private publicService : PublicService,
               private router : Router,
-              private schoolService : SchoolService) { 
+              private schoolService : SchoolService) {
     this.buildForm();
     this.buildApbForm();
   }
@@ -111,10 +111,10 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 		{
 			(<any> $('.landingpage__additional-content .form-wrap')).removeClass('fadeIn').addClass('fadeOut');
 			(<any> $('.landingpage__additional-content')).css('z-index', 0);
-			
+
 			(<any> $(this)).css('z-index', 10);
 			(<any> $(this)).find('.form-wrap').removeClass('fadeOut').addClass('fadeIn');
-			var img = (<any> $(this)).data('background'); 
+			var img = (<any> $(this)).data('background');
 			// console.log(img);
 
 			(<any> $('body .main')).css({ 'background-image': 'url(' + img + ')', 'background-size': 'cover'});
@@ -167,15 +167,15 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       let data;
       if(path!="enseignement"){
         data = [
-          this.searchForm.controls.classe.value,
-          this.searchForm.controls.lieu.value,
-          this.searchForm.controls.etablissement.value
+          this.searchForm.value.classe,
+          this.searchForm.value.lieu,
+          this.searchForm.value.etablissement
         ]
       } else {
         data = [
-          this.apbForm.controls.domaine.value,
-          this.apbForm.controls.lieu.value,
-          this.apbForm.controls.etablissement.value
+          this.apbForm.value.domaine,
+          this.apbForm.value.lieu,
+          this.apbForm.value.etablissement
         ]
       }
       if(data[0]=="Indifférent"){
@@ -282,9 +282,9 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
       )
   }
 
-  navigateTo(index){
-    this.router.navigate(['/landing-page-'+index])
-  }
+  // navigateTo(index){
+  //   this.router.navigate(['/landing-page-'+index])
+  // }
 
   onSelectLieu(type:string, index:number){
     this.lieuSelected=[];

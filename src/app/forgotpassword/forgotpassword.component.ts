@@ -18,7 +18,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   constructor(private fb : FormBuilder,
               private authService : AuthService,
-              private location : Location) { 
+              private location : Location) {
     this.forgotPasswordForm = this.fb.group({
       email : ['' , Validators.compose([Validators.required, CustomValidators.email])],
     })
@@ -31,14 +31,14 @@ export class ForgotpasswordComponent implements OnInit {
     if(this.forgotPasswordForm.valid){
       console.log(this.forgotPasswordForm);
 
-      const email = this.forgotPasswordForm.controls.email.value;
+      const email = this.forgotPasswordForm.value.email;
 
       const data = ({ email });
       this.authService.postForgot(data)
         .subscribe(
           (data)=>{
             let response = data;
-            console.log(response);  
+            console.log(response);
             if (response.code == 400) {
               let msg = response.message;
               this.errorMessage = msg;
@@ -53,7 +53,7 @@ export class ForgotpasswordComponent implements OnInit {
                 confirmButtonText: 'Ok'
               })
               this.location.back();
-            } 
+            }
           }
         )
     }

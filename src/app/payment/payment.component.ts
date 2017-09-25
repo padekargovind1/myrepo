@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { UsersService } from '../services/users.service';
+//import { UsersService } from '../services/users.service';
 import { BookingService } from '../services/booking.service';
-import swal from 'sweetalert2';
+//import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-payment',
@@ -13,7 +13,7 @@ import swal from 'sweetalert2';
 export class PaymentComponent implements OnInit {
   strMessage : string='';
   constructor(private router : Router,
-              private userService : UsersService,
+              //private userService : UsersService,
               private authService : AuthService,
               private bookingService : BookingService,) {
   }

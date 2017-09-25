@@ -16,7 +16,7 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
     listBrochuresFiltered = [];
     schoolList = [];
     lastCloseResult: string;
-    config: MdDialogConfig = {
+    config: any = {
         disableClose: false,
         width: '400px',
         height: '550px',
@@ -27,7 +27,7 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
         right: ''
         }
     };
-    config2: MdDialogConfig;
+    config2: any;
     searchForm : FormGroup;
     options={
         regions : [],
@@ -46,14 +46,14 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private publicService : PublicService,
               public dialog:MdDialog,
               private fb : FormBuilder,
-              private brochureService : BrochureService) { 
+              private brochureService : BrochureService) {
       this.buildForm();
       this.makeProfile();
       this.getSearch();
       // this.doBrochure();
   }
   ngOnInit() {
-    
+
   }
 
   ngAfterViewInit() {
@@ -70,7 +70,7 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log(data)
         this.searchForm.patchValue({
             etablissement : data
-        })  
+        })
         this.onSubmitSearch();
     } else {
         this.getBrochure();
@@ -138,7 +138,7 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
             //         t.updateSinglePage('AJAX Error! Please refresh the page!');
             //     });
         },
-    });  
+    });
   }
 
     getBrochure(){
@@ -159,7 +159,7 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
             )
     }
 
-    brochDialog(){  
+    brochDialog(){
         let dialogref = this.dialog.open(BrochpopupComponent,this.config);
         dialogref.afterClosed().subscribe(result => {
             this.lastCloseResult = result;
@@ -219,7 +219,7 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
             lieu: [''],
             etablissement : ['']
         })
-    }   
+    }
 
     filterLieu(event){
         // console.log(event.target.value);
@@ -273,9 +273,9 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
 
     onSubmitSearch(){
         console.log("click on submit");
-        this.searchBrochure.class = this.searchForm.controls.classe.value;
-        this.searchBrochure.place = this.searchForm.controls.lieu.value;
-        this.searchBrochure.name = this.searchForm.controls.etablissement.value;
+        this.searchBrochure.class = this.searchForm.value.class;
+        this.searchBrochure.place = this.searchForm.value.lieu;
+        this.searchBrochure.name = this.searchForm.value.etablissement;
         this.getBrochure()
     }
 
@@ -303,7 +303,7 @@ export class BrochureComponent implements OnInit, AfterViewInit, OnDestroy {
         } else if (searchFilter[0]!="" && searchFilter[1]!="" && searchFilter[2]!=""){
         this.listBrochuresFiltered = this.listBrochures.filter(
         school => {
-            return school.school==searchFilter[2] && school.cycle.nom == searchFilter[0] && 
+            return school.school==searchFilter[2] && school.cycle.nom == searchFilter[0] &&
             school.address.city == searchFilter[1]
         })
         } else {

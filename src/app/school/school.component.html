@@ -60,6 +60,19 @@
                                                         <option value="cinquieme">&nbsp;5ème</option>
                                                         <option value="quatrieme">&nbsp;4ème</option>
                                                         <option value="troisieme">&nbsp;3ème</option>
+                                                        <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
+                                                        <option value="">&nbsp;Quatrième d'aide et de soutien</option>
+                                                        <option value="">&nbsp;Troisième d'insertion</option>
+                                                        <option value="">&nbsp;Troisième découverte professionnelle - DP6 (module 6 heures)</option>
+                                                        <option value="">&nbsp;3ème préparatoire aux formations professionnels - Troisième prépa pro (ex DP6)</option>
+                                                        <option value="">&nbsp;DIMA Dispositif d'initiation aux métiers en alternance (en collège)</option>
+                                                        <option value="">&nbsp;SEGPA 6è-5è section d'enseignement général et professionnel adapté</option>
+                                                        <option value="">&nbsp;SEGPA 4è-3è section d'enseignement général et professionnel adapté</option>
+                                                        <option value="">&nbsp;ULIS unités localisées pour l'inclusion solaire (ex UPI)</option>
+                                                        <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
+                                                        <option value="">&nbsp;Cursus non francophone (GB-US)</option>
+                                                        <option value="">&nbsp;Ecole pratiquant la pédagogie Montessori</option>
+                                                        <option value="">&nbsp;Enseignement à distance</option>
                                                     </select>
                                                 </label>
                                             </div>
@@ -369,28 +382,101 @@
                             </div>
                             <div class="advance-filter open" style="display:none">
                                 <ul>
-                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Specialités</a> 
+                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Spécificités</a> 
                                         <ul (click)="onAdvancedClick($event, 'speciality')" 
                                             class="adv-filt left-popup">
-                                            <li><input type="checkbox" name="handicapped" class="handicapped checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li> 
-                                            <li><input type="checkbox" name="finance" class="finance checkbox filled-in" id="filter-2" /><label for="filter-2">Aides Financières - Bourse</label></li>
-                                            <li><input type="checkbox" name="frenchAsForeign" class="frenchAsForeign checkbox filled-in" id="filter-3" /><label for="filter-3">Cours Francais Langue Etrangere - LFE</label></li>
-                                            <li><input type="checkbox" name="advanced" class="advanced checkbox filled-in" id="filter-4" /><label for="filter-4">Dispositif d'accueil pour élèves à haut potentiel (EIP)</label></li>
-                                            <li><input type="checkbox" name="flexible" class="flexible checkbox filled-in" id="filter-5" /><label for="filter-5">Horaires Aménagés</label></li>
+                                            <!-- <li><input type="checkbox" name="handicapped" class="handicapped checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li>  -->
+                                            <li>
+                                                <input type="checkbox" name="reduceEffective" class="reduceEffective checkbox filled-in" id="filter-1" />
+                                                <label for="filter-1">Effectif réduit</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etude" class="etude checkbox filled-in" id="filter-5" />
+                                                <label for="filter-4">Etudes surveillées</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="flexible" class="flexible checkbox filled-in" id="filter-5" />
+                                                <label for="filter-5">Horaires Aménagés</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="frenchAsForeign" class="frenchAsForeign checkbox filled-in" id="filter-3" />
+                                                <label for="filter-3">Cours Francais Langue Etrangere - FLE</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="finance" class="finance checkbox filled-in" id="filter-2" />
+                                                <label for="filter-2">Aides Financières - Bourse</label>
+                                            </li>
+                                            <!-- <li><input type="checkbox" name="advanced" class="advanced checkbox filled-in" id="filter-4" /><label for="filter-4">Dispositif d'accueil pour élèves à haut potentiel (EIP)</label></li> -->
+                                        </ul>
+                                    </li>
+                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Ens. Adapté</a> 
+                                        <ul (click)="onAdvancedClick($event, 'adaptedEnseignement')" 
+                                            class="adv-filt left-popup">
+                                            <!-- <li><input type="checkbox" name="handicapped" class="handicapped checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li>  -->
+                                            <li>
+                                                <input type="checkbox" name="handicaped" class="handicaped checkbox filled-in" id="filter-1" />
+                                                <label for="filter-1">Dyslexie</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="clis" class="clis checkbox filled-in" id="filter-5" />
+                                                <label for="filter-4">CLIS</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="upi" class="upi checkbox filled-in" id="filter-5" />
+                                                <label for="filter-5">UPI</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="ulis" class="ulis checkbox filled-in" id="filter-3" />
+                                                <label for="filter-3">ULIS</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="eip" class="eip checkbox filled-in" id="filter-2" />
+                                                <label for="filter-2">EIP (haut potentiel)</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="dima" class="dima checkbox filled-in" id="filter-2" />
+                                                <label for="filter-2">DIMA</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="segma" class="segma checkbox filled-in" id="filter-2" />
+                                                <label for="filter-2">SEGMA</label>
+                                            </li>
+                                            <!-- <li><input type="checkbox" name="advanced" class="advanced checkbox filled-in" id="filter-4" /><label for="filter-4">Dispositif d'accueil pour élèves à haut potentiel (EIP)</label></li> -->
                                         </ul>
                                     </li>
                                     <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Internat</a>
                                         <ul (click)="onAdvancedClick($event, 'boarding')" *ngIf="pathName!='internat'"
                                             class="adv-filt">
-                                            <li><input type="checkbox" name="onSite" class="onSite checkbox filled-in" id="filter-8" /><label for="filter-8">Internat sur Place</label></li>
-                                            <li><input type="checkbox" name="notOnSite" class="notOnSite checkbox filled-in" id="filter-9" /><label for="filter-9">Internat externe</label></li>
-                                            <li><input type="checkbox" name="residence" class="residence checkbox filled-in" id="filter-10" /><label for="filter-10">Résidence Etudiante</label></li>
+                                            <li>
+                                                <input type="checkbox" name="onSite" class="onSite checkbox filled-in" id="filter-8" />
+                                                <label for="filter-8">Internat sur Place</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="notOnSite" class="notOnSite checkbox filled-in" id="filter-9" />
+                                                <label for="filter-9">Internat externe</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="residence" class="residence checkbox filled-in" id="filter-10" />
+                                                <label for="filter-10">Résidence Etudiante</label>
+                                            </li>
                                             <!-- <li><input type="checkbox" name="weekdays" class="checkbox filled-in" id="filter-11" /><label for="filter-11">Internat de semaine</label></li> -->
-                                            <li><input type="checkbox" name="fulltime" class="fulltime checkbox filled-in" id="filter-12" /><label for="filter-12">Internat Permanent</label></li>
+                                            <li>
+                                                <input type="checkbox" name="fulltime" class="fulltime checkbox filled-in" id="filter-12" />
+                                                <label for="filter-12">Internat Permanent</label>
+                                            </li>
                                             <!-- <li><input type="checkbox" name="someweekends" class="checkbox filled-in" id="filter-13" /><label for="filter-13">Internat Certains Weekend</label></li> -->
-                                            <li><input type="checkbox" name="mixed" class="mixed checkbox filled-in" id="filter-14" /><label for="filter-14">Internat mixte</label></li>
-                                            <li><input type="checkbox" name="girls" class="girls checkbox filled-in" id="filter-15" /><label for="filter-15">Internat filles</label></li>
-                                            <li><input type="checkbox" name="boys" class="boys checkbox filled-in" id="filter-16" /><label for="filter-16">Internat garçons</label></li>
+                                            <li>
+                                                <input type="checkbox" name="mixed" class="mixed checkbox filled-in" id="filter-14" />
+                                                <label for="filter-14">Internat mixte</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="girls" class="girls checkbox filled-in" id="filter-15" />
+                                                <label for="filter-15">Internat filles</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="boys" class="boys checkbox filled-in" id="filter-16" />
+                                                <label for="filter-16">Internat garçons</label>
+                                            </li>
                                             <!-- <li><input type="checkbox" name="individual" class="checkbox filled-in" id="filter-17" /><label for="filter-17">Chambres individuelles</label></li>
                                             <li><input type="checkbox" name="'2to4'" class="checkbox filled-in" id="filter-18" /><label for="filter-18">Chambres 2 a 4 lits</label></li>
                                             <li><input type="checkbox" name="'5to8'" class="checkbox filled-in" id="filter-19" /><label for="filter-19">chambres 5 a 8 lits</label></li>
@@ -398,49 +484,67 @@
                                             
                                         </ul>
                                     </li>
-                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Stages</a>
+                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Soutien</a>
                                         <ul (click)="onAdvancedClick($event, 'curriculum')"
                                             class="adv-filt left-popup">
-                                            <li><input type="checkbox" name="preintake" class="preintake checkbox filled-in" id="filter-21" /><label for="filter-21">Stage pre-rentree</label></li>
-                                            <li><input type="checkbox" name="smallholidays" class="smallholidays checkbox filled-in" id="filter-22" /><label for="filter-22">Stages petites vacances</label></li>
-                                            <li><input type="checkbox" name="bigholidays" class="bigholidays checkbox filled-in" id="filter-23" /><label for="filter-23">Stages de grandes vacances</label></li> 
+                                            <li>
+                                                <input type="checkbox" name="preintake" class="preintake checkbox filled-in" id="filter-21" />
+                                                <label for="filter-21">Stage pre-rentree</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="smallholidays" class="smallholidays checkbox filled-in" id="filter-22" />
+                                                <label for="filter-22">Stages petites vacances</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="bigholidays" class="bigholidays checkbox filled-in" id="filter-23" />
+                                                <label for="filter-23">Stages de grandes vacances</label>
+                                            </li> 
                                         </ul>
                                     </li>
-                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Restauration</a>
+                                    <!-- <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Restauration</a>
                                         <ul (click)="onAdvancedClick($event, 'canteen')"
                                             class="adv-filt">
                                             <li><input type="checkbox" name="self-service" class="self-service checkbox filled-in" id="filter-24" /><label for="filter-24">Self-service</label></li>
                                             <li><input type="checkbox" name="serviceAtTable" class="serviceAtTable checkbox filled-in" id="filter-25" /><label for="filter-25">Service a Table</label></li>
                                             <li><input type="checkbox" name="cafeteria" class="cafeteria checkbox filled-in" id="filter-26" /><label for="filter-26">Cafeteria</label></li> 
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <li>
-                                        <a class="advancedFilter advancedFilterCenter adv-filt left-popup advancedFilterPadding">Externat</a>
+                                        <a class="advancedFilter advancedFilterCenter adv-filt left-popup advancedFilterPadding">Régime</a>
                                         <ul (click)="onAdvancedClick($event, 'external')">
-                                            <li><input type="checkbox" name="half-board_mixed" class="half-board_mixed checkbox filled-in" id="filter-27" /><label for="filter-27">Demi-pension mixte</label></li>
-                                            <li><input type="checkbox" name="half-board_boys" class="half-board_boys checkbox filled-in" id="filter-28" /><label for="filter-28">Demi-pension garcons</label></li>
-                                            <li><input type="checkbox" name="half-board_girls" class="half-board_girls checkbox filled-in" id="filter-29" /><label for="filter-29">Demi-pension filles</label></li> 
+                                            <li>
+                                                <input type="checkbox" name="half-board_mixed" class="half-board_mixed checkbox filled-in" id="filter-27" />
+                                                <label for="filter-27">Demi-pension mixte</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="half-board_boys" class="half-board_boys checkbox filled-in" id="filter-28" />
+                                                <label for="filter-28">Demi-pension garcons</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="half-board_girls" class="half-board_girls checkbox filled-in" id="filter-29" />
+                                                <label for="filter-29">Demi-pension filles</label>
+                                            </li> 
                                         </ul> 
                                     </li>
                                     <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Statut</a>
                                         <ul (click)="onAdvancedClick($event, 'status')"
                                             class="adv-filt">
-                                            <li>
+                                            <!-- <li>
                                                 <input type="checkbox" name="public" class="public checkbox filled-in" id="filter-33" />
                                                 <label for="filter-33">Public</label>
                                             </li>
                                             <li>
                                                 <input type="checkbox" name="private" class="private checkbox filled-in" id="filter-34" />
                                                 <label for="filter-34">Prive</label>
-                                            </li>
+                                            </li> -->
                                             <li>
                                                 <input type="checkbox" name="CCI" class="CCI checkbox filled-in" id="filter-35" />
                                                 <label for="filter-35">CCI</label>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <input type="checkbox" name="association" class="association checkbox filled-in" id="filter-36" />
                                                 <label for="filter-36">Sous Contrat D'association</label>
-                                            </li>
+                                            </li> -->
                                             <li>
                                                 <input type="checkbox" name="outContract" class="outContract checkbox filled-in" id="filter-37" />
                                                 <label for="filter-37">Hors contrat</label>
@@ -449,19 +553,19 @@
                                                 <input type="checkbox" name="CFA" class="CFA checkbox filled-in" id="filter-38" />
                                                 <label for="filter-38">CFA</label>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <input type="checkbox" name="UFA" class="UFA checkbox filled-in" id="filter-39" />
                                                 <label for="filter-39">UFA</label>
                                             </li>
                                             <li>
                                                 <input type="checkbox" name="recognized" class="recognized checkbox filled-in" id="filter-40" />
                                                 <label for="filter-40">Reconnue par l'Etat</label>
-                                            </li>
+                                            </li> -->
                                             <li>
                                                 <input type="checkbox" name="convention" class="convention checkbox filled-in" id="filter-41" />
-                                                <label for="filter-41">En convention avec l'Etat</label>
+                                                <label for="filter-41">Sous contrat avec l'Etat</label>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <input type="checkbox" name="higherEducationFree" class="higherEducationFree checkbox filled-in" id="filter-42" />
                                                 <label for="filter-42">Enseignement supérieur Libre</label>
                                             </li>
@@ -476,7 +580,7 @@
                                             <li>
                                                 <input type="checkbox" name="simple" class="simple checkbox filled-in" id="filter-45" />
                                                 <label for="filter-45">Sous contrat simple</label>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </li>
                                     <li><a class="advancedFilter advancedFilterCenter">Enseignement Confessionel</a>
@@ -572,13 +676,25 @@
                                     <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Sections</a>
                                         <ul (click)="onAdvancedClick($event, 'sections')"
                                             class="adv-filt left-popup">
-                                            <li><input type="checkbox" name="european" class="european checkbox filled-in" id="filter-51" /><label for="filter-51">Section Européenne</label></li>
-                                            <li><input type="checkbox" name="international" class="international checkbox filled-in" id="filter-52" /><label for="filter-52">Section Internationnale</label></li>
-                                            <li><input type="checkbox" name="bilingual" class="bilingual checkbox filled-in" id="filter-53" /><label for="filter-53">Section bilingue</label></li>
-                                            <li><input type="checkbox" name="sport" class="sport checkbox filled-in" id="filter-54" /><label for="filter-54">Section Sportive</label></li>
+                                            <li>
+                                                <input type="checkbox" name="european" class="european checkbox filled-in" id="filter-51" />
+                                                <label for="filter-51">Section Européenne</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="international" class="international checkbox filled-in" id="filter-52" />
+                                                <label for="filter-52">Section Internationnale</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="bilingual" class="bilingual checkbox filled-in" id="filter-53" />
+                                                <label for="filter-53">Section bilingue</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="sport" class="sport checkbox filled-in" id="filter-54" />
+                                                <label for="filter-54">Section Sportive</label>
+                                            </li>
                                         </ul>
                                     </li>
-                                    <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Diplomes</a>
+                                    <!-- <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Diplomes</a>
                                         <ul class="adv-filt">
                                             <li><label class="select-custom" for="class">
                                                     <select name="class" class="form-control" id="class" 
@@ -597,9 +713,9 @@
                                             <li>
                                                 <input type="text" name="" placeholder="Nom de L'option" 
                                                     class="form-control" (keyup)="addOptionFilter($event)">
-                                                <!--<button class="btn btn-confirm" (click)="addOptionFilter($event)">Entrer</button>-->
                                             </li>
                                         </ul>
+                                    </li> -->
                                     <li><a class="advancedFilter advancedFilterCenter">Places disponibles</a>
                                         <ul (click)="onAdvancedClick($event, 'seats')"
                                             class="adv-filt">

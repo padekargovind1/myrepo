@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
               private authService : AuthService,
               private router : Router,
               private usersService : UsersService,
-              private bookingService : BookingService) { 
+              private bookingService : BookingService) {
     this.buildFormGroup();
   }
 
@@ -46,11 +46,11 @@ export class RegisterComponent implements OnInit {
   save(){
     console.log("Register!");
     if (this.registerForm.valid){
-      const email = this.registerForm.controls.email.value;
-      const name = this.registerForm.controls.username.value;
+      const email = this.registerForm.value.email;
+      const name = this.registerForm.value.username;
       const type = "candidate";//this.registerForm.controls.userType.value;//"candidate";
-      const password = this.registerForm.controls.password.value;
-      const repeated = this.registerForm.controls.repeated.value;
+      const password = this.registerForm.value.password;
+      const repeated = this.registerForm.value.repeated;
 
       const data = ({ email, name, type, password, repeated });
 
@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
               // console.log(response.data.token)
               this.authService.storeToken(response.data.token)
               this.usersService.storeTabNb('0')
-              this.storeUserType(this.registerForm.controls.userType.value,email);
+              this.storeUserType(this.registerForm.value.userType, email);
               if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
                 this.router.navigate(['/payment']);
                 //this.bookingService.makeAppointment();

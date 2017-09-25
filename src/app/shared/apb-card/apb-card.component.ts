@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import { MdDialog, MdDialogConfig } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
 import { SchoolDetailSuperieurComponent } from '../../superieur/school-detail-superieur/school-detail-superieur.component';
@@ -14,7 +14,7 @@ export class ApbCardComponent implements OnInit {
 
   @Input() SchoolData : any;
   brochureData={brochure : ""};
-  config: MdDialogConfig;
+  config: any;
 
   constructor(private router : Router,
               private usersService : UsersService,
@@ -33,7 +33,7 @@ export class ApbCardComponent implements OnInit {
   //   this.publicService.storePath('enseignement')
   //   this.router.navigate(['etablissement', this.SchoolData._id]);
   // }
-   
+
   // applyToSchool(){
   //   this.router.navigate(['applyto', this.SchoolData._id]);
   // }

@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { SendService } from '../../services/send.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-send-message',
@@ -19,7 +20,8 @@ export class SendMessageComponent implements OnInit {
               private fb : FormBuilder,
               private usersService : UsersService,
               private sendService : SendService,
-              @Inject(MD_DIALOG_DATA) private data: {school : any}) { 
+              private authService : AuthService,
+              @Inject(MD_DIALOG_DATA) private data: {school : any}) {
                 this.buildFormGroup();
                 this.getProfile();
               }
@@ -46,7 +48,7 @@ export class SendMessageComponent implements OnInit {
   }
 
   getProfile(){
-    if(this.usersService.getToken()!=""){
+    if(this.authService.isUserLoggedIn()){
       this.usersService.getProfile()
         .subscribe(
           (response)=>{

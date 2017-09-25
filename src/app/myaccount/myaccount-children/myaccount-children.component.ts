@@ -7,8 +7,8 @@ import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { AuthService } from '../../services/auth.service';
 
-import {MyAccountMdl, 
-        MyAccountParentMdl, 
+import {MyAccountMdl,
+        MyAccountParentMdl,
         MyAccountAdresse,
         MyAccountSocialAdrMdl,
         MyAccountHistoryMdl,
@@ -36,14 +36,14 @@ export class MyaccountChildrenComponent implements OnInit {
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
               private route : Router,
-              private authService : AuthService) { 
+              private authService : AuthService) {
     if(this.authService.getToken() != "") {
       this.getUserProfile();
       this.parentData.address = new MyAccountAdresse();
     } else {
       console.log("navigate back");
       this.route.navigate(['/login']);
-    } 
+    }
     console.log(Date.now().toString())
     // let date = new Date();
     // this.maxDate = date.getFullYear()+'/0'+date.getMonth()+'/0'+date.getDay();
@@ -60,7 +60,7 @@ export class MyaccountChildrenComponent implements OnInit {
   }
   runScript(){
 	// Select your input element.
-	
+
   }
 
   getUserProfile(){
@@ -146,12 +146,12 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   completeProfile(){
-    this.myProfile.lastName = this.childrenForm.controls.nom.value;
-    this.myProfile.firstName = this.childrenForm.controls.prenom.value;
-    this.myProfile.age = this.childrenForm.controls.age.value;
-    this.myProfile.gender = this.childrenForm.controls.gender.value;
-    this.myProfile.email = this.childrenForm.controls.email.value;
-    this.myProfile.mobilePhone = this.childrenForm.controls.portable.value;
+    this.myProfile.lastName = this.childrenForm.value.nom;
+    this.myProfile.firstName = this.childrenForm.value.prenom;
+    this.myProfile.age = this.childrenForm.value.age;
+    this.myProfile.gender = this.childrenForm.value.gender;
+    this.myProfile.email = this.childrenForm.value.email;
+    this.myProfile.mobilePhone = this.childrenForm.value.portable;
     // this.myProfile.address.address1 = this.childrenForm.controls.adresse.value;
     // this.myProfile.address.postCode = this.childrenForm.controls.codepostal.value.toString();
     // this.myProfile.address.city = this.childrenForm.controls.ville.value;
@@ -163,7 +163,7 @@ export class MyaccountChildrenComponent implements OnInit {
     //   this.myProfile.siblings[i].gender=this.childrenForm.controls['freresoeur']['controls'][i].controls.gender.value;
     //   this.myProfile.siblings[i].study=this.childrenForm.controls['freresoeur']['controls'][i].controls.niveau.value;
     // }
-    
+
     // let i=0;
     // console.log(this.childrenForm.controls.freresoeur.value)
     // for (let sibling of this.childrenForm.controls.freresoeur.value){
@@ -219,7 +219,7 @@ export class MyaccountChildrenComponent implements OnInit {
     this.myProfile.address= new MyAccountAdresse();
     this.myProfile.socialAddresses = new MyAccountSocialAdrMdl();
     this.myProfile.academicHistories[0]={};
-    this.myProfile.academicHistories[0] = new MyAccountHistoryMdl(); 
+    this.myProfile.academicHistories[0] = new MyAccountHistoryMdl();
     this.myProfile.bulletins[0] = new MyAccountBulletin();
     this.myProfile.siblings[0]=new MyAccountSiblingsMdl();
     // for(let i = 1; i<data.siblings.length; i++){

@@ -27,7 +27,7 @@
         <form id="wizard" [formGroup]="applytoForm">
 
           <div class="container-fluid">
-            <md-tab-group md-dynamic-height 
+            <md-tab-group md-dynamic-height
               [(selectedIndex)]="activeTabIndex"  class="apply-to-tabs"
               #tabGroup>
               <md-tab label="Parents">
@@ -45,10 +45,10 @@
                               <select name="" class="form-control" formControlName="lienParent">
                                 <option *ngFor="let lientparent of lienparents" [value]="lientparent">{{ lientparent }}</option>
                               </select>
-                              <!--md-select placeholder="Lien de Parenté" class="form-control" 
+                              <!--md-select placeholder="Lien de Parenté" class="form-control"
                                 formControlName="lienParent">
                                 <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
-                                  
+
                                 </md-option>
                               </md-select-->
                             </div>
@@ -69,7 +69,7 @@
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
                                 Nom de famille
-                                <input type="text" class="form-control" placeholder="Nom" 
+                                <input type="text" class="form-control" placeholder="Nom"
                                   formControlName="nom"
                                   maxlength="25">
                               </div>
@@ -77,7 +77,7 @@
                             <div class="col-sm-6  col-xs-6">
                               <div class="form-group">
                                 Prénom
-                                <input type="text" class="form-control" placeholder="Prénom" 
+                                <input type="text" class="form-control" placeholder="Prénom"
                                   formControlName="prenom"
                                   maxlength="25">
                               </div>
@@ -90,8 +90,8 @@
 
                               <div class="col-sm-12">
                                 Profession
-                                <input type="text" class="form-control" 
-                                  placeholder="Profession / Secteur d'activité" 
+                                <input type="text" class="form-control"
+                                  placeholder="Profession / Secteur d'activité"
                                   formControlName="job"
                                   maxlength="25">
                               </div>
@@ -100,11 +100,11 @@
 
                           <div class="form-group">
                             Mél
-                            <input type="email" class="form-control" placeholder="Email" 
+                            <input type="email" class="form-control" placeholder="Email"
                               formControlName="email">
-                            <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.email.errors?.email && 
-                              applytoForm.controls['parents']['controls'][i].controls.email.touched" 
-                              class="mat-text-warn"> 
+                            <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.email.errors?.email &&
+                              applytoForm.controls['parents']['controls'][i].controls.email.touched"
+                              class="mat-text-warn">
                               Email Invalide
                             </small>
                           </div>
@@ -113,18 +113,18 @@
                             <div class="row">
                               <div class="col-sm-12">
                                 Téléphone joignable
-                                <input type="text" class="form-control" 
-                                  placeholder="Téléphone auquel je suis joignable" 
+                                <input type="text" class="form-control"
+                                  placeholder="Téléphone auquel je suis joignable"
                                   formControlName="portable"
                                   pattern="[0-9]+" maxlength="10">
-                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
-                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched" 
-                                  class="mat-text-warn"> 
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') &&
+                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched"
+                                  class="mat-text-warn">
                                   Numéro de Portable Invalide (max 10)
                                 </small>
-                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
-                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched" 
-                                  class="mat-text-warn"> 
+                                <small *ngIf="applytoForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') &&
+                                  applytoForm.controls['parents']['controls'][i].controls.portable.touched"
+                                  class="mat-text-warn">
                                   Numéro de Portable Invalide (Doit être des chiffres)
                                 </small>
                               </div>
@@ -150,7 +150,7 @@
                         </div>
 
                         <div class="form-group clearfix">
-                          <button class="btn  btn-danger" style="float:right" 
+                          <button class="btn  btn-danger" style="float:right"
                             (click)="onRemoveParent(i)" *ngIf="applytoForm.controls['parents']['controls'].length==2">
                             Retirer un parent
                           </button>
@@ -191,7 +191,7 @@
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
                               Nom de famille*
-                              <input type="text" class="form-control" placeholder="Nom" 
+                              <input type="text" class="form-control" placeholder="Nom"
                                 [formControl]="applytoForm.controls['childLastName']"
                                 maxlength="25">
                             </div>
@@ -199,7 +199,7 @@
                           <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
                               Prénom*
-                              <input type="text" class="form-control" placeholder="Prénom" 
+                              <input type="text" class="form-control" placeholder="Prénom"
                                 [formControl]="applytoForm.controls['childFirstName']"
                                 maxlength="25">
                             </div>
@@ -238,14 +238,14 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               Mél*
-                              <input type="email" class="form-control" placeholder="Mel" 
+                              <input type="email" class="form-control" placeholder="Mel"
                                 [formControl]="applytoForm.controls['childMel']">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
                               Numéro de portable*
-                              <input type="text" class="form-control" placeholder="Portable" 
+                              <input type="text" class="form-control" placeholder="Portable"
                                 [formControl]="applytoForm.controls['childTel']"
                                 maxlength="10">
                             </div>
@@ -257,7 +257,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               Adresse*
-                              <textarea class="form-control" placeholder="Adresse" 
+                              <textarea class="form-control" placeholder="Adresse"
                                 [formControl]="applytoForm.controls['childAddr']">
                               </textarea>
                             </div>
@@ -270,7 +270,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               Code postal*
-                              <input type="text" class="form-control" placeholder="Code postal" 
+                              <input type="text" class="form-control" placeholder="Code postal"
                                 [formControl]="applytoForm.controls['childPostalCode']"
                                 maxlength="5">
                             </div>
@@ -278,7 +278,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               Ville*
-                              <input type="text" class="form-control" placeholder="Ville" 
+                              <input type="text" class="form-control" placeholder="Ville"
                                 [formControl]="applytoForm.controls['childCity']"
                                 maxlength="25">
                             </div>
@@ -301,7 +301,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               Lieu de naissance
-                              <input type="text" class="form-control" placeholder="Lieu" 
+                              <input type="text" class="form-control" placeholder="Lieu"
                                 [formControl]="applytoForm.controls['childBirthPlace']"
                                 maxlength="50">
                             </div>
@@ -321,7 +321,7 @@
                             </button>
                           </div>
                       </div>
-                        
+
                       <!-- .col-* -->
 
                       <!--<div class="col-md-8" *ngIf="canDisplaySiblings">
@@ -336,43 +336,43 @@
                                     <md-radio-button value="Frère">Frère</md-radio-button>
                                     <md-radio-button value="Soeur">Soeur</md-radio-button>
                                   </md-radio-group>
-                                  <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls.gender.hasError('required') && 
-                                    applytoForm.controls['freresoeur']['controls'][i].controls.gender.touched" 
-                                    class="mat-text-warn"> 
+                                  <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls.gender.hasError('required') &&
+                                    applytoForm.controls['freresoeur']['controls'][i].controls.gender.touched"
+                                    class="mat-text-warn">
                                     Gender Obligatoire
                                   </small>
                                 </div>
                               </div>
                               <div class="col-sm-2">
                                 Age*
-                                <input type="number" max="50" min="1" class="form-control gap-for-radio" 
+                                <input type="number" max="50" min="1" class="form-control gap-for-radio"
                                   placeholder="Age" formControlName="age"
                                   maxlength="2" style="margin-top:0px"/>
-                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
-                                  applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
-                                  class="mat-text-warn"> 
+                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') &&
+                                  applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched"
+                                  class="mat-text-warn">
                                   Age Obligatoire
                                 </small>
-                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('pattern') && 
-                                  applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
-                                  class="mat-text-warn"> 
+                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['age'].hasError('pattern') &&
+                                  applytoForm.controls['freresoeur']['controls'][i].controls['age'].touched"
+                                  class="mat-text-warn">
                                   Seulement des chiffres
                                 </small>
                               </div>
                               <div class="col-sm-3">
                                 Niveau d'étude*
-                                <input type="text" class="form-control gap-for-radio" 
-                                  placeholder="Niveau d'étude" 
+                                <input type="text" class="form-control gap-for-radio"
+                                  placeholder="Niveau d'étude"
                                   formControlName="niveau"
                                   maxlength="25" style="margin-top:0px">
-                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') && 
-                                  applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].touched" 
-                                  class="mat-text-warn"> 
+                                <small *ngIf="applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') &&
+                                  applytoForm.controls['freresoeur']['controls'][i].controls['niveau'].touched"
+                                  class="mat-text-warn">
                                   Niveau d'étude Obligatoire
                                 </small>
                               </div>
                               <div class="col-sm-2">
-                                <button class="btn  btn-danger" style="float:right" 
+                                <button class="btn  btn-danger" style="float:right"
                                   (click)="onRemoveFrSo(i)">
                                   Retirer un parent
                                 </button>
@@ -404,7 +404,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               Nom de l'établissement
-                              <input type="text" class="form-control" placeholder="Nom Etablissement Actuel" 
+                              <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
                                 [formControl]="applytoForm.controls['schoolName']"
                                 maxlength="50">
                             </div>
@@ -416,7 +416,7 @@
                             <div class="row">
                               <div class="col-sm-12">
                                 Ville de l'établissement
-                                <input type="text" class="form-control" placeholder="Ville" 
+                                <input type="text" class="form-control" placeholder="Ville"
                                   [formControl]="applytoForm.controls['schoolCity']"
                                   maxlength="50">
                               </div>
@@ -545,7 +545,7 @@
                           <div class="row">
                             <div class="col-sm-12">
                               Options
-                              <input type="text" class="form-control" placeholder="Options" 
+                              <input type="text" class="form-control" placeholder="Options"
                                 [formControl]="applytoForm.controls['schoolOption']"
                                 maxlength="50">
                             </div>
@@ -599,7 +599,7 @@
                           <label>Télécharger ici le dernier bulletin scolaire</label>
                           <input class="inputTypeFileCk" type="file" ng2FileSelect [uploader]="uploader"/>
                         </div>
-                        
+
 
                         <!-- end button upload -->
                       </div>
@@ -611,8 +611,8 @@
                             <span>Nombre de fichier en attente: {{ uploader?.queue?.length }}</span>
                           </h5>
 
-                          <ngx-datatable class="material ml-0 mr-0" 
-                            [rows]="uploader.queue" [columnMode]="'flex'" 
+                          <ngx-datatable class="material ml-0 mr-0"
+                            [rows]="uploader.queue" [columnMode]="'flex'"
                             [headerHeight]="50" [footerHeight]="0"
                             [rowHeight]="'auto'">
                             <ngx-datatable-column name="Nom" [flexGrow]="1">
@@ -675,7 +675,7 @@
                 </div>
               </md-tab>
 
-              <md-tab id="tab5" label="Vos matières préférées">
+              <md-tab label="Vos matières préférées">
                 <div class="tab-pane" id="tab5">
                   <div class="container-fluid">
                     <div class="row">
@@ -687,7 +687,7 @@
                             <div class="col-sm-12">
                               <div class="select-custom-multiple-forte">
                                 Matières Fortes
-              									<select class="form-control matery" multiple="multiple" 
+              									<select class="form-control matery" multiple="multiple"
                                   [formControl]="applytoForm.controls['bestSubject']">
               										<option value="Maths">Maths</option>
               										<option value="Sciences Physiques">Sciences Physiques</option>
@@ -716,8 +716,8 @@
                             <div class="col-sm-12">
                               <div class="select-custom-multiple-faible">
                                 Matières faibles
-              									<select class="form-control matery" 
-                                  multiple="multiple" 
+              									<select class="form-control matery"
+                                  multiple="multiple"
                                   [formControl]="applytoForm.controls['weakSubject']">
               										<option value="Maths">Maths</option>
               										<option value="Sciences Physiques">Sciences Physiques</option>
@@ -746,8 +746,8 @@
                             <div class="col-sm-12">
                               <div class="select-custom-multiple-gout">
                                 Matières préférées
-              									<select class="form-control matery" 
-                                  multiple="multiple" 
+              									<select class="form-control matery"
+                                  multiple="multiple"
                                   [formControl]="applytoForm.controls['interestSubject']">
               										<option value="Maths">Maths</option>
               										<option value="Sciences Physiques">Sciences Physiques</option>
@@ -788,7 +788,7 @@
                 </div>
 
               </md-tab>
-              <md-tab id="tab6" label="Ses centres d'intérêts">
+              <md-tab label="Ses centres d'intérêts">
                 <div class="tab-pane" id="tab6">
                   <div class="container-fluid">
                     <div class="row">
@@ -798,14 +798,14 @@
                         <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
 
 
-                        <div class="row" formArrayName="job" 
+                        <div class="row" formArrayName="job"
                             *ngFor="let parent of applytoForm.controls['job']['controls']; let i = index">
                           <div [formGroupName]="i">
                             <div class="col-sm-6">
                               <h4>Métier {{i+1}}</h4>
                               <div class="form-group">
                                 Job
-                                <input type="text" class="form-control" placeholder="Job" 
+                                <input type="text" class="form-control" placeholder="Job"
                                   formControlName="interestJob"
                                   maxlength="25">
                               </div>
@@ -814,14 +814,14 @@
                               <h4>&nbsp;</h4>
                               <div class="form-group">
                                 Age
-                                <input type="text" class="form-control" placeholder="Age" 
+                                <input type="text" class="form-control" placeholder="Age"
                                   formControlName="interestAge" max="50" min="1"
                                   maxlength="2">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <h4>&nbsp;<br> &nbsp;</h4>
-                              <button class="btn  btn-danger" style="float:right" 
+                              <button class="btn  btn-danger" style="float:right"
                                 (click)="onRemoveJob(i)">
                                 Retirer un métier
                               </button>
@@ -840,7 +840,7 @@
                           <div class="row">
                             <div class="col-sm-9">
                                 Ses centres d'intérêts
-                              <input type="text" class="form-control" 
+                              <input type="text" class="form-control"
                                 [formControl]="applytoForm.controls['yourInterest']"
                                 maxlength="100">
                             </div>
@@ -851,7 +851,7 @@
                           <div class="row">
                             <div class="col-sm-9">
                               Ses activités extra-scolaires
-                              <input type="text" class="form-control" 
+                              <input type="text" class="form-control"
                                 [formControl]="applytoForm.controls['practiceInterest']"
                                 maxlength="100">
                             </div>
@@ -863,7 +863,7 @@
                           style="float:left; margin-left:0px">
                           Précédent
                         </button>
-                        <button class="btn btn-appointment" 
+                        <button class="btn btn-appointment"
                           type="submit" (click)="onSubmit()"
                           style="margin-left:0px; float : right">Je postule</button>
                       </div>

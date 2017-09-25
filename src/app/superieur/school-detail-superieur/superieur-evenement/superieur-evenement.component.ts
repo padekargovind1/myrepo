@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { PublicService } from '../../../services/public.service';
+import { Component, OnInit, Input } from '@angular/core';
+//import { PublicService } from '../../../services/public.service';
 
 declare var $:any;
 declare var fullCalendar: any;
@@ -14,7 +14,8 @@ export class SuperieurEvenementComponent implements OnInit {
   events =[];
   eventToDisplay=[];
   showCalendar : boolean = false;
-  constructor(private publicService : PublicService) { }
+  constructor(//private publicService : PublicService
+    ) { }
 
   ngOnInit() {
     console.log(this.schoolData)
@@ -23,15 +24,15 @@ export class SuperieurEvenementComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    
+
   }
 
   initCalendar(){
   	(<any> $('#calendar-detail-school')).fullCalendar({
-      locale:'fr', 
+      locale:'fr',
       eventClick: function(calEvent) {
         console.log(calEvent);
-      }, 
+      },
       events:this.eventToDisplay
     });
     this.showCalendar=true;
@@ -55,10 +56,10 @@ export class SuperieurEvenementComponent implements OnInit {
     this.initCalendar();
   }
 
-  refreshCalendar(){
-    $('#calendar').fullCalendar('removeEvents');
-    $('#calendar').fullCalendar('addEventSource', this.eventToDisplay);
-    $('#calendar').fullCalendar('rerenderEvents');
-  }
+  // refreshCalendar(){
+  //   $('#calendar').fullCalendar('removeEvents');
+  //   $('#calendar').fullCalendar('addEventSource', this.eventToDisplay);
+  //   $('#calendar').fullCalendar('rerenderEvents');
+  // }
 
 }

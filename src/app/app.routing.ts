@@ -9,7 +9,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { BrochureComponent } from './brochure/brochure.component';
-import { EtablissementComponent } from './etablissement/etablissement.component';
+//import { EtablissementComponent } from './etablissement/etablissement.component';
 import { CompareModeComponent } from './compare-mode/compare-mode.component';
 import { DetailAppointmentComponent } from './detail-appointment/detail-appointment.component';
 import { LandingPage1Component } from './landing-page-1/landing-page-1.component';
@@ -21,7 +21,7 @@ import { EditorialDetComponent } from './editorial-cont/editorial-det/editorial-
 import { SchoolComponent } from './school/school.component';
 import { RandomLandingComponent } from './random-landing/random-landing.component';
 import { SuperieurComponent } from './superieur/superieur.component';
-import { MailTestComponent } from './mail-test/mail-test.component';
+//import { MailTestComponent } from './mail-test/mail-test.component';
 import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
@@ -31,9 +31,9 @@ export const AppRoutes: Routes = [
     { path: 'landing-page-2', component: AccueilComponent },
     { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'conseil', component: ConseilComponent},
-    { path: 'orientation', component: LinguisticComponent},
+    { path: 'orientation', component: UnderConstructionComponent},
     { path: 'booking' , component: BookingComponent },
-    { path: 'linguistic' , component: LinguisticComponent },
+    { path: 'linguistic' , component: UnderConstructionComponent },
     { path: 'register' , component: RegisterComponent },
     { path: 'login' , component: LoginComponent },
     { path: 'forgot-password' , component: ForgotpasswordComponent },
@@ -51,9 +51,11 @@ export const AppRoutes: Routes = [
     { path: 'applyto/:schoolId', component: ApplytoComponent},
     { path: 'editorial', component: EditorialContComponent},
     { path: 'editorial-detail',component:EditorialDetComponent},
-    { path: 'mail', component:MailTestComponent},	
+    //{ path: 'mail', component:MailTestComponent},
     { path: 'payment' , component: PaymentComponent },
-    { path: 'mail', component:MailTestComponent},
+    { path: 'enseignement-privee', component: UnderConstructionComponent },
+    { path: 'panorama', component: UnderConstructionComponent },
+    { path: 'contact-us', component: UnderConstructionComponent },
     { path: 'under-construction', component: UnderConstructionComponent },
     { path: '**', redirectTo: ''}
 ]

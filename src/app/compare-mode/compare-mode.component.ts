@@ -7,7 +7,7 @@ import { CompareService } from '../services/compare.service';
 import { UsersService } from '../services/users.service';
 import { SendService } from '../services/send.service';
 import swal from 'sweetalert2';
-var self = this;
+//var self = this;
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
 
@@ -33,7 +33,7 @@ export class CompareModeComponent implements OnInit, OnDestroy {
   schoolIdToCompare : string = "";
   counterId : number = 0;
   schoolBrochure=[];
-  config: MdDialogConfig;
+  config: any;
 
   constructor(private location : Location,
               private route : ActivatedRoute,
@@ -196,9 +196,9 @@ export class CompareModeComponent implements OnInit, OnDestroy {
 
   sendMessage(school){
     let config = this.sendService.makeProfile(school)
-    let dialogref = this.dialog.open(SendMessageComponent, config);
+    this.dialog.open(SendMessageComponent, config);
   }
 
-  
+
 
 }

@@ -1,14 +1,12 @@
 
+    <div data-page="1" [attr.data-cube]="counter"
+        [className]="'cube-wrapper cube-' + counter+' cube-width'">
 
-<div class="col-sm-3">
-    <div data-page="1" [attr.data-cube]="counter" 
-        [className]="'cube-wrapper cube-' + counter"  >
-        
         <div class="cube">
-        
+
             <figure class="front" (click)="onClickCube()" style="cursor:pointer">
                 <article class="cube__content">
-                    
+
                     <div class="cube__image-logo">
                         <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
                     </div>
@@ -17,7 +15,7 @@
 
                     <h3>{{eventData.title}}</h3>
 
-                    
+
                     <div class="text-left">
                         <div class="col-xs-1">
                             <i class="fa fa-calendar big-calendar"></i>
@@ -85,7 +83,7 @@
                         <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
                     </div>
 
-                    
+
 
                     <div class="text-wrapper text-1">
                     <h3>{{eventData.title}}</h3>
@@ -99,7 +97,7 @@
                         <li>Une Ecole de Commerce dès la Première STMG</li>
                         <li>Option prépa Médecine et HEC dès la Première</li>
                     </ul>-->
-                    
+
                     </div>
                 </article>
             </figure>
@@ -125,4 +123,3 @@
             <a class="prev"><i class="fa fa-chevron-left"></i></a>
         </div>
     </div>
-</div>

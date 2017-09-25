@@ -5,12 +5,12 @@ import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { AuthService } from '../../services/auth.service';
 import { PublicService } from '../../services/public.service';
-import swal from 'sweetalert2';
+//import swal from 'sweetalert2';
 
-import {MyAccountMdl, 
-        MyAccountParentMdl, 
+import {MyAccountMdl,
+        MyAccountParentMdl,
         MyAccountAdresse,
-        MyAccountSocialAdrMdl,
+        //MyAccountSocialAdrMdl,
         MyAccountHistoryMdl,
         MyAccountBulletin,
         MyAccountSiblingsMdl } from '../../model/myaccount.model';
@@ -25,25 +25,25 @@ export class MyaccountParentsComponent implements OnInit {
   myParentProfile = [];
   myProfile : MyAccountMdl = new MyAccountMdl();
   public parentAccountForm : FormGroup;
-  lienparents = [ "Père", 
-                "Mère", 
-                "Oncle", 
-                "Tante", 
-                "Grand-Père", 
-                "Grand-Mère", 
-                "Tuteur", 
+  lienparents = [ "Père",
+                "Mère",
+                "Oncle",
+                "Tante",
+                "Grand-Père",
+                "Grand-Mère",
+                "Tuteur",
                 "Tutrice"];
   country = [];
   @Output() goToChild = new EventEmitter<boolean>();
   parents: any;
   canDisplay : boolean = false;
-  mainEmail : string = '';
+  //mainEmail : string = '';
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
               private route : Router,
               private authService : AuthService,
-              private publicService : PublicService) { 
+              private publicService : PublicService) {
     if(this.authService.getToken() != ""){
       this.getUserProfile();
     } else {
@@ -69,7 +69,7 @@ export class MyaccountParentsComponent implements OnInit {
           if (response.data[0].parents.length!=0){
             this.patchValue(response.data[0]);
             this.completeProfile();
-          } 
+          }
 		  /*else if(this.usersService.getUserType()=="Parent"){
             this.parentAccountForm.controls['parents']['controls'][0].patchValue({
               email : this.usersService.getUserEmail(),
@@ -88,7 +88,7 @@ export class MyaccountParentsComponent implements OnInit {
   patchValue(data: any){
     let parentData=data.parents
     // console.log(data, parentData);
-    for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){ 
+    for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){
       this.parentAccountForm.controls['parents']['controls'][i].patchValue({
         lienParent : parentData[i].relationship,
         titre : parentData[i].gender,

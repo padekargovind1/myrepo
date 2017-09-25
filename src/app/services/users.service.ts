@@ -2,13 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers,Jsonp } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from './auth.service'; 
-import {MyAccountMdl, 
-        MyAccountParentMdl, 
-        MyAccountAdresse,
-        MyAccountSocialAdrMdl,
-        MyAccountHistoryMdl,
-        MyAccountBulletin } from '../model/myaccount.model';
+import { AuthService } from './auth.service';
+import {MyAccountMdl} from '../model/myaccount.model';
 
 const PROFILE_API : string = "http://54.254.203.172/cideapi/api/common/profile";
 const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/public";
@@ -62,10 +57,10 @@ export class UsersService {
     console.log(this.childData);
   }
 
-  getChildData(){
-    console.log(this.childData);
-    return this.childData;
-  }
+  // getChildData(){
+  //   console.log(this.childData);
+  //   return this.childData;
+  // }
 
   getAppointmentsPackage() : Observable<any>{
     return this.http.get(PACKAGE_API+'s?token='+this.token, {headers: this.headers})
@@ -77,10 +72,10 @@ export class UsersService {
   //     .map((response)=>response.json());
   // }
 
-  getAppointmentsPackageById(packageId): Observable<any>{
-    return this.http.get(PACKAGE_API+'/'+ packageId +'?token='+this.token, {headers: this.headers})
-      .map((response)=>response.json());
-  }
+  // getAppointmentsPackageById(packageId): Observable<any>{
+  //   return this.http.get(PACKAGE_API+'/'+ packageId +'?token='+this.token, {headers: this.headers})
+  //     .map((response)=>response.json());
+  // }
 
   getAppointmentsAdviserList(packageId): Observable<any>{
     return this.http.get(APPOINTMENTS_API+'/adviserlist/'+packageId+'?token='+this.token, {headers: this.headers})
@@ -96,21 +91,21 @@ export class UsersService {
   //   return this.http.get(APPOINTMENTS_API+'/adviserdata?token='+this.token+'&id='+adviserId, {headers: this.headers})
   //     .map((response)=>response.json());
   // }
-  
-  getAdviserFreeTime(adviserId):Observable<any>{
-    return this.http.get(APPOINTMENTS_API+'/adviserdata?id='+adviserId, {headers: this.headers})
-      .map((response)=>response.json());
-  }
 
-  getAdviserData(adviserId): Observable<any>{
-    return this.http.get(APPOINTMENTS_API+'/adviser?id='+adviserId, {headers: this.headers})
-      .map((response)=>response.json());
-  }
+  // getAdviserFreeTime(adviserId):Observable<any>{
+  //   return this.http.get(APPOINTMENTS_API+'/adviserdata?id='+adviserId, {headers: this.headers})
+  //     .map((response)=>response.json());
+  // }
 
-  postDataAppointments(data): Observable<any>{
-    return this.http.post(APPOINTMENTS_API, data)
-      .map((response)=>response.json());
-  }
+  // getAdviserData(adviserId): Observable<any>{
+  //   return this.http.get(APPOINTMENTS_API+'/adviser?id='+adviserId, {headers: this.headers})
+  //     .map((response)=>response.json());
+  // }
+
+  // postDataAppointments(data): Observable<any>{
+  //   return this.http.post(APPOINTMENTS_API, data)
+  //     .map((response)=>response.json());
+  // }
 
   postCreateNewAppointment(data, packageId): Observable<any>{
     return this.http.post('http://54.254.203.172/cideapi/api/users/appointments/'+packageId+'?token='+this.getToken(), data)
@@ -166,7 +161,7 @@ export class UsersService {
   cleanUserType(){
     localStorage.removeItem('userType');
   }
-  
+
   storeUserEmail(userE){
     localStorage.setItem('userEmail', userE);
   }

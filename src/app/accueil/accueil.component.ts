@@ -7,7 +7,7 @@ import * as $ from 'jquery';
 import swal from 'sweetalert2';
 
 declare var wheelnav: any;
-declare var sliceTransform: any;
+//declare var sliceTransform: any;
 
 @Component({
   selector: 'app-accueil',
@@ -30,7 +30,7 @@ export class AccueilComponent implements OnInit {
   onMobile : boolean = false;
   lieuSelected = [];
   constructor(private router: Router,
-              private route: ActivatedRoute,
+              //private route: ActivatedRoute,
               private publicService: PublicService,
               private fb: FormBuilder,
               private schoolService : SchoolService
@@ -316,9 +316,9 @@ export class AccueilComponent implements OnInit {
     }
   }
 
-  navigateTo(index){
-    this.router.navigate(['/landing-page-'+index])
-  }
+  // navigateTo(index){
+  //   this.router.navigate(['/landing-page-'+index])
+  // }
 
   onNavigate(path){
     let rate = {
@@ -331,7 +331,7 @@ export class AccueilComponent implements OnInit {
           console.log(response)
         }
       )
-    
+
     this.router.navigate(['/'+path]);
   }
 

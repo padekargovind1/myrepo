@@ -2,7 +2,7 @@
 import { DatePipe } from '@angular/common';
 import { PublicService } from '../services/public.service';
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-school-calendar',
@@ -16,7 +16,7 @@ export class SchoolCalendarComponent implements OnInit {
   eventsToDisplay = [];
   searchForm : FormGroup;
   minDate = new Date();
-  weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  //weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   schoolsOptions = null;
   dataToSend = {
     data : '',
@@ -25,9 +25,10 @@ export class SchoolCalendarComponent implements OnInit {
   buttonsBool : [boolean] = [false, false, false, false]
 
   constructor(private publicService : PublicService,
-              private route : Router,
+              //private route : Router,
               private fb : FormBuilder,
-              public datepipe: DatePipe) { 
+              //public datepipe: DatePipe
+              ) {
     // this.fetch((data) => {
     //   this.events = data;
     // });

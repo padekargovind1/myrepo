@@ -15,12 +15,12 @@ import { BrochureService } from '../../services/brochure.service';
 export class BrochpopupComponent implements OnInit {
   @ViewChild('tabGroup') tabGroup;
   brochureForm : FormGroup;
-  
+
   constructor(public dialogref:MdDialogRef<BrochpopupComponent>,
               private fb : FormBuilder,
               private usersService : UsersService,
               private sendService : SendService,
-              private brochureService : BrochureService) { 
+              private brochureService : BrochureService) {
                 this.buildFormGroup();
                 this.getProfile();
               }
@@ -93,7 +93,7 @@ export class BrochpopupComponent implements OnInit {
 			  childTitle : profile.gender,
 			  etablissement : profile.academicHistories[0].schoolName,
 			  city : profile.academicHistories[0].schoolName
-				  
+
 		});
 	}
   }
@@ -104,8 +104,8 @@ export class BrochpopupComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.brochureForm.controls.status.value);
-    this.sendService.storeMessageStatus(this.brochureForm.controls.status.value);
+    console.log(this.brochureForm.value.status);
+    this.sendService.storeMessageStatus(this.brochureForm.value.status);
     this.brochureService.storeResponse("submit")
     this.dialogref.close();
   }

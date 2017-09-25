@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
 import { PublicService } from '../../services/public.service';
-import { MdDialogConfig, MdDialog } from '@angular/material';
+import { MdDialog } from '@angular/material';
 import { EtablissementComponent } from '../../etablissement/etablissement.component';
 
 declare var jquery:any;
@@ -24,14 +24,14 @@ export class CubeComponent implements OnInit, AfterViewInit {
   cube;
   video;
   safeUrl: any;
-  configSchoolDetail : MdDialogConfig;
+  configSchoolDetail : any;
 
   constructor(private sanitizer : DomSanitizer,
-                private route : Router,
+                //private route : Router,
                 private publicService : PublicService,
                 public dialog:MdDialog) {}
 
-  ngOnInit() {    
+  ngOnInit() {
     this.video="https://www.youtube.com/embed/"+this.eventData.video;
 	this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video);
     console.log(this.video);
@@ -43,12 +43,12 @@ export class CubeComponent implements OnInit, AfterViewInit {
 	  },500);
   }
 
-  getUrl(){
-      return this.sanitizer.bypassSecurityTrustResourceUrl(this.video);
-  }
+  //getUrl(){
+  //    return this.sanitizer.bypassSecurityTrustResourceUrl(this.video);
+  //}
 
   createCube(){
-    
+
     var cube = (<any> $('.cube-' + this.counter)).cubeBox({
         'speed':400,
         'width': 300,
@@ -103,12 +103,12 @@ export class CubeComponent implements OnInit, AfterViewInit {
             }
             cube.goTo(goto);
         }
-    }); // button click      
+    }); // button click
   }
 
-  rotateMiddleCube(direction) {
-        this.cube.goTo(direction);
-  }
+  //rotateMiddleCube(direction) {
+  //      this.cube.goTo(direction);
+  //}
 
     onClickCube(){
         this.publicService.getSchoolById(this.eventData.school)
@@ -116,12 +116,12 @@ export class CubeComponent implements OnInit, AfterViewInit {
                 response=>{
                     if(response.code!=400){
                         this.makeSchoolDetailProfil(response.data)
-                        let dialogref = this.dialog.open(EtablissementComponent,this.configSchoolDetail);
+                        this.dialog.open(EtablissementComponent,this.configSchoolDetail);
                     }
                 }
             )
     // this.route.navigate(['/etablissement/'+this.eventData.school]);
-  }  
+  }
 
   makeSchoolDetailProfil(schoolData){
     // console.log(window.screen.width)

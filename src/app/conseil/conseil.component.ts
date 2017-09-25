@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BookingService } from '../services/booking.service';
-import { MdDialogConfig, MdDialog } from '@angular/material';
+import { MdDialog } from '@angular/material';
 import { ConseilPopupComponent } from './conseil-popup/conseil-popup.component';
 
 @Component({
@@ -11,10 +11,10 @@ import { ConseilPopupComponent } from './conseil-popup/conseil-popup.component';
 })
 export class ConseilComponent implements OnInit {
 
-  config: MdDialogConfig;
+  config: any;
 
   constructor(private router : Router,
-              private route : ActivatedRoute,
+              //private route : ActivatedRoute,
               private bookingService : BookingService,
               public dialog:MdDialog) { }
 
@@ -46,12 +46,12 @@ export class ConseilComponent implements OnInit {
 
   openInfoDialog(nb : number){
     this.makeProfile(nb);
-    let dialogref = this.dialog.open(ConseilPopupComponent,this.config);
+    this.dialog.open(ConseilPopupComponent,this.config);
   }
 
   openMobileInfoDialog(nb : number){
     this.makeProfile(nb);
-    let dialogref = this.dialog.open(ConseilPopupComponent,this.config);
+    this.dialog.open(ConseilPopupComponent,this.config);
   }
 
 }

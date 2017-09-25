@@ -93,7 +93,7 @@ export class PublicService {
   private headers = new Headers({'Content-Type': 'application/json'});
   className : [string] =[''];
 
-  constructor(private http : Http) { 
+  constructor(private http : Http) {
     this.domaines=this.domaines.sort()
     // console.log(this.domaines)
   }
@@ -167,10 +167,10 @@ export class PublicService {
       .map((response)=>response.json())
   }
 
-  postFastSearch(data, limit): Observable<any>{
-    return this.http.post(SCHOOLS_API+'schools?limit='+limit, data)
-      .map((response)=>response.json())
-  }
+  //postFastSearch(data, limit): Observable<any>{
+  //  return this.http.post(SCHOOLS_API+'schools?limit='+limit, data)
+  //    .map((response)=>response.json())
+  //}
 
   postRate(data):Observable<any>{
     return this.http.post(RATE_API, data)

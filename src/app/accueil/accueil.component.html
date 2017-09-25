@@ -237,6 +237,19 @@
                                                             <option value="cinquieme">&nbsp;5ème</option>
                                                             <option value="quatrieme">&nbsp;4ème</option>
                                                             <option value="troisieme">&nbsp;3ème</option>
+                                                            <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
+                                                            <option value="">&nbsp;Quatrième d'aide et de soutien</option>
+                                                            <option value="">&nbsp;Troisième d'insertion</option>
+                                                            <option value="">&nbsp;Troisième découverte professionnelle - DP6 (module 6 heures)</option>
+                                                            <option value="">&nbsp;3ème préparatoire aux formations professionnels - Troisième prépa pro (ex DP6)</option>
+                                                            <option value="">&nbsp;DIMA Dispositif d'initiation aux métiers en alternance (en collège)</option>
+                                                            <option value="">&nbsp;SEGPA 6è-5è section d'enseignement général et professionnel adapté</option>
+                                                            <option value="">&nbsp;SEGPA 4è-3è section d'enseignement général et professionnel adapté</option>
+                                                            <option value="">&nbsp;ULIS unités localisées pour l'inclusion solaire (ex UPI)</option>
+                                                            <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
+                                                            <option value="">&nbsp;Cursus non francophone (GB-US)</option>
+                                                            <option value="">&nbsp;Ecole pratiquant la pédagogie Montessori</option>
+                                                            <option value="">&nbsp;Enseignement à distance</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -249,25 +262,25 @@
                                                         [mdAutocomplete]="auto"
                                                         [formControl]="searchForm.controls['lieu']"/>
                                                     
-                                                        <md-autocomplete #auto="mdAutocomplete">
-                                                            <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                            <!-- <md-option [value]="options.regions"
-                                                            *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
-                                                            <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
-                                                                (click)="onSelectLieu('R', i)">
-                                                                &nbsp;&nbsp;{{ option.region }}
-                                                            </md-option>
-                                                            <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                            <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
-                                                                (click)="onSelectLieu('D', i)">
-                                                                &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
-                                                            </md-option>
-                                                            <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                            <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
-                                                                (click)="onSelectLieu('V', i)">
-                                                                &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
-                                                            </md-option>
-                                                        </md-autocomplete>
+                                                    <md-autocomplete #auto="mdAutocomplete">
+                                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                                        <!-- <md-option [value]="options.regions"
+                                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                                            (click)="onSelectLieu('R', i)">
+                                                            &nbsp;&nbsp;{{ option.region }}
+                                                        </md-option>
+                                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                                            (click)="onSelectLieu('D', i)">
+                                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                                                        </md-option>
+                                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                                            (click)="onSelectLieu('V', i)">
+                                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                                                        </md-option>
+                                                    </md-autocomplete>
                                                 </div>
                                             </div>
 
