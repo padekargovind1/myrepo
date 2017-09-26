@@ -2197,7 +2197,7 @@ md-dialog-container.mat-dialog-container{ height:100%; max-height:85vh;}
 
 .input.userType_radio{ padding: 11px 0; margin-bottom: 7px; margin-top: 0; }
 .landing-page-2 .content-holder .btn.btn-search { right: 5px; padding: 6px; }
-app-school-choice .selectApplyClass, app-class-choice .selectApplyClass{ max-height: 82vh; height: 100vh; overflow: auto; position: relative; margin: 0;}
+app-school-choice .selectApplyClass, app-class-choice .selectApplyClass{  height: 100vh; overflow: auto; position: relative; margin: 0;}
 
 .selectApplyClass  .school-choice-height{ height:auto; }
 .selectApplyClass  .school-choice-height p{ margin: 0 0 5px;}
@@ -2468,3 +2468,4 @@ text-align:center;
   width: 100%;
   max-width: 100%;
 }
+.ads-area,.ads-area *{animation-delay: 0s !important;}
