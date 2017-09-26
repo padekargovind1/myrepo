@@ -19,7 +19,7 @@ import {MyAccountMdl,
 
 import { CustomValidators } from 'ng2-validation';
 import swal from "sweetalert2";
-
+import {HelperService} from "../services/helper.service";
 
 @Component({
   selector: 'app-wizard',
@@ -75,6 +75,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
               //private publicService : PublicService,
 			        private dateAdapter: DateAdapter<Date>,
               //public datepipe: DatePipe
+              private helperService : HelperService
               ) {
 			  this.dateAdapter.setLocale('nl');
     this.initAdviserData();
@@ -132,22 +133,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
     this.checked = false;
   }
   runScript(){
-		function detectmob() {
-			if( navigator.userAgent.match(/Android/i)
-			 || navigator.userAgent.match(/webOS/i)
-			 || navigator.userAgent.match(/iPhone/i)
-			 || navigator.userAgent.match(/iPad/i)
-			 || navigator.userAgent.match(/iPod/i)
-			 || navigator.userAgent.match(/BlackBerry/i)
-			 || navigator.userAgent.match(/Windows Phone/i)
-			 ){
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-		var checkMobile = detectmob();
+		var checkMobile = this.helperService.detectmob();
 		if (checkMobile) {
 		  console.log(checkMobile)
 		  this.onMobile=true;

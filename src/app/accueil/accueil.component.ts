@@ -5,7 +5,7 @@ import { PublicService } from '../services/public.service';
 import { SchoolService } from '../services/school.service';
 import * as $ from 'jquery';
 import swal from 'sweetalert2';
-import * as helpers from '../helpers';
+import {HelperService} from "../services/helper.service";
 declare const wheelnav: any;
 
 @Component({
@@ -34,7 +34,8 @@ export class AccueilComponent implements OnInit {
   constructor(private router: Router,
               private publicService: PublicService,
               private fb: FormBuilder,
-              private schoolService : SchoolService
+              private schoolService : SchoolService,
+              private helperService : HelperService
               ) {
     this.runScript();
     this.buildForm();
@@ -66,7 +67,7 @@ export class AccueilComponent implements OnInit {
   // Check if is on mobile or not
   runScript() {
     const self = this;
-    const checkMobile = helpers.detectmob();
+    const checkMobile = this.helperService.detectmob();
     const selector_select: any = $('.select-all-advisor');
     const selector_deselect: any = $('.deselect-all-advisor');
     if (checkMobile) {

@@ -13,7 +13,7 @@ import { SendService } from '../services/send.service';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
-import * as helpers from '../helpers';
+import {HelperService} from "../services/helper.service";
 declare const jquery: any;
 declare const $: any;
 
@@ -93,7 +93,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
               private fb: FormBuilder,
               private route: ActivatedRoute,
               private sendService: SendService,
-              public dialog: MdDialog) { }
+              public dialog: MdDialog,
+              private helperService : HelperService) { }
 
 
   ngOnInit() {
@@ -118,7 +119,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   runScriptOnInit() {
     // return scope value
-    this.onMobile = helpers.detectmob();
+    this.onMobile = this.helperService.detectmob();
   }
 
   /**

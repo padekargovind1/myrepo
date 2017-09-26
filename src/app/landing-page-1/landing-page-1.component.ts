@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
 import { SchoolService } from '../services/school.service';
 import swal from 'sweetalert2';
+import {HelperService} from "../services/helper.service";
 declare var jquery:any;
 declare var $ :any;
 
@@ -29,7 +30,8 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
   constructor(private fb : FormBuilder,
               private publicService : PublicService,
               private router : Router,
-              private schoolService : SchoolService) {
+              private schoolService : SchoolService,
+              private helperService : HelperService) {
     this.buildForm();
     this.buildApbForm();
   }
@@ -42,27 +44,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 
   // Run the script
   runScript(){
-	  function detectmob() {
-			if( navigator.userAgent.match(/Android/i)
-			 || navigator.userAgent.match(/webOS/i)
-			 || navigator.userAgent.match(/iPhone/i)
-			 || navigator.userAgent.match(/iPad/i)
-			 || navigator.userAgent.match(/iPod/i)
-			 || navigator.userAgent.match(/BlackBerry/i)
-			 || navigator.userAgent.match(/Windows Phone/i)
-			 ){
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-		var checkMobile = detectmob();
-		if (checkMobile) {
-		  this.onMobile=true;
-		}else {
-		  this.onMobile=false;
-		}
+    this.onMobile = this.helperService.detectmob();
 	}
 
 	// Build the form for before bac inputs

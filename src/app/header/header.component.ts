@@ -10,6 +10,7 @@ import { WishApplyPopupComponent } from './wish-apply-popup/wish-apply-popup.com
 import 'rxjs/add/operator/filter';
 //import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
+import {HelperService} from "../services/helper.service";
 
 //var self = this;
 
@@ -45,7 +46,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private bookingService : BookingService,
               private compareService : CompareService,
               public dialog:MdDialog,
-              private route : ActivatedRoute) {}
+              private route : ActivatedRoute,
+              private helperService : HelperService) {}
 
   // Getting the user data and the list of the application
   ngOnInit() {
@@ -89,22 +91,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     $('.mobile-login').on('click', '.fa-user', function() {
         $('.login').toggle('slow');
     });
-    function detectmob() {
-      if( navigator.userAgent.match(/Android/i)
-        || navigator.userAgent.match(/webOS/i)
-        || navigator.userAgent.match(/iPhone/i)
-        || navigator.userAgent.match(/iPad/i)
-        || navigator.userAgent.match(/iPod/i)
-        || navigator.userAgent.match(/BlackBerry/i)
-        || navigator.userAgent.match(/Windows Phone/i)
-        ){
-          return true;
-      }
-      else {
-          return false;
-      }
-    }
-    var checkMobile = detectmob();
+    var checkMobile = self.helperService.detectmob();
     if (checkMobile) {
       console.log(checkMobile)
       self.onMobile=true;

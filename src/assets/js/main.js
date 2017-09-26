@@ -6,16 +6,16 @@
 			var txtAge = $(".mat-tab-body-wrapper >.mat-tab-body-active").find("#txtAge");
 			// Listen for input event on numInput.
 			txtAge[0].onkeydown = function(e) {
-							
+
 				if(!((e.keyCode > 95 && e.keyCode < 106)
-				  || (e.keyCode > 47 && e.keyCode < 58) 
+				  || (e.keyCode > 47 && e.keyCode < 58)
 				  || e.keyCode == 8)) {
 					return false;
 				}
 			}
 		}
 	});
-	
+
 });
 function hideAd() {
 	// console.log('time is up');
@@ -31,7 +31,7 @@ function hideSideAd() {
 	$('.fixed-ad').delay(26000).removeClass('hidden').addClass('fadeIn animated');
 }
 
-window.onload= function() { 
+window.onload= function() {
 	jQuery(function($) {
 		// listen scrolling, in 500 px height will show footer ads
 		$(document).scroll(function() {
