@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PublicService } from '../services/public.service';
+import {HelperService} from "../services/helper.service";
 
 @Component({
   selector: 'app-random-landing',
@@ -10,7 +11,8 @@ import { PublicService } from '../services/public.service';
 export class RandomLandingComponent implements OnInit {
 
   constructor(private router : Router,
-              private publicService : PublicService) { }
+              private publicService : PublicService,
+              private helperService : HelperService) { }
 
   //First page of the website to random the landing page
   ngOnInit() {
@@ -19,6 +21,9 @@ export class RandomLandingComponent implements OnInit {
     // console.log(this.publicService.hasNumLanding())
     if(!this.publicService.hasNumLanding()){
       nb = Math.round(Math.random()*2+1)
+      while(this.helperService.detectmob() && nb==2){
+        nb = Math.round(Math.random()*2+1)
+      }
       this.publicService.storeNumLanding(nb)
       // console.log(nb)
     } else {

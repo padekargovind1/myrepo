@@ -24,11 +24,12 @@ import { SuperieurComponent } from './superieur/superieur.component';
 //import { MailTestComponent } from './mail-test/mail-test.component';
 import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
+import {AppGuard} from "./app.guard";
 
 export const AppRoutes: Routes = [
     { path: '', component: RandomLandingComponent},
     { path: 'landing-page-1', component: LandingPage1Component },
-    { path: 'landing-page-2', component: AccueilComponent },
+    { path: 'landing-page-2', component: AccueilComponent , canActivate: [AppGuard]},
     { path: 'landing-page-3', component: LandingPage3Component},
     { path: 'conseil', component: ConseilComponent},
     { path: 'orientation', component: UnderConstructionComponent},
