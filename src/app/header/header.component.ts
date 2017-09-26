@@ -343,6 +343,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       type: 'warning',
       confirmButtonText: "J'AI COMPRIS"
     })
+    this.router.navigate(['/']);
   }
 
 }
