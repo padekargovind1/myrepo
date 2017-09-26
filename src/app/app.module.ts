@@ -92,6 +92,8 @@ import { SendMessageComponent } from './shared/send-message/send-message.compone
 import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import {AppGuard} from "./app.guard";
+import { WizardProfessionComponent } from './wizard/wizard-profession/wizard-profession.component';
+import {WizardService} from "./services/wizard.service";
 
 @NgModule({
   declarations: [
@@ -153,7 +155,8 @@ import {AppGuard} from "./app.guard";
     ClassChoiceComponent,
     SendMessageComponent,
 	PaymentComponent,
-	UnderConstructionComponent
+	UnderConstructionComponent,
+	WizardProfessionComponent
   ],
   imports: [
     BrowserModule,
@@ -198,6 +201,7 @@ import {AppGuard} from "./app.guard";
     BrochureService,
     SendService,
     HelperService,
+    WizardService,
     AppGuard
   ],
     entryComponents: [
