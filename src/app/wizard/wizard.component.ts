@@ -20,7 +20,6 @@ import {MyAccountMdl,
 import { CustomValidators } from 'ng2-validation';
 import swal from "sweetalert2";
 import {HelperService} from "../services/helper.service";
-
 @Component({
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',
@@ -104,7 +103,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
     }
     this.loadScript('assets/js/select2.min.js');
     this.runScript();
-
+    var self = this;
     swal({
         text: "<font color='#fff'>Afin de preparer votre entretien dans les meilleures conditions, merci de bien vouloir completer ce questionnaire 48h avant le rendez-vous.</font>",
         showCancelButton: true,
@@ -115,9 +114,13 @@ export class WizardComponent implements OnInit, AfterViewInit {
         cancelButtonText: 'Je complete plus tard',
         background: '#4472C4',
         reverseButtons: true
-    }).catch(function () {
-        console.log("Cancel");
-    });
+    }).then(function () {
+      //user click on Je complete maintenant
+    }, function (dismiss) {
+      //user click on Je complete plus tard -> create a new Appointment
+      console.log(dismiss)
+      self.getPackageById(self.appointmentData[9]);
+    })
   }
 
    loadScript(url) {
@@ -465,8 +468,9 @@ export class WizardComponent implements OnInit, AfterViewInit {
       to:this.appointmentData[0]
     }
     if(this.authService.isUserLoggedIn()){
+      console.log(this.appointmentData);
       this.getPackageById(this.appointmentData[9]);
-      this.putProfile();
+      //this.putProfile(); // Wait for API fix
     } else {
       var packageIndex = this.bookingService.getBookingPackage()[3];
       console.log(packageIndex);
@@ -500,6 +504,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
   }
 
   getPackageById(packageId){
+    //console.log(packageId)
     this.usersService.getAppointmentsPackage()
       .subscribe(
         response=>{
@@ -508,14 +513,14 @@ export class WizardComponent implements OnInit, AfterViewInit {
             console.log(response.message)
           } else {
             console.log(response.data[packageId]._id)
-            this.postCreateNewAppointment(response.data[packageId]._id)
+            this.postCreateNewAppointment(response.data[packageId]._id);
           }
         }
       )
   }
 
   postCreateNewAppointment(packageId){
-    console.log(packageId)
+    console.log(packageId);
     this.usersService.postCreateNewAppointment(this.newAppointment, packageId)
       .subscribe(
         (response)=>{
@@ -523,9 +528,13 @@ export class WizardComponent implements OnInit, AfterViewInit {
           console.log(data);
           if(data.code==400){
             console.log(response.message);
+            this.failSubmit(response.message);
           } else {
             console.log('Appointement register')
-            this.bookingService.cleanBooking();
+            this.bookingService.successSubmit();
+            setTimeout(()=>{
+              this.bookingService.cleanBooking();
+            }, 20);
           }
         }
       )
