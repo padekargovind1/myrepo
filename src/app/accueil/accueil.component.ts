@@ -128,17 +128,17 @@ export class AccueilComponent implements OnInit {
   switchWheelComponent(wheelNavId: String, contentName: String) {
     const self = this;
     const selector_content = $('.' + contentName + '-content');
-    const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
+    //const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
 
     $(this.selectorWheel).removeClass('open');
     $('#' + wheelNavId).addClass('open');
-
-    if (selector_content.hasClass('fadeIn')) {
-      if (school_name.includes(contentName)) {
-        console.log('Need to navigate', contentName);
-        self.onNavigate(contentName);
-      }
-    }
+    self.onNavigate(contentName);
+    // if (selector_content.hasClass('fadeIn')) {
+    //   if (school_name.includes(contentName)) {
+    //     console.log('Need to navigate', contentName);
+    //     self.onNavigate(contentName);
+    //   }
+    // }
 
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
     selector_content.removeClass('fadeOut').addClass('fadeIn');

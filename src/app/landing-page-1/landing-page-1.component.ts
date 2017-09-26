@@ -31,7 +31,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
               private publicService : PublicService,
               private router : Router,
               private schoolService : SchoolService,
-              private helperService : HelperService) {
+              public helperService : HelperService) {
     this.buildForm();
     this.buildApbForm();
   }

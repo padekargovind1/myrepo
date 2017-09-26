@@ -76,7 +76,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
 			        private dateAdapter: DateAdapter<Date>,
               //public datepipe: DatePipe
               private helperService : HelperService,
-              private wizardService : WizardService
+              public wizardService : WizardService
               ) {
     this.dateAdapter.setLocale('nl');
     this.initAdviserData();
@@ -490,6 +490,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
             console.log(response.message);
             this.failSubmit(response.message);
           } else {
+            //Update the appointment
+            //this.wizardService.updateAppointment(data._id, this.wizardForm.value)
             console.log('Appointement register')
             this.bookingService.successSubmit();
             setTimeout(()=>{

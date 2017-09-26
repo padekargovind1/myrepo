@@ -35,7 +35,7 @@
                           <h2>École</h2>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="select-custom" for="class">
+                                    <label class="select-custom">
                                         <select name="class" class="form-control"
                                             [formControl]="searchForm.controls['classe']"
                                             (click)="storeClassName($event)">
@@ -44,17 +44,17 @@
                                             <option value="ps" style="color:red">
                                                 &nbsp;Classes maternelles
                                             </option>
-                                            <option value="ps">&nbsp;Petite section (PS)</option>
-                                            <option value="ms">&nbsp;Moyenne section (MS)</option>
-                                            <option value="gs">&nbsp;Grande Section (GS)</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().infant; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().infant[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="cp" style="color:red">
                                                 &nbsp;Classes élémentaires
                                             </option>
-                                            <option value="cp">&nbsp;Cours préparatoire (CP)</option>
-                                            <option value="ce1">&nbsp;Cours élémentaire 1er année(CE1)</option>
-                                            <option value="ce2">&nbsp;Cours élémentaire 2è année (CE2)</option>
-                                            <option value="cm1">&nbsp;Cours Moyen 1er année(CM1)</option>
-                                            <option value="cm2">&nbsp;Cours Moyen 2è année(CM2)</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().primary; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().primary[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                         </select>
                                     </label>
                                 </div>
@@ -140,116 +140,115 @@
                           <h2>Internat</h2>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="select-custom" for="class">
+                                    <label class="select-custom">
                                         <select name="class" class="form-control"
                                             [formControl]="searchForm.controls['classe']"
                                             (click)="storeClassName($event)">
-											<!--<option value="" disabled selected hidden>Classe</option>-->
-											<option value="" selected hidden>Classe</option>
+                                            <!--<option value="" disabled selected hidden>Classe</option>-->
+                                            <option value="" selected hidden>Classe</option>
                                             <option value="Indifférent">&nbsp;Indifférent</option>
                                             <option value="ps" style="color:red">
                                                 &nbsp;Classes maternelles
                                             </option>
-                                            <option value="ps">&nbsp;Petite section (PS)</option>
-                                            <option value="ms">&nbsp;Moyenne section (MS)</option>
-                                            <option value="gs">&nbsp;Grande Section (GS)</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().infant; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().infant[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="cp" style="color:red">
                                                 &nbsp;Classes élémentaires
                                             </option>
-                                            <option value="cp">&nbsp;Cours préparatoire (CP)</option>
-                                            <option value="ce1">&nbsp;Cours élémentaire 1er année(CE1)</option>
-                                            <option value="ce2">&nbsp;Cours élémentaire 2è année (CE2)</option>
-                                            <option value="cm1">&nbsp;Cours Moyen 1er année(CM1)</option>
-                                            <option value="cm2">&nbsp;Cours Moyen 2è année(CM2)</option>
-                                            <option value="6e">&nbsp;6ème</option>
-                                            <option value="cinquieme">&nbsp;5ème</option>
-                                            <option value="quatrieme">&nbsp;4ème</option>
-                                            <option value="troisieme">&nbsp;3ème</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().primary; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().primary[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().college; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().college[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="seconde_techno" style="color:red">
                                                 &nbsp;Classes de seconde
                                             </option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                            <option value="seconde_probation">&nbsp;2nde de probation (ou méthodologique)</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().seconde; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().seconde[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="premiere_es" style="color:red">
                                                 &nbsp;Classes de première
                                             </option>
-                                            <option value="premiere_es">&nbsp;1ere ES - Economique et Sociale</option>
-                                            <option value="premiere_l">&nbsp;1ere L - Littéraire</option>
-                                            <option value="premiere_s">&nbsp;1ere S - Scientifique</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().premiere; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().premiere[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="terminale_s" style="color:red">
                                                 &nbsp;Classes de terminale
                                             </option>
-                                            <option value="terminale_s">&nbsp;Tle ES - Economique et Sociale</option>
-                                            <option value="terminale_l">&nbsp;Tle L - Littéraire</option>
-                                            <option value="terminale_s">&nbsp;Tle S - Scientifique</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().terminal; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().terminal[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="Cursus international" style="color:red">
                                                 &nbsp;Cursus international
                                             </option>
-                                            <option value="CI">&nbsp;Cursus International</option>
-                                            <option value="BAC-I">&nbsp;Cursus Bac. International</option>
-                                            <option value="cursus_non_francophone">&nbsp;Cursus non francophone (GB-US)</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().international; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().international[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="seconde_sthr" style="color:red">
                                                 &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
                                             </option>
-                                            <option value="seconde_sthr">&nbsp;2nde spécifique STHR</option>
-                                            <option value="premiere_sthr">&nbsp;1ere d’adaptation STHR</option>
-                                            <option value="premiere_sthr">&nbsp;1ere STHR</option>
-                                            <option value="terminale_sthr">&nbsp;Terminale STHR</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="premiere_sti2s" style="color:red">
                                                 &nbsp;ST2S - Sciences et Technologies de la santé et du social
                                             </option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                            <option value="premiere_sti2s">&nbsp;1ere d’adaptation ST2S</option>
-                                            <option value="premiere_st2s">&nbsp;1ere ST2S</option>
-                                            <option value="terminale_st2s">&nbsp;Terminale STIS</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().st2s; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().st2s[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="premiere_std2a" style="color:red">
                                                 &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
                                             </option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                            <option value="premiere_std2a">&nbsp;1ère STI2A</option>
-                                            <option value="terminale_std2a">&nbsp;Terminale STI2A</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().std2a; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().std2a[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="premiere_sti2d" style="color:red">
                                                 &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
                                             </option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                            <option value="premiere_sti2d">&nbsp;1ère STI2D</option>
-                                            <option value="terminale_sti2d">&nbsp;Terminale ST2D – Architecture et Construction</option>
-                                            <option value="terminale_sti2d">&nbsp;Terminale STI2D – Energie et Environnement</option>
-                                            <option value="terminale_sti2d">&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
-                                            <option value="terminale_sti2d">&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().sti2d; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().sti2d[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="premiere_stmg" style="color:red">
                                                 &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
                                             </option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                            <option value="premiere_stmg">&nbsp;1ère d’adaptation STMG</option>
-                                            <option value="premiere_stmg">&nbsp;1ère STMG</option>
-                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Gestion et Finance</option>
-                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Mercatique</option>
-                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
-                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().stmg; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().stmg[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="premiere_stl" style="color:red">
                                                 &nbsp;STL - Sciences et Technologies de Laboratoire
                                             </option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                            <option value="premiere_stl">&nbsp;1ère d’adaptation STL</option>
-                                            <option value="premiere_stl">&nbsp;1ère STL</option>
-                                            <option value="terminale_stl">&nbsp;Terminale STL – Biotechnologies</option>
-                                            <option value="terminale_stl">&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().stl; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().stl[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="premiere_stav" style="color:red">
                                                 &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
                                             </option>
-                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                            <option value="premiere_stav">&nbsp;1ère d’adaptation STAV</option>
-                                            <option value="premiere_stav">&nbsp;1ère STAV</option>
-                                            <option value="terminale_stav">&nbsp;Terminale STAV</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().stav; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().stav[i]">
+                                              &nbsp;{{name}}
+                                            </option>
                                             <option value="2ndeTMD" style="color:red">
                                                 &nbsp;TMD - Techniques de la Musique et de la Danse
                                             </option>
-                                            <option value="2ndeTMD">&nbsp;2nde spécifique TMD</option>
-                                            <option value="premiere_tmd">&nbsp;1ère d’adaptation TMD</option>
-                                            <option value="premiere_tmd">&nbsp;1ère TMD</option>
-                                            <option value="terminale_tmd">&nbsp;Terminale TMD - Danse</option>
-                                            <option value="terminale_tmd">&nbsp;Terminale TMD - Musique</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().tmd; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().tmd[i]">
+                                              &nbsp;{{name}}
+                                            </option>
 										</select>
                                     </label>
                                 </div>
@@ -336,7 +335,7 @@
                           <h2>Collège</h2>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="select-custom" for="class">
+                                    <label class="select-custom">
                                         <select name="class" class="form-control"
                                             [formControl]="searchForm.controls['classe']"
                                             (click)="storeClassName($event)">
@@ -456,7 +455,7 @@
                       <h2>Lycée</h2>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="select-custom" for="class">
+                                <label class="select-custom">
                                     <select name="class" class="form-control"
                                         [formControl]="searchForm.controls['classe']"
                                         (click)="storeClassName($event)">
@@ -632,7 +631,7 @@
                           <h2>Enseignement <br />supérieur</h2>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="select-custom" for="class">
+                                    <label class="select-custom" >
                                         <select name="class" class="form-control"
                                             [formControl]="apbForm.controls['domaine']">
                                             <option value="" selected hidden>Domaine</option>

@@ -683,22 +683,8 @@
  															                            <select class="form-control matery"
                                                                 multiple="multiple"
                                                                 [formControl]="wizardForm.controls['bestSubject']">
-                                                          <option value="Maths">Maths</option>
-                                                          <option value="Sciences Physiques">Sciences Physiques</option>
-                                                          <option value="Sciences Naturelles">Sciences Naturelles</option>
-                                                          <option value="Francais">Francais</option>
-                                                          <option value="Anglais">Anglais</option>
-                                                          <option value="Espagnol">Espagnol</option>
-                                                          <option value="Allemand">Allemand</option>
-                                                          <option value="Italien">Italien</option>
-                                                          <option value="Autre langue">Autre langue</option>
-                                                          <option value="Histoire">Histoire</option>
-                                                          <option value="Géographie">Géographie</option>
-                                                          <option value="Instruction Civique">Instruction Civique</option>
-                                                          <option value="Sport">Sport</option>
-                                                          <option value="Musique">Musique</option>
-                                                          <option value="Arts PLastiques">Arts PLastiques</option>
-                                                          <option value="Autre matières">Autre matières</option>
+                                                            <option *ngFor="let subject of wizardService.getSubjectList()"
+                                                                    [value]="subject">{{subject}}</option>
                                                         </select>
                                                       </div>
                                                     </div>
@@ -713,22 +699,8 @@
                                                           <select class="form-control matery"
                                                                 multiple="multiple"
                                                                 [formControl]="wizardForm.controls['weakSubject']">
-                                                          <option value="Maths">Maths</option>
-                                                          <option value="Sciences Physiques">Sciences Physiques</option>
-                                                          <option value="Sciences Naturelles">Sciences Naturelles</option>
-                                                          <option value="Francais">Francais</option>
-                                                          <option value="Anglais">Anglais</option>
-                                                          <option value="Espagnol">Espagnol</option>
-                                                          <option value="Allemand">Allemand</option>
-                                                          <option value="Italien">Italien</option>
-                                                          <option value="Autre langue">Autre langue</option>
-                                                          <option value="Histoire">Histoire</option>
-                                                          <option value="Géographie">Géographie</option>
-                                                          <option value="Instruction Civique">Instruction Civique</option>
-                                                          <option value="Sport">Sport</option>
-                                                          <option value="Musique">Musique</option>
-                                                          <option value="Arts PLastiques">Arts PLastiques</option>
-                                                          <option value="Autre matières">Autre matières</option>
+                                                            <option *ngFor="let subject of wizardService.getSubjectList()"
+                                                                    [value]="subject">{{subject}}</option>
                                                         </select>
                                                       </div>
                                                     </div>
@@ -743,22 +715,8 @@
                                                             <select class="form-control matery"
                                                                 multiple="multiple"
                                                                 [formControl]="wizardForm.controls['interestSubject']">
-                                                                <option value="Maths">Maths</option>
-                                                                <option value="Sciences Physiques">Sciences Physiques</option>
-                                                                <option value="Sciences Naturelles">Sciences Naturelles</option>
-                                                                <option value="Francais">Francais</option>
-                                                                <option value="Anglais">Anglais</option>
-                                                                <option value="Espagnol">Espagnol</option>
-                                                                <option value="Allemand">Allemand</option>
-                                                                <option value="Italien">Italien</option>
-                                                                <option value="Autre langue">Autre langue</option>
-                                                                <option value="Histoire">Histoire</option>
-                                                                <option value="Géographie">Géographie</option>
-                                                                <option value="Instruction Civique">Instruction Civique</option>
-                                                                <option value="Sport">Sport</option>
-                                                                <option value="Musique">Musique</option>
-                                                                <option value="Arts PLastiques">Arts PLastiques</option>
-                                                                <option value="Autre matières">Autre matières</option>
+                                                              <option *ngFor="let subject of wizardService.getSubjectList()"
+                                                                      [value]="subject">{{subject}}</option>
                                                             </select>
                                                         </div>
                                                     </div>

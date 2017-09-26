@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import swal from 'sweetalert2';
+import {UsersService} from "./users.service";
 
 @Injectable()
 export class WizardService {
+
+  subjectList=["Maths", "Sciences Physiques", "Sciences Naturelles", "Francais", "Anglais", "Espagnol",
+                "Allemand", "Italien", "Autre langue", "Histoire", "Géographie", "Instruction Civique",
+                "Sport", "Musique", "Arts PLastiques", "Autre matières"];
 
   groupA=["Chargé de clientèle", "Enseignant", "Médecin", "Travailleur social", "Psychologue", "Animateur",
           "Guide touristique", "Avocat", "Diplomate", "Conseiller d'orientation", "Orthophoniste"];
@@ -24,9 +29,11 @@ export class WizardService {
     professionFormE : [],
     professionFormF : []
   }
-  finalProfessionList = [];
+  finalProfessionList =[];
+  //Data to update -> to send to API
+  appointmentData;
 
-  constructor() { }
+  constructor(private usersService : UsersService) { }
 
   createProfession(){
     for(var profession of this.groupA){
@@ -133,6 +140,55 @@ export class WizardService {
     }for(var i=0; i<this.professionList.professionFormF.length; i++){
       this.finalProfessionList.push(this.professionList.professionFormF)
     }
+  }
+
+  //Update an appointment -> send data to API
+  updateAppointment(appointmentId, data){
+    this.appointmentData.FavoriteProfessionSchema=this.finalProfessionList;
+    this.appointmentData.diagnosticReason = data.reasonDiagnostic;
+    this.appointmentData.specialRemarks=data.note;
+    this.appointmentData.interest=data.yourInterest;
+    this.appointmentData.hobbies=data.practiceInterest;
+    this.appointmentData.tuition={};
+    this.appointmentData.tuition.haveOne=data.schoolHelp;
+    this.appointmentData.tuition.list=data.schoolHelpSubject;
+    this.appointmentData.currentInstitution={
+      language:{
+        lv1 : data.schoolLv1,
+        lv2 : data.schoolLv2,
+        lv3 : data.schoolLv3
+      }
+    };
+    this.appointmentData.child={
+      firstName: data.childFirstName,
+      age: data.childAge,
+      gender: data.childTitle,
+      birthplace: data.childBirthPlace,
+      birthday: data.childBirthDay
+    }
+    for(let parent of data.parents){
+  //need to check how it handle
+    }
+    this.appointmentData.strongAtSubjects=[data.bestSubject];
+    this.appointmentData.weakAtSubjects=[data.weakSubject];
+    this.appointmentData.attractionToSubjects=[data.interestSubject];
+    for(let job of data.job){
+      //need to check how it handle
+    }
+    for(let primary of data.primary){
+      //need to check how it handle
+    }
+    for(let secondary of data.secondary){
+
+    }
+    this.usersService.putAppointmentData(appointmentId, this.appointmentData)
+      .subscribe(response=>{
+        console.log(response);
+      })
+  }
+
+  getSubjectList(){
+    return this.subjectList;
   }
 
 }
