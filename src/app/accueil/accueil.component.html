@@ -1,761 +1,125 @@
-﻿<div class="landing-page-2">
+﻿<div class="main" role="main">
+  <!-- Container -->
+  <div class="container">
+    <!-- div desktop version -->
+    <div *ngIf="onMobile; else notOnMobile">
+      <!-- svg desktop part 1-->
+      <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <pattern id="ecole-inactive" patternUnits="userSpaceOnUse" x="0" y="0" width="380" height="240">
+            <image xlink:href="assets/images/new-landing-page-2/ecole-inactive.png" x="40" y="60" width="350" height="200" />
+          </pattern>
+          <pattern id="college-inactive" patternUnits="userSpaceOnUse" x="100" y="20" width="380" height="240">
+            <image xlink:href="assets/images/new-landing-page-2/college-inactive.png" x="-100" y="-15" width="350" height="200" />
+          </pattern>
+          <pattern id="lycee-inactive" patternUnits="userSpaceOnUse" x="59" y="17" width="380" height="240">
+            <image xlink:href="assets/images/new-landing-page-2/lycee-inactive.png" x="-70" y="-20" width="350" height="200" />
+          </pattern>
+          <pattern id="internat-inactive" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/internat-inactive.png" x="50" y="-25" width="350" height="200" />
+          </pattern>
+          <pattern id="enseignement-inactive" patternUnits="userSpaceOnUse" x="-82" y="-185" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/enseignement-inactive.png" x="-10" y="-50" width="350" height="200" />
+          </pattern>
+          <pattern id="sejour-inactive" patternUnits="userSpaceOnUse" x="60" y="-24" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/sejour-inactive.png" x="-70" y="180" width="350" height="200" />
+          </pattern>
+          <pattern id="orientation-inactive" patternUnits="userSpaceOnUse" x="-5" y="-190" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/orientation-inactive.png" x="0" y="-40" width="350" height="200" />
+          </pattern>
+        </defs>
+      </svg><!-- end svg desktop part 1 -->
+      <!-- svg desktop part 2 -->
+      <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <pattern id="ecole-active" patternUnits="userSpaceOnUse" x="0" y="0" width="380" height="240">
+            <image xlink:href="assets/images/new-landing-page-2/ecole.jpg" x="40" y="60" width="350" height="200"/>
+          </pattern>
+          <pattern id="college-active" patternUnits="userSpaceOnUse" x="100" y="20" width="380" height="240">
+            <image xlink:href="assets/images/new-landing-page-2/college.jpg" x="-70" y="0" width="350" height="200" />
+          </pattern>
+          <pattern id="lycee-active" patternUnits="userSpaceOnUse" x="59" y="17" width="380" height="240">
+            <image xlink:href="assets/images/new-landing-page-2/lycee.jpg" x="-70" y="-20" width="350" height="200" />
+          </pattern>
+          <pattern id="internat-active" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/internat.jpg" x="50" y="-25" width="350" height="200" />
+          </pattern>
+          <pattern id="enseignement-active" patternUnits="userSpaceOnUse" x="-82" y="-185" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/enseignement.jpg" x="-10" y="-50" width="350" height="200" />
+          </pattern>
+          <pattern id="sejour-active" patternUnits="userSpaceOnUse" x="60" y="-24" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/sejour.jpg" x="-70" y="180" width="350" height="200" />
+          </pattern>
+          <pattern id="orientation-active" patternUnits="userSpaceOnUse" x="-5" y="-190" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/orientation.jpg" x="0" y="-40" width="350" height="200" />
+          </pattern>
+        </defs>
+      </svg> <!-- end svg desktop -->
+    </div> <!-- end div desktop version -->
+    <!-- mobile version -->
+    <ng-template #notOnMobile>
+      <!-- svg part 1 -->
+      <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <pattern id="ecole-inactive" patternUnits="userSpaceOnUse" x="150" y="140" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/ecole-inactive.png" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="college-inactive" patternUnits="userSpaceOnUse" x="100" y="30" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/college-inactive.png" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="lycee-inactive" patternUnits="userSpaceOnUse" x="69" y="20" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/lycee-inactive.png" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="internat-inactive" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/internat-inactive.png" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="enseignement-inactive" patternUnits="userSpaceOnUse" x="-82" y="-120" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/enseignement-inactive.png" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="sejour-inactive" patternUnits="userSpaceOnUse" x="80" y="-24" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/sejour-inactive.png" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="orientation-inactive" patternUnits="userSpaceOnUse" x="110" y="-93" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/orientation-inactive.png" x="0" y="0" width="500" height="334" />
+          </pattern>
+        </defs>
+      </svg> <!-- end svg part 1-->
+      <!-- svg part 2 -->
+      <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <pattern id="ecole-active" patternUnits="userSpaceOnUse" x="150" y="140" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/ecole.jpg" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="college-active" patternUnits="userSpaceOnUse" x="164" y="30" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/college.jpg" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="lycee-active" patternUnits="userSpaceOnUse" x="69" y="20" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/lycee.jpg" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="internat-active" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/internat.jpg" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="enseignement-active" patternUnits="userSpaceOnUse" x="-82" y="-120" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/enseignement.jpg" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="sejour-active" patternUnits="userSpaceOnUse" x="80" y="-24" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/sejour.jpg" x="0" y="0" width="500" height="334" />
+          </pattern>
+          <pattern id="orientation-active" patternUnits="userSpaceOnUse" x="110" y="-93" width="500" height="334">
+            <image xlink:href="assets/images/new-landing-page-2/orientation.jpg" x="0" y="0" width="500" height="334" />
+          </pattern>
+        </defs>
+      </svg> <!-- end svg part 2 -->
+    </ng-template> <!-- en mobile version-->
+    <!-- container fluid -->
+    <div class="container-fluid">
+      <!-- row -->
+      <div class="row">
+        <div id="tabwheel"></div>
 
-    <div class="main" role="main">
 
-        <div *ngIf="onMobile; else notOnMobile">
-            <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <defs>
-                <pattern id="ecole-inactive" patternUnits="userSpaceOnUse" x="0" y="0" width="380" height="240">
-                    <image xlink:href="assets/images/new-landing-page-2/ecole-inactive.png" x="40" y="60" width="350" height="200" />
-                </pattern>
-                <pattern id="college-inactive" patternUnits="userSpaceOnUse" x="100" y="20" width="380" height="240">
-                    <image xlink:href="assets/images/new-landing-page-2/college-inactive.png" x="-100" y="-15" width="350" height="200" />
-                </pattern>
-                <pattern id="lycee-inactive" patternUnits="userSpaceOnUse" x="59" y="17" width="380" height="240">
-                    <image xlink:href="assets/images/new-landing-page-2/lycee-inactive.png" x="-70" y="-20" width="350" height="200" />
-                </pattern>
-                <pattern id="internat-inactive" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
-                    <image xlink:href="assets/images/new-landing-page-2/internat-inactive.png" x="50" y="-25" width="350" height="200" />
-                </pattern>
-                <pattern id="enseignement-inactive" patternUnits="userSpaceOnUse" x="-82" y="-185" width="500" height="334">
-                    <image xlink:href="assets/images/new-landing-page-2/enseignement-inactive.png" x="-10" y="-50" width="350" height="200" />
-                </pattern>
-                <pattern id="sejour-inactive" patternUnits="userSpaceOnUse" x="60" y="-24" width="500" height="334">
-                    <image xlink:href="assets/images/new-landing-page-2/sejour-inactive.png" x="-70" y="180" width="350" height="200" />
-                </pattern>
-                <pattern id="orientation-inactive" patternUnits="userSpaceOnUse" x="-5" y="-190" width="500" height="334">
-                    <image xlink:href="assets/images/new-landing-page-2/orientation-inactive.png" x="0" y="-40" width="350" height="200" />
-                </pattern>
+      </div> <!-- end row -->
+    </div> <!-- end container fluid -->
 
-            </defs>
-            </svg>
-
-            <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <defs>
-                <pattern id="ecole-active" patternUnits="userSpaceOnUse" x="0" y="0" width="380" height="240">
-                    <image xlink:href="assets/images/new-landing-page-2/ecole.jpg" x="40" y="60" width="350" height="200"/>
-                </pattern>
-                <pattern id="college-active" patternUnits="userSpaceOnUse" x="100" y="20" width="380" height="240">
-                    <image xlink:href="assets/images/new-landing-page-2/college.jpg" x="-70" y="0" width="350" height="200" />
-                </pattern>
-                <pattern id="lycee-active" patternUnits="userSpaceOnUse" x="59" y="17" width="380" height="240">
-                    <image xlink:href="assets/images/new-landing-page-2/lycee.jpg" x="-70" y="-20" width="350" height="200" />
-                </pattern>
-                <pattern id="internat-active" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
-                    <image xlink:href="assets/images/new-landing-page-2/internat.jpg" x="50" y="-25" width="350" height="200" />
-                </pattern>
-                <pattern id="enseignement-active" patternUnits="userSpaceOnUse" x="-82" y="-185" width="500" height="334">
-                    <image xlink:href="assets/images/new-landing-page-2/enseignement.jpg" x="-10" y="-50" width="350" height="200" />
-                </pattern>
-                <pattern id="sejour-active" patternUnits="userSpaceOnUse" x="60" y="-24" width="500" height="334">
-                    <image xlink:href="assets/images/new-landing-page-2/sejour.jpg" x="-70" y="180" width="350" height="200" />
-                </pattern>
-                <pattern id="orientation-active" patternUnits="userSpaceOnUse" x="-5" y="-190" width="500" height="334">
-                    <image xlink:href="assets/images/new-landing-page-2/orientation.jpg" x="0" y="-40" width="350" height="200" />
-                </pattern>
-            </defs>
-            </svg>
-        </div>
-            
-
-        <ng-template #notOnMobile>
-            <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <defs>
-                    <pattern id="ecole-inactive" patternUnits="userSpaceOnUse" x="150" y="140" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/ecole-inactive.png" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="college-inactive" patternUnits="userSpaceOnUse" x="100" y="30" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/college-inactive.png" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="lycee-inactive" patternUnits="userSpaceOnUse" x="69" y="20" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/lycee-inactive.png" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="internat-inactive" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/internat-inactive.png" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="enseignement-inactive" patternUnits="userSpaceOnUse" x="-82" y="-120" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/enseignement-inactive.png" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="sejour-inactive" patternUnits="userSpaceOnUse" x="80" y="-24" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/sejour-inactive.png" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="orientation-inactive" patternUnits="userSpaceOnUse" x="110" y="-93" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/orientation-inactive.png" x="0" y="0" width="500" height="334" />
-                    </pattern>
-
-                </defs>
-            </svg>
-
-            <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <defs>
-                    <pattern id="ecole-active" patternUnits="userSpaceOnUse" x="150" y="140" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/ecole.jpg" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="college-active" patternUnits="userSpaceOnUse" x="164" y="30" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/college.jpg" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="lycee-active" patternUnits="userSpaceOnUse" x="69" y="20" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/lycee.jpg" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="internat-active" patternUnits="userSpaceOnUse" x="-216" y="35" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/internat.jpg" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="enseignement-active" patternUnits="userSpaceOnUse" x="-82" y="-120" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/enseignement.jpg" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="sejour-active" patternUnits="userSpaceOnUse" x="80" y="-24" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/sejour.jpg" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                    <pattern id="orientation-active" patternUnits="userSpaceOnUse" x="110" y="-93" width="500" height="334">
-                        <image xlink:href="assets/images/new-landing-page-2/orientation.jpg" x="0" y="0" width="500" height="334" />
-                    </pattern>
-                </defs>
-            </svg>
-        </ng-template>
-            <div class="container-fluid">
-        
-            <div class="row">
-                <!-- <section class="col-md-6 col-lg-5"> -->
-                    <div id="tabwheel"></div>
-                <!-- </section> -->
-                <!-- <section class="col-md-6 col-lg-7"> -->
-                    <div class="wheel-content">
-                        <div class="ecole-content  content-holder   animated "  
-                            data-image="assets/images/new-landing-page-2/ecole.jpg">
-                            <h2>ÉCOLE</h2>
-                            <h3>Maternelle / Primaire</h3>
-                            <div class="form-wrap row  ">
-                                <form [formGroup]="searchForm" 
-                                    (ngSubmit)="onSubmitSearch('ecole')">
-                                    <div class="col-md-11">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class"
-                                                            [formControl]="searchForm.controls['classe']"
-                                                            (click)="storeClassName($event)">
-                                                            <option value="" disabled selected hidden>Classe</option>
-                                                            <option value="Indifférent">&nbsp;Indifférent</option>
-                                                            <option value="ps" style="color:red">
-                                                                &nbsp;Classes maternelles
-                                                            </option>
-                                                            <option value="ps">&nbsp;Petite section (PS)</option>
-                                                            <option value="ms">&nbsp;Moyenne section (MS)</option>
-                                                            <option value="gs">&nbsp;Grande Section (GS)</option>
-                                                            <option value="cp" style="color:red">
-                                                                &nbsp;Classes élémentaires
-                                                            </option>
-                                                            <option value="cp">&nbsp;Cours préparatoire (CP)</option>
-                                                            <option value="ce1">&nbsp;Cours élémentaire 1er année(CE1)</option>
-                                                            <option value="ce2">&nbsp;Cours élémentaire 2è année (CE2)</option>
-                                                            <option value="cm1">&nbsp;Cours Moyen 1er année(CM1)</option>
-                                                            <option value="cm2">&nbsp;Cours Moyen 2è année(CM2)</option>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div><!-- .col-* -->
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Lieu" 
-                                                    (keyup)="filterLieu($event)"
-                                                    [mdAutocomplete]="auto"
-                                                    [formControl]="searchForm.controls['lieu']"/>
-
-                                                    <md-autocomplete #auto="mdAutocomplete">
-                                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                        <!-- <md-option [value]="options.regions"
-                                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
-                                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
-                                                            (click)="onSelectLieu('R', i)">
-                                                            &nbsp;&nbsp;{{ option.region }}
-                                                        </md-option>
-                                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
-                                                            (click)="onSelectLieu('D', i)">
-                                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
-                                                        </md-option>
-                                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
-                                                            (click)="onSelectLieu('V', i)">
-                                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
-                                                        </md-option>
-                                                    </md-autocomplete>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" 
-                                                        placeholder="Nom d'etablissement" 
-                                                        [mdAutocomplete]="autoSchool"
-                                                        (keyup)="filterSchool($event)"
-                                                        [formControl]="searchForm.controls['etablissement']"/>
-                                                    
-                                                    <md-autocomplete #autoSchool="mdAutocomplete">
-                                                        <md-option *ngFor="let school of schoolsOptions" 
-                                                            [value]="school.longName">
-                                                            {{ school.longName }}
-                                                        </md-option>
-                                                    </md-autocomplete>
-                                                </div>
-                                            </div>
-                                        </div><!-- .row -->
-                                    </div><!-- .col-* -->
-                                    
-                                    <div class="col-md-1">
-                                    <!-- <div class="form-group"> -->
-                                        <button class="btn btn-search" type="submit">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    <!-- </div> -->
-                                    </div>
-                                </form>
-
-                            </div><!-- .form-wrap -->
-                        </div>
-                        <div class="college-content  content-holder   animated" 
-                            data-image="assets/images/new-landing-page-2/college.jpg">
-                            
-                            <h2>COLLEGE</h2>
-                            <h3>6ème-3ème</h3>
-                            <div class="form-wrap row  ">
-                                <form [formGroup]="searchForm" 
-                                            (ngSubmit)="onSubmitSearch('college')">
-                                    <div class="col-md-11">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class"
-                                                            [formControl]="searchForm.controls['classe']"
-                                                            (click)="storeClassName($event)">
-                                                            <option value="" disabled selected hidden>Classe</option>
-                                                            <option value="Indifférent">&nbsp;Indifférent</option>
-                                                            <option value="sixieme">&nbsp;6ème</option>
-                                                            <option value="cinquieme">&nbsp;5ème</option>
-                                                            <option value="quatrieme">&nbsp;4ème</option>
-                                                            <option value="troisieme">&nbsp;3ème</option>
-                                                            <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
-                                                            <option value="">&nbsp;Quatrième d'aide et de soutien</option>
-                                                            <option value="">&nbsp;Troisième d'insertion</option>
-                                                            <option value="">&nbsp;Troisième découverte professionnelle - DP6 (module 6 heures)</option>
-                                                            <option value="">&nbsp;3ème préparatoire aux formations professionnels - Troisième prépa pro (ex DP6)</option>
-                                                            <option value="">&nbsp;DIMA Dispositif d'initiation aux métiers en alternance (en collège)</option>
-                                                            <option value="">&nbsp;SEGPA 6è-5è section d'enseignement général et professionnel adapté</option>
-                                                            <option value="">&nbsp;SEGPA 4è-3è section d'enseignement général et professionnel adapté</option>
-                                                            <option value="">&nbsp;ULIS unités localisées pour l'inclusion solaire (ex UPI)</option>
-                                                            <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
-                                                            <option value="">&nbsp;Cursus non francophone (GB-US)</option>
-                                                            <option value="">&nbsp;Ecole pratiquant la pédagogie Montessori</option>
-                                                            <option value="">&nbsp;Enseignement à distance</option>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div><!-- .col-* -->
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Lieu" 
-                                                        (keyup)="filterLieu($event)"
-                                                        [mdAutocomplete]="auto"
-                                                        [formControl]="searchForm.controls['lieu']"/>
-                                                    
-                                                    <md-autocomplete #auto="mdAutocomplete">
-                                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                        <!-- <md-option [value]="options.regions"
-                                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
-                                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
-                                                            (click)="onSelectLieu('R', i)">
-                                                            &nbsp;&nbsp;{{ option.region }}
-                                                        </md-option>
-                                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
-                                                            (click)="onSelectLieu('D', i)">
-                                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
-                                                        </md-option>
-                                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
-                                                            (click)="onSelectLieu('V', i)">
-                                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
-                                                        </md-option>
-                                                    </md-autocomplete>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Nom d'etablissement" 
-                                                        [mdAutocomplete]="autoSchool"
-                                                        (keyup)="filterSchool($event)"
-                                                        [formControl]="searchForm.controls['etablissement']"/>
-                                                    
-                                                    <md-autocomplete #autoSchool="mdAutocomplete">
-                                                    <md-option *ngFor="let school of schoolsOptions" [value]="school.longName">
-                                                        {{ school.longName }}
-                                                    </md-option>
-                                                    </md-autocomplete>
-                                                </div>
-                                            </div>
-                                        </div><!-- .row -->
-                                    </div><!-- .col-* -->
-                                    
-                                    <div class="col-md-1">
-                                    <!-- <div class="form-group"> -->
-                                        <button class="btn btn-search" type="submit">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    <!-- </div> -->
-                                    </div>
-                                </form>
-
-                            </div><!-- .form-wrap -->
-
-                        </div>
-                        <div class="lycee-content  content-holder   animated" 
-                            data-image="assets/images/new-landing-page-2/lycee.jpg">
-                            <h2>UN LYCÉE</h2>
-                            <h3>2nde-Terminale</h3>
-                            <div class="form-wrap row  ">
-                                <form [formGroup]="searchForm" 
-                                    (ngSubmit)="onSubmitSearch('lycee')">
-                                    <div class="col-md-11">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class"
-                                                            [formControl]="searchForm.controls['classe']"
-                                                            (click)="storeClassName($event)">
-                                                            <option value="" disabled selected hidden>Classe</option>
-                                                            <option value="Indifférent">&nbsp;Indifférent</option>
-                                                            <option value="seconde_techno" style="color:red">
-                                                                &nbsp;Classes de seconde
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="seconde_probation">&nbsp;2nde de probation (ou méthodologique)</option>
-                                                            <option value="premiere_es" style="color:red">
-                                                                &nbsp;Classes de première
-                                                            </option>
-                                                            <option value="premiere_es">&nbsp;1ere ES - Economique et Sociale</option>
-                                                            <option value="premiere_l">&nbsp;1ere L - Littéraire</option>
-                                                            <option value="premiere_s">&nbsp;1ere S - Scientifique</option>
-                                                            <option value="terminale_s" style="color:red">
-                                                                &nbsp;Classes de terminale
-                                                            </option>
-                                                            <option value="terminale_s">&nbsp;Tle ES - Economique et Sociale</option>
-                                                            <option value="terminale_l">&nbsp;Tle L - Littéraire</option>
-                                                            <option value="terminale_s">&nbsp;Tle S - Scientifique</option>
-                                                            <option value="Cursus international" style="color:red">
-                                                                &nbsp;Cursus international
-                                                            </option>
-                                                            <option value="CI">&nbsp;Cursus International</option>
-                                                            <option value="BAC-I">&nbsp;Cursus Bac. International</option>
-                                                            <option value="cursus_non_francophone">&nbsp;Cursus non francophone (GB-US)</option>
-                                                            <option value="seconde_sthr" style="color:red">
-                                                                &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
-                                                            </option>
-                                                            <option value="seconde_sthr">&nbsp;2nde spécifique STHR</option>
-                                                            <option value="premiere_sthr">&nbsp;1ere d’adaptation STHR</option>
-                                                            <option value="premiere_sthr">&nbsp;1ere STHR</option>
-                                                            <option value="terminale_sthr">&nbsp;Terminale STHR</option>
-                                                            <option value="premiere_sti2s" style="color:red">
-                                                                &nbsp;ST2S - Sciences et Technologies de la santé et du social
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_sti2s">&nbsp;1ere d’adaptation ST2S</option>
-                                                            <option value="premiere_st2s">&nbsp;1ere ST2S</option>
-                                                            <option value="terminale_st2s">&nbsp;Terminale STIS</option>
-                                                            <option value="premiere_std2a" style="color:red">
-                                                                &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_std2a">&nbsp;1ère STI2A</option>
-                                                            <option value="terminale_std2a">&nbsp;Terminale STI2A</option>
-                                                            <option value="premiere_sti2d" style="color:red">
-                                                                &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_sti2d">&nbsp;1ère STI2D</option>
-                                                            <option value="terminale_sti2d">&nbsp;Terminale ST2D – Architecture et Construction</option>
-                                                            <option value="terminale_sti2d">&nbsp;Terminale STI2D – Energie et Environnement</option>
-                                                            <option value="terminale_sti2d">&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
-                                                            <option value="terminale_sti2d">&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                                            <option value="premiere_stmg" style="color:red">
-                                                                &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_stmg">&nbsp;1ère d’adaptation STMG</option>
-                                                            <option value="premiere_stmg">&nbsp;1ère STMG</option>
-                                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Gestion et Finance</option>
-                                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Mercatique</option>
-                                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
-                                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                                            <option value="premiere_stl" style="color:red">
-                                                                &nbsp;STL - Sciences et Technologies de Laboratoire
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_stl">&nbsp;1ère d’adaptation STL</option>
-                                                            <option value="premiere_stl">&nbsp;1ère STL</option>
-                                                            <option value="terminale_stl">&nbsp;Terminale STL – Biotechnologies</option>
-                                                            <option value="terminale_stl">&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                                            <option value="premiere_stav" style="color:red">
-                                                                &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_stav">&nbsp;1ère d’adaptation STAV</option>
-                                                            <option value="premiere_stav">&nbsp;1ère STAV</option>
-                                                            <option value="terminale_stav">&nbsp;Terminale STAV</option>
-                                                            <option value="2ndeTMD" style="color:red">
-                                                                &nbsp;TMD - Techniques de la Musique et de la Danse
-                                                            </option>
-                                                            <option value="2ndeTMD">&nbsp;2nde spécifique TMD</option>
-                                                            <option value="premiere_tmd">&nbsp;1ère d’adaptation TMD</option>
-                                                            <option value="premiere_tmd">&nbsp;1ère TMD</option>
-                                                            <option value="terminale_tmd">&nbsp;Terminale TMD - Danse</option>
-                                                            <option value="terminale_tmd">&nbsp;Terminale TMD - Musique</option>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                            </div><!-- .col-* -->
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Lieu" 
-                                                        (keyup)="filterLieu($event)"
-                                                        [mdAutocomplete]="auto"
-                                                        [formControl]="searchForm.controls['lieu']"/>
-                                                    
-                                                        <md-autocomplete #auto="mdAutocomplete">
-                                                            <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                            <!-- <md-option [value]="options.regions"
-                                                            *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
-                                                            <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
-                                                                (click)="onSelectLieu('R', i)">
-                                                                &nbsp;&nbsp;{{ option.region }}
-                                                            </md-option>
-                                                            <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                            <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
-                                                                (click)="onSelectLieu('D', i)">
-                                                                &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
-                                                            </md-option>
-                                                            <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                            <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
-                                                                (click)="onSelectLieu('V', i)">
-                                                                &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
-                                                            </md-option>
-                                                        </md-autocomplete>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Nom d'etablissement" 
-                                                        [mdAutocomplete]="autoSchool"
-                                                        (keyup)="filterSchool($event)"
-                                                        [formControl]="searchForm.controls['etablissement']"/>
-
-                                                    <md-autocomplete #autoSchool="mdAutocomplete">
-                                                        <md-option *ngFor="let school of schoolsOptions" [value]="school.longName">
-                                                            {{ school.longName }}
-                                                        </md-option>
-                                                    </md-autocomplete>
-                                                </div>
-                                            </div>
-                                        </div><!-- .row -->
-                                    </div><!-- .col-* -->
-                                    
-                                    <div class="col-md-1">
-                                    <!-- <div class="form-group"> -->
-                                        <button class="btn btn-search" type="submit">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    <!-- </div> -->
-                                    </div>
-                                </form>
-
-                            </div><!-- .form-wrap -->
-                            <h2></h2>
-                        </div>
-                        <div class="internat-content  content-holder   animated" data-image="img/new-landing-page-2/internat.jpg">
-							<h2>Internat</h2>
-							<h3>&nbsp;</h3>
-							<div class="form-wrap row">
-
-								<form [formGroup]="searchForm" 
-									(ngSubmit)="onSubmitSearch('internat')">
-									<div class="col-md-11">
-										<div class="row">
-											<div class="col-md-4">
-												<div class="form-group">
-													<label class="select-custom" for="class">
-														<select name="class" class="form-control" id="class"
-                                                            [formControl]="searchForm.controls['classe']" 
-                                                            (click)="storeClassName($event)">
-                                                            <option value="" disabled selected hidden>Classe</option>
-                                                            <option value="Indifférent">&nbsp;Indifférent</option>
-															<option value="ps" style="color:red">
-                                                                &nbsp;Classes maternelles
-                                                            </option>
-                                                            <option value="ps">&nbsp;Petite section (PS)</option>
-                                                            <option value="ms">&nbsp;Moyenne section (MS)</option>
-                                                            <option value="gs">&nbsp;Grande Section (GS)</option>
-                                                            <option value="cp" style="color:red">
-                                                                &nbsp;Classes élémentaires
-                                                            </option>
-                                                            <option value="cp">&nbsp;Cours préparatoire (CP)</option>
-                                                            <option value="ce1">&nbsp;Cours élémentaire 1er année(CE1)</option>
-                                                            <option value="ce2">&nbsp;Cours élémentaire 2è année (CE2)</option>
-                                                            <option value="cm1">&nbsp;Cours Moyen 1er année(CM1)</option>
-                                                            <option value="cm2">&nbsp;Cours Moyen 2è année(CM2)</option>
-                                                            <option value="6e">&nbsp;6ème</option>
-															<option value="cinquieme">&nbsp;5ème</option>
-                                                            <option value="quatrieme">&nbsp;4ème</option>
-                                                            <option value="troisieme">&nbsp;3ème</option>
-                                                            <option value="seconde_techno" style="color:red">
-                                                                &nbsp;Classes de seconde
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="seconde_probation">&nbsp;2nde de probation (ou méthodologique)</option>
-                                                            <option value="premiere_es" style="color:red">
-                                                                &nbsp;Classes de première
-                                                            </option>
-                                                            <option value="premiere_es">&nbsp;1ere ES - Economique et Sociale</option>
-                                                            <option value="premiere_l">&nbsp;1ere L - Littéraire</option>
-                                                            <option value="premiere_s">&nbsp;1ere S - Scientifique</option>
-                                                            <option value="terminale_s" style="color:red">
-                                                                &nbsp;Classes de terminale
-                                                            </option>
-                                                            <option value="terminale_s">&nbsp;Tle ES - Economique et Sociale</option>
-                                                            <option value="terminale_l">&nbsp;Tle L - Littéraire</option>
-                                                            <option value="terminale_s">&nbsp;Tle S - Scientifique</option>
-                                                            <option value="Cursus international" style="color:red">
-                                                                &nbsp;Cursus international
-                                                            </option>
-                                                            <option value="CI">&nbsp;Cursus International</option>
-                                                            <option value="BAC-I">&nbsp;Cursus Bac. International</option>
-                                                            <option value="cursus_non_francophone">&nbsp;Cursus non francophone (GB-US)</option>
-                                                            <option value="seconde_sthr" style="color:red">
-                                                                &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
-                                                            </option>
-                                                            <option value="seconde_sthr">&nbsp;2nde spécifique STHR</option>
-                                                            <option value="premiere_sthr">&nbsp;1ere d’adaptation STHR</option>
-                                                            <option value="premiere_sthr">&nbsp;1ere STHR</option>
-                                                            <option value="terminale_sthr">&nbsp;Terminale STHR</option>
-                                                            <option value="premiere_sti2s" style="color:red">
-                                                                &nbsp;ST2S - Sciences et Technologies de la santé et du social
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_sti2s">&nbsp;1ere d’adaptation ST2S</option>
-                                                            <option value="premiere_st2s">&nbsp;1ere ST2S</option>
-                                                            <option value="terminale_st2s">&nbsp;Terminale STIS</option>
-                                                            <option value="premiere_std2a" style="color:red">
-                                                                &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_std2a">&nbsp;1ère STI2A</option>
-                                                            <option value="terminale_std2a">&nbsp;Terminale STI2A</option>
-                                                            <option value="premiere_sti2d" style="color:red">
-                                                                &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_sti2d">&nbsp;1ère STI2D</option>
-                                                            <option value="terminale_sti2d">&nbsp;Terminale ST2D – Architecture et Construction</option>
-                                                            <option value="terminale_sti2d">&nbsp;Terminale STI2D – Energie et Environnement</option>
-                                                            <option value="terminale_sti2d">&nbsp;Termianale STI2D – Innovation Technologique et Eco-conception</option>
-                                                            <option value="terminale_sti2d">&nbsp;Terminale STI2D – Systèmes D’Information Numérique</option>
-                                                            <option value="premiere_stmg" style="color:red">
-                                                                &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_stmg">&nbsp;1ère d’adaptation STMG</option>
-                                                            <option value="premiere_stmg">&nbsp;1ère STMG</option>
-                                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Gestion et Finance</option>
-                                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Mercatique</option>
-                                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Ressources Humaines et Communication</option>
-                                                            <option value="terminale_stmg">&nbsp;Terminale STMG – Systèmes D’Information et de Gestion</option>
-                                                            <option value="premiere_stl" style="color:red">
-                                                                &nbsp;STL - Sciences et Technologies de Laboratoire
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_stl">&nbsp;1ère d’adaptation STL</option>
-                                                            <option value="premiere_stl">&nbsp;1ère STL</option>
-                                                            <option value="terminale_stl">&nbsp;Terminale STL – Biotechnologies</option>
-                                                            <option value="terminale_stl">&nbsp;Terminale STL – Sciences Physiques et Chimiques en Laboratoire</option>
-                                                            <option value="premiere_stav" style="color:red">
-                                                                &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
-                                                            </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="premiere_stav">&nbsp;1ère d’adaptation STAV</option>
-                                                            <option value="premiere_stav">&nbsp;1ère STAV</option>
-                                                            <option value="terminale_stav">&nbsp;Terminale STAV</option>
-                                                            <option value="2ndeTMD" style="color:red">
-                                                                &nbsp;TMD - Techniques de la Musique et de la Danse
-                                                            </option>
-                                                            <option value="2ndeTMD">&nbsp;2nde spécifique TMD</option>
-                                                            <option value="premiere_tmd">&nbsp;1ère d’adaptation TMD</option>
-                                                            <option value="premiere_tmd">&nbsp;1ère TMD</option>
-                                                            <option value="terminale_tmd">&nbsp;Terminale TMD - Danse</option>
-                                                            <option value="terminale_tmd">&nbsp;Terminale TMD - Musique</option>
-														</select>
-													</label>
-												</div>
-											</div><!-- .col-* -->
-
-											<div class="col-md-4">
-												<div class="form-group">
-													<input type="text" class="form-control" placeholder="Lieu" 
-													(keyup)="filterLieu($event)"
-													[mdAutocomplete]="auto"
-													[formControl]="searchForm.controls['lieu']"/>
-
-													<md-autocomplete #auto="mdAutocomplete">
-                                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                        <!-- <md-option [value]="options.regions"
-                                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
-                                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
-                                                            (click)="onSelectLieu('R', i)">
-                                                            &nbsp;&nbsp;{{ option.region }}
-                                                        </md-option>
-                                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
-                                                            (click)="onSelectLieu('D', i)">
-                                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
-                                                        </md-option>
-                                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
-                                                            (click)="onSelectLieu('V', i)">
-                                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
-                                                        </md-option>
-                                                    </md-autocomplete>
-												</div>
-											</div>
-
-											<div class="col-md-4">
-												<div class="form-group">
-													<input type="text" class="form-control" 
-														placeholder="Nom d'etablissement" 
-														[mdAutocomplete]="autoSchool"
-														(keyup)="filterSchool($event)"
-														[formControl]="searchForm.controls['etablissement']"/>
-													
-													<md-autocomplete #autoSchool="mdAutocomplete">
-														<md-option *ngFor="let school of schoolsOptions" 
-															[value]="school.longName">
-															{{ school.longName }}
-														</md-option>
-													</md-autocomplete>
-												</div>
-											</div>
-										</div><!-- .row -->
-									</div><!-- .col-* -->
-									
-									<div class="col-md-1">
-									<!-- <div class="form-group"> -->
-										<button class="btn btn-search" type="submit">
-											<i class="fa fa-search"></i>
-										</button>
-									<!-- </div> -->
-									</div>
-								</form>
-
-							</div><!-- .form-wrap -->
-						</div>
-                        <div class="enseignement-content  content-holder   animated" data-image="img/new-landing-page-2/enseignement.jpg">
-							<h2>Enseignement <br />supérieur</h2>
-							<h3>&nbsp;</h3>
-							<div class="form-wrap row">
-
-								<form [formGroup]="apbForm" 
-									(ngSubmit)="onSubmitSearch('enseignement')">
-									<div class="col-md-11">
-										<div class="row">
-											<div class="col-md-4">
-												<div class="form-group">
-													<label class="select-custom" for="class">
-                                                        <select name="class" class="form-control" id="class"
-                                                            [formControl]="apbForm.controls['domaine']">
-                                                            <option value="" selected hidden>Domaine</option>
-                                                            <option value="Indifférent">&nbsp;Indifférent</option>
-                                                            <option *ngFor="let domaine of domaines" 
-                                                                [value]="domaine" selected>&nbsp;{{domaine}}</option>
-                                                        </select>
-                                                    </label>
-												</div>
-											</div><!-- .col-* -->
-
-											<div class="col-md-4">
-												<div class="form-group">
-													<input type="text" class="form-control" placeholder="Lieu" 
-													(keyup)="filterLieu($event)"
-													[mdAutocomplete]="auto"
-													[formControl]="apbForm.controls['lieu']"/>
-
-													<md-autocomplete #auto="mdAutocomplete">
-                                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                                        <!-- <md-option [value]="options.regions"
-                                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
-                                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
-                                                            (click)="onSelectLieu('R', i)">
-                                                            &nbsp;&nbsp;{{ option.region }}
-                                                        </md-option>
-                                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
-                                                            (click)="onSelectLieu('D', i)">
-                                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
-                                                        </md-option>
-                                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
-                                                            (click)="onSelectLieu('V', i)">
-                                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
-                                                        </md-option>
-                                                    </md-autocomplete>
-												</div>
-											</div>
-
-											<div class="col-md-4">
-												<div class="form-group">
-													<input type="text" class="form-control" 
-														placeholder="Nom d'etablissement" 
-														[mdAutocomplete]="autoSchoolApb"
-														(keyup)="filterApbSchool($event)"
-														[formControl]="apbForm.controls['etablissement']"/>
-													
-													<md-autocomplete #autoSchoolApb="mdAutocomplete">
-														<md-option *ngFor="let school of apbOptions" 
-															[value]="school">
-															{{ school }}
-														</md-option>
-													</md-autocomplete>
-												</div>
-											</div>
-										</div><!-- .row -->
-									</div><!-- .col-* -->
-									
-									<div class="col-md-1">
-									<!-- <div class="form-group"> -->
-										<button class="btn btn-search" type="submit">
-											<i class="fa fa-search"></i>
-										</button>
-									<!-- </div> -->
-									</div>
-								</form>
-
-							</div><!-- .form-wrap -->
-						</div>
-                        <div class="linguistic-content" data-image="img/new-landing-page-2/sejour.jpg"></div>
-                        <div class="orientation-content" data-image="img/new-landing-page-2/orientation.jpg"></div>
-                    </div>
-                <!-- </section>.col-* -->
-            </div><!-- .row -->
-
-        </div><!-- .container -->
-
-        </div>
-</div>
-<!--<p style="text-align: right;">
-    <a (click)="navigateTo(1)">1</a> 
-    <a (click)="navigateTo(2)">2</a> 
-    <a (click)="navigateTo(3)">3</a>
-</p>-->
+  </div> <!-- end container -->
+</div> <!-- end main -->
