@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { PublicService } from '../services/public.service';
-//import { BookingService } from '../services/booking.service';
+// import { BookingService } from '../services/booking.service';
 import { SchoolService } from '../services/school.service';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { CustomValidators } from 'ng2-validation';
@@ -70,6 +70,7 @@ export class ApplytoComponent implements OnInit {
                   )
               }
 
+  // Check if user is logged, otherwise we load the script
   ngOnInit() {
     if(!this.authService.isUserLoggedIn()){
       swal({
@@ -83,14 +84,16 @@ export class ApplytoComponent implements OnInit {
     this.loadScript('assets/js/select2.min.js');
   }
 
+  // Load script
   loadScript(url) {
     console.log('preparing to load...')
     let node = document.createElement('script');
     node.src = url;
     node.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(node);
- }
+  }
 
+  // Get the school Data
   getSchoolDataById(){
     this.publicService.getSchoolById(this.schoolId)
       .subscribe(
@@ -108,6 +111,8 @@ export class ApplytoComponent implements OnInit {
       )
   }
 
+  //Get user profile data
+  //Then call methods to build the form and patch value
   getUserProfile(){
     this.usersService.getProfile()
       .subscribe(
@@ -127,6 +132,7 @@ export class ApplytoComponent implements OnInit {
       )
   }
 
+  //Patch the value in the form
   patchValue(userData){
 	  var IsAdress = (userData.address!==undefined && userData.address!=null) ? true : false;
     var haveLv1 = false;
@@ -208,8 +214,10 @@ export class ApplytoComponent implements OnInit {
     // this.canDisplaySiblings=true;
   }
 
+  //build the form for the page
   buildForm(data){
     this.applytoForm = this.fb.group({
+      // Many parents so we call the method createParent
       parents : this.fb.array([this.createParent()]),
       childLastName: ['', Validators.required],
       childFirstName : ['', Validators.required],
@@ -255,6 +263,7 @@ export class ApplytoComponent implements OnInit {
     }
   }
 
+  //Build the form for parents
   createParent(){
     return this.fb.group({
       lienParent : [''],
@@ -276,6 +285,7 @@ export class ApplytoComponent implements OnInit {
   //   })
   // }
 
+  //build job's form
   createJob(){
     return this.fb.group({
       interestJob : [''],
@@ -283,6 +293,10 @@ export class ApplytoComponent implements OnInit {
     })
   }
 
+
+  //After submit, we put all the data to userData
+  // Then we create a new appointment (call API)
+  // And update the profile
   onSubmit(){
     console.log(this.applytoForm.value);
     for(let i = 0; i<this.applytoForm.value.parents.length; i++){
@@ -366,24 +380,25 @@ export class ApplytoComponent implements OnInit {
                   console.log(response)
                 }
               )
-          }
-        }
-      )
-    this.usersService.putProfile(this.userData)
-      .subscribe(
-        response=>{
-          console.log(response)
-          if(response.code==400){
-            this.failSubmit(response.message);
-          } else {
-            this.successSubmit();
-            this.schoolService.cleanClassName();
+            this.usersService.putProfile(this.userData)
+              .subscribe(
+                response=>{
+                  console.log(response)
+                  if(response.code==400){
+                    this.failSubmit(response.message);
+                  } else {
+                    this.successSubmit();
+                    this.schoolService.cleanClassName();
+                  }
+                }
+              )
           }
         }
       )
 
-}
+  }
 
+  // Sweet Alert if it's successful post and put on the API
   successSubmit(){
     swal({
       title: 'Merci d\'avoir choisi CIDE',
@@ -394,6 +409,7 @@ export class ApplytoComponent implements OnInit {
     this.route.navigate(['/']);
   }
 
+  // Sweet Alert if it fail to submit
   failSubmit(message){
     console.log("test")
     swal({
@@ -419,10 +435,13 @@ export class ApplytoComponent implements OnInit {
     this.hasAnotherDropZoneOver = e;
   }
 
+  //Add another parent form
   onAddParent(){
     this.parents = this.applytoForm.get('parents') as FormArray;
     this.parents.push(this.createParent());
   }
+
+  // Remove one parent form
   onRemoveParent(index){
     this.parents = this.applytoForm.get('parents') as FormArray;
     this.parents.removeAt(index, 1);
@@ -438,16 +457,20 @@ export class ApplytoComponent implements OnInit {
   //   this.siblings.removeAt(index, 1);
   // }
 
+  //Add a new job form
   onAddJob(){
     this.metiers = this.applytoForm.get('job') as FormArray;
     this.metiers.push(this.createJob());
   }
 
+
+  //remove a job form
   onRemoveJob(index){
     this.metiers = this.applytoForm.get('job') as FormArray;
     this.metiers.removeAt(index, 1);
   }
 
+  //navigate to the different tab of the md-tab
   nextTab(nb){
     this.tabGroup.selectedIndex=nb;
   }

@@ -27,6 +27,7 @@ export class ForgotpasswordComponent implements OnInit {
   ngOnInit() {
   }
 
+  // After click on the submit button -> call API -> sweet alert
   onSubmit(){
     if(this.forgotPasswordForm.valid){
       console.log(this.forgotPasswordForm);

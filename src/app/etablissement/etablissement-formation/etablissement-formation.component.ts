@@ -15,10 +15,11 @@ export class EtablissementFormationComponent implements OnInit {
   schoolData=[];
   schoolId = "";
   constructor(private publicService : PublicService,
-              private route : ActivatedRoute) { 
-    
+              private route : ActivatedRoute) {
+
   }
 
+  // Display the different cycles data for one school
   ngOnInit() {
     setTimeout(()=>{
       console.log(this.schoolDataRef);

@@ -112,6 +112,11 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
+  putAppointmentData(appointmentId, data): Observable<any>{
+    return this.http.put('http://54.254.203.172/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
+      .map(response=>response.json());
+  }
+
   // postCreateNewAppointment(data): Observable<any>{
   //   return this.http.post('http://linkaran.com/api/v1/booking-appointment', data)
   //     .map((response)=>response.json());

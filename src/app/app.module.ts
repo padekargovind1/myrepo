@@ -67,6 +67,7 @@ import { BookingService } from './services/booking.service';
 import { EditorService } from './services/editor.service';
 import { BrochureService } from './services/brochure.service';
 import { SendService } from './services/send.service';
+import { HelperService } from './services/helper.service';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SchoolPipe } from './pipes/school.pipe';
 import { WishApplyPopupComponent } from './header/wish-apply-popup/wish-apply-popup.component';
@@ -90,6 +91,9 @@ import { ClassChoiceComponent } from './shared/class-choice/class-choice.compone
 import { SendMessageComponent } from './shared/send-message/send-message.component';
 import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
+import {AppGuard} from "./app.guard";
+import { WizardProfessionComponent } from './wizard/wizard-profession/wizard-profession.component';
+import {WizardService} from "./services/wizard.service";
 
 @NgModule({
   declarations: [
@@ -151,7 +155,8 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     ClassChoiceComponent,
     SendMessageComponent,
 	PaymentComponent,
-	UnderConstructionComponent
+	UnderConstructionComponent,
+	WizardProfessionComponent
   ],
   imports: [
     BrowserModule,
@@ -194,7 +199,10 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     EditorService,
     // SweetAlertService,
     BrochureService,
-    SendService
+    SendService,
+    HelperService,
+    WizardService,
+    AppGuard
   ],
     entryComponents: [
        BrochpopupComponent,

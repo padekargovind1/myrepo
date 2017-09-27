@@ -41,7 +41,7 @@ export class BookingService {
     const advPhoto = localStorage.getItem("bookingDataAdvPhoto")
     const packageTitle = localStorage.getItem("bookingPackageTitle")
     const packageDesc = localStorage.getItem("bookingPackageDesc")
-    const packageNumber = localStorage.getItem("bookingPackageNumber")
+    const packageNumber = localStorage.getItem("bookingPackageIndex")
     const data = [day, start, end, advName, advGender, advId,
       advPhoto, packageTitle, packageDesc, packageNumber]
 
@@ -194,7 +194,8 @@ export class BookingService {
 
   successSubmit(){
     let appointmentData = this.getBookingData();
-    let frenchDate : string = appointmentData[0].substr(8, 2)+'/'+appointmentData[0].substr(5, 2)+'/'+appointmentData[0].substr(0, 4)
+    console.log(appointmentData);
+    let frenchDate : string = appointmentData[0].toString().substr(8, 2)+'/'+appointmentData[0].toString().substr(5, 2)+'/'+appointmentData[0].toString().substr(0, 4)
     // let type : string = appointmentData[7]+' ' +appointmentData[8];
     let date : string = frenchDate+' de '+appointmentData[1]+' à '+appointmentData[2];
     let adviser : string = appointmentData[4]+' '+appointmentData[3];

@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  // Build the form to register
   buildFormGroup(){
     let password = new FormControl('', Validators.required);
     let repeated = new FormControl('', CustomValidators.equalTo(password));
@@ -43,6 +44,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  // Send data to API to create new account
   save(){
     console.log("Register!");
     if (this.registerForm.valid){
@@ -61,21 +63,21 @@ export class RegisterComponent implements OnInit {
           (data)=>{
             let response = data;
             console.log(response);
-            if (response.code == 400) {
+            if (response.code == 400) { // If error from API
               let msg = response.message;
               this.errorMessage = msg;
-			  if(msg.indexOf("utilisateur existe")>=0)
-			  {
-				  swal({
-					title: "Un compte utilisant cette adresse email est deja enregistree, merci de vous connecter.",
-					text: "",
-					type: 'error',
-					confirmButtonText: 'Ok'
-				  });
-			  }
+              if(msg.indexOf("utilisateur existe")>=0)
+              {
+                swal({
+                title: "Un compte utilisant cette adresse email est deja enregistree, merci de vous connecter.",
+                text: "",
+                type: 'error',
+                confirmButtonText: 'Ok'
+                });
+              }
               console.log('message: ', this.errorMessage);
             }
-            else {
+            else { // If it's good
               this.sendVerificationEmail(email);
               console.log(response);
               swal({
@@ -100,11 +102,13 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  // Store the user type (parent or children)
   storeUserType(userType,email){
     this.usersService.storeUserType(userType);
     this.usersService.storeUserEmail(email);
   }
 
+  // Send verification email from API
   sendVerificationEmail(email){
     this.authService.postSendEmail({email : email})
       .subscribe(
@@ -114,6 +118,7 @@ export class RegisterComponent implements OnInit {
       )
   }
 
+  // If user already got an account -> navigate to login page
   alreadyAccount(){
     this.router.navigate(['/login']);
   }

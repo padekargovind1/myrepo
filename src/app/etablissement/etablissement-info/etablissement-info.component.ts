@@ -16,6 +16,7 @@ export class EtablissementInfoComponent implements OnInit {
   @ViewChild(AgmMap) private map: any;
   constructor() {	}
 
+  // Set the google Map
   ngOnInit() {
     setTimeout(
       ()=>{
@@ -28,7 +29,7 @@ export class EtablissementInfoComponent implements OnInit {
           console.log(this.lat, this.lng)
           i++;
         }while(this.lat==0.0 && this.lng==0.0);
-		
+
 		window.onresize = (e) =>
 		{
 			this.map.triggerResize().then(() => this.map._mapsWrapper.setCenter({lat: this.lat, lng: this.lng}));

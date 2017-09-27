@@ -1,40 +1,22 @@
-﻿      <div class="main white-background" role="main" >  
+﻿      <div class="main white-background" role="main" >
         <div class="container-fluid  appointment-wizard">
-            
+
             <div class="row">
 
                 <section class="col-md-12">
                     <!--<h3 class="appointment-title">Rendez-vous Parents</h3>-->
                     <h3>&nbsp;</h3>
-                    
+
                 </section>
-            
+
 
                 <section class="col-md-12 appointment-text">
 
-                    <!-- <form class="form-inline"> -->
-                    
-<!--                         <div class="row form-row">
-                            <input type="text" class="form-control wide" value="Rencontrer Grady" />
-                            <input type="text" class="form-control normal" value="Ecole" />
-                        </div>
- -->
-                        <!-- <div class="row">
-                            <input type="text" class="form-control medium" value="Lundi" />
-                            <input type="text" class="form-control small" value="22" />
-                            <input type="text" class="form-control half" value="Mai" />
-                            <input type="text" class="form-control half" value="2017" />
-                            <input type="text" class="Etabform-control medium" value="8:00 h" />
-                            <input type="text" class="form-control medium" value="9:30 h" />
-                        </div>
-
-                    </form> -->
-
                     <section class="col-md-3 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
-                        
-                        <img src="http://54.254.203.172/cideapi{{appointmentData[6]}}" alt="" class="img-circle img-responsive advisor-img" />    
+
+                        <img src="http://54.254.203.172/cideapi{{appointmentData[6]}}" alt="" class="img-circle img-responsive advisor-img" />
                     </section>
-                    
+
                     <div class="col-sm-4 col-xs-12">
                         <div class="text-with-icon">
                             <i class="fa fa-calendar big-calendar"></i>
@@ -42,14 +24,14 @@
                             <p class="appointment-date">avec {{appointmentData[4]}} {{ appointmentData[3] }}</p>
 
                             <time class="appointment-date">Le {{ appointmentData[0] | date:'dd/MM/yyyy' }} de {{ appointmentData[1] }} à {{ appointmentData[2] }}</time>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="col-sm-4 col-xs-12">
                         <div class="text-with-icon">
                                 <img src="assets/images/cide-icon-group.png" alt="" />
                                 <h3 class="second-title">Pour un entretien</h3>
                                 <p>
-                                
+
                                     {{appointmentData[7]}}<br />
                                     {{appointmentData[8]}}</p>
                         </div>
@@ -90,7 +72,7 @@
                     <!--</div><!-- .navbar -->
                       <!-- <form > -->
 
-                      <md-tab-group md-dynamic-height 
+                      <md-tab-group md-dynamic-height
                         [(selectedIndex)]="activeTabIndex"  class="wizard-tabs"
                         #tabGroup>
                         <!-- <div class="tab-content"> -->
@@ -102,37 +84,37 @@
                                             *ngFor="let parent of wizardForm.controls['parents']['controls']; let i = index">
                                             <div [formGroupName]="i">
                                             <h3 *ngIf="!onMobile">Parents</h3>
-											<br *ngIf="onMobile"/>
+											                      <br *ngIf="onMobile"/>
 
                                             <div class="form-group">
                                                 <div class="select-custom">
-                                                    Lien de parenté
-                                                <md-select placeholder="Lien de Parenté" class="form-control" 
+                                                    Lien de parenté*
+                                                <md-select placeholder="Lien de Parenté" class="form-control"
                                                     formControlName="lienParent">
                                                     <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
                                                     {{ lientparent }}
                                                     </md-option>
                                                 </md-select>
-                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.lienParent.hasError('required') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.lienParent.touched" 
-                                                    class="mat-text-warn"> 
+                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.lienParent.hasError('required') &&
+                                                    wizardForm.controls['parents']['controls'][i].controls.lienParent.touched"
+                                                    class="mat-text-warn">
                                                     Lien de Parenté Obligatoire
                                                 </small>
                                                 </div>
                                             </div>
-                                            Titre
+                                            Titre*
                                             <div class="form-group horizontal-radio clearfix">
                                                 <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
                                                                     <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
                                                                     <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
-                                                
+
                                                 <md-radio-group formControlName="titre">
                                                     <md-radio-button value="ms">Mme</md-radio-button>
                                                     <md-radio-button value="m">M</md-radio-button>
                                                 </md-radio-group>
-                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.titre.touched" 
-                                                    class="mat-text-warn"> 
+                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.titre.hasError('required') &&
+                                                    wizardForm.controls['parents']['controls'][i].controls.titre.touched"
+                                                    class="mat-text-warn">
                                                     Titre Obligatoire
                                                 </small>
                                             </div>
@@ -141,26 +123,26 @@
                                             <div class="row">
                                                 <div class="col-sm-6  col-xs-6">
                                                 <div class="form-group">
-                                                    Nom de famille
-                                                    <input type="text" class="form-control" placeholder="Nom" 
+                                                    Nom de famille*
+                                                    <input type="text" class="form-control" placeholder="Nom"
                                                     formControlName="nom"
                                                     maxlength="25">
-                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.nom.hasError('required') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.nom.touched" 
-                                                    class="mat-text-warn"> 
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.nom.hasError('required') &&
+                                                    wizardForm.controls['parents']['controls'][i].controls.nom.touched"
+                                                    class="mat-text-warn">
                                                     Nom Obligatoire
                                                     </small>
                                                 </div>
                                                 </div>
                                                 <div class="col-sm-6  col-xs-6">
                                                 <div class="form-group">
-                                                    Prénom
-                                                    <input type="text" class="form-control" placeholder="Prénom" 
+                                                    Prénom*
+                                                    <input type="text" class="form-control" placeholder="Prénom"
                                                     formControlName="prenom"
                                                     maxlength="25">
-                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.prenom.hasError('required') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.prenom.touched" 
-                                                    class="mat-text-warn"> 
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.prenom.hasError('required') &&
+                                                    wizardForm.controls['parents']['controls'][i].controls.prenom.touched"
+                                                    class="mat-text-warn">
                                                     Prénom Obligatoire
                                                     </small>
                                                 </div>
@@ -172,14 +154,14 @@
                                                 <div class="row">
 
                                                     <div class="col-sm-12">
-                                                        Profession
-                                                        <input type="text" class="form-control" 
-                                                            placeholder="Profession / Secteur d'activité" 
+                                                        Profession*
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Profession / Secteur d'activité"
                                                             formControlName="job"
                                                             maxlength="25">
-                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.job.hasError('required') && 
-                                                            wizardForm.controls['parents']['controls'][i].controls.job.touched" 
-                                                            class="mat-text-warn"> 
+                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.job.hasError('required') &&
+                                                            wizardForm.controls['parents']['controls'][i].controls.job.touched"
+                                                            class="mat-text-warn">
                                                             Profession Obligatoire
                                                         </small>
                                                     </div>
@@ -187,17 +169,17 @@
                                             </div>
 
                                             <div class="form-group">
-                                                Email
-                                                <input type="email" class="form-control" placeholder="Email" 
+                                                Email*
+                                                <input type="email" class="form-control" placeholder="Email"
                                                     formControlName="email">
-                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.hasError('required') && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.email.touched" 
-                                                    class="mat-text-warn"> 
+                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.hasError('required') &&
+                                                    wizardForm.controls['parents']['controls'][i].controls.email.touched"
+                                                    class="mat-text-warn">
                                                     Email Obligatoire
                                                 </small>
-                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.errors?.email && 
-                                                    wizardForm.controls['parents']['controls'][i].controls.email.touched" 
-                                                    class="mat-text-warn"> 
+                                                <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.errors?.email &&
+                                                    wizardForm.controls['parents']['controls'][i].controls.email.touched"
+                                                    class="mat-text-warn">
                                                     Email Invalide
                                                 </small>
                                             </div>
@@ -205,24 +187,24 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        Numéro de portable
-                                                        <input type="text" class="form-control" 
-                                                            placeholder="Téléphone auquel je suis joignable" 
+                                                        Numéro de portable*
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Téléphone auquel je suis joignable"
                                                             formControlName="portable"
                                                             pattern="[0-9]+" maxlength="10">
-                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('required') && 
-                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
-                                                            class="mat-text-warn"> 
+                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('required') &&
+                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched"
+                                                            class="mat-text-warn">
                                                             Numéro de Portable Obligatoire
                                                         </small>
-                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
-                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
-                                                            class="mat-text-warn"> 
+                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') &&
+                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched"
+                                                            class="mat-text-warn">
                                                             Numéro de Portable Invalide (max 10)
                                                         </small>
-                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
-                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched" 
-                                                            class="mat-text-warn"> 
+                                                        <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') &&
+                                                            wizardForm.controls['parents']['controls'][i].controls.portable.touched"
+                                                            class="mat-text-warn">
                                                             Numéro de Portable Invalide (Doit être des chiffres)
                                                         </small>
                                                     </div>
@@ -233,7 +215,7 @@
                                                 <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="select-custom">
-                                                    Horaires pour me contacter
+                                                    Horaires pour me contacter*
                                                     <select name="" class="form-control" formControlName="horaireJoignable">
                                                         <option value="" disabled selected hidden>Horaires pour me contacter</option>
                                                         <option value="9h-12h">9h-12h</option>
@@ -241,9 +223,9 @@
                                                         <option value="14h-18h">14h-18h</option>
                                                         <option value="18h-20h">18h-20h</option>
                                                     </select>
-                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.hasError('required') && 
-                                                        wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.touched" 
-                                                        class="mat-text-warn"> 
+                                                    <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.hasError('required') &&
+                                                        wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.touched"
+                                                        class="mat-text-warn">
                                                         Horaire obligatoire
                                                     </small>
                                                     </div>
@@ -253,8 +235,8 @@
                                             </div>
 
                                             <div class="form-group clearfix">
-                                            <button class="btn  btn-danger" style="float:right" 
-                                                (click)="onRemoveParent(i)" 
+                                            <button class="btn  btn-danger" style="float:right"
+                                                (click)="onRemoveParent(i)"
                                                 *ngIf="wizardForm.controls['parents']['controls'].length==2">
                                                 Retirer un parent
                                             </button>
@@ -270,7 +252,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align" 
+                                            <button class="btn  btn-appointment wizard-button-align"
                                                 (click)="nextTab(1)" style="float:right">
                                             Suivant
                                             </button>
@@ -279,7 +261,7 @@
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab1 -->
                         </md-tab>
-                        
+
                         <md-tab label="Elève">
                             <div class="tab-pane" id="tab2">
                                 <div class="container-fluid">
@@ -289,7 +271,7 @@
                                         </div>
                                         <div class="col-md-4">
 
-                                            
+
                                             <div class="row">
                                                 <div class="col-sm-6  col-xs-6">
                                                     <div class="form-group">
@@ -308,30 +290,30 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
 
-                                            
+
+
                                             <div class="row">
                                                 <!-- <div class="col-sm-12">
                                                     <div class="row"> -->
                                                         <div class="col-sm-3  col-xs-6">
                                                             <div class="form-group">
-                                                                Age
+                                                                Age*
                                                                 <input type="number" class="form-control" max="50" min="1" placeholder="Age"
                                                                   [formControl]="wizardForm.controls['childAge']" maxlength="2"
                                                                   pattern="[0-9]+" id="txtAge">
-                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('required') && 
-                                                                    wizardForm.controls['childAge'].touched" 
-                                                                    class="mat-text-warn"> 
+                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('required') &&
+                                                                    wizardForm.controls['childAge'].touched"
+                                                                    class="mat-text-warn">
                                                                     Age Obligatoire
                                                                 </small>
-                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('max')" 
-                                                                    class="mat-text-warn"> 
+                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('max')"
+                                                                    class="mat-text-warn">
                                                                     L'âge est incorrect
                                                                 </small>
-                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('min') && 
-                                                                    wizardForm.controls['childAge'].touched" 
-                                                                    class="mat-text-warn"> 
+                                                                <small *ngIf="wizardForm.controls['childAge'].hasError('min') &&
+                                                                    wizardForm.controls['childAge'].touched"
+                                                                    class="mat-text-warn">
                                                                     L'âge ne doit pas être négatif
                                                                 </small>
                                                             </div>
@@ -345,7 +327,7 @@
                                                         <div class="col-sm-6  col-xs-6">
                                                             <div class="form-group">
                                                                 <div class="horizontal-radio">
-                                                                    
+
                                                                     <md-radio-group [formControl]="wizardForm.controls['childTitle']">
                                                                         <md-radio-button value="garçon">Garçon</md-radio-button>
                                                                         <md-radio-button value="fille">Fille</md-radio-button>
@@ -360,78 +342,28 @@
                                                 </div> -->
                                             </div>
 
-
-                                            
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        Mél*
-                                                        <input type="email" class="form-control" placeholder="Mel"
-                                                          [formControl]="wizardForm.controls['childMel']">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        Numéro de Portable*
-                                                        <input type="text" class="form-control" placeholder="Portable"
-                                                          [formControl]="wizardForm.controls['childTel']" maxlength="10">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <!--<div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        Adresse*
-                                                        <textarea class="form-control" placeholder="Adresse"
-                                                          [formControl]="wizardForm.controls['childAddr']"
-                                                          maxlength="125"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div> 
-
-
-                                            
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        Code postal*
-                                                        <input type="text" class="form-control" placeholder="Code postal"
-                                                          [formControl]="wizardForm.controls['childPostalCode']" maxlength="5">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        Ville*
-                                                        <input type="text" class="form-control" placeholder="Ville"
-                                                          [formControl]="wizardForm.controls['childCity']" maxlength="25">
-                                                    </div>
-                                                </div>
-                                            </div>-->
-
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="datepicker-holder">
-                                                            Date de naissance
+                                                            Date de naissance*
                                                             <div class="calendarCont">
-															<input type="text" id="birthdate" class="form-control" 
+															                                <input type="text" id="birthdate" class="form-control"
                                                                 placeholder="Date de naissance" [max]="maxDate"
                                                                 [formControl]="wizardForm.controls['childBirthDay']" [mdDatepicker]="picker">
-															
+
 																<!-- <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button> -->
 																<!--md-datepicker-toggle mdSuffix [for]="myDatepicker"></md-datepicker-toggle-->
-                                                                <!-- <md-datepicker #myDatepicker></md-datepicker> -->
-																<!-- <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle> -->
+																                                <!--<md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>-->
                                                                 <md-datepicker #picker></md-datepicker>
-																</div>
+
+																                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        Lieu de naissance
+                                                        Lieu de naissance*
                                                         <input type="text" class="form-control" placeholder="Lieu"
                                                             [formControl]="wizardForm.controls['childBirthPlace']"
                                                             maxlength="30">
@@ -441,86 +373,17 @@
                                         </div><!-- .col-* -->
                                         <div class="col-md-12">
                                             <div class="form-group clearfix">
-                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                <button class="btn  btn-appointment wizard-button-align"
                                                     (click)="nextTab(0)" style="float:left; margin-left:0px">
                                                 Précédent
                                                 </button>
-                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                <button class="btn  btn-appointment wizard-button-align"
                                                     (click)="nextTab(2)" style="float:right">
                                                 Suivant
                                                 </button>
                                             </div>
                                         </div>
 
-                                        <!--<div class="col-md-8" *ngIf="canDisplaySiblings">
-                                            <div class="wrap-enfant">
-                                            <div class="form-group" formArrayName="freresoeur"
-                                                *ngFor="let siblings of wizardForm.controls['freresoeur']['controls']; let i=index">
-                                                <h4>Frère / Soeur {{ i + 1 }}</h4>
-                                                <div class="row" [formGroupName]="i">
-                                                <div class="col-for-radio col-sm-3">
-                                                    <div class="gap-for-radio horizontal-radio clearfix">
-                                                    <md-radio-group formControlName="gender">
-                                                        <md-radio-button value="Frère">Frère</md-radio-button>
-                                                        <md-radio-button value="Soeur">Soeur</md-radio-button>
-                                                    </md-radio-group>
-                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls.gender.hasError('required') && 
-                                                        wizardForm.controls['freresoeur']['controls'][i].controls.gender.touched" 
-                                                        class="mat-text-warn"> 
-                                                        Gender Obligatoire
-                                                    </small>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    Age*
-                                                    <input type="number" max="50" min="1" class="form-control gap-for-radio" 
-                                                        placeholder="Age" formControlName="age"
-                                                        maxlength="2" style="margin-top:0px"/>
-                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('required') && 
-                                                        wizardForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
-                                                        class="mat-text-warn"> 
-                                                        Age Obligatoire
-                                                    </small>
-                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('max')" 
-                                                        class="mat-text-warn"> 
-                                                        L'âge est incorrect
-                                                    </small>
-                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['age'].hasError('min') && 
-                                                        wizardForm.controls['freresoeur']['controls'][i].controls['age'].touched" 
-                                                        class="mat-text-warn"> 
-                                                        L'âge ne doit pas être négatif
-                                                    </small>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    Niveau d'étude*
-                                                    <input type="text" class="form-control gap-for-radio" 
-                                                        placeholder="Niveau d'étude" 
-                                                        formControlName="niveau"
-                                                        maxlength="25" style="margin-top:0px">
-                                                    <small *ngIf="wizardForm.controls['freresoeur']['controls'][i].controls['niveau'].hasError('required') && 
-                                                        wizardForm.controls['freresoeur']['controls'][i].controls['niveau'].touched" 
-                                                        class="mat-text-warn"> 
-                                                        Niveau d'étude Obligatoire
-                                                    </small>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <button class="btn  btn-danger"  
-                                                        (click)="onRemoveFrSo(i)"
-                                                        [disabled]="wizardForm.controls['freresoeur']['controls'].length==0">
-                                                        Retirer un frère / soeur
-                                                    </button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group clearfix">
-                                                <button class="btn  btn-appointment" (click)="onAddFrSo()"
-                                                style="margin-left:0px">
-                                                Ajouter un frère / soeur
-                                                </button>
-                                            </div>
-                                            </div>
-
-                                        </div>-->
                                     </div>
 
 
@@ -535,22 +398,22 @@
                                         <div class="col-md-4">
 
                                             <h3>Etablissement Actuel</h3>
-                                        
+
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        Nom de l'établissement
+                                                        Nom de l'établissement*
                                                         <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
                                                           [formControl]="wizardForm.controls['schoolName']" maxlength="50">
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="row">
                                                 <div class="form-group  col-sm-12  col-xs-6">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            Ville de l'établissement
+                                                            Ville de l'établissement*
                                                             <input type="text" class="form-control" placeholder="Ville"
                                                               [formControl]="wizardForm.controls['schoolCity']" maxlength="35">
                                                         </div>
@@ -686,7 +549,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <h4>Langues Vivantes</h4>
                                             <div class="form-group">
                                                 <div class="row">
@@ -701,7 +564,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>      
+                                            </div>
 
                                             <div class="form-group">
                                                 <div class="row">
@@ -731,15 +594,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>    
+                                            </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group clearfix">
-                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                <button class="btn  btn-appointment wizard-button-align"
                                                     (click)="nextTab(1)" style="float:left; margin-left:0px">
                                                     Précédent
                                                 </button>
-                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                <button class="btn  btn-appointment wizard-button-align"
                                                     (click)="nextTab(3)" style="float:right">
                                                     Suivant
                                                 </button>
@@ -755,12 +618,12 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <h3>Aide Scolaire</h3>
-                                            
+                                            <h3>Aide Scolaire*</h3>
+
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <input type="checkbox" name="" class="checkbox filled-in" 
+                                                        <input type="checkbox" name="" class="checkbox filled-in"
                                                           id="scolaire-filter" [formControl]="wizardForm.controls['schoolHelp']"
                                                           (click)="onChecked()" />
                                                           <label for="scolaire-filter">
@@ -774,7 +637,7 @@
                                                 <div class="row" style="margin-bottom:20px">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom dans-quelles">
-                                                            <select name="" class="form-control multiselect" 
+                                                            <select name="" class="form-control multiselect"
                                                               id="dans-quelles" *ngIf="checked">
                                                                 <option value="">Dans quelles matières</option>
                                                                 <option *ngFor="let subject of subjectSchool" value="subject">
@@ -790,7 +653,7 @@
                                         </div><!-- .col-* -->
                                         <div class="col-md-12">
                                             <div class="form-group clearfix">
-                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                <button class="btn  btn-appointment wizard-button-align"
                                                     (click)="nextTab(2)" style="float:left; margin-left:0px">
                                                     Précédent
                                                 </button>
@@ -816,28 +679,14 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom-multiple-forte">
-                                                            Matières fortes
- 															<select class="form-control matery" 
+                                                            Matières fortes*
+ 															                            <select class="form-control matery"
                                                                 multiple="multiple"
                                                                 [formControl]="wizardForm.controls['bestSubject']">
- 																<option value="Maths">Maths</option>
- 																<option value="Sciences Physiques">Sciences Physiques</option>
- 																<option value="Sciences Naturelles">Sciences Naturelles</option>
- 																<option value="Francais">Francais</option>
- 																<option value="Anglais">Anglais</option>
- 																<option value="Espagnol">Espagnol</option>
- 																<option value="Allemand">Allemand</option>
- 																<option value="Italien">Italien</option>
- 																<option value="Autre langue">Autre langue</option>
- 																<option value="Histoire">Histoire</option>
- 																<option value="Géographie">Géographie</option>
- 																<option value="Instruction Civique">Instruction Civique</option>
- 																<option value="Sport">Sport</option>
- 																<option value="Musique">Musique</option>
- 																<option value="Arts PLastiques">Arts PLastiques</option>
- 																<option value="Autre matières">Autre matières</option>
- 															</select>
- 														</div>
+                                                            <option *ngFor="let subject of wizardService.getSubjectList()"
+                                                                    [value]="subject">{{subject}}</option>
+                                                        </select>
+                                                      </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -846,28 +695,14 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                       <div class="select-custom-multiple-faible">
-                                                            Matières faibles
- 															<select class="form-control matery" 
+                                                            Matières faibles*
+                                                          <select class="form-control matery"
                                                                 multiple="multiple"
                                                                 [formControl]="wizardForm.controls['weakSubject']">
- 																<option value="Maths">Maths</option>
- 																<option value="Sciences Physiques">Sciences Physiques</option>
- 																<option value="Sciences Naturelles">Sciences Naturelles</option>
- 																<option value="Francais">Francais</option>
- 																<option value="Anglais">Anglais</option>
- 																<option value="Espagnol">Espagnol</option>
- 																<option value="Allemand">Allemand</option>
- 																<option value="Italien">Italien</option>
- 																<option value="Autre langue">Autre langue</option>
- 																<option value="Histoire">Histoire</option>
- 																<option value="Géographie">Géographie</option>
- 																<option value="Instruction Civique">Instruction Civique</option>
- 																<option value="Sport">Sport</option>
- 																<option value="Musique">Musique</option>
- 																<option value="Arts PLastiques">Arts PLastiques</option>
- 																<option value="Autre matières">Autre matières</option>
- 															</select>
- 														</div>
+                                                            <option *ngFor="let subject of wizardService.getSubjectList()"
+                                                                    [value]="subject">{{subject}}</option>
+                                                        </select>
+                                                      </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -876,26 +711,12 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="select-custom-multiple-gout">
-                                                            Matières préférées
-                                                            <select class="form-control matery" 
-                                                                multiple="multiple" 
+                                                            Matières préférées*
+                                                            <select class="form-control matery"
+                                                                multiple="multiple"
                                                                 [formControl]="wizardForm.controls['interestSubject']">
-                                                                <option value="Maths">Maths</option>
-                                                                <option value="Sciences Physiques">Sciences Physiques</option>
-                                                                <option value="Sciences Naturelles">Sciences Naturelles</option>
-                                                                <option value="Francais">Francais</option>
-                                                                <option value="Anglais">Anglais</option>
-                                                                <option value="Espagnol">Espagnol</option>
-                                                                <option value="Allemand">Allemand</option>
-                                                                <option value="Italien">Italien</option>
-                                                                <option value="Autre langue">Autre langue</option>
-                                                                <option value="Histoire">Histoire</option>
-                                                                <option value="Géographie">Géographie</option>
-                                                                <option value="Instruction Civique">Instruction Civique</option>
-                                                                <option value="Sport">Sport</option>
-                                                                <option value="Musique">Musique</option>
-                                                                <option value="Arts PLastiques">Arts PLastiques</option>
-                                                                <option value="Autre matières">Autre matières</option>
+                                                              <option *ngFor="let subject of wizardService.getSubjectList()"
+                                                                      [value]="subject">{{subject}}</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -906,7 +727,7 @@
                                     </div><!-- .row -->
                                     <div class="row">
                                         <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align" 
+                                            <button class="btn  btn-appointment wizard-button-align"
                                                 (click)="nextTab(3)" style="float:left; margin-left:0px">
                                                 Précédent
                                             </button>
@@ -928,15 +749,15 @@
                                             <h3>Ses centres d'intérêts</h3>
 
                                             <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
-                    
-                                                <div class="row" formArrayName="job" 
+
+                                                <div class="row" formArrayName="job"
                                                     *ngFor="let parent of wizardForm.controls['job']['controls']; let i = index">
                                                 <div [formGroupName]="i">
                                                     <div class="col-sm-6">
-                                                        <h4>Métier {{i+1}}</h4>
+                                                        <h4>Métier {{i+1}}*</h4>
                                                         <div class="form-group">
                                                             Job
-                                                            <input type="text" class="form-control" placeholder="Job" 
+                                                            <input type="text" class="form-control" placeholder="Job"
                                                             formControlName="interestJob"
                                                             maxlength="25">
                                                         </div>
@@ -945,7 +766,7 @@
                                                         <h4>&nbsp;</h4>
                                                         <div class="form-group">
                                                             Age
-                                                            <input type="text" class="form-control" placeholder="Age" 
+                                                            <input type="text" class="form-control" placeholder="Age"
                                                             formControlName="interestAge" max="50" min="1"
                                                             maxlength="2">
                                                         </div>
@@ -953,9 +774,9 @@
                                                     <div class="col-sm-3">
                                                     <h4>&nbsp;</h4>
 													&nbsp;
-                                                    <button class="btn  btn-danger" style="float:right" 
+                                                    <button class="btn  btn-danger" style="float:right"
                                                         (click)="onRemoveJob(i)"
-                                                        [disabled]="wizardForm.controls['job']['controls'].length==0">
+                                                        *ngIf="wizardForm.controls['job']['controls'].length>0">
                                                         Retirer un métier
                                                     </button>
                                                     </div>
@@ -966,13 +787,13 @@
                                                 <button class="btn  btn-appointment" (click)="onAddJob()"
                                                     style="margin-left:15px"><i class="fa fa-plus" aria-hidden="true"></i>Ajouter un métier</button>
                                                 </div>
-                                            
+
 
                                             <div class="form-group different-gap">
                                                 <div class="row">
                                                     <div class="col-sm-9">
-                                                        Ses centres d'intérêts
-                                                        <input type="text" class="form-control" 
+                                                        Ses centres d'intérêts*
+                                                        <input type="text" class="form-control"
                                                           [formControl]="wizardForm.controls['yourInterest']"
                                                           maxlength="60">
                                                     </div>
@@ -983,18 +804,18 @@
                                                 <div class="row">
                                                     <div class="col-sm-9">
                                                         Ses activités extra-scolaires
-                                                        <input type="text" class="form-control" 
+                                                        <input type="text" class="form-control"
                                                           [formControl]="wizardForm.controls['practiceInterest']"
                                                           maxlength="60">
                                                     </div>
                                                 </div>
-                                            </div>                          
+                                            </div>
 
                                         </div><!-- .col-* -->
                                     </div><!-- .row -->
                                     <div class="row">
                                         <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align" 
+                                            <button class="btn  btn-appointment wizard-button-align"
                                                 (click)="nextTab(4)" style="float:left; margin-left:0px">
                                                 Précédent
                                             </button>
@@ -1017,7 +838,7 @@
                                                 <div class="row" formArrayName="primary"
                                                     *ngFor="let parent of wizardForm.controls['primary']['controls']; let i = index">
                                                     <div [formGroupName]="i">
-                                                        <h4 style="margin-left:15px">Primaire {{i+1}}</h4>
+                                                        <h4 style="margin-left:15px">Primaire {{i+1}}*</h4>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 Nom de l'établissement
@@ -1029,7 +850,7 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 <div class="select-custom">
-                                                                    Classe redoublée
+                                                                    Classe redoublée*
                                                                     <select name="" class="form-control"
                                                                         formControlName="primarySchoolRepeat">
                                                                         <option value="" disabled selected hidden>Classe redoublée</option>
@@ -1040,7 +861,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
-                                                                Cause du redoublement
+                                                                Cause du redoublement*
                                                                 <input type="text" class="form-control" placeholder="Cause du redoublement"
                                                                 formControlName="causeOfRepeatPrimary"
                                                                 maxlength="100">
@@ -1048,16 +869,16 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             &nbsp;<br>&nbsp;
-                                                            <button class="btn  btn-danger" style="float:right" 
+                                                            <button class="btn  btn-danger" style="float:right"
                                                                 (click)="onRemovePrimaire(i)"
-                                                                [disabled]="wizardForm.controls['primary']['controls'].length==0">
+                                                                *ngIf="wizardForm.controls['primary']['controls'].length>0">
                                                                 Retirer une école primaire
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button class="btn  btn-appointment" style="margin-left:0px" 
+                                                    <button class="btn  btn-appointment" style="margin-left:0px"
                                                         (click)="onAddPrimaire()">
                                                         Ajouter une école primaire
                                                     </button>
@@ -1068,7 +889,7 @@
                                                         <h4 style="margin-left:15px">Secondaire {{i+1}}</h4>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
-                                                                Nom de l'établissement
+                                                                Nom de l'établissement*
                                                                 <input type="text" class="form-control" placeholder="Nom"
                                                                 formControlName="secondarySchoolName"
                                                                 maxlength="100">
@@ -1077,7 +898,7 @@
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
                                                                 <div class="select-custom">
-                                                                    Classe redoublée
+                                                                    Classe redoublée*
                                                                     <select name="" class="form-control"
                                                                         formControlName="secondarySchoolRepeat">
                                                                         <option value="" disabled selected hidden>Classe redoublée</option>
@@ -1088,7 +909,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
-                                                                Cause du redoublement
+                                                                Cause du redoublement*
                                                                 <input type="text" class="form-control" placeholder="Cause du redoublement"
                                                                     formControlName="causeOfRepeatSecondary"
                                                                     maxlength="100">
@@ -1096,16 +917,16 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             &nbsp;<br>&nbsp;
-                                                            <button class="btn  btn-danger" style="float:right" 
+                                                            <button class="btn  btn-danger" style="float:right"
                                                                 (click)="onRemoveSecondaire(i)"
-                                                                [disabled]="wizardForm.controls['secondary']['controls'].length==0">
+                                                                *ngIf="wizardForm.controls['secondary']['controls'].length>0">
                                                                 Retirer une école secondaire
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button class="btn  btn-appointment" 
+                                                    <button class="btn  btn-appointment"
                                                         (click)="onAddSecondaire()" style="margin-left:0px">
                                                         Ajouter une école secondaire
                                                     </button>
@@ -1116,7 +937,7 @@
                                     </div><!-- .row -->
                                     <div class="row">
                                         <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align" 
+                                            <button class="btn  btn-appointment wizard-button-align"
                                                 (click)="nextTab(5)" style="float:left; margin-left:0px">
                                                 Précédent
                                             </button>
@@ -1136,457 +957,14 @@
                                     <div class="row">
                                        <div class="col-md-12">
 
-                                            <h3>Professions souhaitées. Cette section du Dossier doit être complétée avec l’élève.
-                                                    Toutes les professions doivent être renseignées</h3>
-                                            
-                                            <div class="job-group-content">
-                                                <h4>Groupe A</h4>
+                                        <h3>Professions souhaitées. Cette section du Dossier doit être complétée avec l’élève.
+                                                Toutes les professions doivent être renseignées</h3>
 
-                                                <ul class="job-group-list">
-                                                    <li>Chargé de clientèle
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="satisfy" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="satisfy" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Enseignant
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="enseignant" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="enseignant" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Médecin
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="médecin" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="médecin" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Travailleur social
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="travailleur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="travailleur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Psychologue
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="psychologue" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="psychologue" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Animateur
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="animateur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="animateur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Guide touristique
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="guide" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="guide" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Avocat
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="avocat" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="avocat" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Diplomate
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="diplomate" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="diplomate" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Conseiller d’orientation
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="conseiller" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="conseiller" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Orthophoniste
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="orthophoniste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="orthophoniste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
-                                            <div class="job-group-content">
-                                                <h4>Groupe B</h4>
-
-                                                <ul class="job-group-list">
-                                                    <li>Gestionnaire
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="gestionnaire" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="gestionnaire" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Economiste
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="economiste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="economiste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Comptable
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="comptable" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="comptable" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Analyste financier
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="analyste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="analyste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Commerçant
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="commerçant" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="commerçant" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Assureur
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="assureur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="assureur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Agent de voyage
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="agent" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="agent" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Représentant
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="représentant" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="représentant" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Opticien
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="opticien" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="opticien" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Conseiller juridique
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="conseiller" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="conseiller" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Attaché commercial
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="attaché" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="attaché" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
-                                            <div class="job-group-content">
-                                                <h4>Groupe C</h4>
-
-                                                <ul class="job-group-list">
-                                                    <li>Décorateur
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="décorateur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="décorateur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Publicitaire
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="publicitaire" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="publicitaire" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Acteur
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="acteur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="acteur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Metteur en scène
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="metteur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="metteur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Peintre
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="peintre" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="peintre" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Sculpteur
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="sculpteur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="sculpteur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Styliste
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="styliste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="styliste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Paysagiste
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="paysagiste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="paysagiste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Photographe
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="photographe" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="photographe" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Musicien
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="musicien" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="musicien" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Urbaniste
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="urbaniste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="urbaniste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
-                                            <div class="job-group-content">
-                                                <h4>Groupe D</h4>
-
-                                                <ul class="job-group-list">
-                                                    <li>Historien
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="historien" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="historien" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Archéologue
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="archéologue" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="archéologue" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Géographe
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="géographe" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="géographe" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Bibliothécaire
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="bibliothécaire" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="bibliothécaire" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Libraire
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="libraire" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="libraire" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Interprète
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="interprète" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="interprète" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Journaliste
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="journaliste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="journaliste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Professeur de langue
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="professeur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="professeur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Ecrivain
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="ecrivain" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="ecrivain" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Guide touristique
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="touristique" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="touristique" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Notaire
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="notaire" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="notaire" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
-                                            <div class="job-group-content">
-                                                <h4>Groupe E</h4>
-
-                                                <ul class="job-group-list">
-                                                    <li>Consultant en agriculture
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="consultant" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="consultant" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Diététicien
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="diététicien" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="diététicien" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Chercheur scientifique
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="chercheur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="chercheur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Ingénieur
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="ingénieur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="Ingénieur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Analyste-programmeur
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="analyste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="analyste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Médecin
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="médecin" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="médecin" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Pharmacien
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="pharmacien" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="pharmacien" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Géologue
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="géologue" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="géologue" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Physicien
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="physicien" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="physicien" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Mathématicien-statisticien
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="mathématicien" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="mathématicien" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Météorologue
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="météorologue" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="météorologue" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
-                                            <div class="job-group-content">
-                                                <h4>Groupe F</h4>
-
-                                                <ul class="job-group-list">
-                                                    <li>Ingénieur agronome
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="ingénieur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="ingénieur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Architecte
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="architecte" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="architecte" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Ingénieur technicien
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="ingénieur" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="ingénieur" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Technicien télécommunication
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="technicien" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="technicien" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Responsable réseau informatique
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="responsable" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="responsable" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Prothésiste dentaire
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="prothésiste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="prothésiste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Laborantin
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="laborantin" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="laborantin" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Radiologue
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="radiologue" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="radiologue" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Officier
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="officier" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="officier" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Homéopathe
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="homéopathe" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="homéopathe" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>Dentiste
-                                                        <div class="checkbox-job-group">
-                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="dentiste" value="sad" /> <span>&nbsp;</span></label>
-                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="dentiste" value="happy" /> <span>&nbsp;</span></label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
+                                        <app-wizard-profession></app-wizard-profession>
                                        </div><!-- .col-* -->
                                        <div class="row">
                                             <div class="form-group clearfix">
-                                                <button class="btn  btn-appointment wizard-button-align" 
+                                                <button class="btn  btn-appointment wizard-button-align"
                                                     (click)="nextTab(6)" style="float:left; margin-left:0px">
                                                     Précédent
                                                 </button>
@@ -1635,18 +1013,18 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>
 
                                        </div><!-- .col-* -->
                                        <div class="col-md-12">
-                                            <button class="btn  btn-appointment wizard-button-align" 
+                                            <button class="btn  btn-appointment wizard-button-align"
                                                 (click)="nextTab(7)" style="float:left; margin-left:0px">
                                                 Précédent
                                             </button>
-                                            <button class="btn btn-appointment pull-right" 
+                                            <button class="btn btn-appointment pull-right"
                                                 type="submit" (click)="onSubmit()"
                                                 style="float:right">Terminer</button>
                                        </div>

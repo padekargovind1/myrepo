@@ -10,6 +10,7 @@ import { WishApplyPopupComponent } from './wish-apply-popup/wish-apply-popup.com
 import 'rxjs/add/operator/filter';
 //import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
+import {HelperService} from "../services/helper.service";
 
 //var self = this;
 
@@ -45,8 +46,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private bookingService : BookingService,
               private compareService : CompareService,
               public dialog:MdDialog,
-              private route : ActivatedRoute) {}
+              private route : ActivatedRoute,
+              private helperService : HelperService) {}
 
+  // Getting the user data and the list of the application
   ngOnInit() {
     this.router.events
       .filter((event) => event instanceof NavigationEnd)
@@ -82,27 +85,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
         document.body.style.backgroundColor = "white";
     }
 
+  // Run the script
   runScript(){
     var self = this;
     $('.mobile-login').on('click', '.fa-user', function() {
         $('.login').toggle('slow');
     });
-    function detectmob() {
-      if( navigator.userAgent.match(/Android/i)
-        || navigator.userAgent.match(/webOS/i)
-        || navigator.userAgent.match(/iPhone/i)
-        || navigator.userAgent.match(/iPad/i)
-        || navigator.userAgent.match(/iPod/i)
-        || navigator.userAgent.match(/BlackBerry/i)
-        || navigator.userAgent.match(/Windows Phone/i)
-        ){
-          return true;
-      }
-      else {
-          return false;
-      }
-    }
-    var checkMobile = detectmob();
+    var checkMobile = self.helperService.detectmob();
     if (checkMobile) {
       console.log(checkMobile)
       self.onMobile=true;
@@ -132,11 +121,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
       });
 	  $('*').click(function(e){
-		var a = e.target;
-		if ($(a).parents('.main-navigation').length === 0) {
-			$('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
-		}
-	});
+      var a = e.target;
+      if ($(a).parents('.main-navigation').length === 0) {
+        $('.submenutBt').css({'opacity': '0','visibility': 'hidden','-moz-transform': 'scaleY(0)','-webkit-transform': 'scaleY(0)','-o-transform': 'scaleY(0)','-ms-transform': 'scaleY(0)','transform': 'scaleY(0)'});
+      }
+    });
     }
 
     $('body').on('click', function($event){
@@ -144,18 +133,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	  if(event!==undefined && event.srcElement!==undefined)
 	  {
 		  if(event.srcElement.className=='fa fa-bookmark' || event.srcElement.className=='btn btn-success btn-outline btn-sm '){
-			setTimeout(function(){
-			  self.getApplication()
-			}, 1000)
+        setTimeout(function(){
+          self.getApplication()
+        }, 1000)
 		  }
-		 }
-    });
+    }
+  });
 
 	// setInterval(()=>{
 	// 	if(this.userLogin){ this.getApplication(); }
 	// },2000);
   }
 
+  // get the user Name to display it in the right
   getUserName(){
     this.usersService.getProfile()
       .subscribe(
@@ -169,39 +159,47 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
   }
 
+  // Cleaning the local storage
+  // Navigate home page
   onNavigateHome(){
     this.cleanLocalStorage();
 	  this.hideHeaderSubMenus();
     this.router.navigate( ['/'] );
   }
 
+  //After click on Sign up button
   onSignUp(){
 	  this.hideHeaderSubMenus();
     this.router.navigate(['/register']);
   }
 
+  //After click on Sign in button
   onSignIn(){
 	  this.hideHeaderSubMenus();
     this.router.navigate(['/login']);
   }
 
+  // Navigate to an url
   navigateToURL(url){
 	  this.hideHeaderSubMenus();
     this.router.navigate([url]);
   }
 
+  // After sign out
+  // Log out the user
+  // Reset all the local storage
   onSignOut(){
-	this.hideHeaderSubMenus();
+	  this.hideHeaderSubMenus();
     this.cleanLocalStorage();
-    this.cleanUserLocalStorage();
     this.authService.logout();
     this.userLogin=false;
     this.router.navigate(['/']);
-    console.log(this.authService.getToken())
+    //console.log(this.authService.getToken())
     this.wishCount = 0;
     this.applyCount = 0;
   }
 
+  // Getting the applications -> wish and apply
   getApplication(){
     console.log("test1")
     this.usersService.getApplication()
@@ -258,6 +256,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //   this.router.navigate(['/applyto', schoolId]);
   // }
 
+  // After click on my account (name is user name)
   onMyAccount(nb){
 	this.hideHeaderSubMenus();
     this.cleanLocalStorage();
@@ -267,17 +266,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Clean the local storage in services
   cleanLocalStorage(){
     this.bookingService.cleanBooking();
     this.compareService.cleanCompareFilter();
     this.compareService.cleanSchoolCompare();
-  }
-
-  cleanUserLocalStorage(){
     this.usersService.cleanUserType();
     this.usersService.cleanUserEmail();
   }
 
+  // Make the config of the md Dialog
   makeProfile(tabNbSelected : number){
     this.config = {
       data:{
@@ -295,24 +293,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Open the dialog of the wish list
+  // If not log in -> navigate to login page
   wishApplyDialog(nb : number){
-	if(this.userLogin){
-		this.makeProfile(nb)
-		this.dialog.open(WishApplyPopupComponent,this.config);
-		// dialogref.afterClosed().subscribe(result => {
-		//   console.log(result)
-		// });
-	}
-	else
-	{
-		this.router.navigate(['/login']);
-	}
+    if(this.userLogin){
+      this.makeProfile(nb)
+      this.dialog.open(WishApplyPopupComponent,this.config);
+      // dialogref.afterClosed().subscribe(result => {
+      //   console.log(result)
+      // });
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
+  // Cleaning the landing num after destroy (after quit the website)
   ngOnDestroy(){
     this.publicService.cleanNumLanding();
   }
 
+  // Hiding the menu (on mobile)
   hideHeaderSubMenus(){
     console.log(this.onMobile);
     if(this.onMobile){
@@ -322,6 +322,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  // if on mobile and if user want the "guide interactif" -> sweet alert b'cause guide is not supported on mobile
   onMobileGuide(){
     swal({
       title: "CIDE",
@@ -329,6 +330,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       type: 'warning',
       confirmButtonText: "J'AI COMPRIS"
     })
+    this.router.navigate(['/']);
   }
 
 }

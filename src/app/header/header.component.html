@@ -1,5 +1,5 @@
 ﻿<header class="header" >
-    <nav class="main-navigation"  *ngIf="!isLandingPage || !onMobile">
+    <nav class="main-navigation">
             <ul class="clearfix">
                 <li class="parent-item haschild courses-menu">
                     <a class="ln-tr" href="javascript:void(0);"><i class="fa fa-bars menu-holder"></i></a>
@@ -48,7 +48,7 @@
                                     Consulter le Guide des Ecoles Privées
                                 </a>
                                 <ng-template #mobileGuide>
-                                    <a (click)="hideHeaderSubMenus()" target="_blank" 
+                                    <a (click)="hideHeaderSubMenus()" target="_blank"
                                         class="ln-tr link" (mouseup)="onMobileGuide()">
                                         Consulter le Guide des Ecoles Privées
                                     </a>
@@ -95,7 +95,7 @@
                 </li>
             </ul>
         </nav>
-    
+
 	<!--<a routerLink="/">
         <img class="cide-logo" src="assets/images/cide-white.png" alt="cide logo"/>
     </a>
@@ -118,17 +118,17 @@
             <i class="fa fa-bookmark"  data-toggle="modal" data-target="#download-popup"></i>
         </li>
         <li class="login-text" *ngIf="!userLogin; else log">
-            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
+            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> |
             <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> Se connecter</a>
         </li>
         <ng-template #log>
-            <li class="login-text" 
+            <li class="login-text"
                 (click)="onMyAccount()"
                 style="cursor : pointer; font-size: 14px">{{ userFirstName }}</li> |
             <li class="login-text">
                 <a (click)="onSignOut()">
-                <i class="fa fa-sign-in"></i> 
-                 Se déconnecter</a> 
+                <i class="fa fa-sign-in"></i>
+                 Se déconnecter</a>
             </li>
         </ng-template>
     </ul>-->
@@ -144,7 +144,7 @@
     </ul>-->
     <a (click)="onNavigateHome()">
         <img class="cide-logo" src="assets/images/logo_cide.png" alt="CIDE Logo"/>
-       <img class="cide-logo-mobile" 
+       <img class="cide-logo-mobile"
             src="assets/images/cide-white-just-logo.png" alt=""
             style="display: none; width: 32px; float: left;">
     </a>
@@ -185,17 +185,17 @@
             </i>
         </li>
         <li class="login-text" *ngIf="!userLogin; else log">
-            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> | 
+            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> |
             <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> Se connecter</a>
         </li>
         <ng-template #log>
-            <li class="login-text" 
+            <li class="login-text"
                 (click)="onMyAccount('0')"
                 style="cursor : pointer; font-size: 14px">{{ userFirstName }}</li> |
             <li class="login-text">
                 <a (click)="onSignOut()">
-                <i class="fa fa-sign-in"></i> 
-                Se déconnecter</a> 
+                <i class="fa fa-sign-in"></i>
+                Se déconnecter</a>
             </li>
         </ng-template>
     </ul>
@@ -229,9 +229,9 @@
                       <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="tab1">
-                            
+
                             <div class="card  school-list">
-                                                               
+
                                 <div class="card-content">
                                     <img src="assets/images/school-1.jpg" alt="School 1" />
                                     <h3>Lycee Saint-Charles</h3>
@@ -239,7 +239,7 @@
                                     <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
 
                                     <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a>
-                                    
+
                                 </div><!-- .card-content -->
 
                             </div>
@@ -250,7 +250,7 @@
 
                             <div class="card  school-list"
                                 *ngFor="let wish of wishList">
-                                                               
+
                                 <div class="card-content">
                                     <img src="assets/images/school-1.jpg" alt="School 1" />
                                     <h3>Lycee Saint-Charles</h3>
@@ -262,7 +262,7 @@
                                 </div><!-- .card-content -->
 
                             </div><!-- .card -->
-                            
+
                         </div><!-- .tab-pane -->
 
                     </div><!-- .tab-content -->

@@ -17,10 +17,11 @@ export class LandingPage3Component implements OnInit {
     this.initRate();
   }
 
-  navigateTo(index){
-    this.router.navigate(['/landing-page-'+index])
-  }
+  // navigateTo(index){
+  //   this.router.navigate(['/landing-page-'+index])
+  // }
 
+  //Initiate the Rating from the API
   initRate(){
     let rate = {
       page : '3'
@@ -37,6 +38,7 @@ export class LandingPage3Component implements OnInit {
       )
   }
 
+  // Navigate to a page
   onNavigate(path){
     let rate = {
       id : this.rateId,

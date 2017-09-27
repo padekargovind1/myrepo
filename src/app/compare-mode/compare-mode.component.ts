@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MdDialogConfig, MdDialog } from '@angular/material';
+import { MdDialog } from '@angular/material';
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
 import { UsersService } from '../services/users.service';
@@ -44,6 +44,10 @@ export class CompareModeComponent implements OnInit, OnDestroy {
               public dialog:MdDialog,
               private sendService : SendService) { }
 
+  // Check if the service got the school id to compare
+  // if not -> navigate to home page
+  // else if comparelist is empty -> navigate back
+  // else -> get the school's data
   ngOnInit() {
     if(!this.compareService.haveSchoolId()){
       this.router.navigate(['/'])
@@ -57,11 +61,13 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     this.getSchoolData();
   }
 
+  // After change page -> clean the filter and the school to compare in the services
   ngOnDestroy(){
     this.compareService.cleanCompareFilter()
     this.compareService.cleanSchoolCompare()
   }
 
+  // Get the school's data to compare
   getSchoolData(){
     this.publicService.postComparing(this.schoolToCompare)
       .subscribe(
@@ -79,27 +85,31 @@ export class CompareModeComponent implements OnInit, OnDestroy {
       )
   }
 
-  getSchoolBrochure(){
-    this.schoolBrochure=[];
-    for(let school of this.schoolDataToDisplay){
-      this.publicService.getBrochurebyId(school._id, school.cycles[0].cycle._id)
-        .subscribe(
-          response => {
-            console.log(response)
-            if(response.code==400){
-              console.log(response.message)
-            } else {
-              this.schoolBrochure.push(response.data)
-            }
-          }
-        )
-    }
-  }
 
+  // getSchoolBrochure(){
+  //   this.schoolBrochure=[];
+  //   for(let school of this.schoolDataToDisplay){
+  //     this.publicService.getBrochurebyId(school._id, school.cycles[0].cycle._id)
+  //       .subscribe(
+  //         response => {
+  //           console.log(response)
+  //           if(response.code==400){
+  //             console.log(response.message)
+  //           } else {
+  //             this.schoolBrochure.push(response.data)
+  //           }
+  //         }
+  //       )
+  //   }
+  // }
+
+
+  // Go to the previous page
   onNavigateBack(){
     this.location.back();
   }
 
+  //On deleting one school to compare
   onDeleteCompare(index){
     console.log("click on delete");
     // console.log(this.schoolDataToDisplay);
@@ -112,12 +122,14 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     // console.log(this.schoolDataToDisplay);
   }
 
+  // After click on apply to a school
   onApply(school){
     console.log(school);
     this.makeProfile(school);
     let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
   }
 
+  // Make the config for the md dialog
   makeProfile(school){
     this.config= {
       data:{
@@ -135,6 +147,7 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     };
   }
 
+  // Save a school in wish list
   saveInWish(index){
     const data = {
       type : "wish",
@@ -148,6 +161,7 @@ export class CompareModeComponent implements OnInit, OnDestroy {
       )
   }
 
+  // Get the autocomplete select option for the search input
   addSchoolKeyDown(event){
     this.canAddSchool=false;
     console.log(event.target.value);
@@ -159,6 +173,7 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Get the autocomplete select option for the search input from API
   getSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -173,12 +188,16 @@ export class CompareModeComponent implements OnInit, OnDestroy {
       )
   }
 
+  // After user click on one school in the auto-complete input
   onSchoolClick(schoolId){
     console.log(schoolId)
     this.canAddSchool=true;
     this.schoolIdToCompare=schoolId;
   }
 
+  // After click on add a new school to compare
+  // Getting the new data to compare the schools
+  // If they have two same school -> sweet alert
   onAddSchool(){
     if(this.schoolToCompare.ids.indexOf(this.schoolIdToCompare)==-1){
       this.schoolToCompare.ids.push(this.schoolIdToCompare);
@@ -194,11 +213,10 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Open md dialog to send a message
   sendMessage(school){
     let config = this.sendService.makeProfile(school)
     this.dialog.open(SendMessageComponent, config);
   }
-
-
 
 }

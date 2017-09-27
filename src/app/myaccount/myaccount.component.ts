@@ -20,18 +20,20 @@ export class MyaccountComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(!this.authService.isUserLoggedIn()){
+    if(!this.authService.isUserLoggedIn()){ // If user is not logged, he is redirected to the login page
       this.route.navigate(['/login']);
     } else {
-      this.goTabNb(this.usersService.getTabNb());
+      this.goTabNb(this.usersService.getTabNb()); // Else user is redirect to the tab number (0 by default)
     }
   }
 
+  //Switch tabs
   goTabNb(nb){
     // console.log(nb)
     this.tabGroup.selectedIndex=nb;
   }
 
+  // Go to the child tab (number 2 )
   goToChild(event){
     // console.log(event);
     this.tabGroup.selectedIndex=1;

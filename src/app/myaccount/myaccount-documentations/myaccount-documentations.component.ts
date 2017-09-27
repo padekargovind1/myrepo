@@ -18,7 +18,7 @@ export class MyaccountDocumentationsComponent implements OnInit {
   ngOnInit() {
     console.log(this.brochureList);
     this.getApplication();
-    
+
     this.docList= [{
       school : {
         shortName:"",
@@ -29,6 +29,7 @@ export class MyaccountDocumentationsComponent implements OnInit {
     // console.log(this.brochureList);
   }
 
+  //Get the application list
   getApplication(){
     this.usersService.getApplication()
       .subscribe(
@@ -58,6 +59,7 @@ export class MyaccountDocumentationsComponent implements OnInit {
       )
   }
 
+  // get the brochure by Id from API
   getBrochureById(schoolId, cycleId){
     this.publicService.getBrochurebyId(schoolId, cycleId)
       .subscribe(

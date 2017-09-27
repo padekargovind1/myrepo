@@ -5,7 +5,7 @@ import { PublicService } from '../services/public.service';
 import { SchoolService } from '../services/school.service';
 import * as $ from 'jquery';
 import swal from 'sweetalert2';
-import * as helpers from '../helpers';
+import {HelperService} from "../services/helper.service";
 declare const wheelnav: any;
 
 @Component({
@@ -34,13 +34,17 @@ export class AccueilComponent implements OnInit {
   constructor(private router: Router,
               private publicService: PublicService,
               private fb: FormBuilder,
-              private schoolService : SchoolService
+              private schoolService : SchoolService,
+              private helperService : HelperService
               ) {
     this.runScript();
     this.buildForm();
     this.buildApbForm();
   }
 
+  // Init wheel menu
+  // Init rating API
+  // Get domaines for Enseignement supérieur select options
   ngOnInit() {
     this.wheel = new wheelnav('tabwheel');
     this.wheel.spreaderInTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
@@ -59,9 +63,11 @@ export class AccueilComponent implements OnInit {
     this.domaines = this.publicService.getDomaines();
   }
 
+  //Run script
+  // Check if is on mobile or not
   runScript() {
     const self = this;
-    const checkMobile = helpers.detectmob();
+    const checkMobile = this.helperService.detectmob();
     const selector_select: any = $('.select-all-advisor');
     const selector_deselect: any = $('.deselect-all-advisor');
     if (checkMobile) {
@@ -79,6 +85,7 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  // Init wheel navigation
   wheelNavigation() {
     const self = this;
     $(this.selectorWheel).mousedown(function(e){
@@ -117,20 +124,21 @@ export class AccueilComponent implements OnInit {
 
   }
 
+  // Swithing item on the wheel nav menu
   switchWheelComponent(wheelNavId: String, contentName: String) {
     const self = this;
     const selector_content = $('.' + contentName + '-content');
-    const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
+    //const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
 
     $(this.selectorWheel).removeClass('open');
     $('#' + wheelNavId).addClass('open');
-
-    if (selector_content.hasClass('fadeIn')) {
-      if (school_name.includes(contentName)) {
-        console.log('Need to navigate', contentName);
-        self.onNavigate(contentName);
-      }
-    }
+    self.onNavigate(contentName);
+    // if (selector_content.hasClass('fadeIn')) {
+    //   if (school_name.includes(contentName)) {
+    //     console.log('Need to navigate', contentName);
+    //     self.onNavigate(contentName);
+    //   }
+    // }
 
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
     selector_content.removeClass('fadeOut').addClass('fadeIn');
@@ -155,6 +163,8 @@ export class AccueilComponent implements OnInit {
     main.css(css);
   }
 
+  // Init rate
+  // Post rate in API
   initRate() {
     const rate = {
       page : '3'
@@ -171,11 +181,15 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  // Navigate to the page name
+  // componentName = page name
   navigate(componentName: String){
     this.publicService.cleanSearch();
     this.router.navigate(['/' + componentName]);
   }
 
+  // Call after keyup detected on location input
+  // if the word is more or equals to 2 letters, it call the function getLieuFilter to get the list
   filterLieu(event) {
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -184,6 +198,8 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  // Call after keyup detected on school input
+  // If they have more or equal to 3 letter then we call API to get school name
   filterSchool(event){
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -194,6 +210,7 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  // Same as filterSchool method except it's for enseignement supérieur
   filterApbSchool(event){
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -204,6 +221,7 @@ export class AccueilComponent implements OnInit {
     }
   }
 
+  // Method to get the location list from API
   getLieuFilter(filter: string){
     let data = {
       keyword : filter
@@ -222,6 +240,7 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  // Method to get the school list for before BAC from API
   getSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -238,6 +257,7 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  // Method to get the school list for after BAC from API
   getApbSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -259,6 +279,7 @@ export class AccueilComponent implements OnInit {
       )
   }
 
+  // Build form the before BAC search
   buildForm(){
     this.searchForm = this.fb.group({
       classe : [''],
@@ -268,6 +289,7 @@ export class AccueilComponent implements OnInit {
     this.initOptions()
   }
 
+  // Build form the after BAC search
   buildApbForm(){
     this.apbForm = this.fb.group({
       domaine : [''],
@@ -277,6 +299,7 @@ export class AccueilComponent implements OnInit {
     this.initOptions()
   }
 
+  // Init the 3 tabs for location list
   initOptions(){
     this.options['regions']=[];
     this.options['departements']=[];
@@ -284,6 +307,9 @@ export class AccueilComponent implements OnInit {
     console.log(this.options)
   }
 
+  //After submit the fast search
+  // Sweet alert if the form is not correctly field
+  // Else we store the data in the service and go to the component page
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
     if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement=="" && path!="enseignement"){
@@ -325,6 +351,8 @@ export class AccueilComponent implements OnInit {
   //   this.router.navigate(['/landing-page-'+index])
   // }
 
+  // Function to navigate in different page with the path
+  // We also call rate's API
   onNavigate(path){
     let rate = {
       id : this.rateId,
@@ -340,6 +368,8 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/'+path]);
   }
 
+  // function to show the good location name b'cause it's different than the value we send to API
+  // ex : 75001 to send but 75001 Paris to show on the website
   onSelectLieu(type:string, index:number){
     this.lieuSelected=[];
     if(type=='R'){
@@ -352,6 +382,7 @@ export class AccueilComponent implements OnInit {
     console.log(this.lieuSelected);
   }
 
+  // function to store the right name of the class name to show it on the school list
   storeClassName(event){
     console.log(event)
     this.publicService.storeClassName(event.toElement.selectedOptions[0].text);

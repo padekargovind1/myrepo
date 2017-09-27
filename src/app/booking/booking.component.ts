@@ -14,7 +14,7 @@ declare var fullCalendar: any;
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit, AfterViewInit {
-  tokenLog :boolean = false;;
+  tokenLog :boolean = false;
   bookingData = [];
   appointmentPackage : any;
   appointmentPackageId ="";
@@ -36,6 +36,9 @@ export class BookingComponent implements OnInit, AfterViewInit {
               private authService : AuthService,
               private router : ActivatedRoute) { }
 
+  // Check if user have selected a package from conseil page
+  // If not -> sweet alert and nagivate on conseil page
+  // Else get the booking Data and the appointment package
   ngOnInit() {
     if(!this.bookingService.haveBookingPackage()){
       swal({
@@ -51,11 +54,14 @@ export class BookingComponent implements OnInit, AfterViewInit {
     }
   }
 
+  //Call service to get the booking data
   getBookingData(){
     this.bookingData = this.bookingService.getBookingPackage();
     console.log(this.bookingData);
   }
 
+  // Get the appointment package data from API
+  //If it success then get the adviser list
   getAppointmentPackage(){
     this.usersService.getAppointmentsPackage()
       .subscribe(
@@ -73,6 +79,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
       )
   }
 
+  //Call API to get the package's adviser
   getListAdviser(){
     console.log(this.bookingData)
     this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]]._id)
@@ -123,10 +130,6 @@ export class BookingComponent implements OnInit, AfterViewInit {
   //     )
   // }
 
-  onCancelAppointment(){
-    this.route.navigate(['/conseil']);
-  }
-
   onConfirmAppointment(){
     let data = [];
     console.log(this.bookingDate)
@@ -146,28 +149,30 @@ export class BookingComponent implements OnInit, AfterViewInit {
 	this.route.navigate(['/payment']);
   }
 
-  applyEntretien(){
-    console.log(this.appointmentData);
-    const newAppointment = {
-      adviser : this.appointmentData[0],
-      from: this.appointmentData[2],
-      to:this.appointmentData[3]
-    }
-    this.usersService.postCreateNewAppointment(newAppointment, this.appointmentPackage[this.bookingData[3]]._id)
-      .subscribe(
-        response=>{
-          console.log(response);
-          if(response.code!=400){
-            this.bookingService.successSubmit();
-          }
-        }
-      )
-  }
+  // applyEntretien(){
+  //   console.log(this.appointmentData);
+  //   const newAppointment = {
+  //     adviser : this.appointmentData[0],
+  //     from: this.appointmentData[2],
+  //     to:this.appointmentData[3]
+  //   }
+  //   this.usersService.postCreateNewAppointment(newAppointment, this.appointmentPackage[this.bookingData[3]]._id)
+  //     .subscribe(
+  //       response=>{
+  //         console.log(response);
+  //         if(response.code!=400){
+  //           this.bookingService.successSubmit();
+  //         }
+  //       }
+  //     )
+  // }
 
+  // Init the calendar after the view is init
   ngAfterViewInit() {
     this.initCalendar();
   }
 
+  // Store the usefull data in appointmentData when user click on an available date of one adviser
   storeData(adviserId, start, end){
     // console.log(adviserId, start, end)
     const date = start.substr(0, 10);
@@ -177,8 +182,9 @@ export class BookingComponent implements OnInit, AfterViewInit {
     this.appointmentData = [adviserId, date, debut, fin, this.appointmentPackageId];
   }
 
+  // Init the available date of advisers with time, name, id etc...
   initDataAppoint(){
-    console.log("Package list : ", this.appointmentPackage, 
+    console.log("Package list : ", this.appointmentPackage,
       "Adviser List : ", this.adviserList);
     for(let adviser of this.adviserList){
       for(let day of adviser.calendar){
@@ -186,7 +192,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
         let fin = day.to[0].substr(11, 2);
         // console.log(debut, fin, day.from[0].substr(0, 10))
         this.calendarData.push({
-          title:'h - Disponible', 
+          title:'h - Disponible',
           start: day.from[0].substr(0, 10)+' '+debut+':00:00',
           end: day.to[0].substr(0, 10)+' '+ fin + ':00:00',
           adviserId: adviser._id,
@@ -199,6 +205,9 @@ export class BookingComponent implements OnInit, AfterViewInit {
     return this.calendarData;
   }
 
+  // method called after user click on one of the adviser's checkbox
+  // filter the calendar data and the adviser id list to show only the adviser who are checked
+  // refreshing the calendar date
   onCheckbox(adviserId){
     let index = this.adviserIdList.indexOf(adviserId);
     if(index==-1){
@@ -212,12 +221,15 @@ export class BookingComponent implements OnInit, AfterViewInit {
     this.refreshCalendar();
   }
 
+  //Refreshing full calendar data
   refreshCalendar(){
     $('#calendar').fullCalendar('removeEvents');
     $('#calendar').fullCalendar('addEventSource', this.adviserToDisplay);
     $('#calendar').fullCalendar('rerenderEvents');
   }
 
+  //Init the full calendar 2
+  // Init the function when user click on one of the date in the calendar
   initCalendar(){
     console.log(this.adviserToDisplay);
     const self = this;
@@ -250,16 +262,18 @@ export class BookingComponent implements OnInit, AfterViewInit {
         self.bookingDate[5] = calEvent.adviserId
         self.bookingDate[6] = calEvent.adviserImage
         console.log(self.bookingDate);
-      }, 
+      },
       events:this.adviserToDisplay
     });
   }
 
+  // Called when user click on 'Je selectionne tout' in the page
+  // Refreshing the calendar data
   onSelectAll(){
     console.log($('.checkbox').attr('class'))
     this.allChecked=true;
     this.adviserToDisplay = this.calendarData;
-	this.adviserIdList=[];
+	  this.adviserIdList=[];
     for(let adviser of this.adviserList){
       this.adviserIdList.push(adviser._id)
     }
@@ -267,11 +281,13 @@ export class BookingComponent implements OnInit, AfterViewInit {
     this.refreshCalendar();
   }
 
+  // Called when user click on 'Je déselectionne tout' in the page
+  // Refreshing the calendar data
   onUnselectAll(){
     this.adviserToDisplay = [];
     this.adviserIdList=[];
     this.allChecked=true;
-	setTimeout(()=>{
+	  setTimeout(()=>{
 		this.allChecked=false;
 	},10);
     this.refreshCalendar();

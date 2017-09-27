@@ -30,6 +30,7 @@ export class BrochureDownloadComponent implements OnInit {
     }
   }
 
+  // Get the brochure detail
   getbrochureDetail(schoolId, brochureId){
     console.log(schoolId, brochureId)
     this.publicService.getBrochurebyId(schoolId, brochureId)
@@ -53,6 +54,7 @@ export class BrochureDownloadComponent implements OnInit {
       )
   }
 
+  // remove one of the item in the list
   onRemoveBrochure(index){
     this.brochureList.splice(index, 1);
     if(this.brochureList.length==0){
@@ -60,10 +62,14 @@ export class BrochureDownloadComponent implements OnInit {
     }
   }
 
+
+  // After click on the cancel button
   onCancel(){
     this.dialogref.close();
   }
 
+
+  // After click on the submit
   onSubmit(){
     this.dialogref.close();
     // console.log("test1")
