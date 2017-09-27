@@ -11,6 +11,7 @@ import { SchoolService } from '../services/school.service';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { CustomValidators } from 'ng2-validation';
 import swal from 'sweetalert2';
+import {HelperService} from "../services/helper.service";
 
 const URL = 'http://54.254.203.172/cide-school/upload/';
 
@@ -56,7 +57,8 @@ export class ApplytoComponent implements OnInit {
               private route : Router,
               private fb : FormBuilder,
               private router : ActivatedRoute,
-              private schoolService : SchoolService) {
+              private schoolService : SchoolService,
+              private helperService : HelperService) {
 
                 this.subscription = this.router.params
                   .subscribe(

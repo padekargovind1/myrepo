@@ -75,7 +75,7 @@ export class WizardComponent implements OnInit, AfterViewInit {
               //private publicService : PublicService,
 			        private dateAdapter: DateAdapter<Date>,
               //public datepipe: DatePipe
-              private helperService : HelperService,
+              public helperService : HelperService,
               public wizardService : WizardService
               ) {
     this.dateAdapter.setLocale('nl');

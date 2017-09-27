@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HelperService} from "../services/helper.service";
 
 @Component({
   selector: 'app-detail-appointment',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailAppointmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(public helperService : HelperService) { }
 
   ngOnInit() {
   }

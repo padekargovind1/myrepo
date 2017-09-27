@@ -6,6 +6,7 @@ import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { SendService } from '../../services/send.service';
 import { AuthService } from '../../services/auth.service';
+import {HelperService} from "../../services/helper.service";
 
 @Component({
   selector: 'app-send-message',
@@ -21,7 +22,8 @@ export class SendMessageComponent implements OnInit {
               private usersService : UsersService,
               private sendService : SendService,
               private authService : AuthService,
-              @Inject(MD_DIALOG_DATA) private data: {school : any}) {
+              @Inject(MD_DIALOG_DATA) private data: {school : any},
+              public helperService : HelperService) {
                 this.buildFormGroup();
                 this.getProfile();
               }

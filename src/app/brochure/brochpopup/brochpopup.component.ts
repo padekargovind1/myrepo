@@ -6,6 +6,7 @@ import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { SendService } from '../../services/send.service';
 import { BrochureService } from '../../services/brochure.service';
+import {HelperService} from "../../services/helper.service";
 
 @Component({
   selector: 'app-brochpopup',
@@ -20,7 +21,8 @@ export class BrochpopupComponent implements OnInit {
               private fb : FormBuilder,
               private usersService : UsersService,
               private sendService : SendService,
-              private brochureService : BrochureService) {
+              private brochureService : BrochureService,
+              public helperService : HelperService) {
                 this.buildFormGroup();
                 this.getProfile();
               }
