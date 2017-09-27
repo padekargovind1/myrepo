@@ -110,7 +110,7 @@ export class MyaccountChildrenComponent implements OnInit {
   //   })
   // }
 
-  patchValue(data: any){
+  patchValue(data: any){ 
     console.log(data);
     this.childrenForm.patchValue({
       nom : data.lastName=='A compléter' ? '' : data.lastName,
@@ -145,7 +145,7 @@ export class MyaccountChildrenComponent implements OnInit {
     console.log(this.childrenForm);
   }
 
-  completeProfile(){
+  completeProfile(){ 
     this.myProfile.lastName = this.childrenForm.value.nom;
     this.myProfile.firstName = this.childrenForm.value.prenom;
     this.myProfile.age = this.childrenForm.value.age;
