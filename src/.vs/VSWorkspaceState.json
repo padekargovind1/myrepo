@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\app\\superieur",
+    "\\app\\wizard",
+    "\\assets"
   ],
+  "SelectedNode": "\\assets\\scss",
   "PreviewInSolutionExplorer": false
 }
