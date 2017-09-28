@@ -2335,6 +2335,9 @@ text-align:center;
   .compare-table-cls .content-compare-table{margin-right:0; float:left;}
   .top-compare-table{position:relative; z-index:9999;}
 
+.compare-item .language.collapse{display:none !important; height:0px !important; opacity:0 !important; visibility:hidden !important;}
+  .compare-item .language.collapse.in{display:block !important; height:auto !important;opacity:1 !important;visibility:visible !important;} 
+  
   }
 
   @media (max-width:479px) {
