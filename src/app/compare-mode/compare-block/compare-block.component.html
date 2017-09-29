@@ -69,7 +69,7 @@
 
     <div [class]="'cycleSlick'+schoolDataToDisplay.counter">
 
-            <ul class="compare-item center class-cycle">
+            <!--ul class="compare-item center class-cycle">
                 <li class="title"><h5 style="margin-bottom:2px">&nbsp;</h5>
                 <!--<div class="collapse in language">
                     <ul class="compare-item">
@@ -78,18 +78,18 @@
                         </li>
                     </ul>
                 </div>-->
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label>
                             <select name="class" class="form-control comSchDropMobFix" id="class" 
                                 (click)="cycleChanging($event)" style="width:162px">
                                 <!--<option value="" disabled selected hidden>Classe</option>-->
-                                <!--<option value="" selected>Classe</option>-->
+                                <!--<option value="" selected>Classe</option>>
                                 <option *ngFor="let school of schoolDataToDisplay.cycles; let i=index">
                                     {{ schoolDataToDisplay.cycles[i].cycle.nom }}
                                 </option>
                             </select>
                         </label>
-                    </div>
+                    </div-->
                 <!--<button md-button [mdMenuTriggerFor]="menu">Choisir un cycle
                 </button>
                 <md-menu #menu="mdMenu" >
@@ -98,9 +98,9 @@
                         (click)="cycleChanging(i)">
                         {{ schoolDataToDisplay.cycles[i].cycle.nom }}
                     </button>
-                </md-menu>-->
+                </md-menu>>
                 </li>
-            </ul>
+            </ul-->
 
             <ul class="compare-item center class-cycle"
                 *ngIf="compareListFilter[1]=='true'">
