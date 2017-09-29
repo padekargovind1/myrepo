@@ -1,0 +1,117 @@
+<form [formGroup]="wizardForm">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Etablissements fréquentés</h3>
+      <div class="row" formArrayName="primary"
+           *ngFor="let parent of wizardForm.controls['primary']['controls']; let i = index">
+        <div [formGroupName]="i">
+          <h4 style="margin-left:15px">Primaire {{i+1}}*</h4>
+          <div class="col-sm-3">
+            <div class="form-group">
+              Nom de l'établissement
+              <input type="text" class="form-control" placeholder="Nom"
+                     formControlName="primarySchoolName"
+                     maxlength="100">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <div class="select-custom">
+                Classe redoublée*
+                <select name="" class="form-control"
+                        formControlName="primarySchoolRepeat">
+                  <option value="" disabled selected hidden>Classe redoublée</option>
+                  <option *ngFor="let school of primarySchool" value="school">{{ school }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              Cause du redoublement*
+              <input type="text" class="form-control" placeholder="Cause du redoublement"
+                     formControlName="causeOfRepeatPrimary"
+                     maxlength="100">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            &nbsp;<br>&nbsp;
+            <button class="btn  btn-danger" style="float:right"
+                    (click)="onRemovePrimaire(i)"
+                    *ngIf="wizardForm.controls['primary']['controls'].length>0">
+              Retirer une école primaire
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn  btn-appointment" style="margin-left:0px"
+                (click)="onAddPrimaire()">
+          Ajouter une école primaire
+        </button>
+      </div>
+      <div class="row" formArrayName="secondary"
+           *ngFor="let parent of wizardForm.controls['secondary']['controls']; let i = index">
+        <div [formGroupName]="i">
+          <h4 style="margin-left:15px">Secondaire {{i+1}}</h4>
+          <div class="col-sm-3">
+            <div class="form-group">
+              Nom de l'établissement*
+              <input type="text" class="form-control" placeholder="Nom"
+                     formControlName="secondarySchoolName"
+                     maxlength="100">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <div class="select-custom">
+                Classe redoublée*
+                <select name="" class="form-control"
+                        formControlName="secondarySchoolRepeat">
+                  <option value="" disabled selected hidden>Classe redoublée</option>
+                  <option *ngFor="let school of secondarySchool" value="school">{{ school }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              Cause du redoublement*
+              <input type="text" class="form-control" placeholder="Cause du redoublement"
+                     formControlName="causeOfRepeatSecondary"
+                     maxlength="100">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            &nbsp;<br>&nbsp;
+            <button class="btn  btn-danger" style="float:right"
+                    (click)="onRemoveSecondaire(i)"
+                    *ngIf="wizardForm.controls['secondary']['controls'].length>0">
+              Retirer une école secondaire
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn  btn-appointment"
+                (click)="onAddSecondaire()" style="margin-left:0px">
+          Ajouter une école secondaire
+        </button>
+      </div>
+
+
+    </div><!-- .col-* -->
+  </div><!-- .row -->
+  <div class="row">
+    <div class="form-group clearfix">
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(5)" style="float:left; margin-left:0px">
+        Précédent
+      </button>
+      <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(7)"
+              style="float:right">
+        Suivant
+      </button>
+    </div>
+  </div>
+</form>

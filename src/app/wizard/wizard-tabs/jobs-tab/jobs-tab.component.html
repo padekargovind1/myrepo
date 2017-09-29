@@ -1,0 +1,144 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <h3>Professions souhaitées. Cette section du Dossier doit être complétée avec l’élève.
+      Toutes les professions doivent être renseignées</h3>
+    <div class="job-group-content">
+      <h4>Groupe A</h4>
+
+      <ul class="job-group-list">
+        <li *ngFor="let profession of professionList.professionFormA; let i=index">{{profession.name}}
+          <div class="checkbox-job-group">
+            <label class="custom-radio face sad pull-right">
+              <input type="radio" [name]="profession.name" value="sad"
+                     (click)="clickOnSmiley('professionFormA', i, false)"/>
+              <span>&nbsp;</span>
+            </label>
+            <label class="custom-radio face happy pull-right">
+              <input type="radio" [name]="profession.name" value="happy"
+                     (click)="clickOnSmiley('professionFormA', i, true)"/>
+              <span>&nbsp;</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="job-group-content">
+      <h4>Groupe B</h4>
+
+      <ul class="job-group-list">
+        <li *ngFor="let profession of professionList.professionFormB; let i=index">{{profession.name}}
+          <div class="checkbox-job-group">
+            <label class="custom-radio face sad pull-right">
+              <input type="radio" [name]="profession.name" value="sad"
+                     (click)="clickOnSmiley('professionFormB', i, false)"/>
+              <span>&nbsp;</span>
+            </label>
+            <label class="custom-radio face happy pull-right">
+              <input type="radio" [name]="profession.name" value="happy"
+                     (click)="clickOnSmiley('professionFormB', i, true)"/>
+              <span>&nbsp;</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="job-group-content">
+      <h4>Groupe C</h4>
+
+      <ul class="job-group-list">
+        <li *ngFor="let profession of professionList.professionFormC; let i=index">{{profession.name}}
+          <div class="checkbox-job-group">
+            <label class="custom-radio face sad pull-right">
+              <input type="radio" [name]="profession.name" value="sad"
+                     (click)="clickOnSmiley('professionFormC', i, false)"/>
+              <span>&nbsp;</span>
+            </label>
+            <label class="custom-radio face happy pull-right">
+              <input type="radio" [name]="profession.name" value="happy"
+                     (click)="clickOnSmiley('professionFormC', i, true)"/>
+              <span>&nbsp;</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="job-group-content">
+      <h4>Groupe D</h4>
+
+      <ul class="job-group-list">
+        <li *ngFor="let profession of professionList.professionFormD; let i=index">{{profession.name}}
+          <div class="checkbox-job-group">
+            <label class="custom-radio face sad pull-right">
+              <input type="radio" [name]="profession.name" value="sad"
+                     (click)="clickOnSmiley('professionFormD', i, false)"/>
+              <span>&nbsp;</span>
+            </label>
+            <label class="custom-radio face happy pull-right">
+              <input type="radio" [name]="profession.name" value="happy"
+                     (click)="clickOnSmiley('professionFormD', i, true)"/>
+              <span>&nbsp;</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="job-group-content">
+      <h4>Groupe E</h4>
+
+      <ul class="job-group-list">
+        <li *ngFor="let profession of professionList.professionFormE; let i=index">{{profession.name}}
+          <div class="checkbox-job-group">
+            <label class="custom-radio face sad pull-right">
+              <input type="radio" [name]="profession.name" value="sad"
+                     (click)="clickOnSmiley('professionFormE', i, false)"/>
+              <span>&nbsp;</span>
+            </label>
+            <label class="custom-radio face happy pull-right">
+              <input type="radio" [name]="profession.name" value="happy"
+                     (click)="clickOnSmiley('professionFormE', i, true)"/>
+              <span>&nbsp;</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="job-group-content">
+      <h4>Groupe F</h4>
+
+      <ul class="job-group-list">
+        <li *ngFor="let profession of professionList.professionFormF; let i=index">{{profession.name}}
+          <div class="checkbox-job-group">
+            <label class="custom-radio face sad pull-right">
+              <input type="radio" [name]="profession.name" value="sad"
+                     (click)="clickOnSmiley('professionFormF', i, false)"/>
+              <span>&nbsp;</span>
+            </label>
+            <label class="custom-radio face happy pull-right">
+              <input type="radio" [name]="profession.name" value="happy"
+                     (click)="clickOnSmiley('professionFormF', i, true)"/>
+              <span>&nbsp;</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div><!-- .col-* -->
+  <div class="row">
+    <div class="form-group clearfix">
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(6)" style="float:left; margin-left:0px">
+        Précédent
+      </button>
+      <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(8)"
+              style="float:right">
+        Suivant
+      </button>
+    </div>
+  </div>
+</div><!-- .row -->

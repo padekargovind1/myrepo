@@ -1,0 +1,214 @@
+<form [formGroup]="wizardForm">
+  <div class="col-md-4">
+
+    <h3>Etablissement Actuel</h3>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          Nom de l'établissement*
+          <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
+                 [formControl]="wizardForm.controls['schoolName']" maxlength="50">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group  col-sm-12  col-xs-6">
+        <div class="row">
+          <div class="col-sm-12">
+            Ville de l'établissement*
+            <input type="text" class="form-control" placeholder="Ville"
+                   [formControl]="wizardForm.controls['schoolCity']" maxlength="35">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group  col-sm-12  col-xs-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="select-custom">
+              Classe actuelle*
+              <select name="" class="form-control"
+                      [formControl]="wizardForm.controls['schoolClasse']">
+                <option value="" selected>Classe</option>
+                <option value="">&nbsp;Indifférent</option>
+                <option value="ps" style="color:red">
+                  &nbsp;Classes maternelles
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().infant; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().infant[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="cp" style="color:red">
+                  &nbsp;Classes élémentaires
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().primary; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().primary[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().college; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().college[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="seconde_techno" style="color:red">
+                  &nbsp;Classes de seconde
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().seconde; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().seconde[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="premiere_es" style="color:red">
+                  &nbsp;Classes de première
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().premiere; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().premiere[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="terminale_s" style="color:red">
+                  &nbsp;Classes de terminale
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().terminal; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().terminal[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="Cursus international" style="color:red">
+                  &nbsp;Cursus international
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().international; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().international[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="seconde_sthr" style="color:red">
+                  &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="premiere_sti2s" style="color:red">
+                  &nbsp;ST2S - Sciences et Technologies de la santé et du social
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().st2s; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().st2s[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="premiere_std2a" style="color:red">
+                  &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().std2a; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().std2a[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="premiere_sti2d" style="color:red">
+                  &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().sti2d; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().sti2d[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="premiere_stmg" style="color:red">
+                  &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().stmg; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().stmg[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="premiere_stl" style="color:red">
+                  &nbsp;STL - Sciences et Technologies de Laboratoire
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().stl; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().stl[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="premiere_stav" style="color:red">
+                  &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().stav; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().stav[i]">
+                  &nbsp;{{name}}
+                </option>
+                <option value="2ndeTMD" style="color:red">
+                  &nbsp;TMD - Techniques de la Musique et de la Danse
+                </option>
+                <option *ngFor="let name of helperService.getClassEcoleList().tmd; let i=index"
+                        [value]="helperService.getclassEcoleListToSendToApi().tmd[i]">
+                  &nbsp;{{name}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          Options
+          <input type="text" class="form-control" placeholder="Options"
+                 [formControl]="wizardForm.controls['schoolOption']"
+                 maxlength="50">
+        </div>
+      </div>
+    </div>
+
+    <h4>Langues Vivantes</h4>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="select-custom">
+            Lv1
+            <select name="" class="form-control"
+                    [formControl]="wizardForm.controls['schoolLv1']">
+              <option value="" disabled selected hidden>Lv1</option>
+              <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="select-custom">
+            Lv2
+            <select name="" class="form-control"
+                    [formControl]="wizardForm.controls['schoolLv2']">
+              <option value="" disabled selected hidden>Lv2</option>
+              <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="select-custom">
+            Lv3
+            <select name="" class="form-control"
+                    [formControl]="wizardForm.controls['schoolLv3']">
+              <option value="" disabled selected hidden>Lv3</option>
+              <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group clearfix">
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(1)" style="float:left; margin-left:0px">
+        Précédent
+      </button>
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(3)" style="float:right">
+        Suivant
+      </button>
+    </div>
+  </div>
+</form>

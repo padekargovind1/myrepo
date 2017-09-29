@@ -1,0 +1,38 @@
+<form [formGroup]="wizardForm">
+  <div class="col-md-4">
+
+    <h3>Diagnostic</h3>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          Motif du diagnostic
+          <textarea class="form-control"
+                    [formControl]="wizardForm.controls['reasonDiagnostic']">
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          Remarques
+          <textarea class="form-control"
+                    [formControl]="wizardForm.controls['note']">
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .col-* -->
+  <div class="col-md-12">
+    <button class="btn  btn-appointment wizard-button-align"
+            (click)="nextTab(7)" style="float:left; margin-left:0px">
+      Précédent
+    </button>
+    <button class="btn btn-appointment pull-right"
+            type="submit" (click)="onSubmit()"
+            style="float:right">Terminer</button>
+  </div>
+</form>

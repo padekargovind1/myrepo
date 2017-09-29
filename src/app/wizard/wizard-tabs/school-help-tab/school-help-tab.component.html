@@ -1,0 +1,50 @@
+<form [formGroup]="wizardForm">
+  <div class="col-md-4">
+    <h3>Aide Scolaire*</h3>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          <input type="checkbox" name="" class="checkbox filled-in"
+                 id="scolaire-filter" [formControl]="wizardForm.controls['schoolHelp']"
+                 (click)="onChecked()" />
+          <label for="scolaire-filter">
+            Etes-vous aidé scolairement?
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row" style="margin-bottom:20px">
+        <div class="col-sm-12">
+          <div class="select-custom dans-quelles">
+            <select name="" class="form-control multiselect"
+                    id="dans-quelles" *ngIf="checked">
+              <option value="">Dans quelles matières</option>
+              <option *ngFor="let subject of subjectSchool" value="subject">
+                <md-checkbox>{{subject}}</md-checkbox>
+              </option>
+              <select name="Autre Langue" id=""></select>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .col-* -->
+  <div class="col-md-12">
+    <div class="form-group clearfix">
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(2)" style="float:left; margin-left:0px">
+        Précédent
+      </button>
+      <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(4)"
+              style="float:right">
+        Suivant
+      </button>
+    </div>
+  </div><p>
+    school-help-tab works!
+  </p>
+</form>

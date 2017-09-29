@@ -32,6 +32,15 @@ export class WizardService {
   finalProfessionList =[];
   //Data to update -> to send to API
   appointmentData;
+  lienparents = [ "Père",
+    "Mère",
+    "Oncle",
+    "Tante",
+    "Grand-Père",
+    "Grand-Mère",
+    "Tuteur",
+    "Tutrice"];
+  langues = ["Français", "Anglais", "Espagnol", "Allemand", "Italien"];
 
   constructor(private usersService : UsersService) { }
 
@@ -189,6 +198,14 @@ export class WizardService {
 
   getSubjectList(){
     return this.subjectList;
+  }
+
+  getLienParent(){
+    return this.lienparents;
+  }
+
+  getLangues(){
+    return this.langues;
   }
 
 }

@@ -552,4 +552,8 @@ export class WizardComponent implements OnInit, AfterViewInit {
   nextTab(nb){
     this.tabGroup.selectedIndex=nb;
   }
+
+  testEventEmiter(event){
+    console.log(event);
+  }
 }

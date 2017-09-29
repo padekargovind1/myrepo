@@ -1,0 +1,117 @@
+<form [formGroup]="wizardForm">
+  <div class="col-md-12">
+    <h3>Elève</h3>
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-sm-6  col-xs-6">
+        <div class="form-group">
+          Nom de famille*
+          <input type="text" class="form-control" placeholder="Nom"
+                 [formControl]="wizardForm.controls['childLastName']"
+                 maxlength="25">
+        </div>
+      </div>
+      <div class="col-sm-6  col-xs-6">
+        <div class="form-group">
+          Prénom*
+          <input type="text" class="form-control" placeholder="Prénom"
+                 [formControl]="wizardForm.controls['childFirstName']"
+                 maxlength="25">
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <!-- <div class="col-sm-12">
+          <div class="row"> -->
+      <div class="col-sm-3  col-xs-6">
+        <div class="form-group">
+          Age*
+          <input type="number" class="form-control" max="50" min="1" placeholder="Age"
+                 [formControl]="wizardForm.controls['childAge']" maxlength="2"
+                 pattern="[0-9]+" id="txtAge">
+          <small *ngIf="wizardForm.controls['childAge'].hasError('required') &&
+                                                                      wizardForm.controls['childAge'].touched"
+                 class="mat-text-warn">
+            Age Obligatoire
+          </small>
+          <small *ngIf="wizardForm.controls['childAge'].hasError('max')"
+                 class="mat-text-warn">
+            L'âge est incorrect
+          </small>
+          <small *ngIf="wizardForm.controls['childAge'].hasError('min') &&
+                                                                      wizardForm.controls['childAge'].touched"
+                 class="mat-text-warn">
+            L'âge ne doit pas être négatif
+          </small>
+        </div>
+      </div>
+      <div class="col-sm-3  hidden-xs">&nbsp;</div>
+      <!-- <div class="select-custom">
+          <select name="" class="form-control">
+              <option value="">Age</option>
+          </select>
+      </div> -->
+      <div class="col-sm-6  col-xs-6">
+        <div class="form-group">
+          <div class="horizontal-radio">
+
+            <md-radio-group [formControl]="wizardForm.controls['childTitle']">
+              <md-radio-button value="garçon">Garçon</md-radio-button>
+              <md-radio-button value="fille">Fille</md-radio-button>
+            </md-radio-group>
+
+            <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Garçon</span></label>
+            <label class="custom-radio"><input type="radio" name="gender"> <span>Fille</span></label>-->
+          </div>
+        </div>
+      </div>
+      <!-- </div>
+  </div> -->
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <div class="datepicker-holder">
+            Date de naissance*
+            <div class="calendarCont">
+              <input type="text" id="birthdate" class="form-control"
+                     placeholder="Date de naissance" [max]="maxDate"
+                     [formControl]="wizardForm.controls['childBirthDay']" [mdDatepicker]="picker">
+
+              <!-- <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button> -->
+              <!--md-datepicker-toggle mdSuffix [for]="myDatepicker"></md-datepicker-toggle-->
+              <!--<md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>-->
+              <md-datepicker #picker></md-datepicker>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          Lieu de naissance*
+          <input type="text" class="form-control" placeholder="Lieu"
+                 [formControl]="wizardForm.controls['childBirthPlace']"
+                 maxlength="30">
+        </div>
+      </div>
+    </div>
+  </div><!-- .col-* -->
+  <div class="col-md-12">
+    <div class="form-group clearfix">
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(0)" style="float:left; margin-left:0px">
+        Précédent
+      </button>
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(2)" style="float:right">
+        Suivant
+      </button>
+    </div>
+  </div>
+</form>

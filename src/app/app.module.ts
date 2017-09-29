@@ -94,6 +94,15 @@ import { UnderConstructionComponent } from './under-construction/under-construct
 import {AppGuard} from "./app.guard";
 import { WizardProfessionComponent } from './wizard/wizard-profession/wizard-profession.component';
 import {WizardService} from "./services/wizard.service";
+import { ParentTabComponent } from './wizard/wizard-tabs/parent-tab/parent-tab.component';
+import { ChildTabComponent } from './wizard/wizard-tabs/child-tab/child-tab.component';
+import { CurrentSchoolTabComponent } from './wizard/wizard-tabs/current-school-tab/current-school-tab.component';
+import { SchoolHelpTabComponent } from './wizard/wizard-tabs/school-help-tab/school-help-tab.component';
+import { SubjectsTabComponent } from './wizard/wizard-tabs/subjects-tab/subjects-tab.component';
+import { EstablishmentTabComponent } from './wizard/wizard-tabs/establishment-tab/establishment-tab.component';
+import { JobsTabComponent } from './wizard/wizard-tabs/jobs-tab/jobs-tab.component';
+import { DiagnosticTabComponent } from './wizard/wizard-tabs/diagnostic-tab/diagnostic-tab.component';
+import { HobbiesTabComponent } from './wizard/wizard-tabs/hobbies-tab/hobbies-tab.component';
 
 @NgModule({
   declarations: [
@@ -156,7 +165,16 @@ import {WizardService} from "./services/wizard.service";
     SendMessageComponent,
 	PaymentComponent,
 	UnderConstructionComponent,
-	WizardProfessionComponent
+	WizardProfessionComponent,
+	ParentTabComponent,
+	ChildTabComponent,
+	CurrentSchoolTabComponent,
+	SchoolHelpTabComponent,
+	SubjectsTabComponent,
+	EstablishmentTabComponent,
+	JobsTabComponent,
+	DiagnosticTabComponent,
+	HobbiesTabComponent
   ],
   imports: [
     BrowserModule,
