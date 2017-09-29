@@ -41,7 +41,7 @@
                     <div class="col-md-12 compare-table-wrap">
                         <div class="compare-table">
                             
-                            <div class="content-compare-table">
+                            <div class="content-compare-table compareTableLeftLogo">
 
                                 <div class="top-compare-table first">
                                     <img src="assets/images/cide-compare-table.png" alt="" width="145" />
@@ -277,56 +277,60 @@
                             </div>
 
                             <ng-template #compare1>
+                              <div class="compareSliderMobile">
                                 <div class="content-compare-table"
-                                    *ngFor="let school of schoolDataToDisplay; let i =index">
-                                <div class="top-compare-table">
-                                        <button type="button" 
-                                            class="close" 
-                                            data-dismiss="modal" 
+                                     *ngFor="let school of schoolDataToDisplay; let i =index">
+                                  <div class="top-compare-table">
+                                    <button type="button"
+                                            class="close"
+                                            data-dismiss="modal"
                                             aria-label="Close"
                                             (click)="onDeleteCompare(i)">
-                                            <img src="assets/images/cide-remove.png" width="16" />
-                                        </button>
-                                        <div class="card  school-item">
-                                            <ul class="school-action">
-                                                <li><a (click)="saveInWish(i)"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
-                                                <li><a (click)="sendMessage(school)"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
-                                                <li><a ><i class="fa fa-share" aria-hidden="true"></i></a></li>
-                                                <li *ngIf="schoolBrochure.length!=0">
-                                                    <a href="http://54.254.203.172/cideapi{{schoolBrochure[i].brochure}}" download="brochure.pdf" target="_self">
-                                                        <i class="fa fa-download" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            
-                                            <img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1" />
-                                            
-                                            <div class="card-content">
-                                                <h3 style="height:30px"
-                                                    mdTooltip="{{ school.shortName }}">
-                                                    {{school.shortName | school:35}}
-                                                </h3>
-                                                <p style="height:28px; margin:0px"
-                                                    mdTooltip="{{ school.longName }}">
-                                                    {{school.longName | school:42}} 
-                                                    <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
-                                                <address style="height:48px; margin:0px">{{school.address.ad1}}<br /> 
-                                                    {{school.address.postcode}} {{school.address.city}}<br /> 
-                                                    Tel: {{school.address.phoneNumber}}</address>
+                                      <img src="assets/images/cide-remove.png" width="16" />
+                                    </button>
+                                    <div class="card  school-item">
+                                      <ul class="school-action">
+                                        <li><a (click)="saveInWish(i)"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+                                        <li><a (click)="sendMessage(school)"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                        <li><a><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                        <li *ngIf="schoolBrochure.length!=0">
+                                          <a href="http://54.254.203.172/cideapi{{schoolBrochure[i].brochure}}" download="brochure.pdf" target="_self">
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                          </a>
+                                        </li>
+                                      </ul>
 
-                                                <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
-                                                <button type="button" class="btn btn-secondary btn-block" 
-                                                    (click)="onApply(school)">
-                                                    Sélectionner</button>
-                                                <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Sélectionner</button> -->
-                                            </div><!-- .card-content -->
+                                      <img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1" />
 
-                                        </div><!-- .card -->
-                                    </div>
-                                    <app-compare-block [schoolDataToDisplay]="school"></app-compare-block>
+                                      <div class="card-content">
+                                        <h3 style="height:30px"
+                                            mdTooltip="{{ school.shortName }}">
+                                          {{school.shortName | school:35}}
+                                        </h3>
+                                        <p style="height:28px; margin:0px"
+                                           mdTooltip="{{ school.longName }}">
+                                          {{school.longName | school:42}}
+                                          <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
+                                          <address style="height:48px; margin:0px">
+                                            {{school.address.ad1}}<br />
+                                            {{school.address.postcode}} {{school.address.city}}<br />
+                                            Tel: {{school.address.phoneNumber}}
+                                          </address>
+
+                                          <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
+                                          <button type="button" class="btn btn-secondary btn-block"
+                                                  (click)="onApply(school)">
+                                            Sélectionner
+                                          </button>
+                                          <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Sélectionner</button> -->
+                                      </div><!-- .card-content -->
+
+                                    </div><!-- .card -->
+                                  </div>
+                                  <app-compare-block [schoolDataToDisplay]="school"></app-compare-block>
 
                                 </div>
-
+                              </div>  
                             </ng-template>
                         </div>
 

@@ -2536,4 +2536,30 @@ text-align:center;
   .compareSliderMobile .content-compare-table {
     width: 50%;
   }
+  .compare-table-cls .compare-table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .compareSliderMobile .slick-prev, .compareSliderMobile .slick-next {
+    top: 85px;
+  }
+  .compareSliderMobile .content-compare-table .top-compare-table,
+  .compare-table-cls .compareTableLeftLogo .top-compare-table {
+    max-height: 170px;
+    overflow: hidden;
+  }
+
+
+
 }
+@media (max-width:500px) {
+  .top-compare-table .school-item img {
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  .compare-table-cls .top-compare-table .school-action li {display:none !important;}
+
+
+  }

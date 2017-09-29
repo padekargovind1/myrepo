@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdDialog } from '@angular/material';
@@ -10,7 +10,8 @@ import swal from 'sweetalert2';
 //var self = this;
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
-
+declare const jquery: any;
+declare const $: any;
 @Component({
   selector: 'app-compare-mode',
   templateUrl: './compare-mode.component.html',
@@ -59,6 +60,24 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     }
     this.schoolToCompare.ids=this.compareService.getSchoolToCompareId()
     this.getSchoolData();
+    this.runScript();
+  }
+  runScript() {
+      setTimeout(function () {
+          var winWidth = $(window).width();
+          //alert(winWidth);
+          if (winWidth < 640) {
+              //alert(winWidth);
+              //alert($('.compareSliderMobile').length);
+              $('.compareSliderMobile').slick({
+                  arrows: true,
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  autoplay: false
+              });
+          }
+      },3500);
+      
   }
 
   // After change page -> clean the filter and the school to compare in the services
