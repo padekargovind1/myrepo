@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomValidators} from "ng2-validation";
 import {WizardService} from "../../../services/wizard.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-child-tab',
@@ -15,7 +16,8 @@ export class ChildTabComponent implements OnInit {
   maxDate = new Date();
 
   constructor(private fb : FormBuilder,
-              private wizardService : WizardService) { }
+              private wizardService : WizardService,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
     this.buildForm();
@@ -49,6 +51,11 @@ export class ChildTabComponent implements OnInit {
   }
   //Save and go to the next tab
   nextTab(nb:number){
-    this.tabChange.emit(nb);
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('childData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+    }else {
+      this.bookingService.failSubmit();
+    }
   }
 }

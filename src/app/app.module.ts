@@ -92,7 +92,6 @@ import { SendMessageComponent } from './shared/send-message/send-message.compone
 import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import {AppGuard} from "./app.guard";
-import { WizardProfessionComponent } from './wizard/wizard-profession/wizard-profession.component';
 import {WizardService} from "./services/wizard.service";
 import { ParentTabComponent } from './wizard/wizard-tabs/parent-tab/parent-tab.component';
 import { ChildTabComponent } from './wizard/wizard-tabs/child-tab/child-tab.component';
@@ -163,18 +162,17 @@ import { HobbiesTabComponent } from './wizard/wizard-tabs/hobbies-tab/hobbies-ta
     SuperieurInfoComponent,
     ClassChoiceComponent,
     SendMessageComponent,
-	PaymentComponent,
-	UnderConstructionComponent,
-	WizardProfessionComponent,
-	ParentTabComponent,
-	ChildTabComponent,
-	CurrentSchoolTabComponent,
-	SchoolHelpTabComponent,
-	SubjectsTabComponent,
-	EstablishmentTabComponent,
-	JobsTabComponent,
-	DiagnosticTabComponent,
-	HobbiesTabComponent
+    PaymentComponent,
+    UnderConstructionComponent,
+    ParentTabComponent,
+    ChildTabComponent,
+    CurrentSchoolTabComponent,
+    SchoolHelpTabComponent,
+    SubjectsTabComponent,
+    EstablishmentTabComponent,
+    JobsTabComponent,
+    DiagnosticTabComponent,
+    HobbiesTabComponent
   ],
   imports: [
     BrowserModule,

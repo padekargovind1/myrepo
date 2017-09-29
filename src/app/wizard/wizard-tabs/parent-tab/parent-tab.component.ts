@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomValidators} from "ng2-validation";
 import {WizardService} from "../../../services/wizard.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-parent-tab',
@@ -17,7 +18,8 @@ export class ParentTabComponent implements OnInit {
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private fb : FormBuilder,
-              private wizardService : WizardService) { }
+              private wizardService : WizardService,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
     this.buildForm();
@@ -78,7 +80,12 @@ export class ParentTabComponent implements OnInit {
   }
   //Save and go to the next tab
   nextTab(nb : number){
-    this.tabChange.emit(nb);
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('parentData', this.wizardForm.value.parents);
+      this.tabChange.emit(nb);
+    }else {
+      this.bookingService.failSubmit();
+    }
   }
 
   getLienParent(){

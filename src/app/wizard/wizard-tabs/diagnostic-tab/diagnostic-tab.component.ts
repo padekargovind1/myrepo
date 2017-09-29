@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
-import {CustomValidators} from "ng2-validation";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-diagnostic-tab',
@@ -14,7 +14,8 @@ export class DiagnosticTabComponent implements OnInit {
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private fb : FormBuilder,
-              private wizardService : WizardService) { }
+              private wizardService : WizardService,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
     this.buildForm();
@@ -28,9 +29,15 @@ export class DiagnosticTabComponent implements OnInit {
   }
   //Save and go to the next tab
   nextTab(nb:number){
-    this.tabChange.emit(nb);
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('hobbiesData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+    }else {
+      this.bookingService.failSubmit();
+    }
   }
   onSubmit(){
-
+    console.log("On Submit");
+    this.wizardService.onSubmitForm();
   }
 }

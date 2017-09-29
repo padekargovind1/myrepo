@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-subjects-tab',
@@ -13,7 +14,8 @@ export class SubjectsTabComponent implements OnInit {
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private fb : FormBuilder,
-              public wizardService : WizardService) { }
+              public wizardService : WizardService,
+              private bookingService : BookingService ) { }
 
   ngOnInit() {
     this.buildForm()
@@ -31,7 +33,13 @@ export class SubjectsTabComponent implements OnInit {
   }
   //save and go to next tab
   nextTab(nb:number){
-    this.tabChange.emit(nb);
+    if(this.wizardForm.valid){
+      console.log(this.wizardForm.value)
+      this.wizardService.saveData('subjectData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+    }else {
+      this.bookingService.failSubmit();
+    }
   }
   //Patch Value
   patchValue(){

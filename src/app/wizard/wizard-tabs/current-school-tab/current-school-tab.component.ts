@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
 import {HelperService} from "../../../services/helper.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-current-school-tab',
@@ -16,7 +17,8 @@ export class CurrentSchoolTabComponent implements OnInit {
 
   constructor(private fb : FormBuilder,
               private wizardService : WizardService,
-              public helperService : HelperService) { }
+              public helperService : HelperService,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
     this.buildForm();
@@ -39,14 +41,19 @@ export class CurrentSchoolTabComponent implements OnInit {
   }
   //Save and go to next tab
   nextTab(nb:number){
-    this.tabChange.emit(nb);
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('currentSchoolData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+    }else {
+      this.bookingService.failSubmit();
+    }
   }
   //Patch value from userData
   patchValue(){
-    var haveLanguage = (this.userData.academicHistories.length!=0) ? true : false;
+    var haveAcademic = (this.userData.academicHistories.length!=0) ? true : false;
     var haveLv1 = false;
     var haveLv2 = false;
-    if(haveLanguage){
+    if(haveAcademic){
       this.wizardForm.patchValue({
         //Current Institution
         schoolName : this.userData.academicHistories[0].schoolName=="A compléter" ? "" : this.userData.academicHistories[0].schoolName,
@@ -60,7 +67,7 @@ export class CurrentSchoolTabComponent implements OnInit {
     }
   }
   getLanguage(){
-    this.wizardService.getLangues();
+    this.langues=this.wizardService.getLangues();
   }
 
 }

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-hobbies-tab',
@@ -14,7 +15,8 @@ export class HobbiesTabComponent implements OnInit {
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private fb : FormBuilder,
-              private wizardService : WizardService) { }
+              private wizardService : WizardService,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
     this.buildForm()
@@ -32,7 +34,12 @@ export class HobbiesTabComponent implements OnInit {
   }
   //save and go to next tab
   nextTab(nb:number){
-    this.tabChange.emit(nb);
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('hobbiesData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+    }else {
+      this.bookingService.failSubmit();
+    }
   }
   //Create a Job form
   createJob(){

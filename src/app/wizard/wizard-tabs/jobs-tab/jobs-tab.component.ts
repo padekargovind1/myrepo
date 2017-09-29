@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {WizardService} from "../../../services/wizard.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-jobs-tab',
@@ -18,7 +19,8 @@ export class JobsTabComponent implements OnInit {
   }
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private wizardService : WizardService) { }
+  constructor(private wizardService : WizardService,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
     this.wizardService.createProfession(); //Create profession tab
@@ -27,13 +29,17 @@ export class JobsTabComponent implements OnInit {
   }
   //Click on one smiley
   clickOnSmiley(group : string, index : number, value:boolean){
-    console.log(group, index, value);
+    //console.log(group, index, value);
     this.professionList[group][index].isFavorite = value;
     this.wizardService.storeProfessionList(this.professionList);
   }
   //save and go to next tab
   nextTab(nb:number){
-    this.tabChange.emit(nb);
+    if(this.wizardService.professionListIsvalid()){
+      this.tabChange.emit(nb);
+    }else{
+      this.bookingService.failSubmit();
+    }
   }
 
 }

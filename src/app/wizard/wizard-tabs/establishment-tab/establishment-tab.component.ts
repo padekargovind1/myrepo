@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-establishment-tab',
@@ -14,11 +15,15 @@ export class EstablishmentTabComponent implements OnInit {
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
   primaires : any;
   secondaires : any;
+  primarySchool=[];
+  secondarySchool = [];
   constructor(private fb : FormBuilder,
-              private wizardService : WizardService) { }
+              private wizardService : WizardService,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
     this.buildForm();
+    this.getSchoolClassList();
   }
 
   buildForm(){
@@ -71,7 +76,12 @@ export class EstablishmentTabComponent implements OnInit {
   }
   //Save and go to the next tab
   nextTab(nb:number){
-    this.tabChange.emit(nb);
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('establishmentData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+    }else {
+      this.bookingService.failSubmit();
+    }
   }
   onAddPrimaire(){
     this.primaires = this.wizardForm.get('primary') as FormArray;
@@ -91,6 +101,11 @@ export class EstablishmentTabComponent implements OnInit {
   onRemoveSecondaire(index){
     this.secondaires = this.wizardForm.get('secondary') as FormArray;
     this.secondaires.removeAt(index, 1);
+  }
+
+  getSchoolClassList(){
+    this.primarySchool=this.wizardService.getPrimarySchool();
+    this.secondarySchool=this.wizardService.getSecondarySchool();
   }
 
 }

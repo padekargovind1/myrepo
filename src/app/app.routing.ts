@@ -48,7 +48,7 @@ export const AppRoutes: Routes = [
     { path: 'enseignement', component: SuperieurComponent },
     { path: 'compare-mode', component: CompareModeComponent },
     { path: 'detail-appointment', component: DetailAppointmentComponent },
-    { path: 'wizard', component: UnderConstructionComponent},
+    { path: 'wizard', component: WizardComponent},
     { path: 'applyto/:schoolId', component: ApplytoComponent},
     { path: 'editorial', component: EditorialContComponent},
     { path: 'editorial-detail',component:EditorialDetComponent},

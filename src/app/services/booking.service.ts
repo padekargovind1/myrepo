@@ -208,4 +208,12 @@ export class BookingService {
     this.router.navigate(['/'])
   }
 
+  failSubmit(){
+    swal({
+      title: "Attention",
+      text: 'Veuillez remplir tout le formulaire. Les champs avec un astérix (*) sont obligatoires',
+      type: 'warning',
+      confirmButtonText: "J'AI COMPRIS"
+    })
+  }
 }

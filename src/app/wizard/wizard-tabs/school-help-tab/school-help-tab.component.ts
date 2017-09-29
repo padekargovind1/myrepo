@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-school-help-tab',
@@ -12,12 +13,15 @@ export class SchoolHelpTabComponent implements OnInit {
   @Input() userData;
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
   checked:boolean=false;
+  subjectSchool = []
 
   constructor(private fb : FormBuilder,
-              private wizardService : WizardService) { }
+              private wizardService : WizardService,
+              private bookingService : BookingService) { }
 
   ngOnInit() {
     this.buildForm();
+    this.getSubjectSchool();
   }
   //Build the form
   buildForm(){
@@ -28,9 +32,19 @@ export class SchoolHelpTabComponent implements OnInit {
   }
   //Save and go to next tab
   nextTab(nb:number){
-    this.tabChange.emit(nb);
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('helpData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+    }else {
+      this.bookingService.failSubmit();
+    }
   }
   onChecked(){
-
+    var check = this.wizardForm.controls['schoolHelp'].value;
+    //console.log(check);
+    this.checked = !check;
+  }
+  getSubjectSchool(){
+    this.subjectSchool=this.wizardService.getSubjectSchool();
   }
 }

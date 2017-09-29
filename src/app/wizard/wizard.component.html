@@ -1,15 +1,10 @@
 ﻿      <div class="main white-background" role="main" >
         <div class="container-fluid  appointment-wizard">
-
             <div class="row">
-
                 <section class="col-md-12">
                     <!--<h3 class="appointment-title">Rendez-vous Parents</h3>-->
                     <h3>&nbsp;</h3>
-
                 </section>
-
-
                 <section class="col-md-12 appointment-text">
 
                     <section class="col-md-3 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
@@ -30,9 +25,7 @@
                         <div class="text-with-icon">
                                 <img src="assets/images/cide-icon-group.png" alt="" />
                                 <h3 class="second-title">Pour un entretien</h3>
-                                <p>
-
-                                    {{appointmentData[7]}}<br />
+                                <p>{{appointmentData[7]}}<br />
                                     {{appointmentData[8]}}</p>
                         </div>
                     </div>
@@ -43,7 +36,7 @@
 
             <div class="row" *ngIf="canDisplayWizard">
 
-                <div id="rootwizard"><form id="wizard" [formGroup]="wizardForm">
+                <div id="rootwizard"><form id="wizard">
 
                     <div class="container-fluid">
 
@@ -76,7 +69,7 @@
                         [(selectedIndex)]="activeTabIndex"  class="wizard-tabs"
                         #tabGroup>
                         <!-- <div class="tab-content"> -->
-                          <md-tab label="Parents">
+                          <md-tab label="Parents" [disabled]="tabGroup.selectedIndex<=0">
                             <div class="tab-pane" id="tab1">
                                 <div class="container-fluid">
                                   <app-parent-tab (tabChange)="nextTab($event)" [userData]="userData"></app-parent-tab>
@@ -84,7 +77,7 @@
                             </div><!-- #tab1 -->
                         </md-tab>
 
-                        <md-tab label="Elève">
+                        <md-tab label="Elève" [disabled]="tabGroup.selectedIndex<=1">
                             <div class="tab-pane" id="tab2">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -94,7 +87,7 @@
                             </div><!-- #tab2 -->
                         </md-tab>
 
-                        <md-tab label="Etablissement Actuel">
+                        <md-tab label="Etablissement Actuel" [disabled]="tabGroup.selectedIndex<=2">
                             <div class="tab-pane" id="tab3">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -104,62 +97,17 @@
                             </div><!-- #tab3 -->
                         </md-tab>
 
-                        <md-tab label="Aide Scolaire">
+                        <md-tab label="Aide Scolaire" [disabled]="tabGroup.selectedIndex<=3">
                             <div class="tab-pane" id="tab4">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <h3>Aide Scolaire*</h3>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <input type="checkbox" name="" class="checkbox filled-in"
-                                                          id="scolaire-filter" [formControl]="wizardForm.controls['schoolHelp']"
-                                                          (click)="onChecked()" />
-                                                          <label for="scolaire-filter">
-                                                            Etes-vous aidé scolairement?
-                                                          </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row" style="margin-bottom:20px">
-                                                    <div class="col-sm-12">
-                                                        <div class="select-custom dans-quelles">
-                                                            <select name="" class="form-control multiselect"
-                                                              id="dans-quelles" *ngIf="checked">
-                                                                <option value="">Dans quelles matières</option>
-                                                                <option *ngFor="let subject of subjectSchool" value="subject">
-                                                                    <md-checkbox>{{subject}}</md-checkbox>
-                                                                </option>
-                                                                <select name="Autre Langue" id=""></select>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div><!-- .col-* -->
-                                        <div class="col-md-12">
-                                            <div class="form-group clearfix">
-                                                <button class="btn  btn-appointment wizard-button-align"
-                                                    (click)="nextTab(2)" style="float:left; margin-left:0px">
-                                                    Précédent
-                                                </button>
-                                                <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(4)"
-                                                style="float:right">
-                                                Suivant
-                                                </button>
-                                            </div>
-                                        </div>
+                                      <app-school-help-tab (tabChange)="nextTab($event)" [userData]="userData"></app-school-help-tab>
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab4 -->
                         </md-tab>
 
-                        <md-tab label="Vos matières préférées">
+                        <md-tab label="Vos matières préférées" [disabled]="tabGroup.selectedIndex<=4">
                             <div class="tab-pane" id="tab5">
                                 <div class="container-fluid">
                                   <app-subjects-tab (tabChange)="nextTab($event)" [userData]="userData"></app-subjects-tab>
@@ -167,304 +115,43 @@
                             </div><!-- #tab5 -->
                         </md-tab>
 
-                        <md-tab label="Ses centres d'intérêts">
+                        <md-tab label="Ses centres d'intérêts" [disabled]="tabGroup.selectedIndex<=5">
                             <div class="tab-pane" id="tab6">
                                 <div class="container-fluid">
-                                    <div class="row">
-                                       <div class="col-md-6">
-                                            <h3>Ses centres d'intérêts</h3>
-
-                                            <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
-
-                                                <div class="row" formArrayName="job"
-                                                    *ngFor="let parent of wizardForm.controls['job']['controls']; let i = index">
-                                                <div [formGroupName]="i">
-                                                    <div class="col-sm-6">
-                                                        <h4>Métier {{i+1}}*</h4>
-                                                        <div class="form-group">
-                                                            Job
-                                                            <input type="text" class="form-control" placeholder="Job"
-                                                            formControlName="interestJob"
-                                                            maxlength="25">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <h4>&nbsp;</h4>
-                                                        <div class="form-group">
-                                                            Age
-                                                            <input type="text" class="form-control" placeholder="Age"
-                                                            formControlName="interestAge" max="50" min="1"
-                                                            maxlength="2">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                    <h4>&nbsp;</h4>
-													&nbsp;
-                                                    <button class="btn  btn-danger" style="float:right"
-                                                        (click)="onRemoveJob(i)"
-                                                        *ngIf="wizardForm.controls['job']['controls'].length>0">
-                                                        Retirer un métier
-                                                    </button>
-                                                    </div>
-                                                </div>
-                                                </div>
-
-                                                <div class="row">
-                                                <button class="btn  btn-appointment" (click)="onAddJob()"
-                                                    style="margin-left:15px"><i class="fa fa-plus" aria-hidden="true"></i>Ajouter un métier</button>
-                                                </div>
-
-
-                                            <div class="form-group different-gap">
-                                                <div class="row">
-                                                    <div class="col-sm-9">
-                                                        Ses centres d'intérêts*
-                                                        <input type="text" class="form-control"
-                                                          [formControl]="wizardForm.controls['yourInterest']"
-                                                          maxlength="60">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-9">
-                                                        Ses activités extra-scolaires
-                                                        <input type="text" class="form-control"
-                                                          [formControl]="wizardForm.controls['practiceInterest']"
-                                                          maxlength="60">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div><!-- .col-* -->
-                                    </div><!-- .row -->
-                                    <div class="row">
-                                        <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align"
-                                                (click)="nextTab(4)" style="float:left; margin-left:0px">
-                                                Précédent
-                                            </button>
-                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(6)"
-                                            style="float:right">
-                                            Suivant
-                                            </button>
-                                        </div>
-                                    </div>
+                                  <app-hobbies-tab (tabChange)="nextTab($event)" [userData]="userData"></app-hobbies-tab>
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab6 -->
                         </md-tab>
 
-                        <md-tab label="Etablissements fréquentés" *ngIf="canDisplaySchool">
+                        <md-tab label="Etablissements fréquentés" [disabled]="tabGroup.selectedIndex<=6">
                             <div class="tab-pane" id="tab7">
                                 <div class="container-fluid">
-                                    <div class="row">
-                                       <div class="col-md-8">
-                                            <h3>Etablissements fréquentés</h3>
-                                                <div class="row" formArrayName="primary"
-                                                    *ngFor="let parent of wizardForm.controls['primary']['controls']; let i = index">
-                                                    <div [formGroupName]="i">
-                                                        <h4 style="margin-left:15px">Primaire {{i+1}}*</h4>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                Nom de l'établissement
-                                                                <input type="text" class="form-control" placeholder="Nom"
-                                                                formControlName="primarySchoolName"
-                                                                maxlength="100">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                <div class="select-custom">
-                                                                    Classe redoublée*
-                                                                    <select name="" class="form-control"
-                                                                        formControlName="primarySchoolRepeat">
-                                                                        <option value="" disabled selected hidden>Classe redoublée</option>
-                                                                        <option *ngFor="let school of primarySchool" value="school">{{ school }}</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                Cause du redoublement*
-                                                                <input type="text" class="form-control" placeholder="Cause du redoublement"
-                                                                formControlName="causeOfRepeatPrimary"
-                                                                maxlength="100">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            &nbsp;<br>&nbsp;
-                                                            <button class="btn  btn-danger" style="float:right"
-                                                                (click)="onRemovePrimaire(i)"
-                                                                *ngIf="wizardForm.controls['primary']['controls'].length>0">
-                                                                Retirer une école primaire
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn  btn-appointment" style="margin-left:0px"
-                                                        (click)="onAddPrimaire()">
-                                                        Ajouter une école primaire
-                                                    </button>
-                                                </div>
-                                                <div class="row" formArrayName="secondary"
-                                                    *ngFor="let parent of wizardForm.controls['secondary']['controls']; let i = index">
-                                                    <div [formGroupName]="i">
-                                                        <h4 style="margin-left:15px">Secondaire {{i+1}}</h4>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                Nom de l'établissement*
-                                                                <input type="text" class="form-control" placeholder="Nom"
-                                                                formControlName="secondarySchoolName"
-                                                                maxlength="100">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                <div class="select-custom">
-                                                                    Classe redoublée*
-                                                                    <select name="" class="form-control"
-                                                                        formControlName="secondarySchoolRepeat">
-                                                                        <option value="" disabled selected hidden>Classe redoublée</option>
-                                                                        <option *ngFor="let school of secondarySchool" value="school">{{ school }}</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                Cause du redoublement*
-                                                                <input type="text" class="form-control" placeholder="Cause du redoublement"
-                                                                    formControlName="causeOfRepeatSecondary"
-                                                                    maxlength="100">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            &nbsp;<br>&nbsp;
-                                                            <button class="btn  btn-danger" style="float:right"
-                                                                (click)="onRemoveSecondaire(i)"
-                                                                *ngIf="wizardForm.controls['secondary']['controls'].length>0">
-                                                                Retirer une école secondaire
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn  btn-appointment"
-                                                        (click)="onAddSecondaire()" style="margin-left:0px">
-                                                        Ajouter une école secondaire
-                                                    </button>
-                                                </div>
-
-
-                                        </div><!-- .col-* -->
-                                    </div><!-- .row -->
-                                    <div class="row">
-                                        <div class="form-group clearfix">
-                                            <button class="btn  btn-appointment wizard-button-align"
-                                                (click)="nextTab(5)" style="float:left; margin-left:0px">
-                                                Précédent
-                                            </button>
-                                            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(7)"
-                                                style="float:right">
-                                                Suivant
-                                            </button>
-                                        </div>
-                                    </div>
+                                  <app-establishment-tab (tabChange)="nextTab($event)" [userData]="userData"></app-establishment-tab>
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab7 -->
                         </md-tab>
 
-                        <md-tab label="Professions souhaitées">
+                        <md-tab label="Professions souhaitées" [disabled]="tabGroup.selectedIndex<=7">
                             <div class="tab-pane" id="tab8">
                                 <div class="container-fluid">
-                                    <div class="row">
-                                       <div class="col-md-12">
-
-                                        <h3>Professions souhaitées. Cette section du Dossier doit être complétée avec l’élève.
-                                                Toutes les professions doivent être renseignées</h3>
-
-                                        <app-wizard-profession></app-wizard-profession>
-                                       </div><!-- .col-* -->
-                                       <div class="row">
-                                            <div class="form-group clearfix">
-                                                <button class="btn  btn-appointment wizard-button-align"
-                                                    (click)="nextTab(6)" style="float:left; margin-left:0px">
-                                                    Précédent
-                                                </button>
-                                                <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(8)"
-                                                style="float:right">
-                                                Suivant
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div><!-- .row -->
+                                  <app-jobs-tab (tabChange)="nextTab($event)"></app-jobs-tab>
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab8 -->
                         </md-tab>
 
-                        <md-tab label="Diagnostic">
-                            <div class="tab-pane" id="tab9">
+                        <md-tab label="Diagnostic" [disabled]="tabGroup.selectedIndex<=8">
+                            <div class="tab-pane" id="tab9" >
                                 <div class="container-fluid">
                                     <div class="row">
-                                       <div class="col-md-4">
-
-                                            <h3>Diagnostic</h3>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        Motif du diagnostic
-                                                        <textarea class="form-control"
-                                                        [formControl]="wizardForm.controls['reasonDiagnostic']">
-                                                        </textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        Remarques
-                                                        <textarea class="form-control"
-                                                        [formControl]="wizardForm.controls['note']">
-
-                                                        </textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                       </div><!-- .col-* -->
-                                       <div class="col-md-12">
-                                            <button class="btn  btn-appointment wizard-button-align"
-                                                (click)="nextTab(7)" style="float:left; margin-left:0px">
-                                                Précédent
-                                            </button>
-                                            <button class="btn btn-appointment pull-right"
-                                                type="submit" (click)="onSubmit()"
-                                                style="float:right">Terminer</button>
-                                       </div>
+                                      <app-diagnostic-tab (tabChange)="nextTab($event)" [userData]="userData"></app-diagnostic-tab>
                                     </div><!-- .row -->
                                 </div><!-- .container-fluid -->
                             </div><!-- #tab9 -->
                         </md-tab>
 
                     </md-tab-group>
-                        <!-- </div> -->
-                        <!-- .tab-content -->
-                      <!-- </form> -->
-
                     </div><!-- .container-fluid -->
-
-                    <!-- <div class="save-button-holder">
-                        <button class="btn btn-appointment pull-right">Enregistrer</button>
-                    </div> -->
-
                 </form></div><!-- #rootwizard -->
-
             </div><!-- .row -->
-
         </div>
       </div>
