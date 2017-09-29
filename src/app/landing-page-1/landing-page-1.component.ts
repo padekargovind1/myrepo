@@ -125,7 +125,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 
         (<any> $(document)).on('click', function (event) {
             if (!(<any> $(event.target).parents().addBack().is('.landingpage__additional-content,.mat-autocomplete-panel'))) {
-                (<any> $('.form-wrap')).removeClass("activeForm");
+                (<any> $('.form-wrap')).removeClass("activeForm"); 
             }
         });
 
