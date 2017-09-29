@@ -2338,6 +2338,7 @@ text-align:center;
 .compare-item .language.collapse{display:none !important; height:0px !important; opacity:0 !important; visibility:hidden !important;}
   .compare-item .language.collapse.in{display:block !important; height:auto !important;opacity:1 !important;visibility:visible !important;} 
   
+  .btn-cancel-wizard , .btn-confirm-wizard{ margin-bottom:10px !important; width:80%;} 
   }
 
   @media (max-width:479px) {
