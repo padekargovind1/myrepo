@@ -16,7 +16,7 @@
               </md-option>
             </md-select>
             <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.lienParent.hasError('required') &&
-                                                      wizardForm.controls['parents']['controls'][i].controls.lienParent.touched"
+                            wizardForm.controls['parents']['controls'][i].controls.lienParent.touched"
                    class="mat-text-warn">
               Lien de Parenté Obligatoire
             </small>
@@ -24,10 +24,6 @@
         </div>
         Titre*
         <div class="form-group horizontal-radio clearfix">
-          <!--<label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
-                              <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
-                              <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>-->
-
           <md-radio-group formControlName="titre">
             <md-radio-button value="ms">Mme</md-radio-button>
             <md-radio-button value="m">M</md-radio-button>
@@ -90,6 +86,7 @@
 
         <div class="form-group">
           Email*
+          <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Exemple : Abc@example.com" mdTooltipPosition="after"></i>
           <input type="email" class="form-control" placeholder="Email"
                  formControlName="email">
           <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.hasError('required') &&
@@ -108,6 +105,7 @@
           <div class="row">
             <div class="col-sm-12">
               Numéro de portable*
+              <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Doit contenir 10 chiffres" mdTooltipPosition="after"></i>
               <input type="text" class="form-control"
                      placeholder="Téléphone auquel je suis joignable"
                      formControlName="portable"

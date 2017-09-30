@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <h3>Ses centres d'intérêts</h3>
 
-      <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
+      <h4>Liste des métiers que vous avez pensez exercer un jour </h4>
 
       <div class="row" formArrayName="job"
            *ngFor="let parent of wizardForm.controls['job']['controls']; let i = index">
@@ -12,6 +12,7 @@
             <h4>Métier {{i+1}}*</h4>
             <div class="form-group">
               Job
+              <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Nom d'un métier" mdTooltipPosition="after"></i>
               <input type="text" class="form-control" placeholder="Job"
                      formControlName="interestJob"
                      maxlength="25">
@@ -48,6 +49,7 @@
         <div class="row">
           <div class="col-sm-9">
             Ses centres d'intérêts*
+            <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Les centres d'intérêt de l'étudiant" mdTooltipPosition="after"></i>
             <input type="text" class="form-control"
                    [formControl]="wizardForm.controls['yourInterest']"
                    maxlength="60">
@@ -75,9 +77,16 @@
         Précédent
       </button>
       <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(6)"
-              style="float:right">
+              style="float:right" *ngIf="!onApplyPage; else onApply">
         Suivant
       </button>
+      <ng-template #onApply>
+        <button class="btn  btn-appointment wizard-button-align" (click)="onApplySubmit()"
+                style="float:right">
+          Je postule
+        </button>
+      </ng-template>
+
     </div>
   </div>
 </form>

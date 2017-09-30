@@ -3,7 +3,12 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
 import {HelperService} from "../../../services/helper.service";
 import {BookingService} from "../../../services/booking.service";
+import {Subscription} from "rxjs/Subscription";
+import {ActivatedRoute} from "@angular/router";
+import {FileUploader} from "ng2-file-upload";
+import {ApplyService} from "../../../services/apply.service";
 
+const URL = 'http://54.254.203.172/cide-school/upload/';
 @Component({
   selector: 'app-current-school-tab',
   templateUrl: './current-school-tab.component.html',
@@ -14,11 +19,24 @@ export class CurrentSchoolTabComponent implements OnInit {
   @Input() userData;
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
   langues=[];
-
+  subscription : Subscription;
+  onApplyPage : boolean = false;
   constructor(private fb : FormBuilder,
               private wizardService : WizardService,
               public helperService : HelperService,
-              private bookingService : BookingService) { }
+              private router : ActivatedRoute,
+              private bookingService : BookingService,
+              private applyService : ApplyService) {
+    this.subscription = this.router.url
+      .subscribe(
+        params => {
+          console.log(params)
+          this.onApplyPage = params[0].path==="applyto";
+          console.log('test2', params[1].path)
+          this.applyService.storeUrlPath(params[1].path);
+        }
+      )
+  }
 
   ngOnInit() {
     this.buildForm();
@@ -69,5 +87,20 @@ export class CurrentSchoolTabComponent implements OnInit {
   getLanguage(){
     this.langues=this.wizardService.getLangues();
   }
+
+  uploader: FileUploader = new FileUploader({
+    url: URL,
+    isHTML5: true
+  });
+  //hasBaseDropZoneOver = false;
+  //hasAnotherDropZoneOver = false;
+
+  //fileOverBase(e: any): void {
+  //  this.hasBaseDropZoneOver = e;
+  //}
+
+  //fileOverAnother(e: any): void {
+  //  this.hasAnotherDropZoneOver = e;
+  //}
 
 }

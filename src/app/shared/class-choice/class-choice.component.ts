@@ -27,8 +27,8 @@ export class ClassChoiceComponent implements OnInit {
   onselect(index){
     this.router.navigate(['applyto', this.schoolData._id]);
     this.schoolService.onApplyTo(true);
-    console.log(this.schoolData)
     this.schoolService.storeClassName(this.schoolData.cycles[this.schoolIndex].classes[index]._id)
+    console.log(this.schoolData, this.schoolData.cycles[this.schoolIndex].classes[index]._id)
     this.dialogref.close()
   }
 

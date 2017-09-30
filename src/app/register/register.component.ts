@@ -89,7 +89,6 @@ export class RegisterComponent implements OnInit {
               // console.log(response.data.token)
               this.authService.storeToken(response.data.token)
               this.usersService.storeTabNb('0')
-              this.storeUserType(this.registerForm.value.userType, email);
               if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
                 this.router.navigate(['/payment']);
                 //this.bookingService.makeAppointment();
@@ -100,12 +99,6 @@ export class RegisterComponent implements OnInit {
           }
         )
     }
-  }
-
-  // Store the user type (parent or children)
-  storeUserType(userType,email){
-    this.usersService.storeUserType(userType);
-    this.usersService.storeUserEmail(email);
   }
 
   // Send verification email from API

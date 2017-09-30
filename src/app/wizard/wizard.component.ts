@@ -25,6 +25,7 @@ export class WizardComponent implements OnInit {
   canDisplayWizard : boolean = false;
   @ViewChild('tabGroup') tabGroup;
   onMobile:boolean=false;
+  nbTab : number=0;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
@@ -137,6 +138,7 @@ export class WizardComponent implements OnInit {
 
   nextTab(nb){
     this.tabGroup.selectedIndex=nb;
+    this.nbTab=nb;
     this.cdr.detectChanges();
   }
 }

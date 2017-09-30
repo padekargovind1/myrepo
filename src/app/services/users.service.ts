@@ -14,8 +14,6 @@ const TRIPS_API: string = "http://54.254.203.172/cideapi/api/users/trips";
 @Injectable()
 export class UsersService {
 
-  private parentData = [];
-  private childData : MyAccountMdl;
   private token : string='';
 
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -42,70 +40,15 @@ export class UsersService {
     // console.log(this.token);
   }
 
-  storeParentData(parentData){
-    this.parentData=parentData;
-    console.log(this.parentData);
-  }
-
-  getParentData(){
-    console.log(this.parentData);
-    return this.parentData;
-  }
-
-  storeChildData(childData : MyAccountMdl){
-    this.childData=childData;
-    console.log(this.childData);
-  }
-
-  // getChildData(){
-  //   console.log(this.childData);
-  //   return this.childData;
-  // }
-
   getAppointmentsPackage() : Observable<any>{
     return this.http.get(PACKAGE_API+'s?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }
 
-  // getAppointmentsPackageById(packageId): Observable<any>{
-  //   return this.http.get(PACKAGE_API+'/packageId?token='+this.token, {headers: this.headers})
-  //     .map((response)=>response.json());
-  // }
-
-  // getAppointmentsPackageById(packageId): Observable<any>{
-  //   return this.http.get(PACKAGE_API+'/'+ packageId +'?token='+this.token, {headers: this.headers})
-  //     .map((response)=>response.json());
-  // }
-
   getAppointmentsAdviserList(packageId): Observable<any>{
     return this.http.get(APPOINTMENTS_API+'/adviserlist/'+packageId+'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }
-
-  // getAppointmentsAdviserList(packageId): Observable<any>{
-  //   return this.http.get('http://linkaran.com/api/v1/availability/'+packageId, {headers: this.headers})
-  //     .map((response)=>response.json());
-  // }
-
-  // getAdviserFreeTime(adviserId):Observable<any>{
-  //   return this.http.get(APPOINTMENTS_API+'/adviserdata?token='+this.token+'&id='+adviserId, {headers: this.headers})
-  //     .map((response)=>response.json());
-  // }
-
-  // getAdviserFreeTime(adviserId):Observable<any>{
-  //   return this.http.get(APPOINTMENTS_API+'/adviserdata?id='+adviserId, {headers: this.headers})
-  //     .map((response)=>response.json());
-  // }
-
-  // getAdviserData(adviserId): Observable<any>{
-  //   return this.http.get(APPOINTMENTS_API+'/adviser?id='+adviserId, {headers: this.headers})
-  //     .map((response)=>response.json());
-  // }
-
-  // postDataAppointments(data): Observable<any>{
-  //   return this.http.post(APPOINTMENTS_API, data)
-  //     .map((response)=>response.json());
-  // }
 
   postCreateNewAppointment(data, packageId): Observable<any>{
     return this.http.post('http://54.254.203.172/cideapi/api/users/appointments/'+packageId+'?token='+this.getToken(), data)
@@ -116,11 +59,6 @@ export class UsersService {
     return this.http.put('http://54.254.203.172/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
       .map(response=>response.json());
   }
-
-  // postCreateNewAppointment(data): Observable<any>{
-  //   return this.http.post('http://linkaran.com/api/v1/booking-appointment', data)
-  //     .map((response)=>response.json());
-  // }
 
   postApplication(data): Observable<any>{
     return this.http.post(APPLICATION_API+'?token='+this.token, data)
@@ -153,29 +91,5 @@ export class UsersService {
 
   cleanTabNb(){
     localStorage.removeItem('myaccountTab');
-  }
-
-  storeUserType(userT){
-    localStorage.setItem('userType', userT);
-  }
-
-  getUserType(){
-    return localStorage.getItem('userType');
-  }
-
-  cleanUserType(){
-    localStorage.removeItem('userType');
-  }
-
-  storeUserEmail(userE){
-    localStorage.setItem('userEmail', userE);
-  }
-
-  getUserEmail(){
-    return localStorage.getItem('userEmail');
-  }
-
-  cleanUserEmail(){
-    localStorage.removeItem('userEmail');
   }
 }

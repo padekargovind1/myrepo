@@ -271,8 +271,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.bookingService.cleanBooking();
     this.compareService.cleanCompareFilter();
     this.compareService.cleanSchoolCompare();
-    this.usersService.cleanUserType();
-    this.usersService.cleanUserEmail();
   }
 
   // Make the config of the md Dialog

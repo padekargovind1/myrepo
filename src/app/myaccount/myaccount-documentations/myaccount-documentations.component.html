@@ -1,19 +1,19 @@
 <div class="tab-pane" id="documentations">
   <div class="container-fluid">
     <div class="row" *ngIf="docList.length!=0 ; else noDoc">
-      <section class="col-md-4">
+      <section>
         <div >
           <h3>Documentations</h3>
           <ul class="files-to-download">
             <li *ngFor="let doc of docList; let i=index">
-              <div class="row">
+              <div class="col-md-6">
                 <div class="col-md-10">
                   <div class="image-wrapper">
-                    <img src="http://54.254.203.172/cideapi/{{brochureList[i].cycles[0].logo1}}" 
+                    <img src="http://54.254.203.172/cideapi/{{brochureList[i].cycles[0].logo1}}"
                       alt="" *ngIf="showDownload"/>
                   </div>
                   <span style="width:65%">
-                    <strong>{{doc.school.shortName | schoolName}}</strong><br>{{doc.school.longName | schoolName}}
+                    <strong>{{doc.school.longName | schoolName}}</strong>
                   </span>
                 </div>
                 <div class="col-md-2">
@@ -26,10 +26,11 @@
                   </ng-template>
                 </div>
               </div>
+
             </li>
           </ul>
         </div>
-        
+
       </section><!-- .col-* -->
     </div><!-- .row -->
     <ng-template #noDoc>

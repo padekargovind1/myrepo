@@ -397,4 +397,8 @@ export class WizardService {
       )
   }
 
+  getUserData(){
+    return this.wizardData;
+  }
+
 }

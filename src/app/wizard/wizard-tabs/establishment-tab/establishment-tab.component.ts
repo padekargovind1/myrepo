@@ -17,9 +17,12 @@ export class EstablishmentTabComponent implements OnInit {
   secondaires : any;
   primarySchool=[];
   secondarySchool = [];
+
   constructor(private fb : FormBuilder,
               private wizardService : WizardService,
-              private bookingService : BookingService) { }
+              private bookingService : BookingService) {
+
+  }
 
   ngOnInit() {
     this.buildForm();

@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
-import { HttpModule, Jsonp, JsonpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import {
   MdCardModule, MdButtonModule, MdListModule,
   MdProgressBarModule, MdMenuModule, MdInputModule, MdRadioModule,
   MdToolbarModule, MdDatepickerModule, MdNativeDateModule, MdSelectModule,
-  MdIconModule, MdAutocompleteModule,MdTabsModule
+  MdIconModule,MdTabsModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -102,6 +102,7 @@ import { EstablishmentTabComponent } from './wizard/wizard-tabs/establishment-ta
 import { JobsTabComponent } from './wizard/wizard-tabs/jobs-tab/jobs-tab.component';
 import { DiagnosticTabComponent } from './wizard/wizard-tabs/diagnostic-tab/diagnostic-tab.component';
 import { HobbiesTabComponent } from './wizard/wizard-tabs/hobbies-tab/hobbies-tab.component';
+import {ApplyService} from "./services/apply.service";
 
 @NgModule({
   declarations: [
@@ -218,6 +219,7 @@ import { HobbiesTabComponent } from './wizard/wizard-tabs/hobbies-tab/hobbies-ta
     SendService,
     HelperService,
     WizardService,
+    ApplyService,
     AppGuard
   ],
     entryComponents: [

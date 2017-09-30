@@ -2,6 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
 import {BookingService} from "../../../services/booking.service";
+import {Subscription} from "rxjs/Subscription";
+import {ActivatedRoute} from "@angular/router";
+import {ApplyService} from "../../../services/apply.service";
 
 @Component({
   selector: 'app-hobbies-tab',
@@ -13,10 +16,22 @@ export class HobbiesTabComponent implements OnInit {
   metiers : any
   @Input() userData;
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
+  subscription : Subscription;
+  onApplyPage : boolean = false;
 
   constructor(private fb : FormBuilder,
               private wizardService : WizardService,
-              private bookingService : BookingService) { }
+              private bookingService : BookingService,
+              private router : ActivatedRoute,
+              private applyService : ApplyService) {
+    this.subscription = this.router.url
+      .subscribe(
+        params => {
+          console.log(params)
+          this.onApplyPage = params[0].path=="applyto";
+        }
+      )
+  }
 
   ngOnInit() {
     this.buildForm()
@@ -73,6 +88,15 @@ export class HobbiesTabComponent implements OnInit {
           interestAge : this.userData.jobs[i].age
         })
       }
+    }
+  }
+
+  onApplySubmit(){
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('hobbiesData', this.wizardForm.value);
+      this.applyService.onSubmit();
+    }else {
+      this.bookingService.failSubmit();
     }
   }
 

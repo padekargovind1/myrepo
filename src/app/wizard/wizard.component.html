@@ -69,7 +69,7 @@
                         [(selectedIndex)]="activeTabIndex"  class="wizard-tabs"
                         #tabGroup>
                         <!-- <div class="tab-content"> -->
-                          <md-tab label="Parents" [disabled]="tabGroup.selectedIndex<=0">
+                          <md-tab label="Parents" [disabled]="nbTab<=0">
                             <div class="tab-pane" id="tab1">
                                 <div class="container-fluid">
                                   <app-parent-tab (tabChange)="nextTab($event)" [userData]="userData"></app-parent-tab>
@@ -77,7 +77,7 @@
                             </div><!-- #tab1 -->
                         </md-tab>
 
-                        <md-tab label="Elève" [disabled]="tabGroup.selectedIndex<=1">
+                        <md-tab label="Elève" [disabled]="nbTab<=1">
                             <div class="tab-pane" id="tab2">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -87,7 +87,7 @@
                             </div><!-- #tab2 -->
                         </md-tab>
 
-                        <md-tab label="Etablissement Actuel" [disabled]="tabGroup.selectedIndex<=2">
+                        <md-tab label="Etablissement Actuel" [disabled]="nbTab<=2">
                             <div class="tab-pane" id="tab3">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -97,7 +97,7 @@
                             </div><!-- #tab3 -->
                         </md-tab>
 
-                        <md-tab label="Aide Scolaire" [disabled]="tabGroup.selectedIndex<=3">
+                        <md-tab label="Aide Scolaire" [disabled]="nbTab<=3">
                             <div class="tab-pane" id="tab4">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -107,7 +107,7 @@
                             </div><!-- #tab4 -->
                         </md-tab>
 
-                        <md-tab label="Vos matières préférées" [disabled]="tabGroup.selectedIndex<=4">
+                        <md-tab label="Vos matières préférées" [disabled]="nbTab<=4">
                             <div class="tab-pane" id="tab5">
                                 <div class="container-fluid">
                                   <app-subjects-tab (tabChange)="nextTab($event)" [userData]="userData"></app-subjects-tab>
@@ -115,7 +115,7 @@
                             </div><!-- #tab5 -->
                         </md-tab>
 
-                        <md-tab label="Ses centres d'intérêts" [disabled]="tabGroup.selectedIndex<=5">
+                        <md-tab label="Ses centres d'intérêts" [disabled]="nbTab<=5">
                             <div class="tab-pane" id="tab6">
                                 <div class="container-fluid">
                                   <app-hobbies-tab (tabChange)="nextTab($event)" [userData]="userData"></app-hobbies-tab>
@@ -123,7 +123,7 @@
                             </div><!-- #tab6 -->
                         </md-tab>
 
-                        <md-tab label="Etablissements fréquentés" [disabled]="tabGroup.selectedIndex<=6">
+                        <md-tab label="Etablissements fréquentés" [disabled]="nbTab<=6">
                             <div class="tab-pane" id="tab7">
                                 <div class="container-fluid">
                                   <app-establishment-tab (tabChange)="nextTab($event)" [userData]="userData"></app-establishment-tab>
@@ -131,7 +131,7 @@
                             </div><!-- #tab7 -->
                         </md-tab>
 
-                        <md-tab label="Professions souhaitées" [disabled]="tabGroup.selectedIndex<=7">
+                        <md-tab label="Professions souhaitées" [disabled]="nbTab<=7">
                             <div class="tab-pane" id="tab8">
                                 <div class="container-fluid">
                                   <app-jobs-tab (tabChange)="nextTab($event)"></app-jobs-tab>
@@ -139,7 +139,7 @@
                             </div><!-- #tab8 -->
                         </md-tab>
 
-                        <md-tab label="Diagnostic" [disabled]="tabGroup.selectedIndex<=8">
+                        <md-tab label="Diagnostic" [disabled]="nbTab<=8">
                             <div class="tab-pane" id="tab9" >
                                 <div class="container-fluid">
                                     <div class="row">

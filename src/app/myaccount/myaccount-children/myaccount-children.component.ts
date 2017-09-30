@@ -1,19 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import swal from 'sweetalert2';
 
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { AuthService } from '../../services/auth.service';
-
-import {MyAccountMdl,
-        MyAccountParentMdl,
-        MyAccountAdresse,
-        MyAccountSocialAdrMdl,
-        MyAccountHistoryMdl,
-        MyAccountBulletin,
-        MyAccountSiblingsMdl } from '../../model/myaccount.model';
+import {date} from "ng2-validation/dist/date";
 
 //const self = this;
 @Component({
@@ -23,216 +16,89 @@ import {MyAccountMdl,
 })
 export class MyaccountChildrenComponent implements OnInit {
 
-  myProfile : MyAccountMdl = new MyAccountMdl();
-
-  parentData : MyAccountParentMdl = new MyAccountParentMdl();;
-
+  @Input() userData;
   public childrenForm : FormGroup;
-  // children = ["Frère / Sœur 1"];
   canDisplay: boolean = false;
-  // siblings : any;
-  //maxDate = new Date();
+  maxDate = new Date();
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
               private route : Router,
-              private authService : AuthService) {
+              private authService : AuthService) {}
+
+  ngOnInit() {
     if(this.authService.getToken() != "") { // If user is logged
-      this.getUserProfile(); // get user profile from API
-      this.parentData.address = new MyAccountAdresse();
+      setTimeout(()=>{
+        this.getUserProfile();
+      }, 1500)
     } else {
       console.log("navigate back");
       this.route.navigate(['/login']);
     }
-    //console.log(Date.now().toString())
-    // let date = new Date();
-    // this.maxDate = date.getFullYear()+'/0'+date.getMonth()+'/0'+date.getDay();
-    // console.log(this.maxDate)
   }
 
-  ngOnInit() {
-    //let date = new Date().toISOString();
-    // console.log(date);
-  }
-
-  // Run the script
-  //ngAfterViewInit(){
-    //this.runScript()
-  //}
-  //runScript(){
-	// Select your input element.
-
-  //}
-
-  //get User profile from API
   getUserProfile(){
-    this.usersService.getProfile()
-      .subscribe(
-        (data)=>{
-          let response = data;
-          console.log(response);
-          this.buildFormGroup(response.data[0].siblings);
-          this.createProfile(response.data[0]);
-          this.patchValue(response.data[0]);
-          this.completeProfile();
-          this.canDisplay=true;
-        }
-      )
+    delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
+    this.buildFormGroup();
+    this.patchValue(this.userData);
+    this.canDisplay=true;
   }
 
   // Build the form
-  buildFormGroup(siblings){
+  buildFormGroup(){
     this.childrenForm = this.fb.group({
       nom : ['', Validators.required],
       prenom : ['', Validators.required],
       age : [''],
       gender : ['', Validators.required],
-      email : ['', Validators.compose([Validators.required, CustomValidators.email])],
-      portable : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
-      // adresse : ['', Validators.required],
-      // codepostal : ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
-      // ville : ['', Validators.required],
-      // datenaissance : [new Date(), Validators.compose([Validators.required, CustomValidators.date])],
-      // lieu : ['', Validators.required],
-      // freresoeur : this.fb.array([this.createfs()])
+      datenaissance : ['', Validators.compose([Validators.required, CustomValidators.date])],
+      lieu : ['', Validators.required],
     })
-    // if(siblings.length>1){
-    //   for(let i = 1; i<siblings.length; i++){
-    //     this.childrenForm.controls['freresoeur']['controls'].push((this.createfs()))
-    //   }
-    // }
     console.log(this.childrenForm)
-    // this.addFS();
   }
-
-  // createfs(){
-  //   return this.fb.group({
-  //     gender : ['', Validators.required],
-  //     age : ['', Validators.required],
-  //     niveau : ['', Validators.required]
-  //   })
-  // }
 
   // Patch the value from the API
   patchValue(data: any){
-    console.log(data);
+    console.log(data.birthDate);
+    // data.birthDate.getDay()+'/'+data.birthDate.getMonth()+'/'+data.birthDate.getFullYear()
     this.childrenForm.patchValue({
       nom : data.lastName=='A compléter' ? '' : data.lastName,
       prenom : data.firstName=='A compléter' ? '' : data.firstName,
       age : data.age,
       gender : data.gender,
-      email : (data.email===undefined || data.email=='A compléter') ? '' : data.email,
-      portable : data.mobilePhone=='A compléter' ? '' : data.mobilePhone,
-      // datenaissance : (data.birthDate!=null || data.birthDate != "") ? new Date(data.birthDate) : new Date(),
-      // lieu : data.birthPlace,
+      lieu : data.birthPlace,
     })
-    // if(typeof data.address != "undefined"){
-    //   this.childrenForm.patchValue({
-    //     adresse : data.address.address1,
-    //     codepostal : data.address.postCode,
-    //     ville : data.address.city,
-    //   })
     console.log(new Date(data.birthDate), this.childrenForm.value)
-    // this.childrenForm.controls['freresoeur'].patchValue({
-    //   age : data.siblings
-    // })
-    // }
-    // for (let i = 0; i<this.childrenForm.controls['freresoeur']['controls'].length; i++){
-    //   if(data.siblings.length!=0){
-    //     this.childrenForm.controls['freresoeur']['controls'][i].patchValue({
-    //       gender : data.siblings[i].gender,
-    //       age : data.siblings[i].age,
-    //       niveau : data.siblings[i].study
-    //     })
-    //   }
-    // }
-    console.log(this.childrenForm);
   }
 
   // Complete the profile to send to the API
-  completeProfile(){
-    this.myProfile.lastName = this.childrenForm.value.nom;
-    this.myProfile.firstName = this.childrenForm.value.prenom;
-    this.myProfile.age = this.childrenForm.value.age;
-    this.myProfile.gender = this.childrenForm.value.gender;
-    this.myProfile.email = this.childrenForm.value.email;
-    this.myProfile.mobilePhone = this.childrenForm.value.portable;
-    // this.myProfile.address.address1 = this.childrenForm.controls.adresse.value;
-    // this.myProfile.address.postCode = this.childrenForm.controls.codepostal.value.toString();
-    // this.myProfile.address.city = this.childrenForm.controls.ville.value;
-    // this.myProfile.birthDate = this.childrenForm.controls.datenaissance.value;
-    // this.myProfile.birthPlace = this.childrenForm.controls.lieu.value;
-    // console.log(this.myProfile.siblings)
-    // for(let i = 0; i<this.childrenForm.controls['freresoeur']['controls'].length; i++){
-    //   this.myProfile.siblings[i].age=this.childrenForm.controls['freresoeur']['controls'][i].controls.age.value;
-    //   this.myProfile.siblings[i].gender=this.childrenForm.controls['freresoeur']['controls'][i].controls.gender.value;
-    //   this.myProfile.siblings[i].study=this.childrenForm.controls['freresoeur']['controls'][i].controls.niveau.value;
-    // }
-
-    // let i=0;
-    // console.log(this.childrenForm.controls.freresoeur.value)
-    // for (let sibling of this.childrenForm.controls.freresoeur.value){
-    //   this.myProfile.siblings[i].age = sibling[i].age.value;
-    //   this.myProfile.siblings[i].gender = sibling[i].gender.value;
-    //   this.myProfile.siblings[i].study = sibling[i].niveau.value;
-    //   i++;
-    // }
-    console.log(this.myProfile);
-    this.usersService.storeChildData(this.myProfile);
-  }
-
-  // After click on submit
   onSubmit(){
-    console.log("Click on submit", this.childrenForm.value);
-    this.completeProfile(); // Complete the profile to send
+    this.userData.lastName = this.childrenForm.value.nom;
+    this.userData.firstName = this.childrenForm.value.prenom;
+    this.userData.age = this.childrenForm.value.age;
+    this.userData.gender = this.childrenForm.value.gender;
+    this.userData.birthDate = this.childrenForm.controls.datenaissance.value;
+    this.userData.birthPlace = this.childrenForm.controls.lieu.value;
+    console.log(this.userData);
     this.save();
-    swal({
-      title: 'Vos données ont bien été enregistré.',
-      text: '',
-      type: 'success',
-      confirmButtonText: 'Ok'
-    })
-    this.route.navigate(['/'])
   }
-
   // Call API to send new data of the user
   save(){
-    this.myProfile.parents = this.usersService.getParentData();
-    // console.log(this.myProfile);
-    this.usersService.putProfile(this.myProfile)
+    this.usersService.putProfile(this.userData)
       .subscribe(
         (data)=>{
           let response = data;
           console.log(response);
+          if(response.code==200){
+            swal({
+              title: 'Vos données ont bien été enregistré.',
+              text: '',
+              type: 'success',
+              confirmButtonText: 'Ok'
+            })
+            this.route.navigate(['/'])
+          }
         }
       )
   }
-
-  // onAddChild(){
-  //   this.siblings = this.childrenForm.get('freresoeur') as FormArray;
-  //   this.siblings.push(this.createfs());
-  //   this.myProfile.siblings.push(new MyAccountSiblingsMdl);
-  // }
-
-  // onRemoveChild(index){
-  //   this.siblings = this.childrenForm.get('freresoeur') as FormArray;
-  //   this.siblings.removeAt(index, 1);
-  //   this.myProfile.siblings.splice(index, 1);
-  // }
-
-  // Create thte profile to send to the API
-  createProfile(data){
-    console.log(data)
-    this.myProfile.parents= [];
-    this.myProfile.address= new MyAccountAdresse();
-    this.myProfile.socialAddresses = new MyAccountSocialAdrMdl();
-    this.myProfile.academicHistories[0]={};
-    this.myProfile.academicHistories[0] = new MyAccountHistoryMdl();
-    this.myProfile.bulletins[0] = new MyAccountBulletin();
-    this.myProfile.siblings[0]=new MyAccountSiblingsMdl();
-    // for(let i = 1; i<data.siblings.length; i++){
-    //   this.myProfile.siblings[i]=new MyAccountSiblingsMdl();
-    // }
-  }
-
 }

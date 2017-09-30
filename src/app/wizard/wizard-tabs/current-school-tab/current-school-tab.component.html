@@ -198,6 +198,65 @@
         </div>
       </div>
     </div>
+    <!-- Button Upload -->
+    <div *ngIf="onApplyPage">
+      <label>Télécharger ici le dernier bulletin scolaire</label>
+      <input class="inputTypeFileCk" type="file" ng2FileSelect [uploader]="uploader"/>
+    </div>
+  </div>
+  <div class="col-md-8" *ngIf="onApplyPage">
+    <div fxFlex.gt-sm="80" fxFlex.gt-xs="50" fxFlex="100">
+      <h5 class="mt-0" fxLayout="row">
+        <span fxFlex>File d'attente des téléchargements</span>
+        <span>Nombre de fichier en attente: {{ uploader?.queue?.length }}</span>
+      </h5>
+
+      <ngx-datatable class="material ml-0 mr-0"
+                     [rows]="uploader.queue" [columnMode]="'flex'"
+                     [headerHeight]="50" [footerHeight]="0"
+                     [rowHeight]="'auto'">
+        <ngx-datatable-column name="Nom" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template mdTooltip="{{ row?.file?.name }}">
+            {{ row?.file?.name | school:'10' }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Taille" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row?.file?.size/1024/1024 | number:'.2' }} MB
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Progression" *ngIf="uploader.options.isHTML5" [flexGrow]="3">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <md-progress-bar mode="determinate" value="{{row.progress}}"></md-progress-bar>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Statut" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span *ngIf="row.isSuccess"><md-icon>check</md-icon></span>
+            <span *ngIf="row.isCancel"><md-icon>cancel</md-icon></span>
+            <span *ngIf="row.isError"><md-icon>error</md-icon></span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Action" [flexGrow]="2">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <button md-raised-button md-button-sm color="primary" type="button" (click)="row.upload()" [disabled]="row.isReady || row.isUploading || row.isSuccess">Télécharger</button>
+            <button md-raised-button md-button-sm color="warn" type="button" (click)="row.cancel()" [disabled]="!row.isUploading">Annuler</button>
+            <button md-raised-button md-button-sm color="accent" type="button" (click)="row.remove()">Supprimer
+            </button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+
+      <div class="mb-1">
+        <p>Progression de la file d'attente</p>
+        <md-progress-bar mode="determinate" value="{{uploader.progress}}"></md-progress-bar>
+      </div>
+      <button md-raised-button md-button-sm color="primary" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Tout télécharger</button>
+      <button md-raised-button md-button-sm color="warn" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">Tout annuler</button>
+      <button md-raised-button md-button-sm color="accent" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">Tout supprimer</button>
+    </div>
+
+
   </div>
   <div class="col-md-12">
     <div class="form-group clearfix">
