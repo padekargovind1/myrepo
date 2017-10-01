@@ -193,96 +193,18 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
     this.router.navigate(['/'+path]);
   }
 
-  // get Location data (after key down)
-  filterLieu(event){
-    // console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=2){
-      this.getLieuFilter(filter)
-    }
+  // get the location list
+  filterLieu(event) {
+    this.options=this.publicService.filterLieu(event);
   }
-
-  // get Location data from API
-  getLieuFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.postAutoCompleteLieu(data)
-      .subscribe(
-        (response)=>{
-          let data = response.data;
-          // console.log(data);
-          if(response.code!=400){
-            this.options['regions']=data.regions;
-            this.options['departements']=data.departments;
-            this.options['villes']=data.cities;
-          }
-        }
-      )
-  }
-
-  // get before BAC school name (after key down)
+  //Get the school list
   filterSchool(event){
-    // console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=3){
-      this.getSchoolFilter(filter)
-    }else {
-      this.schoolsOptions=null;
-    }
+    this.schoolsOptions=this.publicService.filterSchool(event)
   }
-
-  // get before BAC school name from API
-  getSchoolFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.postAutocompleteSchool(data)
-      .subscribe(
-        (response)=>{
-          let data = response.data;
-          // console.log(data);
-          this.schoolsOptions=data
-        }
-      )
-  }
-
-  // get after BAC school name (after key down)
+  //Get the apb school list
   filterApbSchool(event){
-    console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=3){
-      this.getApbSchoolFilter(filter)
-    }else {
-      this.schoolsOptions=null;
-    }
+    this.schoolsOptions=this.publicService.filterApbSchool(event);
   }
-
-  // get after BAC school name from API
-  getApbSchoolFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.getAutoCompleteApb(filter)
-      .subscribe(
-        response=>{
-          console.log(response)
-          if(response.code!=400){
-            this.schoolsOptions=[]
-            for(let i = 0; i<response.data.length; i++){
-              if(this.schoolsOptions.indexOf(response.data[i].longName)==-1){
-                this.schoolsOptions.push(response.data[i].longName)
-              }
-            }
-            console.log(this.schoolsOptions)
-          }
-        }
-      )
-  }
-
-  // navigateTo(index){
-  //   this.router.navigate(['/landing-page-'+index])
-  // }
 
   // Use the good location name to send into the body of the API
   onSelectLieu(type:string, index:number){

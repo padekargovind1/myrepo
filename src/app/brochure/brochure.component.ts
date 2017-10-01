@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import {BrochpopupComponent} from './brochpopup/brochpopup.component'
 import { BrochureDownloadComponent } from './brochure-download/brochure-download.component';
 import { BrochureService } from '../services/brochure.service';
+import {HelperService} from "../services/helper.service";
 @Component({
   selector: 'app-brochure',
   templateUrl: './brochure.component.html',
@@ -46,7 +47,8 @@ export class BrochureComponent implements OnInit, OnDestroy {
   constructor(private publicService : PublicService,
               public dialog:MdDialog,
               private fb : FormBuilder,
-              private brochureService : BrochureService) {
+              private brochureService : BrochureService,
+              public helperService : HelperService) {
       this.buildForm();
       this.makeProfile();
       this.getSearch();
@@ -75,70 +77,6 @@ export class BrochureComponent implements OnInit, OnDestroy {
         this.getBrochure();
     }
   }
-
-//   doBrochure() {
-//     (<any> $('#js-grid-juicy-projects')).cubeportfolio({
-//         filters: '#js-filters-juicy-projects',
-//         loadMore: '#js-loadMore-juicy-projects',
-//         loadMoreAction: 'click',
-//         layoutMode: 'grid',
-//         defaultFilter: '*',
-//         animationType: 'quicksand',
-//         gapHorizontal: 35,
-//         gapVertical: 30,
-//         gridAdjustment: 'responsive',
-//         mediaQueries: [{
-//             width: 1500,
-//             cols: 5
-//         }, {
-//             width: 1100,
-//             cols: 4
-//         }, {
-//             width: 800,
-//             cols: 3
-//         }, {
-//             width: 480,
-//             cols: 2
-//         }, {
-//             width: 320,
-//             cols: 1
-//         }],
-//         caption: 'overlayBottomReveal',
-//         displayType: 'sequentially',
-//         displayTypeSpeed: 80,
-
-//         // lightbox
-//         lightboxDelegate: '.cbp-lightbox',
-//         lightboxGallery: true,
-//         lightboxTitleSrc: 'data-title',
-//         lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
-
-//         // singlePage popup
-//         singlePageDelegate: '.cbp-singlePage',
-//         singlePageDeeplinking: true,
-//         singlePageStickyNavigation: true,
-//         singlePageCounter: '<div class="cbp-popup-singlePage-counter">{{current}} of {{total}}</div>',
-//         singlePageCallback: function(url, element) {
-//             // to update singlePage content use the following method: this.updateSinglePage(yourContent)
-//             var t = this;
-
-//             console.log('Hi');
-
-//             // $.ajax({
-//             //         url: url,
-//             //         type: 'GET',
-//             //         dataType: 'html',
-//             //         timeout: 10000
-//             //     })
-//             //     .done(function(result) {
-//             //         t.updateSinglePage(result);
-//             //     })
-//             //     .fail(function() {
-//             //         t.updateSinglePage('AJAX Error! Please refresh the page!');
-//             //     });
-//         },
-//     });
-//   }
 
   // Getting the brochure with the API
   // And store the response data in listBrochure
@@ -229,59 +167,13 @@ export class BrochureComponent implements OnInit, OnDestroy {
   }
 
 
-  //Getting the location list
-  filterLieu(event){
-    // console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=2){
-      this.getLieuFilter(filter)
-    }
+  // get the location list
+  filterLieu(event) {
+    this.options=this.publicService.filterLieu(event);
   }
-
-  //Getting the location list from API
-  getLieuFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.postAutoCompleteLieu(data)
-    .subscribe(
-    (response)=>{
-        let data = response.data;
-        // console.log(data);
-        console.log(data);
-        if(response.code!=400){
-          this.options['regions']=data.regions
-          this.options['departements']=data.departments
-          this.options['villes']=data.cities
-        }
-      }
-    )
-  }
-
-  // getting the school list
+  //Get the school list
   filterSchool(event){
-    // console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=3){
-    this.getSchoolFilter(filter)
-    }else {
-    this.schoolsOptions=null;
-    }
-  }
-
-  //Getting the school list from API
-  getSchoolFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.postAutocompleteSchool(data)
-    .subscribe(
-      (response)=>{
-      let data = response.data;
-      // console.log(data);
-      this.schoolsOptions=data
-      }
-    )
+    this.schoolsOptions=this.publicService.filterSchool(event)
   }
 
   // After submit search for brochure

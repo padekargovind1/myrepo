@@ -188,95 +188,17 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/' + componentName]);
   }
 
-  // Call after keyup detected on location input
-  // if the word is more or equals to 2 letters, it call the function getLieuFilter to get the list
+  // get the location list
   filterLieu(event) {
-    console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=2){
-      this.getLieuFilter(filter)
-    }
+    this.options=this.publicService.filterLieu(event);
   }
-
-  // Call after keyup detected on school input
-  // If they have more or equal to 3 letter then we call API to get school name
+  //Get the school list
   filterSchool(event){
-    console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=3){
-      this.getSchoolFilter(filter)
-    }else {
-      this.schoolsOptions=null;
-    }
+    this.schoolsOptions=this.publicService.filterSchool(event)
   }
-
-  // Same as filterSchool method except it's for enseignement supérieur
+  //Get the apb school list
   filterApbSchool(event){
-    console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=3){
-      this.getApbSchoolFilter(filter)
-    }else {
-      this.schoolsOptions=null;
-    }
-  }
-
-  // Method to get the location list from API
-  getLieuFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.postAutoCompleteLieu(data)
-      .subscribe(
-        (response)=>{
-          let data = response.data;
-          console.log(data);
-          if(response.code!=400){
-            this.options['regions']=data.regions;
-            this.options['departements']=data.departments;
-            this.options['villes']=data.cities;
-          }
-        }
-      )
-  }
-
-  // Method to get the school list for before BAC from API
-  getSchoolFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.postAutocompleteSchool(data)
-      .subscribe(
-        (response)=>{
-          if(response.code==200){
-            let data = response.data;
-            // console.log(data);
-            this.schoolsOptions=data
-          }
-        }
-      )
-  }
-
-  // Method to get the school list for after BAC from API
-  getApbSchoolFilter(filter: string){
-    let data = {
-      keyword : filter
-    }
-    this.publicService.getAutoCompleteApb(filter)
-      .subscribe(
-        response=>{
-          console.log(response)
-          if(response.code!=400){
-            this.apbOptions=[]
-            for(let i = 0; i<response.data.length; i++){
-              if(this.apbOptions.indexOf(response.data[i].longName)==-1){
-                this.apbOptions.push(response.data[i].longName)
-              }
-            }
-            console.log(this.apbOptions)
-          }
-        }
-      )
+    this.apbOptions=this.publicService.filterApbSchool(event);
   }
 
   // Build form the before BAC search
