@@ -27,6 +27,10 @@ export class BookingService {
     localStorage.setItem("bookingDataAdvPhoto", data[6])
   }
 
+  storeBookingPrice(price){
+    localStorage.setItem('bookingPrice', price);
+  }
+
   haveBookingData(){
     return !!localStorage.getItem('bookingDataDay')
   }
@@ -52,7 +56,7 @@ export class BookingService {
     console.log(data);
     localStorage.setItem("bookingPackageNumber", data[0])
     localStorage.setItem("bookingPackageTitle", data[1])
-    localStorage.setItem("bookingPackageDesc", data[2])
+    localStorage.setItem("bookingPackageDesc", data[2]) //package price
     localStorage.setItem("bookingPackageIndex", data[3])
   }
 
@@ -65,7 +69,8 @@ export class BookingService {
     const packageTitle = localStorage.getItem("bookingPackageTitle")
     const packageDesc = localStorage.getItem("bookingPackageDesc")
     const packageindex = localStorage.getItem("bookingPackageIndex")
-    const data = [packageNumber, packageTitle, packageDesc, packageindex]
+    const packagePrice = localStorage.getItem('bookingPrice')
+    const data = [packageNumber, packageTitle, packageDesc, packageindex, packagePrice]
 
     return data;
   }
@@ -82,6 +87,7 @@ export class BookingService {
     localStorage.removeItem("bookingPackageTitle")
     localStorage.removeItem("bookingPackageDesc")
     localStorage.removeItem("bookingPackageIndex")
+    localStorage.removeItem('bookingPrice')
   }
 
   filterBooking(dataToFilter, listAdvisers){
@@ -120,77 +126,12 @@ export class BookingService {
     return this.forFastBooking==true;
   }
 
-  isSkippedWizard(){
-    return this.packageIndex==0;
-  }
-
-  getUserData(){
-    return this.userData;
-  }
-
-  getPackageIndex(){
-    return this.packageIndex;
-  }
-
-  getNewAppointment(){
-    return this.newAppointment;
-  }
-
   // cleanAppointmentData(){
   //   this.userData = null;
   //   this.newAppointment=null;
   //   this.packageIndex=null;
   //   this.forBooking=false;
   // }
-
-  makeAppointment(){
-    this.usersService.getAppointmentsPackage()
-      .subscribe(
-        response=>{
-          console.log(response);
-          if(response.code!=400){
-            let packageId = response.data[this.getPackageIndex()]._id;
-            this.postCreateNewAppointment(packageId);
-            if(this.forBooking){
-              this.updateProfile();
-            }
-          }
-        }
-      )
-  }
-
-  postCreateNewAppointment(packageId){
-    console.log(packageId)
-    this.usersService.postCreateNewAppointment(this.getNewAppointment(), packageId)
-      .subscribe(
-        response=>{
-          console.log(response);
-          if(response.code==400){
-            console.log(response.message);
-          } else {
-            console.log('Appointement register');
-            if(this.forFastBooking){
-              this.successSubmit()
-              this.router.navigate(['/']);
-            }
-          }
-        }
-      )
-  }
-
-  updateProfile(){
-    console.log(this.getUserData())
-    this.usersService.putProfile(this.getUserData())
-      .subscribe(
-        response=>{
-          console.log(response)
-          if(response.code!=400){
-            this.successSubmit();
-            this.cleanBooking();
-          }
-        }
-      )
-  }
 
   successSubmit(){
     let appointmentData = this.getBookingData();
@@ -215,5 +156,33 @@ export class BookingService {
       type: 'warning',
       confirmButtonText: "J'AI COMPRIS"
     })
+  }
+
+  chequePayment(){
+    let appointmentData = this.getBookingData();
+    console.log(appointmentData);
+    let frenchDate : string = appointmentData[0].toString().substr(8, 2)+'/'+appointmentData[0].toString().substr(5, 2)+'/'+appointmentData[0].toString().substr(0, 4)
+    let date : string = frenchDate+' de '+appointmentData[1]+' à '+appointmentData[2];
+    let adviser : string = appointmentData[4]+' '+appointmentData[3];
+    swal({
+      title: "Paiement Par Cheque",
+      text: 'Votre rendez-vous :\nAvec '+adviser+' Le '+date+'\nAu CIDE 84 Boulevard Saint-Michel 75006 Paris\nTél. : 01 53 10 33 20\n\nMerci d’adresser votre réglement\nAu CIDE, 84 Boulevard Saint-Michel 75006 Paris\nen précisant au dos du Paiement\n' +
+      'chèque :\nRendez-vous du '+date,
+      type: 'success',
+      confirmButtonColor: '#70AD47',
+      cancelButtonClass: 'btn-cancel-wizard',
+      confirmButtonText: "J'accepte",
+      cancelButtonText: 'Je décline',
+      showCancelButton: true,
+      reverseButtons: true
+    }).then(function (event) {
+      console.log(event);
+      if(event=='true'){
+        this.router.navigate(['/wizard'])
+      }
+    }, function (dismiss) {
+      //catch promise
+    })
+
   }
 }

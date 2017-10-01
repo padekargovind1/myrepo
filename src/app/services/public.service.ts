@@ -99,6 +99,7 @@ export class PublicService {
     departements : [],
     villes : []
   };
+  schoolList: any;
 
   constructor(private http : Http) {
     this.domaines=this.domaines.sort()
@@ -261,8 +262,6 @@ export class PublicService {
     let filter: string = event.target.value;
     if(filter.length>=3){
       return this.getSchoolFilter(filter)
-    }else {
-      return null;
     }
   }
 
@@ -307,11 +306,15 @@ export class PublicService {
         (response)=>{
           if(response.code==200){
             let data = response.data;
-            // console.log(data);
-            return data;
+            //console.log(data);
+            this.schoolList=data;
           }
         }
       )
+    console.log(this.schoolList);
+    setTimeout(()=>{
+      return this.schoolList;
+    }, 500);
   }
 
   // Method to get the school list for after BAC from API

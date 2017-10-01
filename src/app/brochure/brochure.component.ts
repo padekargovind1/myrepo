@@ -43,6 +43,7 @@ export class BrochureComponent implements OnInit, OnDestroy {
         place : "",
         name : ""
     };
+    lieuSelected:any;
 
   constructor(private publicService : PublicService,
               public dialog:MdDialog,
@@ -167,19 +168,65 @@ export class BrochureComponent implements OnInit, OnDestroy {
   }
 
 
-  // get the location list
-  filterLieu(event) {
-    this.options=this.publicService.filterLieu(event);
+  //Getting the location list
+  filterLieu(event){
+    // console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=2){
+      this.getLieuFilter(filter)
+    }
   }
-  //Get the school list
+
+  //Getting the location list from API
+  getLieuFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutoCompleteLieu(data)
+    .subscribe(
+    (response)=>{
+        let data = response.data;
+        // console.log(data);
+        console.log(data);
+        if(response.code!=400){
+          this.options['regions']=data.regions
+          this.options['departements']=data.departments
+          this.options['villes']=data.cities
+        }
+      }
+    )
+  }
+
+  // getting the school list
   filterSchool(event){
-    this.schoolsOptions=this.publicService.filterSchool(event)
+    // console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+    this.getSchoolFilter(filter)
+    }else {
+    this.schoolsOptions=null;
+    }
+  }
+
+  //Getting the school list from API
+  getSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutocompleteSchool(data)
+    .subscribe(
+      (response)=>{
+      let data = response.data;
+      // console.log(data);
+      this.schoolsOptions=data
+      }
+    )
   }
 
   // After submit search for brochure
   onSubmitSearch(){
     console.log("click on submit");
-    this.searchBrochure.class = this.searchForm.value.class;
+    this.searchBrochure.class = this.searchForm.value.classe;
     this.searchBrochure.place = this.searchForm.value.lieu;
     this.searchBrochure.name = this.searchForm.value.etablissement;
     this.getBrochure()
@@ -241,6 +288,19 @@ export class BrochureComponent implements OnInit, OnDestroy {
     this.downloadList[0]=brochureId;
     this.downloadSchoolList[0]=schoolId;
     this.brochDialog();
+  }
+
+  // Use the good location name to send into the body of the API
+  onSelectLieu(type:string, index:number){
+    this.lieuSelected=[];
+    if(type=='R'){
+      this.lieuSelected=this.options.regions[index].departments;
+    } else if(type=='D'){
+      this.lieuSelected[0]=this.options.departements[index].departmentNumber;
+    }else {
+      this.lieuSelected[0]=this.options.villes[index].postcode;
+    }
+    console.log(this.lieuSelected);
   }
 
 }

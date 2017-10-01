@@ -397,13 +397,44 @@ export class SchoolComponent implements OnInit, OnDestroy {
   //     )
   // }
 
-  // get the location list
+  // get the location list (after key down)
   filterLieu(event) {
-    this.options=this.publicService.filterLieu(event);
+    // console.log(event.target.value);
+    const filter: string = event.target.value;
+    if(filter.length >= 2) {
+      this.getLieuFilter(filter);
+    }
   }
-  //Get the school list
+
+  // get the school list (after key down)
   filterSchool(event){
-    this.schoolsOptions=this.publicService.filterSchool(event);
+    // console.log(event.target.value);
+    const filter: string = event.target.value;
+    if(filter.length >= 3){
+      this.getSchoolFilter(filter)
+    }else {
+      this.schoolsOptions=null;
+    }
+  }
+
+  // get the location list from API
+  getLieuFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutoCompleteLieu(data)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          // console.log(data);
+          if(response.code!=400){
+            this.options['regions']=data.regions;
+            this.options['departements']=data.departments;
+            this.options['villes']=data.cities;
+            // console.log(this.options)
+          }
+        }
+      )
   }
 
   // After select a location name (ex : 75001 Paris 01)
@@ -417,6 +448,21 @@ export class SchoolComponent implements OnInit, OnDestroy {
       this.lieuSelected[0]=this.options.villes[index].postcode;
     }
     console.log(this.lieuSelected);
+  }
+
+  // Get before BAC school list from API
+  getSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.publicService.postAutocompleteSchool(data)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          // console.log(data);
+          this.schoolsOptions=data
+        }
+      )
   }
 
   // get the school list

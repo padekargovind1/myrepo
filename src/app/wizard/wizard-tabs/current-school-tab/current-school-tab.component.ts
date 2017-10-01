@@ -32,8 +32,10 @@ export class CurrentSchoolTabComponent implements OnInit {
         params => {
           console.log(params)
           this.onApplyPage = params[0].path==="applyto";
-          console.log('test2', params[1].path)
-          this.applyService.storeUrlPath(params[1].path);
+          if(typeof params[1]!= "undefined"){
+            console.log('test2', params[1].path)
+            this.applyService.storeUrlPath(params[1].path);
+          }
         }
       )
   }

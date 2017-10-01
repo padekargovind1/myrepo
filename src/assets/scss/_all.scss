@@ -2468,5 +2468,39 @@ text-align:center;
   max-width: 100%;
 }
 
+.image-payment{
+  margin :0 auto;
+}
 
+.logo-payment{
+  width:150px;
+  height: 150px;
+}
 
+.cyberplus-payment{
+  width:70%;
+  cursor : pointer;
+}
+
+.cheque-payment{
+  cursor : pointer;
+}
+
+.online-payment-title{
+  background-color: dodgerblue;
+  color:white;
+  margin-top:20px;
+}
+
+.online-payment-text-div{
+  border:1px solid dodgerblue;
+  pdding: 20px;
+  margin-bottom:20px;
+}
+.online-payment-text-right{
+  text-align: right;
+}
+
+.online-payment-text-bold{
+  font-weight : bold;
+}

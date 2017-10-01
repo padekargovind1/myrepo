@@ -103,6 +103,7 @@ import { JobsTabComponent } from './wizard/wizard-tabs/jobs-tab/jobs-tab.compone
 import { DiagnosticTabComponent } from './wizard/wizard-tabs/diagnostic-tab/diagnostic-tab.component';
 import { HobbiesTabComponent } from './wizard/wizard-tabs/hobbies-tab/hobbies-tab.component';
 import {ApplyService} from "./services/apply.service";
+import { OnlinePaymentComponent } from './payment/online-payment/online-payment.component';
 
 @NgModule({
   declarations: [
@@ -173,7 +174,8 @@ import {ApplyService} from "./services/apply.service";
     EstablishmentTabComponent,
     JobsTabComponent,
     DiagnosticTabComponent,
-    HobbiesTabComponent
+    HobbiesTabComponent,
+    OnlinePaymentComponent
   ],
   imports: [
     BrowserModule,

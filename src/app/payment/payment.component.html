@@ -1,4 +1,32 @@
 <div class="white-background">
-{{strMessage}}
-<button type="button" class="btn" (click)="onProceed()">Proceed</button>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <img src="assets/images/payment/CIDE_logo.png" alt=""
+             class="img-responsive image-payment logo-payment">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="assets/images/payment/cheque.png" alt=""
+             class="img-responsive image-payment cheque-payment"
+              (click)="onCheque()">
+      </div>
+      <div class="col-md-6">
+        <img src="assets/images/payment/cyberplus_payment.png" alt=""
+             class="img-responsive image-payment cyberplus-payment"
+              (click)="onOnlinePayment()">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="text-center">Paiement par chèque</h1>
+      </div>
+      <div class="col-md-6">
+        <h1 class="text-center">Paiement en ligne securisé</h1>
+      </div>
+    </div>
+  </div>
 </div><!-- .white-background -->
+
