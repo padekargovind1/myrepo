@@ -14,7 +14,7 @@ export class OnlinePaymentComponent implements OnInit {
     informationPaymentValue : ['123456789', '000122', '11111']
   }
   paymentMethod={
-    imgName:['cb.png', 'eCarteBlue.png', 'maestro.png', 'mastercard.png', 'visa.png', 'visaElectron.png'],
+    imgName:['cb.png', 'ecartebleue .png', 'maestro.png', 'mastercard.png', 'visa.png', 'visaelectron.png'],
     title:['CB', 'E-CARTEBLEUE', 'Maestro', 'MasterCard', 'Visa', 'Visa Electron']
   }
 
@@ -22,10 +22,10 @@ export class OnlinePaymentComponent implements OnInit {
               private router : Router) { }
 
   ngOnInit() {
-    this.payment.informationPaymentValue[3]=this.bookingService.getBookingPackage()[2]
+    this.payment.informationPaymentValue[3]=this.bookingService.getBookingPackage()[4]+'.00€'
   }
 
-  onCancel(){
+  onCancel() {
     this.router.navigate(['/payment']);
   }
 
