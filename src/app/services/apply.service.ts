@@ -95,26 +95,27 @@ export class ApplyService {
     }
 
     console.log(data)
-    this.usersService.postApplication(data) //Post data to create a new applying school
-      .subscribe(
-        response=>{
-          let data = response.data;
-          console.log(response);
-          if(response.code==200) { //If success
-            console.log("apply successful");
-            this.usersService.deleteApplication(data.schools[0].school) //We delete the school in wish list if it's in wish list
-              .subscribe(
-                response=>{
-                  console.log(response)
-                }
-              )
-            this.updateProfile();
-          } else {
-            console.log(response.message);
-            this.failSubmit(response.message);
-          }
-        }
-      )
+    // this.usersService.postApplication(data) //Post data to create a new applying school
+    //   .subscribe(
+    //     response=>{
+    //       let data = response.data;
+    //       console.log(response);
+    //       if(response.code==200) { //If success
+    //         console.log("apply successful");
+    //         this.usersService.deleteApplication(data.schools[0].school) //We delete the school in wish list if it's in wish list
+    //           .subscribe(
+    //             response=>{
+    //               console.log(response)
+    //             }
+    //           )
+    //         this.updateProfile();
+    //       } else {
+    //         console.log(response.message);
+    //         this.failSubmit(response.message);
+    //       }
+    //     }
+    //   )
+      this.updateProfile();
   }
 
   updateProfile(){
