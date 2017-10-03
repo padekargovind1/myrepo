@@ -288,7 +288,7 @@
                                             (click)="onDeleteCompare(i)">
                                       <img src="assets/images/cide-remove.png" width="16" />
                                     </button>
-                                    <div class="card  school-item">
+                                    <div class="card  school-item" id="schooltoshow{{i}}">
                                       <ul class="school-action">
                                         <li><a (click)="saveInWish(i)"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
                                         <li><a (click)="sendMessage(school)"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
@@ -300,25 +300,25 @@
                                         </li>
                                       </ul>
 
-                                      <a href="" class="schoolPopUp"><img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1" /></a>
+                                      <a href="javascript:void(0)" (click)="OpenSchoolSelect(i,school)" class="schoolPopUp"><img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1" /></a>
 
                                       <div class="card-content">
                                         <h3 style="height:30px"
                                             mdTooltip="{{ school.shortName }}">
                                           {{school.shortName | school:35}}
                                         </h3>
-                                        <p style="height:28px; margin:0px"
+                                        <p style=" margin:0px"
                                            mdTooltip="{{ school.longName }}">
                                           {{school.longName | school:42}}
                                           <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
-                                          <address style="height:48px; margin:0px">
+                                          <address style=" margin:0px">
                                             {{school.address.ad1}}<br />
                                             {{school.address.postcode}} {{school.address.city}}<br />
                                             Tel: {{school.address.phoneNumber}}
                                           </address>
 
                                           <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
-                                          <button type="button" class="btn btn-secondary btn-block"
+                                          <button type="button" id="thisschoolbutton{{i}}" class="btn btn-secondary btn-block CustomOpenPopApply"
                                                   (click)="onApply(school)">
                                             Sélectionner
                                           </button>

@@ -245,6 +245,17 @@ export class CompareModeComponent implements OnInit, OnDestroy {
         confirmButtonText: 'Ok'
       })
     }
+  }  
+  OpenSchoolSelect(i,school){ 
+	  var searchThis = document.getElementById('schooltoshow'+i).innerHTML;
+	  swal({
+		title: '',
+		html: searchThis,
+		confirmButtonText: 'Selectioner',
+	  }).then(function () {
+		var searchThisbutton =document.getElementById('thisschoolbutton'+i);
+		searchThisbutton.click();
+	  });
   }
 
   // Open md dialog to send a message

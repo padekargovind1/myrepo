@@ -2547,6 +2547,12 @@ text-align:center;
     pointer-events:auto;
     cursor: pointer;
   }
+  #thisschoolbutton0, .CustomOpenPopApply {
+    display: none !important;
+  }
+  .top-compare-table {
+    z-index: 999;
+  }
   }
 
   @media (max-width:640px) {
