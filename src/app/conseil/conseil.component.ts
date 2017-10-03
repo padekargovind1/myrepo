@@ -48,7 +48,7 @@ export class ConseilComponent implements OnInit {
 
 
   // Open the info dialog
-  openInfoDialog(nb : number){ 
+  openInfoDialog(nb : number){  
 	//var datatoshow = <HTMLDivElement>document.getElementById('custom_panel_' + nb); 
 	//var divToShow = <HTMLDivElement>document.getElementById('customPopUp_' + nb);
 	//divToShow.innerHTML = '';

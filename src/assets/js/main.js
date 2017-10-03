@@ -1,5 +1,5 @@
 ﻿jQuery(document).ready(function($) {
-	$('.customClosePopUp').click(function(){
+	$('.customClosePopUp').click(function(){ 
 		$(this).parent('.customPopUp').fadeOut();
 	});
 	$('.btn-conseil').click(function(){
