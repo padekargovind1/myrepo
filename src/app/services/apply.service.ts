@@ -93,6 +93,7 @@ export class ApplyService {
         class : this.schoolService.getClassName()
       }]
     }
+
     console.log(data)
     this.usersService.postApplication(data) //Post data to create a new applying school
       .subscribe(
@@ -107,24 +108,28 @@ export class ApplyService {
                   console.log(response)
                 }
               )
-            this.usersService.putProfile(this.userData) //Update user profile
-              .subscribe(
-                response=>{
-                  console.log(response)
-                  if(response.code==400){
-                    this.failSubmit(response.message);
-                  } else {
-                    this.successSubmit();
-                    this.schoolService.cleanClassName();
-                  }
-                }
-              )
+            this.updateProfile();
           } else {
             console.log(response.message);
             this.failSubmit(response.message);
           }
         }
       )
+  }
+
+  updateProfile(){
+    this.usersService.putProfile(this.userData) //Update user profile
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code==400){
+            this.failSubmit(response.message);
+          } else {
+            this.successSubmit();
+            this.schoolService.cleanClassName();
+          }
+        }
+      );
   }
 
   successSubmit(){

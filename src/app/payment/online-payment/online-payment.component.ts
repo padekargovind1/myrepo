@@ -30,7 +30,12 @@ export class OnlinePaymentComponent implements OnInit {
   }
 
   onConfirm(){
-    this.router.navigate(['/wizard'])
+    if(this.payment.informationPaymentValue[3]!="80.00€"){
+      this.router.navigate(['/wizard']);
+    }else {
+      this.bookingService.successSubmit();
+    }
+
   }
 
 }
