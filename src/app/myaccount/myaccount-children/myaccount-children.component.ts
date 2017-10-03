@@ -57,6 +57,7 @@ export class MyaccountChildrenComponent implements OnInit {
     console.log(this.childrenForm)
   }
 
+
   // createfs(){
   //   return this.fb.group({
   //     gender : ['', Validators.required],
@@ -65,7 +66,7 @@ export class MyaccountChildrenComponent implements OnInit {
   //   })
   // }
 
- // patchValue(data: any){ 
+  //patchValue(data: any){ 
 
   // Patch the value from the API
   patchValue(data: any){
@@ -82,9 +83,9 @@ export class MyaccountChildrenComponent implements OnInit {
     console.log(new Date(data.birthDate), this.childrenForm.value)
   }
 
-<<<<<<< HEAD
 
-  completeProfile(){
+
+  /*completeProfile(){
     this.myProfile.lastName = this.childrenForm.value.nom;
     this.myProfile.firstName = this.childrenForm.value.prenom;
     this.myProfile.age = this.childrenForm.value.age;
@@ -113,12 +114,12 @@ export class MyaccountChildrenComponent implements OnInit {
     // }
     console.log(this.myProfile);
     this.usersService.storeChildData(this.myProfile);
-  }
+  }*/
 
   // After click on submit
-=======
+
   // Complete the profile to send to the API
->>>>>>> origin/master
+
   onSubmit(){
     this.userData.lastName = this.childrenForm.value.nom;
     this.userData.firstName = this.childrenForm.value.prenom;
