@@ -33,15 +33,15 @@ export class SendMessageComponent implements OnInit {
 
   buildFormGroup(){
     this.sendMessageForm = this.fb.group({
-      lienParent : [''],
-      title : [''],
-      lastName : [''],
-      firstName : [''],
+      lienParent : ['', Validators.required],
+      title : ['', Validators.required],
+      lastName : ['', Validators.required],
+      firstName : ['', Validators.required],
       mel : ['', Validators.compose([Validators.required, CustomValidators.email])],
       tel : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
       childLastName : ['', Validators.required],
       childFirstName : ['', Validators.required],
-      childTitle : [''],
+      childTitle : ['', Validators.required],
       classe : ['', Validators.required],
       copy : [false],
       subject : ['', Validators.required],

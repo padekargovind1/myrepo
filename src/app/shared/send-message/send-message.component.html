@@ -7,7 +7,7 @@
                 <div class="col-md-6">
                     <div class="select-custom">
                         <div style="margin-bottom:10px">
-                            <span>Lien de Parenté</span>
+                            <span>Lien de Parenté*</span>
                         </div>
                         <select name="" class="form-control"
                             [formControl]="sendMessageForm.controls['lienParent']">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-6">
                     <div style="margin-bottom:10px">
-                        <span>Titre</span>
+                        <span>Sexe*</span>
                     </div>
                     <div class="form-group horizontal-radio clearfix">
 
@@ -41,7 +41,7 @@
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
                         <div style="margin-bottom:10px">
-                            <span>Nom de famille</span>
+                            <span>Nom de famille*</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Nom"
                             [formControl]="sendMessageForm.controls['lastName']"
@@ -51,7 +51,7 @@
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
                         <div style="margin-bottom:10px">
-                            <span>Prénom</span>
+                            <span>Prénom*</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Prénom"
                             [formControl]="sendMessageForm.controls['firstName']"
@@ -65,6 +65,7 @@
                     <div class="col-sm-6">
                         <div style="margin-bottom:10px">
                             <span>Mél*</span>
+                          <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Exemple : Abc@example.com" mdTooltipPosition="after"></i>
                         </div>
                         <input type="email" class="form-control" placeholder="Email"
                             [formControl]="sendMessageForm.controls['mel']">
