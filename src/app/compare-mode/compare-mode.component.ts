@@ -65,6 +65,21 @@ export class CompareModeComponent implements OnInit, OnDestroy {
   runScript() {
       setTimeout(function () {
           var winWidth = $(window).width();
+
+          
+          if (winWidth < 640) {
+              setTimeout(function () {
+                  $('#compare').find('.collapse').each(function () {
+                      $(this).attr('aria-expanded', 'false');
+                      $(this).removeClass('in');
+                      $(this).attr('collapse', 'hide');
+                  });
+                  $('#compare .item-compare-table .compare-item').each(function () {
+                      $(this).find('li').eq(1).find('.collapse').addClass('in');
+                      $(this).find('li').eq(1).find('.collapse').attr('aria-expanded', 'true');
+                  });
+              },2500);
+          }
           //alert(winWidth);
           if (winWidth < 640) {
               //alert(winWidth);

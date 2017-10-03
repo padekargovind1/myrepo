@@ -2497,6 +2497,11 @@ text-align:center;
   width: 80%;
   float: right;
 }
+.schoolPopUp {
+  pointer-events: none;
+  cursor: default;
+}
+
 
 .compareSliderMobile .content-compare-table {
   width: 25%;
@@ -2529,92 +2534,99 @@ text-align:center;
       max-width: 10%;
     }
 }
-@media (max-width:668px) {
- .compareSliderMobile {
-    width: 75%;
-  }
- .compareSliderMobile .content-compare-table {
-    width: 33.33%;
-  }
-}
 
-@media (max-width:640px) {
-  .compareSliderMobile {
-    width: 66.67%;
-  }
+  @media (max-width:668px) {
+    .compareSliderMobile {
+      width: 75%;
+    }
 
-  .compareSliderMobile .content-compare-table {
-    width: 50%;
+    .compareSliderMobile .content-compare-table {
+      width: 33.33%;
+    }
+  .schoolPopUp {
+    pointer-events:auto;
+    cursor: pointer;
   }
-  .compare-table-cls .compare-table {
-    table-layout: fixed;
-    width: 100%;
   }
 
-  .compareSliderMobile .slick-prev, .compareSliderMobile .slick-next {
-    top: 85px;
+  @media (max-width:640px) {
+    .compareSliderMobile {
+      width: 66.67%;
+    }
+
+    .compareSliderMobile .content-compare-table {
+      width: 50%;
+    }
+
+    .compare-table-cls .compare-table {
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .compareSliderMobile .slick-prev, .compareSliderMobile .slick-next {
+      top: 85px;
+    }
+
+    .compareSliderMobile .content-compare-table .top-compare-table,
+    .compare-table-cls .compareTableLeftLogo .top-compare-table {
+      max-height: 170px;
+      overflow: hidden;
+    }
   }
-  .compareSliderMobile .content-compare-table .top-compare-table,
-  .compare-table-cls .compareTableLeftLogo .top-compare-table {
-    max-height: 170px;
-    overflow: hidden;
+
+  @media (max-width:500px) {
+    .top-compare-table .school-item img {
+      margin: 0 auto;
+      width: 70%;
+    }
+
+    .compare-table-cls .top-compare-table .school-action li {
+      display: none !important;
+    }
   }
 
 
-
-}
-@media (max-width:500px) {
-  .top-compare-table .school-item img {
+  .image-payment {
     margin: 0 auto;
+  }
+
+  .logo-payment {
+    width: 150px;
+    height: 150px;
+  }
+
+  .cyberplus-payment {
     width: 70%;
+    cursor: pointer;
   }
 
-  .compare-table-cls .top-compare-table .school-action li {display:none !important;}
-
-
+  .cheque-payment {
+    cursor: pointer;
   }
 
+  .online-payment-title {
+    background-color: dodgerblue;
+    color: white;
+    margin-top: 20px;
+  }
 
-.image-payment{
-  margin :0 auto;
-}
+  .online-payment-text-div {
+    border: 1px solid dodgerblue;
+    pdding: 20px;
+    margin-bottom: 20px;
+  }
 
-.logo-payment{
-  width:150px;
-  height: 150px;
-}
+  .online-payment-text-right {
+    text-align: right;
+  }
 
-.cyberplus-payment{
-  width:70%;
-  cursor : pointer;
-}
+  .online-payment-text-bold {
+    font-weight: bold;
+    cursor: pointer;
+  }
 
-.cheque-payment{
-  cursor : pointer;
-}
-
-.online-payment-title{
-  background-color: dodgerblue;
-  color:white;
-  margin-top:20px;
-}
-
-.online-payment-text-div{
-  border:1px solid dodgerblue;
-  pdding: 20px;
-  margin-bottom:20px;
-}
-.online-payment-text-right{
-  text-align: right;
-}
-
-.online-payment-text-bold{
-  font-weight : bold;
-  cursor : pointer;
-}
-
-.logo-payment-online{
-  margin-top:30px;
-  cursor:pointer;
-  width:40%;
-}
+  .logo-payment-online {
+    margin-top: 30px;
+    cursor: pointer;
+    width: 40%;
+  }
