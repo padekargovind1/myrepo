@@ -25,6 +25,7 @@ import { SuperieurComponent } from './superieur/superieur.component';
 import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import {AppGuard} from "./app.guard";
+import {OnlinePaymentComponent} from "./payment/online-payment/online-payment.component";
 
 export const AppRoutes: Routes = [
     { path: '', component: RandomLandingComponent},
@@ -54,6 +55,7 @@ export const AppRoutes: Routes = [
     { path: 'editorial-detail',component:EditorialDetComponent},
     //{ path: 'mail', component:MailTestComponent},
     { path: 'payment' , component: PaymentComponent },
+    { path: 'online-payment', component: OnlinePaymentComponent},
     { path: 'enseignement-privee', component: UnderConstructionComponent },
     { path: 'panorama', component: UnderConstructionComponent },
     { path: 'contact-us', component: UnderConstructionComponent },

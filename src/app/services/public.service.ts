@@ -74,7 +74,7 @@ export class PublicService {
     "Architecture, Aménagement d'intérieur"
   ]
 
-  country = ["France", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas"
+  country = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas"
     , "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands"
     , "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica"
     , "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea"
@@ -92,6 +92,14 @@ export class PublicService {
   nbSlick = 0;
   private headers = new Headers({'Content-Type': 'application/json'});
   className : [string] =[''];
+  schoolsOptions: any;
+  apbOptions : any;
+  options={
+    regions : [],
+    departements : [],
+    villes : []
+  };
+  schoolList: any;
 
   constructor(private http : Http) {
     this.domaines=this.domaines.sort()
@@ -233,6 +241,103 @@ export class PublicService {
 
   getClassName(){
     return this.className;
+  }
+
+  // Call after keyup detected on location input
+  // if the word is more or equals to 2 letters, it call the function getLieuFilter to get the list
+  filterLieu(event) {
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=2){
+      return this.getLieuFilter(filter);
+    } else {
+      return null
+    }
+  }
+
+  // Call after keyup detected on school input
+  // If they have more or equal to 3 letter then we call API to get school name
+  filterSchool(event){
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+      return this.getSchoolFilter(filter)
+    }
+  }
+
+  // Same as filterSchool method except it's for enseignement supérieur
+  filterApbSchool(event){
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=3){
+      return this.getApbSchoolFilter(filter)
+    }else {
+      return null;
+    }
+  }
+
+  // Method to get the location list from API
+  getLieuFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.postAutoCompleteLieu(data)
+      .subscribe(
+        (response)=>{
+          let data = response.data;
+          console.log(data);
+          if(response.code!=400){
+            this.options['regions']=data.regions;
+            this.options['departements']=data.departments;
+            this.options['villes']=data.cities;
+          }
+        }
+      )
+    return this.options;
+  }
+
+  // Method to get the school list for before BAC from API
+  getSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.postAutocompleteSchool(data)
+      .subscribe(
+        (response)=>{
+          if(response.code==200){
+            let data = response.data;
+            //console.log(data);
+            this.schoolList=data;
+          }
+        }
+      )
+    console.log(this.schoolList);
+    setTimeout(()=>{
+      return this.schoolList;
+    }, 500);
+  }
+
+  // Method to get the school list for after BAC from API
+  getApbSchoolFilter(filter: string){
+    let data = {
+      keyword : filter
+    }
+    this.getAutoCompleteApb(filter)
+      .subscribe(
+        response=>{
+          console.log(response)
+          if(response.code!=400){
+            this.apbOptions=[]
+            for(let i = 0; i<response.data.length; i++){
+              if(this.apbOptions.indexOf(response.data[i].longName)==-1){
+                this.apbOptions.push(response.data[i].longName)
+              }
+            }
+            console.log(this.apbOptions)
+            return this.apbOptions;
+          }
+        }
+      )
   }
 
 }

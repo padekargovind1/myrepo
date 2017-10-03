@@ -1,0 +1,92 @@
+<form [formGroup]="wizardForm">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Ses centres d'intérêts</h3>
+
+      <h4>Liste des métiers que vous avez pensez exercer un jour </h4>
+
+      <div class="row" formArrayName="job"
+           *ngFor="let parent of wizardForm.controls['job']['controls']; let i = index">
+        <div [formGroupName]="i">
+          <div class="col-sm-6">
+            <h4>Métier {{i+1}}*</h4>
+            <div class="form-group">
+              Job
+              <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Nom d'un métier" mdTooltipPosition="after"></i>
+              <input type="text" class="form-control" placeholder="Job"
+                     formControlName="interestJob"
+                     maxlength="25">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <h4>&nbsp;</h4>
+            <div class="form-group">
+              Age
+              <input type="text" class="form-control" placeholder="Age"
+                     formControlName="interestAge" max="50" min="1"
+                     maxlength="2">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <h4>&nbsp;</h4>
+            &nbsp;
+            <button class="btn  btn-danger" style="float:right"
+                    (click)="onRemoveJob(i)"
+                    *ngIf="wizardForm.controls['job']['controls'].length>0">
+              Retirer un métier
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="btn  btn-appointment" (click)="onAddJob()"
+                style="margin-left:15px"><i class="fa fa-plus" aria-hidden="true"></i>Ajouter un métier</button>
+      </div>
+
+
+      <div class="form-group different-gap">
+        <div class="row">
+          <div class="col-sm-9">
+            Ses centres d'intérêts*
+            <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Les centres d'intérêt de l'étudiant" mdTooltipPosition="after"></i>
+            <input type="text" class="form-control"
+                   [formControl]="wizardForm.controls['yourInterest']"
+                   maxlength="60">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-9">
+            Ses activités extra-scolaires
+            <input type="text" class="form-control"
+                   [formControl]="wizardForm.controls['practiceInterest']"
+                   maxlength="60">
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .col-* -->
+  </div><!-- .row -->
+  <div class="row">
+    <div class="form-group clearfix">
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(4)" style="float:left; margin-left:0px">
+        Précédent
+      </button>
+      <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(6)"
+              style="float:right" *ngIf="!onApplyPage; else onApply">
+        Suivant
+      </button>
+      <ng-template #onApply>
+        <button class="btn  btn-appointment wizard-button-align" (click)="onApplySubmit()"
+                style="float:right">
+          Je postule
+        </button>
+      </ng-template>
+
+    </div>
+  </div>
+</form>

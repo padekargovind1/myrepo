@@ -1,11 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { UsersService } from '../../services/users.service';
 import { AuthService } from '../../services/auth.service';
 import { PublicService } from '../../services/public.service';
-//import swal from 'sweetalert2';
+import swal from 'sweetalert2';
 
 import {MyAccountMdl,
         MyAccountParentMdl,
@@ -22,8 +22,7 @@ import {MyAccountMdl,
 })
 export class MyaccountParentsComponent implements OnInit {
 
-  myParentProfile = [];
-  myProfile : MyAccountMdl = new MyAccountMdl();
+  @Input() userData;
   public parentAccountForm : FormGroup;
   lienparents = [ "Père",
                 "Mère",
@@ -37,7 +36,6 @@ export class MyaccountParentsComponent implements OnInit {
   @Output() goToChild = new EventEmitter<boolean>();
   parents: any;
   canDisplay : boolean = false;
-  //mainEmail : string = '';
 
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
@@ -45,7 +43,10 @@ export class MyaccountParentsComponent implements OnInit {
               private authService : AuthService,
               private publicService : PublicService) {
     if(this.authService.getToken() != ""){
-      this.getUserProfile();
+      setTimeout(()=>{
+        this.getUserData();
+      }, 1500)
+
     } else {
       // console.log("navigate back");
       this.route.navigate(['/login']);
@@ -53,39 +54,16 @@ export class MyaccountParentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.myProfile.address=new MyAccountAdresse();
     this.country = this.publicService.getCountry();
   }
 
-  // Get the user Profile from API
-  getUserProfile(){
-    this.usersService.getProfile()
-      .subscribe(
-        (data)=>{
-          let response = data;
-          console.log(response);
-          if(response.code!=400){ // if no error
-            this.buildFormGroup(response.data[0].parents); // build form
-            this.createProfile(); // Create profile to send to API
-            this.canDisplay=true;
-            if (response.data[0].parents.length!=0){
-              this.patchValue(response.data[0]); // Patching value from value receive from the API
-              this.completeProfile(); // Complete profile to send to API
-            }
-            /*else if(this.usersService.getUserType()=="Parent"){
-                  this.parentAccountForm.controls['parents']['controls'][0].patchValue({
-                    email : this.usersService.getUserEmail(),
-                  })
-                }*/
-            // console.log(this.usersService.getUserType());
-            if(this.usersService.getUserType()=="Parent"){
-              this.parentAccountForm.controls['parents']['controls'][0].patchValue({
-                email : this.usersService.getUserEmail(),
-              })
-            }
-          }
-        }
-      )
+  getUserData(){
+    delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
+    this.buildFormGroup(this.userData.parents); // build form
+    this.canDisplay=true;
+    if (this.userData.parents.length!=0){
+      this.patchValue(this.userData); // Patching value from value receive from the API
+    }
   }
 
   // Patching value
@@ -98,7 +76,7 @@ export class MyaccountParentsComponent implements OnInit {
         titre : parentData[i].gender,
         nom : parentData[i].lastName,
         prenom : parentData[i].firstName,
-        email :  (parentData[i].email===undefined || parentData[i].email=='A compléter' || parentData[i].email.trim()=='') ? (data.email=='A compléter' ? '' : data.email) : parentData[i].email,
+        email :  parentData[i].email,
         portable : parentData[i].phoneNumber,
         adresse : parentData[i].address.address1,
         codepostal : parentData[i].address.postCode,
@@ -125,16 +103,16 @@ export class MyaccountParentsComponent implements OnInit {
   // Create parent to add to the form
   createParent(){
     return this.fb.group({
-      lienParent : [''],
-      titre : [''],
-      nom : [''],
-      prenom : [''],
-      email : ['', Validators.compose([CustomValidators.email])],
-      portable : ['', Validators.compose([Validators.maxLength(10),Validators.minLength(10)])],
-      adresse : [''],
-      codepostal : ['', Validators.compose([Validators.maxLength(5),Validators.minLength(5)])],
-      ville: [''],
-      pays: ['France']
+      lienParent : ['', Validators.required],
+      titre : ['', Validators.required],
+      nom : ['', Validators.required],
+      prenom : ['', Validators.required],
+      email : ['', Validators.compose([CustomValidators.email, Validators.required])],
+      portable : ['', Validators.compose([Validators.maxLength(10),Validators.minLength(10), Validators.required])],
+      adresse : ['', Validators.required],
+      codepostal : ['', Validators.compose([Validators.maxLength(5),Validators.minLength(5), Validators.required])],
+      ville: ['', Validators.required],
+      pays: ['']
     })
   }
 
@@ -142,87 +120,47 @@ export class MyaccountParentsComponent implements OnInit {
   onAddParent(){
     this.parents = this.parentAccountForm.get('parents') as FormArray;
     this.parents.push(this.createParent());
-    this.myParentProfile.push(new MyAccountParentMdl);
-    let index = this.myParentProfile.length - 1;
-    this.myParentProfile[index].address = new MyAccountAdresse();
   }
 
   // Remove a parent to the form
   onRemoveParent(index){
     this.parents = this.parentAccountForm.get('parents') as FormArray;
     this.parents.removeAt(index, 1);
-    this.myParentProfile.splice(index, 1);
   }
-
-  // Submit for the parent form and go to the child form
-  // Save the data to the service
-  onSubmit(){
-    console.log("On submit button");
-    this.completeProfile();
-    // swal({
-    //   title: 'Vos données ont bien été enregistré.',
-    //   text: 'Veuillez passer aux données de votre enfant.',
-    //   type: 'success',
-    //   confirmButtonText: 'Ok'
-    // })
-    this.goToChild.emit(true);
-    this.save()
-  }
-
-  // save(){
-  //   this.myProfile=this.usersService.getChildData();
-  //   this.myProfile.parents[0] = this.myParentProfile;
-  //   console.log("Click on submit", this.myProfile);
-  //   this.completeProfile();
-  //   // console.log(this.myProfile);
-  //   this.usersService.putProfile(this.myProfile)
-  //     .subscribe(
-  //       (data)=>{
-  //         let response = data;
-  //         console.log(response);
-  //       }
-  //     )
-  // }
-
-  // Create the profile to save in the service
-  createProfile(){
-    console.log(this.myParentProfile, this.parentAccountForm.controls['parents']['controls'])
-    for(let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){
-      this.myParentProfile.push(new MyAccountParentMdl);
-      this.myParentProfile[i].address = new MyAccountAdresse();
-    }
-  }
-
   // Complete the profile to send to the service with the data from API and after click on next to go to child form
-  completeProfile(){
+  onSubmit(){
     for (let i = 0; i<this.parentAccountForm.controls['parents']['controls'].length; i++){
-      console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)
-      this.myParentProfile[i].relationship = this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value;
-      this.myParentProfile[i].firstName = this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value;
-      this.myParentProfile[i].lastName = this.parentAccountForm.controls['parents']['controls'][i].controls.nom.value;
-      this.myParentProfile[i].gender = this.parentAccountForm.controls['parents']['controls'][i].controls.titre.value;
-      this.myParentProfile[i].phoneNumber = this.parentAccountForm.controls['parents']['controls'][i].controls.portable.value;
-      this.myParentProfile[i].email = this.parentAccountForm.controls['parents']['controls'][i].controls.email.value;
-      this.myParentProfile[i].address.address1 = this.parentAccountForm.controls['parents']['controls'][i].controls.adresse.value;
-      this.myParentProfile[i].address.postCode = this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString();
-      this.myParentProfile[i].address.country = this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value;
-      this.myParentProfile[i].address.city = this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value;
+      //console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)
+      this.userData.parents[i].relationship = this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value;
+      this.userData.parents[i].firstName = this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value;
+      this.userData.parents[i].lastName = this.parentAccountForm.controls['parents']['controls'][i].controls.nom.value;
+      this.userData.parents[i].gender = this.parentAccountForm.controls['parents']['controls'][i].controls.titre.value;
+      this.userData.parents[i].phoneNumber = this.parentAccountForm.controls['parents']['controls'][i].controls.portable.value;
+      this.userData.parents[i].email = this.parentAccountForm.controls['parents']['controls'][i].controls.email.value;
+      this.userData.parents[i].address.address1 = this.parentAccountForm.controls['parents']['controls'][i].controls.adresse.value;
+      this.userData.parents[i].address.postCode = this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString();
+      this.userData.parents[i].address.country = this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value;
+      this.userData.parents[i].address.city = this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value;
     }
-    this.usersService.storeParentData(this.myParentProfile);
+    this.save();
   }
-
   // Save the data of the user into the service
   save(){
-    this.myProfile.parents=this.myParentProfile
-    console.log(this.myProfile)
-    this.myProfile.academicHistories[0]=new MyAccountHistoryMdl();
-    this.myProfile.bulletins[0]= new MyAccountBulletin();
-    this.myProfile.siblings[0]= new MyAccountSiblingsMdl();
-    this.usersService.putProfile(this.myProfile)
+    console.log(this.userData)
+    this.usersService.putProfile(this.userData)
       .subscribe(
         (data)=>{
           let response = data;
           console.log(response);
+          if(response.code==200){
+            swal({
+              title: 'Vos données ont bien été enregistré.',
+              text: 'Veuillez passer aux données de l\'élève.',
+              type: 'success',
+              confirmButtonText: 'Ok'
+            })
+            this.goToChild.emit(true);
+          }
         }
     )
 

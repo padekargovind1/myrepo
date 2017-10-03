@@ -22,8 +22,8 @@ export class ConseilComponent implements OnInit {
   }
 
   // Navigating to the booking page after select a package
-  navigateToBooking(time, concernPeople, price, index){
-    this.bookingService.storeBookingPackage([time, concernPeople, price, index]);
+  navigateToBooking(time, concernPeople, title, index){
+    this.bookingService.storeBookingPackage([time, concernPeople, title, index]);
     console.log("Navigate to booking");
     this.router.navigate(['booking']);
   }

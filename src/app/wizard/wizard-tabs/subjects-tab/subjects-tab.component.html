@@ -1,0 +1,71 @@
+<form [formGroup]="wizardForm">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Vos matières préférées</h3>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="select-custom-multiple-forte">
+              Matières fortes*
+              <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Les matières fortes de l'étudiant" mdTooltipPosition="after"></i>
+              <select class="form-control matery"
+                      multiple="multiple"
+                      [formControl]="wizardForm.controls['bestSubject']">
+                <option *ngFor="let subject of wizardService.getSubjectList()"
+                        [value]="subject">{{subject}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="select-custom-multiple-faible">
+              Matières faibles*
+              <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Les matières faibles de l'étudiant" mdTooltipPosition="after"></i>
+              <select class="form-control matery"
+                      multiple="multiple"
+                      [formControl]="wizardForm.controls['weakSubject']">
+                <option *ngFor="let subject of wizardService.getSubjectList()"
+                        [value]="subject">{{subject}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="select-custom-multiple-gout">
+              Matières préférées*
+              <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Les matières préférées de l'étudiant" mdTooltipPosition="after"></i>
+              <select class="form-control matery"
+                      multiple="multiple"
+                      [formControl]="wizardForm.controls['interestSubject']">
+                <option *ngFor="let subject of wizardService.getSubjectList()"
+                        [value]="subject">{{subject}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .col-* -->
+  </div><!-- .row -->
+  <div class="row">
+    <div class="form-group clearfix">
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(3)" style="float:left; margin-left:0px">
+        Précédent
+      </button>
+      <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(5)"
+              style="float:right">
+        Suivant
+      </button>
+    </div>
+  </div>
+</form>

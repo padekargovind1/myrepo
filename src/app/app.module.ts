@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
-import { HttpModule, Jsonp, JsonpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import {
   MdCardModule, MdButtonModule, MdListModule,
   MdProgressBarModule, MdMenuModule, MdInputModule, MdRadioModule,
   MdToolbarModule, MdDatepickerModule, MdNativeDateModule, MdSelectModule,
-  MdIconModule, MdAutocompleteModule,MdTabsModule
+  MdIconModule,MdTabsModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -92,8 +92,18 @@ import { SendMessageComponent } from './shared/send-message/send-message.compone
 import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import {AppGuard} from "./app.guard";
-import { WizardProfessionComponent } from './wizard/wizard-profession/wizard-profession.component';
 import {WizardService} from "./services/wizard.service";
+import { ParentTabComponent } from './wizard/wizard-tabs/parent-tab/parent-tab.component';
+import { ChildTabComponent } from './wizard/wizard-tabs/child-tab/child-tab.component';
+import { CurrentSchoolTabComponent } from './wizard/wizard-tabs/current-school-tab/current-school-tab.component';
+import { SchoolHelpTabComponent } from './wizard/wizard-tabs/school-help-tab/school-help-tab.component';
+import { SubjectsTabComponent } from './wizard/wizard-tabs/subjects-tab/subjects-tab.component';
+import { EstablishmentTabComponent } from './wizard/wizard-tabs/establishment-tab/establishment-tab.component';
+import { JobsTabComponent } from './wizard/wizard-tabs/jobs-tab/jobs-tab.component';
+import { DiagnosticTabComponent } from './wizard/wizard-tabs/diagnostic-tab/diagnostic-tab.component';
+import { HobbiesTabComponent } from './wizard/wizard-tabs/hobbies-tab/hobbies-tab.component';
+import {ApplyService} from "./services/apply.service";
+import { OnlinePaymentComponent } from './payment/online-payment/online-payment.component';
 
 @NgModule({
   declarations: [
@@ -154,9 +164,18 @@ import {WizardService} from "./services/wizard.service";
     SuperieurInfoComponent,
     ClassChoiceComponent,
     SendMessageComponent,
-	PaymentComponent,
-	UnderConstructionComponent,
-	WizardProfessionComponent
+    PaymentComponent,
+    UnderConstructionComponent,
+    ParentTabComponent,
+    ChildTabComponent,
+    CurrentSchoolTabComponent,
+    SchoolHelpTabComponent,
+    SubjectsTabComponent,
+    EstablishmentTabComponent,
+    JobsTabComponent,
+    DiagnosticTabComponent,
+    HobbiesTabComponent,
+    OnlinePaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -202,6 +221,7 @@ import {WizardService} from "./services/wizard.service";
     SendService,
     HelperService,
     WizardService,
+    ApplyService,
     AppGuard
   ],
     entryComponents: [

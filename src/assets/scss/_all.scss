@@ -3,20 +3,20 @@
  *
  */
 body { background: $body-background; color: #fff; font-family: "Roboto", Arial, sans-serif;}
-    body.school { background: #393645;}    
+    body.school { background: #393645;}
 
 h1 { font-weight: 300; }
 
 
 /**
- * Loading animation 
+ * Loading animation
  *
  */
 .loader { position: absolute; width: 100%; height: 100%; background: #444; z-index: 10; text-align: center; visibility: hidden;
-    animation-name: fadeout; 
+    animation-name: fadeout;
     animation-iteration-count: 1;
     animation-direction: alternate;
-    animation-duration: 1s; 
+    animation-duration: 1s;
 }
     .loading {
         position: absolute;
@@ -35,8 +35,8 @@ h1 { font-weight: 300; }
 .btn span.glyphicon { opacity: 1 !important;}
 
 
-/** 
- * Header  
+/**
+ * Header
  */
 .header {
     background: center bottom url('./assets/images/header-background.png') no-repeat transparent;
@@ -92,7 +92,7 @@ header .main-navigation > ul > li > a:focus {
   outline: 0;
 }
 header .main-navigation > ul > li.login > a span {
-  background: #7bc673; 
+  background: #7bc673;
   padding: 5px 10px;
   border-radius: 3px;
   box-shadow: none;
@@ -292,7 +292,7 @@ header .main-navigation li.courses-menu li .single-item .courses-num {
 .header .social-media-list a { font-size: 14px; padding: 3px 5px; position: relative; overflow: hidden; height: auto; width: auto; transition: ease .5 all;}
 /*.header .social-media-list a:after { content: ''; width: 100%; height: 100%; background: #00bc50; position: absolute; top: 120%; left: 0; display: block; transition: ease .5 all; z-index: -1; opacity: 0; }*/
 .header .social-media-list a:hover { background: #00bc50; }
-.header .social-media-list a:hover i { 
+.header .social-media-list a:hover i {
   -webkit-animation: TextSprite .25s forwards;
   -moz-animation: TextSprite .25s forwards;
   -ms-animation: TextSprite .25s forwards;
@@ -341,7 +341,7 @@ header .main-navigation li.courses-menu li .single-item .courses-num {
   .landingpage__caption { position: absolute; width: 100%; text-align: center; background: rgba( 0, 0, 0, .4); padding: 10px 0; bottom: 0;}
   .landingpage__caption h2 { margin: 0 0 8px; font-size: 18px; font-weight: 700; text-transform: uppercase;}
   .landingpage__caption h3 { margin: 0; font-size: 16px; }
-  
+
   .landingpage__wrapper { width: 791px; display: table; margin: 5px auto 10px; position: relative; padding-top: 10px;}
   .holder-1 { top: 80px; }
   .holder-2 { top: 270px;}
@@ -358,12 +358,12 @@ header .main-navigation li.courses-menu li .single-item .courses-num {
 
 .landingpage__additional-content .select-custom { width: 100%; }
 .landingpage__additional-content .form-group { margin-bottom: 0; }
-.landingpage__additional-content .form-wrap { 
+.landingpage__additional-content .form-wrap {
     position: absolute;
     width: 724px;
     top: 180px;
     left: -216px;
-    border: solid 20px #2F2E2D;
+    border: solid 20px #f3f3f3;
 }
 
 .landingpage__additional-content .form-wrap.fadeOut { display: none; }
@@ -419,7 +419,7 @@ text { fill: #fff !important; font-size: 20px !important; font-family: Roboto !i
   #wheelnav-tabwheel-slice-4 { fill: url('#enseignement-inactive') #fff; }
   #wheelnav-tabwheel-slice-5 { fill: url('#sejour-inactive') #fff; }
   #wheelnav-tabwheel-slice-6 { fill: url('#orientation-inactive') #fff; }
-  
+
   #wheelnav-tabwheel-slice-0.open { fill: url('#ecole-active') #fff;}
   #wheelnav-tabwheel-slice-1.open { fill: url('#college-active') #fff;}
   #wheelnav-tabwheel-slice-2.open { fill: url('#lycee-active') #fff;}
@@ -549,13 +549,13 @@ text { fill: #fff !important; font-size: 20px !important; font-family: Roboto !i
 
 
 /**
- *  Filter  
+ *  Filter
  */
 .filter-form-holder { background-repeat: no-repeat; background-size: cover; height: 492px; position: relative;}
-    
+
     .filter-form-holder .searchform { background: rgba( 0, 0, 0, .6); width: 100%; position: absolute; bottom: 0; padding: 10px 0 35px;}
     .form-wrap { background: #393645; border-radius: 5px; padding: 13px;}
-    
+
 /*.filter-wrapper { position: absolute; display: table; bottom: 35px;}*/
     .filter-holder { font-size: 42px; background: #393645; padding: 16px 14px; border-radius: 0 ; }
     .filters { left: -99999px; position: absolute; top: 100%;}
@@ -588,8 +588,8 @@ text { fill: #fff !important; font-size: 20px !important; font-family: Roboto !i
     .main.open { padding-left: 390px; }
     .ad-holder.hide, .survey-holder.hide { display: none;}
 
-/** 
- * Main  
+/**
+ * Main
  */
 .main { position: relative; min-height: 590px !important;}
 .main:after { content: ""; display: table; clear: both;}
@@ -620,10 +620,10 @@ text { fill: #fff !important; font-size: 20px !important; font-family: Roboto !i
       .cube-wrapper:hover .btns { opacity: 1;}
       .btns .next { position: absolute; right: -14px; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0, .8); font-size: 18px;}
       .btns .prev { position: absolute; left: -14px; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0, .8); font-size: 18px;}
-    
 
 
-.cube-wrapper .social-media-list { display: none; 
+
+.cube-wrapper .social-media-list { display: none;
 position: absolute;
 bottom: 10px;
 background: rgba(0,0,0, .5);
@@ -637,7 +637,7 @@ z-index: 10;
 
 .cube-wrapper:hover .social-media-list {
   display: block;
-} 
+}
 
 .social-media-list { list-style: none; padding-left: 0;}
   .social-media-list li { display: inline-block; margin: 0 7px;}
@@ -645,7 +645,7 @@ z-index: 10;
 
 
 /**
- * Card 
+ * Card
  */
 .card { border-radius: 3px; overflow: hidden; position: relative; margin-bottom: 20px;}
     .card:hover .school-action { visibility: visible;}
@@ -694,7 +694,7 @@ z-index: 10;
 
 
 /**
- *  School item  
+ *  School item
  */
 .school-item { font-size: 10px; color: #fff; box-shadow: 1px 1px 8px rgba(0,0,0, .6);}
     .school-item img { width: 100%; display: block;}
@@ -744,12 +744,12 @@ z-index: 10;
   .brochure-item .checkbox-custom { position: absolute; top: 5px; left: 20px; z-index: 10;}
   .brochure .select-custom select { background-image: url('./assets/images/dropdown-grey.png'); }
   .cbp .brochure-item img { display: inline-block; }
-  
+
 
   .cbp-caption:hover {
     .cbp-caption-defaultWrap .image-wrap { position: relative; top: -50px;}
   }
-  
+
   .cbp-caption { position: relative; overflow: hidden;}
   .cbp-caption-defaultWrap { position: relative; z-index: 1;
     .image-wrap { transition: .3s ease all; position: relative; top: 0;}
@@ -759,13 +759,13 @@ z-index: 10;
   #download-popup .btn { width: 46%; margin: 0 1%;}
     #download-popup .tab-pane { padding: 0; }
     #download-popup h5 { font-weight: 700; }
-  
+
 .modal-download { width: 445px;  height: 500px; overflow-y: scroll; overflow-x: hidden;}
   .modal-download .nav-tabs { border-bottom: #343741 solid 2px;}
   .modal-download .nav-tabs>li { width: 50%; text-align: center; }
   .modal-download .nav-tabs>li>a { color: #343741; border-radius: 0; border: none;}
-  .modal-download .nav-tabs>li.active>a, 
-  .modal-download .nav-tabs>li.active>a:focus, 
+  .modal-download .nav-tabs>li.active>a,
+  .modal-download .nav-tabs>li.active>a:focus,
   .modal-download .nav-tabs>li.active>a:hover {
     border: none;
     color: #fff;
@@ -820,7 +820,7 @@ label.custom-radio.sad:before { border: none;}
     padding: 10px 20px; }
 
 /**
- * Booking appointment 
+ * Booking appointment
  */
 .advisors-wrap { background: #343434; padding: 20px 7px;}
     .advisors { list-style: none; padding-left: 0; }
@@ -948,7 +948,7 @@ label.custom-radio.sad:before { border: none;}
 }
 
 
-/** 
+/**
  * Survey
  *
  */
@@ -977,8 +977,8 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
 
 
 
-/** 
- * Button  
+/**
+ * Button
  */
 .btn-highlighted { background: #787DA2; color: #fff;}
 .btn-secondary { background: #393649; color: #fff;}
@@ -1010,7 +1010,7 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
     &:hover, &:focus { color: #fff;}
 }
 
-.btn-appointment { background: #00BC50; color: #fff !important; 
+.btn-appointment { background: #00BC50; color: #fff !important;
     &:hover, &:focus { color: #fff; }
 }
 
@@ -1030,7 +1030,7 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
 
 
 
-/** 
+/**
  * Custom Select style
  */
 .select-custom { position: relative; margin-right: 15px;}
@@ -1096,7 +1096,7 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
 .top-compare-table .btn-highlighted, .top-compare-table .btn-secondary { width: 100%; margin-bottom: 5px; }
 .top-compare-table .school-item img { width: 55%; margin: 0 auto; }
 .select-school { margin-bottom: 20px; }
-.popup-compare { 
+.popup-compare {
   background: #fff;
   padding: 10px;
   position: absolute;
@@ -1415,7 +1415,7 @@ span.label { font-size: 10px;  }
     address { margin-bottom: 8px;}
     h3 { font-size: 18px; }
     p, time { font-size: 13px !important;}
-  
+
 
   .school-action {
     position: relative;
@@ -1437,8 +1437,8 @@ span.label { font-size: 10px;  }
 
 
 
-/** 
- * Custom element  
+/**
+ * Custom element
  */
 .col-4 { width: 33.3%; float: left;}
 .col-6 { width: 50%; float: left;}
@@ -1465,7 +1465,7 @@ span.label { font-size: 10px;  }
 .holder-6 { animation-delay: .6s; }
 .holder-7 { animation-delay: .7s; }
 
- 
+
 /* ============================================================
   COMMON
 ============================================================ */
@@ -1731,7 +1731,7 @@ a:hover { text-decoration: none;}
         padding: 0px 10px 1px 9px; } }
 
 
-.left-float { float: left; width: 250px; height: auto; margin-right: 30px; margin-bottom: 30px; 
+.left-float { float: left; width: 250px; height: auto; margin-right: 30px; margin-bottom: 30px;
   img { width: 100%;}
 }
 .full-width { width: 100%; img { width: 100%;} margin-bottom: 30px;}
@@ -1740,24 +1740,24 @@ a:hover { text-decoration: none;}
 
 [hidden] { display: none;}
 
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
 .mat-checkbox-checked.mat-accent .mat-checkbox-background{ background-color: #00BC50 ;}
- 
+
  header .main-navigation li.courses-menu ul {
    max-width: 300px;
    top: 90%;
  }
- 
+
  header .main-navigation li.courses-menu li .single-item {
    margin-bottom: 10px;
- } 
+ }
   @media (max-width: 768px) {
  .header {background-color:#444 !important;padding: 10px 10px 0;}
  header .main-navigation li.courses-menu ul{top: 67%;}
  .cide-logo{display:none;}
  .menu-holder {   margin: 0 23px 0 0;}
- 
- .landingpage__wrapper {padding-top:0; margin-top:0  } 
+
+ .landingpage__wrapper {padding-top:0; margin-top:0  }
  .calendar-wrap{ color:#fff; }
 }
 .mat-tooltip{
@@ -1820,21 +1820,21 @@ a:hover { text-decoration: none;}
 }
 
 
-	 
+
  }
  .customclass .nav-tabs > li > a {
   padding: 10px 10px;
   font-size:12px;
  }
- @media (max-width: 1100px){ 
- 
+ @media (max-width: 1100px){
+
  .customclass .nav-tabs > li > a {
   color: #a7b1c2;
   font-weight: 600;
   padding: 8px 8px;
   font-size:11px;
  }
- 
+
  .conseil-centering .title-page {
   color: #2d2d2d;
   font-size: 18px;
@@ -1848,7 +1848,7 @@ a:hover { text-decoration: none;}
 
 }
 
-@media (max-width:767px){ 
+@media (max-width:767px){
 
 .advance-filter ul ul {
   background: #32352f none repeat scroll 0 0;
@@ -2068,7 +2068,7 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 
 .ConseillersTxt , .ConseillersTxtRight{ display:none;}
 
-@media (max-width:667px){ 
+@media (max-width:667px){
 
 .ad-holder {
     position: relative;
@@ -2080,12 +2080,12 @@ header.header h1.sitename{ cursor: pointer;    left: 25%;    margin-left: 0;    
 
 
 }
-@media (max-width:639px){ 
+@media (max-width:639px){
 .search-title-calendar {
     color:#000 !important;
 }
 
-@media (max-width:480px){ 
+@media (max-width:480px){
 
 button.mat-raised-button.mat-primary, button.mat-raised-button.mat-warn, button.mat-raised-button.mat-accent {
     width: 100%;
@@ -2248,7 +2248,7 @@ text-align:center;
 .mat-dialog-container {padding:0 15px 10px !important; }
 .brouchreClsSecond  .form-group { margin-bottom: 8px;}
 
-.horizontal-radio label {    float: left;    margin-right: 0;} 
+.horizontal-radio label {    float: left;    margin-right: 0;}
 
 .newSearchDiv { padding: 10px 15px 0; float: left; }
 
@@ -2373,12 +2373,21 @@ text-align:center;
     font-weight: bold;
   }
 
-.conseil-title {
+
+.conseil-title {/*
   max-width: 100%;
   font-size: 14px;
   height: 66px;
-  width: 100vh;
+  width: 100vh;*/
 }
+
+  .conseil-title {
+    max-width: 100%;
+    font-size: 14px;
+    height: 66px;
+
+  }
+
 .conseilTitleCont {
   max-width: 80%;
   margin-left: 10%;
@@ -2407,7 +2416,7 @@ text-align:center;
   display: inline-block;
   height: 160px;
 }
-.imgBackground img{visibility:hidden; opacity:0;} 
+.imgBackground img{visibility:hidden; opacity:0;}
 
   .conseil-item {
     background: #C4C6C5;
@@ -2471,6 +2480,7 @@ text-align:center;
   width: 100%;
   max-width: 100%;
 }
+<<<<<<< HEAD
 .ads-area,.ads-area *{animation-delay: 0s !important;}
 
 
@@ -2563,3 +2573,49 @@ text-align:center;
 
 
   }
+=======
+
+.image-payment{
+  margin :0 auto;
+}
+
+.logo-payment{
+  width:150px;
+  height: 150px;
+}
+
+.cyberplus-payment{
+  width:70%;
+  cursor : pointer;
+}
+
+.cheque-payment{
+  cursor : pointer;
+}
+
+.online-payment-title{
+  background-color: dodgerblue;
+  color:white;
+  margin-top:20px;
+}
+
+.online-payment-text-div{
+  border:1px solid dodgerblue;
+  pdding: 20px;
+  margin-bottom:20px;
+}
+.online-payment-text-right{
+  text-align: right;
+}
+
+.online-payment-text-bold{
+  font-weight : bold;
+  cursor : pointer;
+}
+
+.logo-payment-online{
+  margin-top:30px;
+  cursor:pointer;
+  width:40%;
+}
+>>>>>>> origin/master

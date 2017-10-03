@@ -11,9 +11,8 @@ import { BookingService } from '../services/booking.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-  strMessage : string='';
+
   constructor(private router : Router,
-              //private userService : UsersService,
               private authService : AuthService,
               private bookingService : BookingService,) {
   }
@@ -22,36 +21,15 @@ export class PaymentComponent implements OnInit {
     if(!this.authService.isUserLoggedIn()){
       this.router.navigate(['/register']);
     }
-	else
-	{
-		if(this.bookingService.isForFastBooking() && this.bookingService.isSkippedWizard())
-		{
-			this.strMessage="First";
-		}
-		else if(this.bookingService.isForFastBooking())
-		{
-			this.strMessage="Other";
-		}
-		else
-		{
-			this.strMessage="Sorry";
-		}
-	}
   }
 
-  onProceed(){
-    if(this.bookingService.isForFastBooking() && this.bookingService.isSkippedWizard())
-	{
-		this.bookingService.makeAppointment();
-		this.router.navigate(['/']);
-	}
-	else if(this.bookingService.isForFastBooking())
-	{
-		this.router.navigate(['/wizard']);
-	}
-	else
-	{
-		this.router.navigate(['/booking']);
-	}
+  onCheque(){
+    this.bookingService.chequePayment();
   }
+
+  onOnlinePayment(){
+    this.router.navigate(['/online-payment']);
+  }
+
+
 }

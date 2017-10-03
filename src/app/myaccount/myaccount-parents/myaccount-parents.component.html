@@ -1,15 +1,15 @@
-<div *ngIf="canDisplay">  
+<div *ngIf="canDisplay">
   <div class="tab-pane" id="parents">
-    <div class="container-fluid"> 
+    <div class="container-fluid">
       <div class="row">
         <div [formGroup]="parentAccountForm">
-          <div formArrayName="parents" class="col-md-6" 
-            *ngFor="let parent of parentAccountForm.controls['parents']['controls']; let i = index"> 
+          <div formArrayName="parents" class="col-md-6"
+            *ngFor="let parent of parentAccountForm.controls['parents']['controls']; let i = index">
             <div [formGroupName]="i">
               <h3>Parents</h3>
               <div class="form-group">
                 <div class="select-custom">
-                  Lien de parenté
+                  Lien de parenté*
                   <md-select placeholder="Lien de Parenté"
                     class="form-control" formControlName="lienParent">
                     <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
@@ -34,25 +34,25 @@
                     Mme
                   </md-radio-button>
                 </md-radio-group>
-                <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.titre.hasError('required') && 
-                  parentAccountForm.controls['parents']['controls'][i].controls.titre.touched" 
-                  class="mat-text-warn"> 
+                <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.titre.hasError('required') &&
+                  parentAccountForm.controls['parents']['controls'][i].controls.titre.touched"
+                  class="mat-text-warn">
                   Titre Obligatoire
                 </small>
               </div>
               <div class="row">
                 <div class="col-sm-6  col-xs-6">
                   <div class="form-group">
-                    Nom de famille
+                    Nom de famille*
                     <input type="text" class="form-control" placeholder="Nom"
-                      formControlName="nom" 
+                      formControlName="nom"
                       maxlength="25"/>
                   </div>
                 </div>
                 <div class="col-sm-6  col-xs-6">
                   <div class="form-group">
-                    Prénom
-                    <input type="text" class="form-control" placeholder="Prénom" 
+                    Prénom*
+                    <input type="text" class="form-control" placeholder="Prénom"
                       formControlName="prenom"
                       maxlength="25"/>
                   </div>
@@ -61,95 +61,98 @@
               <div class="row">
                 <div class="col-sm-6  col-xs-6">
                   <div class="form-group">
-                    Mél
-                    <input type="email" class="form-control" placeholder="Mél" 
+                    Mél*
+                    <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Exemple : Abc@example.com"
+                    mdTooltipPosition="after"></i>
+                    <input type="email" class="form-control" placeholder="Mél"
                       formControlName="email"/>
-                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.email.errors?.email && 
-                      parentAccountForm.controls['parents']['controls'][i].controls.email.touched" 
-                      class="mat-text-warn"> 
+                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.email.errors?.email &&
+                      parentAccountForm.controls['parents']['controls'][i].controls.email.touched"
+                      class="mat-text-warn">
                       Email Invalide
                     </small>
                   </div>
                 </div>
                 <div class="col-sm-6  col-xs-6">
                   <div class="form-group">
-                    Numéro de portable
+                    Numéro de portable*
                     <input type="text" class="form-control" placeholder="Portable" [min]="10"
                       formControlName="portable"
                       pattern="[0-9]+" maxlength="10"/>
-                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') && 
-                      parentAccountForm.controls['parents']['controls'][i].controls.portable.touched" 
-                      class="mat-text-warn"> 
+                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') &&
+                      parentAccountForm.controls['parents']['controls'][i].controls.portable.touched"
+                      class="mat-text-warn">
                       Numéro de Portable Invalide (max 10)
                     </small>
-					<small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('mins') && 
-                      parentAccountForm.controls['parents']['controls'][i].controls.portable.touched" 
-                      class="mat-text-warn"> 
+					          <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('mins') &&
+                      parentAccountForm.controls['parents']['controls'][i].controls.portable.touched"
+                      class="mat-text-warn">
                       Numéro de Portable Invalide (min 10)
                     </small>
-                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') && 
-                      parentAccountForm.controls['parents']['controls'][i].controls.portable.touched" 
-                      class="mat-text-warn"> 
+                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') &&
+                      parentAccountForm.controls['parents']['controls'][i].controls.portable.touched"
+                      class="mat-text-warn">
                       Numéro de Portable Invalide (Doit être des chiffres)
                     </small>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                Adresse
+                Adresse*
                 <textarea class="form-control" placeholder="Adresse"
                   formControlName="adresse"></textarea>
               </div>
               <div class="row">
                 <div class="col-sm-4  col-xs-6">
                   <div class="form-group">
-                    Code postal
+                    Code postal*
                     <input type="text" class="form-control" placeholder="Code Postal" [min]="5"
                       formControlName="codepostal"
                       pattern="[0-9 ]+" maxlength="5" minlength="5"/>
-                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('maxLength') && 
-                      parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched" 
-                      class="mat-text-warn"> 
+                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('maxLength') &&
+                      parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched"
+                      class="mat-text-warn">
                       Code Postal Invalide (Max 5)
                     </small>
-					<small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('min') && 
-                      parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched" 
-                      class="mat-text-warn"> 
+					          <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('min') &&
+                      parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched"
+                      class="mat-text-warn">
                       Code Postal Invalide (MIN 5)
                     </small>
-                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('pattern') && 
-                      parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched" 
-                      class="mat-text-warn"> 
+                    <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('pattern') &&
+                      parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched"
+                      class="mat-text-warn">
                       Code Postal Invalide (Doit être des chiffres)
                     </small>
                   </div>
                 </div>
                 <div class="col-sm-4  col-xs-6">
                   <div class="form-group">
-                    Ville
-                    <input type="text" class="form-control" placeholder="Ville" 
+                    Ville*
+                    <input type="text" class="form-control" placeholder="Ville"
                       formControlName="ville"
                       maxlength="30"/>
                   </div>
                 </div>
                 <div class="col-sm-4  col-xs-6">
                   <div class="form-group">
-                    Pays
+                    Pays*
                     <select class="form-control" formControlName="pays">
+                      <option value="France" selected>France</option>
                       <option [value]="pays" *ngFor="let pays of country">{{pays}}</option>
                     </select>
                   </div>
                 </div>
-              </div> 
+              </div>
               <div class="form-group clearfix">
-                <button class="btn  btn-danger" style="float:right" 
+                <button class="btn  btn-danger" style="float:right"
                   (click)="onRemoveParent(i)" *ngIf="parentAccountForm.controls['parents']['controls'].length==2">
                   Retirer un parent
                 </button>
               </div>
             </div>
           </div>
-    
+
         </div>
       </div>
       <div class="row">
@@ -158,12 +161,12 @@
             *ngIf="parentAccountForm.controls['parents']['controls'].length==1">
             <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
           </button>
-          <button class="btn btn-appointment parentButton" 
+          <button class="btn btn-appointment parentButton"
             type="submit" (click)="onSubmit()" style="float:right"
-            *ngIf="parentAccountForm.valid">Passer à l'élève
+            [disabled]="!parentAccountForm.valid">Passer à l'élève
           </button>
         </div>
-          
+
       </div>
     </div>
   </div>

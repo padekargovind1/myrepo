@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import {BrochpopupComponent} from './brochpopup/brochpopup.component'
 import { BrochureDownloadComponent } from './brochure-download/brochure-download.component';
 import { BrochureService } from '../services/brochure.service';
+import {HelperService} from "../services/helper.service";
 @Component({
   selector: 'app-brochure',
   templateUrl: './brochure.component.html',
@@ -42,11 +43,13 @@ export class BrochureComponent implements OnInit, OnDestroy {
         place : "",
         name : ""
     };
+    lieuSelected:any;
 
   constructor(private publicService : PublicService,
               public dialog:MdDialog,
               private fb : FormBuilder,
-              private brochureService : BrochureService) {
+              private brochureService : BrochureService,
+              public helperService : HelperService) {
       this.buildForm();
       this.makeProfile();
       this.getSearch();
@@ -75,70 +78,6 @@ export class BrochureComponent implements OnInit, OnDestroy {
         this.getBrochure();
     }
   }
-
-//   doBrochure() {
-//     (<any> $('#js-grid-juicy-projects')).cubeportfolio({
-//         filters: '#js-filters-juicy-projects',
-//         loadMore: '#js-loadMore-juicy-projects',
-//         loadMoreAction: 'click',
-//         layoutMode: 'grid',
-//         defaultFilter: '*',
-//         animationType: 'quicksand',
-//         gapHorizontal: 35,
-//         gapVertical: 30,
-//         gridAdjustment: 'responsive',
-//         mediaQueries: [{
-//             width: 1500,
-//             cols: 5
-//         }, {
-//             width: 1100,
-//             cols: 4
-//         }, {
-//             width: 800,
-//             cols: 3
-//         }, {
-//             width: 480,
-//             cols: 2
-//         }, {
-//             width: 320,
-//             cols: 1
-//         }],
-//         caption: 'overlayBottomReveal',
-//         displayType: 'sequentially',
-//         displayTypeSpeed: 80,
-
-//         // lightbox
-//         lightboxDelegate: '.cbp-lightbox',
-//         lightboxGallery: true,
-//         lightboxTitleSrc: 'data-title',
-//         lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
-
-//         // singlePage popup
-//         singlePageDelegate: '.cbp-singlePage',
-//         singlePageDeeplinking: true,
-//         singlePageStickyNavigation: true,
-//         singlePageCounter: '<div class="cbp-popup-singlePage-counter">{{current}} of {{total}}</div>',
-//         singlePageCallback: function(url, element) {
-//             // to update singlePage content use the following method: this.updateSinglePage(yourContent)
-//             var t = this;
-
-//             console.log('Hi');
-
-//             // $.ajax({
-//             //         url: url,
-//             //         type: 'GET',
-//             //         dataType: 'html',
-//             //         timeout: 10000
-//             //     })
-//             //     .done(function(result) {
-//             //         t.updateSinglePage(result);
-//             //     })
-//             //     .fail(function() {
-//             //         t.updateSinglePage('AJAX Error! Please refresh the page!');
-//             //     });
-//         },
-//     });
-//   }
 
   // Getting the brochure with the API
   // And store the response data in listBrochure
@@ -287,7 +226,7 @@ export class BrochureComponent implements OnInit, OnDestroy {
   // After submit search for brochure
   onSubmitSearch(){
     console.log("click on submit");
-    this.searchBrochure.class = this.searchForm.value.class;
+    this.searchBrochure.class = this.searchForm.value.classe;
     this.searchBrochure.place = this.searchForm.value.lieu;
     this.searchBrochure.name = this.searchForm.value.etablissement;
     this.getBrochure()
@@ -349,6 +288,19 @@ export class BrochureComponent implements OnInit, OnDestroy {
     this.downloadList[0]=brochureId;
     this.downloadSchoolList[0]=schoolId;
     this.brochDialog();
+  }
+
+  // Use the good location name to send into the body of the API
+  onSelectLieu(type:string, index:number){
+    this.lieuSelected=[];
+    if(type=='R'){
+      this.lieuSelected=this.options.regions[index].departments;
+    } else if(type=='D'){
+      this.lieuSelected[0]=this.options.departements[index].departmentNumber;
+    }else {
+      this.lieuSelected[0]=this.options.villes[index].postcode;
+    }
+    console.log(this.lieuSelected);
   }
 
 }
