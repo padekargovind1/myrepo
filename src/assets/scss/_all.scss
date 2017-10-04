@@ -2507,6 +2507,82 @@ text-align:center;
   width: 25%;
 }
 
+.image-payment {
+  margin: 0 auto;
+}
+
+.logo-payment {
+  width: 150px;
+  height: 150px;
+}
+
+.cyberplus-payment {
+  width: 70%;
+  cursor: pointer;
+}
+
+.cheque-payment {
+  cursor: pointer;
+}
+
+.online-payment-title {
+  background-color: dodgerblue;
+  color: white;
+  margin-top: 20px;
+}
+
+.online-payment-text-div {
+  border: 1px solid dodgerblue;
+  pdding: 20px;
+  margin-bottom: 20px;
+}
+
+.online-payment-text-right {
+  text-align: right;
+}
+
+.online-payment-text-bold {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logo-payment-online {
+  margin-top: 30px;
+  cursor: pointer;
+  width: 40%;
+}
+
+
+header .main-navigation li.courses-menu li .single-item a {
+  color: #383c4b;
+}
+
+header .main-navigation li.courses-menu li .single-item a:hover {
+  color: #7bc673;
+}
+
+header .main-navigation li.courses-menu li .single-item {
+  padding: 20px 10px 20px 20px;
+  min-height: 106px;
+}
+
+.ecoleDataClass .ads-left, .ecoleDataClass .ads-right {
+  top: 110px;
+}
+
+.activeForm .select-custom {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.activeForm .form-group {
+  margin-left: 20px;
+}
+
+.conseilTitleCont {
+  display: table;
+}
+
 @media (max-width:1320px) {
   .ecoleDataClass .ads-left, .ecoleDataClass .ads-right {
     max-width: 10%;
@@ -2523,17 +2599,25 @@ text-align:center;
   .ecoleDataClass .ads-left, .ecoleDataClass .ads-right {
     max-width: 8%;
   }
+  .conseilTitleCont .conseil-title {
+    font-size: 12px;
+  }
 }
 @media (max-width:1190px) {
   .ecoleDataClass .ads-left, .ecoleDataClass .ads-right {
     max-width: 10%;
   }
   }
- @media (max-width:1040px) {
+@media (max-width:1102px) {
+  .conseilTitleOuter {
+    padding: 0 5px;
+  }
+  }
+@media (max-width:1040px) {
     .ecoleDataClass .ads-left, .ecoleDataClass .ads-right {
       max-width: 10%;
     }
-}
+  }
 
   @media (max-width:668px) {
     .compareSliderMobile {
@@ -2543,16 +2627,19 @@ text-align:center;
     .compareSliderMobile .content-compare-table {
       width: 33.33%;
     }
-  .schoolPopUp {
-    pointer-events:auto;
-    cursor: pointer;
-  }
-  #thisschoolbutton0, .CustomOpenPopApply {
-    display: none !important;
-  }
-  .top-compare-table {
-    z-index: 999;
-  }
+
+    .schoolPopUp {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    #thisschoolbutton0, .CustomOpenPopApply {
+      display: none !important;
+    }
+
+    .top-compare-table {
+      z-index: 999;
+    }
   }
 
   @media (max-width:640px) {
@@ -2592,72 +2679,3 @@ text-align:center;
   }
 
 
-  .image-payment {
-    margin: 0 auto;
-  }
-
-  .logo-payment {
-    width: 150px;
-    height: 150px;
-  }
-
-  .cyberplus-payment {
-    width: 70%;
-    cursor: pointer;
-  }
-
-  .cheque-payment {
-    cursor: pointer;
-  }
-
-  .online-payment-title {
-    background-color: dodgerblue;
-    color: white;
-    margin-top: 20px;
-  }
-
-  .online-payment-text-div {
-    border: 1px solid dodgerblue;
-    pdding: 20px;
-    margin-bottom: 20px;
-  }
-
-  .online-payment-text-right {
-    text-align: right;
-  }
-
-  .online-payment-text-bold {
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .logo-payment-online {
-    margin-top: 30px;
-    cursor: pointer;
-    width: 40%;
-  }
-
-
-header .main-navigation li.courses-menu li .single-item a {
-  color: #383c4b;
-}
-header .main-navigation li.courses-menu li .single-item a:hover {
-  color: #7bc673;
-}
-header .main-navigation li.courses-menu li .single-item {
-  padding: 20px 10px 20px 20px;
-  min-height: 106px;
-}
-
-.ecoleDataClass .ads-left, .ecoleDataClass .ads-right {
-  top: 110px;
-}
-
-.activeForm .select-custom {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.activeForm  .form-group {
-  margin-left: 20px;
-}
