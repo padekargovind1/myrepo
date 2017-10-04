@@ -1,4 +1,4 @@
-<form [formGroup]="wizardForm">
+﻿<form [formGroup]="wizardForm">
   <div class="row">
     <div class="col-md-8">
       <h3>Etablissements fréquentés</h3>
@@ -103,15 +103,17 @@
 
   </div><!-- .row -->
   <div class="row">
-    <div class="form-group clearfix">
-      <button class="btn  btn-appointment wizard-button-align"
-              (click)="nextTab(5)" style="float:left; margin-left:0px">
-        Précédent
-      </button>
-      <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(7)"
-              style="float:right">
-        Suivant
-      </button>
+    <div class="col-md-8">
+      <div class="form-group clearfix">
+        <button class="btn  btn-appointment wizard-button-align"
+                (click)="nextTab(5)" style="float:left; margin-left:0px">
+          Précédent
+        </button>
+        <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(7)"
+                style="float:right">
+          Suivant
+        </button>
+      </div>
     </div>
   </div>
 </form>
