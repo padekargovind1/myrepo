@@ -67,6 +67,7 @@ export class WizardComponent implements OnInit {
         width: 550,
         confirmButtonColor: '#70AD47',
         cancelButtonClass: 'btn-cancel-wizard',
+        confirmButtonClass: 'btn-confirm-wizard',
         confirmButtonText: "Je complete maintenant",
         cancelButtonText: 'Je complete plus tard',
         background: '#4472C4',

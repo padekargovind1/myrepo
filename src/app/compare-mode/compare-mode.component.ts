@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdDialog } from '@angular/material';
@@ -10,7 +10,8 @@ import swal from 'sweetalert2';
 //var self = this;
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
-
+declare const jquery: any;
+declare const $: any;
 @Component({
   selector: 'app-compare-mode',
   templateUrl: './compare-mode.component.html',
@@ -59,6 +60,39 @@ export class CompareModeComponent implements OnInit, OnDestroy {
     }
     this.schoolToCompare.ids=this.compareService.getSchoolToCompareId()
     this.getSchoolData();
+    this.runScript();
+  }
+  runScript() {
+      setTimeout(function () {
+          var winWidth = $(window).width();
+
+          
+          if (winWidth < 640) {
+              setTimeout(function () {
+                  $('#compare').find('.collapse').each(function () {
+                      $(this).attr('aria-expanded', 'false');
+                      $(this).removeClass('in');
+                      $(this).attr('collapse', 'hide');
+                  });
+                  $('#compare .item-compare-table .compare-item').each(function () {
+                      $(this).find('li').eq(1).find('.collapse').addClass('in');
+                      $(this).find('li').eq(1).find('.collapse').attr('aria-expanded', 'true');
+                  });
+              },2500);
+          }
+          //alert(winWidth);
+          if (winWidth < 640) {
+              //alert(winWidth);
+              //alert($('.compareSliderMobile').length);
+              $('.compareSliderMobile').slick({
+                  arrows: true,
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  autoplay: false
+              });
+          }
+      },3500);
+      
   }
 
   // After change page -> clean the filter and the school to compare in the services
@@ -211,6 +245,17 @@ export class CompareModeComponent implements OnInit, OnDestroy {
         confirmButtonText: 'Ok'
       })
     }
+  }  
+  OpenSchoolSelect(i,school){ 
+	  var searchThis = document.getElementById('schooltoshow'+i).innerHTML;
+	  swal({
+		title: '',
+		html: searchThis,
+		confirmButtonText: 'Selectioner',
+	  }).then(function () {
+		var searchThisbutton =document.getElementById('thisschoolbutton'+i);
+		searchThisbutton.click();
+	  });
   }
 
   // Open md dialog to send a message

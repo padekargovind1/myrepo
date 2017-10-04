@@ -80,8 +80,10 @@ export class SchoolComponent implements OnInit, OnDestroy {
   onMobile = false;
   bottomAdCarousalClasses: string = 'footer-ads hidden animated';
   lieuSelected = [];
+
   imageExtensions = ['png','gif','jpeg'];
   imagePathPre = 'http://54.254.203.172/cideapi/';
+
 
   constructor(private publicService: PublicService,
               private schoolService: SchoolService,
@@ -237,9 +239,9 @@ export class SchoolComponent implements OnInit, OnDestroy {
             this.schoolComponentTitle = 'Rechercher un Internat (Maternelle au Lycée)';
             $('.filter-form-holder').css('background-image', "url('./assets/images/internat.jpg')");
           } else {
-            this.advancedSearch.code = ['enseignement'];
-            this.schoolComponentTitle = 'Enseignement Supérieur';
-            $('.filter-form-holder').css('background-image', "url('./assets/images/autodoc.jpg')");
+            this.advancedSearch.code=["enseignement"]
+            this.schoolComponentTitle="Enseignement Supérieur";
+            $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement.jpg')")
           }
           // this.getAllSchool(this.limit);
 
@@ -474,6 +476,21 @@ export class SchoolComponent implements OnInit, OnDestroy {
         response=>{
           console.log(response);
           let data = response.data;
+		  for(var j=0;j<data.length;j++)
+		  {
+			  var imgpath = data[j].cycles[0].logo1
+			  for(var i=0;i<this.imageExtensions.length;i++)
+			  {
+				var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
+                if (this.imageExists(this.imagePathPre + tempimgpath))
+				{
+					imgpath = tempimgpath;
+					break;
+				}
+			  }
+			  data[j].cycles[0].logo1 = imgpath;
+		  }
+		  this.isLoader=false;
           if(response.code==400){
             // console.log(response.message)
           } else {
@@ -498,7 +515,6 @@ export class SchoolComponent implements OnInit, OnDestroy {
         }
       )
   }
-
   // filterCycleSchool(cycleFromSearch){
   //   // console.log(cycleFromSearch)
   //   if(cycleFromSearch.length==0){

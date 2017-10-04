@@ -57,10 +57,22 @@ export class MyaccountChildrenComponent implements OnInit {
     console.log(this.childrenForm)
   }
 
+
+  // createfs(){
+  //   return this.fb.group({
+  //     gender : ['', Validators.required],
+  //     age : ['', Validators.required],
+  //     niveau : ['', Validators.required]
+  //   })
+  // }
+
+  //patchValue(data: any){ 
+
   // Patch the value from the API
   patchValue(data: any){
     console.log(data.birthDate);
     // data.birthDate.getDay()+'/'+data.birthDate.getMonth()+'/'+data.birthDate.getFullYear()
+
     this.childrenForm.patchValue({
       nom : data.lastName=='A compléter' ? '' : data.lastName,
       prenom : data.firstName=='A compléter' ? '' : data.firstName,
@@ -71,7 +83,43 @@ export class MyaccountChildrenComponent implements OnInit {
     console.log(new Date(data.birthDate), this.childrenForm.value)
   }
 
+
+
+  /*completeProfile(){
+    this.myProfile.lastName = this.childrenForm.value.nom;
+    this.myProfile.firstName = this.childrenForm.value.prenom;
+    this.myProfile.age = this.childrenForm.value.age;
+    this.myProfile.gender = this.childrenForm.value.gender;
+    this.myProfile.email = this.childrenForm.value.email;
+    this.myProfile.mobilePhone = this.childrenForm.value.portable;
+    // this.myProfile.address.address1 = this.childrenForm.controls.adresse.value;
+    // this.myProfile.address.postCode = this.childrenForm.controls.codepostal.value.toString();
+    // this.myProfile.address.city = this.childrenForm.controls.ville.value;
+    // this.myProfile.birthDate = this.childrenForm.controls.datenaissance.value;
+    // this.myProfile.birthPlace = this.childrenForm.controls.lieu.value;
+    // console.log(this.myProfile.siblings)
+    // for(let i = 0; i<this.childrenForm.controls['freresoeur']['controls'].length; i++){
+    //   this.myProfile.siblings[i].age=this.childrenForm.controls['freresoeur']['controls'][i].controls.age.value;
+    //   this.myProfile.siblings[i].gender=this.childrenForm.controls['freresoeur']['controls'][i].controls.gender.value;
+    //   this.myProfile.siblings[i].study=this.childrenForm.controls['freresoeur']['controls'][i].controls.niveau.value;
+    // }
+
+    // let i=0;
+    // console.log(this.childrenForm.controls.freresoeur.value)
+    // for (let sibling of this.childrenForm.controls.freresoeur.value){
+    //   this.myProfile.siblings[i].age = sibling[i].age.value;
+    //   this.myProfile.siblings[i].gender = sibling[i].gender.value;
+    //   this.myProfile.siblings[i].study = sibling[i].niveau.value;
+    //   i++;
+    // }
+    console.log(this.myProfile);
+    this.usersService.storeChildData(this.myProfile);
+  }*/
+
+  // After click on submit
+
   // Complete the profile to send to the API
+
   onSubmit(){
     this.userData.lastName = this.childrenForm.value.nom;
     this.userData.firstName = this.childrenForm.value.prenom;

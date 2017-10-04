@@ -124,12 +124,12 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
         });
 
         (<any> $(document)).on('click', function (event) {
-            if (!(<any> $(event.target).parents().addBack().is('.landingpage__additional-content'))) {
-                (<any> $('.form-wrap')).removeClass("activeForm");
+            if (!(<any> $(event.target).parents().addBack().is('.landingpage__additional-content,.mat-autocomplete-panel'))) {
+                (<any> $('.form-wrap')).removeClass("activeForm"); 
             }
         });
 
-        (<any> $('.landingPage1Bg .landingpage__wrapper .landingpage__additional-content')).on('click', function (event) {
+        (<any> $('.landingPage1Bg .landingpage__wrapper .landingpage__additional-content,.mat-autocomplete-panel')).on('click', function (event) {
             event.stopPropagation();
         });
   }

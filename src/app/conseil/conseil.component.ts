@@ -48,9 +48,13 @@ export class ConseilComponent implements OnInit {
 
 
   // Open the info dialog
-  openInfoDialog(nb : number){
-    this.makeProfile(nb);
-    this.dialog.open(ConseilPopupComponent,this.config);
+  openInfoDialog(nb : number){  
+	//var datatoshow = <HTMLDivElement>document.getElementById('custom_panel_' + nb); 
+	//var divToShow = <HTMLDivElement>document.getElementById('customPopUp_' + nb);
+	//divToShow.innerHTML = '';
+	//divToShow.innerHTML = datatoshow.innerHTML;
+    //this.makeProfile(nb);
+    //this.dialog.open(ConseilPopupComponent,this.config);
   }
 
   openMobileInfoDialog(nb : number){
