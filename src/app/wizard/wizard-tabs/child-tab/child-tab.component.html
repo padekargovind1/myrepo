@@ -1,4 +1,4 @@
-<form [formGroup]="wizardForm">
+﻿<form [formGroup]="wizardForm">
   <div class="col-md-12">
     <h3>Elève</h3>
   </div>
@@ -97,17 +97,34 @@
         </div>
       </div>
     </div>
-  </div><!-- .col-* -->
-  <div class="col-md-12">
-    <div class="form-group clearfix">
-      <button class="btn  btn-appointment wizard-button-align"
-              (click)="nextTab(0)" style="float:left; margin-left:0px">
-        Précédent
-      </button>
-      <button class="btn  btn-appointment wizard-button-align"
-              (click)="nextTab(2)" style="float:right">
-        Suivant
-      </button>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group clearfix">
+          <button class="btn  btn-appointment wizard-button-align"
+                  (click)="nextTab(0)" style="float:left; margin-left:0px">
+            Précédent
+          </button>
+          <button class="btn  btn-appointment wizard-button-align"
+                  (click)="nextTab(2)" style="float:right">
+            Suivant
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
+
+
+      </div><!-- .col-* -->
+      <div class="col-md-12">
+        <!--div class="form-group clearfix">
+        <button class="btn  btn-appointment wizard-button-align"
+                (click)="nextTab(0)" style="float:left; margin-left:0px">
+          Précédent
+        </button>
+        <button class="btn  btn-appointment wizard-button-align"
+                (click)="nextTab(2)" style="float:right">
+          Suivant
+        </button>
+      </div-->
+      </div>
 </form>

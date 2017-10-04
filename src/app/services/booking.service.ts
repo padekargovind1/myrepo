@@ -167,13 +167,15 @@ export class BookingService {
     var self = this;
     swal({
       title: "Paiement Par Cheque",
-      text: 'Votre rendez-vous :\nAvec '+adviser+' Le '+date+'\nAu CIDE 84 Boulevard Saint-Michel 75006 Paris\nTél. : 01 53 10 33 20\n\nMerci d’adresser votre réglement\nAu CIDE, 84 Boulevard Saint-Michel 75006 Paris\nen précisant au dos du Paiement\n' +
+      text: 'Votre rendez-vous :\nAvec '+adviser+' Le '+date+'\nAu CIDE 84 Boulevard Saint-Michel 75006 Paris\nTél. : 01 53 10 33 20\n\nMerci d’adresser votre réglement\nAu CIDE, 84 Boulevard Saint-Michel 75006 Paris\nen précisant au dos du\n' +
       'chèque :\nRendez-vous du '+date,
       type: 'success',
       confirmButtonColor: '#70AD47',
       cancelButtonClass: 'btn-cancel-wizard',
-      confirmButtonText: "J'accepte",
-      cancelButtonText: 'Je décline',
+      //confirmButtonText: "J'accepte",
+      confirmButtonText: "J’ai compris",
+      //cancelButtonText: 'Je décline',
+      cancelButtonText: 'Retour',
       showCancelButton: true,
       reverseButtons: true
     }).then(function (event) {

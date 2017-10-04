@@ -1,4 +1,4 @@
-<form [formGroup]="wizardForm">
+﻿<form [formGroup]="wizardForm">
   <div class="col-md-4">
     <h3>Aide Scolaire*
       <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Si oui, compléter matières."
@@ -35,17 +35,32 @@
       </div>
     </div>
 
-  </div><!-- .col-* -->
-  <div class="col-md-12">
     <div class="form-group clearfix">
-      <button class="btn  btn-appointment wizard-button-align"
-              (click)="nextTab(2)" style="float:left; margin-left:0px">
-        Précédent
-      </button>
-      <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(4)"
-              style="float:right">
-        Suivant
-      </button>
+      <div class="row" style="margin-bottom:">
+        <div class="col-sm-12">
+          <button class="btn  btn-appointment wizard-button-align"
+                  (click)="nextTab(2)" style="float:left; margin-left:0px">
+            Précédent
+          </button>
+          <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(4)"
+                  style="float:right">
+            Suivant
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
+
+      </div><!-- .col-* -->
+      <div class="col-md-12">
+        <!--div class="form-group clearfix">
+        <button class="btn  btn-appointment wizard-button-align"
+                (click)="nextTab(2)" style="float:left; margin-left:0px">
+          Précédent
+        </button>
+        <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(4)"
+                style="float:right">
+          Suivant
+        </button>
+      </div-->
+      </div>
 </form>

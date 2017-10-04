@@ -1,4 +1,4 @@
-<form [formGroup]="wizardForm">
+﻿<form [formGroup]="wizardForm">
   <div class="row">
     <div class="col-md-6">
       <h3>Ses centres d'intérêts</h3>
@@ -41,7 +41,9 @@
 
       <div class="row">
         <button class="btn  btn-appointment" (click)="onAddJob()"
-                style="margin-left:15px"><i class="fa fa-plus" aria-hidden="true"></i>Ajouter un métier</button>
+                style="margin-left:15px">
+          <i class="fa fa-plus" aria-hidden="true"></i>Ajouter un métier
+        </button>
       </div>
 
 
@@ -71,22 +73,28 @@
     </div><!-- .col-* -->
   </div><!-- .row -->
   <div class="row">
-    <div class="form-group clearfix">
-      <button class="btn  btn-appointment wizard-button-align"
-              (click)="nextTab(4)" style="float:left; margin-left:0px">
-        Précédent
-      </button>
-      <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(6)"
-              style="float:right" *ngIf="!onApplyPage; else onApply">
-        Suivant
-      </button>
-      <ng-template #onApply>
-        <button class="btn  btn-appointment wizard-button-align" (click)="onApplySubmit()"
-                style="float:right">
-          Je postule
-        </button>
-      </ng-template>
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="form-group clearfix">
+            <button class="btn  btn-appointment wizard-button-align"
+                    (click)="nextTab(4)" style="float:left; margin-left:0px">
+              Précédent
+            </button>
+            <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(6)"
+                    style="float:right" *ngIf="!onApplyPage; else onApply">
+              Suivant
+            </button>
+            <ng-template #onApply>
+              <button class="btn  btn-appointment wizard-button-align" (click)="onApplySubmit()"
+                      style="float:right">
+                Je postule
+              </button>
+            </ng-template>
 
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </form>

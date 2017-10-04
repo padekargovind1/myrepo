@@ -62,14 +62,15 @@ export class WizardComponent implements OnInit {
     this.runScript();
     var self = this;
     swal({
-        text: "<font color='#fff'>Afin de preparer votre entretien dans les meilleures conditions, merci de bien vouloir completer ce questionnaire 48h avant le rendez-vous.</font>",
+        text: "<font color='#fff'>Afin de préparer votre entretien dans les meilleures conditions, merci de bien vouloir compléter ce questionnaire 48h avant le rendez-vous..</font>",
+		type: 'question',
         showCancelButton: true,
         width: 550,
         confirmButtonColor: '#70AD47',
         cancelButtonClass: 'btn-cancel-wizard',
         confirmButtonClass: 'btn-confirm-wizard',
-        confirmButtonText: "Je complete maintenant",
-        cancelButtonText: 'Je complete plus tard',
+        confirmButtonText: "Je complète maintenant",
+        cancelButtonText: 'Je complète plus tard',
         background: '#4472C4',
         reverseButtons: true
     }).then(function () {

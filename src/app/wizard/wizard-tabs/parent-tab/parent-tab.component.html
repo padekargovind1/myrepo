@@ -1,10 +1,10 @@
-<form [formGroup]="wizardForm">
+﻿<form [formGroup]="wizardForm">
   <div class="row">
     <section class="col-md-6" formArrayName="parents"
              *ngFor="let parent of wizardForm.controls['parents']['controls']; let i = index">
       <div [formGroupName]="i">
         <h3 *ngIf="!onMobile">Parents</h3>
-        <br *ngIf="onMobile"/>
+        <br *ngIf="onMobile" />
 
         <div class="form-group">
           <div class="select-custom">
@@ -159,21 +159,21 @@
           Retirer un parent
         </button>
       </div>
+    
+        <div class="form-group clearfix">
+          <button class="btn  btn-appointment" (click)="onAddParent()"
+                  *ngIf="wizardForm.controls['parents']['controls'].length==1"
+                  style="margin-left:0px">
+            <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
+          </button>
+          <button class="btn  btn-appointment wizard-button-align"
+                  (click)="nextTab(1)" style="float:right">
+            Suivant
+          </button>
+        </div>
+      
     </section>
   </div><!-- .row -->
-  <div class="form-group clearfix">
-    <button class="btn  btn-appointment" (click)="onAddParent()"
-            *ngIf="wizardForm.controls['parents']['controls'].length==1"
-            style="margin-left:0px">
-      <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
-    </button>
-  </div>
-  <div class="row">
-    <div class="form-group clearfix">
-      <button class="btn  btn-appointment wizard-button-align"
-              (click)="nextTab(1)" style="float:right">
-        Suivant
-      </button>
-    </div>
-  </div>
+
+
 </form>
