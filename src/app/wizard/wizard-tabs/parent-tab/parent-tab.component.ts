@@ -63,7 +63,9 @@ export class ParentTabComponent implements OnInit {
           adresse : IsAdress ? this.userData.parents[i].address.address1 : "",
           codepostal : IsAdress ? this.userData.parents[i].address.postCode : "",
           ville : IsAdress ? this.userData.parents[i].address.city : "",
-          pays : IsAdress ? this.userData.parents[i].address.country : ""
+          pays : IsAdress ? this.userData.parents[i].address.country : "",
+          job : this.userData.parents[i].profession,
+          horaireJoignable: this.userData.parents[i].availability
         })
       }
     }
