@@ -1,14 +1,12 @@
+<p class="note">Afin d’envoyer votre message, veuillez compléter les informations ci-dessous</p>
 <md-tab-group class="download-modal" #tabGroup>
-  <md-tab label="Formulaire">
+  <md-tab label="Mes coordonnées">
      <div role="tabpanel" style="width:95%; margin-left:2%">
          <form [formGroup]="sendMessageForm" class="brouchreCls test">
             <h3>Parents</h3>
             <div class="row">
                 <div class="col-md-6">
                     <div class="select-custom">
-                        <div style="margin-bottom:10px">
-                            <span>Lien de Parenté*</span>
-                        </div>
                         <select name="" class="form-control"
                             [formControl]="sendMessageForm.controls['lienParent']">
                             <option value="" disabled selected hidden>Lien de Parenté</option>
@@ -24,9 +22,6 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div style="margin-bottom:10px">
-                        <span>Sexe*</span>
-                    </div>
                     <div class="form-group horizontal-radio clearfix">
 
                         <md-radio-group [formControl]="sendMessageForm.controls['title']"
@@ -82,7 +77,7 @@
                 </div>
             </div>
 
-            <h3>Eleve</h3>
+            <h3>Elève</h3>
             <div class="row">
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
@@ -253,16 +248,6 @@
                 </div>
             </div>-->
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <md-checkbox [formControl]="sendMessageForm.controls['copy']" >
-                            Je souhaite recevoir un copie de votre message
-                        </md-checkbox>
-                    </div>
-                </div>
-            </div>
-
             <div style="float : right">
                 <button type="button" data-dismiss="modal" class="btn btn-highlighted"
                     (click)="onCancel()">Annuler</button>
@@ -275,7 +260,7 @@
     </div>
   </md-tab>
 
-  <md-tab label="Profil Scolaire" id="tab2">
+  <md-tab label="Mon message" id="tab2">
     <div role="tabpanel">
 
         <!--<div class="form-group horizontal-radio clearfix">
@@ -339,6 +324,15 @@
               (art. 34 de la loi "informatique et libertés" - Numéro de déclaration CNIL 1271917).
                Formulez votre demande par écrit au CIDE, 84, boulevard Saint-Michel 75006 Paris.
             </p>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-12">
+                  <md-checkbox [formControl]="sendMessageForm.controls['copy']" >
+                    Je souhaite recevoir un copie de ce message
+                  </md-checkbox>
+                </div>
+              </div>
+            </div>
             <div style="float : right">
                 <button type="button" data-dismiss="modal"
                     class="btn btn-highlighted"

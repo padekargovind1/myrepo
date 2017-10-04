@@ -1,9 +1,10 @@
+<p class="note">
+  Pour télécharger la documentation, veuillez saisir vos coordonnées ainsi que le profil scolaire de l'enfant
+</p>
 <md-tab-group class="download-modal" #tabGroup>
   <md-tab label="Formulaire">
      <div role="tabpanel" style="width:95%; margin-left:2%">
          <form [formGroup]="brochureForm" class="brouchreCls">
-            <p class="note">
-                Pour télécharger la documentation, veuillez saisir vos coordonnées ainsi que le profil scolaire de l'enfant</p>
             <h3>Parents</h3>
             <div class="row">
                 <div class="col-md-6">
@@ -83,7 +84,7 @@
                 </div>
             </div>
 
-            <h3>Etudiant</h3>
+            <h3>Elève</h3>
             <div class="row">
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
@@ -254,16 +255,6 @@
                 </div>
             </div>-->
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <md-checkbox [formControl]="brochureForm.controls['copy']" >
-                            Je souhaite recevoir une copie du mail adressé à l'établissement
-                        </md-checkbox>
-                    </div>
-                </div>
-            </div>
-
             <div style="float : right">
                 <button type="button" data-dismiss="modal" class="btn btn-highlighted"
                     (click)="onCancel()">Annuler</button>
@@ -278,8 +269,6 @@
 
   <md-tab label="Profil scolaire" id="tab2">
     <div role="tabpanel" class="brouchreClsSecond">
-        <p class="note">Pour télécharger les documentations demandées, veuillez saisir votre contact ainsi que le profil scolaire concerné</p>
-
         <div class="form-group horizontal-radio clearfix">
             <p>Dernier établissement fréquenté</p>
             <md-radio-group [formControl]="brochureForm.controls['status']"
