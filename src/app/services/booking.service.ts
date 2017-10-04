@@ -164,6 +164,7 @@ export class BookingService {
     let frenchDate : string = appointmentData[0].toString().substr(8, 2)+'/'+appointmentData[0].toString().substr(5, 2)+'/'+appointmentData[0].toString().substr(0, 4)
     let date : string = frenchDate+' de '+appointmentData[1]+' à '+appointmentData[2];
     let adviser : string = appointmentData[4]+' '+appointmentData[3];
+    var self = this;
     swal({
       title: "Paiement Par Cheque",
       text: 'Votre rendez-vous :\nAvec '+adviser+' Le '+date+'\nAu CIDE 84 Boulevard Saint-Michel 75006 Paris\nTél. : 01 53 10 33 20\n\nMerci d’adresser votre réglement\nAu CIDE, 84 Boulevard Saint-Michel 75006 Paris\nen précisant au dos du Paiement\n' +
@@ -177,10 +178,14 @@ export class BookingService {
       reverseButtons: true
     }).then(function (event) {
       console.log(event);
-      if(event=='true'){
-        this.router.navigate(['/wizard'])
+      if(event==true){
+        if(self.getBookingPackage()[4]=='80'){
+          self.successSubmit();
+        }else{
+          self.router.navigate(['/wizard']);
+        }
       }
-    }, function (dismiss) {
+    }, function (dismiss){
       //catch promise
     })
 

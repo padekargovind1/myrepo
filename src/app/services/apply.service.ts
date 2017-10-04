@@ -93,38 +93,44 @@ export class ApplyService {
         class : this.schoolService.getClassName()
       }]
     }
+
     console.log(data)
-    this.usersService.postApplication(data) //Post data to create a new applying school
+    // this.usersService.postApplication(data) //Post data to create a new applying school
+    //   .subscribe(
+    //     response=>{
+    //       let data = response.data;
+    //       console.log(response);
+    //       if(response.code==200) { //If success
+    //         console.log("apply successful");
+    //         this.usersService.deleteApplication(data.schools[0].school) //We delete the school in wish list if it's in wish list
+    //           .subscribe(
+    //             response=>{
+    //               console.log(response)
+    //             }
+    //           )
+    //         this.updateProfile();
+    //       } else {
+    //         console.log(response.message);
+    //         this.failSubmit(response.message);
+    //       }
+    //     }
+    //   )
+      this.updateProfile();
+  }
+
+  updateProfile(){
+    this.usersService.putProfile(this.userData) //Update user profile
       .subscribe(
         response=>{
-          let data = response.data;
-          console.log(response);
-          if(response.code==200) { //If success
-            console.log("apply successful");
-            this.usersService.deleteApplication(data.schools[0].school) //We delete the school in wish list if it's in wish list
-              .subscribe(
-                response=>{
-                  console.log(response)
-                }
-              )
-            this.usersService.putProfile(this.userData) //Update user profile
-              .subscribe(
-                response=>{
-                  console.log(response)
-                  if(response.code==400){
-                    this.failSubmit(response.message);
-                  } else {
-                    this.successSubmit();
-                    this.schoolService.cleanClassName();
-                  }
-                }
-              )
-          } else {
-            console.log(response.message);
+          console.log(response)
+          if(response.code==400){
             this.failSubmit(response.message);
+          } else {
+            this.successSubmit();
+            this.schoolService.cleanClassName();
           }
         }
-      )
+      );
   }
 
   successSubmit(){
