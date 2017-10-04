@@ -2636,3 +2636,19 @@ text-align:center;
     cursor: pointer;
     width: 40%;
   }
+
+
+header .main-navigation li.courses-menu li .single-item a {
+  color: #383c4b;
+}
+header .main-navigation li.courses-menu li .single-item a:hover {
+  color: #7bc673;
+}
+header .main-navigation li.courses-menu li .single-item {
+  padding: 20px 10px 20px 20px;
+  min-height: 106px;
+}
+
+.ecoleDataClass .ads-left, .ecoleDataClass .ads-right {
+  top: 110px;
+}
