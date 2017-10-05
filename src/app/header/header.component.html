@@ -190,9 +190,7 @@
             <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> Se connecter</a>
         </li>
         <ng-template #log>
-            <li class="login-text"
-                (click)="onMyAccount('0')"
-                style="cursor : pointer; font-size: 14px">{{ userFirstName }}</li> |
+            <li class="login-text" (click)="onMyAccount('0')" style="cursor : pointer; font-size: 14px"><i class="fa fa-user" aria-hidden="true"></i> {{ userFirstName }}</li> |
             <li class="login-text">
                 <a (click)="onSignOut()">
                 <i class="fa fa-sign-in"></i>
