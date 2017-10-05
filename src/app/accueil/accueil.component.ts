@@ -113,7 +113,7 @@ export class AccueilComponent implements OnInit {
           'background-image': 'url(assets/images/new-landing-page-2/' + self._section.name + '.jpg)',
           'margin': 0,
           'padding': 0,
-          'height': (windows_height - header_height) + 'px',
+          'height': (windows_height - (header_height+30)) + 'px',
           '-webkit-background-size': 'cover', /* pour anciens Chrome et Safari */
           'background-size': 'cover',
         };
@@ -199,7 +199,7 @@ export class AccueilComponent implements OnInit {
       'background-image': 'url(assets/images/new-landing-page-2/' + this._section.name + '.jpg)',
       'margin': 0,
       'padding': 0,
-      'height': (windows_height - header_height) + 'px',
+      'height': (windows_height - (header_height+30)) + 'px',
       '-webkit-background-size': 'cover', /* pour anciens Chrome et Safari */
       'background-size': 'cover',
     };
