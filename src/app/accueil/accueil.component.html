@@ -115,8 +115,79 @@
     <div class="container-fluid">
       <!-- row -->
       <div class="row">
-        <div id="tabwheel"></div>
+        <div class="col-sm-8">
+          <div id="tabwheel"></div>
+        </div>
+        <!--<div class="content-holder">-->
+        <div class="col-sm-4">
+          <h2>{{this._section.name}}</h2>
+          <h3 *ngIf="this._section.subName">{{this._section.subName}}</h3>
+          <div class="form-wrap">
+            <form [formGroup]="searchForm"
+                  (ngSubmit)="onSubmitSearch(this._section.name)"
+                  class="form-inline">
 
+              <div class="form-group">
+                <label class="select-custom" for="class">
+                  <select name="class" class="form-control" id="class"
+                          [formControl]="searchForm.controls['classe']"
+                          (click)="storeClassName($event)">
+                    <option value="" disabled selected hidden>Classe</option>
+                    <option value="Indifférent">&nbsp;Indifférent</option>
+                    <option *ngFor="let opt of _section.school" value="{{opt.valueAPI}}">{{opt.name}}</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Lieu"
+                       (keyup)="filterLieu($event)"
+                       [mdAutocomplete]="auto"
+                       [formControl]="searchForm.controls['lieu']"/>
+                  <md-autocomplete #auto="mdAutocomplete">
+                    <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                    <!-- <md-option [value]="options.regions"
+                    *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                    <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                               (click)="onSelectLieu('R', i)">
+                      &nbsp;&nbsp;{{ option.region }}
+                    </md-option>
+                    <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                    <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                               (click)="onSelectLieu('D', i)">
+                      &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                    </md-option>
+                    <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                    <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                               (click)="onSelectLieu('V', i)">
+                      &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                    </md-option>
+                  </md-autocomplete>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control"
+                       placeholder="Nom d'etablissement"
+                       [mdAutocomplete]="autoSchool"
+                       (keyup)="filterSchool($event)"
+                       [formControl]="searchForm.controls['etablissement']"/>
+
+                  <md-autocomplete #autoSchool="mdAutocomplete">
+                    <md-option *ngFor="let school of schoolsOptions"
+                               [value]="school.longName">
+                      {{ school.longName }}
+                    </md-option>
+                  </md-autocomplete>
+              </div>
+
+              <div class="form-group">
+                <button class="btn btn-search" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
 
       </div> <!-- end row -->
     </div> <!-- end container fluid -->

@@ -5,7 +5,7 @@ import { PublicService } from '../services/public.service';
 import { SchoolService } from '../services/school.service';
 import * as $ from 'jquery';
 import swal from 'sweetalert2';
-import {HelperService} from "../services/helper.service";
+import {HelperService} from '../services/helper.service';
 declare const wheelnav: any;
 
 @Component({
@@ -30,16 +30,27 @@ export class AccueilComponent implements OnInit {
   lieuSelected = [];
   selectorWheel: String = '#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, ' +
     '#wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6';
+  _section = {
+    'school': null,
+    'name': null,
+    'subName': null
+  };
 
   constructor(private router: Router,
               private publicService: PublicService,
               private fb: FormBuilder,
-              private schoolService : SchoolService,
-              private helperService : HelperService
+              private schoolService: SchoolService,
+              private helperService: HelperService
               ) {
     this.runScript();
     this.buildForm();
     this.buildApbForm();
+  }
+
+  private _initSection() {
+    this._section.school = null;
+    this._section.name = null;
+    this._section.subName = '';
   }
 
   // Init wheel menu
@@ -90,32 +101,40 @@ export class AccueilComponent implements OnInit {
     const self = this;
     $(this.selectorWheel).mousedown(function(e){
       const wheelNavId: String = $(this).attr('id');
-      let contentName: String;
+      // let contentName: String;
+      self._initSection();
+      const school = self.helperService.getAllList();
 
-      switch ($(this).attr('id').charAt(24)) {
+      switch (wheelNavId.slice(-1)) {
         case '0' :
-          contentName = 'ecole';
+          self._section.name = 'ecole';
+          self._section.subName = 'Maternelle / Primaire';
+          self._section.school = school.infant_primary;
           break;
         case '1' :
-          contentName = 'college';
+          self._section.name = 'college';
+          self._section.subName = '6ème - 3ème';
+          self._section.school = school.secondary_school;
           break;
         case '2' :
-          contentName = 'lycee';
+          self._section.name = 'lycee';
+          self._section.subName = 'Seconde - Terminale';
+          self._section.school = school.college;
           break;
         case '3' :
-          contentName = 'internat';
+          self._section.name = 'internat';
           break;
         case '4' :
-          contentName = 'enseignement';
+          self._section.name = 'enseignement';
           break;
         case '5' :
-          contentName = 'linguistic';
+          self._section.name = 'linguistic';
           break;
         case '6' :
-          contentName = 'orientation';
+          self._section.name = 'orientation';
           break;
       }
-      self.switchWheelComponent(wheelNavId, contentName);
+      self.switchWheelComponent(wheelNavId);
     });
 
     $('#wheelnav-tabwheel-spreadertitle').mousedown(function(e){
@@ -125,23 +144,23 @@ export class AccueilComponent implements OnInit {
   }
 
   // Swithing item on the wheel nav menu
-  switchWheelComponent(wheelNavId: String, contentName: String) {
+  switchWheelComponent(wheelNavId: String) {
     const self = this;
-    const selector_content = $('.' + contentName + '-content');
-    //const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
+    const selector_content = $('.' + this._section.name + '-content');
+    const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
 
     $(this.selectorWheel).removeClass('open');
     $('#' + wheelNavId).addClass('open');
-    self.onNavigate(contentName);
-    // if (selector_content.hasClass('fadeIn')) {
-    //   if (school_name.includes(contentName)) {
-    //     console.log('Need to navigate', contentName);
-    //     self.onNavigate(contentName);
-    //   }
-    // }
+    // self.onNavigate(contentName);
+    if ($('.content-holder').hasClass('fadeIn')) {
+      if (school_name.includes(this._section.name)) {
+        console.log('Need to navigate', this._section.name);
+        self.onNavigate(this._section.name);
+      }
+    }
 
     $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
-    selector_content.removeClass('fadeOut').addClass('fadeIn');
+    // $('.content-holder').removeClass('fadeOut').addClass('fadeIn');
 
     // var image = $('.'+contentName+'-content').data('image');
     // console.log(image);
@@ -152,10 +171,10 @@ export class AccueilComponent implements OnInit {
 
 
     const css = {
-      'background-image': 'url(assets/images/new-landing-page-2/' + contentName + '.jpg)',
+      'background-image': 'url(assets/images/new-landing-page-2/' + this._section.name + '.jpg)',
       'margin': 0,
       'padding': 0,
-      'height': '100vh',
+      'height': (windows_height - header_height) + 'px',
       '-webkit-background-size': 'cover', /* pour anciens Chrome et Safari */
       'background-size': 'cover',
     };
@@ -191,9 +210,8 @@ export class AccueilComponent implements OnInit {
   // Call after keyup detected on location input
   // if the word is more or equals to 2 letters, it call the function getLieuFilter to get the list
   filterLieu(event) {
-    console.log(event.target.value);
-    let filter: string = event.target.value;
-    if(filter.length>=2){
+    const filter: string = event.target.value;
+    if (filter.length >= 2) {
       this.getLieuFilter(filter)
     }
   }

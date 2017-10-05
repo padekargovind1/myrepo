@@ -1378,7 +1378,7 @@ span.label { font-size: 10px;  }
 .content-holder { position: relative; overflow: hidden; height: 267px;}
 .content-holder a { color: #fff;}
 .content-image { width: 104%; transition: .7s width ease;}
-.content-holder:hover .content-image { width: 125%;}
+.content-holder:hover .content-image { width: 100%;}
 .text-holder { position: absolute; bottom: 0; width: 100%; padding: 9px; background: rgba(0, 0, 0, .6); text-align: center;}
     .text-holder h2 { font-weight: 700; margin: 0; font-size: 36px;}
     .text-holder h3 { font-weight: 400; margin: 0; font-size: 27px;}
@@ -2336,9 +2336,9 @@ text-align:center;
   .top-compare-table{position:relative; z-index:9999;}
 
 .compare-item .language.collapse{display:none !important; height:0px !important; opacity:0 !important; visibility:hidden !important;}
-  .compare-item .language.collapse.in{display:block !important; height:auto !important;opacity:1 !important;visibility:visible !important;} 
-  
-  .btn-cancel-wizard , .btn-confirm-wizard{ margin-bottom:10px !important; width:80%;} 
+  .compare-item .language.collapse.in{display:block !important; height:auto !important;opacity:1 !important;visibility:visible !important;}
+
+  .btn-cancel-wizard , .btn-confirm-wizard{ margin-bottom:10px !important; width:80%;}
   }
 
   @media (max-width:479px) {
@@ -2592,7 +2592,7 @@ header .main-navigation li.courses-menu li .single-item {
   }
   .ecoleDataClass .ads-left, .ecoleDataClass .ads-right { max-width:10%;  }
 
-	
+
 }
 
 @media (max-width:1260px) {

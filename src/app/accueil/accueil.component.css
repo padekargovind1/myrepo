@@ -1,3 +1,11 @@
 .content-holder{
-    width:120%;
+    width:100%;
+}
+
+select{
+  width: 172px !important;
+}
+
+input{
+  margin-right: 15px !important;
 }
