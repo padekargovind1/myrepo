@@ -295,8 +295,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // If not log in -> navigate to login page
   wishApplyDialog(nb : number){
     if(this.userLogin){
-      this.makeProfile(nb)
-      this.dialog.open(WishApplyPopupComponent,this.config);
+		localStorage.setItem('myaccountTab','4');
+		this.router.navigate(['/my-account']);
+		
+      //this.makeProfile(nb)
+      //this.dialog.open(WishApplyPopupComponent,this.config);
       // dialogref.afterClosed().subscribe(result => {
       //   console.log(result)
       // });
