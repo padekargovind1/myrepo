@@ -46,7 +46,7 @@ export class ChildTabComponent implements OnInit {
       childTitle : this.userData.gender=="A compléter" ? "" :this.userData.gender,
       childMel : this.userData.email=="A compléter" ? "" :this.userData.email,
       childTel : this.userData.mobilePhone=="A compléter" ? "" :this.userData.mobilePhone,
-      //childBirthPlace: (this.userData.birthPlace != null && this.userData.birthPlace != "" && this.userData.birthPlace != "A compléter") ? this.userData.birthPlace : "",
+      childBirthPlace: (this.userData.birthPlace != null && this.userData.birthPlace != "" && this.userData.birthPlace != "A compléter") ? this.userData.birthPlace : "",
     })
   }
   //Save and go to the next tab

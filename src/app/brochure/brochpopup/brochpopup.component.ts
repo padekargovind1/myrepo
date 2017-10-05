@@ -55,7 +55,6 @@ export class BrochpopupComponent implements OnInit {
       childFirstName : ['', Validators.required],
       childTitle : [''],
       classe : ['', Validators.required],
-      copy : [false],
       status : [''],
       niveauActuel : [''],
       niveauConcern : [''],
@@ -98,7 +97,6 @@ export class BrochpopupComponent implements OnInit {
         childTitle : profile.gender,
         etablissement : profile.academicHistories[0].schoolName,
         city : profile.academicHistories[0].schoolName
-
       });
     }
   }

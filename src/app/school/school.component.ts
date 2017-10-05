@@ -802,6 +802,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   // clean the service when user quit the page
   ngOnDestroy(){
     this.schoolService.cleanSelectedLieu();
+    this.publicService.cleanSearch();
   }
 
 }
