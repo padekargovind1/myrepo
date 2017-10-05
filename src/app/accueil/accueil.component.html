@@ -119,8 +119,8 @@
           <div id="tabwheel"></div>
         </div>
         <!--<div class="content-holder">-->
-        <div class="col-sm-4">
-          <h2>{{this._section.name}}</h2>
+        <div class="col-sm-4 forms">
+          <h2>{{this._section.name | uppercase }}</h2>
           <h3 *ngIf="this._section.subName">{{this._section.subName}}</h3>
           <div class="form-wrap">
             <form [formGroup]="searchForm"

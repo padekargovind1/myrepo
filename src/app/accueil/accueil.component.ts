@@ -99,6 +99,28 @@ export class AccueilComponent implements OnInit {
   // Init wheel navigation
   wheelNavigation() {
     const self = this;
+    const f = $('.forms');
+
+    f.fadeOut();
+
+    $(window).on('resize', function(){
+      if ( f.hasClass('fadeIn') ) {
+        const header = $('.header');
+        const header_height = header.height();
+        const windows_height = $(window).height();
+        const main = $('.main');
+        const css = {
+          'background-image': 'url(assets/images/new-landing-page-2/' + self._section.name + '.jpg)',
+          'margin': 0,
+          'padding': 0,
+          'height': (windows_height - header_height) + 'px',
+          '-webkit-background-size': 'cover', /* pour anciens Chrome et Safari */
+          'background-size': 'cover',
+        };
+        main.css(css);
+      }
+    });
+
     $(this.selectorWheel).mousedown(function(e){
       const wheelNavId: String = $(this).attr('id');
       // let contentName: String;
@@ -148,18 +170,21 @@ export class AccueilComponent implements OnInit {
     const self = this;
     const selector_content = $('.' + this._section.name + '-content');
     const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
+    const f = $('.forms');
 
     $(this.selectorWheel).removeClass('open');
     $('#' + wheelNavId).addClass('open');
     // self.onNavigate(contentName);
-    if ($('.content-holder').hasClass('fadeIn')) {
+    if (f.hasClass('fadeIn')) {
       if (school_name.includes(this._section.name)) {
         console.log('Need to navigate', this._section.name);
         self.onNavigate(this._section.name);
       }
     }
 
-    $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
+    f.fadeIn('slow');
+
+    // $('.forms').removeClass('fadeIn').addClass('fadeOut');
     // $('.content-holder').removeClass('fadeOut').addClass('fadeIn');
 
     // var image = $('.'+contentName+'-content').data('image');
