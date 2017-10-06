@@ -39,11 +39,15 @@ export class ChildTabComponent implements OnInit {
   }
   //Patching value from userData
   patchValue() {
+	var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	let mydate = new Date(this.userData.birthDate); 
+    let dateToSend = mydate.getDate()+'-'+(monthNames[mydate.getMonth()])+'-'+mydate.getFullYear();
     this.wizardForm.patchValue({
       childLastName : this.userData.lastName=="A compléter" ? "" :this.userData.lastName,
       childFirstName : this.userData.firstName=="A compléter" ? "" :this.userData.firstName,
       childAge : this.userData.age=="A compléter" ? "" :this.userData.age,
       childTitle : this.userData.gender=="A compléter" ? "" :this.userData.gender,
+      childBirthDay : dateToSend,
       childMel : this.userData.email=="A compléter" ? "" :this.userData.email,
       childTel : this.userData.mobilePhone=="A compléter" ? "" :this.userData.mobilePhone,
       childBirthPlace: (this.userData.birthPlace != null && this.userData.birthPlace != "" && this.userData.birthPlace != "A compléter") ? this.userData.birthPlace : "",
