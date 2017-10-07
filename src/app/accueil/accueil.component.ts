@@ -5,8 +5,9 @@ import { PublicService } from '../services/public.service';
 import { SchoolService } from '../services/school.service';
 import * as $ from 'jquery';
 import swal from 'sweetalert2';
-import {HelperService} from '../services/helper.service';
-declare const wheelnav: any;
+
+declare var wheelnav: any;
+//declare var sliceTransform: any;
 
 @Component({
   selector: 'app-accueil',
@@ -21,142 +22,107 @@ export class AccueilComponent implements OnInit {
     villes : []
   };
   schoolsOptions: any;
-  apbOptions : any;
+  apbOptions : any
   searchForm: FormGroup;
   apbForm: FormGroup;
   rateId : string = '';
   domaines=[];
   onMobile : boolean = false;
   lieuSelected = [];
-  selectorWheel: String = '#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, ' +
-    '#wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6';
-  _section = {
-    'school': null,
-    'name': null,
-    'subName': null
-  };
-
   constructor(private router: Router,
+              //private route: ActivatedRoute,
               private publicService: PublicService,
               private fb: FormBuilder,
-              private schoolService: SchoolService,
-              private helperService: HelperService
+              private schoolService : SchoolService
               ) {
     this.runScript();
     this.buildForm();
     this.buildApbForm();
   }
 
-  private _initSection() {
-    this._section.school = null;
-    this._section.name = null;
-    this._section.subName = '';
-  }
-
-  // Init wheel menu
-  // Init rating API
-  // Get domaines for Enseignement supérieur select options
   ngOnInit() {
-    this.wheel = new wheelnav('tabwheel');
+    this.wheel = new wheelnav("tabwheel");
     this.wheel.spreaderInTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
     this.wheel.spreaderOutTitle = 'imgsrc:assets/images/new-landing-page-2/cide-french.png';
     this.wheel.spreaderInTitleWidth = 100;
     this.wheel.spreaderOutTitleWidth = 100;
     this.wheel.spreaderEnable = true;
     this.wheel.spreaderRadius = 0;
-    // This is the place for code snippets from the documentation -> http://wheelnavjs.softwaretailoring.net/documentation.html
+                    //This is the place for code snippets from the documentation -> http://wheelnavjs.softwaretailoring.net/documentation.html
     this.wheel.clockwise = false;
     this.wheel.clickModeRotate = false;
-    this.wheel.createWheel(['', '', '', '', '', '', '']);
+    this.wheel.createWheel(["", "", "", "", "", "", ""]);
     // this.wheel.sliceSelectedTransformFunction = sliceTransform().MoveMiddleTransform;
     this.wheelNavigation();
     this.initRate();
-    this.domaines = this.publicService.getDomaines();
+    this.domaines=this.publicService.getDomaines();
   }
 
-  //Run script
-  // Check if is on mobile or not
-  runScript() {
-    const self = this;
-    const checkMobile = this.helperService.detectmob();
-    const selector_select: any = $('.select-all-advisor');
-    const selector_deselect: any = $('.deselect-all-advisor');
+  runScript(){
+    var self = this;
+    function detectmob() {
+      if( navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+        ){
+          return true;
+      }
+      else {
+          return false;
+      }
+    }
+    var checkMobile = detectmob();
     if (checkMobile) {
-      self.onMobile = true;
-      selector_select.on('click', function() {
+      console.log(checkMobile)
+      self.onMobile=true;
+      $('.select-all-advisor').on('click', function() {
           $(this).hide();
           $('.deselect-all-advisor').show();
       });
-      selector_deselect.on('click', function() {
+      $('.deselect-all-advisor').on('click', function() {
           $(this).hide();
-          selector_select.show();
+          $('.select-all-advisor').show();
       });
     }else {
-      self.onMobile = false;
+      self.onMobile=false;
     }
   }
 
-  // Init wheel navigation
-  wheelNavigation() {
-    const self = this;
-    const f = $('.forms');
-
-    f.fadeOut();
-
-    $(window).on('resize', function(){
-      if ( f.hasClass('fadeIn') ) {
-        const header = $('.header');
-        const header_height = header.height();
-        const windows_height = $(window).height();
-        const main = $('.main');
-        const css = {
-          'background-image': 'url(assets/images/new-landing-page-2/' + self._section.name + '.jpg)',
-          'margin': 0,
-          'padding': 0,
-          'height': (windows_height - (header_height+30)) + 'px',
-          '-webkit-background-size': 'cover', /* pour anciens Chrome et Safari */
-          'background-size': 'cover',
-        };
-        main.css(css);
-      }
-    });
-
-    $(this.selectorWheel).mousedown(function(e){
-      const wheelNavId: String = $(this).attr('id');
-      // let contentName: String;
-      self._initSection();
-      const school = self.helperService.getAllList();
-
-      switch (wheelNavId.slice(-1)) {
+  wheelNavigation(){
+    var self = this;
+    $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').mousedown(function(e){
+      // console.log($(this).attr('id').charAt(24));
+      let wheelNavId : String = $(this).attr('id');
+      let contentName :String;
+      switch ($(this).attr('id').charAt(24)){
         case '0' :
-          self._section.name = 'ecole';
-          self._section.subName = 'Maternelle / Primaire';
-          self._section.school = school.infant_primary;
+          contentName='ecole';
           break;
         case '1' :
-          self._section.name = 'college';
-          self._section.subName = '6ème - 3ème';
-          self._section.school = school.secondary_school;
+          contentName='college';
           break;
         case '2' :
-          self._section.name = 'lycee';
-          self._section.subName = 'Seconde - Terminale';
-          self._section.school = school.college;
+          contentName='lycee';
           break;
         case '3' :
-          self._section.name = 'internat';
+          contentName='internat';
           break;
         case '4' :
-          self._section.name = 'enseignement';
+          contentName='enseignement';
           break;
         case '5' :
-          self._section.name = 'linguistic';
+          contentName='linguistic';
           break;
         case '6' :
-          self._section.name = 'orientation';
+          contentName='orientation';
           break;
       }
-      self.switchWheelComponent(wheelNavId);
+      console.log(contentName)
+      self.switchWheelComponent(wheelNavId, contentName);
     });
 
     $('#wheelnav-tabwheel-spreadertitle').mousedown(function(e){
@@ -165,84 +131,54 @@ export class AccueilComponent implements OnInit {
 
   }
 
-  // Swithing item on the wheel nav menu
-  switchWheelComponent(wheelNavId: String) {
-    const self = this;
-    const selector_content = $('.' + this._section.name + '-content');
-    const school_name: String[] = ['ecole', 'college', 'lycee', 'internat', 'enseignement'];
-    const f = $('.forms');
-
-    $(this.selectorWheel).removeClass('open');
-    $('#' + wheelNavId).addClass('open');
-    // self.onNavigate(contentName);
-    if (f.hasClass('fadeIn')) {
-      if (school_name.includes(this._section.name)) {
-        console.log('Need to navigate', this._section.name);
-        self.onNavigate(this._section.name);
+  switchWheelComponent(wheelNavId: String, contentName: String){
+    var self = this;
+    $('#wheelnav-tabwheel-slice-0, #wheelnav-tabwheel-slice-1, #wheelnav-tabwheel-slice-2, #wheelnav-tabwheel-slice-3, #wheelnav-tabwheel-slice-4, #wheelnav-tabwheel-slice-5, #wheelnav-tabwheel-slice-6').removeClass('open');
+    $('#'+wheelNavId).addClass('open');
+    if ($('.'+contentName+'-content').hasClass('fadeIn')) {
+      if(contentName!="ecole" && contentName!="college" && contentName!="lycee" && contentName!="internat" && contentName!="enseignement"){
+        console.log("Need to navigate", contentName);
+        self.onNavigate(contentName);
       }
     }
-
-    f.fadeIn('slow');
-
-    // $('.forms').removeClass('fadeIn').addClass('fadeOut');
-    // $('.content-holder').removeClass('fadeOut').addClass('fadeIn');
-
+    $('.content-holder').removeClass('fadeIn').addClass('fadeOut');
+    $('.'+contentName+'-content').removeClass('fadeOut').addClass('fadeIn');
+    console.log($('.'+contentName+'-content'));
     // var image = $('.'+contentName+'-content').data('image');
     // console.log(image);
-    const header = $('.header');
-    const header_height = header.height();
-    const windows_height = $(window).height();
-    const main = $('.main');
-
-
-    const css = {
-      'background-image': 'url(assets/images/new-landing-page-2/' + this._section.name + '.jpg)',
-      'margin': 0,
-      'padding': 0,
-      'height': (windows_height - (header_height+30)) + 'px',
-      '-webkit-background-size': 'cover', /* pour anciens Chrome et Safari */
-      'background-size': 'cover',
-    };
-
-    main.css(css);
+    $('.main').css('background-image', 'url(assets/images/new-landing-page-2/'+ contentName +'.jpg)');
   }
 
-  // Init rate
-  // Post rate in API
-  initRate() {
-    const rate = {
+  initRate(){
+    let rate = {
       page : '3'
-    };
+    }
     this.publicService.postRate(rate)
       .subscribe(
-        response => {
+        response=>{
           // console.log(response);
-          if(response.code != 400) {
-            this.rateId = response.data._id;
+          if(response.code!=400){
+            this.rateId=response.data._id;
             console.log(this.rateId);
           }
         }
       )
   }
 
-  // Navigate to the page name
-  // componentName = page name
-  navigate(componentName: String){
+  navigate(componentName : String){
+    console.log("routing work!!");
     this.publicService.cleanSearch();
-    this.router.navigate(['/' + componentName]);
+    this.router.navigate(['/'+componentName]);
   }
 
-  // Call after keyup detected on location input
-  // if the word is more or equals to 2 letters, it call the function getLieuFilter to get the list
-  filterLieu(event) {
-    const filter: string = event.target.value;
-    if (filter.length >= 2) {
+  filterLieu(event){
+    console.log(event.target.value);
+    let filter: string = event.target.value;
+    if(filter.length>=2){
       this.getLieuFilter(filter)
     }
   }
 
-  // Call after keyup detected on school input
-  // If they have more or equal to 3 letter then we call API to get school name
   filterSchool(event){
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -253,7 +189,6 @@ export class AccueilComponent implements OnInit {
     }
   }
 
-  // Same as filterSchool method except it's for enseignement supérieur
   filterApbSchool(event){
     console.log(event.target.value);
     let filter: string = event.target.value;
@@ -264,7 +199,6 @@ export class AccueilComponent implements OnInit {
     }
   }
 
-  // Method to get the location list from API
   getLieuFilter(filter: string){
     let data = {
       keyword : filter
@@ -283,7 +217,6 @@ export class AccueilComponent implements OnInit {
       )
   }
 
-  // Method to get the school list for before BAC from API
   getSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -300,7 +233,6 @@ export class AccueilComponent implements OnInit {
       )
   }
 
-  // Method to get the school list for after BAC from API
   getApbSchoolFilter(filter: string){
     let data = {
       keyword : filter
@@ -322,7 +254,6 @@ export class AccueilComponent implements OnInit {
       )
   }
 
-  // Build form the before BAC search
   buildForm(){
     this.searchForm = this.fb.group({
       classe : [''],
@@ -332,7 +263,6 @@ export class AccueilComponent implements OnInit {
     this.initOptions()
   }
 
-  // Build form the after BAC search
   buildApbForm(){
     this.apbForm = this.fb.group({
       domaine : [''],
@@ -342,7 +272,6 @@ export class AccueilComponent implements OnInit {
     this.initOptions()
   }
 
-  // Init the 3 tabs for location list
   initOptions(){
     this.options['regions']=[];
     this.options['departements']=[];
@@ -350,9 +279,6 @@ export class AccueilComponent implements OnInit {
     console.log(this.options)
   }
 
-  //After submit the fast search
-  // Sweet alert if the form is not correctly field
-  // Else we store the data in the service and go to the component page
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
     if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement=="" && path!="enseignement"){
@@ -394,8 +320,6 @@ export class AccueilComponent implements OnInit {
   //   this.router.navigate(['/landing-page-'+index])
   // }
 
-  // Function to navigate in different page with the path
-  // We also call rate's API
   onNavigate(path){
     let rate = {
       id : this.rateId,
@@ -411,8 +335,6 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['/'+path]);
   }
 
-  // function to show the good location name b'cause it's different than the value we send to API
-  // ex : 75001 to send but 75001 Paris to show on the website
   onSelectLieu(type:string, index:number){
     this.lieuSelected=[];
     if(type=='R'){
@@ -425,7 +347,6 @@ export class AccueilComponent implements OnInit {
     console.log(this.lieuSelected);
   }
 
-  // function to store the right name of the class name to show it on the school list
   storeClassName(event){
     console.log(event)
     this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
