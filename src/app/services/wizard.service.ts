@@ -49,7 +49,7 @@ export class WizardService {
     "Grand-Mère",
     "Tuteur",
     "Tutrice"];
-  langues = ["Français", "Anglais", "Espagnol", "Allemand", "Italien"];
+  langues = ["Allemand", "Anglais", "Arabe", "Chinois", "Espagnol", "Français(FLE)", "Hébreux", "Italien", "Portugais", "Russe"];
   subjectSchool = ["Maths", "Sciences", "Physiques", "Sciences Naturelles", "Histoire",
     "Géographie", "Instruction Civique", "Sport", "Musique",
     "Arts Plastiques", "Français", "Anglais", "Espagnol", "Allemand",
