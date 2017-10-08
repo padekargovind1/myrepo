@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
               })
               // console.log(response.data.token)
               this.authService.storeToken(response.data.token)
-              this.usersService.storeTabNb('0')
+              this.usersService.storeTabNb(this.registerForm.value.userType=="Parent" ? '0' : '1');
               if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
                 this.router.navigate(['/payment']);
                 //this.bookingService.makeAppointment();
