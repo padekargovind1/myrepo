@@ -89,6 +89,7 @@ export class RegisterComponent implements OnInit {
               // console.log(response.data.token)
               this.authService.storeToken(response.data.token)
               this.usersService.storeTabNb(this.registerForm.value.userType=="Parent" ? '0' : '1');
+              this.putUserType();
               if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
                 this.router.navigate(['/payment']);
                 //this.bookingService.makeAppointment();
@@ -114,6 +115,26 @@ export class RegisterComponent implements OnInit {
   // If user already got an account -> navigate to login page
   alreadyAccount(){
     this.router.navigate(['/login']);
+  }
+  //Put userType (ex : Parent (0), Student(1))
+  putUserType(){
+    this.usersService.getProfile()
+      .subscribe(
+        (response)=>{
+          if(response.code==200){
+            let data = response.data[0];
+            delete data._id;
+            data.profileCompletion=this.usersService.getTabNb();
+            this.usersService.putProfile(data)
+              .subscribe(
+                (response)=>{
+                  console.log(response);
+                }
+              )
+          }
+        }
+      )
+
   }
 
 }

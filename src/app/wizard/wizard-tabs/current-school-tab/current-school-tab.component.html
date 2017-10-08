@@ -29,113 +29,8 @@
           <div class="col-sm-12">
             <div class="select-custom">
               Classe actuelle*
-              <select name="" class="form-control"
-                      [formControl]="wizardForm.controls['schoolClasse']">
-                <option value="" selected>Classe</option>
-                <option value="">&nbsp;Indifférent</option>
-                <option value="ps" style="color:red">
-                  &nbsp;Classes maternelles
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().infant; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().infant[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="cp" style="color:red">
-                  &nbsp;Classes élémentaires
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().primary; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().primary[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().college; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().college[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="seconde_techno" style="color:red">
-                  &nbsp;Classes de seconde
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().seconde; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().seconde[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="premiere_es" style="color:red">
-                  &nbsp;Classes de première
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().premiere; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().premiere[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="terminale_s" style="color:red">
-                  &nbsp;Classes de terminale
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().terminal; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().terminal[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="Cursus international" style="color:red">
-                  &nbsp;Cursus international
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().international; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().international[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="seconde_sthr" style="color:red">
-                  &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="premiere_sti2s" style="color:red">
-                  &nbsp;ST2S - Sciences et Technologies de la santé et du social
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().st2s; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().st2s[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="premiere_std2a" style="color:red">
-                  &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().std2a; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().std2a[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="premiere_sti2d" style="color:red">
-                  &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().sti2d; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().sti2d[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="premiere_stmg" style="color:red">
-                  &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().stmg; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().stmg[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="premiere_stl" style="color:red">
-                  &nbsp;STL - Sciences et Technologies de Laboratoire
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().stl; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().stl[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="premiere_stav" style="color:red">
-                  &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().stav; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().stav[i]">
-                  &nbsp;{{name}}
-                </option>
-                <option value="2ndeTMD" style="color:red">
-                  &nbsp;TMD - Techniques de la Musique et de la Danse
-                </option>
-                <option *ngFor="let name of helperService.getClassEcoleList().tmd; let i=index"
-                        [value]="helperService.getclassEcoleListToSendToApi().tmd[i]">
-                  &nbsp;{{name}}
-                </option>
-              </select>
+              <input type="text" class="form-control" placeholder="Classe actuelle"
+                     [formControl]="wizardForm.controls['schoolClasse']" maxlength="35">
             </div>
           </div>
         </div>
@@ -221,13 +116,14 @@
     </div>
 
     <!-- Button Upload -->
-    <div *ngIf="onApplyPage">
-      <label>Télécharger ici le dernier bulletin scolaire</label>
-      <input class="inputTypeFileCk" type="file" ng2FileSelect [uploader]="uploader"/>
-    </div>
+
   </div>
   <div class="col-md-8" *ngIf="onApplyPage">
     <div fxFlex.gt-sm="80" fxFlex.gt-xs="50" fxFlex="100">
+      <div *ngIf="onApplyPage">
+        <label>Déposer ici ses trois derniers bulletins scolaires</label>
+        <input class="inputTypeFileCk" type="file" ng2FileSelect [uploader]="uploader"/>
+      </div>
       <h5 class="mt-0" fxLayout="row">
         <span fxFlex>File d'attente des téléchargements</span>
         <span>Nombre de fichier en attente: {{ uploader?.queue?.length }}</span>
@@ -237,12 +133,12 @@
                      [rows]="uploader.queue" [columnMode]="'flex'"
                      [headerHeight]="50" [footerHeight]="0"
                      [rowHeight]="'auto'">
-        <ngx-datatable-column name="Nom" [flexGrow]="1">
+        <ngx-datatable-column name="Nom" [flexGrow]="2">
           <ng-template let-row="row" ngx-datatable-cell-template mdTooltip="{{ row?.file?.name }}">
             {{ row?.file?.name | school:'10' }}
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Taille" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
+        <ngx-datatable-column name="Taille" *ngIf="uploader.options.isHTML5" [flexGrow]="2">
           <ng-template let-row="row" ngx-datatable-cell-template>
             {{ row?.file?.size/1024/1024 | number:'.2' }} MB
           </ng-template>
@@ -252,18 +148,22 @@
             <md-progress-bar mode="determinate" value="{{row.progress}}"></md-progress-bar>
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Statut" [flexGrow]="1">
+        <ngx-datatable-column name="Statut" [flexGrow]="2">
           <ng-template let-row="row" ngx-datatable-cell-template>
-            <span *ngIf="row.isSuccess"><md-icon>check</md-icon></span>
-            <span *ngIf="row.isCancel"><md-icon>cancel</md-icon></span>
+            <span *ngIf="row.isSuccess"><img src="assets/images/check.png" alt=""></span>
+            <span *ngIf="row.isCancel"><img src="assets/images/cide-remove.png" alt=""></span>
             <span *ngIf="row.isError"><md-icon>error</md-icon></span>
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Action" [flexGrow]="2">
+        <ngx-datatable-column name="Action" [flexGrow]="5">
           <ng-template let-row="row" ngx-datatable-cell-template>
-            <button md-raised-button md-button-sm color="primary" type="button" (click)="row.upload()" [disabled]="row.isReady || row.isUploading || row.isSuccess">Télécharger</button>
-            <button md-raised-button md-button-sm color="warn" type="button" (click)="row.cancel()" [disabled]="!row.isUploading">Annuler</button>
-            <button md-raised-button md-button-sm color="accent" type="button" (click)="row.remove()">Supprimer
+            <button md-raised-button md-button-sm color="primary" type="button"
+                    (click)="row.upload()" [disabled]="row.isReady || row.isUploading || row.isSuccess">
+              Ajouter
+            </button>
+            <button md-raised-button md-button-sm color="accent" type="button"
+                    (click)="row.remove()">
+              Supprimer
             </button>
           </ng-template>
         </ngx-datatable-column>
@@ -273,9 +173,21 @@
         <p>Progression de la file d'attente</p>
         <md-progress-bar mode="determinate" value="{{uploader.progress}}"></md-progress-bar>
       </div>
-      <button md-raised-button md-button-sm color="primary" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Tout télécharger</button>
-      <button md-raised-button md-button-sm color="warn" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">Tout annuler</button>
-      <button md-raised-button md-button-sm color="accent" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">Tout supprimer</button>
+      <button md-raised-button md-button-sm color="primary" type="button"
+              (click)="uploader.uploadAll()"
+              [disabled]="!uploader.getNotUploadedItems().length">
+        Tout Ajouter
+      </button>
+      <button md-raised-button md-button-sm color="warn" type="button"
+              (click)="uploader.cancelAll()"
+              [disabled]="!uploader.isUploading">
+        Tout annuler
+      </button>
+      <button md-raised-button md-button-sm color="accent" type="button"
+              (click)="uploader.clearQueue()"
+              [disabled]="!uploader.queue.length">
+        Tout supprimer
+      </button>
     </div>
 
 

@@ -72,7 +72,16 @@ export class LoginComponent implements OnInit {
               } else {
                 this.router.navigate(['/']); // else -> navigate to home page
               }
-              this.userService.getProfile();
+              this.userService.getProfile()
+                .subscribe(
+                  (response)=>{
+                    if(response.code==200){
+                      let data = response.data[0]
+                      delete data._id;
+                      this.userService.storeTabNb(data.profileCompletion);
+                    }
+                  }
+                )
             }
           }
         );
