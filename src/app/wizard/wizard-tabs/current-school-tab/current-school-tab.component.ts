@@ -105,4 +105,13 @@ export class CurrentSchoolTabComponent implements OnInit {
   //  this.hasAnotherDropZoneOver = e;
   //}
 
+  onApplySubmit(){
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('currentSchoolData', this.wizardForm.value);
+      this.applyService.onSubmit();
+    }else {
+      this.bookingService.failSubmit();
+    }
+  }
+
 }

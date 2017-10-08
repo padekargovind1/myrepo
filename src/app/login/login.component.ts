@@ -93,4 +93,8 @@ export class LoginComponent implements OnInit {
   onNavigateBack(){
     this.location.back();
   }
+
+  testFilter(){
+
+  }
 }

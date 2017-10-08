@@ -236,7 +236,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
     const self = this;
   	(<any> $('#calendar')).fullCalendar({
 		header: {
-		left: 'title, prev',
+		left: 'title',
 		center: '',
 		right: 'today agendaDay,agendaWeek,month prev,next'
 	},

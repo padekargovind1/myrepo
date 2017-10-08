@@ -206,13 +206,20 @@
             Précédent
           </button>
           <button class="btn  btn-appointment wizard-button-align"
-                  (click)="nextTab(3)" style="float:right">
+                  (click)="nextTab(3)" style="float:right"
+                  *ngIf="!onApplyPage; else onApply" >
             Suivant
           </button>
+          <ng-template #onApply>
+            <button class="btn  btn-appointment wizard-button-align" (click)="onApplySubmit()"
+                    style="float:right">
+              Je postule
+            </button>
+          </ng-template>
         </div>
       </div>
     </div>
-    
+
     <!-- Button Upload -->
     <div *ngIf="onApplyPage">
       <label>Télécharger ici le dernier bulletin scolaire</label>
