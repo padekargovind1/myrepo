@@ -26,7 +26,7 @@
                                                     <select name="class" class="form-control" id="class"
                                                         [formControl]="searchForm.controls['domaine']">
                                                         <option value="" selected>Domaine</option>
-                                                        <option *ngFor="let domaine of domaines" 
+                                                        <option *ngFor="let domaine of domaines"
                                                             [value]="domaine" selected>&nbsp;&nbsp;{{domaine}}</option>
                                                     </select>
                                                 </label>
@@ -36,7 +36,7 @@
                                         <div class="col-md-4  col-xs-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" placeholder="Lieu"
-                                                    [formControl]="searchForm.controls['lieu']" 
+                                                    [formControl]="searchForm.controls['lieu']"
                                                     [mdAutocomplete]="auto"
                                                     (keyup)="filterLieu($event)"/>
                                                 <md-autocomplete #auto="mdAutocomplete">
@@ -58,13 +58,13 @@
 
                                         <div class="col-md-4  col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" 
-                                                    placeholder="Nom d'etablissement" 
+                                                <input type="text" class="form-control"
+                                                    placeholder="Nom d'etablissement"
                                                     [formControl]="searchForm.controls['etablissement']"
                                                     [mdAutocomplete]="autoSchool"
                                                     (keyup)="filterSchool($event)"/>
                                                 <md-autocomplete #autoSchool="mdAutocomplete">
-                                                    <md-option *ngFor="let school of schoolsOptions" 
+                                                    <md-option *ngFor="let school of schoolsOptions"
                                                         [value]="school">
                                                         {{ school }}
                                                     </md-option>
@@ -74,12 +74,12 @@
                                     </form>
                                 </div><!-- .row -->
                             </div><!-- .col-* -->
-                            
+
                             <div class="col-md-1">
                             <!-- <div class="form-group"> -->
                                 <button class="btn btn-search" type="submit"
-                                    [disabled]="searchForm.controls['etablissement'].value.length==0 && 
-                                    searchForm.controls['lieu'].value.length==0 && 
+                                    [disabled]="searchForm.controls['etablissement'].value.length==0 &&
+                                    searchForm.controls['lieu'].value.length==0 &&
                                     searchForm.controls['domaine'].value.length==0"
                                     (click)="onSubmitSearch()">
                                     <i class="fa fa-search"></i>
@@ -88,7 +88,7 @@
                             </div>
                             <div>
                                 <a class="newSearch"
-                                    *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' || 
+                                    *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' ||
                                         searchFilter[0]!='' || searchFilter[1]!=''"
                                     (click)="cleanAdvancedSearch()">
                                     Nouvelle recherche
@@ -97,13 +97,13 @@
 
 
                         </div><!-- .form-wrap -->
-                    
+
                     </div><!-- .col-* -->
 
                     <div class="col-md-1" (click)="showAdvanced()">
                         <div class="filter-wrapper">
                             <i class="fa fa-filter filter-holder"
-                                data-toggle="tooltip" data-placement="right" 
+                                data-toggle="tooltip" data-placement="right"
                                 title="Affinez votre recherche avec plus de critères"></i>
                             <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
                             <div class="inline-text pull-right hidden-lg hidden-md hidden-sm visible-xs">
@@ -116,7 +116,7 @@
                             <div class="advance-filter open" style="display:none">
                                 <ul>
                                     <li>
-                                        <a class="advancedFilter">Niveau d'étude</a> 
+                                        <a class="advancedFilter">Niveau d'étude</a>
                                         <ul class="adv-filt left-popup">
                                             <li>
                                                 <label class="select-custom" for="class">
@@ -139,7 +139,7 @@
                                         <ul class="adv-filt">
                                             <li>
                                                 <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="lv1" 
+                                                    <select name="class" class="form-control" id="lv1"
                                                         (click)="onLevelRythme($event)">
                                                         <option value="" selected >Rythme</option>
                                                         <option value="Alternance">Alternance</option>
@@ -169,7 +169,7 @@
                             </div><!-- .advance-filter -->
                         </div><!-- .filter-wrap -->
                     </div><!-- .col -->
-            
+
                 </div><!-- .row -->
 
             </div><!-- .container -->
@@ -196,26 +196,26 @@
                     <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
                 </section>
             </div>
-            
+
         <!--<div class="white-background">-->
 
 
                 <div class="container">
 
                     <div class="row"><div class="col-md-10 col-md-offset-1">
-                    
+
                         <div class="list-schools  row  white-background">
 
                             <div class="col-md-12">
-                                
+
                                 <div class="result-text" class="col-md-12">
-                                    <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour: 
+                                    <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour:
                                         <span *ngIf="searchFilter[0]!=''">
                                             {{ "Domaine d'activité professionnel " + searchFilter[0] }}
-                                        </span> 
+                                        </span>
                                         <span class="fa fa-map-marker"
                                             *ngIf="searchFilter[2]!=''">
-                                        </span> 
+                                        </span>
                                         <span *ngIf="searchFilter[2]!=''">
                                             {{ ' - ' + searchFilter[2] }}
                                         </span>
@@ -230,7 +230,7 @@
                                         <h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                                     </ng-template>
                                     <div *ngIf="advancedSearchToDisplay.length!=0; else empty2">
-                                        
+
                                         <div>Recherche Affine:
                                             <span class="contact-roles"
                                                 *ngIf="advancedSearchToDisplay[0]!==' '; else advancedEmpty1">
@@ -241,7 +241,7 @@
                                             <ng-template #advancedEmpty1>
                                                 &nbsp;
                                             </ng-template>
-                                            <span class="contact-roles" 
+                                            <span class="contact-roles"
                                                 *ngIf="advancedSearchToDisplay[1]!==' '; else advancedEmpty2">
                                                 {{ advancedSearchToDisplay[1] }}
                                                 <span class="fa fa-times" style="cursor: pointer"
@@ -260,7 +260,7 @@
                                                 &nbsp;
                                             </ng-template>
                                         </div>
-                                            
+
                                     </div>
                                     <ng-template #empty2>
                                         <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -268,29 +268,33 @@
                                 </div>
 
                                 <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->
-                                
+
 
                             </div><!-- .col-* -->
-                            
+
                             <div class="col-md-3" *ngFor="let school of apbSchools; let i=index">
-            
+
                                 <div class="card  school-item">
                                     <app-apb-card [SchoolData]="school"></app-apb-card>
                                 </div>
 
                             </div><!-- .col-* -->
-                            <div class="row">
-                                <button type="button" 
-                                    class="btn btn-appointment centerBtn"
-                                    (click)="showMore()" *ngIf="(apbSchools.length==limit || apbSchools.length==0) && apbSchools.length!=0"
-                                    >Voir plus
-                                </button>
+                            <div class="row justify-content-md-center">
+                              <div class="col-md-12">
+                                <p style="text-align:center">
+                                  <button type="button"
+                                          class="btn btn-appointment centerBtn" (click)="showMore()"
+                                          *ngIf="(apbSchools.length==limit || apbSchools.length==0) && apbSchools.length!=0">
+                                    Voir plus
+                                  </button>
+                                </p>
+                              </div>
                             </div>
                             <div *ngIf="apbSchools.length==0" class="row">
                                 <p style="width:100%;
                                     text-align:center; font-size : 35px">Il n'y a pas d'école supérieure pour la recherche demandé.</p>
                             </div>
-                                
+
 
                         </div><!-- .list-schools -->
 

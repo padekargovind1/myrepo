@@ -22,6 +22,12 @@
 
     </div>
     <div class="row">
+      <h2 style="text-align:center; font-weight: 400">
+        Afin d’envoyer votre dossier à l’établissement sélectionné,
+        merci de compléter les informations ci-dessous
+      </h2>
+    </div>
+    <div class="row">
 
       <div id="rootwizard">
         <form id="wizard">
@@ -54,22 +60,6 @@
                     <div class="row">
                       <app-current-school-tab (tabChange)="nextTab($event)" [userData]="userData"></app-current-school-tab>
                     </div>
-                  </div>
-                </div>
-              </md-tab>
-
-              <md-tab label="Vos matières préférées" [disabled]="nbTab<3">
-                <div class="tab-pane" id="tab5">
-                  <div class="container-fluid">
-                    <app-subjects-tab (tabChange)="nextTab($event)" [userData]="userData"></app-subjects-tab>
-                  </div>
-                </div>
-
-              </md-tab>
-              <md-tab label="Ses centres d'intérêts" [disabled]="nbTab<4">
-                <div class="tab-pane" id="tab6">
-                  <div class="container-fluid">
-                    <app-hobbies-tab (tabChange)="nextTab($event)" [userData]="userData"></app-hobbies-tab>
                   </div>
                 </div>
               </md-tab>

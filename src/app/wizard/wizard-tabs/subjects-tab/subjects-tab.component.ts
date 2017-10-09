@@ -12,6 +12,7 @@ export class SubjectsTabComponent implements OnInit {
   wizardForm : FormGroup;
   @Input() userData;
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
+  tooltipText : string = "Sélectionner plusieurs matières en appuyant sur CTRL + click gauche de la souris"
 
   constructor(private fb : FormBuilder,
               public wizardService : WizardService,

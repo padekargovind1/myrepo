@@ -2229,7 +2229,7 @@ text-align:center;
 .search-title-calendar{color : white; font-size :20px; margin-bottom : 0px; height:30px; margin-top:5px; text-align:center}
 .form-calendar{height:40px; width:100%!important; font-weight:400!important; font-size:18px}
 
-.centerBtn { padding: 0 0 20px 0;  text-align: center; bottom: 26px; position: relative;}
+.centerBtn { margin:0;}
 
 .calendarCont { position:relative;}
 
@@ -2443,7 +2443,7 @@ text-align:center;
 
 .landingpage__additional-content .form-wrap {
   position: fixed !important;
-  top: 70px !important;
+  top: 25% !important;
   right: 10px !important;
   max-width: 300px;
   padding: 0;
@@ -2678,7 +2678,6 @@ header .main-navigation li.courses-menu li .single-item {
     }
   }
 
-
 .checkboxEcolSecTab , .captchaMargin{margin-bottom:0; }
 
 
@@ -2693,3 +2692,7 @@ header .main-navigation li.courses-menu li .single-item {
   display: table;
   margin-bottom: 10px;
 }
+.title-wizard{
+  padding-left:15px;
+}
+.landing-page-1-searchbutton-align{text-align:center}

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
-import {HelperService} from "../../../services/helper.service";
 import {BookingService} from "../../../services/booking.service";
 import {Subscription} from "rxjs/Subscription";
 import {ActivatedRoute} from "@angular/router";
@@ -23,7 +22,6 @@ export class CurrentSchoolTabComponent implements OnInit {
   onApplyPage : boolean = false;
   constructor(private fb : FormBuilder,
               private wizardService : WizardService,
-              public helperService : HelperService,
               private router : ActivatedRoute,
               private bookingService : BookingService,
               private applyService : ApplyService) {
@@ -94,15 +92,24 @@ export class CurrentSchoolTabComponent implements OnInit {
     url: URL,
     isHTML5: true
   });
-  //hasBaseDropZoneOver = false;
-  //hasAnotherDropZoneOver = false;
+  hasBaseDropZoneOver = false;
+  hasAnotherDropZoneOver = false;
 
-  //fileOverBase(e: any): void {
-  //  this.hasBaseDropZoneOver = e;
-  //}
+  fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
+  }
 
-  //fileOverAnother(e: any): void {
-  //  this.hasAnotherDropZoneOver = e;
-  //}
+  fileOverAnother(e: any): void {
+    this.hasAnotherDropZoneOver = e;
+  }
+
+  onApplySubmit(){
+    if(this.wizardForm.valid){
+      this.wizardService.saveData('currentSchoolData', this.wizardForm.value);
+      this.applyService.onSubmit();
+    }else {
+      this.bookingService.failSubmit();
+    }
+  }
 
 }

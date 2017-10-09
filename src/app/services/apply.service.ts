@@ -70,12 +70,14 @@ export class ApplyService {
     this.userData.weakAtSubjects = [];;
     this.userData.weakAtSubjects.push(this.wizardData.subjectData['weakSubject']);
     this.userData.jobs=[];
-    // console.log(this.userData)
-    for(let i = 0; i<this.wizardData['hobbiesData']['job'].length; i++){
-      this.userData.jobs[i]={};
-      console.log(this.userData.jobs[i])
-      this.userData.jobs[i].profession=this.wizardData['hobbiesData']['job'][i].interestJob;
-      this.userData.jobs[i].age=this.wizardData['hobbiesData']['job'][i].interestAge!='' ? this.wizardData['hobbiesData']['job'][i].interestAge : 0
+    console.log(this.wizardData)
+    if(this.wizardData['hobbiesData']['job']!==undefined){
+      for(let i = 0; i<this.wizardData['hobbiesData']['job'].length; i++){
+        this.userData.jobs[i]={};
+        console.log(this.userData.jobs[i])
+        this.userData.jobs[i].profession=this.wizardData['hobbiesData']['job'][i].interestJob;
+        this.userData.jobs[i].age=this.wizardData['hobbiesData']['job'][i].interestAge!='' ? this.wizardData['hobbiesData']['job'][i].interestAge : 0
+      }
     }
     this.userData.interest = this.wizardData['hobbiesData']['yourInterest'];
     this.userData.hobbies = this.wizardData['hobbiesData']['practiceInterest'];
