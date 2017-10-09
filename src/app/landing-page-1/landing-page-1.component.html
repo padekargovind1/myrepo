@@ -105,18 +105,15 @@
                                     </md-autocomplete>
                                 </div>
                             </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <button class="btn landing-page-1-searchbutton" type="submit">
+                                Rechercher
+                              </button>
+                            </div>
+                          </div>
                         </div><!-- .row -->
                     </div><!-- .col-* -->
-
-                    <div class="col-md-12">
-                    <!-- <div class="form-group"> -->
-                      <p class="landing-page-1-searchbutton-align">
-                        <button class="btn btn-search" type="submit">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </p>
-                    <!-- </div> -->
-                    </div>
                 </form>
 
             </div><!-- .form-wrap -->
@@ -301,18 +298,15 @@
                                     </md-autocomplete>
                                 </div>
                             </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <button class="btn landing-page-1-searchbutton" type="submit">
+                                Rechercher
+                              </button>
+                            </div>
+                          </div>
                         </div><!-- .row -->
                     </div><!-- .col-* -->
-
-                    <div class="col-md-1">
-                    <!-- <div class="form-group"> -->
-                      <p class="landing-page-1-searchbutton-align">
-                        <button class="btn btn-search" type="submit">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </p>
-                    <!-- </div> -->
-                    </div>
                 </form>
 
             </div><!-- .form-wrap -->
@@ -394,32 +388,29 @@
                             </div>
 
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nom d'etablissement"
-                                        [mdAutocomplete]="autoSchool"
-                                        (keyup)="filterSchool($event)"
-                                        [formControl]="searchForm.controls['etablissement']"/>
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom d'etablissement"
+                                  [mdAutocomplete]="autoSchool"
+                                  (keyup)="filterSchool($event)"
+                                  [formControl]="searchForm.controls['etablissement']"/>
 
-                                    <md-autocomplete #autoSchool="mdAutocomplete">
-                                        <md-option *ngFor="let school of schoolsOptions"
-                                            [value]="school.longName">
-                                            {{ school.longName }}
-                                        </md-option>
-                                    </md-autocomplete>
-                                </div>
+                                <md-autocomplete #autoSchool="mdAutocomplete">
+                                  <md-option *ngFor="let school of schoolsOptions"
+                                    [value]="school.longName">
+                                    {{ school.longName }}
+                                  </md-option>
+                                </md-autocomplete>
+                              </div>
                             </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <button class="btn landing-page-1-searchbutton" type="submit">
+                                Rechercher
+                              </button>
+                            </div>
+                          </div>
                         </div><!-- .row -->
                     </div><!-- .col-* -->
-
-                    <div class="col-md-1">
-                    <!-- <div class="form-group"> -->
-                      <p class="landing-page-1-searchbutton-align">
-                        <button class="btn btn-search" type="submit">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </p>
-                    <!-- </div> -->
-                    </div>
                 </form>
 
 
@@ -597,18 +588,15 @@
                                 </md-autocomplete>
                             </div>
                         </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <button class="btn landing-page-1-searchbutton" type="submit">
+                            Rechercher
+                          </button>
+                        </div>
+                      </div>
                     </div><!-- .row -->
                 </div><!-- .col-* -->
-
-                <div class="col-md-1">
-                <!-- <div class="form-group"> -->
-                  <p class="landing-page-1-searchbutton-align">
-                    <button class="btn btn-search" type="submit">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </p>
-                <!-- </div> -->
-                </div>
             </form>
 
 
@@ -633,77 +621,74 @@
                     <div class="col-md-11">
                         <div class="row">
                           <h2>Enseignement <br />supérieur</h2>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="select-custom" >
-                                        <select name="class" class="form-control"
-                                            [formControl]="apbForm.controls['domaine']">
-                                            <option value="" selected hidden>Domaine</option>
-                                            <option value="Indifférent">&nbsp;Indifférent</option>
-                                            <option *ngFor="let domaine of domaines"
-                                                [value]="domaine" selected>&nbsp;{{domaine}}</option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </div><!-- .col-* -->
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Lieu"
-                                    (keyup)="filterLieu($event)"
-                                    [mdAutocomplete]="auto"
-                                    [formControl]="apbForm.controls['lieu']"/>
-
-                                    <md-autocomplete #auto="mdAutocomplete">
-                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
-                                        <!-- <md-option [value]="options.regions"
-                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
-                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
-                                            (click)="onSelectLieu('R', i)">
-                                            &nbsp;&nbsp;{{ option.region }}
-                                        </md-option>
-                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
-                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
-                                            (click)="onSelectLieu('D', i)">
-                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
-                                        </md-option>
-                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
-                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
-                                            (click)="onSelectLieu('V', i)">
-                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
-                                        </md-option>
-                                    </md-autocomplete>
-                                </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="select-custom" >
+                                <select name="class" class="form-control"
+                                  [formControl]="apbForm.controls['domaine']">
+                                  <option value="" selected hidden>Domaine</option>
+                                  <option value="Indifférent">&nbsp;Indifférent</option>
+                                  <option *ngFor="let domaine of domaines"
+                                      [value]="domaine" selected>&nbsp;{{domaine}}</option>
+                                </select>
+                              </label>
                             </div>
+                          </div><!-- .col-* -->
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control"
-                                        placeholder="Nom d'etablissement"
-                                        [mdAutocomplete]="autoSchoolApb"
-                                        (keyup)="filterApbSchool($event)"
-                                        [formControl]="apbForm.controls['etablissement']"/>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Lieu"
+                              (keyup)="filterLieu($event)"
+                              [mdAutocomplete]="auto"
+                              [formControl]="apbForm.controls['lieu']"/>
 
-                                    <md-autocomplete #autoSchoolApb="mdAutocomplete">
-                                        <md-option *ngFor="let school of schoolsOptions"
-                                            [value]="school">
-                                            {{ school }}
-                                        </md-option>
-                                    </md-autocomplete>
-                                </div>
+                              <md-autocomplete #auto="mdAutocomplete">
+                                <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                <!-- <md-option [value]="options.regions"
+                                *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                    (click)="onSelectLieu('R', i)">
+                                    &nbsp;&nbsp;{{ option.region }}
+                                </md-option>
+                                <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                    (click)="onSelectLieu('D', i)">
+                                    &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                                </md-option>
+                                <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                    (click)="onSelectLieu('V', i)">
+                                    &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                                </md-option>
+                              </md-autocomplete>
                             </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <input type="text" class="form-control"
+                                placeholder="Nom d'etablissement"
+                                [mdAutocomplete]="autoSchoolApb"
+                                (keyup)="filterApbSchool($event)"
+                                [formControl]="apbForm.controls['etablissement']"/>
+
+                              <md-autocomplete #autoSchoolApb="mdAutocomplete">
+                                <md-option *ngFor="let school of schoolsOptions"
+                                    [value]="school">
+                                    {{ school }}
+                                </md-option>
+                              </md-autocomplete>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <button class="btn landing-page-1-searchbutton" type="submit">
+                                Rechercher
+                              </button>
+                            </div>
+                          </div>
                         </div><!-- .row -->
                     </div><!-- .col-* -->
-
-                    <div class="col-md-1">
-                    <!-- <div class="form-group"> -->
-                      <p class="landing-page-1-searchbutton-align">
-                        <button class="btn btn-search" type="submit">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </p>
-                    <!-- </div> -->
-                    </div>
                 </form>
 
             </div><!-- .form-wrap -->
@@ -712,90 +697,84 @@
     </div>
 	<div class="landingpage__wrapper" *ngIf="onMobile">
 		<div class="landingpage__additional-content  holder-4  do-animate  one-column-mobile" data-background="./assets/images/new-landingpage/orientation.jpg">
-            <div class="landingpage__image-holder">
-                <a (click)="onNavigate('/conseil')">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/orientation.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>Orientation entretien-<br />bilans</h2>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
-        </div>
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/conseil')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/orientation.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Orientation entretien-<br />bilans</h2>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+    </div>
 		<div class="landingpage__additional-content  holder-1  do-animate  have-form" data-background="./assets/images/new-landingpage/ecole.jpg">
-            <div class="landingpage__image-holder  ">
-                <a (click)="onNavigate('/ecole')">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/ecole.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>École</h2>
-                        <h3>Maternelle / Primaire</h3>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
+      <div class="landingpage__image-holder  ">
+          <a (click)="onNavigate('/ecole')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/ecole.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>École</h2>
+                  <h3>Maternelle / Primaire</h3>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
 		</div>
 		<div class="landingpage__additional-content  holder-3  do-animate  have-form" data-background="./assets/images/new-landingpage/college.jpg">
 
-            <div class="landingpage__image-holder">
-                <a (click)="onNavigate('/college')">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/college.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>College</h2>
-                        <h3>6ème-3ème</h3>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/college')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/college.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>College</h2>
+                  <h3>6ème-3ème</h3>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
 		</div>
 		<div class="landingpage__additional-content  holder-6  do-animate  have-form" data-background="./assets/images/new-landingpage/lycee.jpg">
-            <div class="landingpage__image-holder">
-                <a (click)="onNavigate('/lycee')">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/lycee.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>Lycée</h2>
-                        <h3>2nde-Terminale</h3>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
-        </div>
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/lycee')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/lycee.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Lycée</h2>
+                  <h3>2nde-Terminale</h3>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+    </div>
 
 		<div class="landingpage__additional-content  holder-2  do-animate" data-background="./assets/images/new-landingpage/internat.jpg">
-            <div class="landingpage__image-holder">
-                <a (click)="onNavigate('/internat')">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/internat.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>Internat</h2>
-                        <h3>&nbsp;</h3>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/internat')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/internat.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Internat</h2>
+                  <h3>&nbsp;</h3>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
 		</div>
 		<div class="landingpage__additional-content  holder-7  do-animate" data-background="./assets/images/new-landingpage/autodoc.jpg">
-            <div class="landingpage__image-holder">
-                <a (click)="onNavigate('/enseignement')">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/autodoc.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>Enseignement <br />supérieur</h2>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/enseignement')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/autodoc.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Enseignement <br />supérieur</h2>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
 		</div>
 
 		<div class="landingpage__additional-content  holder-5  do-animate" data-background="./assets/images/new-landingpage/sejour.jpg">
-            <div class="landingpage__image-holder">
-                <a (click)="onNavigate('/linguistic')">
-                    <img class="landingpage__image" src="./assets/images/new-landingpage/sejour.jpg" alt="" />
-                    <section class="landingpage__caption">
-                        <h2>Séjours linguistiques <br />soutien scolaire</h2>
-                    </section>
-                </a>
-            </div><!-- .landingpage__image-holder -->
-        </div>
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/linguistic')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/sejour.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Séjours linguistiques <br />soutien scolaire</h2>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+    </div>
 	</div>
 
 	<!-- .landingpage__wrapper -->
 
 </main><!-- .main -->
-
-<!--<p style="text-align: right;">
-    <a (click)="navigateTo(1)">1</a>
-    <a (click)="navigateTo(2)">2</a>
-    <a (click)="navigateTo(3)">3</a>
-</p>-->
