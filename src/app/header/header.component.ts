@@ -128,7 +128,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
     }
 
-    $('body').on('click', function($event){
+    /*$('body').on('click', function(event){
       // console.log(event)
 	  if(event!==undefined && event.srcElement!==undefined)
 	  {
@@ -138,7 +138,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }, 1000)
 		  }
     }
-  });
+  });*/
 
 	// setInterval(()=>{
 	// 	if(this.userLogin){ this.getApplication(); }
@@ -260,10 +260,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onMyAccount(nb){
 	this.hideHeaderSubMenus();
     this.cleanLocalStorage();
-	var tabnumber = this.usersService.getTabNb();
     if(this.userLogin){
-      this.usersService.storeTabNb(nb);
-	  localStorage.setItem('myaccountTab',tabnumber);
+      this.usersService.storeTabNb(nb)
       this.router.navigate(['/my-account']);
     }
   }
