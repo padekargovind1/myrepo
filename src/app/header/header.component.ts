@@ -260,8 +260,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onMyAccount(nb){
 	this.hideHeaderSubMenus();
     this.cleanLocalStorage();
+	var tabnumber = this.usersService.getTabNb();
     if(this.userLogin){
-      this.usersService.storeTabNb(nb)
+      this.usersService.storeTabNb(nb);
+	  localStorage.setItem('myaccountTab',tabnumber);
       this.router.navigate(['/my-account']);
     }
   }
