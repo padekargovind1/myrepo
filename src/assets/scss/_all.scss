@@ -2678,6 +2678,20 @@ header .main-navigation li.courses-menu li .single-item {
     }
   }
 
+.checkboxEcolSecTab , .captchaMargin{margin-bottom:0; }
+
+
+header .main-navigation li.courses-menu li .single-item {
+  display: table-cell;
+  height: 80px;
+  padding: 0 10px 0 20px;
+  vertical-align: middle;
+}
+
+.course-menu-item.col-md-6.col-sm-6 {
+  display: table;
+  margin-bottom: 10px;
+}
 .title-wizard{
   padding-left:15px;
 }

@@ -320,21 +320,21 @@
                     <div style="margin-bottom:10px">
                         <span>Message*</span>
                     </div>
-                    <textarea placeholder="Message (1000 caractères max)" style="height:100px; width:inherit"
+                    <textarea placeholder="Message (1000 caractères max)" style="height:75px; width:inherit"
                       class="form-control" [formControl]="sendMessageForm.controls['message']" max="1000">
                     </textarea>
                 </div>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group captchaMargin">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="g-recaptcha" data-sitekey="6LdkaCIUAAAAAOHbgd3nOACP2g0gQLMJVv93CBpp"></div>
                 </div>
             </div>
         </div>
-		<div class="form-group">
+		<div class="form-group checkboxEcolSecTab">
 			<div class="row">
 				<div class="col-sm-12">
 					<md-checkbox [formControl]="sendMessageForm.controls['copy']" >

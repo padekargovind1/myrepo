@@ -51,7 +51,8 @@ export class MyaccountChildrenComponent implements OnInit {
       prenom : ['', Validators.required],
       age : [''],
       gender : ['', Validators.required],
-      datenaissance : ['', Validators.compose([Validators.required, CustomValidators.date])],
+      //datenaissance : ['', Validators.compose([Validators.required, CustomValidators.date])],
+      datenaissance : ['', Validators.required],
       lieu : ['', Validators.required],
     })
     console.log(this.childrenForm)
@@ -69,15 +70,20 @@ export class MyaccountChildrenComponent implements OnInit {
   //patchValue(data: any){ 
 
   // Patch the value from the API
-  patchValue(data: any){
-    console.log(data.birthDate);
-    // data.birthDate.getDay()+'/'+data.birthDate.getMonth()+'/'+data.birthDate.getFullYear()
-
+  patchValue(data: any){ 
+    console.log(data.birthDate); 
+	var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	let mydate = new Date(data.birthDate); 
+    // console.log(date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear())
+    let dateToSend = mydate.getDate()+'-'+(monthNames[mydate.getMonth()])+'-'+mydate.getFullYear(); 
+    //var ddd = mydate.getUTCDate()+'/'+(mydate.getUTCMonth() + 1)+'/2007';
+	//data.birthDate = 'Mon Jan 04 2010 05:30:00 GMT+0530 (India Standard Time)';
     this.childrenForm.patchValue({
       nom : data.lastName=='A compléter' ? '' : data.lastName,
       prenom : data.firstName=='A compléter' ? '' : data.firstName,
       age : data.age,
       gender : data.gender,
+      datenaissance : dateToSend,
       lieu : data.birthPlace,
     })
     console.log(new Date(data.birthDate), this.childrenForm.value)
@@ -125,7 +131,7 @@ export class MyaccountChildrenComponent implements OnInit {
     this.userData.firstName = this.childrenForm.value.prenom;
     this.userData.age = this.childrenForm.value.age;
     this.userData.gender = this.childrenForm.value.gender;
-    this.userData.birthDate = this.childrenForm.controls.datenaissance.value;
+    this.userData.birthDate = this.childrenForm.controls.datenaissance.value; 
     this.userData.birthPlace = this.childrenForm.controls.lieu.value;
     console.log(this.userData);
     this.save();

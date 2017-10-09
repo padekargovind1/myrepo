@@ -102,7 +102,7 @@ export class CompareModeComponent implements OnInit, OnDestroy {
   }
 
   // Get the school's data to compare
-  getSchoolData(){
+  getSchoolData(){	
     this.publicService.postComparing(this.schoolToCompare)
       .subscribe(
         response=>{
@@ -116,7 +116,7 @@ export class CompareModeComponent implements OnInit, OnDestroy {
           console.log(this.schoolDataToDisplay, this.showSchool)
           // this.getSchoolBrochure();
         }
-      )
+      )  
   }
 
 
@@ -234,9 +234,25 @@ export class CompareModeComponent implements OnInit, OnDestroy {
   // If they have two same school -> sweet alert
   onAddSchool(){
     if(this.schoolToCompare.ids.indexOf(this.schoolIdToCompare)==-1){
+	  var winWidth = $(window).width();
+	  if (winWidth < 640) {
+		$('.compareSliderMobile').slick('unslick');
+	  }
       this.schoolToCompare.ids.push(this.schoolIdToCompare);
       this.compareService.storeSchoolId(this.schoolToCompare.ids);
       this.getSchoolData();
+	  //this.runScript();
+	  
+	  if (winWidth < 640) {
+		  setTimeout(function () {
+			$('.compareSliderMobile').slick({
+					  arrows: true,
+					  slidesToShow: 2,
+					  slidesToScroll: 1,
+					  autoplay: false
+				  });
+		  },3500);
+	  }
     }else {
       swal({
         title: 'Attention',
