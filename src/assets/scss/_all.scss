@@ -2696,3 +2696,43 @@ header .main-navigation li.courses-menu li .single-item {
   padding-left:15px;
 }
 .landing-page-1-searchbutton-align{text-align:center}
+
+
+.appointLists {
+  width: 100%;
+  float: left;
+  clear: both;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin: 25px 0 0;
+  background: #1cc09f;
+}
+
+.appointLists {
+  width: 100%;
+  float: left;
+  clear: both;
+  
+  padding: 0;
+}
+.appointLists .leftImg {width:25%; float:left; }
+.appointLists .appointData {
+  width: 75%;
+  float: left;
+  padding-left: 15px;
+ 
+  padding-top:10px;
+}
+.appointLists .appdatList {
+  width: 100%;
+  float: left;
+  margin-bottom:10px; color:#fff;
+ 
+}
+.appointLists h3 {
+  margin-bottom:38px;
+  color: #fff;
+}
+.appointLists  img {max-width:100%; }
+

@@ -34,6 +34,11 @@ import { MyaccountParentsComponent } from './myaccount/myaccount-parents/myaccou
 import { MyaccountChildrenComponent } from './myaccount/myaccount-children/myaccount-children.component';
 import { MyaccountDocumentationsComponent } from './myaccount/myaccount-documentations/myaccount-documentations.component';
 import { MyaccountMysearchComponent } from './myaccount/myaccount-mysearch/myaccount-mysearch.component';
+import { MyaccountMyfavouritesComponent } from './myaccount/myaccount-myfavourites/myaccount-myfavourites.component';
+import { MyaccountBookingappointmentComponent } from './myaccount/myaccount-bookingappointment/myaccount-bookingappointment.component';
+import { MyaccountApplicationsComponent } from './myaccount/myaccount-applications/myaccount-applications.component';
+import { MyaccountMyfilesComponent } from './myaccount/myaccount-myfiles/myaccount-myfiles.component';
+import { MyaccountMymessagesComponent } from './myaccount/myaccount-mymessages/myaccount-mymessages.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { CubeComponent } from './school-calendar/cube/cube.component';
 import { FilterComponent } from './filter/filter.component';
@@ -122,6 +127,11 @@ import { OnlinePaymentComponent } from './payment/online-payment/online-payment.
     MyaccountChildrenComponent,
     MyaccountDocumentationsComponent,
     MyaccountMysearchComponent,
+    MyaccountMyfavouritesComponent,
+    MyaccountBookingappointmentComponent,
+    MyaccountApplicationsComponent,
+    MyaccountMyfilesComponent,
+    MyaccountMymessagesComponent,
     SchoolCalendarComponent,
     CubeComponent,
     FilterComponent,
