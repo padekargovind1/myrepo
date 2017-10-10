@@ -10,7 +10,7 @@
   <div class="filter-form-holder">
 
     <form class="form-inline searchform  school-page">
-      <h2 class="featured-title" *ngIf="pathName==='college'">
+      <h2 class="featured-title" *ngIf="pathName==='college'; else notCollege">
         Rechercher un collège (6<sup>ème</sup>-3<sup>ème</sup>)
       </h2>
       <ng-template #notCollege>

@@ -102,7 +102,6 @@ export class SchoolComponent implements OnInit, OnDestroy {
     this.slickNb=this.publicService.getNbSlick(); // Slick number to have different class name for slick js
     this.setBackgroundImage(); // Set the background image (ecole, collège etc...)
     this.buildForm();
-    // TODO: Marc => what is that ?
     // When user want to compare schools, he got a modal with multiple checkbox
     // Init at false. Array will be send to the compare mode page to know which category he want to compare
     for (let list of this.filterList){
@@ -168,6 +167,10 @@ export class SchoolComponent implements OnInit, OnDestroy {
         }
       }
     });
+
+    setTimeout(()=>{
+      $('.filter-form-holder').addClass('filter-form-holder-height')
+    }, 3000);
 
     // TODO : Marc => Comment this code
     // ad will be hide after 3 sec and side add will be hide after 13sec

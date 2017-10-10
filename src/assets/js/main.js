@@ -1,12 +1,12 @@
 ﻿jQuery(document).ready(function($) {
-	$('.customClosePopUp').click(function(){ 
+	$('.customClosePopUp').click(function(){
 		$(this).parent('.customPopUp').fadeOut();
 	});
 	$('.btn-conseil').click(function(){
 		$(this).parents('.conseil-item').find('.customPopUp').fadeIn();
 	});
-	
-	
+
+
     $('.school-carousel').slick();
 	$(document).on('click', ".mat-tab-label-container .mat-tab-label", function(){
 		if($(".mat-tab-body-wrapper >.mat-tab-body-active").find("#txtAge").length>0)
@@ -26,7 +26,6 @@
 
 });
 function hideAd() {
-	// console.log('time is up');
 	// $('body').hover(function() {
 		$('.popup-ad-holder').delay(3000).addClass('fadeOutDown');
 		$('.popup-ad-holder-mobile').delay(7000).addClass('fadeOutDown');

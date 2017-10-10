@@ -1,11 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from "@angular/router";
-import { MdDialog, MdDialogConfig } from '@angular/material';
-import { UsersService } from '../../services/users.service';
+import { MdDialog } from '@angular/material';
 import { PublicService } from '../../services/public.service';
-import { SchoolChoiceComponent } from '../school-choice/school-choice.component';
 import { EtablissementComponent } from '../../etablissement/etablissement.component';
-//import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-school-card',
@@ -17,13 +13,10 @@ export class SchoolCardComponent implements OnInit {
   @Input() SchoolData : any;
   @Input() pathName : any;
   brochureData={brochure : ""}
-  config: any;
   configSchoolDetail : any;
   schoolTag=[];
 
-  constructor(//private router : Router,
-              //private usersService : UsersService,
-              private publicService : PublicService,
+  constructor(private publicService : PublicService,
               public dialog:MdDialog) { }
 
   ngOnInit() {
@@ -39,39 +32,6 @@ export class SchoolCardComponent implements OnInit {
     this.makeSchoolDetailProfil();
     this.dialog.open(EtablissementComponent, this.configSchoolDetail);
     // this.router.navigate(['etablissement', this.SchoolData._id]);
-  }
-
-  applyToSchool(){
-    this.makeProfile()
-    this.dialog.open(SchoolChoiceComponent,this.config);
-    // dialogref.afterClosed().subscribe(result => {
-    //   this.lastCloseResult = result;
-    //   // console.log(result)
-    //   dialogref = null;
-    //   const closeResponse = this.brochureService.getResponse();
-    //   console.log(closeResponse)
-    //   if(closeResponse=="submit"){
-    //     this.downloadDialog();
-    //   }
-    // });
-    // this.router.navigate(['applyto', this.SchoolData._id]);
-  }
-
-  makeProfile(){
-    this.config= {
-      data:{
-        schoolData : this.SchoolData
-      },
-      disableClose: false,
-      width: '800px',
-      height: '',
-      position: {
-      top: '',
-      bottom: '',
-      left: '',
-      right: ''
-      }
-    };
   }
 
   makeSchoolDetailProfil(){

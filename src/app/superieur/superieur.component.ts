@@ -169,6 +169,10 @@ export class SuperieurComponent implements OnInit {
 		}
 	});
 
+    setTimeout(()=>{
+      $('.filter-form-holder').addClass('filter-form-holder-height')
+    }, 3000);
+
     $('.slickjs').slick({
       arrows : false,
       slidesToShow: 5,
