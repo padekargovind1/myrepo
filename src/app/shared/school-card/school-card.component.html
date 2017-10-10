@@ -13,7 +13,7 @@
         <a href="http://54.254.203.172/cideapi{{brochureData.brochure}}" download="brochure.pdf" target="_self">
             <i class="fa fa-download" aria-hidden="true"></i>
         </a>
-        
+
     </li>
 </ul>-->
 
@@ -23,37 +23,37 @@
     <h3 style="height:30px" mdTooltip="{{ SchoolData.longName | schoolName}}" mdTooltipClass="center-tooltip">
         {{ SchoolData.longName | schoolName | school:50 }}
     </h3>
-    <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
-        {{ SchoolData.cycles[0].cycle.status2 }} <br />
-        {{ SchoolData.cycles[0].cycle.status3 }}</p>-->
-    <address style="font-size:14px; height : 90px"> 
-        <span mdTooltip="{{ SchoolData.address.ad1}}" mdTooltipClass="center-tooltip">
-            {{ SchoolData.address.ad1 | school:25 }} 
-        </span><br /> 
-        {{ SchoolData.address.postcode }} 
-        <span mdTooltip="{{ SchoolData.address.city}}" mdTooltipClass="center-tooltip">
-            {{ SchoolData.address.city | school:20 }}
-        </span><br /> 
-        Tel : {{ SchoolData.address.phoneNumber | phone }}<br/>
-        <p style="margin-top :5px; height:30px">
-            <span *ngFor="let name of schoolTag" class="school-tags {{name.toLowerCase() | schoolTag}}-tag">
-                <strong>{{name | schoolTag}}</strong>
-            </span>
-            <!--<span class="ecole-tag">
-                <strong>École</strong>
-            </span>
-            <span class="college-tag">
-                <strong>Collège</strong>
-            </span>
-            <span class="lycee-tag">
-                <strong>Lycée</strong>
-            </span>-->
-        </p>
-        
+    <address class="school-card-address">
+        {{ SchoolData.address.postcode }}
+        <span>
+            {{ SchoolData.address.city }}
+        </span><br />
+
     </address>
 
-    <button class="btn btn-highlighted"
-        (click)="onSchoolDetail()">Détail</button>
-    
-    <button type="button" class="btn btn-secondary"  (click)="applyToSchool()">Sélectionner</button> 
+    <!--<button type="button" class="btn btn-secondary"  (click)="applyToSchool()">Sélectionner</button>-->
 </div>
+
+<p class="school-card-type">
+  <!--<span *ngFor="let name of schoolTag" class="school-tags {{name.toLowerCase() | schoolTag}}-tag">
+      <strong>{{name | schoolTag}}</strong>
+  </span>-->
+  <span *ngFor="let name of schoolTag">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+            {{name | schoolTag}}
+          </span>
+  <!--<span class="ecole-tag">
+      <strong>École</strong>
+  </span>
+  <span class="college-tag">
+      <strong>Collège</strong>
+  </span>
+  <span class="lycee-tag">
+      <strong>Lycée</strong>
+  </span>-->
+</p>
+
+<button class="btn btn-highlighted"
+        (click)="onSchoolDetail()">
+  En savoir plus
+</button>
