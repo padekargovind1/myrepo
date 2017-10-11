@@ -44,7 +44,7 @@ export class MyaccountParentsComponent implements OnInit {
         private route: Router,
         private authService: AuthService,
         private publicService: PublicService) {
-        
+
     }
 
     ngOnInit() {
@@ -52,7 +52,7 @@ export class MyaccountParentsComponent implements OnInit {
 		if (this.authService.getToken() != "") {
             setTimeout(() => {
                 this.getUserData();
-            }, 1500)
+            }, 2000)
 
         } else {
             // console.log("navigate back");
@@ -61,6 +61,7 @@ export class MyaccountParentsComponent implements OnInit {
     }
 
     getUserData() {
+      console.log(this.userData);
         delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
         this.buildFormGroup(this.userData.parents); // build form
         this.canDisplay = true;
