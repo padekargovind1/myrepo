@@ -8,9 +8,9 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./myaccount-mysearch.component.scss']
 })
 export class MyaccountMysearchComponent implements OnInit {
-  wish = [];
-  apply = [];
-  history = [];
+  wishList = [];
+  applyList = [];
+  historyList = [];
   wishAsc: boolean = false;
   applyAsc: boolean = false;
   historyAsc: boolean = false;
@@ -38,22 +38,22 @@ export class MyaccountMysearchComponent implements OnInit {
 
   // Separate the application list into 3 category
   filterApplications(data){
-    this.wish = data.filter(
+    this.wishList = data.filter(
       application=>{
         return application.type == "wish"
       }
     )
-    this.apply = data.filter(
+    this.applyList = data.filter(
       application=>{
         return application.type == "apply"
       }
     )
-    this.history = data.filter(
+    this.historyList = data.filter(
       application=>{
         return application.type == "history"
       }
     )
-    console.log(this.wish);
+    console.log(this.wishList);
   }
 
   // Delete an applycation
@@ -89,31 +89,31 @@ export class MyaccountMysearchComponent implements OnInit {
 	switch(sortType){
 		case "wish" : // sort wish
 			if(this.wishAsc){
-				this.wish = this.wish.sort(this.custom_sort_desc);
+				this.wishList = this.wishList.sort(this.custom_sort_desc);
 				this.wishAsc=false;
 			}
 			else{
-				this.wish = this.wish.sort(this.custom_sort_asc);
+				this.wishList = this.wishList.sort(this.custom_sort_asc);
 				this.wishAsc=true;
 			}
 			break;
 		case "apply" : // sort apply
 			if(this.applyAsc){
-				this.apply = this.apply.sort(this.custom_sort_desc);
+				this.applyList = this.applyList.sort(this.custom_sort_desc);
 				this.applyAsc=false;
 			}
 			else{
-				this.apply = this.apply.sort(this.custom_sort_asc);
+				this.applyList = this.applyList.sort(this.custom_sort_asc);
 				this.applyAsc=true;
 			}
 			break;
 		case "history" : // sort history
 			if(this.historyAsc){
-				this.history = this.history.sort(this.custom_sort_desc);
+				this.historyList = this.historyList.sort(this.custom_sort_desc);
 				this.historyAsc=false;
 			}
 			else{
-				this.history = this.history.sort(this.custom_sort_asc);
+				this.historyList = this.historyList.sort(this.custom_sort_asc);
 				this.historyAsc=true;
 			}
 			break;

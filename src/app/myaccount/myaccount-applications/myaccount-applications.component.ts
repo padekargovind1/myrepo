@@ -15,7 +15,7 @@ import {date} from "ng2-validation/dist/date";
   styleUrls: ['./myaccount-applications.component.scss']
 })
 export class MyaccountApplicationsComponent implements OnInit {
-  apply = [];
+  applyList = [];
   applyAsc: boolean = false;
   constructor(private usersService : UsersService) { }
 
@@ -41,7 +41,7 @@ export class MyaccountApplicationsComponent implements OnInit {
 
   // Separate the application list into 3 category
   filterApplications(data){
-    this.apply = data.filter(
+    this.applyList = data.filter(
       application=>{
         return application.type == "apply"
       }
@@ -81,11 +81,11 @@ export class MyaccountApplicationsComponent implements OnInit {
 	switch(sortType){
 		case "apply" : // sort apply
 			if(this.applyAsc){
-				this.apply = this.apply.sort(this.custom_sort_desc);
+				this.applyList = this.applyList.sort(this.custom_sort_desc);
 				this.applyAsc=false;
 			}
 			else{
-				this.apply = this.apply.sort(this.custom_sort_asc);
+				this.applyList = this.applyList.sort(this.custom_sort_asc);
 				this.applyAsc=true;
 			}
 			break;

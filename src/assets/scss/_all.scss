@@ -703,7 +703,7 @@ z-index: 10;
     .school-item .content-detail h3 { margin: 0 0 10px; font-size: 18px; }
     .school-item .content-detail p { font-size: 12px; }
     .school-item .content-detail .checkbox[type="checkbox"].filled-in:not(:checked) + label:after { border-color: #fff; }
-    .school-item .card-content { background: #4B4858; padding: 10px; text-align: center;}
+    .school-item .card-content { background: rgb(109, 109, 109); padding: 10px; text-align: center;}
     .school-item .card-content h3 { margin: 0 0 3px; font-size: 14px;}
     .school-action { list-style: none; padding-left: 0;  position: absolute; right: 0; }
         .school-action li { display: inline-block; margin: 0 9px; font-size: 14px;}
@@ -1448,6 +1448,7 @@ span.label { font-size: 10px;  }
 
 
 .white-background { background: #EBECEC; padding: 20px 0 70px; color: #333;}
+.basic-background { background: #393645; padding: 20px 0 70px; color: #333;}
 
 
 .do-animate { animation-duration: .7s; animation-fill-mode: both; animation-name: fadeInDown;}

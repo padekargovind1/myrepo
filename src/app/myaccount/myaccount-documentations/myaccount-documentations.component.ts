@@ -47,7 +47,7 @@ export class MyaccountDocumentationsComponent implements OnInit {
             this.docList=data;
             // console.log(this.docList)
             for(let doc of this.docList){
-              console.log(doc)
+              // console.log(doc)
               this.getBrochureById(doc.school._id, doc.school.cycles[0]._id)
             }
             setTimeout(()=>{

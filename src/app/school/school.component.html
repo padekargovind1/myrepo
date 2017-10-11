@@ -728,12 +728,13 @@
 
               <div class="row"><div class="col-md-10 col-md-offset-1">
 
-                  <div class="list-schools  row  white-background">
+                  <div class="list-schools  row  basic-background">
 
                       <div class="col-md-12">
 
-                          <div class="result-text" class="col-md-11">
-                              <h3 class="searchText" *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour :
+                          <div class="result-text" class="col-md-11" style="color:white">
+                              <h3 class="searchText" *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">
+                                Mon résultat pour :
                                   <span *ngIf="searchFilter[0]!=''">
                                       {{ 'Classe ' + searchFilter[0] | capital }}
                                   </span>
@@ -838,7 +839,7 @@
 
                       <div class="col-lg-3 col-md-4" *ngFor="let school of schoolListFilter; let i=index">
 
-                          <div class="card  school-item">
+                          <div class="card  school-item" style="background: #EBECEC">
 
                               <!--<div class="checkbox-custom">
                                   <md-checkbox [disabled]="four" (click)="onCheckbox(school.school._id)"></md-checkbox>
@@ -875,9 +876,11 @@
                                   <label [for]="'school-'+i" style="width:5px; height:5px"
                                       (click)="onCheckbox(school._id)">&nbsp;</label>
                               </div-->
+                            <br>
                               <img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1"
                                    class="img-responsive"
                                   style="width:auto; height:80px; margin: 5px auto; margin-top: 25px;"/>
+                            <br>
                               <div>
                                   <app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card>
                               </div>
@@ -891,7 +894,7 @@
                       </div>
                   </div><!-- .list-schools -->
 
-                  <div class="row white-background">
+                  <div class="row basic-background">
                     <div class="col-md-12">
                       <p style="text-align:center">
                         <button type="button"
