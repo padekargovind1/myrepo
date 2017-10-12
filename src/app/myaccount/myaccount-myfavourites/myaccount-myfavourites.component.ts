@@ -17,7 +17,13 @@ import {date} from "ng2-validation/dist/date";
 export class MyaccountMyfavouritesComponent implements OnInit {
   wishList = [];
   wishAsc: boolean = false;
-
+  schoolListFilter = [];
+  imageExtensions = ['png','gif','jpeg']; 
+  imagePathPre = 'http://54.254.203.172/cideapi/';
+  filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
+                'Internat', 'Stages', 'Restauration',
+                'Externat', 'Statut', 'Enseignement Confessionel',
+                'Sections', 'Diplôme', 'Options', 'Places Disponibles']
   constructor(private usersService : UsersService) { }
 
   ngOnInit() {
@@ -39,15 +45,33 @@ export class MyaccountMyfavouritesComponent implements OnInit {
         }
       )
   }
-
+ imageExists(image_url){
+    // console.log("test")
+    var http = new XMLHttpRequest();
+    http.open('HEAD', image_url, false);
+    http.send();
+    return http.status != 404;
+  }
   // Separate the application list into 3 category
   filterApplications(data){
-    this.wishList = data.filter(
+    /*for(var j=0;j<data.length;j++)
+	{
+	  var imgpath = data[j].cycles[0].logo1
+	  for(var i=0;i<this.imageExtensions.length;i++){
+		var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
+		if(this.imageExists(this.imagePathPre + tempimgpath)){
+		  imgpath = tempimgpath;
+		  break;
+		}
+	  }
+		data[j].cycles[0].logo1 = imgpath;
+	}*/
+	this.schoolListFilter = data.filter(
       application=>{
         return application.type == "wish"
       }
     )
-    console.log(this.wishList);
+    console.log(this.schoolListFilter);
   }
 
   // Delete an applycation
@@ -83,11 +107,11 @@ export class MyaccountMyfavouritesComponent implements OnInit {
 	switch(sortType){
 		case "wish" : // sort wish
 			if(this.wishAsc){
-				this.wishList = this.wishList.sort(this.custom_sort_desc);
+				this.schoolListFilter = this.schoolListFilter.sort(this.custom_sort_desc);
 				this.wishAsc=false;
 			}
 			else{
-				this.wishList = this.wishList.sort(this.custom_sort_asc);
+				this.schoolListFilter = this.schoolListFilter.sort(this.custom_sort_asc);
 				this.wishAsc=true;
 			}
 			break;

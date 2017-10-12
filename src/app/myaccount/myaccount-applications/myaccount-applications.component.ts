@@ -18,7 +18,13 @@ export class MyaccountApplicationsComponent implements OnInit {
   applyList = [];
   applyAsc: boolean = false;
   constructor(private usersService : UsersService) { }
-
+  schoolapplyFilter = [];
+  imageExtensions = ['png','gif','jpeg']; 
+  imagePathPre = 'http://54.254.203.172/cideapi/';
+  filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
+                'Internat', 'Stages', 'Restauration',
+                'Externat', 'Statut', 'Enseignement Confessionel',
+                'Sections', 'Diplôme', 'Options', 'Places Disponibles']
   ngOnInit() {
     this.getApplications();
   }

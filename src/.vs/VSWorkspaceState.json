@@ -1,13 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app\\accueil",
-    "\\app\\wizard\\wizard-tabs",
-    "\\app\\wizard\\wizard-tabs\\jobs-tab",
+    "\\app\\myaccount\\myaccount-myfavourites",
     "\\assets",
-    "\\assets\\js",
     "\\assets\\scss"
   ],
-  "SelectedNode": "\\assets\\js\\main.js",
+  "SelectedNode": "\\assets\\scss\\_all.scss",
   "PreviewInSolutionExplorer": false
 }

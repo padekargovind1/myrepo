@@ -1,14 +1,14 @@
-<div class="tab-pane" id="myfavourites">
+﻿<div class="tab-pane" id="applications">
   <div class="container-fluid">
     <div class="row">
       <section class="col-md-12">
         <h3>applications</h3>
       </section>
-      <section class="col-md-4">
+      <section class="col-md-12">
         <div class="card-mobile">
           <h4>Mes demandes d'inscription</h4>
           <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('apply')"><i class="fa fa-sort"></i></button></p>
-          <ul class="list-of-research">
+          <!--ul class="list-of-research">
             <li *ngFor="let apply of applyList">
               <div class="row">
                 <div class="col-md-8">
@@ -17,7 +17,7 @@
                       <time>{{apply.createdAt | shorten}}</time><br />
                       <strong>{{apply.school.shortName}}</strong><br />
                       {{apply.school.longName}}<br />
-                      <!--Classe: PS-->
+                      <!--Classe: PS>
                     </p>
                   </div>
                 </div>
@@ -31,7 +31,59 @@
                 </div>
               </div>
             </li>
-          </ul>
+          </ul-->
+		  <div class="col-lg-2 col-md-2" *ngFor="let apply of applyList; let i=index">
+
+			  <div class="card  school-item" style="background: #EBECEC">
+
+				  <!--<div class="checkbox-custom">
+					  <md-checkbox [disabled]="four" (click)="onCheckbox(school.school._id)"></md-checkbox>
+				  </div>-->
+
+				  <!--<div class="checkbox-custom">
+					  <input type="checkbox" class="checkbox filled-in" id="school-1" />
+					  <label for="school-1">&nbsp;</label>
+				  </div>-->
+				  <ul class="school-action" style="margin-top:5px; margin-right:5px">
+					  <li (click)="saveInWish(apply.school._id)">
+						  <i style="cursor:pointer; color:#393649" mdTooltip="Ajouter à la liste des voeux"
+						  class="fa fa-bookmark" aria-hidden="true"></i>
+					  </li>
+					  <li (click)="sendMessage(apply.school)">
+						  <i style="cursor:pointer; color:#393649" mdTooltip="Envoyer un message"
+						  class="fa fa-paper-plane" aria-hidden="true"></i>
+					  </li>
+					  <!--<li>
+						  <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
+					  </li>-->
+					  <li (click)="goToBrochure(apply.school.shortName)">
+						  <i class="fa fa-download" aria-hidden="true" mdTooltip="Télécharger une brochure"
+						  style="cursor:pointer; color:#393649"></i>
+					  </li>
+				  </ul>
+				  <!--div class="checkbox-custom">
+					  <input type="checkbox" [disabled]="four" style="width:5px; height:5px"
+					  class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
+					  <label [for]="'school-'+i" style="width:5px; height:5px"
+						  (click)="onCheckbox(school._id)">&nbsp;</label>
+				  </div-->
+				<br>
+				  <!--img src="http://54.254.203.172/cideapi/{{wish.school.cycles[0].logo1}}" alt="School 1"-->
+				  <img src="http://54.254.203.172/cideapi/uploads/school/00000000000000000000e178/logo/00000000000000000000e178.jpeg" alt="School 1"
+					   class="img-responsive"
+					  style="width:auto; height:80px; margin: 5px auto; margin-top: 25px;"/>
+				<br>
+				  <div>
+					  <!--app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card-->
+					  <h3 style="height:40px">
+						{{ apply.school.longName}}
+					</h3>
+					
+				  </div>
+
+			  </div>
+
+		  </div><!-- .col-* -->
         </div><!-- .card-mobile -->
       </section>
     </div><!-- .row -->

@@ -1,4 +1,4 @@
-<div class="tab-pane" id="documentations">
+﻿<div class="tab-pane" id="documentations">
   <div class="container-fluid">
     <div class="row" *ngIf="showDownload; else noDoc">
       <section>
@@ -6,13 +6,13 @@
           <h3>Documentations</h3>
           <ul class="files-to-download">
             <li *ngFor="let doc of docList; let i=index">
-              <div class="col-md-6">
-                <div class="col-md-10">
-                  <div class="image-wrapper">
+              <div class="col-md-2 documentlistsTab">
+                <div class="col-md-12">
+                  <div class="image-wrapper"style="width:100%">
                     <img src="http://54.254.203.172/cideapi/{{brochureList[i].cycles[0].logo1}}"
                       alt="" *ngIf="showDownload"/>
                   </div>
-                  <span style="width:65%">
+                  <span style="width:100%">
                     <strong>{{doc.school.longName | schoolName}}</strong>
                   </span>
                 </div>
