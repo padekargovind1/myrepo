@@ -1,123 +1,101 @@
 ﻿<div class="tab-pane" id="myfavourites">
   <div class="container-fluid">
     <div class="row">
-      <section class="col-md-12">
-        <h3>Mes Favoris</h3>
-      </section>
             <section class="col-md-12">
+              <div>
+                <div class="card-mobile">
+                  <p>Retrouvez ici les établissements auxquels votre demande d’inscription a été envoyée.</p>
+                  <div class="fav-compare-div">
+                    <button type="button"
+                            class="btn btn-appointment pull-right popup-btn"
+                            data-toggle="modal"
+                            data-target="#filter-popup"
+                            [disabled]="!canCompare">
+                      Je Compare
+                    </button>
+                  </div>
+                  <div class="modal fade compare-modal" id="filter-popup" tabindex="-1" role="dialog" aria-labelledby="filter-popup">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <h3>Que voulez-vous comparer?</h3>
+                          <div class="filter-option" *ngFor="let filter of filterList; let i=index">
+                            <input type="checkbox" value="" (click)="onFilterCheckbox(i)">
+                            <!--<md-checkbox  name="" style="width:20px; height:20px; bottom:13px; left:-15px"
+                  class="checkbox filled-in"
+                  (click)="onFilterCheckbox(i)">
+              </md-checkbox>-->
+                            <div class="row">
+                              <p style="text-align:center">
+                                {{filter}}
+                              </p>
+                            </div>
 
-        <div class="card-mobile">
-          <h4>Mes souhaits</h4>
-          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('wish')"><i class="fa fa-sort"></i></button></p>
-          <!--ul class="list-of-research">
-            <!--<ngx-datatable 
-              #mydatatable
-              class="material"
-              [headerHeight]="50"
-              [limit]="10"
-              [columnMode]="'force'"
-              [footerHeight]="50"
-              [rowHeight]="'auto'"
-              [rows]="wishList"
-              [selectionType]="'row'">
-              <ngx-datatable-column name="firstName" >
-                <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-                  <span >
-                    {{value}}
-                  </span>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="lastName">
-                <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-                  <span>
-                    {{value}}
-                  </span>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="userType">
-                <ng-template ngx-datatable-cell-template let-value="value">
-                  {{value}}
-                  <div style="float:right">
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-            </ngx-datatable>>
-            <li *ngFor="let wish of wishList">
-              
-              <div class="row">
-                <div class="col-md-8">
-                  <div *ngIf="wish!=[]">  
-                    <p>
-                      <time>{{wish.createdAt | shorten}}</time><br />
-                      <strong>{{wish.school.shortName}}</strong><br />
-                      {{wish.school.longName}}<br />
-                      <!--Classe: PS>
-                    </p>
-                  </div>
+                          </div><!-- .filter-option -->
+
+                          <button class="btn btn-filter-pop-up btn-block btn-lg"
+                                  data-dismiss="modal"
+                                  (click)="onCompare()"
+                                  [disabled]="!canFilter">
+                            Je Compare
+                          </button>
+
+                          <!-- <a href="compare-mode.html#compare" class="btn btn-filter-pop-up btn-block btn-lg ">Je Comparer</a> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div><!-- .modal -->
+
+
                 </div>
-                <div class="col-md-2">
-                  &nbsp;
-                </div>
-                <div class="col-md-2">
-                  <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(wish.school._id, wish._id)">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
+		  <div class="col-lg-2 col-md-2" *ngFor="let school of wishList; let i=index">
+
+            <div class="card  school-item" style="background: #EBECEC">
+
+              <!--<div class="checkbox-custom">
+            <md-checkbox [disabled]="four" (click)="onCheckbox(school.school._id)"></md-checkbox>
+        </div>-->
+              <!--<div class="checkbox-custom">
+            <input type="checkbox" class="checkbox filled-in" id="school-1" />
+            <label for="school-1">&nbsp;</label>
+        </div>-->
+              <ul class="school-action" style="margin-top:5px; margin-right:5px">
+                <li (click)="saveInWish(school._id)">
+                  <i style="cursor:pointer; color:#393649" mdTooltip="Ajouter à la liste des voeux"
+                     class="fa fa-bookmark" aria-hidden="true"></i>
+                </li>
+                <li (click)="sendMessage(school)">
+                  <i style="cursor:pointer; color:#393649" mdTooltip="Envoyer un message"
+                     class="fa fa-paper-plane" aria-hidden="true"></i>
+                </li>
+                <!--<li>
+              <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
+          </li>-->
+                <li (click)="goToBrochure(school.shortName)">
+                  <i class="fa fa-download" aria-hidden="true" mdTooltip="Télécharger une brochure"
+                     style="cursor:pointer; color:#393649"></i>
+                </li>
+                <li class="checkbox-custom-li" mdTooltip="Comparer">
+                  <input type="checkbox" [disabled]="four" class="checkbox filled-in school-checkbox" [id]="'school-'+i" />
+                  <label [for]="'school-'+i" (click)="onCheckbox(school._id)">&nbsp;</label>
+                </li>
+              </ul>
+              <!--div class="checkbox-custom">
+            <input type="checkbox" [disabled]="four" style="width:5px; height:5px"
+            class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
+            <label [for]="'school-'+i" style="width:5px; height:5px"
+                (click)="onCheckbox(school._id)">&nbsp;</label>
+        </div-->
+              <br>
+              <img src="http://54.254.203.172/cideapi/{{school.cycles[0].logo1}}" alt="School 1"
+                   class="img-responsive"
+                   style="width:auto; height:80px; margin: 5px auto; margin-top: 25px;" />
+              <br>
+              <div>
+                <app-wish-school-card [pathName]="pathName" [SchoolData]="school"></app-wish-school-card>
               </div>
-            </li>
-          </ul-->
-		  <div class="col-lg-2 col-md-2" *ngFor="let wish of schoolListFilter; let i=index">
-
-			  <div class="card  school-item" style="background: #EBECEC">
-
-				  <!--<div class="checkbox-custom">
-					  <md-checkbox [disabled]="four" (click)="onCheckbox(school.school._id)"></md-checkbox>
-				  </div>-->
-
-				  <!--<div class="checkbox-custom">
-					  <input type="checkbox" class="checkbox filled-in" id="school-1" />
-					  <label for="school-1">&nbsp;</label>
-				  </div>-->
-				  <ul class="school-action" style="margin-top:5px; margin-right:5px">
-					  <li (click)="saveInWish(wish.school._id)">
-						  <i style="cursor:pointer; color:#393649" mdTooltip="Ajouter à la liste des voeux"
-						  class="fa fa-bookmark" aria-hidden="true"></i>
-					  </li>
-					  <li (click)="sendMessage(wish.school)">
-						  <i style="cursor:pointer; color:#393649" mdTooltip="Envoyer un message"
-						  class="fa fa-paper-plane" aria-hidden="true"></i>
-					  </li>
-					  <!--<li>
-						  <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
-					  </li>-->
-					  <li (click)="goToBrochure(wish.school.shortName)">
-						  <i class="fa fa-download" aria-hidden="true" mdTooltip="Télécharger une brochure"
-						  style="cursor:pointer; color:#393649"></i>
-					  </li>
-				  </ul>
-				  <!--div class="checkbox-custom">
-					  <input type="checkbox" [disabled]="four" style="width:5px; height:5px"
-					  class="checkbox filled-in school-checkbox" [id]="'school-'+i"/>
-					  <label [for]="'school-'+i" style="width:5px; height:5px"
-						  (click)="onCheckbox(school._id)">&nbsp;</label>
-				  </div-->
-				<br>
-				  <!--img src="http://54.254.203.172/cideapi/{{wish.school.cycles[0].logo1}}" alt="School 1"-->
-				  <img src="http://54.254.203.172/cideapi/uploads/school/00000000000000000000e178/logo/00000000000000000000e178.jpeg" alt="School 1"
-					   class="img-responsive"
-					  style="width:auto; height:80px; margin: 5px auto; margin-top: 25px;"/>
-				<br>
-				  <div>
-					  <!--app-school-card [pathName]="pathName" [SchoolData]="school"></app-school-card-->
-					  <h3 style="height:40px">
-						{{ wish.school.longName}}
-					</h3>
-					
-				  </div>
-
-			  </div>
-
-		  </div><!-- .col-* -->
+              </div>
+        </div><!-- .col-* -->
         </div><!-- .card-mobile -->
       </section>
     </div><!-- .row -->

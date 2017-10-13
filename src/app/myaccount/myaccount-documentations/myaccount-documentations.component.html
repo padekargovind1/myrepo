@@ -1,34 +1,61 @@
 ﻿<div class="tab-pane" id="documentations">
   <div class="container-fluid">
-    <div class="row" *ngIf="showDownload; else noDoc">
+    <div *ngIf="showDownload; else noDoc">
       <section>
         <div >
           <h3>Documentations</h3>
-          <ul class="files-to-download">
-            <li *ngFor="let doc of docList; let i=index">
-              <div class="col-md-2 documentlistsTab">
-                <div class="col-md-12">
-                  <div class="image-wrapper"style="width:100%">
-                    <img src="http://54.254.203.172/cideapi/{{brochureList[i].cycles[0].logo1}}"
-                      alt="" *ngIf="showDownload"/>
-                  </div>
-                  <span style="width:100%">
-                    <strong>{{doc.school.longName | schoolName}}</strong>
-                  </span>
-                </div>
-                <div class="col-md-2">
-                  <a href="" *ngIf="!showDownload; else show1"></a>
-                  <ng-template #show1>
-                    <a href="http://54.254.203.172/cideapi/{{brochureList[i].brochure}}" download="1.pdf" target="_self"
-                      class="btn btn-appointment  download-brochure">
-                      <i class="fa fa-download" aria-hidden="true"></i>
-                    </a>
-                  </ng-template>
-                </div>
-              </div>
+          <div class="fav-compare-div">
+            <button type="button"
+                    class="btn btn-secondary btn-lg  pull-right btn-download btn-block"
+                    data-toggle="modal"
+                    (click)="brochDialog()"
+                    [disabled]="downloadList.length==0">
+              <i class="fa fa-download"></i>
+            </button>
+          </div>
+          <div class="brochure-content">
+            <div id="js-grid-juicy-projects">
 
-            </li>
-          </ul>
+              <div *ngFor="let brochure of brochureList">
+                <div *ngFor="let cycle of brochure.cycles" class="graphic brochure-item col-md-3">
+                  <div class="checkbox-custom">
+                    <md-checkbox (click)="onCheckbox(brochure._id, cycle._id)" class="download" [checked]="downloadList.indexOf(brochure._id)>0 && downloadList.indexOf(cycle._id)>0"></md-checkbox>
+                    <label for="download">&nbsp;</label>
+                  </div>
+                  <div class="cbp-caption">
+                    <div class="cbp-caption-defaultWrap">
+                      <div class="image-wrap">
+                        <span class="vertical-helper"></span>
+                        <img src="http://54.254.203.172/cideapi/{{cycle.logo1}}" alt="" />
+                      </div>
+                    </div>
+                    <div class="cbp-caption-activeWrap">
+                      <div class="cbp-l-caption-alignCenter">
+                        <div class="cbp-l-caption-body">
+                          <a class="btn-appointment btn red uppercase btn red uppercase"
+                             (click)="onDownloadBrochure(brochure._id, cycle._id)"
+                             rel="nofollow">
+                            <i class="fa fa-download"></i>
+                            Télécharger
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+                    {{brochure.shortName}}
+                  </div>
+                  <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+                    Nom du Cycle : {{cycle.cycle.nom}}
+                  </div>
+                </div><!-- end second for -->
+
+              </div><!-- end first for -->
+
+            </div>
+
+          </div><!-- .row -->
         </div>
 
       </section><!-- .col-* -->

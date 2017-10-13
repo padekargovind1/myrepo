@@ -2742,3 +2742,21 @@ header .main-navigation li.courses-menu li .single-item {
 .landing-page-1-searchbutton{width : 100%; background : #7bc673; margin : 0; color:black; font-weight: 400}
 
 .documentlistsTab{ margin-bottom:15px; }
+.messageTabContent {width:100%; margin:0; padding:0; list-style:none;}
+.messageTabContent li {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  float:left; margin:0 0 5px;;
+}
+.messageTabContent li .msgBg {background:rgba(0,0,0,0.3); color:#fff; min-height:50px; margin-right:5px; padding-top:7px;}
+.fav-compare-div {
+  width: 100%;
+  float: left;
+  padding: 14px;
+}
+
+.fav-compare-div button.btn-download {
+  width: 55px;
+}
