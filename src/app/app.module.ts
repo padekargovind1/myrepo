@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -107,7 +107,8 @@ import { EstablishmentTabComponent } from './wizard/wizard-tabs/establishment-ta
 import { JobsTabComponent } from './wizard/wizard-tabs/jobs-tab/jobs-tab.component';
 import { DiagnosticTabComponent } from './wizard/wizard-tabs/diagnostic-tab/diagnostic-tab.component';
 import { HobbiesTabComponent } from './wizard/wizard-tabs/hobbies-tab/hobbies-tab.component';
-import {ApplyService} from "./services/apply.service";
+import { ApplyService } from "./services/apply.service";
+import { WishSchoolCardComponent } from './shared/wish-school-card/wish-school-card.component';
 import { OnlinePaymentComponent } from './payment/online-payment/online-payment.component';
 
 @NgModule({
@@ -185,6 +186,7 @@ import { OnlinePaymentComponent } from './payment/online-payment/online-payment.
     JobsTabComponent,
     DiagnosticTabComponent,
     HobbiesTabComponent,
+    WishSchoolCardComponent,
     OnlinePaymentComponent
   ],
   imports: [
