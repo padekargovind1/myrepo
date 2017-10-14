@@ -479,21 +479,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
         response=>{
           console.log(response);
           let data = response.data;
-		  for(var j=0;j<data.length;j++)
-		  {
-			  var imgpath = data[j].cycles[0].logo1
-			  for(var i=0;i<this.imageExtensions.length;i++)
-			  {
-				var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
-                if (this.imageExists(this.imagePathPre + tempimgpath))
-				{
-					imgpath = tempimgpath;
-					break;
-				}
-			  }
-			  data[j].cycles[0].logo1 = imgpath;
-		  }
-		  this.isLoader=false;
+          this.isLoader=false;
           if(response.code==400){
             // console.log(response.message)
           } else {

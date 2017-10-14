@@ -20,17 +20,16 @@
 
 
 <div class="card-content">
-    <h3 style="height:40px">
-        {{ SchoolData.longName | schoolName}}
-    </h3>
-  <br>
-    <address class="school-card-address">
-        {{ SchoolData.address.postcode }}
-        <span>
-            {{ SchoolData.address.city }}
-        </span><br />
+  <h4 style="height:60px; line-height: 30px">
+      {{ SchoolData.longName | schoolName}}
+  </h4>
+  <address class="school-card-address">
+      {{ SchoolData.address.postcode }}
+      <span>
+          {{ SchoolData.address.city }}
+      </span><br />
 
-    </address>
+  </address>
 
     <!--<button type="button" class="btn btn-secondary"  (click)="applyToSchool()">Sélectionner</button>-->
 </div>
