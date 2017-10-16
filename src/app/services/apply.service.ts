@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import {WizardService} from "./wizard.service";
 import {UsersService} from "./users.service";
 import {Router} from "@angular/router";
@@ -86,17 +86,19 @@ export class ApplyService {
   }
 
   //Data to send to API
-  sendToApi(){
-    console.log(this.schoolId)
-    const data = { //Create a new applying school
-      type : "apply",
-      schools : [{
-        school : this.schoolId,
-        class : this.schoolService.getClassName()
-      }]
-    }
+  sendToApi() {
+      console.log(this.schoolId)
+      if (this.wizardData['pageName'] != "myaccount") {
+          const data = { //Create a new applying school
+              type: "apply",
+              schools: [{
+                  school: this.schoolId,
+                  class: this.schoolService.getClassName()
+              }]
+          }
 
-    console.log(data)
+          console.log(data);
+      }
     // this.usersService.postApplication(data) //Post data to create a new applying school
     //   .subscribe(
     //     response=>{
@@ -120,7 +122,8 @@ export class ApplyService {
       this.updateProfile();
   }
 
-  updateProfile(){
+  updateProfile() {
+      console.log(this.userData);
     this.usersService.putProfile(this.userData) //Update user profile
       .subscribe(
         response=>{
@@ -141,8 +144,10 @@ export class ApplyService {
       text: 'Nous transmettons votre dossier aux écoles sélectionné. \nLeurs directions vous contactera dans les meilleurs délais.\nNous venons de vous envoyer un mél de confirmation.',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
-    })
-    this.route.navigate(['/']);
+      })
+    if (this.wizardData['pageName'] != "myaccount") {
+        this.route.navigate(['/']);
+    }
   }
 
   // Sweet Alert if it fail to submit

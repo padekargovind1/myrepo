@@ -1,10 +1,7 @@
-<div class="tab-pane" id="myfiles">
+﻿<div class="tab-pane" id="myfiles">
   <div class="container-fluid">
     <div class="row">
-      <section class="col-md-12">
-        <h3>myfiles</h3>
-      </section>
-      
-    </div><!-- .row -->
-  </div><!-- .container-fluid -->
+      <app-current-school-tab (tabChange)="nextTab($event)" [userData]="userData"></app-current-school-tab>
+    </div>
+  </div>
 </div><!-- .tab-pane -->

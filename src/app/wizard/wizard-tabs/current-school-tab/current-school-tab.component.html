@@ -97,7 +97,7 @@
       <div class="col-md-12">
         <div class="form-group clearfix">
           <button class="btn  btn-appointment wizard-button-align"
-                  (click)="nextTab(1)" style="float:left; margin-left:0px">
+                  (click)="nextTab(1)" style="float:left; margin-left:0px" *ngIf="!onMyAccountPage">
             Précédent
           </button>
           <button class="btn  btn-appointment wizard-button-align"
