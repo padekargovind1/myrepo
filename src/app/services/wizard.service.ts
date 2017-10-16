@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import swal from 'sweetalert2';
 import {UsersService} from "./users.service";
 import {
@@ -68,7 +68,8 @@ export class WizardService {
     subjectData:{},
     hobbiesData:{},
     establishmentData: {},
-    diagnosticData: {}
+    diagnosticData: {},
+    pageName: ""
   }
 
   //*

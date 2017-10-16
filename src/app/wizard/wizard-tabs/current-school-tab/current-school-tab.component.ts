@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+﻿import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WizardService} from "../../../services/wizard.service";
 import {BookingService} from "../../../services/booking.service";
@@ -19,7 +19,8 @@ export class CurrentSchoolTabComponent implements OnInit {
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
   langues=[];
   subscription : Subscription;
-  onApplyPage : boolean = false;
+  onApplyPage: boolean = false;
+  onMyAccountPage: boolean = false;
   constructor(private fb : FormBuilder,
               private wizardService : WizardService,
               private router : ActivatedRoute,
@@ -29,7 +30,8 @@ export class CurrentSchoolTabComponent implements OnInit {
       .subscribe(
         params => {
           console.log(params)
-          this.onApplyPage = params[0].path==="applyto";
+          this.onApplyPage = params[0].path === "applyto" || params[0].path === "my-account";
+          this.onMyAccountPage = params[0].path === "my-account";
           if(typeof params[1]!= "undefined"){
             console.log('test2', params[1].path)
             this.applyService.storeUrlPath(params[1].path);
