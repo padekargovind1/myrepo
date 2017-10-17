@@ -2760,3 +2760,59 @@ header .main-navigation li.courses-menu li .single-item {
 .fav-compare-div button.btn-download {
   width: 55px;
 }
+.card-content address {
+  min-height: 50px;
+}
+.card-content p {
+  min-height: 30px;
+}
+.school-item .btn {
+  margin-left: 0;
+}
+
+.ecoleDataClass .list-schools .school-item {
+  text-align:center;
+}
+.ecoleDataClass .card-content p,
+.ecoleDataClass .card-content address{min-height:inherit;}
+
+
+@media (max-width:1000px) {
+  .card-content address {
+    min-height: 60px;
+  }
+}
+
+  @media (max-width:767px) {
+    .card {
+      overflow: visible;
+    }
+
+    .filter-form-holder .searchform {
+      z-index: 999;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .filter-form-holder-height {
+      height: auto !important;
+    }
+
+    header .main-navigation li.courses-menu ul {
+      z-index: 9999;
+    }
+
+    header .main-navigation li.courses-menu li .single-item {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .course-menu-item.col-md-6.col-sm-6 {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    header .main-navigation li.courses-menu li .single-item {
+      height: auto;
+    }
+  }
