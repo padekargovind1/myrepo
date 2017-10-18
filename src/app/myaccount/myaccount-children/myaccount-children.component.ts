@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+﻿import {Component, Input, OnInit} from '@angular/core';
 import swal from 'sweetalert2';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -72,7 +72,8 @@ export class MyaccountChildrenComponent implements OnInit {
   // Patch the value from the API
   patchValue(data: any){
     console.log(data.birthDate);
-	var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
 	let mydate = new Date(data.birthDate);
     // console.log(date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear())
     let dateToSend = mydate.getDate()+'-'+(monthNames[mydate.getMonth()])+'-'+mydate.getFullYear();
@@ -131,10 +132,21 @@ export class MyaccountChildrenComponent implements OnInit {
     this.userData.firstName = this.childrenForm.value.prenom;
     this.userData.age = this.childrenForm.value.age;
     this.userData.gender = this.childrenForm.value.gender;
-    this.userData.birthDate = this.childrenForm.controls.datenaissance.value;
+    this.userData.birthDate = this.formatDate(this.childrenForm.controls.datenaissance.value);
     this.userData.birthPlace = this.childrenForm.controls.lieu.value;
     console.log(this.userData);
     this.save();
+  }
+
+  formatDate(date) {
+      var date_arr = date.split("-");
+      if (date != "" && date_arr.length >= 3) {
+          return (date_arr[1] + "-" + date_arr[0] + "-" + date_arr[2])
+      }
+      else
+      {
+          return date;
+      }
   }
   // Call API to send new data of the user
   save(){
@@ -150,7 +162,7 @@ export class MyaccountChildrenComponent implements OnInit {
               type: 'success',
               confirmButtonText: 'Ok'
             })
-            this.route.navigate(['/'])
+            //this.route.navigate(['/'])
           }
         }
       )

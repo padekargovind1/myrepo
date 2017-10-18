@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+﻿import { Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ConseilComponent } from './conseil/conseil.component';
 import { BookingComponent } from './booking/booking.component';
@@ -26,6 +26,10 @@ import { PaymentComponent } from './payment/payment.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import {AppGuard} from "./app.guard";
 import {OnlinePaymentComponent} from "./payment/online-payment/online-payment.component";
+import { WhoWeAre } from './who-we-are/who-we-are.component';
+import { PrivacyPolicy } from './privacy-policy/privacy-policy.component';
+import { Partnerships } from './partnerships/partnerships.component';
+import { ContactUs } from './contact-us/contact-us.component';
 
 export const AppRoutes: Routes = [
     { path: '', component: RandomLandingComponent},
@@ -58,7 +62,10 @@ export const AppRoutes: Routes = [
     { path: 'online-payment', component: OnlinePaymentComponent},
     { path: 'enseignement-privee', component: UnderConstructionComponent },
     { path: 'panorama', component: UnderConstructionComponent },
-    { path: 'contact-us', component: UnderConstructionComponent },
+    { path: 'contact-us', component: ContactUs },
     { path: 'under-construction', component: UnderConstructionComponent },
+    { path: 'who-we-are', component: WhoWeAre },
+    { path: 'privacy-policy', component: PrivacyPolicy },
+    { path: 'partnerships', component: Partnerships },
     { path: '**', redirectTo: ''}
 ]
