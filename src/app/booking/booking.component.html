@@ -1,4 +1,4 @@
-﻿<main class="main" role="main">
+<main class="main" role="main">
     <div class="container-fluid">
         <div class="row  booking-appointment">
             <section class="col-md-3">
@@ -16,14 +16,12 @@
                         <li class="active" *ngFor="let adviser of adviserList; let i=index" >
 
                             <div class="row" >
-                                <section class="col-md-4 col-xs-3">
-                                  <div class="userThumbImg" [style.background-image]="'url(http://54.254.203.172/cideapi' + adviser.photo + ')'" >
+                                <section class="col-md-5 col-xs-3">
                                     <img src="http://54.254.203.172/cideapi{{adviser.photo}}"
-                                         alt="" class="img-circle img-responsive"
-                                         style="width:100%; height:100%" />
-                                  </div>
+                                        alt="" class="img-circle img-responsive"
+                                        style="width:100%; height:100%"/>
                                 </section>
-                                <section class="col-md-8">
+                                <section class="col-md-7">
                                     <div class="advisor-name col-md-11">
                                         {{adviser.firstName}} {{adviser.lastName}}
                                     </div>

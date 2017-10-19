@@ -23,7 +23,6 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConseilComponent } from './conseil/conseil.component';
 import { AppRoutes } from './app.routing';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { BookingComponent } from './booking/booking.component';
 import { LinguisticComponent } from './linguistic/linguistic.component';
 import { LinguisticTripsComponent } from './linguistic/linguistic-trips/linguistic-trips.component';
@@ -111,10 +110,6 @@ import { HobbiesTabComponent } from './wizard/wizard-tabs/hobbies-tab/hobbies-ta
 import { ApplyService } from "./services/apply.service";
 import { WishSchoolCardComponent } from './shared/wish-school-card/wish-school-card.component';
 import { OnlinePaymentComponent } from './payment/online-payment/online-payment.component';
-import { WhoWeAre } from './who-we-are/who-we-are.component';
-import { PrivacyPolicy } from './privacy-policy/privacy-policy.component';
-import { Partnerships } from './partnerships/partnerships.component';
-import { ContactUs } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -122,7 +117,6 @@ import { ContactUs } from './contact-us/contact-us.component';
     AccueilComponent,
     ConseilComponent,
     HeaderComponent,
-    FooterComponent,
     BookingComponent,
     LinguisticComponent,
     LinguisticTripsComponent,
@@ -192,11 +186,7 @@ import { ContactUs } from './contact-us/contact-us.component';
     JobsTabComponent,
     DiagnosticTabComponent,
     HobbiesTabComponent,
-      WishSchoolCardComponent,
-      WhoWeAre,
-      PrivacyPolicy,
-      Partnerships,
-      ContactUs,
+    WishSchoolCardComponent,
     OnlinePaymentComponent
   ],
   imports: [
