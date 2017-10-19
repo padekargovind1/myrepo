@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+﻿import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomValidators} from "ng2-validation";
 import {WizardService} from "../../../services/wizard.service";
@@ -39,7 +39,8 @@ export class ChildTabComponent implements OnInit {
   }
   //Patching value from userData
   patchValue() {
-	var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      var monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
 	let mydate = new Date(this.userData.birthDate); 
     let dateToSend = mydate.getDate()+'-'+(monthNames[mydate.getMonth()])+'-'+mydate.getFullYear();
     this.wizardForm.patchValue({

@@ -1,8 +1,8 @@
 ﻿jQuery(document).ready(function($) {
-	$('.customClosePopUp').click(function(){
+    $(document).on('click', '.customClosePopUp', function(){
 		$(this).parent('.customPopUp').fadeOut();
 	});
-	$('.btn-conseil').click(function(){
+    $(document).on('click', '.btn-conseil', function(){
 		$(this).parents('.conseil-item').find('.customPopUp').fadeIn();
 	});
 
