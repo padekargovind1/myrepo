@@ -16,15 +16,15 @@
                         <li class="active" *ngFor="let adviser of adviserList; let i=index" >
 
                             <div class="row" >
-                                <section class="col-md-4 col-xs-3">
+                                <section class="col-md-3 col-xs-3">
                                   <div class="userThumbImg" [style.background-image]="'url(http://54.254.203.172/cideapi' + adviser.photo + ')'" >
                                     <img src="http://54.254.203.172/cideapi{{adviser.photo}}"
                                          alt="" class="img-circle img-responsive"
                                          style="width:100%; height:100%" />
                                   </div>
                                 </section>
-                                <section class="col-md-8">
-                                    <div class="advisor-name col-md-11">
+                                <section class="col-md-9">
+                                    <div class="advisor-name">
                                         {{adviser.firstName}} {{adviser.lastName}}
                                     </div>
                                     <div class="checkbox-wrap">
