@@ -41,6 +41,19 @@ padding:40px 0 0;
   float: left;
 }
 
+.footer[_ngcontent-c2] {
+  background: #00bc50;
+}
+
+.footerCustom[_ngcontent-c2] h3[_ngcontent-c2] {
+  font-size: 20px;
+}
+
+.footer[_ngcontent-c2] ul li a {
+  color: #ffffff;
+  font-size:14px;
+}
+
 
 @media (max-width:1023px) {
   .footerBottomContent {

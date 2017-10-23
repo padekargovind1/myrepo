@@ -79,13 +79,14 @@
           <div class="datepicker-holder">
             Date de naissance*
             <div class="calendarCont">
-              <!--input type="date" class="form-control" [mdDatepicker]="myDatepicker" [max]="maxDate"-->
-              <input type="text" class="form-control" 
-                     placeholder="Date de naissance"
-                     [formControl]="wizardForm.controls['childBirthDay']">
-              <md-datepicker #myDatepicker></md-datepicker>
-
-            </div>
+                <!--input type="date" class="form-control" [mdDatepicker]="myDatepicker" [max]="maxDate"-->
+                <input mdInput type="text" class="form-control"
+                       placeholder="Date de naissance" 
+                       [formControl]="wizardForm.controls['childBirthDay']">
+                <!--<md-datepicker-toggle mdSuffix [for]="myDatepicker"></md-datepicker-toggle>-->
+                <!--<button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
+                <md-datepicker #myDatepicker></md-datepicker>-->
+</div>
           </div>
         </div>
       </div>
