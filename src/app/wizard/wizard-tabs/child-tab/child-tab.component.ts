@@ -2,7 +2,8 @@
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomValidators} from "ng2-validation";
 import {WizardService} from "../../../services/wizard.service";
-import {BookingService} from "../../../services/booking.service";
+import { BookingService } from "../../../services/booking.service";
+import { DateAdapter } from '@angular/material';
 
 @Component({
   selector: 'app-child-tab',
@@ -16,8 +17,11 @@ export class ChildTabComponent implements OnInit {
   maxDate = new Date();
 
   constructor(private fb : FormBuilder,
-              private wizardService : WizardService,
-              private bookingService : BookingService) { }
+      private wizardService: WizardService,
+      private dateAdapter: DateAdapter<Date>,
+      private bookingService: BookingService) {
+      this.dateAdapter.setLocale('nl');
+  }
 
   ngOnInit() {
     this.buildForm();

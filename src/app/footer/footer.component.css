@@ -4,7 +4,7 @@
   bottom: 0;
   float: left;
   left: 0;
-  padding: 10px 20px;
+  padding: 0;
   position: static;
   width: 100%;
 }
@@ -36,9 +36,11 @@ padding:40px 0 0;
 }
 
 .footerBottomContent {
-  margin-bottom: 15px;
+  margin: 0;
   width: 100%;
   float: left;
+  background: #393649;
+  padding:7px;
 }
 
 .footer[_ngcontent-c2] {
