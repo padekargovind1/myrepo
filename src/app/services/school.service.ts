@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -9,8 +9,8 @@ import { Observable } from 'rxjs/Observable';
 //         LanguageMdl, SectionMdl,
 //         DiplomaMdl, OptionMdl, SeatsMdl } from '../model/advanced-search.model';
 
-const TRIPS_API: string = "http://54.254.203.172/cideapi/api/schools/trips";
-const STATISTICS_API: string = "http://54.254.203.172/cideapi/api/schools/statictics";
+const TRIPS_API: string = "http://13.229.81.1/cideapi/api/schools/trips";
+const STATISTICS_API: string = "http://13.229.81.1/cideapi/api/schools/statictics";
 
 @Injectable()
 export class SchoolService {

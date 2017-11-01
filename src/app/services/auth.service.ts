@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -6,10 +6,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
-const REGISTER_API: string = "http://54.254.203.172/cideapi/api/auth/register";
-const FORGOT_API : string = "http://54.254.203.172/cideapi/api/auth/password";
-const LOGIN_API : string ="http://54.254.203.172/cideapi/api/auth/log";
-const SEND_API : string = "http://54.254.203.172/cideapi/api/auth/email/send";
+const REGISTER_API: string = "http://13.229.81.1/cideapi/api/auth/register";
+const FORGOT_API : string = "http://13.229.81.1/cideapi/api/auth/password";
+const LOGIN_API : string ="http://13.229.81.1/cideapi/api/auth/log";
+const SEND_API : string = "http://13.229.81.1/cideapi/api/auth/email/send";
 
 @Injectable()
 export class AuthService {
