@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+﻿import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
@@ -14,17 +14,18 @@ export class MyaccountComponent implements OnInit, OnDestroy {
   userData : any;
   constructor(private route : Router,
               private authService : AuthService,
-              private usersService : UsersService) {
-
+              private usersService: UsersService) {
+      if (this.authService.isUserLoggedIn()) {
+          this.getUserProfile();
+      }
+      else
+      {
+          this.route.navigate(['/login']);
+      }
   }
 
   ngOnInit() {
-    if(!this.authService.isUserLoggedIn()){ // If user is not logged, he is redirected to the login page
-      this.route.navigate(['/login']);
-    } else {
-      this.getUserProfile();
-      this.goTabNb(this.usersService.getTabNb()); // Else user is redirect to the tab number (0 by default)
-    }
+      this.goTabNb(this.usersService.getTabNb());
   }
 
   //Switch tabs

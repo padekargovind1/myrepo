@@ -20,7 +20,7 @@ export class MyaccountMyfilesComponent implements OnInit {
     
   canDisplay: boolean = false;
   maxDate = new Date();
-  userData: any;
+  @Input() userData;
   subscription: Subscription;
   childData: {};
 

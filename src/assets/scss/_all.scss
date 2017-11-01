@@ -2272,7 +2272,14 @@ text-align:center;
 @media (max-width:767px) {
 
 }
+.hidden-lg {
+  display: none;
+}
   @media (max-width:767px) {
+    .hidden-lg{
+      display:block;
+    }
+
     .brouchreCls .col-sm-6.col-xs-6 input.form-control {
       width: 93%;
     }
@@ -2842,4 +2849,31 @@ header .main-navigation li.courses-menu li .single-item {
 .advisors .checkbox-wrap {
   top: 8px;
   right: 1px;
+}
+
+.compare-holder button.btn-appointment { position:relative !important;
+}
+.compare-holder {
+  color: #333;
+  display: inline-block;
+  font-size: 20px;
+  position: fixed;
+  right: 13%;
+  top: 65%;
+  z-index: 99999;
+}
+
+
+@media (max-width:767px) {
+  .compare-holder {
+    right: 20px;
+    top: 35%;
+  }
+  }
+
+@media (max-width:767px) {
+  .compare-holder {
+    right: 20px;
+    top: 40%;
+  }
 }
