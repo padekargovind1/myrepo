@@ -7,7 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import {FileUploader} from "ng2-file-upload";
 import {ApplyService} from "../../../services/apply.service";
 
-const URL = 'http://54.254.203.172/cide-school/upload/';
+const URL = 'http://13.229.81.1/cide-school/upload/';
 @Component({
   selector: 'app-current-school-tab',
   templateUrl: './current-school-tab.component.html',
@@ -69,8 +69,8 @@ export class CurrentSchoolTabComponent implements OnInit {
     }
   }
   //Patch value from userData
-  patchValue(){
-    var haveAcademic = (this.userData.academicHistories.length!=0) ? true : false;
+  patchValue() {
+      var haveAcademic = (this.userData.academicHistories !== undefined && this.userData.academicHistories.length != 0) ? true : false;
     var haveLv1 = false;
     var haveLv2 = false;
     if(haveAcademic){
