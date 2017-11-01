@@ -82,7 +82,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   lieuSelected = [];
 
   imageExtensions = ['png','gif','jpeg'];
-  imagePathPre = 'http://54.254.203.172/cideapi/';
+  imagePathPre = 'http://13.229.81.1/cideapi/';
 
 
   constructor(private publicService: PublicService,

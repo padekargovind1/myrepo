@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Http, Headers,Jsonp } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 import {MyAccountMdl} from '../model/myaccount.model';
 
-const PROFILE_API : string = "http://54.254.203.172/cideapi/api/common/profile";
-const APPOINTMENTS_API : string = "http://54.254.203.172/cideapi/api/public";
-const PACKAGE_API : string = "http://54.254.203.172/cideapi/api/public/package";
-const APPLICATION_API : string = "http://54.254.203.172/cideapi/api/users/apply";
-const TRIPS_API: string = "http://54.254.203.172/cideapi/api/users/trips";
+const PROFILE_API : string = "http://13.229.81.1/cideapi/api/common/profile";
+const APPOINTMENTS_API : string = "http://13.229.81.1/cideapi/api/public";
+const PACKAGE_API : string = "http://13.229.81.1/cideapi/api/public/package";
+const APPLICATION_API : string = "http://13.229.81.1/cideapi/api/users/apply";
+const TRIPS_API: string = "http://13.229.81.1/cideapi/api/users/trips";
 
 @Injectable()
 export class UsersService {
@@ -51,12 +51,12 @@ export class UsersService {
   }
 
   postCreateNewAppointment(data, packageId): Observable<any>{
-    return this.http.post('http://54.254.203.172/cideapi/api/users/appointments/'+packageId+'?token='+this.getToken(), data)
+    return this.http.post('http://13.229.81.1/cideapi/api/users/appointments/'+packageId+'?token='+this.getToken(), data)
       .map((response)=>response.json());
   }
 
   putAppointmentData(appointmentId, data): Observable<any>{
-    return this.http.put('http://54.254.203.172/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
+    return this.http.put('http://13.229.81.1/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
       .map(response=>response.json());
   }
 
