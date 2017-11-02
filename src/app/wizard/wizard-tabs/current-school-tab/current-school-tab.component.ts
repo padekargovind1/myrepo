@@ -5,7 +5,8 @@ import {BookingService} from "../../../services/booking.service";
 import {Subscription} from "rxjs/Subscription";
 import {ActivatedRoute} from "@angular/router";
 import {FileUploader} from "ng2-file-upload";
-import {ApplyService} from "../../../services/apply.service";
+import { ApplyService } from "../../../services/apply.service";
+import { UsersService } from '../../../services/users.service';
 
 const URL = 'http://13.229.81.1/cide-school/upload/';
 @Component({
@@ -23,25 +24,41 @@ export class CurrentSchoolTabComponent implements OnInit {
   onMyAccountPage: boolean = false;
   constructor(private fb : FormBuilder,
               private wizardService : WizardService,
-              private router : ActivatedRoute,
+              private router: ActivatedRoute,
+              private usersService: UsersService,
               private bookingService : BookingService,
               private applyService : ApplyService) {
-    this.subscription = this.router.url
-      .subscribe(
-        params => {
-          console.log(params)
-          this.onApplyPage = params[0].path === "applyto" || params[0].path === "my-account";
-          this.onMyAccountPage = params[0].path === "my-account";
-          if(typeof params[1]!= "undefined"){
-            console.log('test2', params[1].path)
-            this.applyService.storeUrlPath(params[1].path);
+      this.subscription = this.router.url
+          .subscribe(
+          params => {
+              console.log(params)
+              this.onApplyPage = params[0].path === "applyto" || params[0].path === "my-account";
+              this.onMyAccountPage = params[0].path === "my-account";
+              if (typeof params[1] != "undefined") {
+                  console.log('test2', params[1].path)
+                  this.applyService.storeUrlPath(params[1].path);
+              }
           }
-        }
-      )
+          );
+      
   }
 
   ngOnInit() {
-    this.buildForm();
+      this.buildForm();
+      if (this.userData === undefined || this.userData == null) {
+          this.usersService.getProfile()
+              .subscribe((response) => {
+                  console.log(response);
+                  if (response.data != 400) {
+                      this.userData = response.data[0];
+                      this.patchValue();
+                  }
+              })
+      }
+      else
+      {
+          this.patchValue();
+      }
     this.getLanguage();
   }
   //build the form
@@ -55,9 +72,6 @@ export class CurrentSchoolTabComponent implements OnInit {
       schoolLv2: [''],
       schoolLv3: ['']
     })
-    setTimeout(()=>{
-      this.patchValue()
-    }, 1000)
   }
   //Save and go to next tab
   nextTab(nb:number){

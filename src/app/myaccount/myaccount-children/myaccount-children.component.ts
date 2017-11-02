@@ -24,16 +24,30 @@ export class MyaccountChildrenComponent implements OnInit {
   constructor(private fb : FormBuilder,
               private usersService : UsersService,
               private route : Router,
-              private authService : AuthService) {}
+              private authService: AuthService) {
+      
+  }
 
   ngOnInit() {
     if(this.authService.getToken() != "") { // If user is logged
-      setTimeout(()=>{
-        this.getUserProfile();
-      }, 2000)
     } else {
       console.log("navigate back");
       this.route.navigate(['/login']);
+      }
+
+    if (this.userData === undefined || this.userData == null) {
+        this.usersService.getProfile()
+            .subscribe((response) => {
+                console.log(response);
+                if (response.data != 400) {
+                    this.userData = response.data[0];
+                    this.getUserProfile();
+                }
+            })
+    }
+    else
+    {
+        this.getUserProfile();
     }
   }
 
