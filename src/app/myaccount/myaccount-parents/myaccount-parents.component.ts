@@ -44,19 +44,28 @@ export class MyaccountParentsComponent implements OnInit {
         private route: Router,
         private authService: AuthService,
         private publicService: PublicService) {
-
+        
     }
 
     ngOnInit() {
         this.country = this.publicService.getCountry();
 		if (this.authService.getToken() != "") {
-            setTimeout(() => {
-                this.getUserData();
-            }, 2000)
-
         } else {
             // console.log("navigate back");
             this.route.navigate(['/login']);
+        }
+        if (this.userData === undefined || this.userData == null) {
+            this.usersService.getProfile()
+                .subscribe((response) => {
+                    console.log(response);
+                    if (response.data != 400) {
+                        this.userData = response.data[0];
+                        this.getUserData();
+                    }
+                })
+        }
+        else {
+            this.getUserData();
         }
     }
 
