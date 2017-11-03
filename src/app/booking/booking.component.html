@@ -1,0 +1,98 @@
+﻿<main class="main" role="main">
+    <div class="container-fluid">
+        <div class="row  booking-appointment">
+            <section class="col-md-3">
+                <div class="advisors-wrap">
+                    <h3 class="advisor-title">Conseillers d’orientation</h3>
+                    <button class="btn btn-appointment btn-block select-all-advisor" (click)="onSelectAll()"
+                        *ngIf="adviserToDisplay.length!=calendarData.length">
+                        Sélectionnez tous les conseillers <i class="fa fa-check"></i>
+                    </button>
+                    <button class="btn btn-danger btn-block deselect-all-advisor" (click)="onUnselectAll()"
+                        *ngIf="adviserToDisplay.length==calendarData.length || adviserToDisplay.length!=0">
+                        Désélectionnez tous les conseillers <i class="fa fa-times"></i>
+                    </button>
+                    <ul class="advisors">
+                        <li class="active" *ngFor="let adviser of adviserList; let i=index" >
+
+                            <div class="row" >
+                                <section class="col-md-3 col-xs-3">
+                                  <div class="userThumbImg" [style.background-image]="'url(http://13.229.81.1/cideapi' + adviser.photo + ')'" >
+                                    <img src="http://13.229.81.1/cideapi{{adviser.photo}}"
+                                         alt="" class="img-circle img-responsive"
+                                         style="width:100%; height:100%" />
+                                  </div>
+                                </section>
+                                <section class="col-md-9">
+                                    <div class="advisor-name">
+                                        {{adviser.firstName}} {{adviser.lastName}}
+                                    </div>
+                                    <div class="checkbox-wrap">
+                                        <!--<input type="checkbox" class="checkbox filled-in"
+                                            (click)="onCheckbox(adviser.id)"/> -->
+                                        <md-checkbox (click)="onCheckbox(adviser._id)"
+                                            class="checkbox filled-in test" [checked]="allChecked"
+                                            style="margin-right: 10px">
+                                        </md-checkbox>
+                                    </div>
+                                </section>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div><!-- .advisors-wrap -->
+            </section>
+            <section class="col-md-9  calendar-content">
+                <h2 class="title-page">Choisissez votre date et heure de rendez-vous en fonction des plages horaires disponibles.</h2>
+                <div class="calendar-wrap">
+                    <h4>Calendrier</h4>
+                    <div id="calendar"></div>
+                </div>
+            </section><!-- .col-* -->
+        </div><!-- .row -->
+    </div><!-- .container-fluid -->
+</main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="appointment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <!-- <h3 class="title-confirm-modal">Rendez-vous</h3>
+                <input type="text" value="Mme Sophie Dupond" class="form-control" />
+
+                <span class="muted">Quand</span><br>
+                <time class="appointment-date">Lundi 8 Mai - 10h a 12h</time><br>
+                <p>Orientation College<br />
+                Que Faire Apres Une Classe De Troisieme?</p> -->
+
+                <h3 class="title-confirm-modal">Rendez-vous</h3>
+                <p class="appointment-date"><strong>avec {{bookingDate[4]}} {{bookingDate[3]}}</strong></p>
+
+                <time class="appointment-date">Le {{bookingDate[0] | date:"dd/MM/yyyy"}} de {{bookingDate[1]}} à {{bookingDate[2]}} </time><br>
+
+                <p>
+                {{bookingData[1]}}<br />
+                {{bookingData[2]}}</p>
+
+                <section class="pull-right">
+                    <button class="btn btn-danger"
+                            data-dismiss="modal"
+                            type="button">J'annule
+                    </button>
+                    <button class="btn btn-warning"
+                        data-dismiss="modal"
+                        type="button">Je préfère un autre rendez-vous
+                    </button>
+                    <a (click)="onConfirmAppointment()"
+                        data-dismiss="modal"
+                        class="btn btn-appointment">Je Confirme
+                    </a>
+                </section>
+                <div class="clearfix"></div>
+            </div>
+        </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
+</div><!-- .modal -->

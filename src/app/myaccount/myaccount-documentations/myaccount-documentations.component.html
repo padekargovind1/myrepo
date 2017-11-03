@@ -1,0 +1,69 @@
+﻿<div class="tab-pane" id="documentations">
+  <div class="container-fluid">
+    <div *ngIf="showDownload; else noDoc">
+      <section>
+        <div >
+          <h3>Documentations</h3>
+          <div class="fav-compare-div">
+            <button type="button"
+                    class="btn btn-secondary btn-lg  pull-right btn-download btn-block"
+                    data-toggle="modal"
+                    (click)="brochDialog()"
+                    [disabled]="downloadList.length==0">
+              <i class="fa fa-download"></i>
+            </button>
+          </div>
+          <div class="brochure-content">
+            <div id="js-grid-juicy-projects">
+
+              <div *ngFor="let brochure of brochureList">
+                <div *ngFor="let cycle of brochure.cycles" class="graphic brochure-item col-md-3">
+                  <div class="checkbox-custom">
+                    <md-checkbox (click)="onCheckbox(brochure._id, cycle._id)" class="download" [checked]="downloadList.indexOf(brochure._id)>0 && downloadList.indexOf(cycle._id)>0"></md-checkbox>
+                    <label for="download">&nbsp;</label>
+                  </div>
+                  <div class="cbp-caption">
+                    <div class="cbp-caption-defaultWrap">
+                      <div class="image-wrap">
+                        <span class="vertical-helper"></span>
+                        <img src="http://13.229.81.1/cideapi/{{cycle.logo1}}" alt="" />
+                      </div>
+                    </div>
+                    <div class="cbp-caption-activeWrap">
+                      <div class="cbp-l-caption-alignCenter">
+                        <div class="cbp-l-caption-body">
+                          <a class="btn-appointment btn red uppercase btn red uppercase"
+                             (click)="onDownloadBrochure(brochure._id, cycle._id)"
+                             rel="nofollow">
+                            <i class="fa fa-download"></i>
+                            Télécharger
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+                    {{brochure.shortName}}
+                  </div>
+                  <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+                    Nom du Cycle : {{cycle.cycle.nom}}
+                  </div>
+                </div><!-- end second for -->
+
+              </div><!-- end first for -->
+
+            </div>
+
+          </div><!-- .row -->
+        </div>
+
+      </section><!-- .col-* -->
+    </div><!-- .row -->
+    <ng-template #noDoc>
+      <div class="row">
+        <h1 style="text-align : center">Il n'y a aucune documentation</h1>
+      </div>
+    </ng-template>
+  </div><!-- .container-fluid -->
+</div><!-- .tab-pane -->

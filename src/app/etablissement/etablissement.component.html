@@ -1,0 +1,142 @@
+﻿<main class="main" role="main"> <div class="container-fluid school-detail">
+
+<div class="school-detail-page">
+
+        <div class="gray-bg dashbard-1">
+
+            <div class="row wrapper border-bottom white-bg">
+
+                <div style="cursor : pointer ; margin-bottom:15px"
+                    (click)="navigateBack()">
+                    <button type="button" class="btn button-return">
+                        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                        Retourner à la liste
+                    </button>
+                </div>
+
+                <div class="col-lg-1  col-xs-4" *ngIf="canDisplay">
+                    <img src="http://13.229.81.1/cideapi/{{schoolData.cycles[0].logo1}}" 
+                        class="img-responsive">
+                </div>
+                <div class="col-lg-5 col-xs-8">
+                    <!--<h2 class="school-short-name">{{schoolShortName}}</h2>-->
+                    <h3 class="school-long-name"
+                        style="margin-top:30px">{{schoolLongName}}</h3>
+                </div>
+                <!--<div class="col-lg-6  hidden-xs">
+                    <h2></h2>
+                    <img src="assets/images/etablissement/icons cesacom.png" height="50" class="img-responsive hidden-xs" />
+                    <p>icones a definir - chaque icone represente un aspect important de l'ecole</p>
+                </div>-->
+
+            </div>
+
+            <div class="wrapper wrapper-content animated fadeInRight">
+
+                <div class="row  hidden-xs">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="dark">Informations pratiques</h1>
+                        <!--<p>in developping payment application for the banks below</p>-->
+                    </div>
+                </div>
+
+                <div class="row">
+					<div class="col-md-12 slickjs" *ngIf="schoolData.pictures.length!=0">
+						<div *ngFor="let photo of schoolData.pictures">
+                            <img src="http://13.229.81.1/cideapi{{photo}}" alt="">
+                        </div>
+					</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox product-detail">
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+<!-- 
+                                        <div class="text-left  hidden-xs">
+                                            <div class="btn-group">
+                                                <button class="btn btn-success btn-outline btn-sm"><i class="fa fa-heart"></i> Ajoutez Aux Voeux </button>
+                                                <button class="btn btn-primary btn-outline btn-sm"><i class="fa fa-send"></i> Candidatez </button>
+                                                <button class="btn btn-warning btn-outline btn-sm"><i class="fa fa-cloud-download"></i> Telechargez la documentation </button>
+                                                <button class="btn btn-success btn-outline btn-sm"><i class="fa fa-envelope"></i> Envoyez un message </button>
+                                                <button class="btn btn-success btn-outline btn-sm"><i class="fa fa-comments-o"></i> Posez une question </button>
+                                            </div>
+                                        </div> -->
+                                      <div class="text-left  hidden-lg">
+                                        <div class="btn-group">
+                                          <button class="btn btn-success"
+                                                  (click)="addToWish()">Ajoutez Aux Voeux
+                                          </button>
+                                          <button class="btn btn-primary"
+                                                  (click)="applyTo()">Selectionner
+                                          </button>
+                                          <button class="btn btn-success"
+                                                  (click)="sendMessage()">Envoyez un message
+                                          </button>
+                                        </div>
+                                      </div>
+										<div class="text-left  hidden-xs">
+                                            <div class="btn-group">
+                                                <button class="btn btn-success btn-outline btn-sm "
+                                                    (click)="addToWish()">
+                                                    <i class="fa fa-heart"></i> Ajoutez Aux Voeux 
+                                                </button>
+                                                <button class="btn btn-primary btn-outline btn-sm"
+                                                    (click)="applyTo()">
+                                                    <i class="fa fa-send"></i> Demander un dossier d'inscription 
+                                                </button>
+                                                <button class="btn btn-warning btn-outline btn-sm"
+                                                    (click)="downloadBrochure()">
+                                                    <i class="fa fa-cloud-download"></i> Télécharger la documentation 
+                                                </button>
+                                                <button class="btn btn-success btn-outline btn-sm"
+                                                (click)="sendMessage()">
+                                                    <i class="fa fa-envelope"></i> Envoyez un message 
+                                                </button>
+                                                <!--
+                                                <button class="btn btn-success btn-outline btn-sm">
+                                                    <i class="fa fa-comments-o"></i> Posez une question 
+                                                </button>-->
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="tabs-container customclass">
+
+                                            <ul class="nav nav-tabs responsive">
+                                                <li class="active"><a data-toggle="tab" href="#tab-1">L'essentiel</a></li>
+                                                <li class=""><a data-toggle="tab" href="#tab-2" (click)="loadTabs()">Cycle d'études</a></li>
+                                                <li class=""><a data-toggle="tab" href="#tab-3">Evènements</a></li>
+                                                <li class=""><a data-toggle="tab" href="#tab-4" (click)="loadMap()">Informations Pratiques</a></li>
+                                            </ul>
+
+                                            <div class="tab-content">
+
+                                                <div id="tab-1" class="tab-pane active">
+                                                    <app-etablissement-essentiel [schoolData]="schoolData"></app-etablissement-essentiel>
+                                                </div><!-- /tab 1 -->
+                                                <div id="tab-2" class="tab-pane">
+                                                    <app-etablissement-formation [schoolDataRef]="schoolData"></app-etablissement-formation>
+                                                </div><!-- /tab 2 -->
+                                                <div id="tab-3" class="tab-pane">
+                                                    <app-etablissement-evenement [schoolData]="schoolData"></app-etablissement-evenement>
+                                                </div><!-- /tab 3 -->
+                                                <div id="tab-4" class="tab-pane">
+                                                    <app-etablissement-info [schoolData]="schoolData"></app-etablissement-info>
+                                                </div><!-- /.tab 7 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</div></main>

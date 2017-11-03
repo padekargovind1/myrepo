@@ -1,0 +1,37 @@
+        <div [class]="tripData.class">
+            <div *ngFor="let image of tripData.images">
+                <img src="assets/images/linguistic/{{image}}" alt="School 1" />
+            </div>
+        </div>
+      
+      <div class="content-detail">
+          <h3>Nom du séjour</h3>
+
+          <p><label>Langue : </label> {{tripData.language.name}}</p>
+
+          <p><label>Age</label> de {{tripData.minAge}} à {{tripData.maxAge}}</p>
+          <p><label>Date de debut :</label> {{tripData.startDate | shorten:10}}<br />
+              <label>Date de fin :</label> {{tripData.endDate | shorten:10}}
+          </p>
+
+          <p><label>Prix:</label> {{tripData.price}}</p>
+
+          <p><label>Devise:</label> {{tripData.currency}}</p>
+          
+          <p>
+            <span class="label-holder">Hébergement</span><br />
+            <input type="checkbox" name="" class="checkbox filled-in" id="school-1" [checked]="tripData.place.apartment" disabled />
+            <label for="school-1">Appartement</label><br />
+            <input type="checkbox" name="" class="checkbox filled-in" id="school-2" [checked]="tripData.place.common" disabled/>
+            <label for="school-2">Collectif</label><br />
+            <input type="checkbox" name="" class="checkbox filled-in" id="school-3" [checked]="tripData.place.family" disabled/>
+            <label for="school-3">Famille</label><br />
+            <input type="checkbox" name="" class="checkbox filled-in" id="school-4" [checked]="tripData.place.residence" disabled/>
+            <label for="school-4">Résidence</label><br />
+          </p>
+
+          <p><label>Type de séjour : </label> {{tripData.linguistic.name}}</p>
+
+
+          
+      </div>

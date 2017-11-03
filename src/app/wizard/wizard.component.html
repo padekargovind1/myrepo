@@ -1,0 +1,157 @@
+﻿      <div class="main white-background" role="main" >
+        <div class="container-fluid  appointment-wizard">
+            <div class="row">
+                <section class="col-md-12">
+                    <!--<h3 class="appointment-title">Rendez-vous Parents</h3>-->
+                    <h3>&nbsp;</h3>
+                </section>
+                <section class="col-md-12 appointment-text">
+
+                    <section class="col-md-3 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
+
+                        <img src="http://13.229.81.1/cideapi{{appointmentData[6]}}" alt="" class="img-circle img-responsive advisor-img" />
+                    </section>
+
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="text-with-icon">
+                            <i class="fa fa-calendar fa-3x"></i>
+                            <h3 class="title-wizard appointment-date">Vous avez rendez-vous</h3>
+                            <p class="appointment-date title-wizard">avec {{appointmentData[4]}} {{ appointmentData[3] }}</p>
+
+                            <time class="appointment-date title-wizard">Le {{ appointmentData[0] | date:'dd/MM/yyyy' }} de {{ appointmentData[1] }} à {{ appointmentData[2] }}</time>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="text-with-icon">
+                          <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                          <h3 class="second-title title-wizard appointment-date">Pour un entretien</h3>
+                          <p class="title-wizard appointment-date">{{appointmentData[7]}}<br />
+                              {{appointmentData[8]}}</p>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div><!-- .row -->
+
+            <div class="row" *ngIf="canDisplayWizard">
+
+                <div id="rootwizard"><form id="wizard">
+
+                    <div class="container-fluid">
+
+                    <!-- <div class="navbar"> -->
+
+                      <!-- <div class="navbar-inner"> -->
+
+                        <!-- <div class="container-fluid"> -->
+
+                            <!-- <ul class="nav nav-tabs responsive">
+                                <li><a href="#tab1" data-toggle="tab" title="Parents"><span class="helper"></span><span>Parents</span></a></li>
+                                <li><a href="#tab2" data-toggle="tab" title="Enfant"><span class="helper"></span><span>Enfant</span></a></li>
+                                <li><a href="#tab3" data-toggle="tab" title="Etablissement actuel"><span class="helper"></span><span>Etablissement actuel</span></a></li>
+                                <li><a href="#tab4" data-toggle="tab" title="Aide Scolaire"><span class="helper"></span><span>Aide Scolaire</span></a></li>
+                                <li><a href="#tab5" data-toggle="tab" title="Vos matières préférées"><span class="helper"></span><span>Vos matières préférées</span></a></li>
+                                <li><a href="#tab6" data-toggle="tab" title="Vos centres D’interets"><span class="helper"></span><span>Vos centres d’intérêts</span></a></li>
+                                <li><a href="#tab7" data-toggle="tab" title="Classes Precedentes"><span class="helper"></span><span>Classes précédentes</span></a></li>
+                                <li><a href="#tab8" data-toggle="tab" title="Vos Professions favorites"><span class="helper"></span><span>Vos professions favorites</span></a></li>
+                                <li><a href="#tab9" data-toggle="tab" title="Diagnostic"><span class="helper"></span><span>Diagnostic</span></a></li>
+                            </ul> -->
+
+                        <!--</div><!-- .container -->
+
+                      <!--</div><!-- .navar-inner -->
+
+                    <!--</div><!-- .navbar -->
+                      <!-- <form > -->
+
+                      <md-tab-group md-dynamic-height
+                        [(selectedIndex)]="activeTabIndex"  class="wizard-tabs"
+                        #tabGroup>
+                        <!-- <div class="tab-content"> -->
+                          <md-tab label="Parents" [disabled]="nbTab<=0">
+                            <div class="tab-pane" id="tab1">
+                                <div class="container-fluid">
+                                  <app-parent-tab (tabChange)="nextTab($event)" [userData]="userData"></app-parent-tab>
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab1 -->
+                        </md-tab>
+
+                        <md-tab label="Elève" [disabled]="nbTab<=1">
+                            <div class="tab-pane" id="tab2">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                      <app-child-tab (tabChange)="nextTab($event)" [userData]="userData"></app-child-tab>
+                                    </div>
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab2 -->
+                        </md-tab>
+
+                        <md-tab label="Etablissement Actuel" [disabled]="nbTab<=2">
+                            <div class="tab-pane" id="tab3">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                      <app-current-school-tab (tabChange)="nextTab($event)" [userData]="userData"></app-current-school-tab>
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab3 -->
+                        </md-tab>
+
+                        <md-tab label="Aide Scolaire" [disabled]="nbTab<=3">
+                            <div class="tab-pane" id="tab4">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                      <app-school-help-tab (tabChange)="nextTab($event)" [userData]="userData"></app-school-help-tab>
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab4 -->
+                        </md-tab>
+
+                        <md-tab label="Vos matières préférées" [disabled]="nbTab<=4">
+                            <div class="tab-pane" id="tab5">
+                                <div class="container-fluid">
+                                  <app-subjects-tab (tabChange)="nextTab($event)" [userData]="userData"></app-subjects-tab>
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab5 -->
+                        </md-tab>
+
+                        <md-tab label="Ses centres d'intérêts" [disabled]="nbTab<=5">
+                            <div class="tab-pane" id="tab6">
+                                <div class="container-fluid">
+                                  <app-hobbies-tab (tabChange)="nextTab($event)" [userData]="userData"></app-hobbies-tab>
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab6 -->
+                        </md-tab>
+
+                        <md-tab label="Etablissements fréquentés" [disabled]="nbTab<=6">
+                            <div class="tab-pane" id="tab7">
+                                <div class="container-fluid">
+                                  <app-establishment-tab (tabChange)="nextTab($event)" [userData]="userData"></app-establishment-tab>
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab7 -->
+                        </md-tab>
+
+                        <md-tab label="Professions souhaitées" [disabled]="nbTab<=7">
+                            <div class="tab-pane" id="tab8">
+                                <div class="container-fluid">
+                                  <app-jobs-tab (tabChange)="nextTab($event)"></app-jobs-tab>
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab8 -->
+                        </md-tab>
+
+                        <md-tab label="Diagnostic" [disabled]="nbTab<=8">
+                            <div class="tab-pane" id="tab9" >
+                                <div class="container-fluid">
+                                    <div class="row">
+                                      <app-diagnostic-tab (tabChange)="nextTab($event)" [userData]="userData"></app-diagnostic-tab>
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab9 -->
+                        </md-tab>
+
+                    </md-tab-group>
+                    </div><!-- .container-fluid -->
+                </form></div><!-- #rootwizard -->
+            </div><!-- .row -->
+        </div>
+      </div>

@@ -1,0 +1,116 @@
+
+ <div class="white-background">
+
+  <section class="login-page fadeInDown-animation">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+          <h2 class="brochure-title">Pour bénéficier de ce service, vous devez vous inscrire ou vous connecter si vous êtes déjà inscrit, merci</h2>
+          <div class="login-form">
+            <form [formGroup]="loginForm"  (ngSubmit)="logIn()" 
+              id="login-form">
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <button type="button" class="btn button-return" (click)="onNavigateBack()"
+                    style="margin-left:0px; background-color : #00BC50">
+                    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                    Retourner aux résultats
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="input">
+                    <input type="text" id="login_username" 
+                      class="username-input" placeholder="Adresse mail"
+                      [formControl]="loginForm.controls['email']">
+                    <small 
+                      *ngIf="loginForm.controls['email'].hasError('required') && 
+                      loginForm.controls['email'].touched" 
+                      class="mat-text-warn"> 
+                      Email Obligatoire
+                    </small>
+                    <small *ngIf="loginForm.controls['email'].errors?.email && 
+                      loginForm.controls['email'].touched" 
+                      class="mat-text-warn"> 
+                      Email Invalide
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="input">
+                    <input type="password" id="login_password" 
+                      class="password-input" placeholder="Mot de passe"
+                      [formControl]="loginForm.controls['password']">
+                    <small *ngIf="loginForm.controls['password'].hasError('required') && 
+                      loginForm.controls['password'].touched" 
+                      class="mat-text-warn"> 
+                      Mot de Passe Obligatoire
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="input clearfix">
+                    <input type="submit" id="login_submit" class=" ln-tr btn-appointment" 
+                      value="Se connecter" [disabled]="!loginForm.valid">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 clearfix">
+                  <div class="custom-checkbox fl">
+                    <input type="checkbox" id="login_remember" 
+                      class="checkbox-input" checked>
+                    <label for="login_remember">Se souvenir du mot de passe</label>
+                  </div>
+                </div><!-- end remember -->
+                <div class="col-md-6 col-sm-6 clearfix">
+                  <div class="forgot pull-right">
+                    <a (click)="onNewAccount()" class="new-user">
+                      Créer un nouveau compte
+                    </a> / 
+                    <a (click)="onForgotPassword()" class="reset">
+                      Mot de passe oublié ?
+                    </a>
+                  </div>
+                </div><!-- end forgot password -->
+              </div><!-- end row -->
+            </form><!-- End form -->
+          </div><!-- end login form -->
+
+          <h3 class="text-center">Je peux aussi me connecter avec :</h3>
+
+          <div class="login-options">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <a href="#" class="login-op-btn grad-btn ln-tr fb"><i class="fa fa-facebook"></i> Facebook</a>
+              </div><!-- end FB login -->
+              <div class="col-md-3 col-sm-6">
+                <a href="#" class="login-op-btn grad-btn ln-tr in"><i class="fa fa-instagram"></i> Instagram</a>
+              </div><!-- end GP login -->
+              <div class="col-md-3 col-sm-6">
+                <a href="#" class="login-op-btn grad-btn ln-tr tw"><i class="fa fa-twitter"></i> Twitter</a>
+              </div><!-- end TW login -->
+              <div class="col-md-3 col-sm-6">
+                <a href="#" class="login-op-btn grad-btn ln-tr gp"><i class="fa fa-google-plus"> Google +</i></a>
+              </div><!-- end YA login -->
+              <div class="col-md-3 col-sm-6">
+                <a href="#" class="login-op-btn grad-btn ln-tr li"><i class="fa fa-linkedin"></i> LinkedIn</a>
+              </div><!-- end YA login -->
+              <div class="col-md-3 col-sm-6">
+                <a href="#" class="login-op-btn grad-btn ln-tr vim"><i class="fa fa-vimeo"></i> Vimeo</a>
+              </div><!-- end YA login -->
+              <div class="col-md-3 col-sm-6">
+                <a href="#" class="login-op-btn grad-btn ln-tr yo"><i class="fa fa-youtube"></i> Youtube</a>
+              </div><!-- end YA login -->
+              <div class="col-md-3 col-sm-6">
+                <a href="#" class="login-op-btn grad-btn ln-tr via"><i class="fa fa-viadeo"></i> Viadeo</a>
+              </div><!-- end YA login -->
+
+            </div>
+          </div><!-- end login optionss -->
+
+        </div><!-- end col-md-8/offset -->
+      </div><!-- end row -->
+    </div><!-- end container -->
+  </section><!-- End Login Page -->
+</div><!-- .white-background -->

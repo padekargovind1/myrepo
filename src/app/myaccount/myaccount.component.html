@@ -1,0 +1,34 @@
+﻿<main class="main white-background" role="main">
+  <h2 class="title-page">Mon Compte</h2>
+  <div class="container-fluid  my-account">
+    <md-tab-group #tabGroup>
+      <md-tab label="Parents">
+        <app-myaccount-parents (goToChild)="goToChild($event)" [userData]="userData"></app-myaccount-parents>
+      </md-tab>
+      <md-tab label="Elève">
+        <app-myaccount-children [userData]="userData"></app-myaccount-children>
+      </md-tab>
+      <md-tab label="Mes Rendez-vous">
+        <app-myaccount-bookingappointment></app-myaccount-bookingappointment>
+      </md-tab>
+      <md-tab label="Recherches">
+        <app-myaccount-mysearch></app-myaccount-mysearch>
+      </md-tab>      
+	  <md-tab label="Mes Favoris">
+        <app-myaccount-myfavourites></app-myaccount-myfavourites>
+      </md-tab> 
+	  <md-tab label="Mes demandes d’inscription">
+		<app-myaccount-applications></app-myaccount-applications>
+	  </md-tab>  
+	  <md-tab label="Mes Documentations">
+		<app-myaccount-documentations></app-myaccount-documentations>
+	  </md-tab>  	
+	  <md-tab label="Mon Dossier">
+		<app-myaccount-myfiles [userData]="userData"></app-myaccount-myfiles>
+	  </md-tab> 
+	  <md-tab label="Mes Messages">
+		<app-myaccount-mymessages></app-myaccount-mymessages>
+	  </md-tab> 	  
+    </md-tab-group>
+  </div>
+</main>

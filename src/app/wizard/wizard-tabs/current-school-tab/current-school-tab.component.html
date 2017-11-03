@@ -1,0 +1,211 @@
+﻿<form [formGroup]="wizardForm">
+  <div class="col-md-4">
+
+    <h3>Etablissement Actuel</h3>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          Nom de l'établissement*
+          <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
+                 [formControl]="wizardForm.controls['schoolName']" maxlength="50">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group  col-sm-12  col-xs-6">
+        <div class="row">
+          <div class="col-sm-12">
+            Ville de l'établissement*
+            <input type="text" class="form-control" placeholder="Ville"
+                   [formControl]="wizardForm.controls['schoolCity']" maxlength="35">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group  col-sm-12  col-xs-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="select-custom">
+              Classe actuelle*
+              <input type="text" class="form-control" placeholder="Classe actuelle"
+                     [formControl]="wizardForm.controls['schoolClasse']" maxlength="35">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          Options
+          <input type="text" class="form-control" placeholder="Options"
+                 [formControl]="wizardForm.controls['schoolOption']"
+                 maxlength="50">
+        </div>
+      </div>
+    </div>
+
+    <h4>Langues Vivantes</h4>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="select-custom">
+            Lv1
+            <select name="" class="form-control"
+                    [formControl]="wizardForm.controls['schoolLv1']">
+              <option value="" disabled selected hidden>Lv1</option>
+              <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="select-custom">
+            Lv2
+            <select name="" class="form-control"
+                    [formControl]="wizardForm.controls['schoolLv2']">
+              <option value="" disabled selected hidden>Lv2</option>
+              <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="select-custom">
+            Lv3
+            <select name="" class="form-control"
+                    [formControl]="wizardForm.controls['schoolLv3']">
+              <option value="" disabled selected hidden>Lv3</option>
+              <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group clearfix">
+          <button class="btn  btn-appointment wizard-button-align"
+                  (click)="nextTab(1)" style="float:left; margin-left:0px" *ngIf="!onMyAccountPage">
+            Précédent
+          </button>
+          <button class="btn  btn-appointment wizard-button-align"
+                  (click)="nextTab(3)" style="float:right"
+                  *ngIf="!onApplyPage; else onApply" >
+            Suivant
+          </button>
+          <ng-template #onApply>
+            <button class="btn  btn-appointment wizard-button-align" (click)="onApplySubmit()"
+                    style="float:right">
+              Je postule
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button Upload -->
+
+  </div>
+  <div class="col-md-8" *ngIf="onApplyPage">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="50" fxFlex="100">
+      <div *ngIf="onApplyPage">
+        <label>Déposer ici ses trois derniers bulletins scolaires</label>
+        <input class="inputTypeFileCk" type="file" ng2FileSelect [uploader]="uploader"/>
+      </div>
+      <h5 class="mt-0" fxLayout="row">
+        <span fxFlex>File d'attente des téléchargements</span>
+        <span>Nombre de fichier en attente: {{ uploader?.queue?.length }}</span>
+      </h5>
+
+      <ngx-datatable class="material ml-0 mr-0"
+                     [rows]="uploader.queue" [columnMode]="'flex'"
+                     [headerHeight]="50" [footerHeight]="0"
+                     [rowHeight]="'auto'">
+        <ngx-datatable-column name="Nom" [flexGrow]="2">
+          <ng-template let-row="row" ngx-datatable-cell-template mdTooltip="{{ row?.file?.name }}">
+            {{ row?.file?.name | school:'10' }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Taille" *ngIf="uploader.options.isHTML5" [flexGrow]="2">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row?.file?.size/1024/1024 | number:'.2' }} MB
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Progression" *ngIf="uploader.options.isHTML5" [flexGrow]="3">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <md-progress-bar mode="determinate" value="{{row.progress}}"></md-progress-bar>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Statut" [flexGrow]="2">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span *ngIf="row.isSuccess"><img src="assets/images/check.png" alt=""></span>
+            <span *ngIf="row.isCancel"><img src="assets/images/cide-remove.png" alt=""></span>
+            <span *ngIf="row.isError"><md-icon>error</md-icon></span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Action" [flexGrow]="7">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <button md-raised-button md-button-sm color="primary" type="button"
+                    (click)="row.upload()" [disabled]="row.isReady || row.isUploading || row.isSuccess">
+              Ajouter
+            </button>
+            <button md-raised-button md-button-sm color="warn" type="button"
+                    (click)="row.cancel()" [disabled]="!row.isUploading">
+              Annuler
+            </button>
+            <button md-raised-button md-button-sm color="accent" type="button"
+                    (click)="row.remove()">
+              Supprimer
+            </button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+
+      <div class="mb-1">
+        <p>Progression de la file d'attente</p>
+        <md-progress-bar mode="determinate" value="{{uploader.progress}}"></md-progress-bar>
+      </div>
+      <button md-raised-button md-button-sm color="primary" type="button"
+              (click)="uploader.uploadAll()"
+              [disabled]="!uploader.getNotUploadedItems().length">
+        Tout Ajouter
+      </button>
+      <button md-raised-button md-button-sm color="warn" type="button"
+              (click)="uploader.cancelAll()"
+              [disabled]="!uploader.isUploading">
+        Tout annuler
+      </button>
+      <button md-raised-button md-button-sm color="accent" type="button"
+              (click)="uploader.clearQueue()"
+              [disabled]="!uploader.queue.length">
+        Tout supprimer
+      </button>
+    </div>
+
+
+  </div>
+  <!--div class="col-md-12">
+    <div class="form-group clearfix">
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(1)" style="float:left; margin-left:0px">
+        Précédent
+      </button>
+      <button class="btn  btn-appointment wizard-button-align"
+              (click)="nextTab(3)" style="float:right">
+        Suivant
+      </button>
+    </div>
+  </div-->
+</form>

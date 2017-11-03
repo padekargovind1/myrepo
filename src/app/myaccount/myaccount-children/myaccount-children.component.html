@@ -1,0 +1,103 @@
+<div class="tab-pane" id="enfant" *ngIf="canDisplay">
+  <div class="container-fluid">
+    <div class="row">
+      <section class="col-md-12">
+        <h3>Elève</h3>
+      </section>
+      <form [formGroup]="childrenForm" class="enfantCls">
+        <section class="col-md-4">
+          <div class="row">
+            <div class="col-sm-6  col-xs-6">
+              <div class="form-group">
+                Nom de famille*
+                <input type="text" class="form-control" placeholder="Nom"
+                  [formControl]="childrenForm.controls['nom']" maxlength="25">
+                <small *ngIf="childrenForm.controls['nom'].hasError('required') &&
+                  childrenForm.controls['nom'].touched"
+                  class="mat-text-warn">
+                  Nom Obligatoire
+                </small>
+              </div>
+            </div>
+            <div class="col-sm-6  col-xs-6">
+              <div class="form-group">
+                Prénom*
+                <input type="text" class="form-control" placeholder="Prénom"
+                  [formControl]="childrenForm.controls['prenom']" maxlength="25">
+                <small *ngIf="childrenForm.controls['nom'].hasError('required') &&
+                  childrenForm.controls['nom'].touched"
+                  class="mat-text-warn">
+                  Prénom Obligatoire
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3  col-xs-6">
+              <div class="form-group">
+                Age*
+                <input id="txtAge" type="number" class="form-control" max="50" min="1" placeholder="Age"
+                  [formControl]="childrenForm.controls['age']"
+                  pattern="[0-9]+" maxlength="2">
+                <small *ngIf="childrenForm.controls['nom'].hasError('pattern') &&
+                  childrenForm.controls['nom'].touched"
+                  class="mat-text-warn">
+                  Seulement des chiffres
+                </small>
+              </div>
+            </div>
+            <div class="col-sm-3  genderRadio">&nbsp;</div>
+            <div class="col-sm-6  col-xs-6">
+              <p>Sexe*</p>
+              <md-radio-group [formControl]="childrenForm.controls['gender']"
+                style="border-color:white">
+                <md-radio-button value="garçon">Garçon</md-radio-button>
+                <md-radio-button value="fille">Fille</md-radio-button>
+              </md-radio-group>
+              <small *ngIf="childrenForm.controls['gender'].hasError('required') &&
+                childrenForm.controls['gender'].touched"
+                class="mat-text-warn">
+                Gender Obligatoire
+              </small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <div class="datepicker-holder">
+                  Date de naissance*
+                  <!--input type="date" class="form-control" [mdDatepicker]="myDatepicker" [max]="maxDate"-->
+                  <input type="text" class="form-control" 
+                  placeholder="Date de naissance"
+                  [formControl]="childrenForm.controls['datenaissance']">
+                  <md-datepicker #myDatepicker></md-datepicker>
+                  <small *ngIf="childrenForm.controls['datenaissance'].hasError('date') &&
+                    childrenForm.controls['datenaissance'].touched"
+                    class="mat-text-warn">
+                    Date de Naissance invalide
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                Lieu de naissance
+                <input type="text" class="form-control" placeholder="Lieu"
+                  [formControl]="childrenForm.controls['lieu']" maxlength="50">
+              </div>
+            </div>
+          </div>
+
+        </section><!-- .col-* -->
+        <section class="col-md-12">
+          <div class="form-group">
+            <button class="btn  btn-appointment terminer" type="submit"
+              [disabled]="!childrenForm.valid" style="margin-left:0px; float : right"
+              (click)="onSubmit()">
+              Terminer</button>
+          </div>
+        </section>
+      </form>
+    </div><!-- .row -->
+  </div><!-- .container-fluid -->
+</div><!-- .tab-pane -->

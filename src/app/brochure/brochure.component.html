@@ -1,0 +1,275 @@
+<div class="white-background">
+
+    <div class="container  documentation">
+
+        <div class="row">
+            <section class="col-md-12">
+                <h2 class="brochure-title">Je télécharge une ou plusieurs documentations établissement</h2>
+            </section>
+            <section class="col-md-12">
+
+                <form class="form-inline searchform">
+                    <div class="form-wrap row">
+
+                        <section class="col-md-11">
+
+                            <div class="row">
+
+                                <div class="col-md-11">
+                                    <div class="row">
+                                        <form [formGroup]="searchForm">
+                                            <div class="col-md-4  col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="select-custom" for="class">
+                                                        <select name="class" class="form-control" id="class"
+                                                            [formControl]="searchForm.controls['classe']">
+                                                            <option value="" disabled selected hidden>Classe</option>
+                                                            <option value="">&nbsp;Indifférent</option>
+                                                          <option value="ps" style="color:red">
+                                                            &nbsp;Classes maternelles
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().infant; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().infant[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="cp" style="color:red">
+                                                            &nbsp;Classes élémentaires
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().primary; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().primary[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().college; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().college[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="seconde_techno" style="color:red">
+                                                            &nbsp;Classes de seconde
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().seconde; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().seconde[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="premiere_es" style="color:red">
+                                                            &nbsp;Classes de première
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().premiere; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().premiere[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="terminale_s" style="color:red">
+                                                            &nbsp;Classes de terminale
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().terminal; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().terminal[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="Cursus international" style="color:red">
+                                                            &nbsp;Cursus international
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().international; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().international[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="seconde_sthr" style="color:red">
+                                                            &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="premiere_sti2s" style="color:red">
+                                                            &nbsp;ST2S - Sciences et Technologies de la santé et du social
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().st2s; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().st2s[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="premiere_std2a" style="color:red">
+                                                            &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().std2a; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().std2a[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="premiere_sti2d" style="color:red">
+                                                            &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().sti2d; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().sti2d[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="premiere_stmg" style="color:red">
+                                                            &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().stmg; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().stmg[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="premiere_stl" style="color:red">
+                                                            &nbsp;STL - Sciences et Technologies de Laboratoire
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().stl; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().stl[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="premiere_stav" style="color:red">
+                                                            &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().stav; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().stav[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                          <option value="2ndeTMD" style="color:red">
+                                                            &nbsp;TMD - Techniques de la Musique et de la Danse
+                                                          </option>
+                                                          <option *ngFor="let name of helperService.getClassEcoleList().tmd; let i=index"
+                                                                  [value]="helperService.getclassEcoleListToSendToApi().tmd[i]">
+                                                            &nbsp;{{name}}
+                                                          </option>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4  col-xs-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Lieu"
+                                                        [formControl]="searchForm.controls['lieu']"
+                                                        [mdAutocomplete]="auto"
+                                                        (keyup)="filterLieu($event)"/>
+                                                  <md-autocomplete #auto="mdAutocomplete">
+                                                    <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                                    <!-- <md-option [value]="options.regions"
+                                                    *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                                    <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                                               (click)="onSelectLieu('R', i)">
+                                                      &nbsp;&nbsp;{{ option.region }}
+                                                    </md-option>
+                                                    <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                                    <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                                               (click)="onSelectLieu('D', i)">
+                                                      &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                                                    </md-option>
+                                                    <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                                    <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                                               (click)="onSelectLieu('V', i)">
+                                                      &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                                                    </md-option>
+                                                  </md-autocomplete>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4  col-xs-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Nom d'etablissement"
+                                                        [formControl]="searchForm.controls['etablissement']"
+                                                        [mdAutocomplete]="autoSchool"
+                                                        (keyup)="filterSchool($event)"/>
+
+                                                    <md-autocomplete #autoSchool="mdAutocomplete">
+                                                    <md-option *ngFor="let school of schoolsOptions"
+                                                            [value]="school.longName">
+                                                            {{ school.longName }}
+                                                        </md-option>
+                                                    </md-autocomplete>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div><!-- .row -->
+                                </div><!-- .col-* -->
+
+                                <div class="col-md-1">
+                                    <button class="btn btn-search" (click)="onSubmitSearch()"
+                                        [disabled]="searchForm.controls['etablissement'].value.length==0 &&
+                                        (searchForm.controls['lieu'].value.length==0 ||
+                                        searchForm.controls['classe'].value.length==0)">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div><!-- -->
+
+                            </div><!-- .row -->
+
+                        </section><!-- .col-* -->
+
+                        <section class="col-md-1">
+                            <button type="button"
+                                class="btn btn-secondary btn-lg  pull-right btn-download btn-block"
+                                data-toggle="modal"
+                                (click)="brochDialog()"
+                                [disabled]="downloadList.length==0">
+                                <i class="fa fa-download"></i>
+                            </button>
+                        </section><!-- .col-* -->
+
+						<div class="newSearchDiv" *ngIf="searchBrochure.class!='' || searchBrochure.place!='' || searchBrochure.name!=''" (click)="onClearSearch()"><a class="newSearch">Nouvelle recherche</a></div>
+                    </div><!-- .form-wrap -->
+                </form><!-- .col-* -->
+
+            </section>
+
+        </div><!-- .row -->
+
+        <div class="row brochure-content">
+            <div id="js-grid-juicy-projects" class="row">
+
+                <div *ngFor="let brochure of listBrochuresFiltered" >
+                    <div *ngFor="let cycle of brochure.cycles" class="graphic brochure-item col-md-3">
+                        <div class="checkbox-custom">
+                            <md-checkbox (click)="onCheckbox(brochure._id, cycle._id)" class="download"></md-checkbox>
+                            <label for="download">&nbsp;</label>
+                        </div>
+                        <div class="cbp-caption">
+                            <div class="cbp-caption-defaultWrap">
+                                <div class="image-wrap">
+                                    <span class="vertical-helper"></span>
+                                    <img src="http://13.229.81.1/cideapi/{{cycle.logo1}}" alt="" />
+                                </div>
+                            </div>
+                            <!--<div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <a href="../../assets/brochure/1.pdf" download="1.pdf" target="_self"
+                                            class="btn-appointment btn red uppercase btn red uppercase"
+                                            rel="nofollow"> <i class="fa fa-download"></i>
+                                        Télécharger
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="cbp-caption-activeWrap">
+								<div class="cbp-l-caption-alignCenter">
+									<div class="cbp-l-caption-body">
+                                        <a class="btn-appointment btn red uppercase btn red uppercase"
+                                            (click)="onDownloadBrochure(brochure._id, cycle._id)"
+                                            rel="nofollow"> <i class="fa fa-download"></i>
+                                            Télécharger
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+						<div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+							{{brochure.shortName}}
+						</div>
+						<div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">
+							Nom du Cycle : {{cycle.cycle.nom}}
+						</div>
+                    </div><!-- end second for -->
+
+                </div><!-- end first for -->
+
+            </div>
+
+        </div><!-- .row -->
+        <div *ngIf="listBrochuresFiltered.length==0" class="row">
+            <p style="width:100%;
+                text-align:center; font-size : 35px">Il n'y a pas de documentation pour cette recherche.</p>
+        </div>
+
+    </div><!-- .container-fluid -->
+
+</div>
+

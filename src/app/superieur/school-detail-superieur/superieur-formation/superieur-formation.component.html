@@ -1,0 +1,229 @@
+<md-tab-group *ngIf="schoolDataToDisplay!=[]">
+    <md-tab [label]="cycle.title"
+        *ngFor="let cycle of schoolDataToDisplay; let i=index">
+            <div class="panel-body-course">
+                
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <h4>Finalité</h4>
+                    <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  identity  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Intitulé de la formation</strong><br />
+                                    {{cycle.title}}
+                                </td>
+                                <td>
+                                    <strong>Spécialité</strong><br />
+                                    {{cycle.speciality==null ? 'néant' : cycle.speciality}}
+                                </td>
+                                <td>
+                                    <strong>Type de Formation</strong><br />
+                                    {{cycle.courseType}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Durée des Etudes</strong><br />
+                                    {{cycle.durationInYear}}
+                                </td>
+                                <td>
+                                    <strong>Niveau Fin d'Etudes</strong><br />
+                                    {{cycle.educationLevel}}
+                                </td>
+                                <td>
+                                    <strong>Certifications</strong><br />
+                                    <span *ngFor="let certification of cycle.certifications">
+                                      {{certification}}
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>% Réussite</strong><br />
+                                    {{cycle.successPercentage}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h4>Contenu</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Sujets Majeurs</strong><br />
+                                    <span *ngFor="let sujet of cycle.trainingContent.news">
+                                      {{sujet}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <strong>Cours Spécifiques à l'Ecole</strong><br />
+                                    <span *ngFor="let course of cycle.trainingContent.additionalCourses">
+                                      {{course}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <strong>Langues Enseignées</strong><br />
+                                    <span *ngFor="let language of cycle.trainingContent.language">
+                                      {{language}}
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Secteurs Professionels</strong><br />
+                                    <span *ngFor="let sector of cycle.trainingContent.professionalSector">
+                                      {{sector}}
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Niveaux d'admission</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Admission</strong><br />
+                                </td>
+                                <td>
+                                    <strong>Durée des Etudes</strong><br />
+                                </td>
+                                <td>
+                                    <strong>Condition d'Admission</strong><br />
+                                </td>
+                            </tr>
+                            <tr *ngFor="let admission of cycle.admissions">
+                                <td>
+                                    {{admission.admission}}
+                                </td>
+                                <td>
+                                    {{admission.durationInYear}}
+                                </td>
+                                <td>
+                                    <span *ngFor="let condition of admission.conditions">
+                                      {{condition}}
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Stages</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr *ngFor="let internship of cycle.interships">
+                                <td>
+                                    <strong>{{internship.year}}e année</strong><br />
+                                </td>
+                                <td>
+                                    {{internship.name}}
+                                </td>
+                                <td>
+                                    {{internship.durationInWeeks}} semaines
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Frais de Scolarité</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr *ngFor="let cost of cycle.costs">
+                                <td>
+                                    <strong>{{cost.year}}e année</strong><br />
+                                </td>
+                                <td>
+                                    {{cost.annual}}€
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Séjours Internationaux</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr *ngFor="let sejour of cycle.internationals">
+                                <td>
+                                    <strong>{{sejour.year}}e année</strong><br />
+                                </td>
+                                <td>
+                                    <span *ngFor="let country of sejour.countries">
+                                      {{country}}
+                                    </span>
+                                </td>
+                                <td>
+                                    {{sejour.durationInWeeks}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4>Débouchés</h4>
+                <div class="table-responsive">
+
+                    <table class="table table-stripped table-bordered  specification  formation-table">
+                        <tbody>
+                            <tr>
+                              <td>
+                                  <strong>Métiers Préparés</strong>
+                              </td>
+                              <td>
+                                  <strong>Salaire Moyen Annuel en sortie</strong>
+                              </td>
+                              <td>
+                                  <strong>% d'Employabilité</strong>
+                              </td>
+                              <td>
+                                  <strong>Poursuite d'Etudes</strong>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                  <span *ngFor="let metier of cycle.opportunity.preparedTrades">
+                                    {{metier}}
+                                  </span>
+                              </td>
+                              <td>
+                                  {{cycle.opportunity.averageSalary}}
+                              </td>
+                              <td>
+                                  {{cycle.opportunity.employabilityPercentage}}
+                              </td>
+                              <td>
+                                  <span *ngFor="let continu of cycle.continuingStudies">
+                                    {{continu}}
+                                  </span>
+                              </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- .wrapper -->
+
+        </div><!-- .panel-body -->
+    </md-tab>
+</md-tab-group>

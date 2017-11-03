@@ -1,0 +1,141 @@
+
+ <div class="white-background">
+
+  <section class="login-page fadeInDown-animation">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+
+            <h2 class="brochure-title">Pour bénéficier de ce service, vous devez vous inscrire ou vous connecter si vous êtes déjà inscrit, merci</h2>
+            <div class="login-form register">
+              <form [formGroup]="registerForm"  (ngSubmit)="save()" 
+                id="register-form">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                    <div class="input">
+                      <input type="text" id="reg_username" class="username-input" 
+                        placeholder="Nom d'utilisateur"
+                        [formControl]="registerForm.controls['username']" 
+                        maxlength="25">
+                      <small 
+                        *ngIf="registerForm.controls['username'].hasError('required') && 
+                        registerForm.controls['username'].touched" 
+                        class="mat-text-warn"> 
+                        Nom d'utilisateur obligatoire
+                      </small>  
+                    </div>
+                  </div><!-- end username -->
+                  <div class="col-md-6 col-sm-6">
+                    <div class="input">
+                      <input type="email" id="reg_email" class="email-input" 
+                        placeholder="Email" [formControl]="registerForm.controls['email']">
+                      <small *ngIf="registerForm.controls['email'].hasError('required') && 
+                        registerForm.controls['email'].touched" 
+                        class="mat-text-warn"> 
+                        Email obligatoire
+                      </small>
+                      <small *ngIf="registerForm.controls['email'].errors?.email && 
+                        registerForm.controls['email'].touched" 
+                        class="mat-text-warn"> 
+                        Email invalide
+                      </small>
+                    </div>
+                  </div><!-- end email -->
+                  <div class="col-md-6 col-sm-6">
+                    <div class="input">
+                      <input type="password" id="reg_password" class="password-input" 
+                        placeholder="Mot de passe"
+                        [formControl]="registerForm.controls['password']">
+                      <small 
+                        *ngIf="registerForm.controls['password'].hasError('required') && 
+                        registerForm.controls['password'].touched" 
+                        class="mat-text-warn"> 
+                        Mot de passe obligatoire
+                      </small>
+                    </div>
+                  </div><!-- end password -->
+                  <div class="col-md-6 col-sm-6">
+                    <div class="input">
+                      <input type="password" id="reg_confirm-password" 
+                        class="confirm-password-input" placeholder="Confirmer mot de passe"
+                        [formControl]="registerForm.controls['repeated']">
+                      <small 
+                        *ngIf="registerForm.controls['repeated'].errors?.equalTo && 
+                        registerForm.controls['repeated'].touched" 
+                        class="mat-text-warn"> 
+                        Mot de passe différent
+                      </small>
+                    </div>
+                  </div><!-- end confirm password -->
+                  <div class="col-md-12">
+                    <div class="input userType_radio"> 
+                      <md-radio-group [formControl]="registerForm.controls['userType']">
+                      <md-radio-button value="Parent">Parent</md-radio-button>
+                      <md-radio-button value="Etudiant">Elève</md-radio-button>
+                      <!--md-radio-button value="Enfant">Enfant</md-radio-button-->
+                      </md-radio-group>
+                      <small 
+                      *ngIf="registerForm.controls['userType'].errors?.equalTo && 
+                      registerForm.controls['userType'].touched" 
+                      class="mat-text-warn"> 
+                      Mot de passe différent
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="input clearfix">
+                      <input type="submit" id="reg_submit" 
+                        class="submit-input btn-appointment grad-btn ln-tr" 
+                        value="Enregistrer" [mdTooltip]="!registerForm.valid ? 'Tous les champs sont obligatoires' : ''"
+                        mdTooltipClass="center-tooltip">
+                    </div>
+                    <div>
+                      <div class="forgot pull-right">
+                        <a (click)="alreadyAccount()" class="new-user">
+                          Déjà inscrit? Je me connecte.
+                        </a>
+                      </div>
+                    </div>
+                  </div><!-- end submit -->
+                </div><!-- end row -->
+              </form><!-- End form -->
+            </div><!-- end login form -->
+
+            <h3 class="text-center">Je peux aussi m'inscrire avec :</h3>
+
+            <div class="login-options">
+              <div class="row">
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr fb"><i class="fa fa-facebook"></i> Facebook</a>
+                </div><!-- end FB login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr in"><i class="fa fa-instagram"></i> Instagram</a>
+                </div><!-- end GP login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr tw"><i class="fa fa-twitter"></i> Twitter</a>
+                </div><!-- end TW login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr gp"><i class="fa fa-google-plus"> Google +</i></a>
+                </div><!-- end YA login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr li"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                </div><!-- end YA login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr vim"><i class="fa fa-vimeo"></i> Vimeo</a>
+                </div><!-- end YA login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr yo"><i class="fa fa-youtube"></i> Youtube</a>
+                </div><!-- end YA login -->
+                <div class="col-md-3 col-sm-6">
+                  <a href="#" class="login-op-btn grad-btn ln-tr via"><i class="fa fa-viadeo"></i> Viadeo</a>
+                </div><!-- end YA login -->
+
+              </div>
+          </div><!-- end login optionss -->
+
+        </div><!-- end col-md-8/offset -->
+      </div><!-- end row -->
+    </div><!-- end container -->
+  </section><!-- End Register Page -->
+
+</div>

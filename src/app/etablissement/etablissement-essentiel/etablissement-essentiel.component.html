@@ -1,0 +1,109 @@
+<div class="panel-body">
+
+  <div class="wrapper wrapper-content animated fadeInRight">
+
+      <div class="table-responsive">
+
+          <table class="table table-stripped table-bordered  identity">
+              <tbody>
+                  <tr>
+                      <td>
+                          <strong>Nom Court</strong><br />
+                          {{schoolData.shortName}}
+                      </td>
+                      <td>
+                          <strong>Nombre D'Eleves</strong><br />
+                          {{schoolData.nbrStudents}}
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Adresse 1</strong><br />
+                          {{schoolData.address.ad1}}
+                      </td>
+                      <td>
+                        <strong>Code Postal</strong><br />
+                        {{schoolData.address.postcode}}
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Ville</strong><br />
+                          {{schoolData.address.city}}
+                      </td>
+                      <td>
+                        <strong>Departement</strong><br />
+                        {{schoolData.cycles[0].address.academy.department}}
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Tel</strong><br />
+                          +33 {{schoolData.address.phoneNumber}}
+                      </td>
+                      <td>
+                        <strong>Academie</strong><br />
+                        {{schoolData.cycles[0].address.academy.name}}
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <strong>Création</strong><br />
+                        {{schoolData.creationYear}}
+                    </td>
+                      <td>
+                          <strong>Site Internet</strong><br />
+                          <a target="_blank" href="http://{{schoolData.url}}">{{schoolData.url}}</a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+      <div *ngIf="schoolData.contact!==undefined">
+        <h4>Contacts</h4>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered  identity">
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Titre</strong><br />
+                            {{schoolData.contact.gender}}
+                        </td>
+                        <td>
+                            <strong>Prénom</strong><br />
+                            {{schoolData.contact.firstName}}
+                        </td>
+                        <td>
+                            <strong>Nom</strong><br />
+                            {{schoolData.contact.lastName}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Fonction</strong><br />
+                            {{schoolData.contact.job}}
+                        </td>
+                        <td>
+                            <strong>Mél</strong><br />
+                            {{schoolData.contact.email}}
+                        </td>
+                        <td>
+                            <strong>Tél </strong><br />
+                            {{schoolData.contact.tel}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+      </div>
+
+
+
+
+  </div><!-- .wrapper -->
+
+</div><!-- .panel-body -->

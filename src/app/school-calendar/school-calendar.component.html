@@ -1,0 +1,103 @@
+﻿<main class="main white-background" role="main">
+  <div class="container">
+
+    <h2 class="title-page">Agenda des écoles</h2>
+
+    <div class="row" >
+      <section class="col-md-12">
+        <form class="form-inline searchform" [formGroup]="searchForm"
+              style="width:50%; margin-left:25%">
+          <div class="form-wrap row">
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-3">
+                  <p class="search-title-calendar">
+                    Recherche :
+                  </p>
+                </div>
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="text" class="form-control form-calendar"
+                           placeholder="Nom de l'établissement"
+                           [mdAutocomplete]="autoSchool"
+                           [formControl]="searchForm.controls['eventName']"
+                           (keyup)="filterSchool($event)">
+                    <md-autocomplete #autoSchool="mdAutocomplete">
+                      <md-option *ngFor="let school of schoolsOptions"
+                                 [value]="school.longName"
+                                 (click)="clickOnSchool(school._id)">
+                        {{ school.longName }}
+                      </md-option>
+                    </md-autocomplete>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-search" type="submit" (click)="searchSubmit()">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+                <div>
+                  <a class="agenda_newsearch"
+                     *ngIf="searchForm.value.eventName!='' ||
+									dataToSend.data!='' || dataToSend['date']!==undefined"
+                     (click)="cleanSearch()">
+                    Nouvelle recherche
+                  </a>
+                </div>
+              </div><!-- .row -->
+            </div><!-- .col-* -->
+
+          </div><!-- .form-wrap -->
+        </form>
+      </section>
+      <section class="col-md-12">
+        &nbsp;<br>
+        <div class="row">
+          <div class="col-md-4 col-lg-5"></div>
+          <div class="col-md-2 col-lg-2">
+            <div class="form-group calendarContSchoolCal">
+              <input type="date" class="form-control" [mdDatepicker]="myDatepicker"
+                     placeholder="Date de naissance" (change)="onSelectDate()"
+                     [formControl]="searchForm.controls['date']">
+              <md-datepicker #myDatepicker></md-datepicker>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5">
+            <button type="button" class="btn button-return school-calendar-button"
+                    (click)="onSelectData('today', 0)" [ngClass]="buttonsBool[0] ? 'selected-button-events' : ''">
+              Aujourd'hui
+            </button>
+            <button type="button" class="btn button-return school-calendar-button"
+                    (click)="onSelectData('week', 1)" [ngClass]="buttonsBool[1] ? 'selected-button-events' : ''">
+              Cette semaine
+            </button>
+            <button type="button" class="btn button-return school-calendar-button"
+                    (click)="onSelectData('month', 2)" [ngClass]="buttonsBool[2] ? 'selected-button-events' : ''">
+              Ce mois-ci
+            </button>
+            <button type="button" class="btn button-return school-calendar-button"
+                    (click)="onSelectData('year', 3)" [ngClass]="buttonsBool[3] ? 'selected-button-events' : ''">
+              Le mois prochain
+            </button>
+          </div>
+        </div>
+        &nbsp;<br>
+      </section>
+    </div><!-- .row -->
+
+    <!-- Display all events of calendar -->
+    <div *ngIf="eventsToDisplay!==undefined && eventsToDisplay.length!=0; else noEvents">
+      <div class="row">
+        <div *ngFor="let event of eventsToDisplay; let i=index" class="col-md-3 col-sm-4 col-xs-12">
+          <app-cube [eventData]="event" [counter]="i+1"></app-cube>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noEvents>
+      <p style="width:100%;
+                text-align:center; font-size : 35px">Il n'y a pas d'évènement pour la recherche demandé.</p>
+    </ng-template>
+  </div>
+</main>

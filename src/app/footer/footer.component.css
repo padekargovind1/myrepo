@@ -1,0 +1,64 @@
+﻿.footer {
+  background: #a2bc0f;
+  border-top: 1px solid #41719c;
+  bottom: 0;
+  float: left;
+  left: 0;
+  padding: 0;
+  position: static;
+  width: 100%;
+}
+.footerCustom  h3{ color:#fff; font-size:16px; font-weight:bold; margin:0 0 10px;}
+
+.footerCustom ul {margin:0 0 15px; padding:0; list-style:none;
+}
+.footerCustom ul li{
+    margin: 0 0 6px;
+  padding: 0;
+  list-style: none;
+}
+  .footerCustom ul li a {
+    display: block;
+    color: #0563c1; 
+    font-size:16px;
+    padding:0;
+  }
+
+.footerCustom p{ font-size:14px;color:#fff;
+margin:0; text-align:center;}
+.footerCustom a {
+  color: #0563c1;
+}
+.footerTopCont {
+margin-bottom:40px;
+width:100%; float:left; 
+padding:40px 0 0;
+}
+
+.footerBottomContent {
+  margin: 0;
+  width: 100%;
+  float: left;
+  background: #393649;
+  padding:7px;
+}
+
+.footer[_ngcontent-c2] {
+  background: #00bc50;
+}
+
+.footerCustom[_ngcontent-c2] h3[_ngcontent-c2] {
+  font-size: 20px;
+}
+
+.footer[_ngcontent-c2] ul li a {
+  color: #ffffff;
+  font-size:14px;
+}
+
+
+@media (max-width:1023px) {
+  .footerBottomContent {
+    margin-bottom: 40px;
+  }
+}

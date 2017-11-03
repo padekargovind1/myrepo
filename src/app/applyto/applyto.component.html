@@ -1,0 +1,74 @@
+﻿<div class="main white-background" role="main" *ngIf="canDisplayApply">
+  <div class="container-fluid  appointment-wizard applyToCustomClsCk">
+
+    <div class="row">
+
+      <!-- <section class="col-md-12">
+        <h3 class="appointment-title">This should be School images</h3>
+      </section> -->
+
+
+      <section class="col-md-12 appointment-text">
+
+        <section class="col-md-2 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
+
+          <img src="http://13.229.81.1/cideapi/{{schoolLogo}}" alt="" class="img-circle img-responsive advisor-img" />
+        </section>
+        <section>
+          <h2>{{ schoolName }}</h2>
+        </section>
+
+      </section>
+
+    </div>
+    <div class="row">
+      <h2 style="text-align:center; font-weight: 400">
+        Afin d’envoyer votre dossier à l’établissement sélectionné,
+        merci de compléter les informations ci-dessous
+      </h2>
+    </div>
+    <div class="row">
+
+      <div id="rootwizard">
+        <form id="wizard">
+
+          <div class="container-fluid">
+            <md-tab-group md-dynamic-height
+              [(selectedIndex)]="activeTabIndex"  class="apply-to-tabs"
+              #tabGroup>
+              <md-tab label="Parents">
+                <div class="tab-pane" id="tab1">
+                  <div class="container-fluid">
+                    <app-parent-tab (tabChange)="nextTab($event)" [userData]="userData"></app-parent-tab>
+                  </div>
+                  <!-- .container-fluid -->
+                </div>
+                <!-- #tab1 -->
+              </md-tab>
+              <md-tab label="Elève" [disabled]="nbTab<1">
+                <div class="tab-pane" id="tab2">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <app-child-tab (tabChange)="nextTab($event)" [userData]="userData"></app-child-tab>
+                    </div>
+                  </div>
+                </div>
+              </md-tab>
+              <md-tab label="Etablissement actuel" [disabled]="nbTab<2">
+                <div class="tab-pane" id="tab3">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <app-current-school-tab (tabChange)="nextTab($event)" [userData]="userData"></app-current-school-tab>
+                    </div>
+                  </div>
+                </div>
+              </md-tab>
+
+            </md-tab-group>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

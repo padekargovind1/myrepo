@@ -1,0 +1,63 @@
+﻿
+<!--<ul class="school-action">
+    <li (click)="saveInWish()">
+        <i style="cursor:pointer" class="fa fa-bookmark" aria-hidden="true"></i>
+    </li>
+    <li (click)="applyToSchool()">
+        <i style="cursor:pointer" class="fa fa-paper-plane" aria-hidden="true"></i>
+    </li>
+    <li>
+        <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"></i>
+    </li>
+    <li>
+        <a href="http://13.229.81.1/cideapi{{brochureData.brochure}}" download="brochure.pdf" target="_self">
+            <i class="fa fa-download" aria-hidden="true"></i>
+        </a>
+
+    </li>
+</ul>-->
+
+
+
+<div class="card-content">
+    <h3 style="height:40px">
+        {{ SchoolData.longName | schoolName}}
+    </h3>
+  <br>
+    <address class="school-card-address">
+        {{ SchoolData.address.postcode }}
+        <span>
+            {{ SchoolData.address.city }}
+        </span><br />
+
+    </address>
+
+    <!--<button type="button" class="btn btn-secondary"  (click)="applyToSchool()">Sélectionner</button>-->
+</div>
+
+<p class="school-card-type">
+  <!--<span *ngFor="let name of schoolTag" class="school-tags {{name.toLowerCase() | schoolTag}}-tag">
+      <strong>{{name | schoolTag}}</strong>
+  </span>-->
+  <span *ngFor="let name of schoolTag">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+            {{name | schoolTag}}
+          </span>
+  <!--<span class="ecole-tag">
+      <strong>École</strong>
+  </span>
+  <span class="college-tag">
+      <strong>Collège</strong>
+  </span>
+  <span class="lycee-tag">
+      <strong>Lycée</strong>
+  </span>-->
+</p>
+<a (click)="onSchoolDetail()"
+   class="btn btn-highlighted btn-block" style="margin:10px auto">
+  En savoir plus
+</a>
+<!--<button (click)="onSchoolApply()" type="button"
+        class="btn btn-secondary btn-block" style="margin:10px auto">
+  Selectionner
+</button>-->

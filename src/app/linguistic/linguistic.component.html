@@ -1,0 +1,173 @@
+<div class="white-background">
+
+    <div class="container  linguistic">
+
+        <div class="row">
+            <section class="col-md-12">
+                <h2 class="brochure-title">Recherche de séjour linguistique</h2>
+            </section>
+            <section class="col-md-12">
+                <form class="form-inline searchform">
+                    <div class="form-wrap row">
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="select-custom" for="class">
+                                            <select name="class" class="form-control"
+                                                (click)="onDestinationClick($event, 'destination')">
+                                                <option value="" selected>Destination</option>
+                                                <option value="Allemagne">Allemagne</option>
+                                                <option value="Australie">Australie</option>
+                                                <option value="Canada">Canada</option>
+                                                <option value="Chine">Chine</option>
+                                                <option value="Espagne">Espagne</option>
+                                                <option value="Etats-unis">Etats-unis</option>
+                                                <option value="France">France</option>
+                                                <option value="Inde">Inde</option>
+                                                <option value="Irlande">Irlande</option>
+                                                <option value="Italie">Italie</option>
+                                                <option value="Malte">Malte</option>
+                                                <option value="Pays-bas">Pays-bas</option>
+                                                <option value="Royaume Uni">Royaume Uni</option>
+                                                <option value="Sri lanka">Sri lanka</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="select-custom" for="class">
+                                            <select name="class" class="form-control"
+                                                (click)="onDestinationClick($event, 'period')">
+                                                <option value="" selected >Période</option>
+                                                <option value="0">janvier</option>
+                                                <option value="1">février</option>
+                                                <option value="2">mars</option>
+                                                <option value="3">avril</option>
+                                                <option value="4">mai</option>
+                                                <option value="5">juin</option>
+                                                <option value="6">juillet</option>
+                                                <option value="7">août</option>
+                                                <option value="8">septembre</option>
+                                                <option value="9">octobre</option>
+                                                <option value="10">novembre</option>
+                                                <option value="11">décembre</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="select-custom" for="class">
+                                            <select name="class" class="form-control"
+                                                (click)="onDestinationClick($event, 'language')">
+                                                <option value="" selected>Langue</option>
+                                                <option *ngFor="let language of languageList" [value]="language._id">{{language.name}}</option>
+
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="select-custom" for="class">
+                                            <select name="class" class="form-control"
+                                                (click)="onDestinationClick($event, 'age')">
+                                                <option value="" selected>Âge</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="25>">25></option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="select-custom" for="class">
+                                            <select name="class" class="form-control"
+                                                (click)="onDestinationClick($event, 'organisme')">
+                                                <option value="" selected>Organisme</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <div class="row linguistic-content">
+
+            <div class="col-md-12  holder-refine-search">
+                <div class="checkbox-one-line">
+                    <span class="label-holder">Hébergement</span><br />
+                    <input type="checkbox" value="apartment" class="checkbox filled-in" id="filter-1"
+                        (click)="onDestinationClick($event, 'place')"/>
+                    <label for="filter-1">Appartement</label>
+                    <input type="checkbox" value="common" class="checkbox filled-in" id="filter-2"
+                        (click)="onDestinationClick($event, 'place')"/>
+                    <label for="filter-2">Collectif</label>
+                    <input type="checkbox" value="family" class="checkbox filled-in" id="filter-3"
+                        (click)="onDestinationClick($event, 'place')"/>
+                    <label for="filter-3">Famille</label>
+                    <input type="checkbox" value="residence" class="checkbox filled-in" id="filter-4"
+                        (click)="onDestinationClick($event, 'place')"/>
+                    <label for="filter-4">Résidence</label>
+                </div>
+
+
+                <label class="select-custom" for="class"> Type de sejour<br />
+                    <select name="class" class="form-control" id="class"
+                        (click)="onDestinationClick($event, 'linguistic')">
+                        <option value="">Indifférent</option>
+                        <option *ngFor="let linguistic of linguisticList" [value]="linguistic._id">{{linguistic.name}}</option>
+                    </select>
+                </label>
+
+            </div>
+
+
+            <div *ngFor="let trip of listTripsFiltered">
+                <div class="col-md-4" >
+                <div class="card  school-item">
+                    <app-linguistic-trips [tripData]="trip"></app-linguistic-trips>
+                </div>
+                </div>
+            </div>
+            <div *ngIf="listTripsFiltered.length==0" class="row">
+                <p style="width:100%;
+                    text-align:center; font-size : 35px">Il n'y a pas de séjours pour la recherche demandé.</p>
+            </div>
+
+        </div>
+
+
+    </div><!-- .container-fluid -->
+
+</div><!-- white -->
+

@@ -1,0 +1,125 @@
+
+    <div data-page="1" [attr.data-cube]="counter"
+        [className]="'cube-wrapper cube-' + counter+' cube-width'">
+
+        <div class="cube">
+
+            <figure class="front" (click)="onClickCube()" style="cursor:pointer">
+                <article class="cube__content">
+
+                    <div class="cube__image-logo">
+                        <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
+                    </div>
+
+                    <p class="cube__meta">{{eventData.eventType}}</p>
+
+                    <h3>{{eventData.title}}</h3>
+
+
+                    <div class="text-left">
+                        <div class="col-xs-1">
+                            <i class="fa fa-calendar big-calendar"></i>
+                        </div>
+                        <div class="col-xs-10">
+                            <p>de {{eventData.fromDate | shorten:10}} au {{eventData.toDate | shorten:10}}</p>
+                        </div>
+                    </div>
+
+                    <div class="text-left">
+                        <div class="col-xs-1">
+                            <i class="fa fa-clock-o big-calendar"></i>
+                        </div>
+                        <div class="col-xs-10">
+                            <p>{{eventData.fromTime}} - {{eventData.toTime}}</p>
+                        </div>
+                    </div>
+
+                    <div class="text-left">
+                        <div class="col-xs-1">
+                            <i class="fa fa-map-marker big-calendar"></i>
+                        </div>
+                        <div class="col-xs-10">
+                            <p>{{eventData.address}}</p>
+                        </div>
+                    </div>
+
+                    <ul class="social-media-list">
+                        <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+
+                    <div class="cube__image-holder">
+                        <img src="assets/images/schoologo/secondary-school.jpg" alt="">
+                    </div>
+                </article>
+            </figure>
+            <figure class="right">
+                <article class="cube__content">
+
+                    <div class="cube__image-logo">
+                        <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
+                    </div>
+
+                    <!--<div class="no-padding">
+                        <iframe class="cube__youtube" [src]="getUrl()" frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>-->
+					<div class="no-padding">
+                        <iframe class="cube__youtube" [src]="safeUrl" frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <h3>{{eventData.title}}</h3>
+
+
+                </article>
+            </figure>
+            <figure class="back">
+                <article class="cube__content">
+
+                    <div class="cube__image-logo">
+                        <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
+                    </div>
+
+
+
+                    <div class="text-wrapper text-1">
+                    <h3>{{eventData.title}}</h3>
+                    {{eventData.description}}<br />
+                    <!--<ul>
+                        <li>Nouvelle classe de Seconde Renforcée</li>
+                        <li>Philosophie dès la Seconde</li>
+                        <li>Enseignement numérique et codage dès la Seconde</li>
+                        <li>Projet Responsabilité Sociale en Seconde</li>
+                        <li>Filière L revisitée et enrichie</li>
+                        <li>Une Ecole de Commerce dès la Première STMG</li>
+                        <li>Option prépa Médecine et HEC dès la Première</li>
+                    </ul>-->
+
+                    </div>
+                </article>
+            </figure>
+            <figure class="left">
+                <article class="cube__content">
+
+                    <div class="cube__image-logo">
+                        <img src="assets/images/schoologo/logo-lasalle-scalia-person.png" alt="" />
+                    </div>
+
+                    <div class="text-wrapper text-2">
+                        <ul>
+                            <li>Ateliers sur les compétences du 21ème siècle</li>
+                            <li>Soutien et complément scolaire d’excellence</li>
+                            <li>Nouveaux séjours linguistiques à l’étranger</li>
+                        </ul>
+                    </div>
+                </article>
+            </figure>
+        </div>
+        <div class="btns">
+            <a class="next"><i class="fa fa-chevron-right"></i></a>
+            <a class="prev"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </div>

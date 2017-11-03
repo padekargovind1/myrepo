@@ -1,0 +1,364 @@
+﻿
+<main class="main compare-table-cls" role="main">
+    
+<!--<div class="white-background">-->
+
+        <div class="container">
+
+            <div class="row"><div class="col-md-10 col-md-offset-1">
+            
+                
+                <div class="compare-block  row  white-background" id="compare">
+
+                    <div class="col-md-4 select-school">
+
+                        
+                        
+                        <!-- <div class="result-text">
+                            <h3>Mon résultat pour: Classe PS - <span class="fa fa-map-marker"></span> Lyon</h3>
+                            <p>Recherche Affine: Aides Financieres - Bourse / Lv1 Anglais / Place Disponibles <a href="#"><span class="fa fa-times"></span></a></p>
+                        </div> -->
+                        <input type="text" class="form-control" placeholder="Rechercher votre établissement" 
+                            (keyup)="addSchoolKeyDown($event)"
+                            [mdAutocomplete]="autoSchool"/>
+                        <md-autocomplete #autoSchool="mdAutocomplete">
+                            <md-option *ngFor="let school of addSchoolsOptions" [value]="school.longName"
+                                (click)="onSchoolClick(school._id)">
+                                {{ school.longName }}
+                            </md-option>
+                        </md-autocomplete>
+                        
+                    </div>
+                    <div class="col-md-4 btn_sec_1">
+                        <input type="button" class="btn btn-success" 
+                            value="Ajouter à la comparaison"
+                            [disabled]="!canAddSchool" (click)="onAddSchool()">
+                    </div>
+                    <div class="col-md-4 btn_sec_2">
+                        <a (click)="onNavigateBack()" class="pull-right btn btn-success btn-back">Retour à la liste <img src="assets/images/back.png" alt="" /></a>
+                    </div>
+
+                    <div class="col-md-12 compare-table-wrap">
+                        <div class="compare-table">
+                            
+                            <div class="content-compare-table compareTableLeftLogo">
+
+                                <div class="top-compare-table first">
+                                    <img src="assets/images/cide-compare-table.png" alt="" width="145" />
+                                </div>
+
+                                <div class="item-compare-table">
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[0]=='true'">
+                                        <li class="title"><h5>Cycles & Classes</h5></li>
+                                        <li><a class="subtitle" role="button" data-toggle="collapse" href=".ecole" aria-expanded="false" aria-controls="collapseExample">Ecole<span class="caret"></span></a>
+                                            <div class="collapse in ecole">
+                                                <ul class="compare-item">
+                                                    <li>Cycle 1: Apprentissage Premier</li>
+                                                    <li>Cycle 2: Apprentissages Fondamentaux</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a class="subtitle" role="button" data-toggle="collapse" href=".college" aria-expanded="false" aria-controls="collapseExample">Collège<span class="caret"></span></a>
+                                            <div class="collapse in college">
+                                                <ul class="compare-item">
+                                                    <li>Cycle 3: Consolidation</li>
+                                                    <li>Cycle 4: Approfondissement</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a class="subtitle" role="button" data-toggle="collapse" href=".lycee" aria-expanded="false" aria-controls="collapseExample">Lycée<span class="caret"></span></a>
+                                            <div class="collapse in lycee">
+                                                <ul class="compare-item">
+                                                    <li>Cycle 5: Apprentissage Premier</li>
+                                                    <li>Cycle 6: Apprentissages Fondamentaux</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <!--ul class="compare-item class-cycle">
+                                        <li class="title">
+                                            <h5>Cycle</h5>
+                                            <div class="collapse in cycle">
+                                                <ul class="compare-item">
+                                                    <li style="margin-bottom:5px">Nom du cycle</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul-->
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[1]=='true'">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href=".language" aria-expanded="false" aria-controls="collapseExample">Langue<span class="caret"></span></a></h5>
+                                            <div class="collapse in language">
+                                                <ul class="compare-item">
+                                                    <li>Lv. 1</li>
+                                                    <li>Lv. 2</li>
+                                                    <li>Lv. 3</li>
+                                                    <li>Langue ancienne</li>
+                                                    <li>Langue régionale</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[2]=='true'">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href=".specialities" aria-expanded="false" aria-controls="collapseExample">Specialités<span class="caret"></span></a></h5>
+                                            <div class="collapse in specialities">
+                                                <ul class="compare-item">
+                                                    <li>Accueil Handicape, Dyslexie</li>
+                                                    <li>Aides Financieres - Bourse</li>
+                                                    <li>Cours Francais Langue Etrangere - LFE</li>
+                                                    <li>Enfant Precoces</li>
+                                                    <!--<li>Horaires Amenages</li>-->
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[3]=='true'">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href=".internat" aria-expanded="false" aria-controls="collapseExample">Internat<span class="caret"></span></a></h5>
+                                            <div class="collapse in internat">
+                                                <ul class="compare-item">
+                                                    <li>Internat sur Place</li>
+                                                    <li>Internat externe</li>
+                                                    <li>Résidence Etudiante</li>
+                                                    <li>Internat de semaine</li>
+                                                    <li>Internat Permanent</li>
+                                                    <li>Internat Certains Weekend</li>
+                                                    <li>Internat mixte</li>
+                                                    <li>Internat filles</li>
+                                                    <li>Internat garcon</li>
+                                                    <li>Chambres individuelles</li>
+                                                    <li>Chambres 2 a 4 lits</li>
+                                                    <li>chambres 5 a 8 lits</li>
+                                                    <li>Dortoirs</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[4]=='true'">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href=".stages" aria-expanded="false" aria-controls="collapseExample">Stages<span class="caret"></span></a></h5>
+                                            <div class="collapse in stages">
+                                                <ul class="compare-item">
+                                                    <li>stage pre-rentree</li>
+                                                    <li>stages petites vacances</li>
+                                                    <li>stages de grandes vacances</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[5]=='true'">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href=".restauration" aria-expanded="false" aria-controls="collapseExample">Restauration<span class="caret"></span></a></h5>
+                                            <div class="collapse in restauration">
+                                                <ul class="compare-item">
+                                                    <li>self-service</li>
+                                                    <li>Service a Table</li>
+                                                    <li>Cafeteria</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[6]=='true'">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href=".externat" aria-expanded="false" aria-controls="collapseExample">Externat<span class="caret"></span></a></h5>
+                                            <div class="collapse in externat">
+                                                <ul class="compare-item">
+                                                    <li>demi-pension mixte</li>
+                                                    <li>demi-pension garcons</li>
+                                                    <li>demi-pension filles</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[7]=='true'">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href=".status" aria-expanded="false" aria-controls="collapseExample">Status<span class="caret"></span></a></h5>
+                                            <div class="collapse in status">
+                                                <ul class="compare-item">
+                                                    <li>Public</li>
+                                                    <li>Prive</li>
+                                                    <li>CCI</li>
+                                                    <li>Sous Contrat D'association</li>
+                                                    <li>Hors contrat</li>
+                                                    <li>CFA</li>
+                                                    <li>UFA</li>
+                                                    <li>Reconnue par l'Etat</li>
+                                                    <li>En convention avec l'Etat</li>
+                                                    <li>Enseignement supérieur Libre</li>
+                                                    <li>Enseignement supérieur</li>
+                                                    <li>Enseignement supérieur technique</li>
+                                                    <li>Sous contrat simple</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[8]=='true'">
+                                        <li class="title">
+                                            <h5>
+                                                <a role="button" data-toggle="collapse" href=".confess" 
+                                                    aria-expanded="false" aria-controls="collapseExample">
+                                                    Ens Confessionel
+                                                    <span class="caret"></span>
+                                                </a>
+                                            </h5>
+                                            <div class="collapse in confess">
+                                                <ul class="compare-item">
+                                                    <li>Laïc</li>
+                                                    <li>Catholic</li>
+                                                    <li>Protestant</li>
+                                                    <li>Musulman</li>
+                                                    <li>Juif</li>
+                                                    <li>Boudhiste</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[9]=='true'">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href=".section" aria-expanded="false" aria-controls="collapseExample">Sections<span class="caret"></span></a></h5>
+                                            <div class="collapse in section">
+                                                <ul class="compare-item">
+                                                    <li>Section Européenne</li>
+                                                    <li>Section Internationalle</li>
+                                                    <li>Section Sportive</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[10]=='true'">
+                                        <li class="title"><h5>Nom du Diplome</h5>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[11]=='true'">
+                                        <li class="title"><h5>Nom de L'option</h5></li>
+                                    </ul>
+
+                                    <ul class="compare-item class-cycle"
+                                        *ngIf="compareListFilter[12]=='true'">
+                                        <li class="title"><h5>Places Disponibles</h5></li>
+                                    </ul>
+
+                                    <!--<ul class="compare-item class-cycle">
+                                        <li class="title"><h5><a role="button" data-toggle="collapse" href="." aria-expanded="false" aria-controls="collapseExample"><span class="caret"></span></a></h5>
+                                            <div class="collapse in ">
+                                                <ul class="compare-item">
+                                                    
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>-->
+
+                                </div>
+                            </div>
+                            
+                            <div *ngIf="!showSchool; else compare1">
+                                &nbsp;
+                            </div>
+
+                            <ng-template #compare1>
+                              <div class="compareSliderMobile">
+                                <div class="content-compare-table"
+                                     *ngFor="let school of schoolDataToDisplay; let i =index">
+                                  <div class="top-compare-table">
+                                    <button type="button"
+                                            class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                            (click)="onDeleteCompare(i)">
+                                      <img src="assets/images/cide-remove.png" width="16" />
+                                    </button>
+                                    <div class="card  school-item" id="schooltoshow{{i}}">
+                                      <ul class="school-action">
+                                        <li><a (click)="saveInWish(i)"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+                                        <li><a (click)="sendMessage(school)"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+                                        <li><a><i class="fa fa-share" aria-hidden="true"></i></a></li>
+                                        <li *ngIf="schoolBrochure.length!=0">
+                                          <a href="http://13.229.81.1/cideapi{{schoolBrochure[i].brochure}}" download="brochure.pdf" target="_self">
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                          </a>
+                                        </li>
+                                      </ul>
+
+                                      <a href="javascript:void(0)" (click)="OpenSchoolSelect(i,school)" class="schoolPopUp"><img src="http://13.229.81.1/cideapi/{{school.cycles[0].logo1}}" alt="School 1" /></a>
+
+                                      <div class="card-content">
+                                        <h3 style="height:30px"
+                                            mdTooltip="{{ school.shortName }}">
+                                          {{school.shortName | school:35}}
+                                        </h3>
+                                        <p style=" margin:0px"
+                                           mdTooltip="{{ school.longName }}">
+                                          {{school.longName | school:42}}
+                                          <!--<br /> general Prive Catholique <br />Sous contrat d'association</p>-->
+                                          <address style=" margin:0px">
+                                            {{school.address.ad1}}<br />
+                                            {{school.address.postcode}} {{school.address.city}}<br />
+                                            Tel: {{school.address.phoneNumber}}
+                                          </address>
+
+                                          <!-- <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a> -->
+                                          <button type="button" id="thisschoolbutton{{i}}" class="btn btn-secondary btn-block CustomOpenPopApply"
+                                                  (click)="onApply(school)">
+                                            Sélectionner
+                                          </button>
+                                          <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#apply-compare-popup">Sélectionner</button> -->
+                                      </div><!-- .card-content -->
+
+                                    </div><!-- .card -->
+                                  </div>
+                                  <app-compare-block [schoolDataToDisplay]="school"></app-compare-block>
+
+                                </div>
+                              </div>  
+                            </ng-template>
+                        </div>
+
+                    </div><!-- .col-* -->
+
+                </div>
+
+            </div></div><!-- .row .col-* -->
+
+        </div><!-- .container -->
+
+        <div class="ad-holder">
+            <img src="assets/images/Adds.jpg" alt="Ad" />
+        </div>
+
+        <!--<div class="survey-holder">
+
+            <h4 class="survey-title">Sondage</h4>
+            
+            <p>Comment avez-vousconnu enseignement-prive.fr?</p>
+
+            <p><label class="custom-radio"><input type="radio" name="survey"> <span>Le guide pratique des ecole privees</span></label></p>
+            <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un moteur de recherche sur internet</span></label></p>
+            <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un etablissement scolaire</span></label></p>
+            <p><label class="custom-radio"><input type="radio" name="survey"> <span>Un centre d'information et d'orientation</span></label></p>
+            <p><label class="custom-radio"><input type="radio" name="survey"> <span>Des amis</span></label></p>
+            <p><label class="custom-radio"><input type="radio" name="survey"> <span>Une publication</span></label></p>
+
+            <button type="button" class="btn btn-vote  btn-xs  btn-block">VOTE</button>
+
+        </div>-->

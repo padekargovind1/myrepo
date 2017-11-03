@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class CidePage {
+export class CideFrontPage {
   navigateTo() {
     return browser.get('/');
   }

@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "cide"
+    "name": "cide-front"
   },
   "apps": [
     {
@@ -19,9 +19,27 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "../node_modules/font-awesome/scss/font-awesome.scss",
+        "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/hammerjs/hammer.js",
+        "../node_modules/wheelnav/js/dist/wheelnav.min.js",
+        "../node_modules/raphael/raphael.min.js",
+        "../node_modules/wheelnav/js/dist/raphael.icons.min.js",
+        "../node_modules/moment/min/moment.min.js",
+        "../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js",
+        "../node_modules/slick-carousel/slick/slick.min.js",
+        "../node_modules/fullcalendar/dist/fullcalendar.min.js",
+        "../node_modules/fullcalendar/dist/locale/fr.js",
+        "../node_modules/sweetalert2/dist/sweetalert2.min.js",
+        "assets/js/bootstrap-datetimepicker.js",
+        "assets/js/prettify.js",
+        "assets/js/cube.js",
+        "assets/js/owl.carousel.js",
+        "assets/js/main.js"  
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -51,7 +69,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }

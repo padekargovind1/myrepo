@@ -1,0 +1,42 @@
+<div class="panel-body">
+    <div class="row">
+        <script type="text/javascript" src="./APB PRIVE - ETABLISSEMENT_files/js"></script>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Google Map</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <p>
+                            Position de L'Etablissement sur la carte Google.
+                        </p>
+                        <div class="row">
+                            <agm-map [latitude]="lat" [longitude]="lng" [usePanning]='true'>
+                                <agm-marker [latitude]="lat" [longitude]="lng">
+                                    <!--<i class="fa fa-map-marker" aria-hidden="true" (markerClick)='markerClicked(location)'></i>-->
+                                </agm-marker>
+                            </agm-map>
+                            <!--<img src="assets/images/etablissement/cesacom map.png">-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Accès par Transport</h5>
+                    </div>
+                    <div class="ibox-content" *ngIf="canDisplay">
+                        <p *ngFor="let transport of schoolData.cycles[0].specifications.transports">
+                            {{transport}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

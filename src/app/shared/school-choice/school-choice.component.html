@@ -1,0 +1,29 @@
+<div class="row selectApplyClass">
+  <h2 style="text-align:center">Je postule pour :</h2>
+  <div class="col-md-4" 
+    *ngFor="let cycle of schoolData.cycles; let i = index">
+    <div class="row school-choice-height">
+      <h3 style="text-align : center; width:80%; margin-left:10%">{{cycle.cycle.cycleType}}</h3>
+    </div>
+    <div class="row school-choice-height">
+      <p style="text-align:center">{{cycle.address.ad1}}</p>
+    </div>
+    <div class="row school-choice-height">
+      <p style="text-align:center">{{cycle.address.postcode}} {{cycle.address.city}}</p>
+    </div>
+    <div class="row school-choice-height">
+      <button class="btn btn-appointment" style="margin-left : 28%"
+        (click)="selectTo(i)">
+        Étape suivante
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row customBtnClassClose">
+  <section class="col-md-12">
+    <button type="button" class="btn button-return" (click)="navigateBack()"
+      style="float:right; background-color: #ec4758">
+      Annuler
+    </button>
+  </section>
+</div>

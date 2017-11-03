@@ -1,0 +1,1267 @@
+ <div class="container-fluid  appointment-wizard">
+
+            <div class="row">
+
+                <section class="col-md-12">
+                    <h3 class="appointment-title">Rendez-vous Parents</h3>
+                </section>
+
+
+                <section class="col-md-12 appointment-text">
+
+                    <!-- <form class="form-inline"> -->
+
+<!--                         <div class="row form-row">
+                            <input type="text" class="form-control wide" value="Rencontrer Grady" />
+                            <input type="text" class="form-control normal" value="Ecole" />
+                        </div>
+ -->
+                        <!-- <div class="row">
+                            <input type="text" class="form-control medium" value="Lundi" />
+                            <input type="text" class="form-control small" value="22" />
+                            <input type="text" class="form-control half" value="Mai" />
+                            <input type="text" class="form-control half" value="2017" />
+                            <input type="text" class="form-control medium" value="8:00 h" />
+                            <input type="text" class="form-control medium" value="9:30 h" />
+                        </div>
+
+                    </form> -->
+
+                    <section class="col-md-2 col-md-offset-0 col-sm-4 col-xs-6 col-xs-offset-3">
+
+                        <img src="assets/images/advisor-1.jpg" alt="" class="img-circle img-responsive advisor-img" />
+                    </section>
+
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="text-with-icon">
+                            <i class="fa fa-calendar big-calendar"></i>
+                            <h3>Vous avez rendez-vous</h3>
+                            <p class="appointment-date"><strong>avec Mme Anita Lubies</strong></p>
+
+                            <time class="appointment-date">Lundi 8 Mai - 10h a 12h</time>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="text-with-icon">
+                                <img src="assets/images/cide-icon-group.png" alt="" />
+                                <h3 class="second-title">Pour un entretien</h3>
+                                <p>
+
+                                    Orientation Collège<br />
+                                    Que faire après une classe de troisième</p>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div><!-- .row -->
+
+            <div class="row">
+
+                <div id="rootwizard"><form id="wizard">
+
+                    <div class="container-fluid">
+
+                    <!-- <div class="navbar"> -->
+
+                      <!-- <div class="navbar-inner"> -->
+
+                        <!-- <div class="container-fluid"> -->
+
+                            <ul class="nav nav-tabs responsive">
+                                <li><a href="#tab1" data-toggle="tab" title="Parents"><span class="helper"></span><span>Parents</span></a></li>
+                                <li><a href="#tab2" data-toggle="tab" title="Enfant"><span class="helper"></span><span>Enfant</span></a></li>
+                                <li><a href="#tab3" data-toggle="tab" title="Etablissement actuel"><span class="helper"></span><span>Etablissement actuel</span></a></li>
+                                <li><a href="#tab4" data-toggle="tab" title="Aide Scolaire"><span class="helper"></span><span>Aide Scolaire</span></a></li>
+                                <li><a href="#tab5" data-toggle="tab" title="Vos matières préférées"><span class="helper"></span><span>Vos matières préférées</span></a></li>
+                                <li><a href="#tab6" data-toggle="tab" title="Vos centres D’interets"><span class="helper"></span><span>Vos centres d’intérêts</span></a></li>
+                                <li><a href="#tab7" data-toggle="tab" title="Classes Precedentes"><span class="helper"></span><span>Classes précédentes</span></a></li>
+                                <li><a href="#tab8" data-toggle="tab" title="Vos Professions favorites"><span class="helper"></span><span>Vos professions favorites</span></a></li>
+                                <li><a href="#tab9" data-toggle="tab" title="Diagnostic"><span class="helper"></span><span>Diagnostic</span></a></li>
+                            </ul>
+
+                        <!--</div><!-- .container -->
+
+                      <!--</div><!-- .navar-inner -->
+
+                    <!--</div><!-- .navbar -->
+
+                        <div class="tab-content">
+                            <div class="tab-pane" id="tab1">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <section class="col-md-4">
+
+                                            <h3>Parents</h3>
+
+                                            <div class="form-group">
+                                                <div class="select-custom">
+                                                    <select name="" class="form-control">
+                                                        <option value="" disabled selected hidden>Lien de Parenté</option>
+                                                        <option value="">Père</option>
+                                                        <option value="">Mère</option>
+                                                        <option value="">Oncle</option>
+                                                        <option value="">Tante</option>
+                                                        <option value="">Grand-Père</option>
+                                                        <option value="">Grand-Mère</option>
+                                                        <option value="">Tuteur</option>
+                                                        <option value="">Tutric</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group horizontal-radio clearfix">
+                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
+                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
+                                                <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-sm-6  col-xs-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Nom">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6  col-xs-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Prénom">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="row">
+    <!--                                                 <div class="col-sm-4">
+                                                        <input type="number" class="form-control" max="120" min="1" placeholder="Age">
+                                                        <div class="select-custom">
+                                                            <select name="" class="form-control">
+                                                                <option value="" disabled selected hidden>Age</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+     -->                                                <div class="col-sm-12">
+                                                        <input type="text" class="form-control" placeholder="Profession / Secteur d'activité">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="Email">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom">
+                                                            <select name="" class="form-control">
+                                                                <option value="" disabled selected hidden>Horaires pour me contacter</option>
+                                                                <option value="">9h-12h</option>
+                                                                <option value="">12h-14h</option>
+                                                                <option value="">14h-18h</option>
+                                                                <option value="">18h-20h</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group clearfix">
+                                                <button type="button" class="btn  btn-inverse pull-right btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter Parent</button>
+                                            </div>
+
+                                        </section><!-- .col-* -->
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab1 -->
+
+                            <div class="tab-pane" id="tab2">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>Enfant</h3>
+                                        </div>
+                                        <div class="col-md-4">
+
+
+                                            <div class="row">
+                                                <div class="col-sm-6  col-xs-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Nom">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6  col-xs-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Prénom">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row">
+                                                <!-- <div class="col-sm-12">
+                                                    <div class="row"> -->
+                                                        <div class="col-sm-3  col-xs-6">
+                                                            <div class="form-group">
+                                                                <input type="number" class="form-control" max="120" min="1" placeholder="Age">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3  hidden-xs">&nbsp;</div>
+                                                    <!-- <div class="select-custom">
+                                                        <select name="" class="form-control">
+                                                            <option value="">Age</option>
+                                                        </select>
+                                                    </div> -->
+                                                        <div class="col-sm-6  col-xs-6">
+                                                            <div class="form-group">
+                                                                <div class="horizontal-radio">
+                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Garçon</span></label>
+                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Fille</span></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <!-- </div>
+                                                </div> -->
+                                            </div>
+
+
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input type="email" class="form-control" placeholder="Mel">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Portable">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <textarea class="form-control" placeholder="Adresse"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Code postal">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Ville">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="datepicker-holder">
+                                                                <input type="text" class="form-control datepicker" placeholder="Date de naissance">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Lieu">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                        </div><!-- .col-* -->
+
+                                        <div class="col-md-6">
+                                            <div class="wrap-enfant">
+                                                <h4>Frère / Sœur</h4>
+                                                <!-- <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" placeholder="Prénom">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" placeholder="Nom de famille">
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-for-radio">
+                                                            <div class="gap-for-radio horizontal-radio clearfix">
+                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Frère</span></label>
+                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Sœur</span></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="number" max="120" min="1" class="form-control gap-for-radio" placeholder="Age" />
+                                                            <!-- <div class="select-custom">
+                                                                <select name="" class="form-control">
+                                                                    <option value="">Âge</option>
+                                                                </select>
+                                                            </div> -->
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="text" class="form-control gap-for-radio" placeholder="Niveau d'étude">
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="form-group clearfix">
+                                                                <button class="btn  btn-inverse gap-for-radio  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    <!--
+                                                <div class="form-group">
+                                                    <div class="row">
+
+                                                    </div>
+                                                </div> -->
+                                            </div><!-- wrap-enfant -->
+                                        </div><!-- .col-* -->
+
+                                    </div><!-- .row -->
+
+
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab2 -->
+
+                            <div class="tab-pane" id="tab3">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4">
+
+                                            <h3>Etablissement Actuel</h3>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" placeholder="Nom Etablissement Actuel">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group  col-sm-12  col-xs-6">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" placeholder="Ville">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group  col-sm-12  col-xs-6">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="select-custom">
+                                                                <select name="" class="form-control">
+                                                                    <option value="" disabled selected hidden>Classe</option>
+                                                                  <option value="ps" style="color:red">
+                                                                    &nbsp;Classes maternelles
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().infant; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().infant[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="cp" style="color:red">
+                                                                    &nbsp;Classes élémentaires
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().primary; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().primary[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().college; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().college[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="seconde_techno" style="color:red">
+                                                                    &nbsp;Classes de seconde
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().seconde; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().seconde[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="premiere_es" style="color:red">
+                                                                    &nbsp;Classes de première
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().premiere; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().premiere[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="terminale_s" style="color:red">
+                                                                    &nbsp;Classes de terminale
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().terminal; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().terminal[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="Cursus international" style="color:red">
+                                                                    &nbsp;Cursus international
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().international; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().international[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="seconde_sthr" style="color:red">
+                                                                    &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="premiere_sti2s" style="color:red">
+                                                                    &nbsp;ST2S - Sciences et Technologies de la santé et du social
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().st2s; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().st2s[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="premiere_std2a" style="color:red">
+                                                                    &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().std2a; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().std2a[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="premiere_sti2d" style="color:red">
+                                                                    &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().sti2d; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().sti2d[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="premiere_stmg" style="color:red">
+                                                                    &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().stmg; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().stmg[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="premiere_stl" style="color:red">
+                                                                    &nbsp;STL - Sciences et Technologies de Laboratoire
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().stl; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().stl[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="premiere_stav" style="color:red">
+                                                                    &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().stav; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().stav[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                  <option value="2ndeTMD" style="color:red">
+                                                                    &nbsp;TMD - Techniques de la Musique et de la Danse
+                                                                  </option>
+                                                                  <option *ngFor="let name of helperService.getClassEcoleList().tmd; let i=index"
+                                                                          [value]="helperService.getclassEcoleListToSendToApi().tmd[i]">
+                                                                    &nbsp;{{name}}
+                                                                  </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" placeholder="Options">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h4>Langues Vivantes</h4>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom">
+                                                            <select name="" class="form-control">
+                                                                <option value="" disabled selected hidden>Lv1</option>
+                                                                <option value="">Francais</option>
+                                                                <option value="">Anglais</option>
+                                                                <option value="">Espagnol</option>
+                                                                <option value="">Allemand</option>
+                                                                <option value="">Italien</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom">
+                                                            <select name="" class="form-control">
+                                                                <option value="" disabled selected hidden>Lv2</option>
+                                                                <option value="">Francais</option>
+                                                                <option value="">Anglais</option>
+                                                                <option value="">Espagnol</option>
+                                                                <option value="">Allemand</option>
+                                                                <option value="">Italien</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom">
+                                                            <select name="" class="form-control">
+                                                                <option value="" disabled selected hidden>Lv3</option>
+                                                                <option value="">Francais</option>
+                                                                <option value="">Anglais</option>
+                                                                <option value="">Espagnol</option>
+                                                                <option value="">Allemand</option>
+                                                                <option value="">Italien</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab3 -->
+                            <div class="tab-pane" id="tab4">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h3>Aide Scolaire</h3>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <input type="checkbox" name="" class="checkbox filled-in" id="scolaire-filter" /><label for="scolaire-filter">Etes-vous aidé scolairement?</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom hidden dans-quelles">
+                                                            <select name="" class="form-control multiselect" id="dans-quelles" multiple="multiple">
+                                                                <option value="">Dans quelles matières</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div><!-- .col-* -->
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab4 -->
+                            <div class="tab-pane" id="tab5">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                       <div class="col-md-4">
+                                            <h3>Vos matières préférées</h3>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom">
+                                                            <select name="" class="form-control strong" multiple="multiple">
+                                                                <option value="Matières Fortes">Matières fortes</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom">
+                                                            <select name="" class="form-control low" multiple="multiple">
+                                                                <option value="Matières Faibles">Matières faibles</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="select-custom">
+                                                            <select name="" class="form-control matery" multiple="multiple">
+                                                                <option value="">Votre goût pour les matières</option>
+                                                                <option value="Maths">Maths</option>
+                                                                <option value="Sciences Physiques">Sciences Physiques</option>
+                                                                <option value="Sciences Naturelles">Sciences Naturelles</option>
+                                                                <option value="Francais">Francais</option>
+                                                                <option value="Anglais">Anglais</option>
+                                                                <option value="Espagnol">Espagnol</option>
+                                                                <option value="Allemand">Allemand</option>
+                                                                <option value="Italien">Italien</option>
+                                                                <option value="Autre langue">Autre langue</option>
+                                                                <option value="Histoire">Histoire</option>
+                                                                <option value="Géographie">Géographie</option>
+                                                                <option value="Instruction Civique">Instruction Civique</option>
+                                                                <option value="Sport">Sport</option>
+                                                                <option value="Musique">Musique</option>
+                                                                <option value="Arts PLastiques">Arts PLastiques</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                                        </div><!-- .col-* -->
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab5 -->
+                            <div class="tab-pane" id="tab6">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                            <h3>Vos centres d’intérêts</h3>
+
+                                            <h4>Liste des métiers que vous avez pensé exercer un jour </h4>
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Job">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Age">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <button class="btn  btn-inverse  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            <div class="form-group different-gap">
+                                                <div class="row">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Quels sont vos centres d’interets">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" placeholder="Quels loisirs et activités pratiquez-vous">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div><!-- .col-* -->
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab6 -->
+                            <div class="tab-pane" id="tab7">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                       <div class="col-md-8">
+                                            <h3>Etablissements fréquentés</h3>
+
+                                            <h4>Etablissement Primaire</h4>
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Nom">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <div class="select-custom">
+                                                                <select name="" class="form-control">
+                                                                    <option value="">Classe redoublée</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Cause du redoublement">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group">
+                                                            <button class="btn  btn-inverse  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            <h4>Etablissement Secondaire</h4>
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Nom">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <div class="select-custom">
+                                                                <select name="" class="form-control">
+                                                                    <option value="">Classe redoublée</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Cause du redoublement">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group">
+                                                            <button class="btn  btn-inverse  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                        </div><!-- .col-* -->
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab7 -->
+                            <div class="tab-pane" id="tab8">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                       <div class="col-md-12">
+
+                                            <h3>Vos professions favorites</h3>
+
+                                            <div class="job-group-content">
+                                                <h4>Groupe A</h4>
+
+                                                <ul class="job-group-list">
+                                                    <li>Chargé de clientèle
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="satisfy" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="satisfy" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Enseignant
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="enseignant" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="enseignant" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Médecin
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="médecin" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="médecin" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Travailleur social
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="travailleur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="travailleur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Psychologue
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="psychologue" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="psychologue" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Animateur
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="animateur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="animateur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Guide touristique
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="guide" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="guide" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Avocat
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="avocat" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="avocat" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Diplomate
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="diplomate" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="diplomate" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Conseiller d’orientation
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="conseiller" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="conseiller" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Orthophoniste
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="orthophoniste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="orthophoniste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="job-group-content">
+                                                <h4>Groupe B</h4>
+
+                                                <ul class="job-group-list">
+                                                    <li>Gestionnaire
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="gestionnaire" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="gestionnaire" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Economiste
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="economiste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="economiste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Comptable
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="comptable" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="comptable" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Analyste financier
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="analyste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="analyste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Commerçant
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="commerçant" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="commerçant" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Assureur
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="assureur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="assureur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Agent de voyage
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="agent" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="agent" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Représentant
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="représentant" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="représentant" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Opticien
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="opticien" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="opticien" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Conseiller juridique
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="conseiller" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="conseiller" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Attaché commercial
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="attaché" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="attaché" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="job-group-content">
+                                                <h4>Groupe C</h4>
+
+                                                <ul class="job-group-list">
+                                                    <li>Décorateur
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="décorateur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="décorateur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Publicitaire
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="publicitaire" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="publicitaire" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Acteur
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="acteur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="acteur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Metteur en scène
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="metteur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="metteur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Peintre
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="peintre" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="peintre" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Sculpteur
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="sculpteur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="sculpteur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Styliste
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="styliste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="styliste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Paysagiste
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="paysagiste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="paysagiste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Photographe
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="photographe" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="photographe" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Musicien
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="musicien" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="musicien" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Urbaniste
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="urbaniste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="urbaniste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="job-group-content">
+                                                <h4>Groupe D</h4>
+
+                                                <ul class="job-group-list">
+                                                    <li>Historien
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="historien" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="historien" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Archéologue
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="archéologue" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="archéologue" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Géographe
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="géographe" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="géographe" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Bibliothécaire
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="bibliothécaire" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="bibliothécaire" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Libraire
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="libraire" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="libraire" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Interprète
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="interprète" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="interprète" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Journaliste
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="journaliste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="journaliste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Professeur de langue
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="professeur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="professeur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Ecrivain
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="ecrivain" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="ecrivain" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Guide touristique
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="touristique" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="touristique" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Notaire
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="notaire" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="notaire" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="job-group-content">
+                                                <h4>Groupe E</h4>
+
+                                                <ul class="job-group-list">
+                                                    <li>Consultant en agriculture
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="consultant" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="consultant" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Diététicien
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="diététicien" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="diététicien" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Chercheur scientifique
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="chercheur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="chercheur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Ingénieur
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="ingénieur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="Ingénieur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Analyste-programmeur
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="analyste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="analyste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Médecin
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="médecin" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="médecin" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Pharmacien
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="pharmacien" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="pharmacien" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Géologue
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="géologue" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="géologue" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Physicien
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="physicien" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="physicien" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Mathématicien-statisticien
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="mathématicien" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="mathématicien" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Météorologue
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="météorologue" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="météorologue" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="job-group-content">
+                                                <h4>Groupe F</h4>
+
+                                                <ul class="job-group-list">
+                                                    <li>Ingénieur agronome
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="ingénieur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="ingénieur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Architecte
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="architecte" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="architecte" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Ingénieur technicien
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="ingénieur" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="ingénieur" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Technicien télécommunication
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="technicien" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="technicien" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Responsable réseau informatique
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="responsable" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="responsable" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Prothésiste dentaire
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="prothésiste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="prothésiste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Laborantin
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="laborantin" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="laborantin" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Radiologue
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="radiologue" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="radiologue" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Officier
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="officier" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="officier" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Homéopathe
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="homéopathe" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="homéopathe" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                    <li>Dentiste
+                                                        <div class="checkbox-job-group">
+                                                            <label class="custom-radio face sad pull-right"><input type="radio" name="dentiste" value="sad" /> <span>&nbsp;</span></label>
+                                                            <label class="custom-radio face happy pull-right"><input type="radio" name="dentiste" value="happy" /> <span>&nbsp;</span></label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                       </div><!-- .col-* -->
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab8 -->
+                            <div class="tab-pane" id="tab9">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                       <div class="col-md-4">
+
+                                            <h3>Diagnostic</h3>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" placeholder="Motif du Diagnostic">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" placeholder="Remarques Particulières">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <button class="btn btn-appointment pull-right" type="submit">Terminer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                       </div><!-- .col-* -->
+                                    </div><!-- .row -->
+                                </div><!-- .container-fluid -->
+                            </div><!-- #tab9 -->
+
+                        </div><!-- .tab-content -->
+
+                    </div><!-- .container-fluid -->
+
+                    <!-- <div class="save-button-holder">
+                        <button class="btn btn-appointment pull-right">Enregistrer</button>
+                    </div> -->
+
+                </form></div><!-- #rootwizard -->
+
+            </div><!-- .row -->
+
+        </div>

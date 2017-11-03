@@ -1,0 +1,780 @@
+﻿<main class="main landingPage1Bg" role="main">
+
+
+    <div class="landingpage__wrapper" *ngIf="!onMobile">
+
+
+        <div class="landingpage__additional-content  holder-4  do-animate  one-column-mobile" data-background="./assets/images/new-landingpage/orientation.jpg">
+            <div class="landingpage__image-holder">
+                <a (click)="onNavigate('/conseil')">
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/orientation.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>Orientation entretien-<br />bilans</h2>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+        </div>
+
+        <div class="landingpage__additional-content  holder-1  do-animate  have-form" data-background="./assets/images/new-landingpage/ecole.jpg">
+            <div class="landingpage__image-holder  ">
+                <a>
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/ecole.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>École</h2>
+                        <h3>Maternelle / Primaire</h3>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+
+            <div class="form-wrap row  animated fadeOut" style="margin-bottom:200px">
+
+                <form [formGroup]="searchForm"
+                    (ngSubmit)="onSubmitSearch('ecole')" >
+                    <div class="col-md-11">
+                        <div class="row">
+                          <h2>École</h2>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="select-custom">
+                                        <select name="class" class="form-control"
+                                            [formControl]="searchForm.controls['classe']"
+                                            (click)="storeClassName($event)">
+                                            <option value="" disabled selected hidden>Classe</option>
+                                            <option value="Indifférent">&nbsp;Indifférent</option>
+                                            <option value="ps" style="color:red">
+                                                &nbsp;Classes maternelles
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().infant; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().infant[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="cp" style="color:red">
+                                                &nbsp;Classes élémentaires
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().primary; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().primary[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div><!-- .col-* -->
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Lieu"
+                                    (keyup)="filterLieu($event)"
+                                    [mdAutocomplete]="auto"
+                                    [formControl]="searchForm.controls['lieu']"/>
+
+                                    <md-autocomplete #auto="mdAutocomplete">
+                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                        <!-- <md-option [value]="options.regions"
+                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                            (click)="onSelectLieu('R', i)">
+                                            &nbsp;&nbsp;{{ option.region }}
+                                        </md-option>
+                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                            (click)="onSelectLieu('D', i)">
+                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                                        </md-option>
+                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                            (click)="onSelectLieu('V', i)">
+                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                                        </md-option>
+                                    </md-autocomplete>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        placeholder="Nom d'etablissement"
+                                        [mdAutocomplete]="autoSchool"
+                                        (keyup)="filterSchool($event)"
+                                        [formControl]="searchForm.controls['etablissement']"/>
+
+                                    <md-autocomplete #autoSchool="mdAutocomplete">
+                                        <md-option *ngFor="let school of schoolsOptions"
+                                            [value]="school.longName">
+                                            {{ school.longName }}
+                                        </md-option>
+                                    </md-autocomplete>
+                                </div>
+                            </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <button class="btn landing-page-1-searchbutton" type="submit">
+                                Rechercher
+                              </button>
+                            </div>
+                          </div>
+                        </div><!-- .row -->
+                    </div><!-- .col-* -->
+                </form>
+
+            </div><!-- .form-wrap -->
+        </div>
+
+        <div class="landingpage__additional-content  holder-2  do-animate" data-background="./assets/images/new-landingpage/internat.jpg">
+            <div class="landingpage__image-holder">
+                <a>
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/internat.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>Internat</h2>
+                        <h3>&nbsp;</h3>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+
+            <div class="form-wrap row  animated fadeOut">
+
+                <form [formGroup]="searchForm"
+                    (ngSubmit)="onSubmitSearch('internat')">
+                    <div class="col-md-11">
+                        <div class="row">
+                          <h2>Internat</h2>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="select-custom">
+                                        <select name="class" class="form-control"
+                                            [formControl]="searchForm.controls['classe']"
+                                            (click)="storeClassName($event)">
+                                            <!--<option value="" disabled selected hidden>Classe</option>-->
+                                            <option value="" selected hidden>Classe</option>
+                                            <option value="Indifférent">&nbsp;Indifférent</option>
+                                            <option value="ps" style="color:red">
+                                                &nbsp;Classes maternelles
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().infant; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().infant[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="cp" style="color:red">
+                                                &nbsp;Classes élémentaires
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().primary; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().primary[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().college; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().college[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="seconde_techno" style="color:red">
+                                                &nbsp;Classes de seconde
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().seconde; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().seconde[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="premiere_es" style="color:red">
+                                                &nbsp;Classes de première
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().premiere; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().premiere[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="terminale_s" style="color:red">
+                                                &nbsp;Classes de terminale
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().terminal; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().terminal[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="Cursus international" style="color:red">
+                                                &nbsp;Cursus international
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().international; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().international[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="seconde_sthr" style="color:red">
+                                                &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="premiere_sti2s" style="color:red">
+                                                &nbsp;ST2S - Sciences et Technologies de la santé et du social
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().st2s; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().st2s[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="premiere_std2a" style="color:red">
+                                                &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().std2a; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().std2a[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="premiere_sti2d" style="color:red">
+                                                &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().sti2d; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().sti2d[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="premiere_stmg" style="color:red">
+                                                &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().stmg; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().stmg[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="premiere_stl" style="color:red">
+                                                &nbsp;STL - Sciences et Technologies de Laboratoire
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().stl; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().stl[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="premiere_stav" style="color:red">
+                                                &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().stav; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().stav[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="2ndeTMD" style="color:red">
+                                                &nbsp;TMD - Techniques de la Musique et de la Danse
+                                            </option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().tmd; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().tmd[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+										                    </select>
+                                    </label>
+                                </div>
+                            </div><!-- .col-* -->
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Lieu"
+                                    (keyup)="filterLieu($event)"
+                                    [mdAutocomplete]="auto"
+                                    [formControl]="searchForm.controls['lieu']"/>
+
+                                    <md-autocomplete #auto="mdAutocomplete">
+                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                        <!-- <md-option [value]="options.regions"
+                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                            (click)="onSelectLieu('R', i)">
+                                            &nbsp;&nbsp;{{ option.region }}
+                                        </md-option>
+                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                            (click)="onSelectLieu('D', i)">
+                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                                        </md-option>
+                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                            (click)="onSelectLieu('V', i)">
+                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                                        </md-option>
+                                    </md-autocomplete>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        placeholder="Nom d'etablissement"
+                                        [mdAutocomplete]="autoSchool"
+                                        (keyup)="filterSchool($event)"
+                                        [formControl]="searchForm.controls['etablissement']"/>
+
+                                    <md-autocomplete #autoSchool="mdAutocomplete">
+                                        <md-option *ngFor="let school of schoolsOptions"
+                                            [value]="school.longName">
+                                            {{ school.longName }}
+                                        </md-option>
+                                    </md-autocomplete>
+                                </div>
+                            </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <button class="btn landing-page-1-searchbutton" type="submit">
+                                Rechercher
+                              </button>
+                            </div>
+                          </div>
+                        </div><!-- .row -->
+                    </div><!-- .col-* -->
+                </form>
+
+            </div><!-- .form-wrap -->
+        </div>
+
+        <div class="landingpage__additional-content  holder-3  do-animate  have-form" data-background="./assets/images/new-landingpage/college.jpg">
+
+            <div class="landingpage__image-holder">
+                <a>
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/college.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>Collège</h2>
+                        <h3>6<sup>ème</sup>-3<sup>ème</sup></h3>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+
+            <div class="form-wrap row  animated fadeOut">
+
+                <form [formGroup]="searchForm"
+                    (ngSubmit)="onSubmitSearch('college')">
+                    <div class="col-md-11">
+                        <div class="row">
+                          <h2>Collège</h2>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="select-custom">
+                                        <select name="class" class="form-control"
+                                            [formControl]="searchForm.controls['classe']"
+                                            (click)="storeClassName($event)">
+                                            <option value="" disabled selected hidden>Classe</option>
+                                            <option value="Indifférent">&nbsp;Indifférent</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().college; let i=index"
+                                                    [value]="helperService.getclassEcoleListToSendToApi().college[i]">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().sollegeSpeA; let i=index"
+                                                    value="">
+                                              &nbsp;{{name}}
+                                            </option>
+                                            <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
+                                            <option *ngFor="let name of helperService.getClassEcoleList().sollegeSpeB; let i=index"
+                                                    value="">
+                                              &nbsp;{{name}}
+                                            </option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div><!-- .col-* -->
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Lieu"
+                                        (keyup)="filterLieu($event)"
+                                        [mdAutocomplete]="auto"
+                                        [formControl]="searchForm.controls['lieu']"/>
+
+                                        <md-autocomplete #auto="mdAutocomplete">
+                                            <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                            <!-- <md-option [value]="options.regions"
+                                            *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                            <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                                (click)="onSelectLieu('R', i)">
+                                                &nbsp;&nbsp;{{ option.region }}
+                                            </md-option>
+                                            <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                            <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                                (click)="onSelectLieu('D', i)">
+                                                &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                                            </md-option>
+                                            <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                            <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                                (click)="onSelectLieu('V', i)">
+                                                &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                                            </md-option>
+                                        </md-autocomplete>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom d'etablissement"
+                                  [mdAutocomplete]="autoSchool"
+                                  (keyup)="filterSchool($event)"
+                                  [formControl]="searchForm.controls['etablissement']"/>
+
+                                <md-autocomplete #autoSchool="mdAutocomplete">
+                                  <md-option *ngFor="let school of schoolsOptions"
+                                    [value]="school.longName">
+                                    {{ school.longName }}
+                                  </md-option>
+                                </md-autocomplete>
+                              </div>
+                            </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <button class="btn landing-page-1-searchbutton" type="submit">
+                                Rechercher
+                              </button>
+                            </div>
+                          </div>
+                        </div><!-- .row -->
+                    </div><!-- .col-* -->
+                </form>
+
+
+            </div><!-- .form-wrap -->
+
+        </div>
+
+        <div class="landingpage__additional-content  holder-5  do-animate" data-background="./assets/images/new-landingpage/sejour.jpg">
+            <div class="landingpage__image-holder">
+                <a (click)="onNavigate('/linguistic')">
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/sejour.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>Séjours linguistiques <br />soutien scolaire</h2>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+        </div>
+
+        <div class="landingpage__additional-content  holder-6  do-animate  have-form" data-background="./assets/images/new-landingpage/lycee.jpg">
+            <div class="landingpage__image-holder">
+                <a>
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/lycee.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>Lycée</h2>
+                        <h3>2<sup>nde</sup>-Terminale</h3>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+
+            <div class="form-wrap row animated fadeOut">
+
+                <form [formGroup]="searchForm"
+                    (ngSubmit)="onSubmitSearch('lycee')">
+                <div class="col-md-11">
+                    <div class="row">
+                      <h2>Lycée</h2>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="select-custom">
+                                    <select name="class" class="form-control"
+                                        [formControl]="searchForm.controls['classe']"
+                                        (click)="storeClassName($event)">
+                                        <option value="" disabled selected hidden>Classe</option>
+                                        <option value="Indifférent">&nbsp;Indifférent</option>
+                                        <option value="seconde_techno" style="color:red">
+                                            &nbsp;Classes de seconde
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().seconde; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().seconde[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="premiere_es" style="color:red">
+                                            &nbsp;Classes de première
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().premiere; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().premiere[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="terminale_s" style="color:red">
+                                            &nbsp;Classes de terminale
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().terminal; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().terminal[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="Cursus international" style="color:red">
+                                            &nbsp;Cursus international
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().international; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().international[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="seconde_sthr" style="color:red">
+                                            &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="premiere_sti2s" style="color:red">
+                                            &nbsp;ST2S - Sciences et Technologies de la santé et du social
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().st2s; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().st2s[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="premiere_std2a" style="color:red">
+                                            &nbsp;STD2A - Sciences et Technologies du Design et des Arts Appliqués
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().std2a; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().std2a[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="premiere_sti2d" style="color:red">
+                                            &nbsp;STI2D - Sciences et Technologies de l'Industrie et du Développement Durable
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().sti2d; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().sti2d[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="premiere_stmg" style="color:red">
+                                            &nbsp;STMG - Sciences et Technologies du Management et de la Gestion
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().stmg; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().stmg[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="premiere_stl" style="color:red">
+                                            &nbsp;STL - Sciences et Technologies de Laboratoire
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().stl; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().stl[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="premiere_stav" style="color:red">
+                                            &nbsp;STAV - Sciences et Technologies de l'Agronomie et du Vivant (lycées agricoles)
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().stav; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().stav[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                        <option value="2ndeTMD" style="color:red">
+                                            &nbsp;TMD - Techniques de la Musique et de la Danse
+                                        </option>
+                                        <option *ngFor="let name of helperService.getClassEcoleList().tmd; let i=index"
+                                                [value]="helperService.getclassEcoleListToSendToApi().tmd[i]">
+                                          &nbsp;{{name}}
+                                        </option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div><!-- .col-* -->
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Lieu"
+                                    (keyup)="filterLieu($event)"
+                                    [mdAutocomplete]="auto"
+                                    [formControl]="searchForm.controls['lieu']"/>
+
+                                    <md-autocomplete #auto="mdAutocomplete">
+                                        <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                        <!-- <md-option [value]="options.regions"
+                                        *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                        <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                            (click)="onSelectLieu('R', i)">
+                                            &nbsp;&nbsp;{{ option.region }}
+                                        </md-option>
+                                        <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                        <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                            (click)="onSelectLieu('D', i)">
+                                            &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                                        </md-option>
+                                        <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                        <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                            (click)="onSelectLieu('V', i)">
+                                            &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                                        </md-option>
+                                    </md-autocomplete>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom d'etablissement"
+                                    [mdAutocomplete]="autoSchool"
+                                    (keyup)="filterSchool($event)"
+                                    [formControl]="searchForm.controls['etablissement']"/>
+
+                                <md-autocomplete #autoSchool="mdAutocomplete">
+                                <md-option *ngFor="let school of schoolsOptions"
+                                    [value]="school.longName">
+                                    {{ school.longName }}
+                                </md-option>
+                                </md-autocomplete>
+                            </div>
+                        </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <button class="btn landing-page-1-searchbutton" type="submit">
+                            Rechercher
+                          </button>
+                        </div>
+                      </div>
+                    </div><!-- .row -->
+                </div><!-- .col-* -->
+            </form>
+
+
+            </div><!-- .form-wrap -->
+
+        </div>
+
+        <div class="landingpage__additional-content  holder-7  do-animate" data-background="./assets/images/new-landingpage/autodoc.jpg">
+            <div class="landingpage__image-holder">
+                <a>
+                    <img class="landingpage__image" src="./assets/images/new-landingpage/autodoc.jpg" alt="" />
+                    <section class="landingpage__caption">
+                        <h2>Enseignement <br />supérieur</h2>
+                    </section>
+                </a>
+            </div><!-- .landingpage__image-holder -->
+
+            <div class="form-wrap row  animated fadeOut">
+
+                <form [formGroup]="apbForm"
+                    (ngSubmit)="onSubmitSearch('enseignement')">
+                    <div class="col-md-11">
+                        <div class="row">
+                          <h2>Enseignement <br />supérieur</h2>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="select-custom" >
+                                <select name="class" class="form-control"
+                                  [formControl]="apbForm.controls['domaine']">
+                                  <option value="" selected hidden>Domaine</option>
+                                  <option value="Indifférent">&nbsp;Indifférent</option>
+                                  <option *ngFor="let domaine of domaines"
+                                      [value]="domaine" selected>&nbsp;{{domaine}}</option>
+                                </select>
+                              </label>
+                            </div>
+                          </div><!-- .col-* -->
+
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Lieu"
+                              (keyup)="filterLieu($event)"
+                              [mdAutocomplete]="auto"
+                              [formControl]="apbForm.controls['lieu']"/>
+
+                              <md-autocomplete #auto="mdAutocomplete">
+                                <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
+                                <!-- <md-option [value]="options.regions"
+                                *ngIf="options['regions'].length!=0">{{ options.regions }}</md-option>    -->
+                                <md-option *ngFor="let option of options.regions; let i = index" [value]="option.region"
+                                    (click)="onSelectLieu('R', i)">
+                                    &nbsp;&nbsp;{{ option.region }}
+                                </md-option>
+                                <md-option disabled *ngIf="options['departements'].length!=0">Départements</md-option>
+                                <md-option *ngFor="let option of options.departements; let i=index" [value]="option.departmentNumber+' '+option.departmentName"
+                                    (click)="onSelectLieu('D', i)">
+                                    &nbsp;&nbsp;{{option.departmentNumber}} {{option.departmentName}}
+                                </md-option>
+                                <md-option disabled *ngIf="options['villes'].length!=0">Villes</md-option>
+                                <md-option *ngFor="let option of options.villes; let i=index" [value]="option.postcode+' '+option.cityName"
+                                    (click)="onSelectLieu('V', i)">
+                                    &nbsp;&nbsp; {{option.postcode}} {{ option.cityName }}
+                                </md-option>
+                              </md-autocomplete>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <input type="text" class="form-control"
+                                placeholder="Nom d'etablissement"
+                                [mdAutocomplete]="autoSchoolApb"
+                                (keyup)="filterApbSchool($event)"
+                                [formControl]="apbForm.controls['etablissement']"/>
+
+                              <md-autocomplete #autoSchoolApb="mdAutocomplete">
+                                <md-option *ngFor="let school of schoolsOptions"
+                                    [value]="school">
+                                    {{ school }}
+                                </md-option>
+                              </md-autocomplete>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <button class="btn landing-page-1-searchbutton" type="submit">
+                                Rechercher
+                              </button>
+                            </div>
+                          </div>
+                        </div><!-- .row -->
+                    </div><!-- .col-* -->
+                </form>
+
+            </div><!-- .form-wrap -->
+        </div>
+
+    </div>
+	<div class="landingpage__wrapper" *ngIf="onMobile">
+		<div class="landingpage__additional-content  holder-4  do-animate  one-column-mobile" data-background="./assets/images/new-landingpage/orientation.jpg">
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/conseil')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/orientation.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Orientation entretien-<br />bilans</h2>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+    </div>
+		<div class="landingpage__additional-content  holder-1  do-animate  have-form" data-background="./assets/images/new-landingpage/ecole.jpg">
+      <div class="landingpage__image-holder  ">
+          <a (click)="onNavigate('/ecole')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/ecole.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>École</h2>
+                  <h3>Maternelle / Primaire</h3>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+		</div>
+		<div class="landingpage__additional-content  holder-3  do-animate  have-form" data-background="./assets/images/new-landingpage/college.jpg">
+
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/college')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/college.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>College</h2>
+                  <h3>6ème-3ème</h3>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+		</div>
+		<div class="landingpage__additional-content  holder-6  do-animate  have-form" data-background="./assets/images/new-landingpage/lycee.jpg">
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/lycee')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/lycee.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Lycée</h2>
+                  <h3>2nde-Terminale</h3>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+    </div>
+
+		<div class="landingpage__additional-content  holder-2  do-animate" data-background="./assets/images/new-landingpage/internat.jpg">
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/internat')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/internat.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Internat</h2>
+                  <h3>&nbsp;</h3>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+		</div>
+		<div class="landingpage__additional-content  holder-7  do-animate" data-background="./assets/images/new-landingpage/autodoc.jpg">
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/enseignement')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/autodoc.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Enseignement <br />supérieur</h2>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+		</div>
+
+		<div class="landingpage__additional-content  holder-5  do-animate" data-background="./assets/images/new-landingpage/sejour.jpg">
+      <div class="landingpage__image-holder">
+          <a (click)="onNavigate('/linguistic')">
+              <img class="landingpage__image" src="./assets/images/new-landingpage/sejour.jpg" alt="" />
+              <section class="landingpage__caption">
+                  <h2>Séjours linguistiques <br />soutien scolaire</h2>
+              </section>
+          </a>
+      </div><!-- .landingpage__image-holder -->
+    </div>
+	</div>
+
+	<!-- .landingpage__wrapper -->
+
+</main><!-- .main -->
