@@ -2858,8 +2858,7 @@ header .main-navigation li.courses-menu li .single-item {
   display: inline-block;
   font-size: 20px;
   position: fixed;
-  right: 13%;
-  top: 65%;
+  right: 15px;
   z-index: 99999;
 }
 
@@ -2867,13 +2866,15 @@ header .main-navigation li.courses-menu li .single-item {
 @media (max-width:767px) {
   .compare-holder {
     right: 20px;
-    top: 35%;
+
   }
   }
 
 @media (max-width:767px) {
   .compare-holder {
     right: 20px;
-    top: 40%;
+    top: 0;
   }
 }
+
+.compare-holder {position:absolute;}
