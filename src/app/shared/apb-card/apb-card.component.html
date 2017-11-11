@@ -23,7 +23,7 @@
     </li>-->
 </ul>
 
-<img *ngIf="SchoolData.logo!='' && SchoolData.logo!=null; else emptyLogo"
+<img *ngIf="SchoolData.logo!='' || SchoolData.logo!=null; else emptyLogo"
     src="https://media.apbprive.fr/{{SchoolData.logo}}" alt="School 1" 
     style="width:150px; height:150px; margin-left:15%; margin-top:30px"/>
 <ng-template #emptyLogo>
