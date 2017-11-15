@@ -197,27 +197,27 @@ export class SchoolComponent implements OnInit, OnDestroy {
       autoplay: true,
       autoplaySpeed: 2000,
     });
-    
+
     var footHt = $('footer.footerCustom').height();
 
     var $scrollingDiv = $(".compare-holder");
 
     $(window).scroll(function () {
         var y = $(this).scrollTop();
-            
+
         var footHt = $('footer.footerCustom').height();
         var docHt = $(document).height();
         var scrollHeight = $scrollingDiv.height();
         var winHt = $(window).height();
         var scrollamt = footHt;
         var docHtLess = docHt - winHt;
-        console.log(y, docHt, scrollamt);
+        //console.log(y, docHt, scrollamt);
         if (y < docHtLess - scrollamt) {
             $scrollingDiv.stop().animate({ "marginTop": ($(window).scrollTop()) + "px" }, "slow");
-              
+
         } else {
 
-            console.log('else');
+            //console.log('else');
         }
     });
   }
