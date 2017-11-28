@@ -6,6 +6,11 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
+// const REGISTER_API: string = "http://13.229.81.1/cideapi/api/auth/register";
+// const FORGOT_API : string = "http://13.229.81.1/cideapi/api/auth/password";
+// const LOGIN_API : string ="http://13.229.81.1/cideapi/api/auth/log";
+// const SEND_API : string = "http://13.229.81.1/cideapi/api/auth/email/send";
+
 const REGISTER_API: string = "http://13.229.81.1/cideapi/api/auth/register";
 const FORGOT_API : string = "http://13.229.81.1/cideapi/api/auth/password";
 const LOGIN_API : string ="http://13.229.81.1/cideapi/api/auth/log";

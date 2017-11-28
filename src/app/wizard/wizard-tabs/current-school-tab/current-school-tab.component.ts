@@ -8,7 +8,7 @@ import {FileUploader} from "ng2-file-upload";
 import { ApplyService } from "../../../services/apply.service";
 import { UsersService } from '../../../services/users.service';
 
-const URL = 'http://13.229.81.1/cide-school/upload/';
+const URL = 'http://13.229.81.1/cideapi/cide-school/upload/';
 @Component({
   selector: 'app-current-school-tab',
   templateUrl: './current-school-tab.component.html',
