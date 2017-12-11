@@ -12,20 +12,20 @@ import 'rxjs/add/operator/toPromise';
 // const LOGIN_API : string ="http://localhost:3000/api/auth/log";
 // const SEND_API : string = "http://localhost:3000/api/auth/email/send";
 
-//const REGISTER_API: string = "http://localhost:3000/api/auth/register";
-//const FORGOT_API : string = "http://localhost:3000/api/auth/password";
-//const LOGIN_API : string ="http://localhost:3000/api/auth/log";
-//const SEND_API : string = "http://localhost:3000/api/auth/email/send";
+const REGISTER_API: string = "http://localhost:3000/api/auth/register";
+const FORGOT_API : string = "http://localhost:3000/api/auth/password";
+const LOGIN_API : string ="http://localhost:3000/api/auth/log";
+const SEND_API : string = "http://localhost:3000/api/auth/email/send";
 //=======
 // const REGISTER_API: string = "http://13.229.81.1/cideapi/api/auth/register";
 // const FORGOT_API : string = "http://13.229.81.1/cideapi/api/auth/password";
 // const LOGIN_API : string ="http://13.229.81.1/cideapi/api/auth/log";
 // const SEND_API : string = "http://13.229.81.1/cideapi/api/auth/email/send";
 
-const REGISTER_API: string = "http://13.229.81.1/cideapi/api/auth/register";
-const FORGOT_API : string = "http://13.229.81.1/cideapi/api/auth/password";
-const LOGIN_API : string ="http://13.229.81.1/cideapi/api/auth/log";
-const SEND_API : string = "http://13.229.81.1/cideapi/api/auth/email/send";
+// const REGISTER_API: string = "http://13.229.81.1/cideapi/api/auth/register";
+// const FORGOT_API : string = "http://13.229.81.1/cideapi/api/auth/password";
+// const LOGIN_API : string ="http://13.229.81.1/cideapi/api/auth/log";
+// const SEND_API : string = "http://13.229.81.1/cideapi/api/auth/email/send";
 //>>>>>>> 3eedc38d22e37661bd42c3742cb86f7dc63367ea
 
 @Injectable()

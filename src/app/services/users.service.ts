@@ -7,11 +7,11 @@ import {MyAccountMdl} from '../model/myaccount.model';
 
 
 //<<<<<<< HEAD
-// const PROFILE_API : string = "http://localhost:3000/api/common/profile";
-// const APPOINTMENTS_API : string = "http://localhost:3000/api/public";
-// const PACKAGE_API : string = "http://localhost:3000/api/public/package";
-// const APPLICATION_API : string = "http://localhost:3000/api/users/apply";
-// const TRIPS_API: string = "http://localhost:3000/api/users/trips";
+const PROFILE_API : string = "http://localhost:3000/api/common/profile";
+const APPOINTMENTS_API : string = "http://localhost:3000/api/public";
+const PACKAGE_API : string = "http://localhost:3000/api/public/package";
+const APPLICATION_API : string = "http://localhost:3000/api/users/apply";
+const TRIPS_API: string = "http://localhost:3000/api/users/trips";
 
 // const PROFILE_API : string = "http://localhost:3000/api/common/profile";
 // const APPOINTMENTS_API : string = "http://localhost:3000/api/public";
@@ -25,11 +25,11 @@ import {MyAccountMdl} from '../model/myaccount.model';
 // const APPLICATION_API : string = "http://13.229.81.1/cideapi/api/users/apply";
 // const TRIPS_API: string = "http://13.229.81.1/cideapi/api/users/trips";
 
-const PROFILE_API : string = "http://13.229.81.1/cideapi/api/common/profile";
-const APPOINTMENTS_API : string = "http://13.229.81.1/cideapi/api/public";
-const PACKAGE_API : string = "http://13.229.81.1/cideapi/api/public/package";
-const APPLICATION_API : string = "http://13.229.81.1/cideapi/api/users/apply";
-const TRIPS_API: string = "http://13.229.81.1/cideapi/api/users/trips";
+// const PROFILE_API : string = "http://13.229.81.1/cideapi/api/common/profile";
+// const APPOINTMENTS_API : string = "http://13.229.81.1/cideapi/api/public";
+// const PACKAGE_API : string = "http://13.229.81.1/cideapi/api/public/package";
+// const APPLICATION_API : string = "http://13.229.81.1/cideapi/api/users/apply";
+// const TRIPS_API: string = "http://13.229.81.1/cideapi/api/users/trips";
 //>>>>>>> 3eedc38d22e37661bd42c3742cb86f7dc63367ea
 
 @Injectable()
@@ -46,9 +46,9 @@ export class UsersService {
   putProfile(data) : Observable<any>{
     this.getToken();
 //<<<<<<< HEAD
-//    return this.http.put( "http://localhost:3000/api/common/profile"+'?token='+this.token, data, {headers: this.headers})
+    return this.http.put( "http://localhost:3000/api/common/profile"+'?token='+this.token, data, {headers: this.headers})
 //=======
-    return this.http.put( "http://13.229.81.1/cideapi/api/common/profile"+'?token='+this.token, data, {headers: this.headers})
+    //return this.http.put( "http://13.229.81.1/cideapi/api/common/profile"+'?token='+this.token, data, {headers: this.headers})
 //>>>>>>> 3eedc38d22e37661bd42c3742cb86f7dc63367ea
       .map((response)=>response.json());
   }

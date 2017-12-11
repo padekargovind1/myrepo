@@ -3,12 +3,12 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 //<<<<<<< HEAD
-// const SCHOOLS_API : string = "http://localhost:3000/api/public/schools/";
-// const CITIES_API : string = "http://localhost:3000/api/public/cities/autocomplete";
-// const LINGUISTIC_API: string = "http://localhost:3000/api/public/linguistic";
-// const LANGUAGE_API: string = "http://localhost:3000/api/public/language";
-// const SEARCH_API : string = "http://localhost:3000/api/public/search/";
-// const RATE_API : string = "http://localhost:3000/api/public/rate";
+const SCHOOLS_API : string = "http://localhost:3000/api/public/schools/";
+const CITIES_API : string = "http://localhost:3000/api/public/cities/autocomplete";
+const LINGUISTIC_API: string = "http://localhost:3000/api/public/linguistic";
+const LANGUAGE_API: string = "http://localhost:3000/api/public/language";
+const SEARCH_API : string = "http://localhost:3000/api/public/search/";
+const RATE_API : string = "http://localhost:3000/api/public/rate";
 // const APB_API : string = "https://api2.apbprive.fr/";
 
 // const SCHOOLS_API : string = "http://localhost:3000/api/public/schools/";
@@ -26,12 +26,12 @@ import { Observable } from 'rxjs/Observable';
 // const RATE_API : string = "http://13.229.81.1/cideapi/api/public/rate";
 // const APB_API : string = "https://api2.apbprive.fr/";
 
-const SCHOOLS_API : string = "http://13.229.81.1/cideapi/api/public/schools/";
-const CITIES_API : string = "http://13.229.81.1/cideapi/api/public/cities/autocomplete";
-const LINGUISTIC_API: string = "http://13.229.81.1/cideapi/api/public/linguistic";
-const LANGUAGE_API: string = "http://13.229.81.1/cideapi/api/public/language";
-const SEARCH_API : string = "http://13.229.81.1/cideapi/api/public/search/";
-const RATE_API : string = "http://13.229.81.1/cideapi/api/public/rate";
+// const SCHOOLS_API : string = "http://13.229.81.1/cideapi/api/public/schools/";
+// const CITIES_API : string = "http://13.229.81.1/cideapi/api/public/cities/autocomplete";
+// const LINGUISTIC_API: string = "http://13.229.81.1/cideapi/api/public/linguistic";
+// const LANGUAGE_API: string = "http://13.229.81.1/cideapi/api/public/language";
+// const SEARCH_API : string = "http://13.229.81.1/cideapi/api/public/search/";
+// const RATE_API : string = "http://13.229.81.1/cideapi/api/public/rate";
 //>>>>>>> 3eedc38d22e37661bd42c3742cb86f7dc63367ea
 const APB_API : string = "https://api2.apbprive.fr/";
 
