@@ -139,7 +139,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
     // console.log(data)
     this.bookingService.storeBookingData(data);
     this.bookingService.storeBookingPrice(this.appointmentPackage[this.bookingData[3]].cost); // Store the package price
-    console.log(this.bookingData);
+    console.log("bookingData===>>",this.bookingData);
     const newAppointment = {
       adviser : this.appointmentData[0],
       from: this.appointmentData[2],

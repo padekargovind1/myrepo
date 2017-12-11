@@ -17,7 +17,7 @@ export class BookingService {
               private router : Router) { }
 
   storeBookingData(data){
-    console.log(data);
+    console.log("storeBookingData:- ",data);
     localStorage.setItem("bookingDataDay", data[0])
     localStorage.setItem("bookingDataStart", data[1])
     localStorage.setItem("bookingDataEnd", data[2])
@@ -36,6 +36,7 @@ export class BookingService {
   }
 
   getBookingData(){
+    console.log("getBookingData:- ");
     const day = localStorage.getItem("bookingDataDay")
     const start = localStorage.getItem("bookingDataStart")
     const end = localStorage.getItem("bookingDataEnd")
@@ -135,7 +136,7 @@ export class BookingService {
 
   successSubmit(){
     let appointmentData = this.getBookingData();
-    console.log(appointmentData);
+    console.log("successSubmit appointmentData: - ",appointmentData);
     let frenchDate : string = appointmentData[0].toString().substr(8, 2)+'/'+appointmentData[0].toString().substr(5, 2)+'/'+appointmentData[0].toString().substr(0, 4)
     // let type : string = appointmentData[7]+' ' +appointmentData[8];
     let date : string = frenchDate+' de '+appointmentData[1]+' à '+appointmentData[2];
@@ -182,8 +183,10 @@ export class BookingService {
       console.log(event);
       if(event==true){
         if(self.getBookingPackage()[4]=='80'){
+          console.log("harish1");
           self.successSubmit();
         }else{
+          console.log("harish2");
           self.router.navigate(['/wizard']);
         }
       }
