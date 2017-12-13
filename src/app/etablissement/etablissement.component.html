@@ -15,7 +15,9 @@
                 </div>
 
                 <div class="col-lg-1  col-xs-4" *ngIf="canDisplay">
+
                     <img src="http://13.229.117.64/cideapi/{{schoolData.cycles[0].logo1}}" 
+
                         class="img-responsive">
                 </div>
                 <div class="col-lg-5 col-xs-8">
@@ -43,7 +45,9 @@
                 <div class="row">
 					<div class="col-md-12 slickjs" *ngIf="schoolData.pictures.length!=0">
 						<div *ngFor="let photo of schoolData.pictures">
+
                             <img src="http://13.229.117.64/cideapi{{photo}}" alt="">
+
                         </div>
 					</div>
                 </div>
@@ -64,19 +68,20 @@
                                                 <button class="btn btn-success btn-outline btn-sm"><i class="fa fa-comments-o"></i> Posez une question </button>
                                             </div>
                                         </div> -->
-                                      <div class="text-left  hidden-lg">
-                                        <div class="btn-group">
-                                          <button class="btn btn-success"
+                                      <div class="hidden-lg">
+                                        <div class="btn-group-vertical">
+                                          <button class="btn btn-success btnRemove btnFloat"
                                                   (click)="addToWish()">Ajoutez Aux Voeux
                                           </button>
-                                          <button class="btn btn-primary"
+                                          <button class="btn btn-primary btnFloat"
                                                   (click)="applyTo()">Selectionner
                                           </button>
-                                          <button class="btn btn-success"
+                                          <button class="btn btn-success btnFloat"
                                                   (click)="sendMessage()">Envoyez un message
                                           </button>
                                         </div>
                                       </div>
+                                       
 										<div class="text-left  hidden-xs">
                                             <div class="btn-group">
                                                 <button class="btn btn-success btn-outline btn-sm "

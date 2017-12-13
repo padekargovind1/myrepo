@@ -142,29 +142,59 @@ export class MyaccountParentsComponent implements OnInit {
     }
     // Complete the profile to send to the service with the data from API and after click on next to go to child form
     onSubmit() {
+        this.userData.parents = [];
+        this.userData.parents.relationship = [];
+            this.userData.parents.firstName = [];
+            this.userData.parents.gender = [];
+            this.userData.parents.phoneNumber = [];
+            this.userData.parents.email = [];
+            this.userData.parents.address = [];
+            this.userData.parents.address.address1 = [];
+            this.userData.parents.address.postCode = [];
+            this.userData.parents.lastName = [];
+            this.userData.parents.address.country = [];
+            this.userData.parents.address.city = [];
+        console.log("---->",this.parentAccountForm.value);
+        console.log("====>",this.parentAccountForm.controls['parents']['controls']);
+        
         for (let i = 0; i < this.parentAccountForm.controls['parents']['controls'].length; i++) {
-            //console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)
-            this.userData.parents[i].relationship = this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value;
-            this.userData.parents[i].firstName = this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value;
-            this.userData.parents[i].lastName = this.parentAccountForm.controls['parents']['controls'][i].controls.nom.value;
-            this.userData.parents[i].gender = this.parentAccountForm.controls['parents']['controls'][i].controls.titre.value;
-            this.userData.parents[i].phoneNumber = this.parentAccountForm.controls['parents']['controls'][i].controls.portable.value;
-            this.userData.parents[i].email = this.parentAccountForm.controls['parents']['controls'][i].controls.email.value;
-            this.userData.parents[i].address.address1 = this.parentAccountForm.controls['parents']['controls'][i].controls.adresse.value;
-            this.userData.parents[i].address.postCode = this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString();
-            this.userData.parents[i].address.country = this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value;
-            this.userData.parents[i].address.city = this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value;
+        //    console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)
+            // this.userData.parents.relationship.push(this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value);
+            // this.userData.parents.firstName.push(this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value);
+            // this.userData.parents.lastName.push(this.parentAccountForm.controls['parents']['controls'][i].controls.nom.value);
+            // this.userData.parents.gender.push(this.parentAccountForm.controls['parents']['controls'][i].controls.titre.value);
+            // this.userData.parents.phoneNumber.push(this.parentAccountForm.controls['parents']['controls'][i].controls.portable.value);
+            // this.userData.parents.email.push(this.parentAccountForm.controls['parents']['controls'][i].controls.email.value);
+            // this.userData.parents.address.address1.push(this.parentAccountForm.controls['parents']['controls'][i].controls.adresse.value);
+            // this.userData.parents.address.postCode.push(this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString());
+            // this.userData.parents.address.country.push(this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value);
+            // this.userData.parents.address.city.push(this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value);
+        
+            //console.log(this.userData.parents[i]);
+            // this.userData.parents[i].relationship = this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value;
+            // this.userData.parents[i].firstName = this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value;
+            // this.userData.parents[i].lastName = this.parentAccountForm.controls['parents']['controls'][i].controls.nom.value;
+            // this.userData.parents[i].gender = this.parentAccountForm.controls['parents']['controls'][i].controls.titre.value;
+            // this.userData.parents[i].phoneNumber = this.parentAccountForm.controls['parents']['controls'][i].controls.portable.value;
+            // this.userData.parents[i].email = this.parentAccountForm.controls['parents']['controls'][i].controls.email.value;
+            // this.userData.parents[i].address.address1 = this.parentAccountForm.controls['parents']['controls'][i].controls.adresse.value;
+            // this.userData.parents[i].address.postCode = this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString();
+            // this.userData.parents[i].address.country = this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value;
+            // this.userData.parents[i].address.city = this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value;
         }
+        this.userData =this.parentAccountForm.value;
         this.save();
     }
     // Save the data of the user into the service
     save() {
-        console.log(this.userData)
+        console.log("this.userData");
+        console.log(this.userData);
+
         this.usersService.putProfile(this.userData)
             .subscribe(
             (data) => {
                 let response = data;
-                console.log(response);
+                console.log("hello: ",response);
                 if (response.code == 200) {
                     swal({
                         title: 'Vos données ont bien été enregistré.',
