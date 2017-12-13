@@ -74,7 +74,9 @@ export class BrochureDownloadComponent implements OnInit {
     this.dialogref.close();
     // console.log("test1")
     // this.http.get(
-    //   'http://localhost:3000/uploads/brochure/1.pdf').subscribe(
+
+    //   'http://13.229.117.64/cideapi/uploads/brochure/1.pdf').subscribe(
+
     //     (response:Response)=>{
     //       console.log(response['_body'])
     //       var mediaType = 'application/pdf';

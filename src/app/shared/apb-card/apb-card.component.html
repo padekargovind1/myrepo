@@ -16,14 +16,16 @@
             style="color: #393649;"></i>
     </li>-->
     <!--<li>
-        <a href="http://localhost:3000{{brochureData.brochure}}" download="brochure.pdf" target="_self">
+
+        <a href="http://13.229.117.64/cideapi{{brochureData.brochure}}" download="brochure.pdf" target="_self">
+
             <i class="fa fa-download" aria-hidden="true"></i>
         </a>
         
     </li>-->
 </ul>
 
-<img *ngIf="SchoolData.logo!='' && SchoolData.logo!=null; else emptyLogo"
+<img *ngIf="SchoolData.logo!='' || SchoolData.logo!=null; else emptyLogo"
     src="https://media.apbprive.fr/{{SchoolData.logo}}" alt="School 1" 
     style="width:150px; height:150px; margin-left:15%; margin-top:30px"/>
 <ng-template #emptyLogo>

@@ -29,7 +29,9 @@ export class MyaccountMyfavouritesComponent implements OnInit {
   compareListFilter = [];
   schoolListFilter = [];
   imageExtensions = ['png','gif','jpeg']; 
-  imagePathPre = 'http://localhost:3000/';
+
+  imagePathPre = 'http://13.229.117.64/cideapi/';
+
   filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
                 'Internat', 'Stages', 'Restauration',
                 'Externat', 'Statut', 'Enseignement Confessionel',
