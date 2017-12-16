@@ -4,6 +4,7 @@ import { MdDialog, MdDialogConfig } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 import { PublicService } from '../../services/public.service';
 import { SchoolDetailSuperieurComponent } from '../../superieur/school-detail-superieur/school-detail-superieur.component';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-apb-card',
@@ -12,14 +13,14 @@ import { SchoolDetailSuperieurComponent } from '../../superieur/school-detail-su
 })
 export class ApbCardComponent implements OnInit {
 
-  @Input() SchoolData : any;
-  brochureData={brochure : ""};
+  @Input() SchoolData: any;
+  brochureData = { brochure: "" };
   config: any;
 
-  constructor(private router : Router,
-              private usersService : UsersService,
-              private publicService : PublicService,
-              public dialog:MdDialog) { }
+  constructor(private router: Router,
+    private usersService: UsersService,
+    private publicService: PublicService,
+    public dialog: MdDialog) { }
 
   ngOnInit() {
     // setTimeout(()=>{
@@ -38,61 +39,78 @@ export class ApbCardComponent implements OnInit {
   //   this.router.navigate(['applyto', this.SchoolData._id]);
   // }
 
-  saveInWish(){
-    const data = {
-      type : "wish",
-      schools : [{school : this.SchoolData._id, class:'EE'}]
-    }
-    this.usersService.postApplication(data)
-      .subscribe(
-        response=>{
-          console.log(response)
-        }
-      )
+  saveInWish() {
+    // const data = {
+    //   type : "wish",
+    //   schools : [{school : this.SchoolData._id, class:'EE'}]
+    // }
+    // this.usersService.postApplication(data)
+    //   .subscribe(
+    //     response=>{
+    //       console.log(response)
+    //     }
+    //   )
+
+    swal({
+      text: 'Please go to : <a href="https://apbprive.fr/start"> https://apbprive.fr/start </a>for apply to this school',
+      confirmButtonText: 'Ok'
+    });
   }
 
-  getSchoolBrochureById(){
+
+  getSchoolBrochureById() {
     // console.log(this.SchoolData);
     this.publicService.getBrochurebyId(this.SchoolData._id, this.SchoolData.cycles[0]._id)
       .subscribe(
-        response=>{
-          // console.log(response.data)
-          if(response.code==400){
-            console.log(response.message)
-          } else {
-            this.brochureData=response.data;
-          }
+      response => {
+        // console.log(response.data)
+        if (response.code == 400) {
+          console.log(response.message)
+        } else {
+          this.brochureData = response.data;
         }
+      }
       )
   }
 
-  makeProfile(){
-    let screenWidth : string = (((window.screen.width/5)*4)).toString()+'px';
-    let screenHeight : string = (window.screen.height/1.5).toString()+'px';
-    this.config= {
-      data:{
-        schoolData : this.SchoolData
+  makeProfile() {
+    let screenWidth: string = (((window.screen.width / 5) * 4)).toString() + 'px';
+    let screenHeight: string = (window.screen.height / 1.5).toString() + 'px';
+    this.config = {
+      data: {
+        schoolData: this.SchoolData
       },
       disableClose: false,
       width: screenWidth,
       height: screenHeight,
       position: {
-      top: '',
-      bottom: '',
-      left: '',
-      right: ''
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
       }
     };
   }
 
-  onApbDetail(){
+  onApbDetail() {
     this.makeProfile();
-    let dialogref = this.dialog.open(SchoolDetailSuperieurComponent,this.config);
+    let dialogref = this.dialog.open(SchoolDetailSuperieurComponent, this.config);
   }
 
-  onApbApply(SchoolId){
-	console.log(SchoolId);
-    window.open(this.publicService.ABPPriveURL+SchoolId+"/apply", "_blank");
+  sweetAlert() {
+    swal({
+      text: 'Please go to : <a href="https://apbprive.fr/start"> https://apbprive.fr/start </a>for apply to this school',
+      confirmButtonText: 'Ok'
+    });
+  }
+
+  onApbApply(SchoolId) {
+    // console.log(SchoolId);
+    //   window.open(this.publicService.ABPPriveURL+SchoolId+"/apply", "_blank");
+    swal({
+      text: 'Please go to : <a href="https://apbprive.fr/start"> https://apbprive.fr/start </a>for apply to this school',
+      confirmButtonText: 'Ok'
+    });
   }
 
 }
