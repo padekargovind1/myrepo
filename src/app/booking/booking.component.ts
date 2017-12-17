@@ -211,14 +211,16 @@ export class BookingComponent implements OnInit, AfterViewInit {
   // refreshing the calendar date
   onCheckbox(adviserId){
     let index = this.adviserIdList.indexOf(adviserId);
+    console.log("index",index);
     if(index==-1){
       this.adviserIdList.push(adviserId);
     } else {
       this.adviserIdList.splice(index, 1);
     }
-    console.log(this.adviserIdList);
+    console.log("adviserIdList:- ",this.adviserIdList.length);
     this.adviserToDisplay = this.bookingService.filterBooking(this.calendarData, this.adviserIdList)
-    console.log(this.adviserToDisplay);
+    console.log("adviserToDisplay:- ",this.adviserToDisplay);
+    console.log("--->",this.adviserToDisplay.length, this.calendarData.length);
     this.refreshCalendar();
   }
 
