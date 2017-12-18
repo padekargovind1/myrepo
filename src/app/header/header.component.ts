@@ -264,7 +264,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.usersService.storeTabNb(nb)
       this.router.navigate(['/my-account']);
     }
+    else
+    {
+      this.hideHeaderSubMenus();
+      this.router.navigate(['/login']);
+    }
   }
+  
 
   // Clean the local storage in services
   cleanLocalStorage(){

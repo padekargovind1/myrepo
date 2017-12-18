@@ -9,7 +9,7 @@
                         Sélectionnez tous les conseillers <i class="fa fa-check"></i>
                     </button>
                     <button class="btn btn-danger btn-block deselect-all-advisor" (click)="onUnselectAll()"
-                        *ngIf="adviserToDisplay.length==calendarData.length || adviserToDisplay.length!=0">
+                        *ngIf="adviserToDisplay.length==calendarData.length || adviserToDisplay.length!=0 || adviserIdList.length > 0">
                         Désélectionnez tous les conseillers <i class="fa fa-times"></i>
                     </button>
                     <ul class="advisors">
