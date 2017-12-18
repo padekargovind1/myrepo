@@ -515,14 +515,14 @@ export class SchoolComponent implements OnInit, OnDestroy {
             for(var j=0;j<data.length;j++)
             {
               var imgpath = data[j].cycles[0].logo1
-              for(var i=0;i<this.imageExtensions.length;i++){
-                var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
-                if(this.imageExists(this.imagePathPre + tempimgpath)){
-                  imgpath = tempimgpath;
-                  break;
-                }
-              }
-                data[j].cycles[0].logo1 = imgpath;
+              // for(var i=0;i<this.imageExtensions.length;i++){
+              //   var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
+              //   if(this.imageExists(this.imagePathPre + tempimgpath)){
+              //     imgpath = tempimgpath;
+              //     break;
+              //   }
+              // }
+              //   data[j].cycles[0].logo1 = imgpath;
             }
             this.isLoader=false;
           }
