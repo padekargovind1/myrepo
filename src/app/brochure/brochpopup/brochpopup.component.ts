@@ -15,6 +15,13 @@ import {HelperService} from "../../services/helper.service";
 })
 export class BrochpopupComponent implements OnInit {
   @ViewChild('tabGroup') tabGroup;
+  public errMsgMel : any;
+  public errMsgTel : any;
+  public errMsgChildLastName:any;
+  public errMsgChildFirstName:any;
+  public errMsgFirstName:any;
+  public errMsgLastName:any;
+
   brochureForm : FormGroup;
 
   constructor(public dialogref:MdDialogRef<BrochpopupComponent>,
@@ -83,7 +90,7 @@ export class BrochpopupComponent implements OnInit {
 
   // Patch the value if user already field his form in my-account or anywhere else
   patchValue(profile){
-    console.log(profile);
+    console.log("profile:- ",profile);
     if(profile.parents!==undefined && profile.parents.length>0) {
       this.brochureForm.patchValue({
         lienParent : profile.parents[0].relationship === undefined ? "" : profile.parents[0].relationship,
@@ -118,7 +125,75 @@ export class BrochpopupComponent implements OnInit {
 
   //After click on suivant
   toSecondTab(){
-    this.tabGroup.selectedIndex=1;
-  }
+    console.log("lienParent===>",this.brochureForm.value.lienParent);
+    console.log("title===>",this.brochureForm.value.title);
+    console.log("lastName===>",this.brochureForm.value.lastName);
+    console.log("firstName===>",this.brochureForm.value.firstName);
+    console.log("mel===>",this.brochureForm.value.mel);
+    console.log("tel===>",this.brochureForm.value.tel);
+    console.log("childLastName===>",this.brochureForm.value.childLastName);
+    console.log("childFirstName===>",this.brochureForm.value.childFirstName);
+    console.log("classe===>",this.brochureForm.value.classe);
+    console.log("childTitle===>",this.brochureForm.value.childTitle);
+    this.errMsgMel = false;
+    this.errMsgTel =  false;
+    this.errMsgChildLastName =  false;
+    this.errMsgChildFirstName =  false;
+    this.errMsgFirstName =  false;
+    this.errMsgLastName =  false;
 
+    if(this.brochureForm.value.mel==="" || this.brochureForm.value.mel=== "undefined" || this.brochureForm.value.mel===undefined)
+    {
+      this.errMsgMel = true;
+    }
+    else{
+      this.errMsgMel = false;
+    }
+
+    if(this.brochureForm.value.tel==="" || this.brochureForm.value.tel=== "undefined" || this.brochureForm.value.tel===undefined)
+    {
+      this.errMsgTel = true;
+    }
+    else{
+      this.errMsgTel = false;
+    }
+
+    if(this.brochureForm.value.childLastName==="" || this.brochureForm.value.childLastName=== "undefined" || this.brochureForm.value.childLastName===undefined)
+    {
+      this.errMsgChildLastName = true;
+    }
+    else{
+      this.errMsgChildLastName = false;
+    }
+
+    if(this.brochureForm.value.childFirstName==="" || this.brochureForm.value.childFirstName=== "undefined" || this.brochureForm.value.childFirstName===undefined)
+    {
+      this.errMsgChildFirstName = true;
+    }
+    else{
+      this.errMsgChildFirstName = false;
+    }
+
+    if(this.brochureForm.value.firstName==="" || this.brochureForm.value.firstName=== "undefined" || this.brochureForm.value.firstName===undefined)
+    {
+      this.errMsgFirstName = true;
+    }
+    else{
+      this.errMsgFirstName = false;
+    }
+    
+
+    if(this.brochureForm.value.lastName==="" || this.brochureForm.value.lastName=== "undefined" || this.brochureForm.value.lastName===undefined)
+    {
+      this.errMsgLastName = true;
+    }
+    else{
+      this.errMsgLastName = false;
+    }
+    
+    if(this.errMsgMel === false && this.errMsgTel === false && this.errMsgChildLastName === false && this.errMsgChildFirstName === false && this.errMsgFirstName === false && this.errMsgLastName === false)
+    {
+      this.tabGroup.selectedIndex=1;
+    }
+}
 }
