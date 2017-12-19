@@ -18,7 +18,7 @@ export class HelperService {
     terminal: ['Tle ES - Economique et Sociale', 'Tle L - Littéraire', 'Tle S - Scientifique'],
     international: ['Cursus International', 'Cursus Bac. International', 'Cursus non francophone (GB-US)'],
     //strh: ['2nde spécifique STHR', '1ere d’adaptation STHR', '1ere STHR', 'Terminale STHR'],
-    strh: ['2nde spécifique STRH', '1ere d’adaptation STRH', '1ere STRH', 'Terminale STRH'],
+    strh: ['2nde spécifique STHR', '1ere d’adaptation STHR', '1ere STHR', 'Terminale STHR'],
     st2s: ['2nde générale et technologique', '1ere d’adaptation ST2S', '1ere ST2S', 'Terminale STIS'],
     std2a: ['2nde générale et technologique', '1ère STI2A', 'Terminale STI2A'],
     sti2d: ['2nde générale et technologique', '1ère STI2D', 'Terminale ST2D – Architecture et Construction',
