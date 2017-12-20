@@ -60,7 +60,9 @@ export class SuperieurComponent implements OnInit {
   domaines=[];
   nbBodyClick : number =0;
   nbAdvancedClick : number = 0;
-
+  temp : number = 0;
+  recognizedByStateCheck:false;
+  curriculumAbroadCheck:false;
   constructor(private publicService : PublicService,
               private schoolService : SchoolService,
               private compareService : CompareService,
@@ -344,9 +346,9 @@ export class SuperieurComponent implements OnInit {
     this.getApbSchool();
   }
 
-  onReconnaissanceClick(event){
+  onReconnaissanceClick(event){    
     console.log(event.srcElement.localName,event.srcElement.checked)
-    if(event.srcElement.localName=='input'){
+    if(event.srcElement.name=='recognizedByState'){
       if(event.srcElement.checked){
         this.searchBody['recognizedByState']=true;
         this.advancedSearchToDisplay[2]="Reconnu par l'État";
@@ -360,13 +362,13 @@ export class SuperieurComponent implements OnInit {
 
   onEtrangerClick(event){
     console.log(event.srcElement.localName,event.srcElement.checked)
-    if(event.srcElement.localName=='input'){
+    if(event.srcElement.name=='curriculumAbroad'){
       if(event.srcElement.checked){
         this.searchBody.courses['curriculumAbroad']=true
-        this.advancedSearchToDisplay[2]="Cursus avec une période à l'étranger";
+        this.advancedSearchToDisplay[3]="Cursus avec une période à l'étranger";
       } else {
         delete this.searchBody.courses['curriculumAbroad'];
-        this.advancedSearchToDisplay.splice(2, 1)
+        this.advancedSearchToDisplay.splice(3, 2)
       }
       this.getApbSchool();
     }
@@ -427,9 +429,15 @@ export class SuperieurComponent implements OnInit {
     if(advanced=="Alternance" || advanced=="Classique"){
       this.searchBody.courses.courseType='';
     } else if (advanced=="Reconnu par l'État"){
-      delete this.searchBody['recognizedByState'];
+      {       
+        this.recognizedByStateCheck=false;
+        delete this.searchBody['recognizedByState'];
+      }
     } else if (advanced=="Cursus avec une période à l'étranger"){
-      delete this.searchBody['curriculumAbroad'];
+      {
+        this.curriculumAbroadCheck=false;
+        delete this.searchBody['curriculumAbroad'];
+      }
     } else {
       this.searchBody.courses.educationLevel='';
     }

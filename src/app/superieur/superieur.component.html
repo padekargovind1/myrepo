@@ -31,14 +31,13 @@
                                                     </select>
                                                 </label>
                                             </div>
-                                        </div><!-- .col-* -->
+                                        </div>
+                                        <!-- .col-* -->
 
                                         <div class="col-md-4  col-xs-6">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Lieu"
-                                                    [formControl]="searchForm.controls['lieu']"
-                                                    [mdAutocomplete]="auto"
-                                                    (keyup)="filterLieu($event)"/>
+                                                <input type="text" class="form-control" placeholder="Lieu" [formControl]="searchForm.controls['lieu']" [mdAutocomplete]="auto"
+                                                    (keyup)="filterLieu($event)" />
                                                 <md-autocomplete #auto="mdAutocomplete">
                                                     <md-option disabled *ngIf="options['regions'].length!=0">Régions</md-option>
                                                     <md-option *ngFor="let option of options.regions" [value]="option">
@@ -58,52 +57,46 @@
 
                                         <div class="col-md-4  col-xs-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Nom d'etablissement"
-                                                    [formControl]="searchForm.controls['etablissement']"
-                                                    [mdAutocomplete]="autoSchool"
-                                                    (keyup)="filterSchool($event)"/>
+                                                <input type="text" class="form-control" placeholder="Nom d'etablissement" [formControl]="searchForm.controls['etablissement']"
+                                                    [mdAutocomplete]="autoSchool" (keyup)="filterSchool($event)" />
                                                 <md-autocomplete #autoSchool="mdAutocomplete">
-                                                    <md-option *ngFor="let school of schoolsOptions"
-                                                        [value]="school">
+                                                    <md-option *ngFor="let school of schoolsOptions" [value]="school">
                                                         {{ school }}
                                                     </md-option>
                                                 </md-autocomplete>
                                             </div>
                                         </div>
                                     </form>
-                                </div><!-- .row -->
-                            </div><!-- .col-* -->
+                                </div>
+                                <!-- .row -->
+                            </div>
+                            <!-- .col-* -->
 
                             <div class="col-md-1">
-                            <!-- <div class="form-group"> -->
-                                <button class="btn btn-search" type="submit"
-                                    [disabled]="searchForm.controls['etablissement'].value.length==0 &&
+                                <!-- <div class="form-group"> -->
+                                <button class="btn btn-search" type="submit" [disabled]="searchForm.controls['etablissement'].value.length==0 &&
                                     searchForm.controls['lieu'].value.length==0 &&
-                                    searchForm.controls['domaine'].value.length==0"
-                                    (click)="onSubmitSearch()">
+                                    searchForm.controls['domaine'].value.length==0" (click)="onSubmitSearch()">
                                     <i class="fa fa-search"></i>
                                 </button>
-                            <!-- </div> -->
+                                <!-- </div> -->
                             </div>
                             <div class="newSearchdiv">
-                                <a class="newSearch"
-                                    *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' ||
-                                        searchFilter[0]!='' || searchFilter[1]!=''"
-                                    (click)="cleanAdvancedSearch()">
+                                <a class="newSearch" *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' ||
+                                        searchFilter[0]!='' || searchFilter[1]!=''" (click)="cleanAdvancedSearch()">
                                     Nouvelle recherche
                                 </a>
                             </div>
 
-                        </div><!-- .form-wrap -->
+                        </div>
+                        <!-- .form-wrap -->
 
-                    </div><!-- .col-* -->
+                    </div>
+                    <!-- .col-* -->
 
                     <div class="col-md-1" (click)="showAdvanced()">
                         <div class="filter-wrapper">
-                            <i class="fa fa-filter filter-holder"
-                                data-toggle="tooltip" data-placement="right"
-                                title="Affinez votre recherche avec plus de critères"></i>
+                            <i class="fa fa-filter filter-holder" data-toggle="tooltip" data-placement="right" title="Affinez votre recherche avec plus de critères"></i>
                             <!-- <img src="assets/images/ad/filter-open.jpg" class="filters" /> -->
                             <div class="inline-text pull-right hidden-lg hidden-md hidden-sm visible-xs">
                                 <i class="fa fa-filter"></i> Filtre avancé
@@ -154,171 +147,196 @@
                                         </a>
                                         <ul class="adv-filt left-popup">
                                             <li (click)="onReconnaissanceClick($event)">
-                                                <input type="checkbox" name="recognizedByState" class="preintake checkbox filled-in" id="filter-21" />
+                                                <input type="checkbox" name="recognizedByState" [(ngModel)]="recognizedByStateCheck" class="preintake checkbox filled-in" id="filter-21" />
                                                 <label for="filter-21">Reconnaissance du diplôme par l'Etat</label>
                                             </li>
                                             <li (click)="onEtrangerClick($event)">
-                                                <input type="checkbox" name="curriculumAbroad" class="smallholidays checkbox filled-in" id="filter-22" />
+                                                <input type="checkbox" name="curriculumAbroad" [(ngModel)]="curriculumAbroadCheck" class="smallholidays checkbox filled-in" id="filter-22" />
                                                 <label for="filter-22">Cursus prévoyant une période d'études à l'étranger</label>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                                 <!-- <img src="assets/images/ad/ads-filter.jpg" alt="ads" class="ad-filter" /> -->
-                            </div><!-- .advance-filter -->
-                        </div><!-- .filter-wrap -->
-                    </div><!-- .col -->
+                            </div>
+                            <!-- .advance-filter -->
+                        </div>
+                        <!-- .filter-wrap -->
+                    </div>
+                    <!-- .col -->
 
-                </div><!-- .row -->
+                </div>
+                <!-- .row -->
 
-            </div><!-- .container -->
+            </div>
+            <!-- .container -->
 
         </form>
 
-        </div><!-- .filter-form-holder -->
+    </div>
+    <!-- .filter-form-holder -->
 
-        <main class="main" role="main">
-            <div class="ads-area">
-                <img src="assets/images/ad/ads-728x90-sainte.jpg" alt="" class="ads-after-search-form">
-                <section class="ads-left from-popup hidden">
-                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
-                </section>
-                <section class="ads-right from-popup hidden">
-                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
-                </section>
-                <section class="ads-left fixed-ad hidden">
-                    <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
-                </section>
-                <section class="ads-right fixed-ad hidden">
-                    <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
-                </section>
-            </div>
+    <main class="main" role="main">
+        <div class="ads-area">
+            <img src="assets/images/ad/ads-728x90-sainte.jpg" alt="" class="ads-after-search-form">
+            <section class="ads-left from-popup hidden">
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
+            </section>
+            <section class="ads-right from-popup hidden">
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
+            </section>
+            <section class="ads-left fixed-ad hidden">
+                <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
+            </section>
+            <section class="ads-right fixed-ad hidden">
+                <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
+            </section>
+        </div>
 
         <!--<div class="white-background">-->
 
 
-                <div class="container">
+        <div class="container">
 
-                    <div class="row"><div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
 
-                        <div class="list-schools  row  white-background">
+                    <div class="list-schools  row  white-background">
 
-                            <div class="col-md-12">
+                        <div class="col-md-12">
 
-                                <div class="result-text" class="col-md-12">
-                                    <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour:
-                                        <span *ngIf="searchFilter[0]!=''">
+                            <div class="result-text" class="col-md-12">
+                                <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour:
+                                    <span *ngIf="searchFilter[0]!=''">
                                             {{ "Domaine d'activité professionnel " + searchFilter[0] }}
                                         </span>
-                                        <span class="fa fa-map-marker"
-                                            *ngIf="searchFilter[2]!=''">
+                                    <span class="fa fa-map-marker" *ngIf="searchFilter[2]!=''">
                                         </span>
-                                        <span *ngIf="searchFilter[2]!=''">
+                                    <span *ngIf="searchFilter[2]!=''">
                                             {{ ' - ' + searchFilter[2] }}
                                         </span>
-                                        <span *ngIf="searchFilter[1]!='' && searchFilter[2]!=''">
+                                    <span *ngIf="searchFilter[1]!='' && searchFilter[2]!=''">
                                             /
                                         </span>
-                                        <span *ngIf="searchFilter[1]!=''">
+                                    <span *ngIf="searchFilter[1]!=''">
                                             {{ searchFilter[1] }}
                                         </span>
-                                    </h3>
-                                    <ng-template #empty1>
-                                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>
-                                    </ng-template>
-                                    <div *ngIf="advancedSearchToDisplay.length!=0; else empty2">
+                                </h3>
+                                <ng-template #empty1>
+                                    <h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+                                </ng-template>
+                                <div *ngIf="advancedSearchToDisplay.length!=0; else empty2">
 
-                                        <div>Recherche Affine:
+                                    <div>Recherche Affine:
+                                        <span *ngIf="advancedSearchToDisplay[0]">
                                             <span class="contact-roles"
                                                 *ngIf="advancedSearchToDisplay[0]!==' '; else advancedEmpty1">
                                                 {{ advancedSearchToDisplay[0] }}
                                                 <span class="fa fa-times" style="cursor: pointer"
                                                     (click)="onRemoveFilter(0, advancedSearchToDisplay[0])"></span>
-                                            </span>
-                                            <ng-template #advancedEmpty1>
-                                                &nbsp;
-                                            </ng-template>
-                                            <span class="contact-roles"
-                                                *ngIf="advancedSearchToDisplay[1]!==' '; else advancedEmpty2">
+                                        </span>
+                                        </span>
+                                        <ng-template #advancedEmpty1>
+                                            &nbsp;
+                                        </ng-template>
+                                        <span *ngIf="advancedSearchToDisplay[1]">
+                                        <span class="contact-roles" *ngIf="advancedSearchToDisplay[1]!==' '; else advancedEmpty2">
                                                 {{ advancedSearchToDisplay[1] }}
                                                 <span class="fa fa-times" style="cursor: pointer"
                                                     (click)="onRemoveFilter(0, advancedSearchToDisplay[1])"></span>
-                                            </span>
-                                            <ng-template #advancedEmpty2>
-                                                &nbsp;
-                                            </ng-template>
-                                            <span class="contact-roles"
-                                                *ngIf="advancedSearchToDisplay[2]!==' '; else advancedEmpty3">
+                                        </span>
+                                        </span>
+                                        <ng-template #advancedEmpty2>
+                                            &nbsp;
+                                        </ng-template>
+                                        <span *ngIf="advancedSearchToDisplay[2]">
+                                        <span class="contact-roles" *ngIf="advancedSearchToDisplay[2]!==' '; else advancedEmpty3">
                                                 {{ advancedSearchToDisplay[2] }}
                                                 <span class="fa fa-times" style="cursor: pointer"
                                                     (click)="onRemoveFilter(0, advancedSearchToDisplay[2])"></span>
-                                            </span>
-                                            <ng-template #advancedEmpty3>
-                                                &nbsp;
-                                            </ng-template>
-                                        </div>
-
+                                        </span>
+                                        </span>
+                                        <ng-template #advancedEmpty3>
+                                            &nbsp;
+                                        </ng-template>
+                                        <span *ngIf="advancedSearchToDisplay[3]">
+                                        <span class="contact-roles" *ngIf="advancedSearchToDisplay[3]!==' '; else advancedEmpty4">
+                                                {{ advancedSearchToDisplay[3] }}
+                                                <span class="fa fa-times" style="cursor: pointer"
+                                                    (click)="onRemoveFilter(0, advancedSearchToDisplay[3])"></span>
+                                        </span>
+                                        </span>
+                                        <ng-template #advancedEmpty4>
+                                            &nbsp;
+                                        </ng-template>
                                     </div>
-                                    <ng-template #empty2>
-                                        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                                    </ng-template>
+
                                 </div>
+                                <ng-template #empty2>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                </ng-template>
+                            </div>
 
-                                <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->
+                            <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->
 
 
-                            </div><!-- .col-* -->
+                        </div>
+                        <!-- .col-* -->
 
-                            <div class="col-md-3" *ngFor="let school of apbSchools; let i=index">
+                        <div class="col-md-3" *ngFor="let school of apbSchools; let i=index">
 
-                                <div class="card  school-item">
-                                    <app-apb-card [SchoolData]="school"></app-apb-card>
-                                </div>
+                            <div class="card  school-item">
+                                <app-apb-card [SchoolData]="school"></app-apb-card>
+                            </div>
 
-                            </div><!-- .col-* -->
-                            <div class="row justify-content-md-center">
-                              <div class="col-md-12">
+                        </div>
+                        <!-- .col-* -->
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-12">
                                 <p style="text-align:center">
-                                  <button type="button"
-                                          class="btn btn-appointment centerBtn" (click)="showMore()"
-                                          *ngIf="(apbSchools.length==limit || apbSchools.length==0) && apbSchools.length!=0">
+                                    <button type="button" class="btn btn-appointment centerBtn" (click)="showMore()" *ngIf="(apbSchools.length==limit || apbSchools.length==0) && apbSchools.length!=0">
                                     Voir plus
                                   </button>
                                 </p>
-                              </div>
                             </div>
-                            <div *ngIf="apbSchools.length==0" class="row">
-                                <p style="width:100%;
+                        </div>
+                        <div *ngIf="apbSchools.length==0" class="row">
+                            <p style="width:100%;
                                     text-align:center; font-size : 35px">Il n'y a pas d'école supérieure pour la recherche demandé.</p>
-                            </div>
+                        </div>
 
 
-                        </div><!-- .list-schools -->
+                    </div>
+                    <!-- .list-schools -->
 
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                        <div class="footer-ads hidden animated" style="margin-top:10px">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1  wrapper  slickjs">
-                                        <div><img src="assets/images/ad/ads-footer_r1_c1.jpg" alt="ads" /></div>
-                                        <div><img src="assets/images/ad/ads-footer_r1_c2.jpg" alt="ads" /></div>
-                                        <div><img src="assets/images/ad/ads-footer_r1_c3.jpg" alt="ads" /></div>
-                                        <div><img src="assets/images/ad/ads-footer_r1_c4.jpg" alt="ads" /></div>
-                                        <div><img src="assets/images/ad/ads-footer_r1_c6.jpg" alt="ads" /></div>
-                                        <div><img src="assets/images/ad/ads-footer_r1_c8.jpg" alt="ads" /></div>
-                                        <div><img src="assets/images/ad/ads-footer_r1_c9.jpg" alt="ads" /></div>
-                                        <div><img src="assets/images/ad/ads-footer_r1_c10.jpg" alt="ads" /></div>
-                                        <div><img src="assets/images/ad/ads-footer_r1_c12.jpg" alt="ads" /></div>
-                                    </div>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <div class="footer-ads hidden animated" style="margin-top:10px">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1  wrapper  slickjs">
+                                    <div><img src="assets/images/ad/ads-footer_r1_c1.jpg" alt="ads" /></div>
+                                    <div><img src="assets/images/ad/ads-footer_r1_c2.jpg" alt="ads" /></div>
+                                    <div><img src="assets/images/ad/ads-footer_r1_c3.jpg" alt="ads" /></div>
+                                    <div><img src="assets/images/ad/ads-footer_r1_c4.jpg" alt="ads" /></div>
+                                    <div><img src="assets/images/ad/ads-footer_r1_c6.jpg" alt="ads" /></div>
+                                    <div><img src="assets/images/ad/ads-footer_r1_c8.jpg" alt="ads" /></div>
+                                    <div><img src="assets/images/ad/ads-footer_r1_c9.jpg" alt="ads" /></div>
+                                    <div><img src="assets/images/ad/ads-footer_r1_c10.jpg" alt="ads" /></div>
+                                    <div><img src="assets/images/ad/ads-footer_r1_c12.jpg" alt="ads" /></div>
                                 </div>
                             </div>
-                        </div><!-- footer-ads -->
+                        </div>
+                    </div>
+                    <!-- footer-ads -->
 
-                    </div></div><!-- .row .col-* -->
+                </div>
+            </div>
+            <!-- .row .col-* -->
 
-                </div><!-- .container -->
-        </main>
+        </div>
+        <!-- .container -->
+    </main>
 </div>
