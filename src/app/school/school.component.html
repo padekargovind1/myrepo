@@ -435,8 +435,8 @@
                                           <label for="filter-67">DIMA</label>
                                       </li>
                                       <li>
-                                          <input type="checkbox" name="segma" class="segma checkbox filled-in" id="filter-68" />
-                                          <label for="filter-68">SEGMA</label>
+                                          <input type="checkbox" name="segpa" class="segpa checkbox filled-in" id="filter-68" />
+                                          <label for="filter-68">SEGPA</label>
                                       </li>
                                   </ul>
                               </li>
@@ -800,7 +800,7 @@
                                   class="btn btn-appointment pull-right popup-btn"
                                   data-toggle="modal"
                                   data-target="#filter-popup"
-                                      
+
                                       *ngIf="schoolListFilter.length!=0"
                                   [disabled]="!canCompare">Je Compare</button>
                           </div>
@@ -902,7 +902,7 @@
                       <p style="text-align:center">
                         <button type="button"
                                 class="btn btn-appointment"
-                                (click)="showMore()" *ngIf="((schoolListFilter.length==limit || schoolListFilter.length!=0) && !isLoader) && limit<totalRecords"
+                                (click)="showMore()" *ngIf="((schoolListFilter.length==limit || schoolListFilter.length!=0) && !isLoader) && (limit * page)<totalRecords"
                         >Voir plus
                         </button>
                         <img class="cide-loader" src="assets/images/loader.gif" alt="" *ngIf="isLoader">
