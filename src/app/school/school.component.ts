@@ -393,7 +393,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
       delete this.advancedSearch.place;
     }
     this.advancedSearch.name = data.name;
-    this.publicService.storeSearchSchool(this.searchFilter); // store the search to the service
+    this.publicService.storeSearchSchool(this.advancedSearch); // store the search to the service
+    this.logSearch({'category': 'searches', 'details': this.advancedSearch}); // store the search to the service
     this.postAdvancedFilter();  // Get new list of school with the search (fast and advanced search)
     this.forAdvancedSearch = false;
   }
@@ -406,6 +407,13 @@ export class SchoolComponent implements OnInit, OnDestroy {
       this.advancedSearch.class[2] = 'cursus_non_francophone';
     }else{
       this.advancedSearch.class[0] = data.class;
+    }
+  }
+  
+  logSearch(data){
+    // console.log(data)
+    if (data.details.class[0] !== '' && data.details.code[0] !== '' && data.details.name !== '') {
+      this.usersService.postHistory(data).subscribe();
     }
   }
 
@@ -646,7 +654,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   //clean all array
   cleanSearch(){
-    // console.log("clean search")
+    console.log("clean search")
     this.languageAdvancedSearch=[];
     this.languageAdvancedSearchName=[]
     delete this.advancedSearch;

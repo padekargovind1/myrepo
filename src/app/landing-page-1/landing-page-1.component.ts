@@ -180,6 +180,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 
   // Navigate to the path
   onNavigate(path){
+    console.log(path);
     let rate = {
       id : this.rateId,
       click : true
@@ -299,6 +300,7 @@ export class LandingPage1Component implements OnInit, AfterViewInit {
 
   // Store the right name to display it on the school list
   storeClassName(event){
+    console.log('class name');
     console.log(event)
     this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
   }

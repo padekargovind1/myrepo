@@ -5,11 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 import {MyAccountMdl} from '../model/myaccount.model';
 
-const PROFILE_API : string = "http://13.229.81.1/cideapi/api/common/profile";
-const APPOINTMENTS_API : string = "http://13.229.81.1/cideapi/api/public";
-const PACKAGE_API : string = "http://13.229.81.1/cideapi/api/public/package";
-const APPLICATION_API : string = "http://13.229.81.1/cideapi/api/users/apply";
-const TRIPS_API: string = "http://13.229.81.1/cideapi/api/users/trips";
+const PROFILE_API : string = "http://13.229.117.64/cideapi/api/common/profile";
+const APPOINTMENTS_API : string = "http://13.229.117.64/cideapi/api/public";
+const PACKAGE_API : string = "http://13.229.117.64/cideapi/api/public/package";
+const APPLICATION_API : string = "http://13.229.117.64/cideapi/api/users/apply";
+const TRIPS_API: string = "http://13.229.117.64/cideapi/api/users/trips";
+const HISTORY_API : string = "http://13.229.117.64/cideapi/api/common/history";
 
 @Injectable()
 export class UsersService {
@@ -51,12 +52,12 @@ export class UsersService {
   }
 
   postCreateNewAppointment(data, packageId): Observable<any>{
-    return this.http.post('http://13.229.81.1/cideapi/api/users/appointments/'+packageId+'?token='+this.getToken(), data)
+    return this.http.post('http://13.229.117.64/cideapi/api/users/appointments/'+packageId+'?token='+this.getToken(), data)
       .map((response)=>response.json());
   }
 
   putAppointmentData(appointmentId, data): Observable<any>{
-    return this.http.put('http://13.229.81.1/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
+    return this.http.put('http://13.229.117.64/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
       .map(response=>response.json());
   }
 
@@ -68,6 +69,18 @@ export class UsersService {
   getApplication():Observable<any>{
     return this.http.get(APPLICATION_API+'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
+  }
+  
+  getHistory():Observable<any>{
+    return this.http.get(HISTORY_API+'?token='+this.token, {headers: this.headers})
+      .map((response)=>response.json());
+  }
+  
+  postHistory(data): Observable<any>{
+    console.log('logging to history');
+    console.log(data);
+    return this.http.post(HISTORY_API+'?token='+this.token, data)
+      .map((response)=>{response.json(); console.log('the http call happened')});
   }
 
   deleteApplication(data): Observable<any>{

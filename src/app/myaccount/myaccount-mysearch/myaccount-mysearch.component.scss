@@ -1,0 +1,26 @@
+.list-of-research .btn-highlighted {
+    margin-top: 0;
+    border-radius: 10px;
+}
+
+.research-list-item {
+    border: 2px solid;
+    border-radius: 10px;
+    width: 80%;
+    background: white;
+    display: flex;
+}
+
+.research-list-item p {
+    margin: 10px;
+    width: 100%;
+    color: blue;
+}
+
+.research-list-item p strong {
+    color: black;
+}
+
+// .relauch-button {
+//     margin: auto;
+// }
