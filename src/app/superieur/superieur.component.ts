@@ -45,6 +45,7 @@ export class SuperieurComponent implements OnInit {
   optionValue: string="";
   schoolComponentTitle = "";
   limit=20;
+  page=1;
   apbSchools =[];
   searchBody={
     courses : {
@@ -284,7 +285,7 @@ export class SuperieurComponent implements OnInit {
 
   postAdvancedFilter(){
     // console.log(this.advancedSearch)
-    this.publicService.postSearchSchool(this.advancedSearch, this.limit)
+    this.publicService.postSearchSchool(this.advancedSearch, this.limit, this.page)
       .subscribe(
         response=>{
           console.log(response);
