@@ -23,8 +23,8 @@
         <div class="col-sm-12">
           <div class="select-custom dans-quelles">
             <select name="" class="form-control multiselect"
-                    id="dans-quelles" *ngIf="checked">
-              <option value="">Dans quelles matières</option>
+                    id="dans-quelles" *ngIf="checked" placeholder="hhhhh">
+              <option value="" disabled selected>Dans quelles matières</option>
               <option *ngFor="let subject of subjectSchool" value="subject">
                 <md-checkbox>{{subject}}</md-checkbox>
               </option>
