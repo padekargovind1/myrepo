@@ -230,6 +230,8 @@ export class BrochureComponent implements OnInit, OnDestroy {
     this.searchBrochure.place = this.searchForm.value.lieu;
     this.searchBrochure.name = this.searchForm.value.etablissement;
     this.getBrochure()
+    this.downloadList.length=0;
+    this.downloadSchoolList.length=0;
   }
 
   // After click on the clean button
@@ -240,6 +242,8 @@ export class BrochureComponent implements OnInit, OnDestroy {
     this.searchBrochure.name = "";
     this.buildForm();
     this.getBrochure()
+    this.downloadList.length=0;
+    this.downloadSchoolList.length=0;
   }
 
 //   getSearchFilter(searchFilter){
