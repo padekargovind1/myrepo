@@ -1,6 +1,7 @@
-<div class="row selectApplyClass">
+
+  <div class="row selectApplyClass" style="overflow-y:scroll !important;height:500px !important;">
   <h2 style="text-align:center">Je postule pour :</h2>
-  <div class="col-md-4" 
+  <div class="col-md-4 hoverEffect" 
     *ngFor="let cycle of schoolData.cycles; let i = index">
     <div class="row school-choice-height">
       <h3 style="text-align : center; width:80%; margin-left:10%">{{cycle.cycle.cycleType}}</h3>
@@ -18,8 +19,7 @@
       </button>
     </div>
   </div>
-</div>
-<div class="row customBtnClassClose">
+  <div class="customBtnClassClose">
   <section class="col-md-12">
     <button type="button" class="btn button-return" (click)="navigateBack()"
       style="float:right; background-color: #ec4758">
@@ -27,3 +27,5 @@
     </button>
   </section>
 </div>
+</div>
+

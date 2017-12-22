@@ -26,11 +26,8 @@ export class UsersService {
 
   putProfile(data) : Observable<any>{
     this.getToken();
-//<<<<<<< HEAD
     return this.http.put( "http://localhost:3000/api/common/profile"+'?token='+this.token, data, {headers: this.headers})
-//=======
     //return this.http.put( "http://13.229.81.1/cideapi/api/common/profile"+'?token='+this.token, data, {headers: this.headers})
-//>>>>>>> 3eedc38d22e37661bd42c3742cb86f7dc63367ea
       .map((response)=>response.json());
   }
 
