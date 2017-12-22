@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 // import { SweetAlertService } from 'ng2-sweetalert2';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import 'hammerjs';
 
@@ -227,7 +228,8 @@ import { ContactUs } from './contact-us/contact-us.component';
     JsonpModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD_gjvXL9pHaSq50qqiKv73IodUxJh8NCU'
-    })
+    }),
+    NgxPaginationModule
   ],
   providers: [
     SchoolService,

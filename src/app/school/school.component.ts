@@ -82,7 +82,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   lieuSelected = [];
 
   imageExtensions = ['png','gif','jpeg'];
-  imagePathPre = 'http://13.229.81.1/cideapi/';
+  imagePathPre = 'http://13.229.117.64/cideapi/';
 
 
   constructor(private publicService: PublicService,
@@ -394,7 +394,9 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
     this.advancedSearch.name = data.name;
     this.publicService.storeSearchSchool(this.advancedSearch); // store the search to the service
-    this.logSearch({'category': 'searches', 'details': this.advancedSearch}); // store the search to the service
+    if (!this.publicService.searchFromHistory()) {
+      this.logSearch({'category': 'searches', 'details': this.advancedSearch}); // store the search to the service
+    }
     this.postAdvancedFilter();  // Get new list of school with the search (fast and advanced search)
     this.forAdvancedSearch = false;
   }
@@ -413,7 +415,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   logSearch(data){
     // console.log(data)
     if (data.details.class[0] !== '' && data.details.code[0] !== '' && data.details.name !== '') {
-      this.usersService.postHistory(data).subscribe();
+      this.usersService.postToHistory(data).subscribe();
     }
   }
 
@@ -815,6 +817,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // store class name to display on school list
   storeClassName(event){
+    console.log('class name');
     console.log(event)
     this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
   }

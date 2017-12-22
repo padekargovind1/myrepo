@@ -76,7 +76,7 @@ export class UsersService {
       .map((response)=>response.json());
   }
   
-  postHistory(data): Observable<any>{
+  postToHistory(data): Observable<any>{
     console.log('logging to history');
     console.log(data);
     return this.http.post(HISTORY_API+'?token='+this.token, data)

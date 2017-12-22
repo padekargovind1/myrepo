@@ -100,6 +100,7 @@ export class PublicService {
     villes : []
   };
   schoolList: any;
+  fromSearchHistory: boolean = false;
 
   constructor(private http : Http) {
     this.domaines=this.domaines.sort()
@@ -240,6 +241,8 @@ export class PublicService {
   }
 
   getClassName(){
+    console.log('class name');
+    console.log(this.className);
     return this.className;
   }
 
@@ -338,6 +341,10 @@ export class PublicService {
           }
         }
       )
+  }
+
+  searchFromHistory() {
+    return this.fromSearchHistory;
   }
 
 }

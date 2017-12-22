@@ -14,6 +14,8 @@ export class MyaccountMysearchComponent implements OnInit {
   wishList = [];
   applyList = [];
   historyList = [];
+  pageLimit: number = 0;
+  pageNum: number = 0;
   wishAsc: boolean = false;
   applyAsc: boolean = false;
   historyAsc: boolean = false;
@@ -24,6 +26,7 @@ export class MyaccountMysearchComponent implements OnInit {
   ngOnInit() {
     this.getApplications();
     this.getHistorySearch();
+    this.publicService.fromSearchHistory = false;
   }
 
   // get History list
@@ -33,6 +36,8 @@ export class MyaccountMysearchComponent implements OnInit {
         (response) =>{
           console.log(response)
           this.historyList = response.data.history;
+          this.pageLimit = response.paginate.limit;
+          this.pageNum = response.paginate.page;
           // let data = response.data;
           // if(response.code==400){
           //   console.log(response.message)
@@ -69,8 +74,15 @@ export class MyaccountMysearchComponent implements OnInit {
       data.name
     ]
     this.publicService.storeSearchSchool(searchData);
-    if (data.code[0] !== '') {
+    this.publicService.fromSearchHistory = true;
+    if (data.code[0] !== '' && data.code.length === 1) {
       this.router.navigate(['/' + data.code[0]]);
+    }
+    if (data.code[0] !== '' && data.code.length === 2) {
+      this.router.navigate(['/ecole']);
+    }
+    if (data.code[0] !== '' && data.code.length === 4) {
+      this.router.navigate(['/internat']);
     }
   }
 

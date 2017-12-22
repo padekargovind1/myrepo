@@ -1,6 +1,14 @@
+.list-of-research {
+    margin-left: 20px;
+}
+
 .list-of-research .btn-highlighted {
     margin-top: 0;
     border-radius: 10px;
+}
+
+.list-of-research .btn-highlighted:hover {
+    font-weight: bold;
 }
 
 .research-list-item {
@@ -8,19 +16,23 @@
     border-radius: 10px;
     width: 80%;
     background: white;
+    // box-shadow: 3px 3px 3px grey;
     display: flex;
+}
+
+.research-list-item:hover {
+    box-shadow: 3px 3px 3px grey;
 }
 
 .research-list-item p {
     margin: 10px;
     width: 100%;
     color: blue;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .research-list-item p strong {
     color: black;
 }
-
-// .relauch-button {
-//     margin: auto;
-// }

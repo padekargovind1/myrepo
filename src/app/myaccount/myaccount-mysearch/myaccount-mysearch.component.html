@@ -5,10 +5,9 @@
         <h3>Mes recherches</h3>
       </section>
 
-      <section>
-        <div class="col-md-12">
+      <section class="col-md-12">
           <ul class="list-of-research">
-            <li *ngFor="let history of historyList">
+            <li *ngFor="let history of historyList | paginate: { itemsPerPage: 10, currentPage: pageNum }">
               <div class="row">
                 <div class="research-list-item">
                     <p *ngIf="history!=[]">
@@ -21,7 +20,7 @@
               </div>
             </li>
           </ul>
-        </div><!-- .card-mobile -->
+          <pagination-controls (pageChange)="pageNum = $event"></pagination-controls>
       </section><!-- .col-* -->
     </div><!-- .row -->
   </div><!-- .container-fluid -->
