@@ -2111,7 +2111,9 @@ button.mat-raised-button.mat-primary, button.mat-raised-button.mat-warn, button.
 
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
 
-.fc-prev-button.fc-state-default.fc-corner-left {  left: 10px !important;  position: absolute;  top: 60px;}
+.fc-prev-button.fc-state-default.fc-corner-left {  
+  left: -82px !important;  position: absolute;  top: 50px;
+  }
 .fc-next-button.fc-state-default.fc-corner-right {  right: 0px !important;  position: absolute;  top: 50px;}
 .fc-toolbar .fc-left {width:100%; text-align:center; margin-bottom: -24px;    margin-top: 64px;    text-align: center;    width: 100%;}
 .fc-toolbar .fc-left h2 {width:100%; text-align:center;}
