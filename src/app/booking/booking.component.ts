@@ -29,6 +29,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
   adviserToDisplay=[];
   adviserIdList=[];
   allChecked : boolean = false;
+  totalAdviser:any;
 
   constructor(private bookingService : BookingService,
               private route : Router,
@@ -50,6 +51,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
       this.route.navigate(['/conseil']);
     } else {
       this.getBookingData();
+      console.log("nginit...");
       this.getAppointmentPackage();
     }
   }
@@ -81,6 +83,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
 
   //Call API to get the package's adviser
   getListAdviser(){
+
     console.log(this.bookingData)
     this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]]._id)
       .subscribe(
@@ -92,6 +95,9 @@ export class BookingComponent implements OnInit, AfterViewInit {
           } else {
             this.adviserList = data;
             this.calendarData=this.initDataAppoint();
+            console.log("adviserList",this.adviserList.length);
+            console.log("calendarData",this.calendarData.length);
+            this.totalAdviser = data.length;
             // for(let adviser of this.adviserList){
             //   this.getAdviserFreeTime(adviser.id);
             // }

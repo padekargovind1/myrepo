@@ -5,7 +5,7 @@
                 <div class="advisors-wrap">
                     <h3 class="advisor-title">Conseillers d’orientation</h3>
                     <button class="btn btn-appointment btn-block select-all-advisor" (click)="onSelectAll()"
-                        *ngIf="adviserToDisplay.length!=calendarData.length">
+                        *ngIf="adviserToDisplay.length!=calendarData.length || adviserIdList.length < totalAdviser  ">
                         Sélectionnez tous les conseillers <i class="fa fa-check"></i>
                     </button>
                     <button class="btn btn-danger btn-block deselect-all-advisor" (click)="onUnselectAll()"
