@@ -1454,7 +1454,7 @@ span.label { font-size: 10px;  }
 
 
 .white-background { background: #EBECEC; padding: 20px 0 70px; color: #333;}
-.basic-background { background: #393645; padding: 20px 0 70px; color: #333;}
+.basic-background { background: #393645; padding: 20px 0 20px; color: #333;}
 
 
 .do-animate { animation-duration: .7s; animation-fill-mode: both; animation-name: fadeInDown;}
@@ -2016,6 +2016,7 @@ a:hover { text-decoration: none;}
   .btn.btn-appointment.disabled, .btn.btn-appointment[disabled] {
     background: #fff !important;
     color: #00bc50 !important;
+    top:-150px;
   }
 
   .list-of-research p {
