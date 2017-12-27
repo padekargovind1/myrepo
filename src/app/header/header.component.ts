@@ -209,7 +209,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           if(response.code==400){
             console.log(response.message);
           } else {
-            // console.log(response.data)
+            console.log(response.data)
             this.wishList=response.data;
             var wcount = 0;
             var acount=0;
@@ -270,7 +270,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.router.navigate(['/login']);
     }
   }
-  
+
 
   // Clean the local storage in services
   cleanLocalStorage(){
@@ -303,7 +303,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if(this.userLogin){
 		localStorage.setItem('myaccountTab','4');
 		this.router.navigate(['/my-account']);
-		
+
       //this.makeProfile(nb)
       //this.dialog.open(WishApplyPopupComponent,this.config);
       // dialogref.afterClosed().subscribe(result => {

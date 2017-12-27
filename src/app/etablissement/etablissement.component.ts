@@ -125,16 +125,22 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   addToWish(){
     const data = {
       type : "wish",
-      schools : [{school : this.schoolId, class:'EE'}]
+      schools : [{class:'EE'}],
+      school : this.schoolData._id
     }
-
+    console.log(data);
     this.usersService.postApplication(data)
       .subscribe(
         response=>{
           let data = response.data;
           console.log(response);
           if(response.code==400){
-            console.log(response.message)
+            console.log(response.message);
+            swal({
+              title: response.message,
+              type: 'error',
+              confirmButtonText: "J'AI COMPRIS"
+            })
           } else {
             this.successApply();
             console.log("apply successful")
