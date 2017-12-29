@@ -41,5 +41,7 @@ export class JobsTabComponent implements OnInit {
       this.bookingService.failSubmit();
     }
   }
-
+  prevTab(nb:number){
+      this.tabChange.emit(nb);
+  }
 }

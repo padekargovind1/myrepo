@@ -8,19 +8,19 @@
 
           <div class="form-group">
             <div class="select-custom">
-              Lien de parenté*
+              Lien de parenté<span class="err">*</span>  
               <md-select placeholder="Lien de Parenté" class="form-control" formControlName="lienParent">
                 <md-option *ngFor="let lientparent of lienparents" [value]="lientparent">
                   {{ lientparent }}
                 </md-option>
               </md-select>
               <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.lienParent.hasError('required') &&
-                            wizardForm.controls['parents']['controls'][i].controls.lienParent.touched" class="mat-text-warn">
+                            wizardForm.controls['parents']['controls'][i].controls.lienParent.touched" class="mat-text-warn err">
               Lien de Parenté Obligatoire
             </small>
             </div>
           </div>
-          Titre*
+          Titre<span class="err">*</span> 
           <div class="form-group horizontal-radio clearfix">
             <md-radio-group formControlName="titre">
               <md-radio-button value="ms">Mme</md-radio-button>
@@ -28,7 +28,7 @@
             </md-radio-group>
             <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.titre.hasError('required') &&
                                                       wizardForm.controls['parents']['controls'][i].controls.titre.touched"
-              class="mat-text-warn">
+              class="mat-text-warn err">
             Titre Obligatoire
           </small>
           </div>
@@ -37,22 +37,22 @@
           <div class="row">
             <div class="col-sm-6  col-xs-6">
               <div class="form-group">
-                Nom de famille*
+                Nom de famille <span class="err">*</span>
                 <input type="text" class="form-control" placeholder="Nom" formControlName="nom" maxlength="25">
                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.nom.hasError('required') &&
                                                       wizardForm.controls['parents']['controls'][i].controls.nom.touched"
-                  class="mat-text-warn">
+                  class="mat-text-warn err">
                 Nom Obligatoire
               </small>
               </div>
             </div>
             <div class="col-sm-6  col-xs-6">
               <div class="form-group">
-                Prénom*
+                Prénom<span class="err">*</span>
                 <input type="text" class="form-control" placeholder="Prénom" formControlName="prenom" maxlength="25">
                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.prenom.hasError('required') &&
                                                       wizardForm.controls['parents']['controls'][i].controls.prenom.touched"
-                  class="mat-text-warn">
+                  class="mat-text-warn err">
                 Prénom Obligatoire
               </small>
               </div>
@@ -64,11 +64,11 @@
             <div class="row">
 
               <div class="col-sm-12">
-                Profession*
+                Profession<span class="err">*</span> 
                 <input type="text" class="form-control" placeholder="Profession / Secteur d'activité" formControlName="job" maxlength="25">
                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.job.hasError('required') &&
                                                               wizardForm.controls['parents']['controls'][i].controls.job.touched"
-                  class="mat-text-warn">
+                  class="mat-text-warn err">
                 Profession Obligatoire
               </small>
               </div>
@@ -76,17 +76,17 @@
           </div>
 
           <div class="form-group">
-            Mél*
+            Mél<span class="err">*</span>
             <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Exemple : Abc@example.com" mdTooltipPosition="after"></i>
             <input type="email" class="form-control" placeholder="Email" formControlName="email">
             <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.hasError('required') &&
                                                       wizardForm.controls['parents']['controls'][i].controls.email.touched"
-              class="mat-text-warn">
+              class="mat-text-warn err">
             Email Obligatoire
           </small>
             <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.email.errors?.email &&
                                                       wizardForm.controls['parents']['controls'][i].controls.email.touched"
-              class="mat-text-warn">
+              class="mat-text-warn err">
             Email Invalide
           </small>
           </div>
@@ -94,23 +94,23 @@
           <div class="form-group">
             <div class="row">
               <div class="col-sm-12">
-                Numéro de portable*
+                Numéro de portable<span class="err">*</span>
                 <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Doit contenir 10 chiffres" mdTooltipPosition="after"></i>
                 <input type="text" class="form-control" placeholder="Téléphone auquel je suis joignable" formControlName="portable" pattern="[0-9]+"
                   maxlength="10">
                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('required') &&
                                                               wizardForm.controls['parents']['controls'][i].controls.portable.touched"
-                  class="mat-text-warn">
+                  class="mat-text-warn err">
                 Numéro de Portable Obligatoire
               </small>
                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('maxlength') &&
                                                               wizardForm.controls['parents']['controls'][i].controls.portable.touched"
-                  class="mat-text-warn">
+                  class="mat-text-warn err">
                 Numéro de Portable Invalide (max 10)
               </small>
                 <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.portable.hasError('pattern') &&
                                                               wizardForm.controls['parents']['controls'][i].controls.portable.touched"
-                  class="mat-text-warn">
+                  class="mat-text-warn err">
                 Numéro de Portable Invalide (Doit être des chiffres)
               </small>
               </div>
@@ -121,7 +121,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="select-custom">
-                  Horaires pour me contacter*
+                  Horaires pour me contacter<span class="err">*</span> 
                   <select name="" class="form-control" formControlName="horaireJoignable">
                   <option value="" disabled selected hidden>Horaires pour me contacter</option>
                   <option value="9h-12h">9h-12h</option>
@@ -131,7 +131,7 @@
                 </select>
                   <small *ngIf="wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.hasError('required') &&
                                                           wizardForm.controls['parents']['controls'][i].controls.horaireJoignable.touched"
-                    class="mat-text-warn">
+                    class="mat-text-warn err">
                   Horaire obligatoire
                 </small>
                 </div>

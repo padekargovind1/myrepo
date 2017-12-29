@@ -1,6 +1,6 @@
 ﻿<form [formGroup]="wizardForm">
   <div class="col-md-4">
-    <h3>Aide Scolaire*
+    <h3>Aide Scolaire
       <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Si oui, compléter matières."
          mdTooltipPosition="after"></i>
     </h3>
@@ -22,8 +22,8 @@
       <div class="row" style="margin-bottom:20px">
         <div class="col-sm-12">
           <div class="select-custom dans-quelles">
-            <select name="" class="form-control multiselect"
-                    id="dans-quelles" *ngIf="checked" placeholder="hhhhh">
+            <select name="" class="form-control multiselect" required
+                    id="dans-quelles" *ngIf="checked" (change)="onSelectsubject()">
               <option value="" disabled selected>Dans quelles matières</option>
               <option *ngFor="let subject of subjectSchool" value="subject">
                 <md-checkbox>{{subject}}</md-checkbox>
@@ -36,10 +36,10 @@
     </div>
 
     <div class="form-group clearfix">
-      <div class="row" style="margin-bottom:">
+      <div class="row">
         <div class="col-sm-12">
           <button class="btn  btn-appointment wizard-button-align"
-                  (click)="nextTab(2)" style="float:left; margin-left:0px">
+                  (click)="prevTab(2)" style="float:left; margin-left:0px">
             Précédent
           </button>
           <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(4)"

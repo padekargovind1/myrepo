@@ -13,13 +13,21 @@ export class SubjectsTabComponent implements OnInit {
   @Input() userData;
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
   tooltipText : string = "Sélectionner plusieurs matières en appuyant sur CTRL + click gauche de la souris"
-
+  subjectList1:any;
+  subjectList2:any;
+  subjectList3:any;
+  tempsubjectList1=[];
+  tempsubjectList2=[];
   constructor(private fb : FormBuilder,
               public wizardService : WizardService,
               private bookingService : BookingService ) { }
 
   ngOnInit() {
     this.buildForm()
+    this.subjectList1 = this.wizardService.getSubjectList();
+    this.subjectList2 = this.wizardService.getSubjectList();
+    this.subjectList3 = this.wizardService.getSubjectList();
+    console.log("====>",this.subjectList1);
   }
   //Build the form
   buildForm(){
@@ -43,10 +51,47 @@ export class SubjectsTabComponent implements OnInit {
     }
   }
   //Patch Value
+
   patchValue(){
     this.wizardForm.patchValue({
       bestSubject : this.userData.attractionToSubjects,
       weakSubject : this.userData.weakAtSubjects
     })
+  }
+    subjectListData1(subject){
+    if(this.tempsubjectList1.indexOf(subject)<0)
+    this.tempsubjectList1.push(subject);
+    else
+    {
+      var index = this.tempsubjectList1.indexOf(subject);
+      if (index > -1) {
+         this.tempsubjectList1.splice(index, 1);
+      }
+    }
+
+    var array1 = this.subjectList1;
+    var array2 = this.tempsubjectList1;
+    var array3 = array1.filter(function(obj) { return array2.indexOf(obj) == -1; });
+
+    this.subjectList2=array3;
+
+  }
+    subjectListData2(subject){
+    if(this.tempsubjectList2.indexOf(subject)<0)
+    this.tempsubjectList2.push(subject);
+    else
+    {
+      var index = this.tempsubjectList2.indexOf(subject);
+      if (index > -1) {
+         this.tempsubjectList2.splice(index, 1);
+      }
+    }
+
+    var array1 = this.subjectList2;
+    var array2 = this.tempsubjectList2;
+    var array3 = array1.filter(function(obj) { return array2.indexOf(obj) == -1; });
+
+    this.subjectList3=array3;
+
   }
 }

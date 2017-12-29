@@ -13,6 +13,7 @@ export class SchoolHelpTabComponent implements OnInit {
   @Input() userData;
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
   checked:boolean=false;
+  checked1:boolean=false;
   subjectSchool = []
 
   constructor(private fb : FormBuilder,
@@ -32,17 +33,42 @@ export class SchoolHelpTabComponent implements OnInit {
   }
   //Save and go to next tab
   nextTab(nb:number){
+    // if(this.wizardForm.valid){
+    //   this.wizardService.saveData('helpData', this.wizardForm.value);
+    //   this.tabChange.emit(nb);
+    // }else {
+    //   this.bookingService.failSubmit();
+    // }
+      if(this.checked1===true)
+      {
+        this.bookingService.failSubmit();
+      }
+      else
+      {
+        this.wizardService.saveData('helpData', this.wizardForm.value);
+        this.tabChange.emit(nb);
+      }
+  }
+   prevTab(nb:number){
+
     if(this.wizardForm.valid){
-      this.wizardService.saveData('helpData', this.wizardForm.value);
-      this.tabChange.emit(nb);
-    }else {
-      this.bookingService.failSubmit();
+     
+        this.wizardService.saveData('helpData', this.wizardForm.value);
+        this.tabChange.emit(nb);
+      }
+    else {
+       this.bookingService.failSubmit();
     }
   }
   onChecked(){
     var check = this.wizardForm.controls['schoolHelp'].value;
     //console.log(check);
     this.checked = !check;
+    this.checked1 = !check;
+  }
+  onSelectsubject(){
+    this.checked1 = false;
+    console.log("checked1==",this.checked1);
   }
   getSubjectSchool(){
     this.subjectSchool=this.wizardService.getSubjectSchool();

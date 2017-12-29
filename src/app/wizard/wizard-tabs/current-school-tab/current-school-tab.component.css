@@ -1,3 +1,6 @@
 .mat-button, .mat-icon-button, .mat-raised-button{
     color: black !important;
 }
+.err{
+    color:red;
+}

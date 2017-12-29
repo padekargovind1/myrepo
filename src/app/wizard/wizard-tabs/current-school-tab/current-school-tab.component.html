@@ -6,9 +6,14 @@
     <div class="form-group">
       <div class="row">
         <div class="col-sm-12">
-          Nom de l'établissement*
+          Nom de l'établissement<span class="err">*</span> 
           <input type="text" class="form-control" placeholder="Nom Etablissement Actuel"
                  [formControl]="wizardForm.controls['schoolName']" maxlength="50">
+          <small *ngIf="wizardForm.controls['schoolName'].hasError('required') &&
+                                                      wizardForm.controls['schoolName'].touched"
+            class="mat-text-warn err">
+            Required
+          </small>
         </div>
       </div>
     </div>
@@ -17,9 +22,14 @@
       <div class="form-group  col-sm-12  col-xs-6">
         <div class="row">
           <div class="col-sm-12">
-            Ville de l'établissement*
+            Ville de l'établissement<span class="err">*</span> 
             <input type="text" class="form-control" placeholder="Ville"
                    [formControl]="wizardForm.controls['schoolCity']" maxlength="35">
+            <small *ngIf="wizardForm.controls['schoolCity'].hasError('required') &&
+                                                      wizardForm.controls['schoolCity'].touched"
+            class="mat-text-warn err">
+            Required
+          </small>
           </div>
         </div>
       </div>
@@ -28,9 +38,14 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="select-custom">
-              Classe actuelle*
+              Classe actuelle<span class="err">*</span> 
               <input type="text" class="form-control" placeholder="Classe actuelle"
                      [formControl]="wizardForm.controls['schoolClasse']" maxlength="35">
+                <small *ngIf="wizardForm.controls['schoolClasse'].hasError('required') &&
+                                                          wizardForm.controls['schoolClasse'].touched"
+                class="mat-text-warn err">
+                Required
+              </small>
             </div>
           </div>
         </div>
@@ -44,6 +59,7 @@
           <input type="text" class="form-control" placeholder="Options"
                  [formControl]="wizardForm.controls['schoolOption']"
                  maxlength="50">
+
         </div>
       </div>
     </div>
@@ -53,13 +69,15 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="select-custom">
-            Lv1
-            <select name="" class="form-control"
+            Lv1<span class="err">*</span> 
+            <select name="" class="form-control" required
                     [formControl]="wizardForm.controls['schoolLv1']">
               <option value="" disabled selected hidden>Lv1</option>
               <option value="langue" *ngFor="let langue of langues">{{langue}}</option>
             </select>
+          
           </div>
+         
         </div>
       </div>
     </div>
