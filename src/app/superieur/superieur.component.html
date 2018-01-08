@@ -109,11 +109,11 @@
                                 <ul>
                                     <li>
                                         <a class="advancedFilter">Niveau d'étude</a>
-                                        <ul class="adv-filt left-popup">
+                                        <ul class="adv-filt left-popup test1">
                                             <li>
                                                 <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="lv1"
-                                                        (click)="onLevelRythme($event)">
+                                                    <select name="class" class="form-control" id="lv2"
+                                                        (click)="onLevelRythme($event,'niveauFlag')" [(ngModel)]="niveauSelect">
                                                         <option value="" selected >Niveau</option>
                                                         <option value="Prépa">Prépa</option>
                                                         <option value="Bac+1">Bac + 1</option>
@@ -128,11 +128,11 @@
                                     </li>
                                     <li>
                                         <a class="advancedFilter">Rythme d'études</a>
-                                        <ul class="adv-filt">
+                                        <ul class="adv-filt test2">
                                             <li>
                                                 <label class="select-custom" for="class">
-                                                    <select name="class" class="form-control" id="lv1"
-                                                        (click)="onLevelRythme($event)">
+                                                    <select name="class" [(ngModel)]="rhytmeSelect" class="form-control" id="lv1"
+                                                        (click)="onLevelRythme($event,'rhytmeFlag')">
                                                         <option value="" selected >Rythme</option>
                                                         <option value="Alternance">Alternance</option>
                                                         <option value="Classique">Classique</option>
@@ -227,25 +227,25 @@
                                 <ng-template #empty1>
                                     <h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                                 </ng-template>
-                                <div *ngIf="advancedSearchToDisplay.length!=0; else empty2">
+                                <div *ngIf="advancedSearchToDisplay.length!=0 || advancedSearchToDisplay1 !=0; else empty2">
 
                                     <div>Recherche Affine:
-                                        <span *ngIf="advancedSearchToDisplay[0]">
+                                        <span *ngIf="advancedSearchToDisplay1[0]">
                                             <span class="contact-roles"
-                                                *ngIf="advancedSearchToDisplay[0]!==' '; else advancedEmpty1">
-                                                {{ advancedSearchToDisplay[0] }}
+                                                *ngIf="advancedSearchToDisplay1[0]!==' '; else advancedEmpty1">
+                                                {{ advancedSearchToDisplay1[0] }} 
                                                 <span class="fa fa-times" style="cursor: pointer"
-                                                    (click)="onRemoveFilter(0, advancedSearchToDisplay[0])"></span>
+                                                    (click)="onRemoveFilter(0, advancedSearchToDisplay1[0])"></span>
                                         </span>
                                         </span>
                                         <ng-template #advancedEmpty1>
                                             &nbsp;
                                         </ng-template>
-                                        <span *ngIf="advancedSearchToDisplay[1]">
-                                        <span class="contact-roles" *ngIf="advancedSearchToDisplay[1]!==' '; else advancedEmpty2">
-                                                {{ advancedSearchToDisplay[1] }}
+                                        <span *ngIf="advancedSearchToDisplay[0]">
+                                        <span class="contact-roles" *ngIf="advancedSearchToDisplay[0]!==' '; else advancedEmpty2">
+                                                {{ advancedSearchToDisplay[0] }} 
                                                 <span class="fa fa-times" style="cursor: pointer"
-                                                    (click)="onRemoveFilter(0, advancedSearchToDisplay[1])"></span>
+                                                    (click)="onRemoveFilter(0, advancedSearchToDisplay[0])"></span>
                                         </span>
                                         </span>
                                         <ng-template #advancedEmpty2>
@@ -255,7 +255,7 @@
                                         <span class="contact-roles" *ngIf="advancedSearchToDisplay[2]!==' '; else advancedEmpty3">
                                                 {{ advancedSearchToDisplay[2] }}
                                                 <span class="fa fa-times" style="cursor: pointer"
-                                                    (click)="onRemoveFilter(0, advancedSearchToDisplay[2])"></span>
+                                                 (click)="onRemoveFilter(2, advancedSearchToDisplay[2])"></span>
                                         </span>
                                         </span>
                                         <ng-template #advancedEmpty3>
@@ -265,7 +265,7 @@
                                         <span class="contact-roles" *ngIf="advancedSearchToDisplay[3]!==' '; else advancedEmpty4">
                                                 {{ advancedSearchToDisplay[3] }}
                                                 <span class="fa fa-times" style="cursor: pointer"
-                                                    (click)="onRemoveFilter(0, advancedSearchToDisplay[3])"></span>
+                                                    (click)="onRemoveFilter(3, advancedSearchToDisplay[3])"></span>
                                         </span>
                                         </span>
                                         <ng-template #advancedEmpty4>
