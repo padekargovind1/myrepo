@@ -84,6 +84,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
   imageExtensions = ['png','gif','jpeg'];
   imagePathPre = 'http://13.229.117.64/cideapi/';
 
+  selectedecole = 'Classe';
+
 
   constructor(private publicService: PublicService,
               private schoolService: SchoolService,
@@ -394,6 +396,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
     this.advancedSearch.name = data.name;
     this.publicService.storeSearchSchool(this.advancedSearch); // store the search to the service
+    // check if the search is from history to avoid logging the search again
     if (!this.publicService.searchFromHistory()) {
       this.logSearch({'category': 'searches', 'details': this.advancedSearch}); // store the search to the service
     }
@@ -518,7 +521,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
           } else {
             this.defaultSchoolList=data;
             this.schoolListFilter=data;
-			      this.totalRecords = response.total;
+            this.totalRecords = response.total;
+            console.log('school list filter..');
             console.log(this.schoolListFilter)
             for(var j=0;j<data.length;j++)
             {
@@ -776,8 +780,11 @@ export class SchoolComponent implements OnInit, OnDestroy {
   saveInWish(schoolId){
     const data = {
       type : "wish",
-      schools : [{school : schoolId, class:'EE'}]
+      school : schoolId,
+      class:'EE'
     }
+    console.log('adding to wishlist');
+    console.log(schoolId);
     this.usersService.postApplication(data)
       .subscribe(
         response=>{
@@ -817,9 +824,10 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // store class name to display on school list
   storeClassName(event){
-    console.log('class name');
-    console.log(event)
-    this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
+    console.log('class name ..');
+    console.log(this.searchForm.value);
+    // this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
+    this.publicService.storeClassName(this.searchForm.value.classe);
   }
 
   // clean the service when user quit the page

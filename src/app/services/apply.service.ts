@@ -91,10 +91,8 @@ export class ApplyService {
       if (this.wizardData['pageName'] != "myaccount") {
           const data = { //Create a new applying school
               type: "apply",
-              schools: [{
                   school: this.schoolId,
                   class: this.schoolService.getClassName()
-              }]
           }
 
           console.log(data);

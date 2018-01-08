@@ -29,7 +29,7 @@ export class MyaccountMyfavouritesComponent implements OnInit {
   compareListFilter = [];
   schoolListFilter = [];
   imageExtensions = ['png','gif','jpeg']; 
-  imagePathPre = 'http://13.229.81.1/cideapi/';
+  imagePathPre = 'http://13.229.117.64/cideapi/';
   filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
                 'Internat', 'Stages', 'Restauration',
                 'Externat', 'Statut', 'Enseignement Confessionel',
@@ -50,6 +50,7 @@ export class MyaccountMyfavouritesComponent implements OnInit {
         this.usersService.getApplication()
             .subscribe(
             response => {
+                console.log('my fav get applications');
                 console.log(response)
                 if (response.code == 400) {
                     console.log(response.message)
@@ -138,34 +139,34 @@ export class MyaccountMyfavouritesComponent implements OnInit {
 			break;
 	}
   }
-  saveInWish(schoolId) {
-      const data = {
-          type: "wish",
-          schools: [{ school: schoolId, class: 'EE' }]
-      }
-      this.usersService.postApplication(data)
-          .subscribe(
-          response => {
-              console.log(response)
-              // Bad Request.
-              if (response.code == 200) {
-                  swal({
-                      title: 'Ajout à la liste des voeux',
-                      text: "L'école séléctionné a bien été ajouté à votre liste des voeux",
-                      type: 'warning',
-                      confirmButtonText: "J'ai compris"
-                  })
-              } else {
-                  swal({
-                      title: 'Attention',
-                      text: response.message,
-                      type: 'warning',
-                      confirmButtonText: "J'ai compris"
-                  })
-              }
-          }
-          )
-  }
+//   saveInWish(schoolId) {
+//       const data = {
+//           type: "wish",
+//           schools: [{ school: schoolId, class: 'EE' }]
+//       }
+//       this.usersService.postApplication(data)
+//           .subscribe(
+//           response => {
+//               console.log(response)
+//               // Bad Request.
+//               if (response.code == 200) {
+//                   swal({
+//                       title: 'Ajout à la liste des voeux',
+//                       text: "L'école séléctionné a bien été ajouté à votre liste des voeux",
+//                       type: 'warning',
+//                       confirmButtonText: "J'ai compris"
+//                   })
+//               } else {
+//                   swal({
+//                       title: 'Attention',
+//                       text: response.message,
+//                       type: 'warning',
+//                       confirmButtonText: "J'ai compris"
+//                   })
+//               }
+//           }
+//           )
+//   }
   sendMessage(school) {
       let config = this.sendService.makeProfile(school)
       let dialogref = this.dialog.open(SendMessageComponent, config);
