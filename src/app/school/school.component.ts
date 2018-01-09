@@ -800,9 +800,11 @@ export class SchoolComponent implements OnInit, OnDestroy {
           }else {
             swal({
               title: 'Attention',
-              text: response.message,
+              text: "Merci de vous connecter pour continuer",
               type: 'warning',
-              confirmButtonText: "J'ai compris"
+              confirmButtonText: "Connecter"
+              }).then(() => {
+                this.router.navigate(['/login']);
               })
           }
         }
