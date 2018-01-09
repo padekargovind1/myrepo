@@ -1,7 +1,7 @@
-﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MdDialog} from '@angular/material';
+import { MdDialog } from '@angular/material';
 
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
@@ -11,9 +11,11 @@ import { BrochureService } from '../services/brochure.service';
 import { SendService } from '../services/send.service';
 // import { AdvancedSearchMdl } from '../model/advanced-search.model';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
+import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
 import {HelperService} from "../services/helper.service";
+import { EtablissementComponent } from '../etablissement/etablissement.component';
 declare const jquery: any;
 declare const $: any;
 
@@ -85,7 +87,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
   imagePathPre = 'http://13.229.117.64/cideapi/';
 
   selectedecole = 'Classe';
-
+  config : any;
+  
 
   constructor(private publicService: PublicService,
               private schoolService: SchoolService,
@@ -831,6 +834,33 @@ export class SchoolComponent implements OnInit, OnDestroy {
     // this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
     this.publicService.storeClassName(this.searchForm.value.classe);
   }
+  
+    // Click on apply to a school
+    // Open a md dialog to choose the cycle
+    // If submit on the md dialog then close this md dialog
+    applyTo(school){
+      this.makeProfile(school);
+      this.dialog.open(SchoolChoiceComponent,this.config);
+      // this.router.navigate(['applyto', this.schoolId])
+    }
+  
+    //Make the config for the md dialog
+    makeProfile(school){
+      this.config= {
+        data:{
+          schoolData : school
+        },
+        disableClose: false,
+        width: '800px',
+        height: '',
+        position: {
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
+        }
+      };
+    }
 
   // clean the service when user quit the page
   ngOnDestroy(){
