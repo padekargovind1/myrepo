@@ -26,12 +26,13 @@
     </li>-->
 </ul>
 
-<img *ngIf="SchoolData.logo!='' || SchoolData.logo!=null; else emptyLogo" src="https://media.apbprive.fr/{{SchoolData.logo}}"
+<img *ngIf="SchoolData.logo!=''" src="https://media.apbprive.fr/{{SchoolData.logo}}"
     alt="School 1" style="width:150px; height:150px; margin-left:15%; margin-top:30px" />
-<ng-template #emptyLogo>
-    <img src="assets/images/logoEmpty.png" alt="School 1" style="width:150px; height:150px; margin-left:15%; margin-top:30px"
+  
+<!--<ng-template #emptyLogo>-->
+    <img *ngIf="SchoolData.logo==''" src="assets/images/logoEmpty.png" alt="School 1" style="width:150px; height:150px; margin-left:15%; margin-top:30px"
     />
-</ng-template>
+<!--</ng-template>-->
 
 <div class="card-content">
     <h3 style="height:30px" mdTooltip="{{ SchoolData.longName }}">{{ SchoolData.longName | school:42 }}
