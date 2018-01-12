@@ -20,9 +20,10 @@ export class ClassChoiceComponent implements OnInit {
               private schoolService : SchoolService) { }
 
   ngOnInit() {
-    console.log(this.data.schoolData, this.data.schoolIndex)
+    //console.log(this.data.schoolData,"Harish lenght:- ", this.data.schoolIndex)
     this.schoolData=this.data.schoolData;
     this.schoolIndex=this.data.schoolIndex;
+    console.log("Harish lenght:- ",this.schoolData.cycles[this.schoolIndex].classes);
   }
 
   onChange() {
