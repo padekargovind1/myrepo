@@ -6,6 +6,10 @@ import {BrochpopupComponent} from './brochpopup/brochpopup.component'
 import { BrochureDownloadComponent } from './brochure-download/brochure-download.component';
 import { BrochureService } from '../services/brochure.service';
 import {HelperService} from "../services/helper.service";
+import swal from 'sweetalert2';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-brochure',
   templateUrl: './brochure.component.html',
@@ -49,7 +53,9 @@ export class BrochureComponent implements OnInit, OnDestroy {
               public dialog:MdDialog,
               private fb : FormBuilder,
               private brochureService : BrochureService,
-              public helperService : HelperService) {
+              public helperService : HelperService,
+              private authService: AuthService,
+              private route: Router) {
       this.buildForm();
       this.makeProfile();
       this.getSearch();
@@ -284,7 +290,17 @@ export class BrochureComponent implements OnInit, OnDestroy {
 
   // After click on the download button (not the button next to the search)
   onDownloadBrochure(schoolId, brochureId){
-    console.log(brochureId)
+    console.log(brochureId);
+    // if(!this.authService.isUserLoggedIn()){
+    //   swal({
+    //     title: 'Attention',
+    //     text: "Merci de vous connecter pour continuer",
+    //     type: 'warning',
+    //     confirmButtonText: "Connecter"
+    //   }).then(() => {
+    //     this.route.navigate(['/login']);
+    //   })
+    // }
     this.downloadList[0]=brochureId;
     this.downloadSchoolList[0]=schoolId;
     this.brochDialog();

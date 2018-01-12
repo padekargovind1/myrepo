@@ -74,7 +74,8 @@ export class ApplytoComponent implements OnInit {
       .subscribe(
         (data) => {
           let response = data;
-          // console.log(response);
+          console.log('loggin school data..');
+          console.log(response);
           if (response.code==400){
             console.log(response.message);
           }else {

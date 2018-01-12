@@ -88,15 +88,15 @@ export class ApplyService {
   //Data to send to API
   sendToApi() {
       console.log(this.schoolId)
-      if (this.wizardData['pageName'] != "myaccount") {
+      // if (this.wizardData['pageName'] != "myaccount") {
           const data = { //Create a new applying school
               type: "apply",
-                  school: this.schoolId,
-                  class: this.schoolService.getClassName()
+              school: this.schoolId,
+              class: this.schoolService.getClassName()
           }
 
           console.log(data);
-      }
+      // }
     // this.usersService.postApplication(data) //Post data to create a new applying school
     //   .subscribe(
     //     response=>{

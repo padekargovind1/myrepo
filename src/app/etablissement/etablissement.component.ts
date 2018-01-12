@@ -13,6 +13,7 @@ declare var $ :any;
 import swal from 'sweetalert2';
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
+import { AuthService } from 'app/services/auth.service';
 
 @Component({
   selector: 'app-etablissement',
@@ -39,7 +40,8 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any},
               public dialog:MdDialog,
               private sendService : SendService,
-              private schoolService : SchoolService) {
+              private schoolService : SchoolService,
+              private authService: AuthService) {
     console.log(this.data)
   }
 
@@ -129,6 +131,10 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
       class:'EE'
     }
 
+    if(!this.authService.isUserLoggedIn()){
+      this.loginFirst();
+     }
+
     this.usersService.postApplication(data)
       .subscribe(
         response=>{
@@ -142,6 +148,16 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
           }
         }
       )
+  }
+
+  // Login first add in wish list
+  loginFirst(){
+    swal({
+      title: 'Attention',
+      text: "Merci de vous connecter pour continuer",
+      type: 'warning',
+      confirmButtonText: "Connecter"
+    }).then(() => this.router.navigate(['/login']));
   }
 
   // Successful add in wish list

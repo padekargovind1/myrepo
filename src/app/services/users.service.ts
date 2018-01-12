@@ -9,6 +9,7 @@ const PROFILE_API : string = "http://13.229.117.64/cideapi/api/common/profile";
 const APPOINTMENTS_API : string = "http://13.229.117.64/cideapi/api/public";
 const PACKAGE_API : string = "http://13.229.117.64/cideapi/api/public/package";
 const APPLICATION_API : string = "http://13.229.117.64/cideapi/api/users/apply";
+const BRONCHURE_API : string = "http://13.229.117.64/cideapi/api/users/media";
 const TRIPS_API: string = "http://13.229.117.64/cideapi/api/users/trips";
 const HISTORY_API : string = "http://13.229.117.64/cideapi/api/common/history";
 
@@ -63,6 +64,17 @@ export class UsersService {
 
   postApplication(data): Observable<any>{
     return this.http.post(APPLICATION_API+'?token='+this.token, data)
+      .map((response)=>response.json());
+  }
+  
+  postBrochure(data): Observable<any>{
+    console.log('posting to bronchure list..');
+    return this.http.post(BRONCHURE_API+'?token='+this.token, data)
+      .map((response)=>response.json());
+  }
+
+  getBrochures():Observable<any>{
+    return this.http.get(BRONCHURE_API+'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }
 

@@ -1,10 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-//import { Http, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 
 import { PublicService } from '../../services/public.service';
+import { UsersService } from '../../services/users.service';
+import swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
-//declare var saveAs:any;
+declare var saveAs:any;
 
 @Component({
   selector: 'app-brochure-download',
@@ -20,7 +24,10 @@ export class BrochureDownloadComponent implements OnInit {
                 brochureList : any,
                 schoolList : any},
               private publicService : PublicService,
-              //private http : Http
+              private userService: UsersService,
+              private http : Http,
+              private route: Router,
+              private authService: AuthService
               ) { }
 
   ngOnInit() {
@@ -48,6 +55,7 @@ export class BrochureDownloadComponent implements OnInit {
                 this.brochureList.push(cycleData)
               }
             }
+            console.log('bronchure List..');
             console.log(this.brochureList);
           }
         }
@@ -71,10 +79,35 @@ export class BrochureDownloadComponent implements OnInit {
 
   // After click on the submit
   onSubmit(){
+    // Check if user is logged in before downloading the bronchure
+    if(!this.authService.isUserLoggedIn()){
+      swal({
+        title: 'Attention',
+        text: "Merci de vous connecter pour continuer",
+        type: 'warning',
+        confirmButtonText: "Connecter"
+      }).then(() => {
+        this.route.navigate(['/login']);
+      });
+    }
     this.dialogref.close();
-    // console.log("test1")
+    let brochures = [];
+    // for (let i in this.brochureList) {
+      let brochureData = {
+        "link": this.brochureList[0].brochure.replace(/\\/g, "\\\\").toString(),
+        "placeholder": this.brochureList[0].nom.toString(),
+        "title": this.brochureList[0].nom.toString(),
+        "_id": this.brochureList[0]._id,
+        "type": "brochure"
+      // }
+      // brochures.push(brochureData);
+    }
+    //console.log(brochures);
+    this.userService.postBrochure(brochureData).subscribe(response => {
+      console.log(response);
+    });
     // this.http.get(
-    //   'http://13.229.81.1/cideapi/uploads/brochure/1.pdf').subscribe(
+    //   'http://13.229.117.64/cideapi/uploads/brochure/1.pdf').subscribe(
     //     (response:Response)=>{
     //       console.log(response['_body'])
     //       var mediaType = 'application/pdf';

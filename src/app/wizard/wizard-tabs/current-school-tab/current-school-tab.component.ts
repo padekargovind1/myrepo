@@ -121,6 +121,8 @@ export class CurrentSchoolTabComponent implements OnInit {
 
   onApplySubmit(){
     if(this.wizardForm.valid){
+      console.log('wizard form');
+      console.log(this.wizardForm.value);
       this.wizardService.saveData('currentSchoolData', this.wizardForm.value);
       this.applyService.onSubmit();
     }else {
