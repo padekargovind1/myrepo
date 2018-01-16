@@ -8,29 +8,17 @@
       <section class="col-md-12">
         <div class="row ">
           <ul class="messageTabContent">
-            <li>
-              <div class="col-md-2 msgBg">05/10/2017</div>
-              <div class="col-md-3 msgBg">Institution Jeanne d'Arc-Saint-Aspais - Fontainebleau</div>
-              <div class="col-md-6 msgBg">Ecole, Collège et Lycée Privés L'Ermitage - Maisons-Laffitte</div>
+            <li *ngFor="let message of messages">
+              <div class="col-md-2 msgBg">{{ message.date | date }}</div>
+              <div class="col-md-3 msgBg">{{ message.school }}</div>
+              <div class="col-md-6 msgBg">
+                <p>{{ message.subject }}</p>
+                <p>{{ message.message }}</p>
+              </div>
             </li>
-            <li>
-              <div class="col-md-2 msgBg">05/10/2017</div>
-              <div class="col-md-3 msgBg">Institution Jeanne d'Arc-Saint-Aspais - Fontainebleau</div>
-              <div class="col-md-6 msgBg">Ecole, Collège et Lycée Privés L'Ermitage - Maisons-Laffitte</div>
-              </li>
-            <li>
-              <div class="col-md-2 msgBg">05/10/2017</div>
-              <div class="col-md-3 msgBg">Institution Jeanne d'Arc-Saint-Aspais - Fontainebleau</div>
-              <div class="col-md-6 msgBg">Ecole, Collège et Lycée Privés L'Ermitage - Maisons-Laffitte</div>
-              </li>
-            <li>
-              <div class="col-md-2 msgBg">05/10/2017</div>
-              <div class="col-md-3 msgBg">Institution Jeanne d'Arc-Saint-Aspais - Fontainebleau</div>
-              <div class="col-md-6 msgBg">Ecole, Collège et Lycée Privés L'Ermitage - Maisons-Laffitte</div>
-              </li>
-</ul>
- </div>
-</section>
-</div><!-- .row -->
+          </ul>
+        </div>
+      </section>
+    </div><!-- .row -->
   </div><!-- .container-fluid -->
 </div><!-- .tab-pane -->

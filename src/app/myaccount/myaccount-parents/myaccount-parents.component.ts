@@ -59,7 +59,7 @@ export class MyaccountParentsComponent implements OnInit {
                 .subscribe((response) => {
                     console.log(response);
                     if (response.data != 400) {
-                        this.userData = response.data[0];
+                        this.userData = response.data;
                         this.getUserData();
                     }
                 })
@@ -70,7 +70,7 @@ export class MyaccountParentsComponent implements OnInit {
     }
 
     getUserData() {
-      console.log(this.userData);
+      // console.log(this.userData);
         delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
         this.buildFormGroup(this.userData.parents); // build form
         this.canDisplay = true;

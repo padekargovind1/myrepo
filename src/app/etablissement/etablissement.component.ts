@@ -188,7 +188,10 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   // Click on the button to download a brochure
   // Navigate to brochure and store the school name in service to get the search automatically
   downloadBrochure(){
-    this.dialogref.close()
+    this.dialogref.close();
+    if(!this.authService.isUserLoggedIn()){
+      this.loginFirst();
+     }
     this.brochureService.storeSchoolSearch(this.schoolData.shortName);
     this.router.navigate(['brochure']);
   }
@@ -213,7 +216,11 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
 
   // Open the md dialog to send a message
   sendMessage(){
+    if(!this.authService.isUserLoggedIn()){
+      this.loginFirst();
+     }
     let config = this.sendService.makeProfile(this.schoolData)
+    this.sendService.schoolId = this.schoolData._id;
     let dialogref = this.dialog.open(SendMessageComponent, config);
   }
 

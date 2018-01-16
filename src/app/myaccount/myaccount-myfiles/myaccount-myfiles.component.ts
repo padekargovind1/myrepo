@@ -62,31 +62,31 @@ export class MyaccountMyfilesComponent implements OnInit {
               if (response.code == 400) {
                   console.log(response.message);
               } else {
-                  this.userData = data[0];
+                  this.userData = data;
                   console.log(this.userData);
 
                   var tempParentData = [];
                   var IsAdress = (this.userData.address !== undefined && this.userData.address != null) ? true : false;
-                  for (let i = 0; i < this.userData.parents.length; i++) {
-                      if (this.userData.parents !== undefined && this.userData.parents != null && this.userData.parents.length != 0) {
-                          IsAdress = (this.userData.parents[i].address !== undefined && this.userData.parents[i].address != null) ? true : false;
-                          tempParentData.push({
-                              lienParent: this.userData.parents[i].relationship,
-                              titre: this.userData.parents[i].gender,
-                              nom: this.userData.parents[i].lastName,
-                              prenom: this.userData.parents[i].firstName,
-                              email: this.userData.parents[i].email,
-                              portable: this.userData.parents[i].phoneNumber,
-                              adresse: IsAdress ? this.userData.parents[i].address.address1 : "",
-                              codepostal: IsAdress ? this.userData.parents[i].address.postCode : "",
-                              ville: IsAdress ? this.userData.parents[i].address.city : "",
-                              pays: IsAdress ? this.userData.parents[i].address.country : "",
-                              job: this.userData.parents[i].profession,
-                              horaireJoignable: this.userData.parents[i].availability
-                          });
-                      }
-                  }
-                  this.wizardService.saveData('parentData', tempParentData);
+                //   for (let i = 0; i < this.userData.parents.length; i++) {
+                //       if (this.userData.parents !== undefined && this.userData.parents != null && this.userData.parents.length != 0) {
+                //           IsAdress = (this.userData.parents[i].address !== undefined && this.userData.parents[i].address != null) ? true : false;
+                //           tempParentData.push({
+                //               lienParent: this.userData.parents[i].relationship,
+                //               titre: this.userData.parents[i].gender,
+                //               nom: this.userData.parents[i].lastName,
+                //               prenom: this.userData.parents[i].firstName,
+                //               email: this.userData.parents[i].email,
+                //               portable: this.userData.parents[i].phoneNumber,
+                //               adresse: IsAdress ? this.userData.parents[i].address.address1 : "",
+                //               codepostal: IsAdress ? this.userData.parents[i].address.postCode : "",
+                //               ville: IsAdress ? this.userData.parents[i].address.city : "",
+                //               pays: IsAdress ? this.userData.parents[i].address.country : "",
+                //               job: this.userData.parents[i].profession,
+                //               horaireJoignable: this.userData.parents[i].availability
+                //           });
+                //       }
+                //   }
+                //   this.wizardService.saveData('parentData', tempParentData);
 
                   this.childData = {
                       childLastName: this.userData.lastName == "A compléter" ? "" : this.userData.lastName,

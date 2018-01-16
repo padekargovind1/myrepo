@@ -4,14 +4,16 @@ import { Http, Headers,Jsonp } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 import {MyAccountMdl} from '../model/myaccount.model';
+import { Subject } from 'rxjs/Subject';
 
-const PROFILE_API : string = "http://13.229.117.64/cideapi/api/common/profile";
+const PROFILE_API : string = "http://13.229.117.64/cideapi/api/profile";
 const APPOINTMENTS_API : string = "http://13.229.117.64/cideapi/api/public";
 const PACKAGE_API : string = "http://13.229.117.64/cideapi/api/public/package";
 const APPLICATION_API : string = "http://13.229.117.64/cideapi/api/users/apply";
 const BRONCHURE_API : string = "http://13.229.117.64/cideapi/api/users/media";
 const TRIPS_API: string = "http://13.229.117.64/cideapi/api/users/trips";
 const HISTORY_API : string = "http://13.229.117.64/cideapi/api/common/history";
+const MESSAGES_API : string = "http://13.229.117.64/cideapi/api/users/profile/mail";
 
 @Injectable()
 export class UsersService {
@@ -19,6 +21,47 @@ export class UsersService {
   private token : string='';
 
   private headers = new Headers({'Content-Type': 'application/json'});
+  newMessage = new Subject<any[]>();
+  private messages: any = [
+    {
+      date: new Date(15, 10,2017),
+      school: 'Institution Jeanne d Arc-Saint-Aspais - Fontainebleau',
+      subject: 'Messo',
+      message: 'Outgoing message',
+      senderProperty: {
+        sender: "5a38f96b928d4c165938a800",
+        module: "candidate"
+      },
+      recipientProperty: {
+        recipient: ["0000000000000000000e2145"],
+        module: "school",
+        rank: ""
+      },
+      user: "5a38f96b928d4c165938a800",
+      attachments: "",
+      tags: "",
+      isSent: true
+    },
+    {
+      date: new Date(15, 10,2017),
+      school: 'Institution Jeanne d Arc-Saint-Aspais - Fontainebleau',
+      subject: 'Messo',
+      message: 'Outgoing message',
+      senderProperty: {
+        sender: "5a38f96b928d4c165938a800",
+        module: "candidate"
+      },
+      recipientProperty: {
+        recipient: ["0000000000000000000e2145"],
+        module: "school",
+        rank: ""
+      },
+      user: "5a38f96b928d4c165938a800",
+      attachments: "",
+      tags: "",
+      isSent: true
+    }
+  ];
 
   constructor(private http : Http,
               private jsonp :Jsonp,
@@ -93,6 +136,22 @@ export class UsersService {
     console.log(data);
     return this.http.post(HISTORY_API+'?token='+this.token, data)
       .map((response)=>{response.json(); console.log('the http call happened')});
+  }
+
+  getMessages():Observable<any>{
+    // return this.http.get(MESSAGES_API+'?token='+this.token, {headers: this.headers})
+    //   .map((response)=>response.json());
+    return this.messages.slice();
+  }
+  
+  postToMessages(data) {
+  // postToMessages(data): Observable<any>{
+    // console.log('Sending message..');
+    // console.log(data);
+    // return this.http.post(MESSAGES_API+'?token='+this.token, data)
+    //   .map((response)=>{response.json()});
+    this.messages.push(data);
+    this.newMessage.next(this.messages.slice());
   }
 
   deleteApplication(data): Observable<any>{

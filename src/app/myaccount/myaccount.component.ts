@@ -45,7 +45,7 @@ export class MyaccountComponent implements OnInit, OnDestroy {
       .subscribe((response)=>{
         console.log(response);
         if(response.data!=400){
-          this.userData=response.data[0];
+          this.userData=response.data;
         }
       })
   }

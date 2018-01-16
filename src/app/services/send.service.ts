@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 
 import swal from 'sweetalert2';
+import { UsersService } from '../services/users.service';
 
 @Injectable()
 export class SendService {
+  schoolId: string = "";
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   makeProfile(school){
     let screenWidth : string = (window.screen.width/3).toString()+'px';
@@ -28,13 +30,25 @@ export class SendService {
   }
 
   sendMessage(data){
-    //wait API
+    this.usersService.postToMessages(data);
     swal({
       title: "Merci d'avoir choisi CIDE",
       text: 'Votre message a été envoyé à l\'école',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
-    })
+    });
+    // this.usersService.postToMessages(data).subscribe((response) => {
+      //wait API
+    //   console.log(response);
+    //   if (response.data == 200) {
+    //     swal({
+    //       title: "Merci d'avoir choisi CIDE",
+    //       text: 'Votre message a été envoyé à l\'école',
+    //       type: 'success',
+    //       confirmButtonText: "J'AI COMPRIS"
+    //     })
+    //   }
+    // });
   }
 
   failSend(){
