@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 import {MyAccountMdl} from '../model/myaccount.model';
 
 
-const PROFILE_API : string = "http://13.229.117.64/cideapi/api/common/profile";
+const PROFILE_API : string = "http://13.229.117.64/cideapi/api/profile";
 const APPOINTMENTS_API : string = "http://13.229.117.64/cideapi/api/public";
 const PACKAGE_API : string = "http://13.229.117.64/cideapi/api/public/package";
 const APPLICATION_API : string = "http://13.229.117.64/cideapi/api/users/apply";
@@ -32,7 +32,7 @@ export class UsersService {
   }
 
   getProfile() : Observable<any>{
-    this.getToken();
+    this.token=this.getToken();
     return this.http.get(PROFILE_API+'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }

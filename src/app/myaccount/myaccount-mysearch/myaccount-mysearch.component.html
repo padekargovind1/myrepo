@@ -9,7 +9,7 @@
           <h4>Mes souhaits</h4>
           <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('wish')"><i class="fa fa-sort"></i></button></p>
           <ul class="list-of-research">
-            <!--<ngx-datatable 
+            <!--<ngx-datatable
               #mydatatable
               class="material"
               [headerHeight]="50"
@@ -42,10 +42,10 @@
               </ngx-datatable-column>
             </ngx-datatable>-->
             <li *ngFor="let wish of wishList">
-              
+
               <div class="row">
                 <div class="col-md-8">
-                  <div *ngIf="wish!=[]">  
+                  <div *ngIf="wish!=[]">
                     <p>
                       <time>{{wish.createdAt | shorten}}</time><br />
                       <strong>{{wish.school.shortName}}</strong><br />
@@ -75,7 +75,7 @@
             <li *ngFor="let apply of applyList">
               <div class="row">
                 <div class="col-md-8">
-                  <div *ngIf="apply!=[]">  
+                  <div *ngIf="apply!=[]">
                     <p>
                       <time>{{apply.createdAt | shorten}}</time><br />
                       <strong>{{apply.school.shortName}}</strong><br />
@@ -105,7 +105,7 @@
             <li *ngFor="let history of historyList">
               <div class="row">
                 <div class="col-md-8">
-                  <div *ngIf="history!=[]">  
+                  <div *ngIf="history!=[]">
                     <p>
                       <time>{{history.createdAt | shorten}}</time><br />
                       <strong>{{history.school.shortName}}</strong><br />

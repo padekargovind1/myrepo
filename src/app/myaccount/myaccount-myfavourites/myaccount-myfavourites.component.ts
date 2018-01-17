@@ -28,7 +28,7 @@ export class MyaccountMyfavouritesComponent implements OnInit {
   compareList = [];
   compareListFilter = [];
   schoolListFilter = [];
-  imageExtensions = ['png','gif','jpeg']; 
+  imageExtensions = ['png','gif','jpeg'];
 
   imagePathPre = 'http://13.229.117.64/cideapi/';
 
@@ -59,7 +59,7 @@ export class MyaccountMyfavouritesComponent implements OnInit {
                     this.wishList = [];
                     for (let data of response.data) {
                         if (data.type == 'wish') {
-                            console.log(data)
+                            //console.log(data)
                             this.wishList.push(data.school)
                         }
                     }

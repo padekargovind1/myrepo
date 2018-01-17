@@ -208,19 +208,19 @@
                         <div class="col-md-12">
 
                             <div class="result-text" class="col-md-12">
-                                <h3 *ngIf="searchFilter[0]!='' || searchFilter[1]!='' || searchFilter[2]!=''; else empty1">Mon résultat pour:
-                                    <span *ngIf="searchFilter[0]!=''">
+                                <h3 *ngIf="searchFilter[0].length>0 || searchFilter[1].length>0 || searchFilter[2].length>0; else empty1">Mon résultat pour:
+                                    <span *ngIf="searchFilter[0].length>0">
                                             {{ "Domaine d'activité professionnel " + searchFilter[0] }}
                                         </span>
-                                    <span class="fa fa-map-marker" *ngIf="searchFilter[2]!=''">
+                                    <span class="fa fa-map-marker" *ngIf="searchFilter[2].length>0">
                                         </span>
-                                    <span *ngIf="searchFilter[2]!=''">
+                                    <span *ngIf="searchFilter[2].length>0">
                                             {{ ' - ' + searchFilter[2] }}
                                         </span>
-                                    <span *ngIf="searchFilter[1]!='' && searchFilter[2]!=''">
+                                    <span *ngIf="searchFilter[1].length>0 && searchFilter[2].length>0">
                                             /
                                         </span>
-                                    <span *ngIf="searchFilter[1]!=''">
+                                    <span *ngIf="searchFilter[1].length>0">
                                             {{ searchFilter[1] }}
                                         </span>
                                 </h3>
@@ -233,7 +233,7 @@
                                         <span *ngIf="advancedSearchToDisplay1[0]">
                                             <span class="contact-roles"
                                                 *ngIf="advancedSearchToDisplay1[0]!==' '; else advancedEmpty1">
-                                                {{ advancedSearchToDisplay1[0] }} 
+                                                {{ advancedSearchToDisplay1[0] }}
                                                 <span class="fa fa-times" style="cursor: pointer"
                                                     (click)="onRemoveFilter(0, advancedSearchToDisplay1[0])"></span>
                                         </span>
@@ -243,7 +243,7 @@
                                         </ng-template>
                                         <span *ngIf="advancedSearchToDisplay[0]">
                                         <span class="contact-roles" *ngIf="advancedSearchToDisplay[0]!==' '; else advancedEmpty2">
-                                                {{ advancedSearchToDisplay[0] }} 
+                                                {{ advancedSearchToDisplay[0] }}
                                                 <span class="fa fa-times" style="cursor: pointer"
                                                     (click)="onRemoveFilter(0, advancedSearchToDisplay[0])"></span>
                                         </span>
