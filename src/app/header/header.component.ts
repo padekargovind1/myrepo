@@ -222,6 +222,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
             }
             this.wishCount = wcount;
             this.applyCount = acount;
+            console.log("this.wishCount",this.wishCount);
+            console.log("this.applyCount",this.applyCount);
           }
         }
       )

@@ -74,7 +74,7 @@
                                 <a (click)="navigateToURL('/contact-us')" class="ln-tr link">Contactez nous</a>
                             </div>
                         </li><!-- end course menu item -->
-                        <li class="course-menu-item col-md-6 col-sm-6">
+                        <li *ngIf="userLogin && wishCount > 0" class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-bookmark"></i></span>
                                 <a (click)="onMyAccount('0')" class="ln-tr link">Mon compte</a>
@@ -155,7 +155,7 @@
 
     <ul class="mobile-login">
         <!--li (click)="wishApplyDialog(0)"><i class=" fa fa-file-text"><sup class="wishcount">{{applyCount}}</sup></i></li-->
-        <li (click)="wishApplyDialog(1)"><i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i></li>
+        <li (click)="wishApplyDialog(1)" *ngIf="userLogin && wishCount > 0"><i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i></li>
         <li *ngIf="!userLogin; else moblog"><i class="fa fa-user"></i>
             <ul class="login">
                 <li><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; S'inscrire</a></li>
@@ -179,7 +179,7 @@
                 <sup class="wishcount">{{applyCount}}</sup>
             </i>
         </li-->
-        <li style="cursor:pointer" (click)="wishApplyDialog(1)">
+        <li style="cursor:pointer" (click)="wishApplyDialog(1)" *ngIf="userLogin && wishCount > 0">
             <i class="fa fa-bookmark" mdTooltip="Mes Favoris"
                 mdTooltipClass="center-tooltip">
                 <sup class="wishcount" >{{wishCount}}</sup>
