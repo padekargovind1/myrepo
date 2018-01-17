@@ -26,11 +26,11 @@
     </li>-->
 </ul>
 
-<img *ngIf="SchoolData.logo!=''" src="https://media.apbprive.fr/{{SchoolData.logo}}"
+<img *ngIf="SchoolData.logo!='' && SchoolData.logo!=null" src="https://media.apbprive.fr/{{SchoolData.logo}}"
     alt="School 1" style="width:150px; height:150px; margin-left:15%; margin-top:30px" />
   
 <!--<ng-template #emptyLogo>-->
-    <img *ngIf="SchoolData.logo==''" src="assets/images/logoEmpty.png" alt="School 1" style="width:150px; height:150px; margin-left:15%; margin-top:30px"
+    <img *ngIf="SchoolData.logo=='' || SchoolData.logo==null" src="assets/images/logoEmpty.png" alt="School 1" style="width:150px; height:150px; margin-left:15%; margin-top:30px"
     />
 <!--</ng-template>-->
 
