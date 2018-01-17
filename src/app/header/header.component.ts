@@ -150,7 +150,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.usersService.getProfile()
       .subscribe(
         (response)=>{
-          console.log(response.data[0]);
+          console.log(response);
           let data = response.data[0];
           this.userFirstName = data.firstName;
           this.userFirstNameMobile = data.firstName.trim() != "" ? " (" + data.firstName.trim() + ")" : "";

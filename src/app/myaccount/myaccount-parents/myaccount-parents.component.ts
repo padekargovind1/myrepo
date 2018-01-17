@@ -44,39 +44,29 @@ export class MyaccountParentsComponent implements OnInit {
         private route: Router,
         private authService: AuthService,
         private publicService: PublicService) {
-        
+
     }
 
     ngOnInit() {
-        this.country = this.publicService.getCountry();
-		if (this.authService.getToken() != "") {
-        } else {
-            // console.log("navigate back");
-            this.route.navigate(['/login']);
-        }
-        if (this.userData === undefined || this.userData == null) {
-            this.usersService.getProfile()
-                .subscribe((response) => {
-                    console.log(response);
-                    if (response.data != 400) {
-                        this.userData = response.data[0];
-                        this.getUserData();
-                    }
-                })
-        }
-        else {
-            this.getUserData();
-        }
+      this.country = this.publicService.getCountry();
+      if (this.authService.getToken() != "") {
+        setTimeout(()=>{
+          this.getUserData();
+        }, 1000);
+      } else {
+          // console.log("navigate back");
+          this.route.navigate(['/login']);
+      }
     }
 
     getUserData() {
-      console.log(this.userData);
-        delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
-        this.buildFormGroup(this.userData.parents); // build form
-        this.canDisplay = true;
-        if (this.userData.parents.length != 0) {
-            this.patchValue(this.userData); // Patching value from value receive from the API
-        }
+      //console.log(this.userData);
+      delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
+      this.buildFormGroup(this.userData.parents); // build form
+      this.canDisplay = true;
+      if (this.userData.parents.length != 0) {
+          this.patchValue(this.userData); // Patching value from value receive from the API
+      }
     }
 
     // Patching value
@@ -105,6 +95,7 @@ export class MyaccountParentsComponent implements OnInit {
         this.parentAccountForm = this.fb.group({
             parents: this.fb.array([this.createParent()])
         })
+      console.log(data);
         if (data.length > 1) {
             for (let i = 1; i < data.length; i++) {
                 this.parentAccountForm.controls['parents']['controls'].push(this.createParent())
@@ -156,7 +147,7 @@ export class MyaccountParentsComponent implements OnInit {
             this.userData.parents.address.city = [];
         console.log("---->",this.parentAccountForm.value);
         console.log("====>",this.parentAccountForm.controls['parents']['controls']);
-        
+
         for (let i = 0; i < this.parentAccountForm.controls['parents']['controls'].length; i++) {
         //    console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)
             // this.userData.parents.relationship.push(this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value);
@@ -169,7 +160,7 @@ export class MyaccountParentsComponent implements OnInit {
             // this.userData.parents.address.postCode.push(this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString());
             // this.userData.parents.address.country.push(this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value);
             // this.userData.parents.address.city.push(this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value);
-        
+
             //console.log(this.userData.parents[i]);
             // this.userData.parents[i].relationship = this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value;
             // this.userData.parents[i].firstName = this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value;

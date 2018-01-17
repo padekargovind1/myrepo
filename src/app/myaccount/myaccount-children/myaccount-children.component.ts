@@ -25,33 +25,23 @@ export class MyaccountChildrenComponent implements OnInit {
               private usersService : UsersService,
               private route : Router,
               private authService: AuthService) {
-      
+
   }
 
   ngOnInit() {
+    console.log(this.userData);
     if(this.authService.getToken() != "") { // If user is logged
+      setTimeout(()=>{
+        this.getUserProfile();
+      }, 1000);
     } else {
       console.log("navigate back");
       this.route.navigate(['/login']);
-      }
-
-    if (this.userData === undefined || this.userData == null) {
-        this.usersService.getProfile()
-            .subscribe((response) => {
-                console.log(response);
-                if (response.data != 400) {
-                    this.userData = response.data[0];
-                    this.getUserProfile();
-                }
-            })
-    }
-    else
-    {
-        this.getUserProfile();
     }
   }
 
   getUserProfile(){
+    console.log(this.userData);
     delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
     this.buildFormGroup();
     this.patchValue(this.userData);
