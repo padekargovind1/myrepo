@@ -146,10 +146,10 @@ export class UsersService {
   
   postToMessages(data) {
   // postToMessages(data): Observable<any>{
-    // console.log('Sending message..');
-    // console.log(data);
-    // return this.http.post(MESSAGES_API+'?token='+this.token, data)
-    //   .map((response)=>{response.json()});
+  //   console.log('Sending message..');
+  //   console.log(data);
+  //   return this.http.post(MESSAGES_API+'?token='+this.token, data)
+  //     .map((response)=>{response.json()});
     this.messages.push(data);
     this.newMessage.next(this.messages.slice());
   }

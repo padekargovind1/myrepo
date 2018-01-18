@@ -8,7 +8,40 @@ import {SchoolService} from "./school.service";
 @Injectable()
 export class ApplyService {
   wizardData : any;
-  userData : any
+  userData : any = {
+    _id: "",
+    lastName: "",
+    firstName: "",
+    age: "",
+    gender: "",
+    email: "",
+    mobilePhone: "",
+    birthDate: "",
+    birthPlace: "",
+    parents: [{
+      profession: "",
+      relationship: "",
+      gender: "",
+      lastName: "",
+      firstName: "",
+      email: "",
+      phoneNumber: "",
+      availability: ""
+    }],
+    academicHistories: [{
+      city: "",
+      class: "",
+      classType: "",
+      schoolName: "",
+      languages: []
+    }],
+    attractionToSubjects: [],
+    weakAtSubjects: [],
+    jobs: [],
+    interest: [],
+    hobbies: []
+  };
+  
   schoolId: string;
 
   constructor(private wizardService : WizardService,
@@ -29,7 +62,7 @@ export class ApplyService {
       .subscribe((response)=>{
         console.log(response);
         if(response.code==200){
-          this.userData=response.data[0];
+          // this.userData=response.data[0];
           delete this.userData._id;
           this.completeUserData();
         }
@@ -87,16 +120,40 @@ export class ApplyService {
 
   //Data to send to API
   sendToApi() {
-      console.log(this.schoolId)
-      // if (this.wizardData['pageName'] != "myaccount") {
-          const data = { //Create a new applying school
-              type: "apply",
-              school: this.schoolId,
-              class: this.schoolService.getClassName()
-          }
-
-          console.log(data);
-      // }
+      console.log(this.schoolId);
+      console.log(this.wizardData.pageName);
+      if (this.wizardData['pageName'] != "myaccount") {
+        const data = { //Create a new applying school
+          type: "apply",
+          school: this.schoolId,
+          class: this.schoolService.getClassName()
+        }
+        console.log(data);
+        this.usersService.postApplication(data)
+          .subscribe( response => {
+            console.log(response)
+            // Bad Request.
+            if (response.code==200){
+              swal({
+                title: 'Merci d\'avoir choisi CIDE',
+                text: 'Nous transmettons votre dossier aux écoles sélectionné. \nLeurs directions vous contactera dans les meilleurs délais.\nNous venons de vous envoyer un mél de confirmation.',
+                type: 'success',
+                confirmButtonText: "J'ai compris"
+                }).then(() => { this.route.navigate(['/']) },
+                        (dismiss) => {
+                          if (dismiss === 'overlay') { this.route.navigate(['/'])  }
+                        })
+                  .catch((err) => console.log(err));
+            } else {
+              swal({
+                title: 'Attention',
+                text: response.message,
+                type: 'warning',
+                confirmButtonText: "J'ai compris"
+                });
+            }
+          })
+        }
     // this.usersService.postApplication(data) //Post data to create a new applying school
     //   .subscribe(
     //     response=>{
@@ -124,10 +181,10 @@ export class ApplyService {
       console.log(this.userData);
     this.usersService.putProfile(this.userData) //Update user profile
       .subscribe(
-        response=>{
+        response => {
           console.log(response)
           if(response.code==400){
-            this.failSubmit(response.message);
+            this.failSubmit(response.message.toString());
           } else {
             this.successSubmit();
             this.schoolService.cleanClassName();
@@ -136,21 +193,20 @@ export class ApplyService {
       );
   }
 
-  successSubmit(){
+  successSubmit() {
+    if (this.wizardData['pageName'] != "myaccount") {
+      this.route.navigate(['/']);
+    }
     swal({
       title: 'Merci d\'avoir choisi CIDE',
       text: 'Nous transmettons votre dossier aux écoles sélectionné. \nLeurs directions vous contactera dans les meilleurs délais.\nNous venons de vous envoyer un mél de confirmation.',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
-      })
-    if (this.wizardData['pageName'] != "myaccount") {
-        this.route.navigate(['/']);
-    }
+    })
   }
 
   // Sweet Alert if it fail to submit
-  failSubmit(message){
-    console.log("test")
+  failSubmit(message) {
     swal({
       title: 'Attention',
       text: message,

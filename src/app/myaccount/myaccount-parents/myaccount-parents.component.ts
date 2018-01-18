@@ -59,7 +59,7 @@ export class MyaccountParentsComponent implements OnInit {
                 .subscribe((response) => {
                     console.log(response);
                     if (response.data != 400) {
-                        this.userData = response.data;
+                        this.userData = response.data[0];
                         this.getUserData();
                     }
                 })

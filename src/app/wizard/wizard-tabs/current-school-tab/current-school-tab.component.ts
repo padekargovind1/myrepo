@@ -32,6 +32,7 @@ export class CurrentSchoolTabComponent implements OnInit {
           .subscribe(
           params => {
               console.log(params)
+              this.wizardService.setPageName(params[0].path);
               this.onApplyPage = params[0].path === "applyto" || params[0].path === "my-account";
               this.onMyAccountPage = params[0].path === "my-account";
               if (typeof params[1] != "undefined") {
@@ -50,7 +51,7 @@ export class CurrentSchoolTabComponent implements OnInit {
               .subscribe((response) => {
                   console.log(response);
                   if (response.data != 400) {
-                      this.userData = response.data;
+                      this.userData = response.data[0];
                       this.patchValue();
                   }
               })

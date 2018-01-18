@@ -57,7 +57,7 @@ export class MyaccountMyfilesComponent implements OnInit {
       this.usersService.getProfile()
           .subscribe(
           (response) => {
-              let data = response.data;
+              let data = response.data[0];
               // console.log(data);
               if (response.code == 400) {
                   console.log(response.message);

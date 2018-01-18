@@ -398,6 +398,10 @@ export class WizardService {
       )
   }
 
+  setPageName(page) {
+    this.wizardData.pageName = page;
+  }
+
   getUserData(){
     return this.wizardData;
   }

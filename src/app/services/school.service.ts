@@ -108,6 +108,8 @@ export class SchoolService {
   }
 
   cleanClassName(){
-    localStorage.removeItem('ClassName')
+    if (localStorage.removeItem('ClassName') !== null) {
+      localStorage.removeItem('ClassName')
+    }
   }
 }

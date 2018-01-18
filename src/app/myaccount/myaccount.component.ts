@@ -1,7 +1,9 @@
 ﻿import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
+import { WizardService } from '../services/wizard.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-myaccount',
@@ -12,10 +14,17 @@ export class MyaccountComponent implements OnInit, OnDestroy {
 
   @ViewChild('tabGroup') tabGroup;
   userData : any;
+  subscription: Subscription;
+
   constructor(private route : Router,
+              private router: ActivatedRoute,
               private authService : AuthService,
-              private usersService: UsersService) {
+              private usersService: UsersService,
+              private wizardService: WizardService) {
       if (this.authService.isUserLoggedIn()) {
+        this.subscription = this.router.url.subscribe(params => {
+          this.wizardService.setPageName(params[0].path);
+        });
           this.getUserProfile();
       }
       else
@@ -45,12 +54,13 @@ export class MyaccountComponent implements OnInit, OnDestroy {
       .subscribe((response)=>{
         console.log(response);
         if(response.data!=400){
-          this.userData=response.data;
+          this.userData=response.data[0];
         }
       })
   }
 
   ngOnDestroy(){
     this.usersService.cleanTabNb();
+    this.subscription.unsubscribe();
   }
 }

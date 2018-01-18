@@ -56,12 +56,12 @@ export class SendMessageComponent implements OnInit {
       this.usersService.getProfile()
         .subscribe(
           (response)=>{
-            let data = response.data;
-            // console.log(data);
+            let data = response.data[0];
+            console.log(data);
             if(response.code==400){
               console.log(response.message);
             } else {
-              this.patchValue(response.data);
+              this.patchValue(response.data[0]);
               this.profileData = data;
             }
           }
@@ -99,21 +99,21 @@ export class SendMessageComponent implements OnInit {
         date: new Date(),
         senderProperty: {
           sender: this.profileData._id,
-          module: this.profileData.userType
+          module: "candidate"
         },
         recipientProperty: {
           recipient: [this.sendService.schoolId],
           module: "school",
-          rank: ""
+          rank: "rank"
         },
         // sender : this.sendMessageForm.value.mel,
         // receiver : this.data.school.address,
         user: this.profileData._id,
-        school: this.profileData.longname,
+        school: "School Name",
         subject : this.sendMessageForm.value.subject,
         message : this.sendMessageForm.value.message,
-        attachments: "",
-        tags: "",
+        attachments: "attachments",
+        tags: "tags",
         isSent: true
       }
       this.sendService.sendMessage(data)

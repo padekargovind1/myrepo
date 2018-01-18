@@ -53,12 +53,12 @@ export class MyaccountMysearchComponent implements OnInit {
     this.usersService.getApplication()
       .subscribe(
         (response) =>{
-          // console.log(response)
+          console.log(response)
           let data = response.data;
           if(response.code==400){
             // console.log(response.message)
           } else {
-            this.filterApplications(data)
+            // this.filterApplications(data)
           }
         }
       )
