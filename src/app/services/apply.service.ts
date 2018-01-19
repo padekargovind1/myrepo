@@ -178,7 +178,7 @@ export class ApplyService {
   }
 
   updateProfile() {
-      console.log(this.userData);
+    // console.log(this.userData);
     this.usersService.putProfile(this.userData) //Update user profile
       .subscribe(
         response => {
@@ -194,15 +194,15 @@ export class ApplyService {
   }
 
   successSubmit() {
-    if (this.wizardData['pageName'] != "myaccount") {
-      this.route.navigate(['/']);
-    }
     swal({
       title: 'Merci d\'avoir choisi CIDE',
       text: 'Nous transmettons votre dossier aux écoles sélectionné. \nLeurs directions vous contactera dans les meilleurs délais.\nNous venons de vous envoyer un mél de confirmation.',
       type: 'success',
       confirmButtonText: "J'AI COMPRIS"
-    })
+    });
+    if (this.wizardData['pageName'] != "myaccount") {
+      this.route.navigate(['/']);
+    }
   }
 
   // Sweet Alert if it fail to submit
