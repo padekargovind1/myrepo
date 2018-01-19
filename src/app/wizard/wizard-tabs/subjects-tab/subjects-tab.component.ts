@@ -43,13 +43,19 @@ export class SubjectsTabComponent implements OnInit {
   //save and go to next tab
   nextTab(nb:number){
     if(this.wizardForm.valid){
-      console.log(this.wizardForm.value)
+      console.log(this.wizardForm.value,"if");
       this.wizardService.saveData('subjectData', this.wizardForm.value);
       this.tabChange.emit(nb);
     }else {
       this.bookingService.failSubmit();
     }
   }
+
+  prevTab(nb:number){
+      this.wizardService.saveData('subjectData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+  }
+
   //Patch Value
 
   patchValue(){

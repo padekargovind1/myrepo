@@ -52,12 +52,13 @@ export class SchoolHelpTabComponent implements OnInit {
    prevTab(nb:number){
 
     if(this.wizardForm.valid){
-     
+     console.log("iffff...");
         this.wizardService.saveData('helpData', this.wizardForm.value);
         this.tabChange.emit(nb);
       }
     else {
-       this.bookingService.failSubmit();
+      console.log("else...");
+      this.bookingService.failSubmit();
     }
   }
   onChecked(){

@@ -79,7 +79,7 @@
       <div class="col-sm-6">
         <div class="form-group">
           <div class="datepicker-holder">
-            Date de naissance<span class="err">*</span>
+            Date de naissance<span class="err">*</span>1
             <div class="calendarCont">
               <!--input type="date" class="form-control" [mdDatepicker]="myDatepicker" [max]="maxDate"-->
               <input mdInput type="text" class="form-control" placeholder="Date de naissance" [mdDatepicker]="myDatepicker" [formControl]="wizardForm.controls['childBirthDay']">
@@ -101,7 +101,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="form-group clearfix">
-          <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(0)" style="float:left; margin-left:0px">
+          <button class="btn  btn-appointment wizard-button-align" (click)="prevTab(0)" style="float:left; margin-left:0px">
             Précédent
           </button>
           <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(2)" style="float:right">

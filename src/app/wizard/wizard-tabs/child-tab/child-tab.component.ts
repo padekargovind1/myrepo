@@ -61,10 +61,23 @@ export class ChildTabComponent implements OnInit {
   //Save and go to the next tab
   nextTab(nb:number){
     if(this.wizardForm.valid){
+      console.log("if");
       this.wizardService.saveData('childData', this.wizardForm.value);
       this.tabChange.emit(nb);
     }else {
+      console.log("else");
      this.bookingService.failSubmit();
+    }
+  }
+  prevTab(nb:number){
+
+    if(this.wizardForm.valid){
+     
+        this.wizardService.saveData('helpData', this.wizardForm.value);
+        this.tabChange.emit(nb);
+      }
+    else {
+       this.bookingService.failSubmit();
     }
   }
 }
