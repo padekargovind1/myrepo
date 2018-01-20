@@ -116,6 +116,7 @@ import { WhoWeAre } from './who-we-are/who-we-are.component';
 import { PrivacyPolicy } from './privacy-policy/privacy-policy.component';
 import { Partnerships } from './partnerships/partnerships.component';
 import { ContactUs } from './contact-us/contact-us.component';
+import { CompareDialogComponent } from './compare-mode/compare-dialog/compare-dialog.component';
 
 @NgModule({
   declarations: [
@@ -198,7 +199,8 @@ import { ContactUs } from './contact-us/contact-us.component';
       PrivacyPolicy,
       Partnerships,
       ContactUs,
-    OnlinePaymentComponent
+    OnlinePaymentComponent,
+    CompareDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -257,7 +259,8 @@ import { ContactUs } from './contact-us/contact-us.component';
        ConseilPopupComponent,
        SchoolDetailSuperieurComponent,
        ClassChoiceComponent,
-       SendMessageComponent
+       SendMessageComponent,
+       CompareDialogComponent
     ],
   bootstrap: [AppComponent]
 })
