@@ -96,24 +96,20 @@ export class SendMessageComponent implements OnInit {
     console.log(this.sendMessageForm)
     if(this.sendMessageForm.value.subject!='' && this.sendMessageForm.value.mel!=''){
       let data = {
-        date: new Date(),
-        senderProperty: {
-          sender: this.profileData._id,
-          module: "candidate"
-        },
-        recipientProperty: {
-          recipient: [this.sendService.schoolId],
-          module: "school",
-          rank: "rank"
-        },
+        emails: [{
+          recipient: [this.sendMessageForm.value.mel],
+          module: "candidate",
+          rank: "a"
+        }],
         // sender : this.sendMessageForm.value.mel,
         // receiver : this.data.school.address,
-        user: this.profileData._id,
-        school: "School Name",
+        // user: this.profileData._id,
+        // school: "School Name",
+        mailType: "sent",
         subject : this.sendMessageForm.value.subject,
         message : this.sendMessageForm.value.message,
-        attachments: "attachments",
-        tags: "tags",
+        attachments: [],
+        tags: [],
         isSent: true
       }
       this.sendService.sendMessage(data)

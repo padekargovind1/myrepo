@@ -26,7 +26,6 @@ export class MyaccountMysearchComponent implements OnInit {
   ngOnInit() {
     this.getApplications();
     this.getHistorySearch();
-    this.publicService.fromSearchHistory = false;
   }
 
   // get History list
@@ -68,13 +67,14 @@ export class MyaccountMysearchComponent implements OnInit {
   onLaunchSearch(data) {
     console.log('search details');
     console.log(data);
+    // prevent logging the search to history again
+    this.publicService.fromSearchHistory = true;
     const searchData = [
       data.class[0],
       data.code[0],
       data.name
     ]
     this.publicService.storeSearchSchool(searchData);
-    this.publicService.fromSearchHistory = true;
     if (data.code[0] !== '' && data.code.length === 1) {
       this.router.navigate(['/' + data.code[0]]);
     }

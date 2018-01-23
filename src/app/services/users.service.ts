@@ -13,7 +13,7 @@ const APPLICATION_API : string = "http://13.229.117.64/cideapi/api/users/apply";
 const BRONCHURE_API : string = "http://13.229.117.64/cideapi/api/users/media";
 const TRIPS_API: string = "http://13.229.117.64/cideapi/api/users/trips";
 const HISTORY_API : string = "http://13.229.117.64/cideapi/api/common/history";
-const MESSAGES_API : string = "http://13.229.117.64/cideapi/api/users/profile/mail";
+const MESSAGES_API : string = "http://13.229.117.64/cideapi/api/mails";
 
 @Injectable()
 export class UsersService {
@@ -138,20 +138,21 @@ export class UsersService {
       .map((response)=>{response.json(); console.log('the http call happened')});
   }
 
-  getMessages():Observable<any>{
-    // return this.http.get(MESSAGES_API+'?token='+this.token, {headers: this.headers})
-    //   .map((response)=>response.json());
-    return this.messages.slice();
+  getMessages(data):Observable<any>{
+    return this.http.get(MESSAGES_API+'?type='+data.type+'&token='+this.token, {headers: this.headers})
+      .map((response)=>response.json());
+    // return this.messages.slice();
   }
   
-  postToMessages(data) {
-  // postToMessages(data): Observable<any>{
-  //   console.log('Sending message..');
-  //   console.log(data);
-  //   return this.http.post(MESSAGES_API+'?token='+this.token, data)
-  //     .map((response)=>{response.json()});
-    this.messages.push(data);
-    this.newMessage.next(this.messages.slice());
+  // postToMessages(data) {
+    // this.messages.push(data);
+    // this.newMessage.next(this.messages.slice());
+  // }
+  postToMessages(data): Observable<any>{
+    console.log('Sending message..');
+    // console.log(data);
+    return this.http.post(MESSAGES_API+'?token='+this.token, data)
+      .map((response)=>response.json());
   }
 
   deleteApplication(data): Observable<any>{

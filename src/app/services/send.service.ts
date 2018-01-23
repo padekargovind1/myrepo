@@ -30,25 +30,33 @@ export class SendService {
   }
 
   sendMessage(data){
-    this.usersService.postToMessages(data);
-    swal({
-      title: "Merci d'avoir choisi CIDE",
-      text: 'Votre message a été envoyé à l\'école',
-      type: 'success',
-      confirmButtonText: "J'AI COMPRIS"
-    });
-    // this.usersService.postToMessages(data).subscribe((response) => {
-      //wait API
-    //   console.log(response);
-    //   if (response.data == 200) {
-    //     swal({
-    //       title: "Merci d'avoir choisi CIDE",
-    //       text: 'Votre message a été envoyé à l\'école',
-    //       type: 'success',
-    //       confirmButtonText: "J'AI COMPRIS"
-    //     })
-    //   }
-    // });
+    this.usersService.postToMessages(data)
+      .subscribe(response => {
+        // wait API
+        // console.log(response);
+        if (response.code == 200) {
+          swal({
+            title: "Merci d'avoir choisi CIDE",
+            text: 'Votre message a été envoyé à l\'école',
+            type: 'success',
+            confirmButtonText: "J'AI COMPRIS"
+          })
+        } else {
+          swal({
+            title: "Attention",
+            text: response.message,
+            type: 'warning',
+            confirmButtonText: "J'AI COMPRIS"
+          })
+        }
+      });
+      // this.usersService.postToMessages(data);
+      // swal({
+      //   title: "Merci d'avoir choisi CIDE",
+      //   text: 'Votre message a été envoyé à l\'école',
+      //   type: 'success',
+      //   confirmButtonText: "J'AI COMPRIS"
+      // });
   }
 
   failSend(){

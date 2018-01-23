@@ -403,6 +403,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     if (!this.publicService.searchFromHistory()) {
       this.logSearch({'category': 'searches', 'details': this.advancedSearch}); // store the search to the service
     }
+    this.publicService.fromSearchHistory = false;
     this.postAdvancedFilter();  // Get new list of school with the search (fast and advanced search)
     this.forAdvancedSearch = false;
   }

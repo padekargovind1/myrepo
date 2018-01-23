@@ -29,15 +29,22 @@ export class MyaccountMymessagesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if(this.authService.getToken() != "") { // If user is logged
-      this.subscription = this.usersService.newMessage.subscribe(
-        (messages: any[]) => {
-          this.messages = messages;
-        }
-      );
-      this.messages = this.usersService.getMessages();
-      setTimeout(()=>{
-        //this.getUserProfile();
-      }, 1500)
+      // setTimeout(()=>{
+      //   this.getUserProfile();
+      // }, 1500)
+      // this.subscription = this.usersService.newMessage.subscribe(
+      //   (messages: any[]) => {
+      //     this.messages = messages;
+      //   }
+      // );
+      // this.messages = this.usersService.getMessages();
+      this.usersService.getMessages({"type": "sent"})
+        .subscribe(response => {
+          console.log(response);
+          if (response.code == 200) {
+            this.messages = response.data;
+          }
+        })
     } else {
       console.log("navigate back");
       this.route.navigate(['/login']);
@@ -45,7 +52,7 @@ export class MyaccountMymessagesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

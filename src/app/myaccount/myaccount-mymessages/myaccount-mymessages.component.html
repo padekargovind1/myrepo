@@ -2,15 +2,15 @@
   <div class="container-fluid">
     <div class="row">
       <section class="col-md-12">
-        <h3>messages</h3>
+        <h3 style="color: #626363; text-transform: uppercase;">Sent Messages</h3>
       </section>
 
       <section class="col-md-12">
         <div class="row ">
           <ul class="messageTabContent">
             <li *ngFor="let message of messages">
-              <div class="col-md-2 msgBg">{{ message.date | date }}</div>
-              <div class="col-md-3 msgBg">{{ message.school }}</div>
+              <div class="col-md-2 msgBg">{{ message.createdAt | date }}</div>
+              <div class="col-md-3 msgBg">No school name</div>
               <div class="col-md-6 msgBg">
                 <p>{{ message.subject }}</p>
                 <p>{{ message.message }}</p>
