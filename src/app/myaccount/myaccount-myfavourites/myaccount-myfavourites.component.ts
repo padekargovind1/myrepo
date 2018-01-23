@@ -1,4 +1,4 @@
-﻿import {Component, Input, OnInit} from '@angular/core';
+﻿import {Component, Input, OnInit, Inject} from '@angular/core';
 import swal from 'sweetalert2';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -12,6 +12,8 @@ import { SendService } from '../../services/send.service';
 import { CompareService } from '../../services/compare.service';
 import { MdDialog } from '@angular/material';
 import { SendMessageComponent } from '../../shared/send-message/send-message.component';
+import { CompareDialogComponent } from '../../compare-mode/compare-dialog/compare-dialog.component';
+import { SchoolChoiceComponent } from '../../shared/school-choice/school-choice.component';
 
 //const self = this;
 @Component({
@@ -28,14 +30,14 @@ export class MyaccountMyfavouritesComponent implements OnInit {
   compareList = [];
   compareListFilter = [];
   schoolListFilter = [];
-  imageExtensions = ['png','gif','jpeg'];
-
+  imageExtensions = ['png','gif','jpeg']; 
   imagePathPre = 'http://13.229.117.64/cideapi/';
-
   filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
                 'Internat', 'Stages', 'Restauration',
                 'Externat', 'Statut', 'Enseignement Confessionel',
                 'Sections', 'Diplôme', 'Options', 'Places Disponibles']
+  config: any;
+
   constructor(private usersService: UsersService,
               private brochureService: BrochureService,
               private router: Router,
@@ -52,6 +54,7 @@ export class MyaccountMyfavouritesComponent implements OnInit {
         this.usersService.getApplication()
             .subscribe(
             response => {
+                console.log('my fav get applications');
                 console.log(response)
                 if (response.code == 400) {
                     console.log(response.message)
@@ -140,34 +143,34 @@ export class MyaccountMyfavouritesComponent implements OnInit {
 			break;
 	}
   }
-  saveInWish(schoolId) {
-      const data = {
-          type: "wish",
-          schools: [{ school: schoolId, class: 'EE' }]
-      }
-      this.usersService.postApplication(data)
-          .subscribe(
-          response => {
-              console.log(response)
-              // Bad Request.
-              if (response.code == 200) {
-                  swal({
-                      title: 'Ajout à la liste des voeux',
-                      text: "L'école séléctionné a bien été ajouté à votre liste des voeux",
-                      type: 'warning',
-                      confirmButtonText: "J'ai compris"
-                  })
-              } else {
-                  swal({
-                      title: 'Attention',
-                      text: response.message,
-                      type: 'warning',
-                      confirmButtonText: "J'ai compris"
-                  })
-              }
-          }
-          )
-  }
+//   saveInWish(schoolId) {
+//       const data = {
+//           type: "wish",
+//           schools: [{ school: schoolId, class: 'EE' }]
+//       }
+//       this.usersService.postApplication(data)
+//           .subscribe(
+//           response => {
+//               console.log(response)
+//               // Bad Request.
+//               if (response.code == 200) {
+//                   swal({
+//                       title: 'Ajout à la liste des voeux',
+//                       text: "L'école séléctionné a bien été ajouté à votre liste des voeux",
+//                       type: 'warning',
+//                       confirmButtonText: "J'ai compris"
+//                   })
+//               } else {
+//                   swal({
+//                       title: 'Attention',
+//                       text: response.message,
+//                       type: 'warning',
+//                       confirmButtonText: "J'ai compris"
+//                   })
+//               }
+//           }
+//           )
+//   }
   sendMessage(school) {
       let config = this.sendService.makeProfile(school)
       let dialogref = this.dialog.open(SendMessageComponent, config);
@@ -204,24 +207,52 @@ export class MyaccountMyfavouritesComponent implements OnInit {
       }
   }
   // when user click on a checkbox to select category to compare the schools
-  onFilterCheckbox(index) {
-      this.compareListFilter[index] = !this.compareListFilter[index];
-      this.canFilter = this.checkFilterBox();
+//   onFilterCheckbox(index) {
+//       this.compareListFilter[index] = !this.compareListFilter[index];
+//       this.canFilter = this.checkFilterBox();
+//   }
+//   checkFilterBox() {
+//       let i = 0;
+//       for (const filter of this.compareListFilter) {
+//           if (filter) {
+//               return true;
+//           }
+//           i++;
+//       }
+//       return false;
+//   }
+//   onCompare() {
+//       this.compareService.storeCompareFilter(this.compareListFilter);
+//       this.compareService.storeSchoolId(this.compareList);
+//       this.router.navigate(['/compare-mode/']);
+//   }
+  
+  onLaunchCompare() {
+    this.makeProfile(this.compareList);
+    this.dialog.open(CompareDialogComponent, this.config);
   }
-  checkFilterBox() {
-      let i = 0;
-      for (const filter of this.compareListFilter) {
-          if (filter) {
-              return true;
-          }
-          i++;
+
+  //Make the config for the md dialog
+  makeProfile(school) {
+    this.config = {
+      data: {
+        schoolData: school
+      },
+      disableClose: false,
+      width: '800px',
+      height: '',
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
       }
-      return false;
+    };
   }
-  onCompare() {
-      this.compareService.storeCompareFilter(this.compareListFilter);
-      this.compareService.storeSchoolId(this.compareList);
-      this.router.navigate(['/compare-mode/']);
+
+  applyTo(school) {
+    this.makeProfile(school);
+    this.dialog.open(SchoolChoiceComponent, this.config);
   }
 
 }

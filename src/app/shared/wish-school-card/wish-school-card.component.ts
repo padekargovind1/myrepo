@@ -5,7 +5,7 @@ import { EtablissementComponent } from '../../etablissement/etablissement.compon
 import { SchoolChoiceComponent } from '../../shared/school-choice/school-choice.component';
 
 @Component({
-    selector: 'app-wish-school-card',
+  selector: 'app-wish-school-card',
   templateUrl: './wish-school-card.component.html',
   styleUrls: ['./wish-school-card.component.scss']
 })

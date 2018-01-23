@@ -60,13 +60,13 @@ export class MyaccountParentsComponent implements OnInit {
     }
 
     getUserData() {
-      //console.log(this.userData);
-      delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
-      this.buildFormGroup(this.userData.parents); // build form
-      this.canDisplay = true;
-      if (this.userData.parents.length != 0) {
-          this.patchValue(this.userData); // Patching value from value receive from the API
-      }
+      // console.log(this.userData);
+        delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
+        this.buildFormGroup(this.userData.parents); // build form
+        this.canDisplay = true;
+        if (this.userData.parents.length != 0) {
+            this.patchValue(this.userData); // Patching value from value receive from the API
+        }
     }
 
     // Patching value

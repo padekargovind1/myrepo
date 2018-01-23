@@ -1,7 +1,7 @@
-﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MdDialog} from '@angular/material';
+import { MdDialog } from '@angular/material';
 
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
@@ -11,9 +11,11 @@ import { BrochureService } from '../services/brochure.service';
 import { SendService } from '../services/send.service';
 // import { AdvancedSearchMdl } from '../model/advanced-search.model';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
+import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
 import {HelperService} from "../services/helper.service";
+import { EtablissementComponent } from '../etablissement/etablissement.component';
 declare const jquery: any;
 declare const $: any;
 
@@ -83,10 +85,11 @@ export class SchoolComponent implements OnInit, OnDestroy {
   lieuSelected = [];
 
   imageExtensions = ['png','gif','jpeg'];
-
   imagePathPre = 'http://13.229.117.64/cideapi/';
 
-
+  selectedecole = 'Classe';
+  config : any;
+  
 
   constructor(private publicService: PublicService,
               private schoolService: SchoolService,
@@ -397,7 +400,12 @@ export class SchoolComponent implements OnInit, OnDestroy {
       delete this.advancedSearch.place;
     }
     this.advancedSearch.name = data.name;
-    this.publicService.storeSearchSchool(this.searchFilter); // store the search to the service
+    this.publicService.storeSearchSchool(this.advancedSearch); // store the search to the service
+    // check if the search is from history to avoid logging the search again
+    if (!this.publicService.searchFromHistory()) {
+      this.logSearch({'category': 'searches', 'details': this.advancedSearch}); // store the search to the service
+    }
+    this.publicService.fromSearchHistory = false;
     this.postAdvancedFilter();  // Get new list of school with the search (fast and advanced search)
     this.forAdvancedSearch = false;
   }
@@ -410,6 +418,13 @@ export class SchoolComponent implements OnInit, OnDestroy {
       this.advancedSearch.class[2] = 'cursus_non_francophone';
     }else{
       this.advancedSearch.class[0] = data.class;
+    }
+  }
+  
+  logSearch(data){
+    // console.log(data)
+    if (data.details.class[0] !== '' && data.details.code[0] !== '' && data.details.name !== '') {
+      this.usersService.postToHistory(data).subscribe();
     }
   }
 
@@ -512,7 +527,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
           } else {
             this.defaultSchoolList=data;
             this.schoolListFilter=data;
-			      this.totalRecords = response.total;
+            this.totalRecords = response.total;
+            console.log('school list filter..');
             console.log(this.schoolListFilter)
             for(var j=0;j<data.length;j++)
             {
@@ -771,8 +787,11 @@ export class SchoolComponent implements OnInit, OnDestroy {
   saveInWish(schoolId){
     const data = {
       type : "wish",
-      schools : [{school : schoolId, class:'EE'}]
+      school : schoolId,
+      class:'EE'
     }
+    console.log('adding to wishlist');
+    console.log(schoolId);
     this.usersService.postApplication(data)
       .subscribe(
         response=>{
@@ -788,9 +807,11 @@ export class SchoolComponent implements OnInit, OnDestroy {
           }else {
             swal({
               title: 'Attention',
-              text: response.message,
+              text: "Merci de vous connecter pour continuer",
               type: 'warning',
-              confirmButtonText: "J'ai compris"
+              confirmButtonText: "Connecter"
+              }).then(() => {
+                this.router.navigate(['/login']);
               })
           }
         }
@@ -812,9 +833,38 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // store class name to display on school list
   storeClassName(event){
-    console.log(event)
-    this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
+    console.log('class name ..');
+    console.log(this.searchForm.value);
+    // this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
+    this.publicService.storeClassName(this.searchForm.value.classe);
   }
+  
+    // Click on apply to a school
+    // Open a md dialog to choose the cycle
+    // If submit on the md dialog then close this md dialog
+    applyTo(school){
+      this.makeProfile(school);
+      this.dialog.open(SchoolChoiceComponent,this.config);
+      // this.router.navigate(['applyto', this.schoolId])
+    }
+  
+    //Make the config for the md dialog
+    makeProfile(school){
+      this.config= {
+        data:{
+          schoolData : school
+        },
+        disableClose: false,
+        width: '800px',
+        height: '',
+        position: {
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
+        }
+      };
+    }
 
   // clean the service when user quit the page
   ngOnDestroy(){

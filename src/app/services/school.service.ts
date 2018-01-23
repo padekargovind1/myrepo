@@ -9,10 +9,8 @@ import { Observable } from 'rxjs/Observable';
 //         LanguageMdl, SectionMdl,
 //         DiplomaMdl, OptionMdl, SeatsMdl } from '../model/advanced-search.model';
 
-
 const TRIPS_API: string = "http://13.229.117.64/cideapi/api/schools/trips";
 const STATISTICS_API: string = "http://13.229.117.64/cideapi/api/schools/statictics";
-
 
 @Injectable()
 export class SchoolService {
@@ -110,6 +108,8 @@ export class SchoolService {
   }
 
   cleanClassName(){
-    localStorage.removeItem('ClassName')
+    if (localStorage.removeItem('ClassName') !== null) {
+      localStorage.removeItem('ClassName')
+    }
   }
 }

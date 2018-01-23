@@ -17,6 +17,8 @@ export class SendMessageComponent implements OnInit {
 
   @ViewChild('tabGroup') tabGroup;
   sendMessageForm : FormGroup;
+  profileData: any;
+
   constructor(public dialogref:MdDialogRef<SendMessageComponent>,
               private fb : FormBuilder,
               private usersService : UsersService,
@@ -54,12 +56,13 @@ export class SendMessageComponent implements OnInit {
       this.usersService.getProfile()
         .subscribe(
           (response)=>{
-            let data = response.data;
-            // console.log(data);
+            let data = response.data[0];
+            console.log(data);
             if(response.code==400){
               console.log(response.message);
             } else {
               this.patchValue(response.data[0]);
+              this.profileData = data;
             }
           }
         )
@@ -91,12 +94,23 @@ export class SendMessageComponent implements OnInit {
 
   onSubmit(){
     console.log(this.sendMessageForm)
-    if(this.sendMessageForm.value.mel!='' && this.sendMessageForm.value.subject!='' && this.sendMessageForm.value.mel!=''){
+    if(this.sendMessageForm.value.subject!='' && this.sendMessageForm.value.mel!=''){
       let data = {
-        sender : this.sendMessageForm.value.mel,
-        receiver : this.data.school.address,
+        emails: [{
+          recipient: [this.sendMessageForm.value.mel],
+          module: "candidate",
+          rank: "a"
+        }],
+        // sender : this.sendMessageForm.value.mel,
+        // receiver : this.data.school.address,
+        // user: this.profileData._id,
+        // school: "School Name",
+        mailType: "sent",
         subject : this.sendMessageForm.value.subject,
-        message : this.sendMessageForm.value.message
+        message : this.sendMessageForm.value.message,
+        attachments: [],
+        tags: [],
+        isSent: true
       }
       this.sendService.sendMessage(data)
       this.dialogref.close();

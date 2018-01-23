@@ -36,6 +36,7 @@ export class ApplytoComponent implements OnInit {
                 this.subscription = this.router.params
                   .subscribe(
                     params => {
+                      console.log(params);
                       if(params.hasOwnProperty('schoolId')){
                         this.schoolId=params['schoolId'];
                         this.getSchoolDataById();
@@ -74,7 +75,8 @@ export class ApplytoComponent implements OnInit {
       .subscribe(
         (data) => {
           let response = data;
-          // console.log(response);
+          console.log('loggin school data..');
+          console.log(response);
           if (response.code==400){
             console.log(response.message);
           }else {

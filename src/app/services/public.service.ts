@@ -2,14 +2,12 @@
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-
 const SCHOOLS_API : string = "http://13.229.117.64/cideapi/api/public/schools/";
 const CITIES_API : string = "http://13.229.117.64/cideapi/api/public/cities/autocomplete";
 const LINGUISTIC_API: string = "http://13.229.117.64/cideapi/api/public/linguistic";
 const LANGUAGE_API: string = "http://13.229.117.64/cideapi/api/public/language";
 const SEARCH_API : string = "http://13.229.117.64/cideapi/api/public/search/";
 const RATE_API : string = "http://13.229.117.64/cideapi/api/public/rate";
-
 const APB_API : string = "https://api2.apbprive.fr/";
 
 @Injectable()
@@ -102,6 +100,7 @@ export class PublicService {
     villes : []
   };
   schoolList: any;
+  fromSearchHistory: boolean = false;
 
   constructor(private http : Http) {
     this.domaines=this.domaines.sort()
@@ -242,6 +241,8 @@ export class PublicService {
   }
 
   getClassName(){
+    console.log('class name');
+    console.log(this.className);
     return this.className;
   }
 
@@ -340,6 +341,10 @@ export class PublicService {
           }
         }
       )
+  }
+
+  searchFromHistory() {
+    return this.fromSearchHistory;
   }
 
 }

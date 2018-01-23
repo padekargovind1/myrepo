@@ -4,128 +4,23 @@
       <section class="col-md-12">
         <h3>Mes recherches</h3>
       </section>
-      <section class="col-md-4">
-        <div class="card-mobile">
-          <h4>Mes souhaits</h4>
-          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('wish')"><i class="fa fa-sort"></i></button></p>
-          <ul class="list-of-research">
-            <!--<ngx-datatable
-              #mydatatable
-              class="material"
-              [headerHeight]="50"
-              [limit]="10"
-              [columnMode]="'force'"
-              [footerHeight]="50"
-              [rowHeight]="'auto'"
-              [rows]="wishList"
-              [selectionType]="'row'">
-              <ngx-datatable-column name="firstName" >
-                <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-                  <span >
-                    {{value}}
-                  </span>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="lastName">
-                <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-                  <span>
-                    {{value}}
-                  </span>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="userType">
-                <ng-template ngx-datatable-cell-template let-value="value">
-                  {{value}}
-                  <div style="float:right">
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-            </ngx-datatable>-->
-            <li *ngFor="let wish of wishList">
 
-              <div class="row">
-                <div class="col-md-8">
-                  <div *ngIf="wish!=[]">
-                    <p>
-                      <time>{{wish.createdAt | shorten}}</time><br />
-                      <strong>{{wish.school.shortName}}</strong><br />
-                      {{wish.school.longName}}<br />
-                      <!--Classe: PS-->
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  &nbsp;
-                </div>
-                <div class="col-md-2">
-                  <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(wish.school._id, wish._id)">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div><!-- .card-mobile -->
-      </section>
-      <section class="col-md-4">
-        <div class="card-mobile">
-          <h4>Mes demandes d'inscription</h4>
-          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('apply')"><i class="fa fa-sort"></i></button></p>
+      <section class="col-md-12">
           <ul class="list-of-research">
-            <li *ngFor="let apply of applyList">
+            <li *ngFor="let history of historyList | paginate: { itemsPerPage: 10, currentPage: pageNum }">
               <div class="row">
-                <div class="col-md-8">
-                  <div *ngIf="apply!=[]">
-                    <p>
-                      <time>{{apply.createdAt | shorten}}</time><br />
-                      <strong>{{apply.school.shortName}}</strong><br />
-                      {{apply.school.longName}}<br />
-                      <!--Classe: PS-->
+                <div class="research-list-item">
+                    <p *ngIf="history!=[]">
+                      <strong>Classe:</strong> {{ history.details.class[0] }} <strong>- Lieu</strong> {{ history.details.code[0] }} <strong>- Ecole</strong> {{ history.details.name }}
                     </p>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  &nbsp;
-                </div>
-                <div class="col-md-2">
-                  <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(apply.school._id, apply._id)">
-                    <i class="fa fa-trash"></i>
+                  <button class="btn btn-primary btn-highlighted pull-right" (click)="onLaunchSearch(history.details)">
+                    Relancer <i class="fa fa-search"></i>
                   </button>
                 </div>
               </div>
             </li>
           </ul>
-        </div><!-- .card-mobile -->
-      </section>
-      <section class="col-md-4">
-        <div class="card-mobile">
-          <h4>Les écoles vues</h4>
-          <p class="text-right">Trier Par Dates <button class="btn btn-sort btn-black" (click)="onSortClick('history')"><i class="fa fa-sort"></i></button></p>
-          <ul class="list-of-research">
-            <li *ngFor="let history of historyList">
-              <div class="row">
-                <div class="col-md-8">
-                  <div *ngIf="history!=[]">
-                    <p>
-                      <time>{{history.createdAt | shorten}}</time><br />
-                      <strong>{{history.school.shortName}}</strong><br />
-                      {{history.school.longName}}<br />
-                      <!--Classe: PS-->
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  &nbsp;
-                </div>
-                <div class="col-md-2">
-                  <button class="btn btn-warning btn-remove" (click)="onDeleteApplication(history.school._id, history._id)">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div><!-- .card-mobile -->
+          <pagination-controls (pageChange)="pageNum = $event"></pagination-controls>
       </section><!-- .col-* -->
     </div><!-- .row -->
   </div><!-- .container-fluid -->

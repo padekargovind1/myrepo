@@ -8,30 +8,25 @@
                   <div class="fav-compare-div">
                     <button type="button"
                             class="btn btn-appointment pull-right popup-btn"
-                            data-toggle="modal"
-                            data-target="#filter-popup"
+                            (click)="onLaunchCompare()"
                             [disabled]="!canCompare">
                       Je Compare
                     </button>
                   </div>
-                  <div class="modal fade compare-modal" id="filter-popup" tabindex="-1" role="dialog" aria-labelledby="filter-popup">
+                  <!-- <div class="modal fade compare-modal" id="filter-popup" tabindex="-1" role="dialog" aria-labelledby="filter-popup">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-body">
                           <h3>Que voulez-vous comparer?</h3>
                           <div class="filter-option" *ngFor="let filter of filterList; let i=index">
                             <input type="checkbox" value="" (click)="onFilterCheckbox(i)">
-                            <!--<md-checkbox  name="" style="width:20px; height:20px; bottom:13px; left:-15px"
-                  class="checkbox filled-in"
-                  (click)="onFilterCheckbox(i)">
-              </md-checkbox>-->
                             <div class="row">
                               <p style="text-align:center">
                                 {{filter}}
                               </p>
                             </div>
 
-                          </div><!-- .filter-option -->
+                          </div>
 
                           <button class="btn btn-filter-pop-up btn-block btn-lg"
                                   data-dismiss="modal"
@@ -40,11 +35,10 @@
                             Je Compare
                           </button>
 
-                          <!-- <a href="compare-mode.html#compare" class="btn btn-filter-pop-up btn-block btn-lg ">Je Comparer</a> -->
                         </div>
                       </div>
                     </div>
-                  </div><!-- .modal -->
+                  </div> -->
 
 
                 </div>
@@ -60,12 +54,12 @@
             <label for="school-1">&nbsp;</label>
         </div>-->
               <ul class="school-action" style="margin-top:5px; margin-right:5px">
-                <li (click)="saveInWish(school._id)">
+                <!-- <li (click)="saveInWish(school._id)">
                   <i style="cursor:pointer; color:#393649" mdTooltip="Ajouter à la liste des voeux"
                      class="fa fa-bookmark" aria-hidden="true"></i>
-                </li>
-                <li (click)="sendMessage(school)">
-                  <i style="cursor:pointer; color:#393649" mdTooltip="Envoyer un message"
+                </li> -->
+                <li (click)="applyTo(school)">
+                  <i style="cursor:pointer; color:#393649" mdTooltip="Demander un dossier d'inscrption"
                      class="fa fa-paper-plane" aria-hidden="true"></i>
                 </li>
                 <!--<li>
@@ -87,9 +81,7 @@
                 (click)="onCheckbox(school._id)">&nbsp;</label>
         </div-->
               <br>
-
               <img src="http://13.229.117.64/cideapi/{{school.cycles[0].logo1}}" alt="School 1"
-
                    class="img-responsive"
                    style="width:auto; height:80px; margin: 5px auto; margin-top: 25px;" />
               <br>

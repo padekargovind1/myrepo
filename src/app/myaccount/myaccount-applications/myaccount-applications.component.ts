@@ -12,6 +12,8 @@ import { SendService } from '../../services/send.service';
 import { CompareService } from '../../services/compare.service';
 import { MdDialog } from '@angular/material';
 import { SendMessageComponent } from '../../shared/send-message/send-message.component';
+import { CompareDialogComponent } from '../../compare-mode/compare-dialog/compare-dialog.component';
+import { SchoolChoiceComponent } from '../../shared/school-choice/school-choice.component';
 
 //const self = this;
 @Component({
@@ -29,13 +31,13 @@ export class MyaccountApplicationsComponent implements OnInit {
   compareListFilter = [];
   schoolListFilter = [];
   imageExtensions = ['png', 'gif', 'jpeg'];
-
   imagePathPre = 'http://13.229.117.64/cideapi/';
-
   filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
       'Internat', 'Stages', 'Restauration',
       'Externat', 'Statut', 'Enseignement Confessionel',
       'Sections', 'Diplôme', 'Options', 'Places Disponibles']
+  config: any;
+
   constructor(private usersService: UsersService,
       private brochureService: BrochureService,
       private router: Router,
@@ -203,24 +205,52 @@ export class MyaccountApplicationsComponent implements OnInit {
       }
   }
   // when user click on a checkbox to select category to compare the schools
-  onFilterCheckbox(index) {
-      this.compareListFilter[index] = !this.compareListFilter[index];
-      this.canFilter = this.checkFilterBox();
+//   onFilterCheckbox(index) {
+//       this.compareListFilter[index] = !this.compareListFilter[index];
+//       this.canFilter = this.checkFilterBox();
+//   }
+//   checkFilterBox() {
+//       let i = 0;
+//       for (const filter of this.compareListFilter) {
+//           if (filter) {
+//               return true;
+//           }
+//           i++;
+//       }
+//       return false;
+//   }
+//   onCompare() {
+//       this.compareService.storeCompareFilter(this.compareListFilter);
+//       this.compareService.storeSchoolId(this.compareList);
+//       this.router.navigate(['/compare-mode/']);
+//   }
+
+  onLaunchCompare() {
+    this.makeProfile(this.compareList);
+    this.dialog.open(CompareDialogComponent, this.config);
   }
-  checkFilterBox() {
-      let i = 0;
-      for (const filter of this.compareListFilter) {
-          if (filter) {
-              return true;
-          }
-          i++;
+
+  //Make the config for the md dialog
+  makeProfile(school) {
+    this.config = {
+      data: {
+        schoolData: school
+      },
+      disableClose: false,
+      width: '800px',
+      height: '',
+      position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
       }
-      return false;
+    };
   }
-  onCompare() {
-      this.compareService.storeCompareFilter(this.compareListFilter);
-      this.compareService.storeSchoolId(this.compareList);
-      this.router.navigate(['/compare-mode/']);
+
+  applyTo(school) {
+    this.makeProfile(school);
+    this.dialog.open(SchoolChoiceComponent, this.config);
   }
 
 }

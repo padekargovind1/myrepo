@@ -13,6 +13,7 @@ declare var $ :any;
 import swal from 'sweetalert2';
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
+import { AuthService } from 'app/services/auth.service';
 
 @Component({
   selector: 'app-etablissement',
@@ -39,7 +40,8 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any},
               public dialog:MdDialog,
               private sendService : SendService,
-              private schoolService : SchoolService) {
+              private schoolService : SchoolService,
+              private authService: AuthService) {
     console.log(this.data)
   }
 
@@ -122,16 +124,18 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   }
 
   // Add the school to the wish list -> call API
-  addToWish(){
+  addToWish() {
+    if (!this.authService.isUserLoggedIn()) {
+      this.loginFirst();
+    }
     const data = {
       type : "wish",
-      schools : [{class:'EE'}],
-      school : this.schoolData._id
+      school : this.schoolData._id,
+      class:'EE'
     }
-    console.log(data);
     this.usersService.postApplication(data)
       .subscribe(
-        response=>{
+        response => {
           let data = response.data;
           console.log(response);
           if(response.code==400){
@@ -149,8 +153,19 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
       )
   }
 
+  // Login first add in wish list
+  loginFirst() {
+    swal({
+      title: 'Attention',
+      text: "Merci de vous connecter pour continuer",
+      type: 'warning',
+      confirmButtonText: "D'accord"
+    }).then(() => this.router.navigate(['/login']))
+      .catch((err) => console.log(err));
+  }
+
   // Successful add in wish list
-  successApply(){
+  successApply() {
     swal({
       title: "L'école a été ajouté à la liste des voeux",
       type: 'success',
@@ -161,11 +176,14 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   // Click on apply to a school
   // Open a md dialog to choose the cycle
   // If submit on the md dialog then close this md dialog
-  applyTo(){
+  applyTo() {
+    if (!this.authService.isUserLoggedIn()) {
+      this.loginFirst();
+    }
     this.makeProfile(this.schoolData);
     let dialogref = this.dialog.open(SchoolChoiceComponent,this.config);
     dialogref.afterClosed().subscribe(result => {
-      if(!this.schoolService.getPopUpOnCancel()){
+      if (!this.schoolService.getPopUpOnCancel()) {
         this.dialogref.close();
       } else {
         this.schoolService.resetOnCancel();
@@ -176,14 +194,17 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
 
   // Click on the button to download a brochure
   // Navigate to brochure and store the school name in service to get the search automatically
-  downloadBrochure(){
-    this.dialogref.close()
+  downloadBrochure() {
+    this.dialogref.close();
+    if (!this.authService.isUserLoggedIn()) {
+      this.loginFirst();
+     }
     this.brochureService.storeSchoolSearch(this.schoolData.shortName);
     this.router.navigate(['brochure']);
   }
 
   //Make the config for the md dialog
-  makeProfile(school){
+  makeProfile(school) {
     this.config= {
       data:{
         schoolData : school
@@ -201,8 +222,12 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   }
 
   // Open the md dialog to send a message
-  sendMessage(){
+  sendMessage() {
+    if (!this.authService.isUserLoggedIn()) {
+      this.loginFirst();
+     }
     let config = this.sendService.makeProfile(this.schoolData)
+    this.sendService.schoolId = this.schoolData._id;
     let dialogref = this.dialog.open(SendMessageComponent, config);
   }
 

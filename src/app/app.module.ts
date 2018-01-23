@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 // import { SweetAlertService } from 'ng2-sweetalert2';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import 'hammerjs';
 
@@ -115,6 +116,7 @@ import { WhoWeAre } from './who-we-are/who-we-are.component';
 import { PrivacyPolicy } from './privacy-policy/privacy-policy.component';
 import { Partnerships } from './partnerships/partnerships.component';
 import { ContactUs } from './contact-us/contact-us.component';
+import { CompareDialogComponent } from './compare-mode/compare-dialog/compare-dialog.component';
 
 @NgModule({
   declarations: [
@@ -197,7 +199,8 @@ import { ContactUs } from './contact-us/contact-us.component';
       PrivacyPolicy,
       Partnerships,
       ContactUs,
-    OnlinePaymentComponent
+    OnlinePaymentComponent,
+    CompareDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -227,7 +230,8 @@ import { ContactUs } from './contact-us/contact-us.component';
     JsonpModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD_gjvXL9pHaSq50qqiKv73IodUxJh8NCU'
-    })
+    }),
+    NgxPaginationModule
   ],
   providers: [
     SchoolService,
@@ -255,7 +259,8 @@ import { ContactUs } from './contact-us/contact-us.component';
        ConseilPopupComponent,
        SchoolDetailSuperieurComponent,
        ClassChoiceComponent,
-       SendMessageComponent
+       SendMessageComponent,
+       CompareDialogComponent
     ],
   bootstrap: [AppComponent]
 })
