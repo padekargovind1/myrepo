@@ -56,6 +56,10 @@ export class HobbiesTabComponent implements OnInit {
       this.bookingService.failSubmit();
     }
   }
+  prevTab(nb:number){
+      this.wizardService.saveData('hobbiesData', this.wizardForm.value);
+      this.tabChange.emit(nb);
+  }
   //Create a Job form
   createJob(){
     return this.fb.group({

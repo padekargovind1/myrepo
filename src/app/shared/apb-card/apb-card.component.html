@@ -1,56 +1,55 @@
-
 <ul class="school-action">
     <li (click)="saveInWish()" style="cursor:pointer">
-        <i class="fa fa-bookmark" aria-hidden="true"
-            style="color: #393649;"></i>
+        <i class="fa fa-bookmark" aria-hidden="true" style="color: #393649;"></i>
     </li>
-    <li >
-        <a href="https://api2.apbprive.fr/">
+    <li style="cursor:pointer">
+        <i (click)="sweetAlert()" class="fa fa-paper-plane" aria-hidden="true" style="color: #393649;">
+            </i>
+
+        <!--<a href="https://api2.apbprive.fr/">
             <i style="cursor:pointer" class="fa fa-paper-plane" aria-hidden="true"
                 style="color: #393649;">
             </i>
-        </a>
+        </a>-->
     </li>
     <!--<li>
         <i style="cursor:pointer" class="fa fa-share" aria-hidden="true"
             style="color: #393649;"></i>
     </li>-->
     <!--<li>
-        <a href="http://13.229.81.1/cideapi{{brochureData.brochure}}" download="brochure.pdf" target="_self">
+
+        <a href="http://13.229.117.64/cideapi{{brochureData.brochure}}" download="brochure.pdf" target="_self">
+
             <i class="fa fa-download" aria-hidden="true"></i>
         </a>
         
     </li>-->
 </ul>
 
-<img *ngIf="SchoolData.logo!='' || SchoolData.logo!=null; else emptyLogo"
-    src="https://media.apbprive.fr/{{SchoolData.logo}}" alt="School 1" 
-    style="width:150px; height:150px; margin-left:15%; margin-top:30px"/>
-<ng-template #emptyLogo>
-  <img src="assets/images/logoEmpty.png" alt="School 1" 
-      style="width:150px; height:150px; margin-left:15%; margin-top:30px"/>
-</ng-template>
+<img *ngIf="SchoolData.logo!='' && SchoolData.logo!=null" src="https://media.apbprive.fr/{{SchoolData.logo}}"
+    alt="School 1" style="width:150px; height:150px; margin-left:15%; margin-top:30px" />
+  
+<!--<ng-template #emptyLogo>-->
+    <img *ngIf="SchoolData.logo=='' || SchoolData.logo==null" src="assets/images/logoEmpty.png" alt="School 1" style="width:150px; height:150px; margin-left:15%; margin-top:30px"
+    />
+<!--</ng-template>-->
 
 <div class="card-content">
-    <h3 style="height:30px"
-        mdTooltip="{{ SchoolData.longName }}">{{ SchoolData.longName | school:42 }}
+    <h3 style="height:30px" mdTooltip="{{ SchoolData.longName }}">{{ SchoolData.longName | school:42 }}
     </h3>
     <!--<p> {{ SchoolData.cycles[0].cycle.status1 }} <br /> 
         {{ SchoolData.cycles[0].cycle.status2 }} <br />
         {{ SchoolData.cycles[0].cycle.status3 }}</p>-->
-    <address *ngIf="SchoolData.addresses.length!=0; else empty1"
-         style="font-size:14px; height : 60px"> 
+    <address *ngIf="SchoolData.addresses.length!=0; else empty1" style="font-size:14px; height : 60px">
         <span mdTooltip="{{ SchoolData.addresses[0].address }}">
             {{ SchoolData.addresses[0].address | school:35  }} 
-        </span><br /> 
-        {{ SchoolData.addresses[0].postCode }} {{ SchoolData.addresses[0].city }}<br /> 
-        Tel: {{ SchoolData.addresses[0].phoneNumber | phone }}</address>
+        </span><br /> {{ SchoolData.addresses[0].postCode }} {{ SchoolData.addresses[0].city }}<br /> Tel: {{ SchoolData.addresses[0].phoneNumber
+        | phone }}</address>
     <ng-template #empty1>
-      <address style="font-size:14px; height : 60px">
-        &nbsp;<br /> 
-        &nbsp;<br /> 
-        &nbsp;
-      </address>
+        <address style="font-size:14px; height : 60px">
+            &nbsp;<br /> &nbsp;
+            <br /> &nbsp;
+        </address>
     </ng-template>
 
     <a (click)="onApbDetail()">
@@ -60,5 +59,5 @@
     <a (click)="onApbApply(SchoolData._id)">
         <button type="button" class="btn btn-secondary">Sélectionner</button> 
     </a>
-    
+
 </div>

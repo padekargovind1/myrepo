@@ -50,6 +50,7 @@ export class SchoolChoiceComponent implements OnInit {
   selectTo(index){
     // this.router.navigate(['applyto', this.schoolData._id]);
     // this.dialogref.close()
+    console.log("jjjjjj",index);
     this.makeProfile(index);
     let dialogref = this.dialog.open(ClassChoiceComponent, this.config);
     dialogref.afterClosed().subscribe(result => {

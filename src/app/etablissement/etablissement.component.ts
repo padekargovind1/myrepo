@@ -138,8 +138,13 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
         response => {
           let data = response.data;
           console.log(response);
-          if (response.code==400) {
-            console.log(response.message)
+          if(response.code==400){
+            console.log(response.message);
+            swal({
+              title: response.message,
+              type: 'error',
+              confirmButtonText: "J'AI COMPRIS"
+            })
           } else {
             this.successApply();
             console.log("apply successful")

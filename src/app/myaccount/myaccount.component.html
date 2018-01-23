@@ -1,8 +1,8 @@
 ﻿<main class="main white-background" role="main">
   <h2 class="title-page">Mon Compte</h2>
-  <div class="container-fluid  my-account">
+  <div class="my-account" style="width:100% !important">
     <md-tab-group #tabGroup>
-      <md-tab label="Parents">
+      <md-tab label="Parents"  style="width:100% !important">
         <app-myaccount-parents (goToChild)="goToChild($event)" [userData]="userData"></app-myaccount-parents>
       </md-tab>
       <md-tab label="Elève">
@@ -31,4 +31,5 @@
 	  </md-tab> 	  
     </md-tab-group>
   </div>
+
 </main>

@@ -72,6 +72,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   ancient: any = '';
   regional: any = '';
   limit = 20;
+  page =1;
   totalRecords = 20;
   isLoader = false;
   slickNb: number;
@@ -116,7 +117,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     this.languesRegio = this.schoolService.getLanguesRegio(); // options for advanced search
     this.diplomes = this.schoolService.getDiplomes(); // options for advanced search
     this.runScriptOnInit();
-
+    this.page=1;
     setTimeout(() => {
       this.runScript();
     });
@@ -371,6 +372,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // Submit on the fast search
   onSubmitSearch() {
+  this.page=1;
     if (!this.forAdvancedSearch) {
       if ((this.searchForm.value.classe === '' || this.searchForm.value.lieu === '')
         && this.searchForm.value.etablissement === '') {
@@ -514,7 +516,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   postAdvancedFilter(){
     //console.log(this.advancedSearch);
     this.isLoader=true;
-    this.publicService.postSearchSchool(this.advancedSearch, this.limit)
+    this.publicService.postSearchSchool(this.advancedSearch, this.limit, this.page)
       .subscribe(
         response=>{
           console.log(response);
@@ -531,14 +533,14 @@ export class SchoolComponent implements OnInit, OnDestroy {
             for(var j=0;j<data.length;j++)
             {
               var imgpath = data[j].cycles[0].logo1
-              for(var i=0;i<this.imageExtensions.length;i++){
-                var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
-                if(this.imageExists(this.imagePathPre + tempimgpath)){
-                  imgpath = tempimgpath;
-                  break;
-                }
-              }
-                data[j].cycles[0].logo1 = imgpath;
+              // for(var i=0;i<this.imageExtensions.length;i++){
+              //   var tempimgpath = "uploads/school/"+data[j]._id+"/logo/"+data[j]._id+"."+this.imageExtensions[i];
+              //   if(this.imageExists(this.imagePathPre + tempimgpath)){
+              //     imgpath = tempimgpath;
+              //     break;
+              //   }
+              // }
+              //   data[j].cycles[0].logo1 = imgpath;
             }
             this.isLoader=false;
           }
@@ -576,7 +578,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // Click on one of the checkbox of the advanced search
   onAdvancedClick(event, category){
-    // console.log(event);
+    this.page=1;
     if(event.srcElement.localName=="input"){
       // console.log(event.srcElement.checked)
       if(event.srcElement.checked){ // if user check the box
@@ -589,7 +591,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
         this.advancedSearchCategory.push(category); // Category to display on the front
         this.advancedSearchValue.push(event.srcElement.name); // Values used to uncheck checkboxs if user want a new search
         console.log(this.advancedSearch);
-        this.limit=20
+      //  this.limit=20
         this.postAdvancedFilter();
       } else{ // If user uncheck the box
         // console.log(this.advancedSearch[category], event.srcElement.name)
@@ -598,7 +600,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
         }
         this.checkCategory(category);
         // console.log(this.advancedSearch);
-        this.limit=20
+      //  this.limit=20
         this.postAdvancedFilter();
         let index = this.advancedSearchToDisplay.indexOf(event.srcElement.parentElement.children[1].textContent);
         this.advancedSearchToDisplay.splice(index, 1);
@@ -616,7 +618,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // on filter language in advanced search
   filterLanguage(event, category){
-    // console.log(event);
+    this.page=1;
     // this.languageAdvancedSearch.push(category);
     if(typeof this.advancedSearch['language']=='undefined' && event.srcElement.value!=""){
       this.advancedSearch['language']={} // Init language in advanced search
@@ -634,7 +636,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
       this.advancedSearch['language'][category]=event.srcElement.value
       this.languageAdvancedSearch.push(category);
       this.languageAdvancedSearchName.push(event.srcElement.value);
-      // console.log("test", this.languageAdvancedSearch, this.languageAdvancedSearchName)
+      // console.log("test", this.languageAdvancedSearch, this.languageAdvancedS)
       this.postAdvancedFilter();
     }
     // console.log(this.advancedSearch)
@@ -664,7 +666,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   //clean all array
   cleanSearch(){
-    console.log("clean search")
+    this.page=1;
     this.languageAdvancedSearch=[];
     this.languageAdvancedSearchName=[]
     delete this.advancedSearch;
@@ -678,7 +680,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     this.searchFilter = ["", "", ""];
     this.publicService.storeSearchSchool(this.searchFilter);
     this.buildForm();
-    this.limit=20
+    //this.limit=20
     console.log(this.advancedSearch)
     this.postAdvancedFilter();
     // this.getSearchFilter();
@@ -755,14 +757,14 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // remove a filter
   onRemoveFilter(index, advanced){
-    // console.log("click sur la croix", advanced)
+    this.page=1;
     this.advancedSearchToDisplay.splice(index, 1)
     delete this.advancedSearch[this.advancedSearchCategory[index]][this.advancedSearchValue[index]]
     this.checkCategory(this.advancedSearchCategory[index]);
     $('.'+this.advancedSearchValue).prop('checked', false)
     this.advancedSearchCategory.splice(index, 1);
     this.advancedSearchValue.splice(index, 1);
-    this.limit=20;
+    //this.limit=20;
     this.postAdvancedFilter();
   }
 
@@ -776,7 +778,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   //click on showMore button
   showMore(){
-    this.limit+=20
+  //  this.limit=20
+    this.page=this.page+1;
     this.postAdvancedFilter()
   }
 

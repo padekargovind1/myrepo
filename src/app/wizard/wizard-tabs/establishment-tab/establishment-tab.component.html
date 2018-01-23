@@ -5,7 +5,7 @@
       <div class="row" formArrayName="primary"
            *ngFor="let parent of wizardForm.controls['primary']['controls']; let i = index">
         <div [formGroupName]="i">
-          <h4 style="margin-left:15px">Primaire {{i+1}}*</h4>
+          <h4 style="margin-left:15px">Primaire {{i+1}}</h4>
           <div class="col-sm-3">
             <div class="form-group">
               Nom de l'établissement
@@ -17,7 +17,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <div class="select-custom">
-                Classe redoublée*
+                Classe redoublée
                 <select name="" class="form-control"
                         formControlName="primarySchoolRepeat">
                   <option value="" disabled selected hidden>Classe redoublée</option>
@@ -28,13 +28,13 @@
           </div>
           <div class="col-sm-3">
             <div class="form-group">
-              Cause du redoublement*
+              Cause du redoublement
               <input type="text" class="form-control" placeholder="Cause du redoublement"
                      formControlName="causeOfRepeatPrimary"
                      maxlength="100">
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3" *ngIf="i > 0">
             &nbsp;<br>&nbsp;
             <button class="btn  btn-danger" style="float:right"
                     (click)="onRemovePrimaire(i)"
@@ -56,7 +56,7 @@
           <h4 style="margin-left:15px">Secondaire {{i+1}}</h4>
           <div class="col-sm-3">
             <div class="form-group">
-              Nom de l'établissement*
+              Nom de l'établissement
               <input type="text" class="form-control" placeholder="Nom"
                      formControlName="secondarySchoolName"
                      maxlength="100">
@@ -65,7 +65,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <div class="select-custom">
-                Classe redoublée*
+                Classe redoublée
                 <select name="" class="form-control"
                         formControlName="secondarySchoolRepeat">
                   <option value="" disabled selected hidden>Classe redoublée</option>
@@ -76,13 +76,13 @@
           </div>
           <div class="col-sm-3">
             <div class="form-group">
-              Cause du redoublement*
+              Cause du redoublement
               <input type="text" class="form-control" placeholder="Cause du redoublement"
                      formControlName="causeOfRepeatSecondary"
                      maxlength="100">
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3" *ngIf="i > 0">
             &nbsp;<br>&nbsp;
             <button class="btn  btn-danger" style="float:right"
                     (click)="onRemoveSecondaire(i)"
@@ -106,7 +106,7 @@
     <div class="col-md-8">
       <div class="form-group clearfix">
         <button class="btn  btn-appointment wizard-button-align"
-                (click)="nextTab(5)" style="float:left; margin-left:0px">
+                (click)="prevTab(5)" style="float:left; margin-left:0px">
           Précédent
         </button>
         <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(7)"

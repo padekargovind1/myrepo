@@ -29,6 +29,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
   adviserToDisplay=[];
   adviserIdList=[];
   allChecked : boolean = false;
+  totalAdviser:any;
 
   constructor(private bookingService : BookingService,
               private route : Router,
@@ -50,6 +51,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
       this.route.navigate(['/conseil']);
     } else {
       this.getBookingData();
+      console.log("nginit...");
       this.getAppointmentPackage();
     }
   }
@@ -81,6 +83,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
 
   //Call API to get the package's adviser
   getListAdviser(){
+
     console.log(this.bookingData)
     this.usersService.getAppointmentsAdviserList(this.appointmentPackage[this.bookingData[3]]._id)
       .subscribe(
@@ -92,6 +95,9 @@ export class BookingComponent implements OnInit, AfterViewInit {
           } else {
             this.adviserList = data;
             this.calendarData=this.initDataAppoint();
+            console.log("adviserList",this.adviserList.length);
+            console.log("calendarData",this.calendarData.length);
+            this.totalAdviser = data.length;
             // for(let adviser of this.adviserList){
             //   this.getAdviserFreeTime(adviser.id);
             // }
@@ -139,7 +145,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
     // console.log(data)
     this.bookingService.storeBookingData(data);
     this.bookingService.storeBookingPrice(this.appointmentPackage[this.bookingData[3]].cost); // Store the package price
-    console.log(this.bookingData);
+    console.log("bookingData===>>",this.bookingData);
     const newAppointment = {
       adviser : this.appointmentData[0],
       from: this.appointmentData[2],
@@ -211,14 +217,16 @@ export class BookingComponent implements OnInit, AfterViewInit {
   // refreshing the calendar date
   onCheckbox(adviserId){
     let index = this.adviserIdList.indexOf(adviserId);
+    console.log("index",index);
     if(index==-1){
       this.adviserIdList.push(adviserId);
     } else {
       this.adviserIdList.splice(index, 1);
     }
-    console.log(this.adviserIdList);
+    console.log("adviserIdList:- ",this.adviserIdList.length);
     this.adviserToDisplay = this.bookingService.filterBooking(this.calendarData, this.adviserIdList)
-    console.log(this.adviserToDisplay);
+    console.log("adviserToDisplay:- ",this.adviserToDisplay);
+    console.log("--->",this.adviserToDisplay.length, this.calendarData.length);
     this.refreshCalendar();
   }
 
