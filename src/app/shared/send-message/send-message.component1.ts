@@ -17,9 +17,7 @@ export class SendMessageComponent implements OnInit {
 
   @ViewChild('tabGroup') tabGroup;
   sendMessageForm : FormGroup;
-  profileData: any;
   isSuivant: boolean;
-
   constructor(public dialogref:MdDialogRef<SendMessageComponent>,
               private fb : FormBuilder,
               private usersService : UsersService,
@@ -58,13 +56,12 @@ export class SendMessageComponent implements OnInit {
       this.usersService.getProfile()
         .subscribe(
           (response)=>{
-            let data = response.data[0];
-            console.log(data);
+            let data = response.data;
+            // console.log(data);
             if(response.code==400){
               console.log(response.message);
             } else {
               this.patchValue(response.data[0]);
-              this.profileData = data;
             }
           }
         )
@@ -98,21 +95,10 @@ export class SendMessageComponent implements OnInit {
     console.log(this.sendMessageForm)
     if(this.sendMessageForm.value.mel!='' && this.sendMessageForm.value.subject!='' && this.sendMessageForm.value.mel!=''){
       let data = {
-        emails: [{
-          recipient: [this.sendMessageForm.value.mel],
-          module: "candidate",
-          rank: "a"
-        }],
-        // sender : this.sendMessageForm.value.mel,
-        // receiver : this.data.school.address,
-        // user: this.profileData._id,
-        // school: "School Name",
-        mailType: "sent",
+        sender : this.sendMessageForm.value.mel,
+        receiver : this.data.school.address,
         subject : this.sendMessageForm.value.subject,
-        message : this.sendMessageForm.value.message,
-        attachments: [],
-        tags: [],
-        isSent: true
+        message : this.sendMessageForm.value.message
       }
       this.sendService.sendMessage(data)
       this.dialogref.close();
@@ -130,7 +116,6 @@ export class SendMessageComponent implements OnInit {
       this.sendService.failSend();
     }
   }
-
   showSuivantBtn(){
     if(this.sendMessageForm.value.childFirstName !="" && this.sendMessageForm.value.childLastName !="" && this.sendMessageForm.value.childTitle !="" && this.sendMessageForm.value.classe !="" && this.sendMessageForm.value.firstName !="" && this.sendMessageForm.value.lastName !="" && this.sendMessageForm.value.lienParent !="" && this.sendMessageForm.value.mel !="" && this.sendMessageForm.value.mel.tel !="" )
     {
@@ -140,5 +125,4 @@ export class SendMessageComponent implements OnInit {
       this.isSuivant = false;  
     }
   }
-
 }
