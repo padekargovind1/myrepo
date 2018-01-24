@@ -139,6 +139,12 @@ export class UsersService {
       .map((response)=>{response.json(); console.log('the http call happened')});
   }
 
+  removeHistory(data): Observable<any>{
+    console.log('removing from history');
+    return this.http.delete(HISTORY_API+'?token='+this.token, data)
+      .map((response)=>response.json());
+  }
+
   getMessages(data):Observable<any>{
     return this.http.get(MESSAGES_API+'?type='+data.type+'&token='+this.token, {headers: this.headers})
       .map((response)=>response.json());

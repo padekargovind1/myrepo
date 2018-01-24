@@ -7,15 +7,20 @@
 
       <section class="col-md-12">
           <ul class="list-of-research">
-            <li *ngFor="let history of historyList | paginate: { itemsPerPage: 10, currentPage: pageNum }">
+            <li *ngFor="let history of historyList | paginate: { itemsPerPage: 10, currentPage: pageNum }; let i=index">
               <div class="row">
+                <div class="list-row">
                 <div class="research-list-item">
                     <p *ngIf="history!=[]">
-                      <strong>Classe:</strong> {{ history.details.class[0] }} <strong>- Lieu</strong> {{ history.details.code[0] }} <strong>- Ecole</strong> {{ history.details.name }}
+                      <strong>Classe:</strong> {{ history.details.class }} <strong>- Lieu</strong> {{ history.details.place }} <strong>- Ecole</strong> {{ history.details.name }}
                     </p>
                   <button class="btn btn-primary btn-highlighted pull-right" (click)="onLaunchSearch(history.details)">
                     Relancer <i class="fa fa-search"></i>
                   </button>
+                </div>
+                <button class="btn btn-warning btn-highlighted" (click)="onRemoveSearch(i, history._id)">
+                  Retirer <i class="fa fa-remove"></i>
+                </button>
                 </div>
               </div>
             </li>
