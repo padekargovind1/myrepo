@@ -120,7 +120,7 @@
                                                   &nbsp;{{name}}
                                                 </option>
                                                 <option value="seconde_sthr" style="color:red">
-                                                  &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                                  &nbsp;STHR - Sciences et Technologies de l'hôtellerie et de la restauration
                                                 </option>
                                                 <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
                                                         [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
@@ -237,7 +237,7 @@
                                                   &nbsp;{{name}}
                                                 </option>
                                                 <option value="seconde_sthr" style="color:red">
-                                                  &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                                  &nbsp;STHR - Sciences et Technologies de l'hôtellerie et de la restauration
                                                 </option>
                                                 <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
                                                         [value]="helperService.getclassEcoleListToSendToApi().strh[i]">
@@ -352,7 +352,7 @@
                           </button>
                       <!-- </div> -->
                       </div>
-                      <div>
+                      <div class="newSearchdiv">
                           <a class="newSearch"
                               *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!=''
                               || searchFilter[1]!='' || languageAdvancedSearch.length!=0"
@@ -435,8 +435,8 @@
                                           <label for="filter-67">DIMA</label>
                                       </li>
                                       <li>
-                                          <input type="checkbox" name="segma" class="segma checkbox filled-in" id="filter-68" />
-                                          <label for="filter-68">SEGMA</label>
+                                          <input type="checkbox" name="segpa" class="segpa checkbox filled-in" id="filter-68" />
+                                          <label for="filter-68">SEGPA</label>
                                       </li>
                                   </ul>
                               </li>
@@ -724,7 +724,7 @@
       </div>
     </div><!-- footer-ads -->
 
-          <div class="container">
+          <div class="container" style="min-height:600px">
 
               <div class="row"><div class="col-md-10 col-md-offset-1">
 
@@ -788,7 +788,7 @@
 
                           <!-- <a href="compare-mode.html" class="compare-button">Compare Mode <span class="fa fa-chevron-right"></span></a> -->
 
-                          <div class="compare-holder">
+                          <div class="compare-holder" style="z-index:9"> <!-- change by harish style="z-index:9"-->
                               <!-- Mode de Comparaison
                               <div class="switch">
                                   <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
@@ -797,11 +797,11 @@
                               <a href="compare-mode.html#compare" class="btn btn-appointment pull-right hide link-btn">Je Compare</a>
                               <!-- Button trigger modal -->
                               <button type="button"
-                                  class="btn btn-appointment pull-right popup-btn"
+                                  class="btn btn-appointment-compare pull-right popup-btn"
                                   data-toggle="modal"
                                   data-target="#filter-popup"                                
                                   *ngIf="schoolListFilter.length!=0"
-                                  [disabled]="!canCompare">Je Compare</button>
+                                  [disabled]="!canCompare" style="background: #00BC50 !important;color:#FFFFFF">Je Compare</button>
                           </div>
 
 
@@ -899,17 +899,16 @@
                       <p style="text-align:center">
                         <button type="button"
                                 class="btn btn-appointment"
-                                (click)="showMore()" *ngIf="((schoolListFilter.length==limit || schoolListFilter.length!=0) && !isLoader) && limit<totalRecords"
+                                (click)="showMore()" *ngIf="((schoolListFilter.length==limit || schoolListFilter.length!=0) && !isLoader) && (limit * page)<totalRecords"
                         >Voir plus
                         </button>
                         <img class="cide-loader" src="assets/images/loader.gif" alt="" *ngIf="isLoader">
                       </p>
                     </div>
                   </div>
-
+ 
                   <p>&nbsp;</p>
-                  <p>&nbsp;</p>
-                  <div class="{{bottomAdCarousalClasses}}" style="margin-top:10px">
+                  <div class="{{bottomAdCarousalClasses}}" style="margin-top:10px;z-index:1">
                       <div class="container">
                           <div class="row">
                               <div class="col-md-10 col-md-offset-1  wrapper"

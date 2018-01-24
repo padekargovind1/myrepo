@@ -74,7 +74,7 @@
                                 <a (click)="navigateToURL('/contact-us')" class="ln-tr link">Contactez nous</a>
                             </div>
                         </li><!-- end course menu item -->
-                        <li class="course-menu-item col-md-6 col-sm-6">
+                        <li *ngIf="userLogin && wishCount > 0" class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-bookmark"></i></span>
                                 <a (click)="onMyAccount('0')" class="ln-tr link">Mon compte</a>
@@ -155,7 +155,7 @@
 
     <ul class="mobile-login">
         <!--li (click)="wishApplyDialog(0)"><i class=" fa fa-file-text"><sup class="wishcount">{{applyCount}}</sup></i></li-->
-        <li (click)="wishApplyDialog(1)"><i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i></li>
+        <li (click)="wishApplyDialog(1)" *ngIf="userLogin && wishCount > 0"><i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i></li>
         <li *ngIf="!userLogin; else moblog"><i class="fa fa-user"></i>
             <ul class="login">
                 <li><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; S'inscrire</a></li>
@@ -179,7 +179,7 @@
                 <sup class="wishcount">{{applyCount}}</sup>
             </i>
         </li-->
-        <li style="cursor:pointer" (click)="wishApplyDialog(1)">
+        <li style="cursor:pointer" (click)="wishApplyDialog(1)" *ngIf="userLogin && wishCount > 0">
             <i class="fa fa-bookmark" mdTooltip="Mes Favoris"
                 mdTooltipClass="center-tooltip">
                 <sup class="wishcount" >{{wishCount}}</sup>
@@ -199,13 +199,13 @@
         </ng-template>
     </ul>
     <ul class="social-media-list in-header">
-        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook-square"></i></a></li>
+        <li><a href="https://www.facebook.com/CIDE-Information-Orientation-170376696333464/"><i class="fa fa-facebook-square"></i></a></li>
         <!--li><a href="https://twitter.com"><i class="fa fa-twitter"></i></a></li-->
         <li><a href="https://www.youtube.com"><i class="fa fa-youtube"></i></a></li>
         <!--li><a href="https://plus.google.com"><i class="fa fa-google-plus-square"></i></a></li>
         <li><a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a></li>
         <li><a href="https://vimeo.com/"><i class="fa fa-vimeo"></i></a></li-->
-        <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/11177632/"><i class="fa fa-linkedin"></i></a></li>
         <!--li><a href="http://fr.viadeo.com/"><i class="fa fa-viadeo"></i></a></li-->
     </ul>
 </header>

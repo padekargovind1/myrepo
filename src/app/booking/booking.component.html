@@ -5,11 +5,11 @@
                 <div class="advisors-wrap">
                     <h3 class="advisor-title">Conseillers d’orientation</h3>
                     <button class="btn btn-appointment btn-block select-all-advisor" (click)="onSelectAll()"
-                        *ngIf="adviserToDisplay.length!=calendarData.length">
+                        *ngIf="adviserToDisplay.length!=calendarData.length || adviserIdList.length < totalAdviser  ">
                         Sélectionnez tous les conseillers <i class="fa fa-check"></i>
                     </button>
                     <button class="btn btn-danger btn-block deselect-all-advisor" (click)="onUnselectAll()"
-                        *ngIf="adviserToDisplay.length==calendarData.length || adviserToDisplay.length!=0">
+                        *ngIf="adviserToDisplay.length==calendarData.length || adviserToDisplay.length!=0 || adviserIdList.length > 0">
                         Désélectionnez tous les conseillers <i class="fa fa-times"></i>
                     </button>
                     <ul class="advisors">
@@ -17,8 +17,10 @@
 
                             <div class="row" >
                                 <section class="col-md-3 col-xs-3">
-                                  <div class="userThumbImg" [style.background-image]="'url(http://13.229.81.1/cideapi' + adviser.photo + ')'" >
-                                    <img src="http://13.229.81.1/cideapi{{adviser.photo}}"
+
+                                  <div class="userThumbImg" [style.background-image]="'url(http://13.229.117.64/cideapi' + adviser.photo + ')'" >
+                                    <img src="http://13.229.117.64/cideapi{{adviser.photo}}"
+
                                          alt="" class="img-circle img-responsive"
                                          style="width:100%; height:100%" />
                                   </div>

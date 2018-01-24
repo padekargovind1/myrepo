@@ -893,7 +893,10 @@ label.custom-radio.sad:before { border: none;}
 
 
 .second-title { margin-bottom: 0; }
-.advisor-img { width: 100px; }
+.advisor-img { 
+  width: 100px; 
+  height:100px;
+}
 
 
 
@@ -1403,7 +1406,10 @@ span.label { font-size: 10px;  }
  * Ads Footer
  *
  */
-.footer-ads { position: fixed; text-align: center; bottom: 0; left: 0; width: 100%; background: #393645; padding: 5px;}
+.footer-ads { position: fixed; text-align: center; bottom: 0; left: 0; width: 100%; background: #393645; padding: 5px;z-index: 1;}
+// =======
+// .footer-ads { z-index:1;position: fixed; text-align: center; bottom: 0; left: 0; width: 100%; background: #393645; padding: 5px;}
+// 
     /*.footer-ads .wrapper { background: #EAEDEC;} */
 .ad-filter { margin: 20px auto; display: table; }
 
@@ -1448,7 +1454,7 @@ span.label { font-size: 10px;  }
 
 
 .white-background { background: #EBECEC; padding: 20px 0 70px; color: #333;}
-.basic-background { background: #393645; padding: 20px 0 70px; color: #333;}
+.basic-background { background: #393645; padding: 20px 0 20px; color: #333;}
 
 
 .do-animate { animation-duration: .7s; animation-fill-mode: both; animation-name: fadeInDown;}
@@ -2010,6 +2016,7 @@ a:hover { text-decoration: none;}
   .btn.btn-appointment.disabled, .btn.btn-appointment[disabled] {
     background: #fff !important;
     color: #00bc50 !important;
+    top:-150px;
   }
 
   .list-of-research p {
@@ -2105,7 +2112,9 @@ button.mat-raised-button.mat-primary, button.mat-raised-button.mat-warn, button.
 
 .fc-toolbar .fc-today-button  {  left: 20px;  position: absolute;  top: 10px;}
 
-.fc-prev-button.fc-state-default.fc-corner-left {  left: 10px !important;  position: absolute;  top: 60px;}
+.fc-prev-button.fc-state-default.fc-corner-left {  
+  left: -82px !important;  position: absolute;  top: 50px;
+  }
 .fc-next-button.fc-state-default.fc-corner-right {  right: 0px !important;  position: absolute;  top: 50px;}
 .fc-toolbar .fc-left {width:100%; text-align:center; margin-bottom: -24px;    margin-top: 64px;    text-align: center;    width: 100%;}
 .fc-toolbar .fc-left h2 {width:100%; text-align:center;}
@@ -2128,8 +2137,8 @@ button.mat-raised-button.mat-primary, button.mat-raised-button.mat-warn, button.
 .brouchreCls  div.col-sm-6 { padding: 0 0 0 11px; }
 .brouchreCls div.col-sm-6 .select-custom { margin-right: 0px; }
 app-landing-page-3 .container.landing-page-3{ margin-top:0; }
-.tabs-container .tab-content > .active, .tabs-container .pill-content > .active, .main .container-fluid, .cdk-global-overlay-wrapper  md-dialog-container.mat-dialog-container, .tab-pane.active .panel-body{ padding:0;}
-md-dialog-container.mat-dialog-container{ height:100%; max-height:85vh;}
+.tabs-container .tab-content > .active, .tabs-container .pill-content > .active, .main .container-fluid, .cdk-global-overlay-wrapper  .md-dialog-container .mat-dialog-container, .tab-pane.active .panel-body{ padding:0;}
+.md-dialog-container .mat-dialog-container{ height:500px; max-height:85vh;}
 .mat-tab-labels div.mat-tab-label { min-width: fit-content; padding: 0 7px !important; }
 .mat-radio-button {    float: left;    width: 50%;}
 
@@ -2195,6 +2204,10 @@ md-dialog-container.mat-dialog-container{ height:100%; max-height:85vh;}
 .landing-page-2 .main { height: 100vh; }
 .voir-plus { text-align: center; }
 .btn-appointment{margin-top:15px !important;}
+.btn-appointment-compare{margin-top:-200px !important;
+    background: #00BC50 !important;
+    color: #fff !important;
+    }
 .top-compare-table.first > img {  max-width: 100%;}
 .genderRadio {margin-bottom:10px; display:block;}
 .row.customBtnClassClose { margin: 15px 0; }
@@ -2225,7 +2238,8 @@ text-align:center;
 }
 
 .school-choice-height{
-  height:50px
+  /*height:50px*/
+  margin-top:15px;
 }
 .files-to-download .remove { display: inline; }
 .input.userType_radio{ margin-top: 15px; }
@@ -2327,7 +2341,7 @@ text-align:center;
     }
 
     .mat-dialog-container {
-      overflow: hidden;
+      // overflow: hidden;
     }
 
     .topPopInnerScroll {
@@ -2839,7 +2853,7 @@ header .main-navigation li.courses-menu li .single-item {
 
 .partners_sec .img_sec {
   float: left;
-  padding: 0 10px 10px 0px; 
+  padding: 0 10px 10px 0px;
 }
 
 .advisor-name {

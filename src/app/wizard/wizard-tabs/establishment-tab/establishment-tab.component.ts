@@ -79,12 +79,16 @@ export class EstablishmentTabComponent implements OnInit {
   }
   //Save and go to the next tab
   nextTab(nb:number){
-    if(this.wizardForm.valid){
+    // if(this.wizardForm.valid){
       this.wizardService.saveData('establishmentData', this.wizardForm.value);
       this.tabChange.emit(nb);
-    }else {
-      this.bookingService.failSubmit();
-    }
+    // }else {
+    //   this.bookingService.failSubmit();
+    // }
+  }
+  prevTab(nb:number){
+    this.wizardService.saveData('establishmentData', this.wizardForm.value);
+    this.tabChange.emit(nb);  
   }
   onAddPrimaire(){
     this.primaires = this.wizardForm.get('primary') as FormArray;

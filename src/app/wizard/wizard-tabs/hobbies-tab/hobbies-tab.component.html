@@ -9,7 +9,7 @@
            *ngFor="let parent of wizardForm.controls['job']['controls']; let i = index">
         <div [formGroupName]="i">
           <div class="col-sm-6">
-            <h4>Métier {{i+1}}*</h4>
+            <h4>Métier {{i+1}}<span class="err">*</span></h4>
             <div class="form-group">
               Job
               <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Nom d'un métier" mdTooltipPosition="after"></i>
@@ -21,13 +21,13 @@
           <div class="col-sm-3">
             <h4>&nbsp;</h4>
             <div class="form-group">
-              Age
+              Age<span class="err">*</span>
               <input type="text" class="form-control" placeholder="Age"
                      formControlName="interestAge" max="50" min="1"
                      maxlength="2">
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3" *ngIf="i > 0">
             <h4>&nbsp;</h4>
             &nbsp;
             <button class="btn  btn-danger" style="float:right"
@@ -50,7 +50,7 @@
       <div class="form-group different-gap">
         <div class="row">
           <div class="col-sm-9">
-            Ses centres d'intérêts*
+            Ses centres d'intérêts<span class="err">*</span>
             <i class="fa fa-question-circle" aria-hidden="true" mdTooltip="Les centres d'intérêt de l'étudiant" mdTooltipPosition="after"></i>
             <input type="text" class="form-control"
                    [formControl]="wizardForm.controls['yourInterest']"
@@ -78,7 +78,7 @@
         <div class="col-sm-9">
           <div class="form-group clearfix">
             <button class="btn  btn-appointment wizard-button-align"
-                    (click)="nextTab(4)" style="float:left; margin-left:0px">
+                    (click)="prevTab(4)" style="float:left; margin-left:0px">
               Précédent
             </button>
             <button class="btn  btn-appointment wizard-button-align" (click)="nextTab(6)"

@@ -14,6 +14,7 @@ export class ParentTabComponent implements OnInit {
   parents : any;
   onMobile:boolean=false;
   lienparents = [];
+ 
   @Input() userData;
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
 
@@ -24,6 +25,7 @@ export class ParentTabComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.getLienParent();
+ 
   }
 
   buildForm(){
@@ -83,9 +85,38 @@ export class ParentTabComponent implements OnInit {
   //Save and go to the next tab
   nextTab(nb : number){
     if(this.wizardForm.valid){
+      //console.log("123");
       this.wizardService.saveData('parentData', this.wizardForm.value.parents);
       this.tabChange.emit(nb);
     }else {
+      // if(this.lienParent)
+      //   this.lienParentErrorMsg= false;
+      // else
+      //   this.lienParentErrorMsg= true;
+ 
+      // if(this.wizardForm.value.parents.lienParent === undefined || this.wizardForm.value.parents.lienParent === 'undefined' || this.wizardForm.value.parents[0].lienParent===undefined || this.wizardForm.value.parents[0].lienParent === '')
+      //   this.lienParentErrorMsg= true;
+      // else
+      //   this.lienParentErrorMsg= false;
+
+      // if(this.wizardForm.value.parents.titre === undefined || this.wizardForm.value.parents.titre === 'undefined' || this.wizardForm.value.parents[0].titre===undefined || this.wizardForm.value.parents[0].titre === '')
+      //   this.titreErrorMsg= true;
+      // else
+      //   this.titreErrorMsg= false;
+
+      // if(this.wizardForm.value.parents.prenom === undefined || this.wizardForm.value.parents.prenom === 'undefined' || this.wizardForm.value.parents[0].prenom===undefined || this.wizardForm.value.parents[0].prenom === '')
+      //   this.prenomErrorMsg= true;
+      // else
+      //   this.prenomErrorMsg= false;
+
+      // this.titreErrorMsg= this.wizardForm.value.parents[0].titre;
+      // this.prenomErrorMsg= this.wizardForm.value.parents[0].prenom;
+      // this.jobErrorMsg= this.wizardForm.value.parents.job;
+      // this.emailErrorMsg= this.wizardForm.value.parents.email;
+      // this.portableErrorMsg= this.wizardForm.value.parents.portable;
+      // this.nomErrorMsg= this.wizardForm.value.parents.nom;
+      // this.horaireJoignableErrorMsg= this.wizardForm.value.parents.horaireJoignable;
+
       this.bookingService.failSubmit();
     }
   }
@@ -93,5 +124,4 @@ export class ParentTabComponent implements OnInit {
   getLienParent(){
     this.lienparents=this.wizardService.getLienParent();
   }
-
 }

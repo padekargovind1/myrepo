@@ -166,8 +166,8 @@ export class PublicService {
       .map((response)=>response.json());
   }
 
-  postSearchSchool(data, limit) : Observable<any>{
-    return this.http.post(SEARCH_API+'schools?limit='+limit, data)
+  postSearchSchool(data, limit, page) : Observable<any>{
+    return this.http.post(SEARCH_API+'schools?limit='+limit +'&p='+page, data)
       .map((response)=>response.json())
   }
 

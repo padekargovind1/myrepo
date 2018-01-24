@@ -44,7 +44,8 @@
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
                         <div class="titleClass">
-                            <span>Nom de famille</span>
+                            <span>Nom de famille*</span>
+                            <span class="err" *ngIf="errMsgLastName">Required</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Nom"
                             [formControl]="brochureForm.controls['lastName']"
@@ -54,7 +55,8 @@
                 <div class="col-sm-6  col-xs-6">
                     <div class="form-group">
                         <div class="titleClass">
-                            <span>Prénom</span>
+                            <span>Prénom*</span>
+                            <span class="err" *ngIf="errMsgFirstName">Required</span>                            
                         </div>
                         <input type="text" class="form-control" placeholder="Prénom"
                             [formControl]="brochureForm.controls['firstName']"
@@ -68,6 +70,7 @@
                     <div class="col-sm-6">
                         <div class="titleClass">
                             <span>Mél*</span>
+                            <span class="err" *ngIf="errMsgMel">Required</span>
                         </div>
                         <input type="email" class="form-control" placeholder="Email"
                             [formControl]="brochureForm.controls['mel']">
@@ -75,6 +78,7 @@
                     <div class="col-sm-6">
                         <div class="titleClass">
                             <span>Téléphone*</span>
+                            <span class="err" *ngIf="errMsgTel">Required</span>
                         </div>
                         <input type="text" class="form-control"
                             placeholder="Téléphone auquel je suis joignable"
@@ -90,6 +94,7 @@
                     <div class="form-group">
                         <div class="titleClass">
                             <span>Nom de famille*</span>
+                            <span class="err" *ngIf="errMsgChildLastName">Required</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Nom"
                             [formControl]="brochureForm.controls['childLastName']"
@@ -100,6 +105,7 @@
                     <div class="form-group">
                         <div class="titleClass">
                             <span>Prénom*</span>
+                            <span class="err" *ngIf="errMsgChildFirstName">Required</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Prénom"
                             [formControl]="brochureForm.controls['childFirstName']"
@@ -167,7 +173,7 @@
                                     &nbsp;{{name}}
                                   </option>
                                   <option value="seconde_sthr" style="color:red">
-                                    &nbsp;STRH - Sciences et Technologies de l'hôtellerie et de la restauration
+                                    &nbsp;STHR - Sciences et Technologies de l'hôtellerie et de la restauration
                                   </option>
                                   <option *ngFor="let name of helperService.getClassEcoleList().strh; let i=index"
                                           [value]="helperService.getclassEcoleListToSendToApi().strh[i]">

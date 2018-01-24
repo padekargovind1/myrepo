@@ -62,7 +62,7 @@ export class MyaccountMyfavouritesComponent implements OnInit {
                     this.wishList = [];
                     for (let data of response.data) {
                         if (data.type == 'wish') {
-                            console.log(data)
+                            //console.log(data)
                             this.wishList.push(data.school)
                         }
                     }
