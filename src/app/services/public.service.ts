@@ -241,7 +241,7 @@ export class PublicService {
   }
 
   getClassName(){
-    console.log('class name');
+    console.log('public service class name');
     console.log(this.className);
     return this.className;
   }
