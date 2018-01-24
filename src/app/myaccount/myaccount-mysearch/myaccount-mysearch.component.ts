@@ -86,6 +86,19 @@ export class MyaccountMysearchComponent implements OnInit {
     }
   }
 
+  // Remove search from history
+  onRemoveSearch(index, historyId) {
+    console.log(historyId);
+    this.usersService.removeHistory({body: {'id': historyId}})
+      .subscribe((response) => {
+        if (response.code == 200) {
+          this.historyList.splice(index, 1);
+        } else {
+          console.log(response.message);
+        }
+      })
+  }
+
   // Separate the application list into 3 category
   filterApplications(data){
     this.wishList = data.filter(

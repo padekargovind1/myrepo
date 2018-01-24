@@ -387,11 +387,14 @@ export class SchoolComponent implements OnInit, OnDestroy {
     const data = {
       class : this.searchForm.controls.classe.value === ''
       || this.searchForm.controls.classe.value === 'Indifférent' ? '' : this.searchForm.controls.classe.value,
-      place : [this.searchForm.controls.lieu.value],
+      place : this.searchForm.controls.lieu.value,
       name : this.searchForm.controls.etablissement.value
     };
-    console.log(this.lieuSelected, this.advancedSearch);
-    this.searchFilter = [this.publicService.getClassName(), data.place, data.name]; // Data to display on the website
+    // console.log(this.lieuSelected, this.advancedSearch);
+    // this.searchFilter = [this.publicService.getClassName(), data.place, data.name]; // Data to display on the website
+    this.searchFilter = [data.class, data.place, data.name]; // Data to display on the website
+    console.log('search filter');
+    console.log(this.searchFilter);
     this.fillAdvancedSearchClass(data); // fill the class of the advanced Search
     this.advancedSearch.place = this.lieuSelected;  // Right location to send to APi (ex 75001 and not Paris)
     if(this.advancedSearch.place.length === 0){
@@ -399,9 +402,16 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }
     this.advancedSearch.name = data.name;
     this.publicService.storeSearchSchool(this.advancedSearch); // store the search to the service
+    console.log('advanced search..');
+    console.log(this.advancedSearch);
+    console.log(this.searchForm.controls.classe.value);
     // check if the search is from history to avoid logging the search again
     if (!this.publicService.searchFromHistory()) {
-      this.logSearch({'category': 'searches', 'details': this.advancedSearch}); // store the search to the service
+      this.logSearch({'category': 'searches', 'details': {
+        class: this.searchFilter[0],
+        place: this.searchFilter[1],
+        name: this.searchFilter[2]
+      }}); // store the search to the service
     }
     this.publicService.fromSearchHistory = false;
     this.postAdvancedFilter();  // Get new list of school with the search (fast and advanced search)
@@ -421,7 +431,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   
   logSearch(data){
     // console.log(data)
-    if (data.details.class[0] !== '' && data.details.code[0] !== '' && data.details.name !== '') {
+    if (data.details.class !== '' && data.details.place !== '' && data.details.name !== '') {
       this.usersService.postToHistory(data).subscribe();
     }
   }
@@ -831,9 +841,9 @@ export class SchoolComponent implements OnInit, OnDestroy {
   // store class name to display on school list
   storeClassName(event){
     console.log('class name ..');
-    console.log(this.searchForm.value);
+    console.log(this.searchForm);
     // this.publicService.storeClassName(event.toElement.selectedOptions[0].text);
-    this.publicService.storeClassName(this.searchForm.value.classe);
+    this.publicService.storeClassName(this.searchForm.controls.classe.value);
   }
   
     // Click on apply to a school
