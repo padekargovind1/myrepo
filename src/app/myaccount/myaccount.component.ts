@@ -53,7 +53,7 @@ export class MyaccountComponent implements OnInit, OnDestroy {
     this.usersService.getProfile()
       .subscribe((response)=>{
         console.log(response);
-        if(response.data!=400){
+        if(response.code==200){
           this.userData=response.data[0];
         }
       })
