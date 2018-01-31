@@ -16,6 +16,7 @@ import {
     MyAccountBulletin,
     MyAccountSiblingsMdl
 } from '../../model/myaccount.model';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-myaccount-parents',
@@ -38,6 +39,7 @@ export class MyaccountParentsComponent implements OnInit {
     @Output() goToChild = new EventEmitter<boolean>();
     parents: any;
     canDisplay: boolean = false;
+    subscription: Subscription;
 
     constructor(private fb: FormBuilder,
         private usersService: UsersService,
@@ -49,10 +51,11 @@ export class MyaccountParentsComponent implements OnInit {
 
     ngOnInit() {
       this.country = this.publicService.getCountry();
+      console.log(this.userData);
       if (this.authService.getToken() != "") {
         setTimeout(()=>{
           this.getUserData();
-        }, 1000);
+        }, 2000);
       } else {
           // console.log("navigate back");
           this.route.navigate(['/login']);
@@ -81,6 +84,8 @@ export class MyaccountParentsComponent implements OnInit {
                 prenom: parentData[i].firstName,
                 email: parentData[i].email,
                 portable: parentData[i].phoneNumber,
+                job : this.userData.parents[i].profession,
+                horaireJoignable: this.userData.parents[i].availability,
                 adresse: parentData[i].address.address1,
                 codepostal: parentData[i].address.postCode,
                 ville: parentData[i].address.city,
@@ -107,13 +112,15 @@ export class MyaccountParentsComponent implements OnInit {
     // Create parent to add to the form
     createParent() {
         return this.fb.group({
-            lienParent: ['', Validators.required],
-            titre: ['', Validators.required],
-            nom: ['', Validators.required],
-            prenom: ['', Validators.required],
-            email: ['', Validators.compose([CustomValidators.email, Validators.required])],
-            portable: ['', Validators.compose([Validators.maxLength(10), Validators.minLength(10), Validators.required])],
-            adresse: ['', Validators.required],
+            lienParent : ['', Validators.required],
+            titre : ['', Validators.required],
+            nom : ['',Validators.required],
+            prenom : ['', Validators.required],
+            job : ['', Validators.required],
+            email : ['', Validators.compose([CustomValidators.email, Validators.required])],
+            portable : ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
+            horaireJoignable : ['', Validators.required],
+            adresse1: ['', Validators.required],
             codepostal: ['', Validators.compose([Validators.maxLength(5), Validators.minLength(5), Validators.required])],
             ville: ['', Validators.required],
             pays: ['']
@@ -133,33 +140,49 @@ export class MyaccountParentsComponent implements OnInit {
     }
     // Complete the profile to send to the service with the data from API and after click on next to go to child form
     onSubmit() {
+        this.userData.address = {};
         this.userData.parents = [];
-        this.userData.parents.relationship = [];
-            this.userData.parents.firstName = [];
-            this.userData.parents.gender = [];
-            this.userData.parents.phoneNumber = [];
-            this.userData.parents.email = [];
-            this.userData.parents.address = [];
-            this.userData.parents.address.address1 = [];
-            this.userData.parents.address.postCode = [];
-            this.userData.parents.lastName = [];
-            this.userData.parents.address.country = [];
-            this.userData.parents.address.city = [];
+        let parentData = {
+            relationship : '',
+            firstName : '',
+            lastName : '',
+            gender : '',
+            profession: '',
+            phoneNumber : '',
+            email : '',
+            availability: '',
+            address : {
+                address1 : '',
+                postCode : '',
+                country : '',
+                city : '',
+            }
+        };
         console.log("---->",this.parentAccountForm.value);
         console.log("====>",this.parentAccountForm.controls['parents']['controls']);
 
+        this.userData.photo = false;
+        this.userData.age = 25;
+        this.userData.birthDate = new Date(7, 3, 1992);
+        this.userData.favoriteProfessions = [];
+        this.userData.address.address1 = this.parentAccountForm.controls['parents']['controls'][0].controls.adresse1.value;
+        this.userData.address.postCode = this.parentAccountForm.controls['parents']['controls'][0].controls.codepostal.value.toString();
+        this.userData.address.city = this.parentAccountForm.controls['parents']['controls'][0].controls.ville.value;
+
         for (let i = 0; i < this.parentAccountForm.controls['parents']['controls'].length; i++) {
         //    console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)
-            // this.userData.parents.relationship.push(this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value);
-            // this.userData.parents.firstName.push(this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value);
-            // this.userData.parents.lastName.push(this.parentAccountForm.controls['parents']['controls'][i].controls.nom.value);
-            // this.userData.parents.gender.push(this.parentAccountForm.controls['parents']['controls'][i].controls.titre.value);
-            // this.userData.parents.phoneNumber.push(this.parentAccountForm.controls['parents']['controls'][i].controls.portable.value);
-            // this.userData.parents.email.push(this.parentAccountForm.controls['parents']['controls'][i].controls.email.value);
-            // this.userData.parents.address.address1.push(this.parentAccountForm.controls['parents']['controls'][i].controls.adresse.value);
-            // this.userData.parents.address.postCode.push(this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString());
-            // this.userData.parents.address.country.push(this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value);
-            // this.userData.parents.address.city.push(this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value);
+            parentData.relationship = this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value;
+            parentData.firstName = this.parentAccountForm.controls['parents']['controls'][i].controls.prenom.value;
+            parentData.lastName = this.parentAccountForm.controls['parents']['controls'][i].controls.nom.value;
+            parentData.gender = this.parentAccountForm.controls['parents']['controls'][i].controls.titre.value;
+            parentData.profession = this.parentAccountForm.controls['parents']['controls'][i].controls.job.value;
+            parentData.phoneNumber = this.parentAccountForm.controls['parents']['controls'][i].controls.portable.value;
+            parentData.email = this.parentAccountForm.controls['parents']['controls'][i].controls.email.value;
+            parentData.availability = this.parentAccountForm.controls['parents']['controls'][i].controls.horaireJoignable.value;
+            parentData.address.address1 = this.parentAccountForm.controls['parents']['controls'][i].controls.adresse1.value.toString();
+            parentData.address.postCode = this.parentAccountForm.controls['parents']['controls'][i].controls.codepostal.value.toString();
+            parentData.address.country = this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value;
+            parentData.address.city = this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value;
 
             //console.log(this.userData.parents[i]);
             // this.userData.parents[i].relationship = this.parentAccountForm.controls['parents']['controls'][i].controls.lienParent.value;
@@ -173,7 +196,8 @@ export class MyaccountParentsComponent implements OnInit {
             // this.userData.parents[i].address.country = this.parentAccountForm.controls['parents']['controls'][i].controls.pays.value;
             // this.userData.parents[i].address.city = this.parentAccountForm.controls['parents']['controls'][i].controls.ville.value;
         }
-        this.userData =this.parentAccountForm.value;
+        this.userData.parents.push(parentData);
+        // this.userData =this.parentAccountForm.value;
         this.save();
     }
     // Save the data of the user into the service
@@ -198,5 +222,9 @@ export class MyaccountParentsComponent implements OnInit {
             }
             )
 
+    }
+
+    onCheckValid() {
+        console.log(this.parentAccountForm.valid);
     }
 }
