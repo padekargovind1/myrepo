@@ -33,6 +33,7 @@ export class MyaccountMyfilesComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.userData);
     if(this.authService.getToken() != "") { // If user is logged
       setTimeout(()=>{
         this.bindUserData();

@@ -811,7 +811,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
             swal({
               title: 'Ajout à la liste des voeux',
               text: "L'école séléctionné a bien été ajouté à votre liste des voeux",
-              type: 'warning',
+              type: 'success',
               confirmButtonText: "J'ai compris"
               })
           }else {
