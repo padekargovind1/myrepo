@@ -9,24 +9,24 @@
           <div class="row">
             <div class="col-sm-6  col-xs-6">
               <div class="form-group">
-                Nom de famille*
+                Nom de famille<span class="err">*</span>
                 <input type="text" class="form-control" placeholder="Nom"
                   [formControl]="childrenForm.controls['nom']" maxlength="25">
                 <small *ngIf="childrenForm.controls['nom'].hasError('required') &&
                   childrenForm.controls['nom'].touched"
-                  class="mat-text-warn">
+                  class="mat-text-warn err">
                   Nom Obligatoire
                 </small>
               </div>
             </div>
             <div class="col-sm-6  col-xs-6">
               <div class="form-group">
-                Prénom*
+                Prénom<span class="err">*</span>
                 <input type="text" class="form-control" placeholder="Prénom"
                   [formControl]="childrenForm.controls['prenom']" maxlength="25">
-                <small *ngIf="childrenForm.controls['nom'].hasError('required') &&
-                  childrenForm.controls['nom'].touched"
-                  class="mat-text-warn">
+                <small *ngIf="childrenForm.controls['prenom'].hasError('required') &&
+                  childrenForm.controls['prenom'].touched"
+                  class="mat-text-warn err">
                   Prénom Obligatoire
                 </small>
               </div>
@@ -35,20 +35,20 @@
           <div class="row">
             <div class="col-sm-3  col-xs-6">
               <div class="form-group">
-                Age*
+                Age<span class="err">*</span>
                 <input id="txtAge" type="number" class="form-control" max="50" min="1" placeholder="Age"
                   [formControl]="childrenForm.controls['age']"
                   pattern="[0-9]+" maxlength="2">
-                <small *ngIf="childrenForm.controls['nom'].hasError('pattern') &&
-                  childrenForm.controls['nom'].touched"
-                  class="mat-text-warn">
+                <small *ngIf="childrenForm.controls['age'].hasError('pattern') &&
+                  childrenForm.controls['age'].touched"
+                  class="mat-text-warn err">
                   Seulement des chiffres
                 </small>
               </div>
             </div>
             <div class="col-sm-3  genderRadio">&nbsp;</div>
             <div class="col-sm-6  col-xs-6">
-              <p>Sexe*</p>
+              <p>Sexe<span class="err">*</span></p>
               <md-radio-group [formControl]="childrenForm.controls['gender']"
                 style="border-color:white">
                 <md-radio-button value="garçon">Garçon</md-radio-button>
@@ -56,7 +56,7 @@
               </md-radio-group>
               <small *ngIf="childrenForm.controls['gender'].hasError('required') &&
                 childrenForm.controls['gender'].touched"
-                class="mat-text-warn">
+                class="mat-text-warn err">
                 Gender Obligatoire
               </small>
             </div>
@@ -65,17 +65,21 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <div class="datepicker-holder">
-                  Date de naissance*
-                  <!--input type="date" class="form-control" [mdDatepicker]="myDatepicker" [max]="maxDate"-->
-                  <input type="text" class="form-control" 
-                  placeholder="Date de naissance"
-                  [formControl]="childrenForm.controls['datenaissance']">
-                  <md-datepicker #myDatepicker></md-datepicker>
-                  <small *ngIf="childrenForm.controls['datenaissance'].hasError('date') &&
-                    childrenForm.controls['datenaissance'].touched"
-                    class="mat-text-warn">
-                    Date de Naissance invalide
-                  </small>
+                  Date de naissance<span class="err">*</span>
+                  <div class="calendarCont">
+                    <!--input type="date" class="form-control" [mdDatepicker]="myDatepicker" [max]="maxDate"-->
+                    <input type="text" class="form-control" 
+                    placeholder="Date de naissance"
+                    [formControl]="childrenForm.controls['datenaissance']"
+                    [mdDatepicker]="myDatepicker">
+                    <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
+                    <md-datepicker #myDatepicker></md-datepicker>
+                    <small *ngIf="childrenForm.controls['datenaissance'].hasError('date') &&
+                      childrenForm.controls['datenaissance'].touched"
+                      class="mat-text-warn err">
+                      Date de Naissance invalide
+                    </small>
+                  </div>
                 </div>
               </div>
             </div>

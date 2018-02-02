@@ -32,17 +32,19 @@ export class MyaccountMysearchComponent implements OnInit {
   getHistorySearch(){
     this.usersService.getHistory()
       .subscribe(
-        (response) =>{
-          console.log(response)
-          this.historyList = response.data.history;
-          this.pageLimit = response.paginate.limit;
-          this.pageNum = response.paginate.page;
-          // let data = response.data;
-          // if(response.code==400){
-          //   console.log(response.message)
-          // } else {
-          //   this.filterApplications(data)
-          // }
+        (response) => {
+          if (response.data != null) {
+            // console.log(response)
+            this.historyList = response.data.history;
+            this.pageLimit = response.paginate.limit;
+            this.pageNum = response.paginate.page;
+            // let data = response.data;
+            // if(response.code==400){
+            //   console.log(response.message)
+            // } else {
+            //   this.filterApplications(data)
+            // }
+          }
         }
       )
   }
@@ -52,12 +54,14 @@ export class MyaccountMysearchComponent implements OnInit {
     this.usersService.getApplication()
       .subscribe(
         (response) =>{
-          console.log(response)
-          let data = response.data;
-          if(response.code==400){
-            // console.log(response.message)
-          } else {
-            // this.filterApplications(data)
+          if (response.data != null) {
+            // console.log(response);
+            let data = response.data;
+            if(response.code==400){
+              // console.log(response.message)
+            } else {
+              // this.filterApplications(data)
+            }
           }
         }
       )
