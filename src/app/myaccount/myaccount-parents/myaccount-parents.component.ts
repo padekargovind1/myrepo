@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+﻿import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
@@ -23,7 +23,7 @@ import { Subscription } from 'rxjs/Subscription';
     templateUrl: './myaccount-parents.component.html',
     styleUrls: ['./myaccount-parents.component.scss']
 })
-export class MyaccountParentsComponent implements OnInit {
+export class MyaccountParentsComponent implements OnInit, OnChanges {
 
     @Input() userData;
     public parentAccountForm: FormGroup;
@@ -51,23 +51,30 @@ export class MyaccountParentsComponent implements OnInit {
 
     ngOnInit() {
       this.country = this.publicService.getCountry();
-      console.log(this.userData);
-      if (this.authService.getToken() != "") {
+      // console.log(this.userData);
+      if(this.authService.getToken() != "") { // If user is logged
         setTimeout(()=>{
           this.getUserData();
-        }, 2000);
+        }, 1000);
       } else {
-          // console.log("navigate back");
-          this.route.navigate(['/login']);
+        console.log("navigate back");
+        this.route.navigate(['/login']);
       }
+    }
+
+    ngOnChanges() {
+        console.log('onChanges..');
+        console.log(this.userData);
+        // delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
+        // this.patchValue(this.userData); // Patching value from value receive from the API
     }
 
     getUserData() {
       // console.log(this.userData);
-        delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
-        this.buildFormGroup(this.userData.parents); // build form
+        this.buildFormGroup(); // build form
         this.canDisplay = true;
         if (this.userData.parents.length != 0) {
+            delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
             this.patchValue(this.userData); // Patching value from value receive from the API
         }
     }
@@ -96,13 +103,14 @@ export class MyaccountParentsComponent implements OnInit {
     }
 
     // Build the form
-    buildFormGroup(data) {
+    buildFormGroup() {
         this.parentAccountForm = this.fb.group({
             parents: this.fb.array([this.createParent()])
         })
-      console.log(data);
-        if (data.length > 1) {
-            for (let i = 1; i < data.length; i++) {
+      // console.log(data);
+      if (typeof this.userData != 'undefined')
+        if (this.userData.parents.length > 1) {
+            for (let i = 1; i < this.userData.parents.length; i++) {
                 this.parentAccountForm.controls['parents']['controls'].push(this.createParent())
             }
         }
@@ -161,10 +169,18 @@ export class MyaccountParentsComponent implements OnInit {
         console.log("---->",this.parentAccountForm.value);
         console.log("====>",this.parentAccountForm.controls['parents']['controls']);
 
-        this.userData.photo = false;
-        this.userData.age = 25;
-        this.userData.birthDate = new Date(7, 3, 1992);
-        this.userData.favoriteProfessions = [];
+        if (typeof this.userData.age == 'undefined' || this.userData.age == null) {
+          this.userData.age = 20;
+        }
+        if (typeof this.userData.birthDate == 'undefined' || !(this.userData.birthDate instanceof Date)) {
+          this.userData.birthDate = new Date();
+        }
+        if (typeof this.userData.photo == 'undefined' || typeof this.userData.photo != 'boolean') {
+            this.userData.photo = false;
+        }
+        if (typeof this.userData.favoriteProfessions == 'undefined' || !(this.userData.favoriteProfessions instanceof Array)) {
+            this.userData.favoriteProfessions = [];
+        }
         this.userData.address.address1 = this.parentAccountForm.controls['parents']['controls'][0].controls.adresse1.value;
         this.userData.address.postCode = this.parentAccountForm.controls['parents']['controls'][0].controls.codepostal.value.toString();
         this.userData.address.city = this.parentAccountForm.controls['parents']['controls'][0].controls.ville.value;
