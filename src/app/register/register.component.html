@@ -16,7 +16,7 @@
                       <input type="text" id="reg_username" class="username-input" 
                         placeholder="Nom d'utilisateur"
                         [formControl]="registerForm.controls['username']" 
-                        maxlength="25">
+                        maxlength="50">
                       <small 
                         *ngIf="registerForm.controls['username'].hasError('required') && 
                         registerForm.controls['username'].touched" 

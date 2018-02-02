@@ -53,8 +53,8 @@ export class LoginComponent implements OnInit {
         .then(
           data => {
             let response = data;
-            // console.log(response);
-            if (response.code == 400) { // If it's incorrect
+            console.log("login response",response.data.code);
+            if (response.code == 400 || response.data.code == 'USER_NOT_FOUND') { // If it's incorrect
               let msg = response.message;
               this.errorMessage = msg;
               console.log('message: ', this.errorMessage);
@@ -69,7 +69,9 @@ export class LoginComponent implements OnInit {
               console.log(response);
               if((this.bookingService.isForBooking() || this.bookingService.isForFastBooking()) && this.bookingService.haveBookingPackage()){
                 this.router.navigate(['/payment']); // If it's for booking an appointment
+                console.log("If Harish");
               } else {
+                console.log("Else Harish");
                 this.router.navigate(['/']); // else -> navigate to home page
               }
               this.userService.getProfile()
