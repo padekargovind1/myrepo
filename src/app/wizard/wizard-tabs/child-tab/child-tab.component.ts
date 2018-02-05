@@ -43,10 +43,11 @@ export class ChildTabComponent implements OnInit {
   }
   //Patching value from userData
   patchValue() {
-      //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      var monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-	let mydate = new Date(this.userData.birthDate); 
-    let dateToSend = mydate.getDate()+'-'+(monthNames[mydate.getMonth()])+'-'+mydate.getFullYear();
+    //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+	  let mydate = new Date(this.userData.birthDate); 
+    let dateToSend = mydate.getDate()+'/'+(monthNames[mydate.getMonth()])+'/'+mydate.getFullYear();
+    // console.log('birth day: ' + dateToSend, typeof dateToSend);
     this.wizardForm.patchValue({
       childLastName : this.userData.lastName=="A compléter" ? "" :this.userData.lastName,
       childFirstName : this.userData.firstName=="A compléter" ? "" :this.userData.firstName,

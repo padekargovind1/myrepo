@@ -148,6 +148,7 @@ export class MyaccountParentsComponent implements OnInit, OnChanges {
     }
     // Complete the profile to send to the service with the data from API and after click on next to go to child form
     onSubmit() {
+        delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
         this.userData.address = {};
         this.userData.parents = [];
         let parentData = {

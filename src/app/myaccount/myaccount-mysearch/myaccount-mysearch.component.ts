@@ -34,7 +34,8 @@ export class MyaccountMysearchComponent implements OnInit {
       .subscribe(
         (response) => {
           if (response.data != null) {
-            // console.log(response)
+            console.log('Searches');
+            console.log(response);
             this.historyList = response.data.history;
             this.pageLimit = response.paginate.limit;
             this.pageNum = response.paginate.page;
@@ -73,21 +74,18 @@ export class MyaccountMysearchComponent implements OnInit {
     console.log(data);
     // prevent logging the search to history again
     this.publicService.fromSearchHistory = true;
-    const searchData = [
-      data.class[0],
-      data.code[0],
-      data.name
-    ]
+    const searchData = [data.class, data.link, data.school]
     this.publicService.storeSearchSchool(searchData);
-    if (data.code[0] !== '' && data.code.length === 1) {
-      this.router.navigate(['/' + data.code[0]]);
-    }
-    if (data.code[0] !== '' && data.code.length === 2) {
-      this.router.navigate(['/ecole']);
-    }
-    if (data.code[0] !== '' && data.code.length === 4) {
-      this.router.navigate(['/internat']);
-    }
+    this.router.navigate(['/ecole']);
+    // if (data.code[0] !== '' && data.code.length === 1) {
+    //   this.router.navigate(['/' + data.code[0]]);
+    // }
+    // if (data.code[0] !== '' && data.code.length === 2) {
+    //   this.router.navigate(['/ecole']);
+    // }
+    // if (data.code[0] !== '' && data.code.length === 4) {
+    //   this.router.navigate(['/internat']);
+    // }
   }
 
   // Remove search from history

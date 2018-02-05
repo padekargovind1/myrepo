@@ -41,10 +41,12 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   getUserProfile(){
-    console.log(this.userData);
-    delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
     this.buildFormGroup();
-    this.patchValue(this.userData);
+    // console.log(this.userData);
+    if (this.userData.parents.length != 0) {
+      delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
+      this.patchValue(this.userData);
+    }
     this.canDisplay=true;
   }
 
