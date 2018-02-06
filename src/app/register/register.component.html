@@ -20,7 +20,7 @@
                       <small 
                         *ngIf="registerForm.controls['username'].hasError('required') && 
                         registerForm.controls['username'].touched" 
-                        class="mat-text-warn"> 
+                        class="mat-text-warn err" style="position:absolute"> 
                         Nom d'utilisateur obligatoire
                       </small>  
                     </div>
@@ -31,12 +31,12 @@
                         placeholder="Email" [formControl]="registerForm.controls['email']">
                       <small *ngIf="registerForm.controls['email'].hasError('required') && 
                         registerForm.controls['email'].touched" 
-                        class="mat-text-warn"> 
+                        class="mat-text-warn err"> 
                         Email obligatoire
                       </small>
                       <small *ngIf="registerForm.controls['email'].errors?.email && 
                         registerForm.controls['email'].touched" 
-                        class="mat-text-warn"> 
+                        class="mat-text-warn err"> 
                         Email invalide
                       </small>
                     </div>
@@ -44,13 +44,16 @@
                   <div class="col-md-6 col-sm-6">
                     <div class="input">
                       <input type="password" id="reg_password" class="password-input" 
-                        placeholder="Mot de passe"
+                        placeholder="Mot de passe" (blur)="validatePassword($event)"
                         [formControl]="registerForm.controls['password']">
                       <small 
                         *ngIf="registerForm.controls['password'].hasError('required') && 
                         registerForm.controls['password'].touched" 
-                        class="mat-text-warn"> 
-                        Mot de passe obligatoire
+                        class="mat-text-warn err"> 
+                        Mot de passe obligatoire.
+                      </small>
+                      <small *ngIf="errorFlag" class='err'>
+                        {{cutomeErrorMessage}}
                       </small>
                     </div>
                   </div><!-- end password -->
@@ -62,7 +65,7 @@
                       <small 
                         *ngIf="registerForm.controls['repeated'].errors?.equalTo && 
                         registerForm.controls['repeated'].touched" 
-                        class="mat-text-warn"> 
+                        class="mat-text-warn err"> 
                         Mot de passe différent
                       </small>
                     </div>
@@ -70,8 +73,8 @@
                   <div class="col-md-12">
                     <div class="input userType_radio"> 
                       <md-radio-group [formControl]="registerForm.controls['userType']">
-                      <md-radio-button value="Parent">Parent</md-radio-button>
-                      <md-radio-button value="Etudiant">Elève</md-radio-button>
+                      <md-radio-button value="Parent">Parent<span class="err">*</span></md-radio-button>
+                      <md-radio-button value="Etudiant">Elève<span class="err">*</span></md-radio-button>
                       <!--md-radio-button value="Enfant">Enfant</md-radio-button-->
                       </md-radio-group>
                       <small 
@@ -91,7 +94,7 @@
                     </div>
                     <div>
                       <div class="forgot pull-right">
-                        <a (click)="alreadyAccount()" class="new-user">
+                        <a (click)="alreadyAccount()" class="new-user" style="color:#337ab7 !important">
                           Déjà inscrit? Je me connecte.
                         </a>
                       </div>

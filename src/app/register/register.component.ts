@@ -15,6 +15,12 @@ import swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
 
   public registerForm : FormGroup;
+  public cutomeErrorMessage : any;
+  public errorFlag = false;
+  public digitFlag = false;
+  public lowerFlag = false;
+  public upperFlag = false;
+
   errorMessage: string='';
 
   constructor(private fb: FormBuilder,
@@ -42,6 +48,55 @@ export class RegisterComponent implements OnInit {
       password: password,
       repeated: repeated
     })
+  }
+
+  validatePassword(event){
+    var passwordValue = event.target.value
+    console.log(event.target.value,passwordValue.length);
+    if(passwordValue.length < 5)
+    {
+      this.errorFlag = true;
+      this.cutomeErrorMessage = "Password sholud be 5 characters.";
+    }
+    else{
+      this.errorFlag = false;
+      this.cutomeErrorMessage = "";
+    }
+    passwordValue = passwordValue.split("");
+    passwordValue.forEach(c => {
+      if(/[a-z]/.test(c)){
+        console.log("lower");
+        this.lowerFlag = true;
+      }
+      
+      if(/[A-Z]/.test(c)) {
+        console.log("upper"); 
+        this.upperFlag = true
+      }
+
+      if(/[0-9]/.test(c)) {
+        console.log("number"); 
+        this.digitFlag = true;
+      }
+
+    });
+
+    if(this.lowerFlag == false)
+    {
+    this.errorFlag = true;
+    this.cutomeErrorMessage = this.cutomeErrorMessage + ' Must have one small alphabate.';
+    }
+    if(this.upperFlag == false)
+    {
+      this.errorFlag = true;
+      this.cutomeErrorMessage = this.cutomeErrorMessage + ' Must have one capital alphabate.';
+    }
+    if(this.upperFlag == false)
+    {
+    this.errorFlag = true;  
+    this.cutomeErrorMessage = this.cutomeErrorMessage + ' Must have one digit/number.';
+    }
+    console.log(this.cutomeErrorMessage);
   }
 
   // Send data to API to create new account
@@ -99,6 +154,14 @@ export class RegisterComponent implements OnInit {
             }
           }
         )
+    }
+    else{
+      swal({
+        title: 'Please fill all the details',
+        text: "",
+        type: 'success',
+        confirmButtonText: 'Ok'
+      })
     }
   }
 
