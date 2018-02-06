@@ -136,12 +136,12 @@
                       <input type="text" class="form-control" placeholder="Code Postal" [min]="5"
                         formControlName="codepostal"
                         pattern="[0-9 ]+" maxlength="5" minlength="5"/>
-                      <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('maxLength') &&
+                      <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('maxlength') &&
                         parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched"
                         class="mat-text-warn err">
                         Code Postal Invalide (Max 5)
                       </small>
-                      <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('min') &&
+                      <small *ngIf="parentAccountForm.controls['parents']['controls'][i].controls.codepostal.hasError('minlength') &&
                         parentAccountForm.controls['parents']['controls'][i].controls.codepostal.touched"
                         class="mat-text-warn err">
                         Code Postal Invalide (MIN 5)
@@ -210,7 +210,7 @@
                 </div>
               </div>
       
-              <!-- <div class="form-group clearfix">
+              <div class="form-group clearfix">
                 <button class="btn  btn-danger margin-0 pull-right" (click)="onRemoveParent(i)" *ngIf="parentAccountForm.controls['parents']['controls'].length==2">
                 Retirer un parent
               </button>
@@ -220,7 +220,7 @@
                 <button class="btn  btn-appointment margin-0 pull-right" (click)="onAddParent()" *ngIf="parentAccountForm.controls['parents']['controls'].length==1">
                   <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
                 </button>
-              </div> -->
+              </div>
       
             </section>
           </div>
@@ -231,10 +231,10 @@
       </div>
       <div class="row">
         <div class="form-group clearfix" style="margin-left:10px">
-          <button class="btn  btn-appointment parentButton" (click)="onAddParent()"
+          <!-- <button class="btn  btn-appointment parentButton" (click)="onAddParent()"
             *ngIf="parentAccountForm.controls['parents']['controls'].length==1">
             <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un parent
-          </button>
+          </button> -->
           <button class="btn btn-appointment parentButton" type="submit" (click)="onSubmit()" style="float:right" [disabled]="!parentAccountForm.valid">Passer à l'élève</button>
         </div>
 

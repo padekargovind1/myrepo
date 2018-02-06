@@ -411,8 +411,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
     if (!this.publicService.searchFromHistory()) {
       this.logSearch({'category': 'searches', 'details': {
         class: this.searchFilter[0],
-        place: this.searchFilter[1],
-        name: this.searchFilter[2]
+        link: this.searchFilter[1],
+        school: this.searchFilter[2]
       }}); // store the search to the service
     }
     this.publicService.fromSearchHistory = false;
@@ -433,9 +433,9 @@ export class SchoolComponent implements OnInit, OnDestroy {
   
   logSearch(data){
     // console.log(data)
-    if (data.details.class !== '' && data.details.place !== '' && data.details.name !== '') {
+    // if (data.details.class !== '' && data.details.place !== '') {
       this.usersService.postToHistory(data).subscribe();
-    }
+    // }
   }
 
   // postFastSearch(data){

@@ -41,10 +41,12 @@ export class MyaccountChildrenComponent implements OnInit {
   }
 
   getUserProfile(){
-    console.log(this.userData);
-    delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
     this.buildFormGroup();
-    this.patchValue(this.userData);
+    // console.log(this.userData);
+    if (this.userData.parents.length != 0) {
+      delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
+      this.patchValue(this.userData);
+    }
     this.canDisplay=true;
   }
 
@@ -55,8 +57,8 @@ export class MyaccountChildrenComponent implements OnInit {
       prenom : ['', Validators.required],
       age : [''],
       gender : ['', Validators.required],
-      //datenaissance : ['', Validators.compose([Validators.required, CustomValidators.date])],
-      datenaissance : ['', Validators.required],
+      datenaissance : ['', Validators.compose([Validators.required, CustomValidators.date])],
+      // datenaissance : ['', Validators.required],
       lieu : ['', Validators.required],
     })
     console.log(this.childrenForm)
@@ -77,8 +79,8 @@ export class MyaccountChildrenComponent implements OnInit {
   patchValue(data: any){
     console.log(data.birthDate);
     //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    var monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-	let mydate = new Date(data.birthDate);
+    const monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+	  let mydate = new Date(data.birthDate);
     // console.log(date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear())
     let dateToSend = mydate.getDate()+'-'+(monthNames[mydate.getMonth()])+'-'+mydate.getFullYear();
     //var ddd = mydate.getUTCDate()+'/'+(mydate.getUTCMonth() + 1)+'/2007';
@@ -88,7 +90,7 @@ export class MyaccountChildrenComponent implements OnInit {
       prenom : data.firstName=='A compléter' ? '' : data.firstName,
       age : data.age,
       gender : data.gender,
-      datenaissance : dateToSend,
+      datenaissance : typeof data.birthDate == 'undefined' ? '' : dateToSend,
       lieu : data.birthPlace,
     })
     console.log(new Date(data.birthDate), this.childrenForm.value)
@@ -132,18 +134,21 @@ export class MyaccountChildrenComponent implements OnInit {
   // Complete the profile to send to the API
 
   onSubmit(){
+    if (typeof this.userData.photo == 'undefined') this.userData.photo = false;
+    if (typeof this.userData.favoriteProfessions == 'undefined') this.userData.favoriteProfession = [];
     this.userData.lastName = this.childrenForm.value.nom;
     this.userData.firstName = this.childrenForm.value.prenom;
     this.userData.age = this.childrenForm.value.age;
     this.userData.gender = this.childrenForm.value.gender;
-    this.userData.birthDate = this.formatDate(this.childrenForm.controls.datenaissance.value);
+    this.userData.birthDate = this.formatDate(this.childrenForm.controls.datenaissance.value.toString());
     this.userData.birthPlace = this.childrenForm.controls.lieu.value;
     console.log(this.userData);
     this.save();
   }
 
   formatDate(date) {
-      var date_arr = date.split("-");
+    console.log(date);
+      const date_arr = date.split("-");
       if (date != "" && date_arr.length >= 3) {
           return (date_arr[1] + "-" + date_arr[0] + "-" + date_arr[2])
       }
