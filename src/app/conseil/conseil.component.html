@@ -1,6 +1,6 @@
 ﻿<div class="container-fluid  conseil-centering conseilDataPage">
 
-  <h2 class="title-page">Une équipe et des outils au service de l'orientation. <br />
+  <h2 class="title-page">{{ 'TeamTollsOrientation' | translate }}<br />
     <span>
       <i class="fa fa-phone" _ngcontent-c1="" ng-reflect-class-base="fa fa-facebook-square"></i>
       +33 01 53 10 33 20
@@ -20,29 +20,28 @@
          <div class="imgBackground" style="background-image:url(assets/images/conseil/image-1.jpg);"><img src="assets/images/conseil/image-1.jpg" class="img-responsive" alt="Entretien Conseils Pour Choisir Son Ecole" /></div>
       </div>
 
-    <div class="conseilTitleOuter"><div class="conseilTitleCont color-1"><h3 class="conseil-title  color-1  overload">ENTRETIEN CONSEILS <br>POUR CHOISIR SON ÉCOLE</h3></div></div>
+    <div class="conseilTitleOuter"><div class="conseilTitleCont color-1"><h3 class="conseil-title  color-1  overload">{{ 'InterviewAdviseSchool' | translate }}</h3></div></div>
 
       <div class="conseil-content">
-          <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />1 heure</div>
-          <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />Tout Public</div>
+          <div class="conseil-info" style="height:50px"><span class="conseil-label">{{ 'Duration' | translate }}</span><br />{{ '1houre' | translate }}</div>
+          <div class="conseil-info" style="height:39px"><span class="conseil-label">{{ 'Audience' | translate }}</span><br />{{ 'AnyAudience' | translate }}</div>
 
           <div class="conseil-price">80<sup>€</sup></div>
 
           <!--a (click)="openInfoDialog(1)" class="btn  btn-conseil  btn-block  color-1"-->
           <a class="btn  btn-conseil  btn-block  color-1">
-            En savoir plus
+            {{ 'LearnMore' | translate }}
           </a>
 
           <a (click)="navigateToBooking('1', 'Entretien Conseil', 'Pour choisir son école', '0')"
             class="btn  btn-conseil  btn-block  color-1">
-            Prendre rendez-vous
+            {{ 'MakeAppointment' | translate }}
           </a>
       </div>
 		<div class="customPopUp" id="customPopUp_1">
 			<div class="popData" style="text-align: justify;">
-				<h4>ENTRETIEN CONSEIL</h4>
-				POUR CHOISIR SON ÉCOLE
-				Pour une information personnalisée et des conseils pratiques les conseillers du CIDE aident les jeunes et les familles dans le choix des établissements privés les plus adaptés à leur profil (collège, lycée, BTS, prépas et enseignement supérieur de bac+1 à bac+5, formation initiale ou alternance
+				<h4>{{ 'AdviseInterview' | translate }}</h4>
+				{{ 'ForChooseSchool' | translate }}
 			</div>
 			<a href="javascript:void(0);" class="customClosePopUp">X</a>
 		</div>
@@ -56,32 +55,26 @@
         </div>
 
     <div class="conseilTitleOuter"><div class="conseilTitleCont color-2">
-      <h3 class="conseil-title  color-2  overload">ORIENTATION COLLÈGE <br>QUE FAIRE APRÈS UNE CLASSE DE TROISIÈME ?</h3></div></div>
+      <h3 class="conseil-title  color-2  overload">{{ 'OrientationAfter9th' | translate }}</h3></div></div>
 
       <div class="conseil-content">
-        <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />2 heures</div>
-        <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />Élève de 3ème</div>
+        <div class="conseil-info" style="height:50px"><span class="conseil-label">{{ 'Duration' | translate }}</span><br />{{ '2Houres' | translate }}</div>
+        <div class="conseil-info" style="height:39px"><span class="conseil-label">{{ 'Audience' | translate }}</span><br />{{ '9thGradeStudent' | translate }}</div>
 
         <div class="conseil-price">160<sup>€</sup></div>
 
         <a (click)="openInfoDialog(2)" class="btn  btn-conseil  btn-block  color-2">
-          En savoir plus
+          {{ 'LearnMore' | translate }}
         </a>
 
         <a (click)="navigateToBooking('2', 'Orientation Collège', 'Que faire après une classe de troisième', '1')"
-           class="btn  btn-conseil  btn-block  color-2">Prendre rendez-vous</a>
+           class="btn  btn-conseil  btn-block  color-2">{{ 'MakeAppointment' | translate }}</a>
       </div>
 		<div class="customPopUp" id="customPopUp_2">
 			<div class="popData" style="text-align: justify;">
-				<h4>ORIENTATION COLLÈGE</h4>
+				<h4>{{ 'SecondarySchoolOrientation' | translate }}</h4>
 
-				QUE FAIRE APRÈS UNE CLASSE DE TROISIÈME ?
-				Cet entretien ainsi que le test proposé permettent de définir une filière de baccalauréat, faire le choix d'une voie professionnelle, par une approche active autour de questionnaires d'intérêts.
-				Il s'agit de questionnaires d'investigation des intérêts conçus à partir du modèle de Holland.
-				Ils sont particulièrement adaptés dans le cadre d'un bilan d'orientation ou réorientation, évaluation des intérêts, choix de métier.
-				Ce test permet d'identifier des intérêts professionnels, voire de signaler une absence de maturation du projet.
-				Une synthèse des intérêts professionnels est délivrée en fin d'entretien.
-				L'élève peut visualiser la force de ses intérêts pour chaque type ainsi que les cohérences et incohérences inter domaines.
+				{{ 'After9th' | translate }}
 			</div>
 			<a href="javascript:void(0);" class="customClosePopUp">X</a>
 		</div>
@@ -95,11 +88,11 @@
         </div>
 
     <div class="conseilTitleOuter"><div class="conseilTitleCont color-3">
-      <h3 class="conseil-title  color-3 overload">ORIENTATION LYCÉE ET ENSEIGNEMENT SUPÉRIEUR</h3></div></div>
+      <h3 class="conseil-title  color-3 overload">{{ 'OrientationHighSchoolCollege' | translate }}</h3></div></div>
 
       <div class="conseil-content">
-        <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />De 3 à 4 heures</div>
-        <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />De la 2nde à bac+2/3</div>
+        <div class="conseil-info" style="height:50px"><span class="conseil-label">{{ 'Duration' | translate }}</span><br />{{ '3To4Houres' | translate }}</div>
+        <div class="conseil-info" style="height:39px"><span class="conseil-label">{{ 'Audience' | translate }}</span><br />{{ '10thGradeToBac' | translate }}</div>
 
         <div class="conseil-price">350<sup>€</sup></div>
 
@@ -112,10 +105,8 @@
       </div>
 		<div class="customPopUp" id="customPopUp_3">
 			<div class="popData" style="text-align: justify;">
-				<h4>ORIENTATION</h4>
-				LYCÉE ET ENSEIGNEMENT SUPÉRIEUR
-				Il s'agit d'un programme d'aide à l'élaboration de projet d'études et professionnel. Les entretiens et questionnaires dont HEXA 3 D® ou les tests d’intérêts professionnels permettent au jeune d'exprimer ses goûts et ses centres d'intérêt par une approche de ses motivations. La présentation de profils de candidats, classés par centre d'intérêts sert de support au conseiller pour conduire l'entretien avec le jeune.
-				Son interprétation apporte des réponses individualisées et concrètes sur les filières, les métiers, les secteurs professionnels adaptés et contribue à construire une passerelle entre le projet professionnel, la réalité des études et la réussite.
+				<h4>{{ 'Orientation' | translate }}</h4>
+				{{ 'HighSchoolCollege' | translate }}
 			</div>
 			<a href="javascript:void(0);" class="customClosePopUp">X</a>
 		</div>
@@ -129,30 +120,25 @@
 
         </div>
     <div class="conseilTitleOuter"><div class="conseilTitleCont color-4">
-      <h3 class="conseil-title  color-4  overload">ENTRETIEN CONSEILS ACCOMPAGNEMENT ORIENTATION POST BAC</h3></div></div>
+      <h3 class="conseil-title  color-4  overload">{{ 'AppointmentPostBac' | translate }}</h3></div></div>
 
       <div class="conseil-content">
-        <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />Entretiens individuels de 2 heures</div>
-        <div class="conseil-info" style="height:39px"><span class="conseil-label">Public :</span><br />Lycéens</div>
+        <div class="conseil-info" style="height:50px"><span class="conseil-label">{{ 'Duration' | translate }}</span><br />{{ '2HouresIndividualInterview' | translate }}</div>
+        <div class="conseil-info" style="height:39px"><span class="conseil-label">{{ 'Audience' | translate }}</span><br />{{ 'HighSchoolStudents' | translate }}</div>
 
         <div class="conseil-price">250<sup>€</sup></div>
 
         <a (click)="openInfoDialog(4)" class="btn  btn-conseil  btn-block  color-4">
-          En savoir plus
+          {{ 'LearnMore' | translate }}
         </a>
 
         <a (click)="navigateToBooking('2', 'Entretien Conseils', 'Accompagnement orientation post-bac', '3')"
-           class="btn  btn-conseil  btn-block  color-4">Prendre rendez-vous</a>
+           class="btn  btn-conseil  btn-block  color-4">{{ 'MakeAppointment' | translate }}</a>
       </div>
 		<div class="customPopUp" id="customPopUp_4">
 			<div class="popData" style="text-align: justify;">
-				<h4>ENTRETIEN CONSEILS</h4>
-				ACCOMPAGNEMENT ORIENTATION POST BAC
-				Pour décrypter les parcours possibles et choisir sa voie dans l’enseignement supérieur, les conseillers du CIDE proposent un accompagnement personnalisé aux lycéens ayant une idée précise de leur projet professionnel.
-				Les entretiens permettent d’identifier le projet du Lycéen et de
-				présenter filières, formations et débouchés professionnels afin de construire un parcours d’études supérieures cohérent.
-				Outre les conseils pratiques, l’objectif est de permettre aux lycéens de se projeter afin de faire des choix raisonnés et éclairés.
-				Si le lycéen est indécis sur sa poursuite d’études, un bilan d’orientation sera recommandé au préalable.
+				<h4>{{ 'AdviseInterview' | translate }}</h4>
+				{{ 'PostBacSpeech' | translate }}
 			</div>
 			<a href="javascript:void(0);" class="customClosePopUp">X</a>
 		</div>
@@ -167,26 +153,26 @@
         </div>
 
    <div class="conseilTitleOuter"> <div class="conseilTitleCont color-5">
-      <h3 class="conseil-title  color-5  overload">BILAN <br>PSYCHOPEDAGOGIQUE</h3></div></div>
+      <h3 class="conseil-title  color-5  overload">{{ 'PsychoeducationalBilan' | translate }}</h3></div></div>
 
       <div class="conseil-content">
-        <div class="conseil-info" style="height:50px"><span class="conseil-label">Durée :</span><br />2 demi-journées + 1 heure d'entretien de restitution</div>
+        <div class="conseil-info" style="height:50px"><span class="conseil-label">{{ 'Duration' | translate }}</span><br />{{ '2HalfDay' | translate }}</div>
         <div class="conseil-info" style="height:39px">
-          <span class="conseil-label">Public :</span><br />Tout Public
+          <span class="conseil-label">{{ 'Audience' | translate }}</span><br />{{ 'AnyAudience' | translate }}
         </div>
 
         <div class="conseil-price">590<sup>€</sup></div>
 
         <a (click)="openInfoDialog(5)" class="btn  btn-conseil  btn-block  color-5">
-          En savoir plus
+          {{ 'LearnMore' | translate }}
         </a>
 
         <a (click)="navigateToBooking('2 demi-journées + 1 heure', 'Bilan', 'Psychopédagogique', '4')"
-           class="btn  btn-conseil  btn-block  color-5">Prendre rendez-vous</a>
+           class="btn  btn-conseil  btn-block  color-5">{{ 'MakeAppointment' | translate }}</a>
       </div>
 		<div class="customPopUp" id="customPopUp_5">
 			<div class="popData" style="text-align: justify;">
-				<h4>BILAN</h4>
+				<h4>{{ 'Bilan' | translate }}</h4>
 
 				PSYCHOPEDAGOGIQUE COMPLET
 
@@ -226,21 +212,19 @@
       <div class="panel">
           <div class="panel-heading  color-1" role="tab" id="headingOne">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <h3 class="panel-title">ENTRETIEN CONSEILS <br>POUR CHOISIR SON ÉCOLE</h3>
-                  <p class="panel_icon"><i class="fa fa-clock-o"></i> 1 heure</p>
-                  <p><i class="fa fa-users"></i> Tout Public</p>
+                  <h3 class="panel-title">{{ 'InterviewAdviseSchool' | translate }}</h3>
+                  <p class="panel_icon"><i class="fa fa-clock-o"></i> {{ '1Houre' | translate }}</p>
+                  <p><i class="fa fa-users"></i>{{ 'AnyAudience' | translate }}</p>
               </a>
           </div>
           <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
-                  <h4>ENTRETIEN CONSEIL</h4>
-                  POUR CHOISIR SON ÉCOLE
-                  Pour une information personnalisée et des conseils pratiques les conseillers du CIDE aident les jeunes et les familles dans le choix des établissements privés les plus adaptés à leur profil (collège, lycée, BTS, prépas et enseignement supérieur de bac+1 à bac+5, formation initiale ou alternance
-
+                  <h4>{{ 'InterviewAdviseSchool' | translate }}</h4>
+                  {{ 'ForChooseSchool' | translate }} 
                   <div class="conseil-price">80<sup>€</sup></div>
 
                   <a (click)="navigateToBooking('1', 'Entretien Conseil', 'Pour choisir son école', '0')"
-                    class="btn  btn-conseil  btn-block  color-1">Prendre rendez-vous</a>
+                    class="btn  btn-conseil  btn-block  color-1">{{ 'MakeAppointment' | translate }}</a>
               </div>
           </div>
       </div><!-- .panel -->
@@ -250,27 +234,21 @@
       <div class="panel">
           <div class="panel-heading  color-2" role="tab" id="headingTwo">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  <h3 class="panel-title">ORIENTATION COLLÈGE <br>QUE FAIRE APRÈS UNE CLASSE DE TROISIÈME ?</h3>
-                  <p class="panel_icons"><i class="fa fa-clock-o"></i> 2 heures</p>
-                  <p><i class="fa fa-users"></i> Élève de 3ème</p>
+                  <h3 class="panel-title">{{ 'OrientationAfter9th' | translate }}</h3>
+                  <p class="panel_icons"><i class="fa fa-clock-o"></i> {{ '2Houres' | translate }}</p>
+                  <p><i class="fa fa-users"></i> {{ '9thGradeStudent' | translate }}</p>
               </a>
           </div>
           <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body">
-                  <h4>ORIENTATION COLLÈGE</h4>
+                  <h4>{{ 'SecondarySchoolOrientation' | translate }}</h4>
 
-                  QUE FAIRE APRÈS UNE CLASSE DE TROISIÈME ?
-                  Cet entretien ainsi que le test proposé permettent de définir une filière de baccalauréat, faire le choix d'une voie professionnelle, par une approche active autour de questionnaires d'intérêts.
-                  Il s'agit de questionnaires d'investigation des intérêts conçus à partir du modèle de Holland.
-                  Ils sont particulièrement adaptés dans le cadre d'un bilan d'orientation ou réorientation, évaluation des intérêts, choix de métier.
-                  Ce test permet d'identifier des intérêts professionnels, voire de signaler une absence de maturation du projet.
-                  Une synthèse des intérêts professionnels est délivrée en fin d'entretien.
-                  L'élève peut visualiser la force de ses intérêts pour chaque type ainsi que les cohérences et incohérences inter domaines.
+                  {{ 'After9th' | translate }}
 
                   <div class="conseil-price">160<sup>€</sup></div>
 
                   <a (click)="navigateToBooking('2', 'Orientation Collège', 'Que faire après une classe de troisième', '1')"
-                    class="btn  btn-conseil  btn-block  color-2">Prendre rendez-vous</a>
+                    class="btn  btn-conseil  btn-block  color-2">{{ 'MakeAppointment' | translate }}</a>
               </div>
           </div>
       </div><!-- .panel -->
@@ -280,22 +258,20 @@
       <div class="panel">
           <div class="panel-heading  color-3" role="tab" id="headingThree">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                  <h3 class="panel-title">ORIENTATION LYCÉE ET ENSEIGNEMENT SUPÉRIEUR</h3>
-                  <p class="panel_iconss"><i class="fa fa-clock-o"></i> De 3 a 4 heures</p>
-                  <p><i class="fa fa-users"></i> De la 2nde a bac+2/3</p>
+                  <h3 class="panel-title">{{ 'OrientationHighSchoolCollege' | translate }}</h3>
+                  <p class="panel_iconss"><i class="fa fa-clock-o"></i> {{ '3To4Houres' | translate }}</p>
+                  <p><i class="fa fa-users"></i> {{ '10thGradeToBac+3' | translate }}</p>
               </a>
           </div>
           <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
-                  <h4>ORIENTATION</h4>
-                  LYCÉE ET ENSEIGNEMENT SUPÉRIEUR
-                  Il s'agit d'un programme d'aide à l'élaboration de projet d'études et professionnel. Les entretiens et questionnaires dont HEXA 3 D® ou les tests d’intérêts professionnels permettent au jeune d'exprimer ses goûts et ses centres d'intérêt par une approche de ses motivations. La présentation de profils de candidats, classés par centre d'intérêts sert de support au conseiller pour conduire l'entretien avec le jeune.
-                  Son interprétation apporte des réponses individualisées et concrètes sur les filières, les métiers, les secteurs professionnels adaptés et contribue à construire une passerelle entre le projet professionnel, la réalité des études et la réussite.
+                  <h4>{{ 'Orientation' | translate }}</h4>
+                  {{ 'HighSchoolCollege' | translate }}
 
                   <div class="conseil-price">350<sup>€</sup></div>
 
                   <a (click)="navigateToBooking('3', 'Orientation', 'Lycée et Enseignement Supérieur', '2')"
-                    class="btn  btn-conseil  btn-block  color-3">Prendre rendez-vous</a>
+                    class="btn  btn-conseil  btn-block  color-3">{{ 'MakeAppointment' | translate }}</a>
               </div>
           </div>
       </div><!-- .panel -->
@@ -305,25 +281,19 @@
       <div class="panel">
           <div class="panel-heading  color-4" role="tab" id="headingFour">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                  <h3 class="panel-title">ENTRETIEN CONSEILS ACCOMPAGNEMENT ORIENTATION POST BAC</h3>
-                  <p><i class="fa fa-clock-o"></i> entretiens individuels de 2 heures</p>
-                  <p><i class="fa fa-users"></i> lyceens</p>
+                  <h3 class="panel-title">{{ 'AppointmentPostBac' | translate }}</h3>
+                  <p><i class="fa fa-clock-o"></i> {{ '2HouresIndividualInterview' | translate }}</p>
+                  <p><i class="fa fa-users"></i> {{ 'HighSchoolStudents' | translate }}</p>
               </a>
           </div>
           <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
               <div class="panel-body">
-                  <h4>ENTRETIEN CONSEILS</h4>
-                  ACCOMPAGNEMENT ORIENTATION POST BAC
-                  Pour décrypter les parcours possibles et choisir sa voie dans l’enseignement supérieur, les conseillers du CIDE proposent un accompagnement personnalisé aux lycéens ayant une idée précise de leur projet professionnel.
-                  Les entretiens permettent d’identifier le projet du Lycéen et de
-                  présenter filières, formations et débouchés professionnels afin de construire un parcours d’études supérieures cohérent.
-                  Outre les conseils pratiques, l’objectif est de permettre aux lycéens de se projeter afin de faire des choix raisonnés et éclairés.
-                  Si le lycéen est indécis sur sa poursuite d’études, un bilan d’orientation sera recommandé au préalable.
+                  {{ 'AppointmentPostBac' | translate }}
 
                   <div class="conseil-price">250<sup>€</sup></div>
 
                   <a (click)="navigateToBooking('2', 'Entretien Conseils', 'Accompagnement orientation post-bac', '3')"
-                    class="btn  btn-conseil  btn-block  color-4">Prendre rendez-vous</a>
+                    class="btn  btn-conseil  btn-block  color-4">{{ 'MakeAppointment' | translate }}</a>
               </div>
           </div>
       </div><!-- .panel -->
@@ -334,14 +304,14 @@
           <div class="panel-heading  color-5" role="tab" id="headingFive">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                   <h3 class="panel-title">
-                      BILAN PSYCHOPEDAGOGIQUE COMPLET
+                      {{ '2HalfDay' | translate }}PsychoeducationalBilan
                   </h3>
-                  <p><i class="fa fa-clock-o"></i> 2 demi journées + 1 heure d'entretien de restitution</p>
+                  <p><i class="fa fa-clock-o"></i> {{ '2HalfDay' | translate }}</p>
               </a>
           </div>
           <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
               <div class="panel-body">
-                  <h4>BILAN</h4>
+                  <h4>{{ 'Bilan' | translate }}</h4>
 
                   PSYCHOPEDAGOGIQUE COMPLET
 
@@ -373,7 +343,7 @@
                   <div class="conseil-price">590<sup>€</sup></div>
 
                   <a (click)="navigateToBooking('2 demi-journées + 1 heure', 'Bilan', 'Psychopédagogique', '4')"
-                    class="btn  btn-conseil  btn-block  color-5">Prendre rendez-vous</a>
+                    class="btn  btn-conseil  btn-block  color-5">{{ 'MakeAppointment' | translate }}</a>
               </div>
           </div>
       </div><!-- .panel -->

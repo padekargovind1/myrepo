@@ -4,18 +4,18 @@
       <div class="col-lg-12">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
-            <h5>Calendrier des Evènements</h5>
+            <h5>{{ 'EventCalendar' | translate }}</h5>
           </div>
           <div class="ibox-content">
             <!-- <div id="calendar"></div> -->
           </div>
           <div class="calendar-wrap" *ngIf="events.length!=0; else noEvent">
-            <h4>Calendrier</h4>
+            <h4>{{ 'Calendar' | translate }}</h4>
             <div id="calendar-detail-school"></div>
           </div>
           <ng-template #noEvent>
             <h2 style="text-align:center">
-              Il y a aucun événement de prévu
+              {{ 'NoEvent' | translate }}
             </h2>
           </ng-template>
         </div>

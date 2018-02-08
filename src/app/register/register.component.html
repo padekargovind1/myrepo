@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
 
-            <h2 class="brochure-title">Pour bénéficier de ce service, vous devez vous inscrire ou vous connecter si vous êtes déjà inscrit, merci</h2>
+            <h2 class="brochure-title">{{ 'YouMustBeConnect' | translate }}</h2>
             <div class="login-form register">
               <form [formGroup]="registerForm"  (ngSubmit)="save()" 
                 id="register-form">
@@ -21,7 +21,7 @@
                         *ngIf="registerForm.controls['username'].hasError('required') && 
                         registerForm.controls['username'].touched" 
                         class="mat-text-warn"> 
-                        Nom d'utilisateur obligatoire
+                        {{ 'UserNameRequired' | translate }}
                       </small>  
                     </div>
                   </div><!-- end username -->
@@ -32,12 +32,12 @@
                       <small *ngIf="registerForm.controls['email'].hasError('required') && 
                         registerForm.controls['email'].touched" 
                         class="mat-text-warn"> 
-                        Email obligatoire
+                        {{ 'EmailRequired' | translate }}
                       </small>
                       <small *ngIf="registerForm.controls['email'].errors?.email && 
                         registerForm.controls['email'].touched" 
                         class="mat-text-warn"> 
-                        Email invalide
+                        {{ 'InvalidEmail' | translate }}
                       </small>
                     </div>
                   </div><!-- end email -->
@@ -50,7 +50,7 @@
                         *ngIf="registerForm.controls['password'].hasError('required') && 
                         registerForm.controls['password'].touched" 
                         class="mat-text-warn"> 
-                        Mot de passe obligatoire
+                        {{ 'PasswordRequired' | translate }}
                       </small>
                     </div>
                   </div><!-- end password -->
@@ -63,22 +63,22 @@
                         *ngIf="registerForm.controls['repeated'].errors?.equalTo && 
                         registerForm.controls['repeated'].touched" 
                         class="mat-text-warn"> 
-                        Mot de passe différent
+                        {{ 'DifferentPassword' | translate }}
                       </small>
                     </div>
                   </div><!-- end confirm password -->
                   <div class="col-md-12">
                     <div class="input userType_radio"> 
                       <md-radio-group [formControl]="registerForm.controls['userType']">
-                      <md-radio-button value="Parent">Parent</md-radio-button>
-                      <md-radio-button value="Etudiant">Elève</md-radio-button>
+                      <md-radio-button value="Parent">{{ 'Parent' | translate }}</md-radio-button>
+                      <md-radio-button value="Etudiant">{{ 'Student' | translate }}</md-radio-button>
                       <!--md-radio-button value="Enfant">Enfant</md-radio-button-->
                       </md-radio-group>
                       <small 
                       *ngIf="registerForm.controls['userType'].errors?.equalTo && 
                       registerForm.controls['userType'].touched" 
                       class="mat-text-warn"> 
-                      Mot de passe différent
+                      {{ 'DifferentPassword' | translate }}
                       </small>
                     </div>
                   </div>
@@ -92,7 +92,7 @@
                     <div>
                       <div class="forgot pull-right">
                         <a (click)="alreadyAccount()" class="new-user">
-                          Déjà inscrit? Je me connecte.
+                          {{ 'AlreadyRegistered' | translate }}
                         </a>
                       </div>
                     </div>
@@ -101,7 +101,7 @@
               </form><!-- End form -->
             </div><!-- end login form -->
 
-            <h3 class="text-center">Je peux aussi m'inscrire avec :</h3>
+            <h3 class="text-center">{{ 'ConnectWith' | translate }} :</h3>
 
             <div class="login-options">
               <div class="row">

@@ -55,13 +55,13 @@
             Tel: {{apply.school.address.phone}}
           </address>
           <a (click)="onSchoolDetail(apply)" class="btn btn-highlighted btn-block">
-            Détails
+            {{ 'Details' | translate }}
           </a>
         </div><!-- .card-content -->
       </div>
     </div>
     <ng-template #noApply>
-      <h3 style="text-align:center; font-weight: normal">Aucune selection d'école</h3>
+      <h3 style="text-align:center; font-weight: normal">{{ 'NoSelectedSchool' | translate }}</h3>
     </ng-template>
   </md-tab>
   
@@ -83,11 +83,11 @@
           </address>
           <a (click)="onSchoolDetail(wish)" 
             class="btn btn-highlighted btn-block">
-            Détails
+            {{ 'Details' | translate }}
           </a>
           <button (click)="onSchoolApply(wish.school._id, i)" type="button" 
             class="btn btn-secondary btn-block">
-            Selectionner
+            {{ 'Select' | translate }}
           </button>
         </div><!-- .card-content -->
       </div>
@@ -95,18 +95,18 @@
         class="btn btn-primary btn-block"
         style="margin-bottom:10px"
         [disabled]="schoolApplyToList.length==0">
-        Je postule aux écoles sélectionnées
+        {{ 'PostulSelectedSchool' | translate }}
       </button>
     </div>
     <ng-template #noWish>
-      <h3 style="text-align:center; font-weight: normal">Aucun souhait d'école</h3>
+      <h3 style="text-align:center; font-weight: normal">{{ 'NoWishSchool' | translate }}</h3>
     </ng-template>
   </md-tab>
 
 </md-tab-group>
 <div style="width:20%; margin-left:40%">
   <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" 
-    type="button" (click)="onCancel()">Annuler
+    type="button" (click)="onCancel()">{{ 'Cancel' | translate }}
   </button>
 </div>
   

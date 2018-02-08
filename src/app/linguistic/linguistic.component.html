@@ -4,7 +4,7 @@
 
         <div class="row">
             <section class="col-md-12">
-                <h2 class="brochure-title">Recherche de séjour linguistique</h2>
+                <h2 class="brochure-title">{{ 'SearchLinguisticTraver' | translate }}</h2>
             </section>
             <section class="col-md-12">
                 <form class="form-inline searchform">
@@ -18,20 +18,20 @@
                                             <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'destination')">
                                                 <option value="" selected>Destination</option>
-                                                <option value="Allemagne">Allemagne</option>
-                                                <option value="Australie">Australie</option>
-                                                <option value="Canada">Canada</option>
-                                                <option value="Chine">Chine</option>
-                                                <option value="Espagne">Espagne</option>
-                                                <option value="Etats-unis">Etats-unis</option>
-                                                <option value="France">France</option>
-                                                <option value="Inde">Inde</option>
-                                                <option value="Irlande">Irlande</option>
-                                                <option value="Italie">Italie</option>
-                                                <option value="Malte">Malte</option>
-                                                <option value="Pays-bas">Pays-bas</option>
-                                                <option value="Royaume Uni">Royaume Uni</option>
-                                                <option value="Sri lanka">Sri lanka</option>
+                                                <option value="Allemagne">{{ 'Germany' | translate }}</option>
+                                                <option value="Australie">{{ 'Australia' | translate }}</option>
+                                                <option value="Canada">{{ 'Canada' | translate }}</option>
+                                                <option value="Chine">{{ 'China' | translate }}</option>
+                                                <option value="Espagne">{{ 'Spain' | translate }}</option>
+                                                <option value="Etats-unis">{{ 'USA' | translate }}-</option>
+                                                <option value="France">{{ 'Frence' | translate }}</option>
+                                                <option value="Inde">{{ 'India' | translate }}</option>
+                                                <option value="Irlande">{{ 'Ireland' | translate }}</option>
+                                                <option value="Italie">{{ 'Italia' | translate }}</option>
+                                                <option value="Malte">{{ 'Malta' | translate }}</option>
+                                                <option value="Pays-bas">{{ 'Netherlands' | translate }}</option>
+                                                <option value="Royaume Uni">{{ 'UnitedKingdom' | translate }}</option>
+                                                <option value="Sri lanka">{{ 'SriLanka' | translate }}</option>
                                             </select>
                                         </label>
                                     </div>
@@ -42,19 +42,19 @@
                                         <label class="select-custom" for="class">
                                             <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'period')">
-                                                <option value="" selected >Période</option>
-                                                <option value="0">janvier</option>
-                                                <option value="1">février</option>
-                                                <option value="2">mars</option>
-                                                <option value="3">avril</option>
-                                                <option value="4">mai</option>
-                                                <option value="5">juin</option>
-                                                <option value="6">juillet</option>
-                                                <option value="7">août</option>
-                                                <option value="8">septembre</option>
-                                                <option value="9">octobre</option>
-                                                <option value="10">novembre</option>
-                                                <option value="11">décembre</option>
+                                                <option value="" selected >{{ 'Period' | translate }}</option>
+                                                <option value="0">{{ 'January' | translate }}</option>
+                                                <option value="1">{{ 'February' | translate }}</option>
+                                                <option value="2">{{ 'March' | translate }}</option>
+                                                <option value="3">{{ 'April' | translate }}</option>
+                                                <option value="4">{{ 'May' | translate }}</option>
+                                                <option value="5">{{ 'June' | translate }}</option>
+                                                <option value="6">{{ 'Jully' | translate }}</option>
+                                                <option value="7">{{ 'August' | translate }}</option>
+                                                <option value="8">{{ 'September' | translate }}</option>
+                                                <option value="9">{{ 'October' | translate }}</option>
+                                                <option value="10">{{ 'November' | translate }}</option>
+                                                <option value="11">{{ 'December' | translate }}</option>
                                             </select>
                                         </label>
                                     </div>
@@ -65,7 +65,7 @@
                                         <label class="select-custom" for="class">
                                             <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'language')">
-                                                <option value="" selected>Langue</option>
+                                                <option value="" selected>{{ 'Language' | translate }}</option>
                                                 <option *ngFor="let language of languageList" [value]="language._id">{{language.name}}</option>
 
                                             </select>
@@ -78,7 +78,7 @@
                                         <label class="select-custom" for="class">
                                             <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'age')">
-                                                <option value="" selected>Âge</option>
+                                                <option value="" selected>{{ 'Age' | translate }}</option>
                                                 <option value="8">8</option>
                                                 <option value="9">9</option>
                                                 <option value="10">10</option>
@@ -108,7 +108,7 @@
                                         <label class="select-custom" for="class">
                                             <select name="class" class="form-control"
                                                 (click)="onDestinationClick($event, 'organisme')">
-                                                <option value="" selected>Organisme</option>
+                                                <option value="" selected>{{ 'Organism' | translate }}</option>
                                             </select>
                                         </label>
                                     </div>
@@ -125,26 +125,26 @@
 
             <div class="col-md-12  holder-refine-search">
                 <div class="checkbox-one-line">
-                    <span class="label-holder">Hébergement</span><br />
+                    <span class="label-holder">{{ 'Accomodation' | translate }}</span><br />
                     <input type="checkbox" value="apartment" class="checkbox filled-in" id="filter-1"
                         (click)="onDestinationClick($event, 'place')"/>
-                    <label for="filter-1">Appartement</label>
+                    <label for="filter-1">{{ 'Apartment' | translate }}</label>
                     <input type="checkbox" value="common" class="checkbox filled-in" id="filter-2"
                         (click)="onDestinationClick($event, 'place')"/>
-                    <label for="filter-2">Collectif</label>
+                    <label for="filter-2">{{ 'Collectiv' | translate }}</label>
                     <input type="checkbox" value="family" class="checkbox filled-in" id="filter-3"
                         (click)="onDestinationClick($event, 'place')"/>
-                    <label for="filter-3">Famille</label>
+                    <label for="filter-3">{{ 'Family' | translate }}</label>
                     <input type="checkbox" value="residence" class="checkbox filled-in" id="filter-4"
                         (click)="onDestinationClick($event, 'place')"/>
-                    <label for="filter-4">Résidence</label>
+                    <label for="filter-4">{{ 'Residence' | translate }}</label>
                 </div>
 
 
-                <label class="select-custom" for="class"> Type de sejour<br />
+                <label class="select-custom" for="class">{{ 'TravelType' | translate }}<br />
                     <select name="class" class="form-control" id="class"
                         (click)="onDestinationClick($event, 'linguistic')">
-                        <option value="">Indifférent</option>
+                        <option value="">{{ '' | translate }}Indifférent</option>
                         <option *ngFor="let linguistic of linguisticList" [value]="linguistic._id">{{linguistic.name}}</option>
                     </select>
                 </label>
@@ -161,7 +161,7 @@
             </div>
             <div *ngIf="listTripsFiltered.length==0" class="row">
                 <p style="width:100%;
-                    text-align:center; font-size : 35px">Il n'y a pas de séjours pour la recherche demandé.</p>
+                    text-align:center; font-size : 35px">{{ 'ThereIsNoTraver' | translate }}</p>
             </div>
 
         </div>

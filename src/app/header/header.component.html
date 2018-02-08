@@ -7,37 +7,37 @@
 						            <li class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-search"></i></span>
-                                <a (click)="onNavigateHome()" class="ln-tr link">Trouver une école</a>
+                                <a (click)="onNavigateHome()" class="ln-tr link">{{ 'FindSchool' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-download"></i></span>
-                                <a (click)="navigateToURL('/brochure')" class="ln-tr link">Télécharger la documentation des écoles</a>
+                                <a (click)="navigateToURL('/brochure')" class="ln-tr link">{{ 'DLSchoolDoc' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-bullhorn"></i></span>
-                                <a (click)="navigateToURL('/school-calendar')" class="ln-tr link">Connaitre les événements des Ecoles</a>
+                                <a (click)="navigateToURL('/school-calendar')" class="ln-tr link">{{ 'SchoolEvent' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-calendar-check-o"></i></span>
-                                <a (click)="navigateToURL('/conseil')" class="ln-tr link">Prendre un rdv pour un conseil, un bilan d'Orientation</a>
+                                <a (click)="navigateToURL('/conseil')" class="ln-tr link">{{ 'AdviseOrOrientationAppointment' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-graduation-cap"></i></span>
-                                <a (click)="navigateToURL('/enseignement-privee')" class="ln-tr link">Choisir l'enseignement Privé</a>
+                                <a (click)="navigateToURL('/enseignement-privee')" class="ln-tr link">{{ 'ChoosePrivateSchool' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-calendar-check-o"></i></span>
-                                <a (click)="navigateToURL('/panorama')" class="ln-tr link">Comprendre le panorama des filières</a>
+                                <a (click)="navigateToURL('/panorama')" class="ln-tr link">{{ 'UnderstandOrientationPath' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-6 col-sm-6">
@@ -45,12 +45,12 @@
                                 <span class="item-icon"><i class="fa fa-book"></i></span>
                                 <a (click)="hideHeaderSubMenus()" target="_blank" *ngIf="!onMobile; else mobileGuide"
                                     href="http://www.guide-des-ecoles-privees.info/2016_2017" class="ln-tr link">
-                                    Consulter le Guide des Ecoles Privées
+                                    {{ 'ConsultPrivateSchoolGuide' | translate }}
                                 </a>
                                 <ng-template #mobileGuide>
                                     <a (click)="hideHeaderSubMenus()" target="_blank"
                                         class="ln-tr link" (mouseup)="onMobileGuide()">
-                                        Consulter le Guide des Ecoles Privées
+                                        {{ 'ConsultPrivateSchoolGuide' | translate }}
                                     </a>
                                 </ng-template>
                             </div>
@@ -58,7 +58,7 @@
                         <li class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-inbox"></i></span>
-                                <a (click)="hideHeaderSubMenus()"target="_blank" href="http://www.amazon.fr" class="ln-tr link">Commander le Guide des Ecoles Privées</a>
+                                <a (click)="hideHeaderSubMenus()"target="_blank" href="http://www.amazon.fr" class="ln-tr link">{{ 'CommandePrivateSchoolGuide' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
                         <!-- <li class="course-menu-item col-md-6 col-sm-6">
@@ -71,13 +71,13 @@
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-users"></i></span>
                                 <!--a (click)="navigateToURL('/contact-us')" class="ln-tr link">Contactez nous (Elève - Parent - Ecole - Professionnel)</a-->
-                                <a (click)="navigateToURL('/contact-us')" class="ln-tr link">Contactez nous</a>
+                                <a (click)="navigateToURL('/contact-us')" class="ln-tr link">{{ 'ContactUs' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
                         <li class="course-menu-item col-md-6 col-sm-6">
                             <div class="single-item">
                                 <span class="item-icon"><i class="fa fa-bookmark"></i></span>
-                                <a (click)="onMyAccount('0')" class="ln-tr link">Mon compte</a>
+                                <a (click)="onMyAccount('0')" class="ln-tr link">{{ 'MyAccount' | translate }}</a>
                             </div>
                         </li><!-- end course menu item -->
 						<!--li class="course-menu-item col-md-6 col-sm-6">
@@ -149,8 +149,8 @@
             src="assets/images/cide-white-just-logo.png" alt=""
             style="display: none; width: 32px; float: left;">
     </a>
-    <h1 (click)="onNavigateHome()" class="sitename" >
-        Trouvez votre établissement <br>avec l'annuaire de l'enseignement privé
+    <h1 (click)="onNavigateHome()" class="sitename">
+        {{ 'FindPrivateSchoolWithCIDE' | translate }}
     </h1>
 
     <ul class="mobile-login">
@@ -158,16 +158,16 @@
         <li (click)="wishApplyDialog(1)"><i class="fa fa-bookmark"><sup class="wishcount">{{wishCount}}</sup></i></li>
         <li *ngIf="!userLogin; else moblog"><i class="fa fa-user"></i>
             <ul class="login">
-                <li><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; S'inscrire</a></li>
-                <li><a (click)="onSignIn()"><i class="fa fa-sign-in"></i>&nbsp;&nbsp; Se connecter</a></li>
+                <li><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; {{ 'SignUp' | translate }}S'inscrire</a></li>
+                <li><a (click)="onSignIn()"><i class="fa fa-sign-in"></i>&nbsp;&nbsp; {{ 'SignIn' | translate }}Se connecter</a></li>
             </ul>
         </li>
 		<ng-template #moblog>
 			<li><i class="fa fa-user"></i>
 				<ul class="login">
-					<li style="display:none"><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; S'inscrire</a></li>
-					<li><a (click)="onSignOut()"><i class="fa fa-sign-out"></i>&nbsp;&nbsp; Fermer la Session</a></li>
-					<li><a (click)="onMyAccount('0')"><i class="fa fa-user-circle-o"></i>&nbsp;&nbsp; Mon compte{{userFirstNameMobile}}</a></li>
+					<li style="display:none"><a (click)="onSignUp()"><i class="fa fa-pencil"></i>&nbsp;&nbsp; {{ 'SignUp' | translate }}</a></li>
+					<li><a (click)="onSignOut()"><i class="fa fa-sign-out"></i>&nbsp;&nbsp; {{ 'SignOut' | translate }}</a></li>
+					<li><a (click)="onMyAccount('0')"><i class="fa fa-user-circle-o"></i>&nbsp;&nbsp; {{ 'MyAccount' | translate }}{{userFirstNameMobile}}</a></li>
 				</ul>
 			</li>
         </ng-template>
@@ -186,15 +186,15 @@
             </i>
         </li>
         <li class="login-text" *ngIf="!userLogin; else log">
-            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> S'inscrire</a> |
-            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> Se connecter</a>
+            <a (click)="onSignUp()"><i class="fa fa-sign-in"></i> {{ 'SignUp' | translate }}</a> |
+            <a (click)="onSignIn()"><i class="fa fa-unlock-alt"></i> {{ 'SignIn' | translate }}</a>
         </li>
         <ng-template #log>
             <li class="login-text" (click)="onMyAccount('0')" style="cursor : pointer; font-size: 14px"><i class="fa fa-user" aria-hidden="true"></i> {{ userFirstName }}</li> |
             <li class="login-text">
                 <a (click)="onSignOut()">
                 <i class="fa fa-sign-in"></i>
-                Se déconnecter</a>
+                {{ 'SignOut' | translate }}</a>
             </li>
         </ng-template>
     </ul>
@@ -221,8 +221,8 @@
                 <div class="modal-body  wishlist">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Ma candidature</a></li>
-                        <li><a href="#tab2" data-toggle="tab">Ma liste d'envies</a></li>
+                        <li class="active"><a href="#tab1" data-toggle="tab">{{ 'MyApplication' | translate }}</a></li>
+                        <li><a href="#tab2" data-toggle="tab">{{ 'MyWishList' | translate }}</a></li>
                     </ul>
 
                       <!-- Tab panes -->
@@ -237,7 +237,7 @@
                                     <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
                                     <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
 
-                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">Détail de l'école</a>
+                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted btn-block">{{ 'SchoolDetails' | translate }}</a>
 
                                 </div><!-- .card-content -->
 
@@ -256,8 +256,8 @@
                                     <p>Lycee d'enseignement general Prive CatholiqueSous contrat d'association</p>
                                     <address>1 rue du Brouage 02300 Chauny <br /> Tel: 03 23 52 10 50</address>
 
-                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted">Détail de l'école</a>
-                                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#apply-popup">Je postule</button>
+                                    <a href="apb-prive-etablissement.html" class="btn btn-highlighted">{{ 'SchoolDetails' | translate }}</a>
+                                    <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#apply-popup">{{ 'IPostulate' | translate }}</button>
                                 </div><!-- .card-content -->
 
                             </div><!-- .card -->
@@ -266,7 +266,7 @@
 
                     </div><!-- .tab-content -->
 
-                    <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" type="button">Annuler</button>
+                    <button class="btn btn-danger" data-dismiss="modal" aria-label="Close" type="button">{{ 'Cancel' | translate }}</button>
 
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->

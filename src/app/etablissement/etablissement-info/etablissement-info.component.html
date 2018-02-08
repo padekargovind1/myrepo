@@ -10,7 +10,7 @@
                     </div>
                     <div class="ibox-content">
                         <p>
-                            Position de L'Etablissement sur la carte Google.
+                            {{ 'MapSchoolPosition' | translate }}
                         </p>
                         <div class="row">
                             <agm-map [latitude]="lat" [longitude]="lng" [usePanning]='true'>
@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>Accès par Transport</h5>
+                        <h5>{{ 'TrnasportAccess' | translate }}</h5>
                     </div>
                     <div class="ibox-content" *ngIf="canDisplay">
                         <p *ngFor="let transport of schoolData.cycles[0].specifications.transports">

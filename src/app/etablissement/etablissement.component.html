@@ -10,7 +10,7 @@
                     (click)="navigateBack()">
                     <button type="button" class="btn button-return">
                         <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-                        Retourner à la liste
+                        {{ 'ReturnToList' | translate }}
                     </button>
                 </div>
 
@@ -37,7 +37,7 @@
 
                 <div class="row  hidden-xs">
                     <div class="col-lg-12 text-center">
-                        <h1 class="dark">Informations pratiques</h1>
+                        <h1 class="dark">{{ 'UsefulInformation' | translate }}</h1>
                         <!--<p>in developping payment application for the banks below</p>-->
                     </div>
                 </div>
@@ -71,13 +71,13 @@
                                       <div class="hidden-lg">
                                         <div class="btn-group-vertical">
                                           <button class="btn btn-success btnRemove btnFloat"
-                                                  (click)="addToWish()">Ajoutez Aux Voeux
+                                                  (click)="addToWish()">{{ 'AddToWishes' | translate }}
                                           </button>
                                           <button class="btn btn-primary btnFloat"
-                                                  (click)="applyTo()">Selectionner
+                                                  (click)="applyTo()">{{ 'Select' | translate }}
                                           </button>
                                           <button class="btn btn-success btnFloat"
-                                                  (click)="sendMessage()">Envoyez un message
+                                                  (click)="sendMessage()">{{ 'SendMessage' | translate }}
                                           </button>
                                         </div>
                                       </div>
@@ -86,19 +86,19 @@
                                             <div class="btn-group">
                                                 <button class="btn btn-success btn-outline btn-sm "
                                                     (click)="addToWish()">
-                                                    <i class="fa fa-heart"></i> Ajoutez Aux Voeux 
+                                                    <i class="fa fa-heart"></i> {{ 'AddToWishes' | translate }}
                                                 </button>
                                                 <button class="btn btn-primary btn-outline btn-sm"
                                                     (click)="applyTo()">
-                                                    <i class="fa fa-send"></i> Demander un dossier d'inscription 
+                                                    <i class="fa fa-send"></i> {{ 'AskInscriptionFile' | translate }}
                                                 </button>
                                                 <button class="btn btn-warning btn-outline btn-sm"
                                                     (click)="downloadBrochure()">
-                                                    <i class="fa fa-cloud-download"></i> Télécharger la documentation 
+                                                    <i class="fa fa-cloud-download"></i> {{ 'DownloadDocumentation' | translate }}
                                                 </button>
                                                 <button class="btn btn-success btn-outline btn-sm"
                                                 (click)="sendMessage()">
-                                                    <i class="fa fa-envelope"></i> Envoyez un message 
+                                                    <i class="fa fa-envelope"></i> {{ 'SendMessage' | translate }} 
                                                 </button>
                                                 <!--
                                                 <button class="btn btn-success btn-outline btn-sm">
@@ -111,10 +111,10 @@
                                         <div class="tabs-container customclass">
 
                                             <ul class="nav nav-tabs responsive">
-                                                <li class="active"><a data-toggle="tab" href="#tab-1">L'essentiel</a></li>
-                                                <li class=""><a data-toggle="tab" href="#tab-2" (click)="loadTabs()">Cycle d'études</a></li>
-                                                <li class=""><a data-toggle="tab" href="#tab-3">Evènements</a></li>
-                                                <li class=""><a data-toggle="tab" href="#tab-4" (click)="loadMap()">Informations Pratiques</a></li>
+                                                <li class="active"><a data-toggle="tab" href="#tab-1">{{ 'TheEssential' | translate }}</a></li>
+                                                <li class=""><a data-toggle="tab" href="#tab-2" (click)="loadTabs()">{{ 'StudiesCycle' | translate }}</a></li>
+                                                <li class=""><a data-toggle="tab" href="#tab-3">{{ 'Events' | translate }}</a></li>
+                                                <li class=""><a data-toggle="tab" href="#tab-4" (click)="loadMap()">{{ 'UsefulInformation' | translate }}</a></li>
                                             </ul>
 
                                             <div class="tab-content">

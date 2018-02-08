@@ -11,39 +11,39 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Nom Cycle</strong><br />
+                                    <strong>{{ 'CycleName' | translate }}</strong><br />
                                     {{cycle.cycle.nom}}
                                 </td>
                                 <td>
-                                    <strong>Adresse 1</strong><br />
+                                    <strong>{{ 'Address1' | translate }}</strong><br />
                                     {{cycle.address.ad1}}
                                 </td>
                                 <td>
-                                    <strong>Adresse 2</strong><br />
+                                    <strong>{{ 'Address2' | translate }}</strong><br />
                                     {{cycle.address.ad2}}
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Titre</strong><br />
+                                    <strong>{{ 'Title' | translate }}</strong><br />
                                     {{cycle.contact.gender}}
                                 </td>
                                 <td>
-                                    <strong>Prénom</strong><br />
+                                    <strong>{{ 'FirstName' | translate }}</strong><br />
                                     {{cycle.contact.firstName}}
                                 </td>
                                 <td>
-                                    <strong>Nom</strong><br />
+                                    <strong>{{ 'LastName' | translate }}</strong><br />
                                     {{cycle.contact.lastName}}
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Fonction</strong><br />
+                                    <strong>{{ 'Function' | translate }}</strong><br />
                                     {{cycle.contact.job}}
                                 </td>
                                 <td>
-                                    <strong>Mél</strong><br />
+                                    <strong>Mail</strong><br />
                                     {{cycle.contact.email}}
                                 </td>
                                 <td>
@@ -62,34 +62,34 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Horaires Aménagés</strong><br />
-                                    <span *ngIf="cycle.specifications.flexibleTimeFrame.value; else cycle1">Oui</span>
-                                    <ng-template #cycle1><span>Non</span></ng-template>
+                                    <strong>{{ 'ArrangedSchedules' | translate }}</strong><br />
+                                    <span *ngIf="cycle.specifications.flexibleTimeFrame.value; else cycle1">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle1><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Enfant Precoces</strong><br />
-                                    <span *ngIf="cycle.specifications.advanced.value; else cycle2">Oui</span>
-                                    <ng-template #cycle2><span>Non</span></ng-template>
+                                    <strong>{{ 'EarlyChild' | translate }}</strong><br />
+                                    <span *ngIf="cycle.specifications.advanced.value; else cycle2">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle2><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Aides Financières - Bourse</strong><br />
-                                    <span *ngIf="cycle.specifications.finance.value; else cycle3">Oui</span>
-                                    <ng-template #cycle3><span>Non</span></ng-template>
+                                    <strong>{{ 'FinancialHelpScholarship' | translate }}</strong><br />
+                                    <span *ngIf="cycle.specifications.finance.value; else cycle3">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle3><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Cours Francais Langue Etrangere - LFE</strong><br />
-                                    <span *ngIf="cycle.specifications.foreignFrench.value; else cycle4">Oui</span>
-                                    <ng-template #cycle4><span>Non</span></ng-template>
+                                    <strong>{{ 'LFE' | translate }}</strong><br />
+                                    <span *ngIf="cycle.specifications.foreignFrench.value; else cycle4">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle4><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Accueil Handicapé, Dyslexie</strong><br />
-                                    <span *ngIf="cycle.specifications.handicapped.value; else cycle5">Oui</span>
-                                    <ng-template #cycle5><span>Non</span></ng-template>
+                                    <strong>{{ 'HandicappedHomeDyslexia' | translate }}</strong><br />
+                                    <span *ngIf="cycle.specifications.handicapped.value; else cycle5">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle5><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Moyens d'acces</strong><br />
+                                    <strong>{{ 'Access' | translate }}</strong><br />
                                     {{cycle.specifications.transports}}
                                 </td>
                             </tr>
@@ -105,84 +105,84 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Capacité</strong><br />
+                                    <strong>{{ 'Capacity' | translate }}</strong><br />
                                     {{cycle.boarding.capacity}}
                                 </td>
                                 <td>
-                                    <strong>Internat sur Place</strong><br />
-                                    <span *ngIf="cycle.boarding.onSite.value; else cycle7">Oui</span>
-                                    <ng-template #cycle7><span>Non</span></ng-template>
+                                    <strong>{{ 'BoardingSchoolOnSite' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.onSite.value; else cycle7">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle7><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Internat externe</strong><br />
-                                    <span *ngIf="cycle.boarding.notOnSite.value; else cycle8">Oui</span>
-                                    <ng-template #cycle8><span>Non</span></ng-template>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Résidence Étudiante</strong><br />
-                                    <span *ngIf="cycle.boarding.residence.value; else cycle9">Oui</span>
-                                    <ng-template #cycle9><span>Non</span></ng-template>
-                                </td>
-                                <td>
-                                    <strong>Internat de semaine</strong><br />
-                                    <span *ngIf="cycle.boarding.weekdays.value; else cycle10">Oui</span>
-                                    <ng-template #cycle10><span>Non</span></ng-template>
-                                </td>
-                                <td>
-                                    <strong>Internat Permanent</strong><br />
-                                    <span *ngIf="cycle.boarding.fulltime.value; else cycle11">Oui</span>
-                                    <ng-template #cycle11><span>Non</span></ng-template>
+                                    <strong>{{ 'ExternalBoardingSchool' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.notOnSite.value; else cycle8">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle8><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Internat Certains Weekend</strong><br />
-                                    <span *ngIf="cycle.boarding.someWeekEnds.value; else cycle12">Oui</span>
-                                    <ng-template #cycle12><span>Non</span></ng-template>
+                                    <strong>{{ 'StudentResidence' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.residence.value; else cycle9">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle9><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Internat mixte</strong><br />
-                                    <span *ngIf="cycle.boarding.mixed.value; else cycle13">Oui</span>
-                                    <ng-template #cycle13><span>Non</span></ng-template>
+                                    <strong>{{ 'WeekBoardingSchool' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.weekdays.value; else cycle10">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle10><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Internat filles</strong><br />
-                                    <span *ngIf="cycle.boarding.girls.value; else cycle14">Oui</span>
-                                    <ng-template #cycle14><span>Non</span></ng-template>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Internat garcon</strong><br />
-                                    <span *ngIf="cycle.boarding.boys.value; else cycle15">Oui</span>
-                                    <ng-template #cycle15><span>Non</span></ng-template>
-                                </td>
-                                <td>
-                                    <strong>Chambres individuelles</strong><br />
-                                    <span *ngIf="cycle.boarding.individual.value; else cycle16">Oui</span>
-                                    <ng-template #cycle16><span>Non</span></ng-template>
-                                </td>
-                                <td>
-                                    <strong>Chambres 2 a 4 lits</strong><br />
-                                    <span *ngIf="cycle.boarding['2to4'].value; else cycle17">Oui</span>
-                                    <ng-template #cycle17><span>Non</span></ng-template>
+                                    <strong>{{ 'PermanantBoardingSchool' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.fulltime.value; else cycle11">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle11><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>chambres 5 a 8 lits</strong><br />
-                                    <span *ngIf="cycle.boarding['5to8'].value; else cycle18">Oui</span>
-                                    <ng-template #cycle18><span>Non</span></ng-template>
+                                    <strong>{{ 'SomeWeekendBoardingSchool' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.someWeekEnds.value; else cycle12">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle12><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Dortoirs</strong><br />
-                                    <span *ngIf="cycle.boarding.dormitories.value; else cycle19">Oui</span>
-                                    <ng-template #cycle19><span>Non</span></ng-template>
+                                    <strong>{{ 'MixtBoardingSchool' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.mixed.value; else cycle13">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle13><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Prix</strong><br />
+                                    <strong>{{ 'GirlBoardingSchool' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.girls.value; else cycle14">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle14><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>{{ 'BoyBoardingSchool' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.boys.value; else cycle15">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle15><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>{{ 'InduvidualRoom' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.individual.value; else cycle16">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle16><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>{{ '2At4Bed' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding['2to4'].value; else cycle17">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle17><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>{{ '3At5Bed' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding['5to8'].value; else cycle18">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle18><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>{{ 'Dormitory' | translate }}</strong><br />
+                                    <span *ngIf="cycle.boarding.dormitories.value; else cycle19">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle19><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>{{ 'Price' | translate }}</strong><br />
                                     {{cycle.boarding.cost}}€
                                 </td>
                             </tr>
@@ -191,32 +191,32 @@
                 </div>
 
 
-                <h4>Stages</h4>
+                <h4>{{ 'Internship' | translate }}</h4>
                 <div class="table-responsive">
 
                     <table class="table table-stripped table-bordered  specification  formation-table">
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Organisation du cursus</strong><br />
+                                    <strong>{{ 'CursusOrganization' | translate }}</strong><br />
                                     {{cycle.extraCuriculumn.courseOrganization}}
                                 </td>
                                 <td>
-                                    <strong>Stage pré-rentrée</strong><br />
-                                    <span *ngIf="cycle.extraCuriculumn.preIntakeTraining.value; else cycle20">Oui</span>
-                                    <ng-template #cycle20><span>Non</span></ng-template>
+                                    <strong>{{ 'PreEntryInternship' | translate }}</strong><br />
+                                    <span *ngIf="cycle.extraCuriculumn.preIntakeTraining.value; else cycle20">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle20><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Stages petites vacances</strong><br />
-                                    <span *ngIf="cycle.extraCuriculumn.smallHolidaysTraining.value; else cycle21">Oui</span>
-                                    <ng-template #cycle21><span>Non</span></ng-template>
+                                    <strong>{{ 'SmallHolidayInternship' | translate }}</strong><br />
+                                    <span *ngIf="cycle.extraCuriculumn.smallHolidaysTraining.value; else cycle21">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle21><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>stages de grandes vacances</strong><br />
-                                    <span *ngIf="cycle.extraCuriculumn.bigHolidaysTraining.value; else cycle22">Oui</span>
-                                    <ng-template #cycle22><span>Non</span></ng-template>
+                                    <strong>{{ 'BigHolidayInternship' | translate }}</strong><br />
+                                    <span *ngIf="cycle.extraCuriculumn.bigHolidaysTraining.value; else cycle22">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle22><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
                                     <strong></strong><br />
@@ -231,26 +231,26 @@
                     </table>
                 </div>
 
-                <h4>Restaurantion</h4>
+                <h4>{{ 'Restoration' | translate }}</h4>
                 <div class="table-responsive">
 
                     <table class="table table-stripped table-bordered  specification  formation-table">
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Self-service</strong><br />
-                                    <span *ngIf="cycle.canteen.selfService.value; else cycle23">Oui</span>
-                                    <ng-template #cycle23><span>Non</span></ng-template>
+                                    <strong>{{ 'SelfService' | translate }}</strong><br />
+                                    <span *ngIf="cycle.canteen.selfService.value; else cycle23">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle23><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Service à Table</strong><br />
-                                    <span *ngIf="cycle.canteen.serviceAtTable.value; else cycle24">Oui</span>
-                                    <ng-template #cycle24><span>Non</span></ng-template>
+                                    <strong>{{ 'TableService' | translate }}</strong><br />
+                                    <span *ngIf="cycle.canteen.serviceAtTable.value; else cycle24">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle24><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Cafeteria</strong><br />
-                                    <span *ngIf="cycle.canteen.cafeteria.value; else cycle25">Oui</span>
-                                    <ng-template #cycle25><span>Non</span></ng-template>
+                                    <strong>{{ 'Cafeteria' | translate }}</strong><br />
+                                    <span *ngIf="cycle.canteen.cafeteria.value; else cycle25">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle25><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                         </tbody>
@@ -258,33 +258,33 @@
                 </div>
 
 
-                <h4>Externat</h4>
+                <h4>{{ 'Externship' | translate }}</h4>
                 <div class="table-responsive">
 
                     <table class="table table-stripped table-bordered  specification  formation-table">
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Externat</strong><br />
-                                    <span *ngIf="cycle.externat['demi-pension']; else cycle26">Oui</span>
-                                    <ng-template #cycle26><span>Non</span></ng-template>
+                                    <strong>{{ 'Externship' | translate }}</strong><br />
+                                    <span *ngIf="cycle.externat['demi-pension']; else cycle26">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle26><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>demi-pension mixte</strong><br />
-                                    <span *ngIf="cycle.externat['demi-pension_mixte']; else cycle27">Oui</span>
-                                    <ng-template #cycle27><span>Non</span></ng-template>
+                                    <strong>{{ 'MixtHalfPension' | translate }}</strong><br />
+                                    <span *ngIf="cycle.externat['demi-pension_mixte']; else cycle27">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle27><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>demi-pension garcons</strong><br />
-                                    <span *ngIf="cycle.externat['demi-pension_boys']; else cycle28">Oui</span>
-                                    <ng-template #cycle28><span>Non</span></ng-template>
+                                    <strong>{{ 'BoyHalfPension' | translate }}</strong><br />
+                                    <span *ngIf="cycle.externat['demi-pension_boys']; else cycle28">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle28><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>demi-pension filles</strong><br />
-                                    <span *ngIf="cycle.externat['demi-pension_girls']; else cycle29">Oui</span>
-                                    <ng-template #cycle29><span>Non</span></ng-template>
+                                    <strong>{{ 'GirlHalfPension' | translate }}</strong><br />
+                                    <span *ngIf="cycle.externat['demi-pension_girls']; else cycle29">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle29><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                         </tbody>
@@ -292,65 +292,65 @@
                 </div>
 
 
-                <h4>Autorisations</h4>
+                <h4>{{ 'Permissions' | translate }}</h4>
                 <div class="table-responsive">
 
                     <table class="table table-stripped table-bordered  specification  formation-table">
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Lien contact</strong><br />
+                                    <strong>{{ 'ContactLink' | translate }}</strong><br />
                                     +33 {{cycle.contactLink}}
                                 </td>
                                 <td>
-                                    <strong>Priorite Web</strong><br />
+                                    <strong>{{ 'WebPriority' | translate }}</strong><br />
                                     <a href="{{cycle.link}}">{{cycle.link}}</a>
                                 </td>
                                 <td>
-                                    <strong>Autorisation Web 1</strong><br />
-                                    <span *ngIf="cycle.autorisations.autorization1; else cycle30">Oui</span>
-                                    <ng-template #cycle30><span>Non</span></ng-template>
+                                    <strong>{{ 'WebPermission1' | translate }}</strong><br />
+                                    <span *ngIf="cycle.autorisations.autorization1; else cycle30">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle30><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Autorisation Web 1</strong><br />
-                                    <span *ngIf="cycle.autorisations.autorization1; else cycle31">Oui</span>
-                                    <ng-template #cycle31><span>Non</span></ng-template>
+                                    <strong>{{ 'WebPermission1' | translate }}</strong><br />
+                                    <span *ngIf="cycle.autorisations.autorization1; else cycle31">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle31><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Mailing List</strong><br />
-                                    <span *ngIf="cycle.autorisations.autorization2; else cycle32">Oui</span>
-                                    <ng-template #cycle32><span>Non</span></ng-template>
+                                    <strong>{{ 'MailingList' | translate }}</strong><br />
+                                    <span *ngIf="cycle.autorisations.autorization2; else cycle32">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle32><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
-                                    <strong>Stat Mail Fiche Consultee</strong><br />
-                                    <span *ngIf="cycle.autorisations.ficheLink; else cycle33">Oui</span>
-                                    <ng-template #cycle33><span>Non</span></ng-template>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Stat envoi immediat</strong><br />
-                                    <span *ngIf="cycle.autorisations.immediate; else cycle34">Oui</span>
-                                    <ng-template #cycle34><span>Non</span></ng-template>
-                                </td>
-                                <td>
-                                    <strong>Stat envoi quotidient</strong><br />
-                                    <span *ngIf="cycle.autorisations.daily; else cycle35">Oui</span>
-                                    <ng-template #cycle35><span>Non</span></ng-template>
-                                </td>
-                                <td>
-                                    <strong>Stat envoi hebdo</strong><br />
-                                    <span *ngIf="cycle.autorisations.weekly; else cycle36">Oui</span>
-                                    <ng-template #cycle36><span>Non</span></ng-template>
+                                    <strong>{{ 'StatMailFiche' | translate }}</strong><br />
+                                    <span *ngIf="cycle.autorisations.ficheLink; else cycle33">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle33><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Stat envoi mensuel</strong><br />
-                                    <span *ngIf="cycle.autorisations.monthly; else cycle37">Oui</span>
-                                    <ng-template #cycle37><span>Non</span></ng-template>
+                                    <strong>{{ 'StatSendsImmediate' | translate }}</strong><br />
+                                    <span *ngIf="cycle.autorisations.immediate; else cycle34">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle34><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>{{ 'StatSendsDaily' | translate }}</strong><br />
+                                    <span *ngIf="cycle.autorisations.daily; else cycle35">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle35><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                                <td>
+                                    <strong>{{ 'StatSendsWeekly' | translate }}</strong><br />
+                                    <span *ngIf="cycle.autorisations.weekly; else cycle36">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle36><span>{{ 'No' | translate }}</span></ng-template>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>{{ 'StatSendsMonthly' | translate }}</strong><br />
+                                    <span *ngIf="cycle.autorisations.monthly; else cycle37">{{ 'Yes' | translate }}</span>
+                                    <ng-template #cycle37><span>{{ 'No' | translate }}</span></ng-template>
                                 </td>
                                 <td>
                                     <strong></strong><br />

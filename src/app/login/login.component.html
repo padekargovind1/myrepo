@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-          <h2 class="brochure-title">Pour bénéficier de ce service, vous devez vous inscrire ou vous connecter si vous êtes déjà inscrit, merci</h2>
+          <h2 class="brochure-title">{{ 'YouMustBeConnect' | translate }}</h2>
           <div class="login-form">
             <form [formGroup]="loginForm"  (ngSubmit)="logIn()" 
               id="login-form">
@@ -15,7 +15,7 @@
                   <button type="button" class="btn button-return" (click)="onNavigateBack()"
                     style="margin-left:0px; background-color : #00BC50">
                     <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-                    Retourner aux résultats
+                    {{ 'ReturnToResults' | translate }}
                   </button>
                 </div>
               </div>
@@ -34,7 +34,7 @@
                     <small *ngIf="loginForm.controls['email'].errors?.email && 
                       loginForm.controls['email'].touched" 
                       class="mat-text-warn"> 
-                      Email Invalide
+                      {{ 'InvalidEmail' | translate }}
                     </small>
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                     <small *ngIf="loginForm.controls['password'].hasError('required') && 
                       loginForm.controls['password'].touched" 
                       class="mat-text-warn"> 
-                      Mot de Passe Obligatoire
+                      {{ 'ForgotenPassword' | translate }}
                     </small>
                   </div>
                 </div>
@@ -60,16 +60,16 @@
                   <div class="custom-checkbox fl">
                     <input type="checkbox" id="login_remember" 
                       class="checkbox-input" checked>
-                    <label for="login_remember">Se souvenir du mot de passe</label>
+                    <label for="login_remember">{{ 'RememberPassword' | translate }}</label>
                   </div>
                 </div><!-- end remember -->
                 <div class="col-md-6 col-sm-6 clearfix">
                   <div class="forgot pull-right">
                     <a (click)="onNewAccount()" class="new-user">
-                      Créer un nouveau compte
+                      {{ 'CreateAccount' | translate }}
                     </a> / 
                     <a (click)="onForgotPassword()" class="reset">
-                      Mot de passe oublié ?
+                      {{ 'ForgotenPassword' | translate }}
                     </a>
                   </div>
                 </div><!-- end forgot password -->
@@ -77,7 +77,7 @@
             </form><!-- End form -->
           </div><!-- end login form -->
 
-          <h3 class="text-center">Je peux aussi me connecter avec :</h3>
+          <h3 class="text-center">{{ 'ConnectWith' | translate }} :</h3>
 
           <div class="login-options">
             <div class="row">

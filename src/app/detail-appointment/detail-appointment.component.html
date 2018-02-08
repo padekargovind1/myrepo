@@ -35,20 +35,19 @@
                     <div class="col-sm-4 col-xs-12">
                         <div class="text-with-icon">
                             <i class="fa fa-calendar big-calendar"></i>
-                            <h3>Vous avez rendez-vous</h3>
-                            <p class="appointment-date"><strong>avec Mme Anita Lubies</strong></p>
+                            <h3>{{ 'HavingAppointment' | translate }}</h3>
+                            <p class="appointment-date"><strong>{{ 'WithSomeone' | translate }}</strong></p>
 
-                            <time class="appointment-date">Lundi 8 Mai - 10h a 12h</time>
+                            <time class="appointment-date">{{ 'DateAndTime' | translate }}</time>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12">
                         <div class="text-with-icon">
                                 <img src="assets/images/cide-icon-group.png" alt="" />
-                                <h3 class="second-title">Pour un entretien</h3>
+                                <h3 class="second-title">{{ '' | translate }}Pour un entretien</h3>
                                 <p>
-
-                                    Orientation Collège<br />
-                                    Que faire après une classe de troisième</p>
+                                    {{ 'AppointmentMessage' | translate }}
+                                </p>
                         </div>
                     </div>
 
@@ -69,15 +68,15 @@
                         <!-- <div class="container-fluid"> -->
 
                             <ul class="nav nav-tabs responsive">
-                                <li><a href="#tab1" data-toggle="tab" title="Parents"><span class="helper"></span><span>Parents</span></a></li>
-                                <li><a href="#tab2" data-toggle="tab" title="Enfant"><span class="helper"></span><span>Enfant</span></a></li>
-                                <li><a href="#tab3" data-toggle="tab" title="Etablissement actuel"><span class="helper"></span><span>Etablissement actuel</span></a></li>
-                                <li><a href="#tab4" data-toggle="tab" title="Aide Scolaire"><span class="helper"></span><span>Aide Scolaire</span></a></li>
-                                <li><a href="#tab5" data-toggle="tab" title="Vos matières préférées"><span class="helper"></span><span>Vos matières préférées</span></a></li>
-                                <li><a href="#tab6" data-toggle="tab" title="Vos centres D’interets"><span class="helper"></span><span>Vos centres d’intérêts</span></a></li>
-                                <li><a href="#tab7" data-toggle="tab" title="Classes Precedentes"><span class="helper"></span><span>Classes précédentes</span></a></li>
-                                <li><a href="#tab8" data-toggle="tab" title="Vos Professions favorites"><span class="helper"></span><span>Vos professions favorites</span></a></li>
-                                <li><a href="#tab9" data-toggle="tab" title="Diagnostic"><span class="helper"></span><span>Diagnostic</span></a></li>
+                                <li><a href="#tab1" data-toggle="tab" title="Parents"><span class="helper"></span><span>{{ 'Parents' | translate }}</span></a></li>
+                                <li><a href="#tab2" data-toggle="tab" title="Enfant"><span class="helper"></span><span>{{ 'Children' | translate }}</span></a></li>
+                                <li><a href="#tab3" data-toggle="tab" title="Etablissement actuel"><span class="helper"></span><span>{{ 'ActualSchool' | translate }}</span></a></li>
+                                <li><a href="#tab4" data-toggle="tab" title="Aide Scolaire"><span class="helper"></span><span>{{ 'SchoolHelp' | translate }}</span></a></li>
+                                <li><a href="#tab5" data-toggle="tab" title="Vos matières préférées"><span class="helper"></span><span>{{ 'FavoriteSubject' | translate }}</span></a></li>
+                                <li><a href="#tab6" data-toggle="tab" title="Vos centres D’interets"><span class="helper"></span><span>{{ 'InterestsPoints' | translate }}</span></a></li>
+                                <li><a href="#tab7" data-toggle="tab" title="Classes Precedentes"><span class="helper"></span><span>{{ 'PreviousClasses' | translate }}</span></a></li>
+                                <li><a href="#tab8" data-toggle="tab" title="Vos Professions favorites"><span class="helper"></span><span>{{ 'FavoritesProfessions' | translate }}</span></a></li>
+                                <li><a href="#tab9" data-toggle="tab" title="Diagnostic"><span class="helper"></span><span>{{ 'Diagnosis' | translate }}</span></a></li>
                             </ul>
 
                         <!--</div><!-- .container -->
@@ -92,28 +91,27 @@
                                     <div class="row">
                                         <section class="col-md-4">
 
-                                            <h3>Parents</h3>
+                                            <h3>{{ 'Parents' | translate }}</h3>
 
                                             <div class="form-group">
                                                 <div class="select-custom">
                                                     <select name="" class="form-control">
-                                                        <option value="" disabled selected hidden>Lien de Parenté</option>
-                                                        <option value="">Père</option>
-                                                        <option value="">Mère</option>
-                                                        <option value="">Oncle</option>
-                                                        <option value="">Tante</option>
-                                                        <option value="">Grand-Père</option>
-                                                        <option value="">Grand-Mère</option>
-                                                        <option value="">Tuteur</option>
-                                                        <option value="">Tutric</option>
+                                                        <option value="" disabled selected hidden>{{ 'ParentsLink' | translate }}</option>
+                                                        <option value="">{{ 'Father' | translate }}</option>
+                                                        <option value="">{{ 'Mother' | translate }}</option>
+                                                        <option value="">{{ 'Uncle' | translate }}</option>
+                                                        <option value="">{{ 'Aunt' | translate }}</option>
+                                                        <option value="">{{ 'GrandFather' | translate }}</option>
+                                                        <option value="">{{ 'GrandMother' | translate }}</option>
+                                                        <option value="">{{ 'Tutor' | translate }}</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="form-group horizontal-radio clearfix">
-                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Mme</span></label>
-                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Melle</span></label>
-                                                <label class="custom-radio"><input type="radio" name="gender"> <span>M.</span></label>
+                                                <label class="custom-radio"><input type="radio" name="gender"> <span>{{ 'Mrs' | translate }}</span></label>
+                                                <label class="custom-radio"><input type="radio" name="gender"> <span>{{ 'Miss' | translate }}</span></label>
+                                                <label class="custom-radio"><input type="radio" name="gender"> <span>{{ 'Mr' | translate }}</span></label>
                                             </div>
 
 
@@ -164,11 +162,11 @@
                                                     <div class="col-sm-12">
                                                         <div class="select-custom">
                                                             <select name="" class="form-control">
-                                                                <option value="" disabled selected hidden>Horaires pour me contacter</option>
-                                                                <option value="">9h-12h</option>
-                                                                <option value="">12h-14h</option>
-                                                                <option value="">14h-18h</option>
-                                                                <option value="">18h-20h</option>
+                                                                <option value="" disabled selected hidden>{{ 'ContactHoures' | translate }}</option>
+                                                                <option value="">{{ '9AM12AM' | translate }}</option>
+                                                                <option value="">{{ '12AM2PM' | translate }}</option>
+                                                                <option value="">{{ '2PM6PM' | translate }}</option>
+                                                                <option value="">{{ '6PM8PM' | translate }}</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -176,7 +174,7 @@
                                             </div>
 
                                             <div class="form-group clearfix">
-                                                <button type="button" class="btn  btn-inverse pull-right btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter Parent</button>
+                                                <button type="button" class="btn  btn-inverse pull-right btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'AddParent' | translate }}</button>
                                             </div>
 
                                         </section><!-- .col-* -->
@@ -188,7 +186,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h3>Enfant</h3>
+                                            <h3>{{ 'Children' | translate }}</h3>
                                         </div>
                                         <div class="col-md-4">
 
@@ -225,8 +223,8 @@
                                                         <div class="col-sm-6  col-xs-6">
                                                             <div class="form-group">
                                                                 <div class="horizontal-radio">
-                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Garçon</span></label>
-                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>Fille</span></label>
+                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>{{ 'Boy' | translate }}</span></label>
+                                                                    <label class="custom-radio"><input type="radio" name="gender"> <span>{{ 'Girl' | translate }}</span></label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -294,7 +292,7 @@
 
                                         <div class="col-md-6">
                                             <div class="wrap-enfant">
-                                                <h4>Frère / Sœur</h4>
+                                                <h4>{{ 'BrotherSister' | translate }}</h4>
                                                 <!-- <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -311,8 +309,8 @@
                                                     <div class="row">
                                                         <div class="col-for-radio">
                                                             <div class="gap-for-radio horizontal-radio clearfix">
-                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Frère</span></label>
-                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>Sœur</span></label>
+                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>{{ 'Brother' | translate }}</span></label>
+                                                                <label class="custom-radio"><input type="radio" name="gender"> <span>{{ 'Sister' | translate }}</span></label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-2">
@@ -328,7 +326,7 @@
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <div class="form-group clearfix">
-                                                                <button class="btn  btn-inverse gap-for-radio  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter</button>
+                                                                <button class="btn  btn-inverse gap-for-radio  btn-add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ 'Add' | translate }}</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -353,7 +351,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
 
-                                            <h3>Etablissement Actuel</h3>
+                                            <h3>{{ 'ActualSchool' | translate }}</h3>
 
                                             <div class="form-group">
                                                 <div class="row">
@@ -377,7 +375,7 @@
                                                         <div class="col-sm-12">
                                                             <div class="select-custom">
                                                                 <select name="" class="form-control">
-                                                                    <option value="" disabled selected hidden>Classe</option>
+                                                                    <option value="" disabled selected hidden>{{ 'Class' | translate }}</option>
                                                                   <option value="ps" style="color:red">
                                                                     &nbsp;Classes maternelles
                                                                   </option>

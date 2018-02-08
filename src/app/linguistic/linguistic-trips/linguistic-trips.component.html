@@ -5,32 +5,32 @@
         </div>
       
       <div class="content-detail">
-          <h3>Nom du séjour</h3>
+          <h3>{{ 'TraverName' | translate }}</h3>
 
-          <p><label>Langue : </label> {{tripData.language.name}}</p>
+          <p><label>{{ 'Language' | translate }} : </label> {{tripData.language.name}}</p>
 
-          <p><label>Age</label> de {{tripData.minAge}} à {{tripData.maxAge}}</p>
-          <p><label>Date de debut :</label> {{tripData.startDate | shorten:10}}<br />
-              <label>Date de fin :</label> {{tripData.endDate | shorten:10}}
+          <p><label>{{ 'Age' | translate }}</label> {{ 'From' | translate }} {{tripData.minAge}} {{ 'To' | translate }} {{tripData.maxAge}}</p>
+          <p><label>{{ 'StartingDate' | translate }} :</label> {{tripData.startDate | shorten:10}}<br />
+              <label>{{ 'EndingDate' | translate }} :</label> {{tripData.endDate | shorten:10}}
           </p>
 
-          <p><label>Prix:</label> {{tripData.price}}</p>
+          <p><label>{{ 'Price' | translate }}:</label> {{tripData.price}}</p>
 
-          <p><label>Devise:</label> {{tripData.currency}}</p>
+          <p><label>{{ 'Devise' | translate }}:</label> {{tripData.currency}}</p>
           
           <p>
-            <span class="label-holder">Hébergement</span><br />
+            <span class="label-holder">{{ 'Accomodation' | translate }}</span><br />
             <input type="checkbox" name="" class="checkbox filled-in" id="school-1" [checked]="tripData.place.apartment" disabled />
-            <label for="school-1">Appartement</label><br />
+            <label for="school-1">{{ 'Apartment' | translate }}</label><br />
             <input type="checkbox" name="" class="checkbox filled-in" id="school-2" [checked]="tripData.place.common" disabled/>
-            <label for="school-2">Collectif</label><br />
+            <label for="school-2">{{ 'Collectiv' | translate }}</label><br />
             <input type="checkbox" name="" class="checkbox filled-in" id="school-3" [checked]="tripData.place.family" disabled/>
-            <label for="school-3">Famille</label><br />
+            <label for="school-3">{{ 'Family' | translate }}</label><br />
             <input type="checkbox" name="" class="checkbox filled-in" id="school-4" [checked]="tripData.place.residence" disabled/>
-            <label for="school-4">Résidence</label><br />
+            <label for="school-4">{{ 'Residence' | translate }}</label><br />
           </p>
 
-          <p><label>Type de séjour : </label> {{tripData.linguistic.name}}</p>
+          <p><label>{{ 'TravelType' | translate }} : </label> {{tripData.linguistic.name}}</p>
 
 
           

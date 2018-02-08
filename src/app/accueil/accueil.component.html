@@ -122,8 +122,8 @@
                     <div class="wheel-content">
                         <div class="ecole-content  content-holder   animated "  
                             data-image="assets/images/new-landing-page-2/ecole.jpg">
-                            <h2>ÉCOLE</h2>
-                            <h3>Maternelle / Primaire</h3>
+                            <h2>{{ 'School' | translate }}</h2>
+                            <h3>{{ 'InfantPrimarySchool' | translate }}</h3>
                             <div class="form-wrap row  ">
                                 <form [formGroup]="searchForm" 
                                     (ngSubmit)="onSubmitSearch('ecole')">
@@ -135,22 +135,20 @@
                                                         <select name="class" class="form-control" id="class"
                                                             [formControl]="searchForm.controls['classe']"
                                                             (click)="storeClassName($event)">
-                                                            <option value="" disabled selected hidden>Classe</option>
-                                                            <option value="Indifférent">&nbsp;Indifférent</option>
+                                                            <option value="" disabled selected hidden>{{ 'Class' | translate }}</option>
+                                                            <option value="Indifférent">&nbsp; {{ 'Indifferent' | translate }}</option>
                                                             <option value="ps" style="color:red">
-                                                                &nbsp;Classes maternelles
+                                                                &nbsp; {{ 'NurseryClasses' | translate }}
                                                             </option>
-                                                            <option value="ps">&nbsp;Petite section (PS)</option>
-                                                            <option value="ms">&nbsp;Moyenne section (MS)</option>
-                                                            <option value="gs">&nbsp;Grande Section (GS)</option>
-                                                            <option value="cp" style="color:red">
-                                                                &nbsp;Classes élémentaires
-                                                            </option>
-                                                            <option value="cp">&nbsp;Cours préparatoire (CP)</option>
-                                                            <option value="ce1">&nbsp;Cours élémentaire 1er année(CE1)</option>
-                                                            <option value="ce2">&nbsp;Cours élémentaire 2è année (CE2)</option>
-                                                            <option value="cm1">&nbsp;Cours Moyen 1er année(CM1)</option>
-                                                            <option value="cm2">&nbsp;Cours Moyen 2è année(CM2)</option>
+                                                            <option value="ps">&nbsp; {{ 'Preschool' | translate }}</option>
+                                                            <option value="ms">&nbsp; {{ 'SecondPreschool' | translate }}</option>
+                                                            <option value="gs">&nbsp; {{ 'LastNursery' | translate }}</option>
+                                                            <option value="cp" style="color:red">&nbsp; {{ 'ElementarySchool' | translate }}</option>
+                                                            <option value="cp">&nbsp; {{ '1stGrade' | translate }}</option>
+                                                            <option value="ce1">&nbsp; {{ '2ndGrade' | translate }}</option>
+                                                            <option value="ce2">&nbsp; {{ '3rdGrade' | translate }}</option>
+                                                            <option value="cm1">&nbsp; {{ '4thGrade' | translate }}</option>
+                                                            <option value="cm2">&nbsp; {{ '5thGrade' | translate }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -218,8 +216,8 @@
                         <div class="college-content  content-holder   animated" 
                             data-image="assets/images/new-landing-page-2/college.jpg">
                             
-                            <h2>COLLEGE</h2>
-                            <h3>6ème-3ème</h3>
+                            <h2>{{ 'SecondarySchool' | translate }}</h2>
+                            <h3>{{ '6th9thGrade' | translate }}</h3>
                             <div class="form-wrap row  ">
                                 <form [formGroup]="searchForm" 
                                             (ngSubmit)="onSubmitSearch('college')">
@@ -231,25 +229,25 @@
                                                         <select name="class" class="form-control" id="class"
                                                             [formControl]="searchForm.controls['classe']"
                                                             (click)="storeClassName($event)">
-                                                            <option value="" disabled selected hidden>Classe</option>
-                                                            <option value="Indifférent">&nbsp;Indifférent</option>
-                                                            <option value="sixieme">&nbsp;6ème</option>
-                                                            <option value="cinquieme">&nbsp;5ème</option>
-                                                            <option value="quatrieme">&nbsp;4ème</option>
-                                                            <option value="troisieme">&nbsp;3ème</option>
+                                                            <option value="" disabled selected hidden>{{ 'Class' | translate }}</option>
+                                                            <option value="Indifférent">&nbsp; {{ 'Indifferent' | translate }}</option>
+                                                            <option value="sixieme">&nbsp; {{ '6thGrade' | translate }}</option>
+                                                            <option value="cinquieme">&nbsp; {{ '7thGrade' | translate }}</option>
+                                                            <option value="quatrieme">&nbsp; {{ 'thGrade' | translate }}</option>
+                                                            <option value="troisieme">&nbsp; {{ '9thGrade' | translate }}</option>
                                                             <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
-                                                            <option value="">&nbsp;Quatrième d'aide et de soutien</option>
-                                                            <option value="">&nbsp;Troisième d'insertion</option>
-                                                            <option value="">&nbsp;Troisième découverte professionnelle - DP6 (module 6 heures)</option>
-                                                            <option value="">&nbsp;3ème préparatoire aux formations professionnels - Troisième prépa pro (ex DP6)</option>
-                                                            <option value="">&nbsp;DIMA Dispositif d'initiation aux métiers en alternance (en collège)</option>
-                                                            <option value="">&nbsp;SEGPA 6è-5è section d'enseignement général et professionnel adapté</option>
-                                                            <option value="">&nbsp;SEGPA 4è-3è section d'enseignement général et professionnel adapté</option>
-                                                            <option value="">&nbsp;ULIS unités localisées pour l'inclusion solaire (ex UPI)</option>
+                                                            <option value="">&nbsp;{{ '8thGradeHelpAndSupport' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'Insertion9thGrad' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'ProfessionalDiscovery9thGrad' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'PrepaPro9th' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'DIMA' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'SEGPA6th7th' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'SEGPA8th9th' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'ULIS' | translate }}</option>
                                                             <option value="" disabled>&nbsp;----------------------------------------------------------------------------</option>
-                                                            <option value="">&nbsp;Cursus non francophone (GB-US)</option>
-                                                            <option value="">&nbsp;Ecole pratiquant la pédagogie Montessori</option>
-                                                            <option value="">&nbsp;Enseignement à distance</option>
+                                                            <option value="">&nbsp;{{ 'GBUKCursus' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'Montessori' | translate }}</option>
+                                                            <option value="">&nbsp;{{ 'DistanceLearning' | translate }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -315,8 +313,8 @@
                         </div>
                         <div class="lycee-content  content-holder   animated" 
                             data-image="assets/images/new-landing-page-2/lycee.jpg">
-                            <h2>UN LYCÉE</h2>
-                            <h3>2nde-Terminale</h3>
+                            <h2>{{ 'AHighSchool' | translate }}</h2>
+                            <h3>{{ '10th12th' | translate }}</h3>
                             <div class="form-wrap row  ">
                                 <form [formGroup]="searchForm" 
                                     (ngSubmit)="onSubmitSearch('lycee')">
@@ -328,25 +326,25 @@
                                                         <select name="class" class="form-control" id="class"
                                                             [formControl]="searchForm.controls['classe']"
                                                             (click)="storeClassName($event)">
-                                                            <option value="" disabled selected hidden>Classe</option>
-                                                            <option value="Indifférent">&nbsp;Indifférent</option>
+                                                            <option value="" disabled selected hidden>{{ 'Class' | translate }}</option>
+                                                            <option value="Indifférent">&nbsp;{{ 'Indifferent' | translate }}</option>
                                                             <option value="seconde_techno" style="color:red">
-                                                                &nbsp;Classes de seconde
+                                                                &nbsp;{{ '10thClasses' | translate }}
                                                             </option>
-                                                            <option value="seconde_techno">&nbsp;2nde générale et technologique</option>
-                                                            <option value="seconde_probation">&nbsp;2nde de probation (ou méthodologique)</option>
+                                                            <option value="seconde_techno">&nbsp;{{ '' | translate }}</option>
+                                                            <option value="seconde_probation">&nbsp;{{ '' | translate }}</option>
                                                             <option value="premiere_es" style="color:red">
-                                                                &nbsp;Classes de première
+                                                                &nbsp;{{ '11thClasses' | translate }}
                                                             </option>
-                                                            <option value="premiere_es">&nbsp;1ere ES - Economique et Sociale</option>
-                                                            <option value="premiere_l">&nbsp;1ere L - Littéraire</option>
-                                                            <option value="premiere_s">&nbsp;1ere S - Scientifique</option>
+                                                            <option value="premiere_es">&nbsp;{{ '11thES' | translate }}</option>
+                                                            <option value="premiere_l">&nbsp;{{ '11thL' | translate }}</option>
+                                                            <option value="premiere_s">&nbsp;{{ '11thS' | translate }}</option>
                                                             <option value="terminale_s" style="color:red">
-                                                                &nbsp;Classes de terminale
+                                                                &nbsp;{{ '12thClasses' | translate }}
                                                             </option>
-                                                            <option value="terminale_s">&nbsp;Tle ES - Economique et Sociale</option>
-                                                            <option value="terminale_l">&nbsp;Tle L - Littéraire</option>
-                                                            <option value="terminale_s">&nbsp;Tle S - Scientifique</option>
+                                                            <option value="terminale_s">&nbsp;{{ '12thES' | translate }}</option>
+                                                            <option value="terminale_l">&nbsp;{{ '12thL' | translate }}</option>
+                                                            <option value="terminale_s">&nbsp;{{ '12thS' | translate }}</option>
                                                             <option value="Cursus international" style="color:red">
                                                                 &nbsp;Cursus international
                                                             </option>

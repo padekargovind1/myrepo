@@ -8,7 +8,7 @@
     </div>
     <div class="row">
       <div class="col-md-4 online-payment-title">
-        <h3>information sur la transaction</h3>
+        <h3>{{ 'TransactionInformation' | translate }}</h3>
       </div>
 
       <div class="col-md-12 online-payment-text-div">
@@ -26,7 +26,7 @@
     </div>
     <div class="row">
       <div class="col-md-4 online-payment-title">
-        <h3>Paiement sécurisé</h3>
+        <h3>{{ 'SecurePayment' | translate }}</h3>
       </div>
       <div class="col-md-12 online-payment-text-div justify-content-md-center ">
         <div class="row">
@@ -48,7 +48,7 @@
       <div class="col-md-12" class="text-center">
         <button class="btn btn-danger" type="button"
         (click)="onCancel()">
-          J'annule
+          {{ 'Cancel' | translate }}
         </button>
       </div>
     </div>

@@ -8,31 +8,31 @@
               <tbody>
                   <tr>
                       <td>
-                          <strong>Nom Court</strong><br />
+                          <strong>{{ 'ShortName' | translate }}</strong><br />
                           {{schoolData.shortName}}
                       </td>
                       <td>
-                          <strong>Nombre D'Eleves</strong><br />
+                          <strong>{{ 'StudentNumber' | translate }}</strong><br />
                           {{schoolData.nbrStudents}}
                       </td>
                   </tr>
                   <tr>
                       <td>
-                          <strong>Adresse 1</strong><br />
+                          <strong>{{ 'Address1' | translate }}</strong><br />
                           {{schoolData.address.ad1}}
                       </td>
                       <td>
-                        <strong>Code Postal</strong><br />
+                        <strong>{{ 'PostalCode' | translate }}</strong><br />
                         {{schoolData.address.postcode}}
                     </td>
                   </tr>
                   <tr>
                       <td>
-                          <strong>Ville</strong><br />
+                          <strong>{{ 'City' | translate }}</strong><br />
                           {{schoolData.address.city}}
                       </td>
                       <td>
-                        <strong>Departement</strong><br />
+                        <strong>{{ 'Department' | translate }}</strong><br />
                         {{schoolData.cycles[0].address.academy.department}}
                     </td>
                   </tr>
@@ -42,17 +42,17 @@
                           +33 {{schoolData.address.phoneNumber}}
                       </td>
                       <td>
-                        <strong>Academie</strong><br />
+                        <strong>{{ 'Academy' | translate }}</strong><br />
                         {{schoolData.cycles[0].address.academy.name}}
                     </td>
                   </tr>
                   <tr>
                       <td>
-                        <strong>Création</strong><br />
+                        <strong>{{ 'Creation' | translate }}</strong><br />
                         {{schoolData.creationYear}}
                     </td>
                       <td>
-                          <strong>Site Internet</strong><br />
+                          <strong>{{ 'Website' | translate }}</strong><br />
                           <a target="_blank" href="http://{{schoolData.url}}">{{schoolData.url}}</a>
                       </td>
                   </tr>
@@ -69,25 +69,25 @@
                 <tbody>
                     <tr>
                         <td>
-                            <strong>Titre</strong><br />
+                            <strong>{{ 'Title' | translate }}</strong><br />
                             {{schoolData.contact.gender}}
                         </td>
                         <td>
-                            <strong>Prénom</strong><br />
+                            <strong>{{ 'FirstName' | translate }}</strong><br />
                             {{schoolData.contact.firstName}}
                         </td>
                         <td>
-                            <strong>Nom</strong><br />
+                            <strong>{{ 'LastName' | translate }}</strong><br />
                             {{schoolData.contact.lastName}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <strong>Fonction</strong><br />
+                            <strong>{{ 'Function' | translate }}</strong><br />
                             {{schoolData.contact.job}}
                         </td>
                         <td>
-                            <strong>Mél</strong><br />
+                            <strong>Mail</strong><br />
                             {{schoolData.contact.email}}
                         </td>
                         <td>
