@@ -130,6 +130,14 @@ export class RegisterComponent implements OnInit {
                 confirmButtonText: 'Ok'
                 });
               }
+              else{
+                swal({
+                  title: "Username/Email already registered... Enter valid email",
+                  text: "",
+                  type: 'error',
+                  confirmButtonText: 'Ok'
+                  });
+              }
               console.log('message: ', this.errorMessage);
             }
             else { // If it's good
