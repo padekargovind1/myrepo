@@ -433,9 +433,9 @@ export class SchoolComponent implements OnInit, OnDestroy {
   
   logSearch(data){
     // console.log(data)
-    // if (data.details.class !== '' && data.details.place !== '') {
+    if (data.details.class !== '' && data.details.place !== '') {
       this.usersService.postToHistory(data).subscribe();
-    // }
+    }
   }
 
   // postFastSearch(data){

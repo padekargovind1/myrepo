@@ -94,7 +94,8 @@ export class BrochureDownloadComponent implements OnInit {
     let brochures = [];
     // for (let i in this.brochureList) {
       let brochureData = {
-        "link": this.brochureList[0].brochure.replace(/\\/g, "\\\\").toString(),
+        // "link": this.brochureList[0].brochure.replace(/\\/g, "\\\\").toString(),
+        "link": this.brochureList[0].brochure.toString(),
         "placeholder": this.brochureList[0].nom.toString(),
         "title": this.brochureList[0].nom.toString(),
         "_id": this.brochureList[0]._id,
