@@ -26,11 +26,23 @@ export class DiagnosticTabComponent implements OnInit {
       reasonDiagnostic : [''],
       note :['']
     });
+    setTimeout(()=>{
+      this.patchValue()
+    }, 1000);
+  }
+  //PatchValue from userData
+  patchValue(){
+    let reasonDiagnostic = (this.userData.reasonDiagnostic!==undefined && this.userData.reasonDiagnostic!=null) ? true : false;
+    let note = (this.userData.note!==undefined && this.userData.note!=null) ? true : false;
+    this.wizardForm.patchValue({
+      reasonDiagnostic : reasonDiagnostic ? this.userData.reasonDiagnostic : '',
+      note : note ? this.userData.note : '',
+    })
   }
   //Save and go to the next tab
   nextTab(nb:number){
     if(this.wizardForm.valid){
-      this.wizardService.saveData('hobbiesData', this.wizardForm.value);
+      this.wizardService.saveData('diagnosticData', this.wizardForm.value);
       this.tabChange.emit(nb);
     }else {
       this.bookingService.failSubmit();
@@ -38,6 +50,7 @@ export class DiagnosticTabComponent implements OnInit {
   }
   onSubmit(){
     console.log("On Submit");
+    this.wizardService.saveData('diagnosticData', this.wizardForm.value);
     this.wizardService.onSubmitForm();
   }
 }

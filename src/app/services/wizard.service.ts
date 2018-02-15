@@ -38,9 +38,11 @@ export class WizardService {
     professionFormE : [],
     professionFormF : []
   }
+  newProfessionList = {};
   finalProfessionList =[];
   //Data to update -> to send to API
   appointmentData;
+  newappointmentData;
   lienparents = [ "Père",
     "Mère",
     "Oncle",
@@ -71,12 +73,30 @@ export class WizardService {
     diagnosticData: {},
     pageName: ""
   }
+  userId;
 
   //*
   constructor(private usersService : UsersService,
               private bookingService : BookingService,
               private authService : AuthService,
-              private route : Router) { }
+              private route : Router) {
+                if (this.authService.isUserLoggedIn()) {
+                  this.getUserProfile();
+                }
+                // else {
+                //   this.route.navigate(['/login']);
+                // }
+              }
+
+  getUserProfile(){
+    this.usersService.getProfile()
+      .subscribe((response)=>{
+        console.log('userId: ' + response.data[0]._id);
+        if(response.code==200){
+          this.userId=response.data[0]._id;
+        }
+      })
+  }
 
   createProfession(){
     for(var profession of this.groupA){
@@ -122,7 +142,25 @@ export class WizardService {
   }
 
   storeProfessionList(data){
-    this.professionList=data
+    this.professionList=data;
+    console.log('professionList raw data');
+    console.log(data);
+    this.newProfessionList = {
+      groupA: this.arrayToObject(data.professionFormA),
+      groupB: this.arrayToObject(data.professionFormB),
+      groupC: this.arrayToObject(data.professionFormC),
+      groupD: this.arrayToObject(data.professionFormD),
+      groupE: this.arrayToObject(data.professionFormE),
+      groupF: this.arrayToObject(data.professionFormF)
+    }
+  }
+
+  arrayToObject(array) {
+    let result = {};
+    for (let i of array) {
+      result[i.name] = i.isFavorite
+    }
+    return result;
   }
   //Check if all the form is complete
   professionListIsvalid(): boolean{
@@ -376,11 +414,16 @@ export class WizardService {
   }
   //Create a new appointment based on the newAppointment data and the package Id
   postCreateNewAppointment(packageId){
-    console.log(packageId);
-    this.usersService.postCreateNewAppointment(this.newAppointment, packageId)
+    console.log('Booking data..');
+    console.log(this.userData);
+    console.log(this.newProfessionList);
+    console.log(this.wizardData);
+    // this.fillAppointmentData(this.wizardData);
+    this.usersService.postCreateNewAppointment(this.fillAppointmentData(this.wizardData), packageId, this.userId)
       .subscribe(
         (response)=>{
           let data = response.data;
+          console.log('Booking appointment responce..');
           console.log(data);
           if(data.code==400){
             console.log(response.message);
@@ -396,6 +439,64 @@ export class WizardService {
           }
         }
       )
+  }
+
+  fillAppointmentData(wizardData) {
+    let appointmentData = {
+      'bookingNumber': 123,
+      'customerDetails': {
+        'schoolHelp': wizardData.helpData,
+        'parent': {
+          'parentType': wizardData.parentData[0].lienParent,
+          'title': wizardData.parentData[0].title,
+          'firstName': wizardData.parentData[0].prenom,
+          'lastName': wizardData.parentData[0].nom,
+          'profession': wizardData.parentData[0].job,
+          'email': wizardData.parentData[0].email,
+          'phone': wizardData.parentData[0].portable,
+          'contactHoure': wizardData.parentData[0].horaireJoignable
+        },
+        'student': {
+          'firstName': wizardData.childData.childFirstName,
+          'lastName': wizardData.childData.childLastName,
+          'age': wizardData.childData.childAge,
+          'sex': wizardData.childData.childTitle,
+          'birthDate': wizardData.childData.childBirthDay,
+          'bornPlace': wizardData.childData.childBirthPlace
+        },
+        'actualSchool': {
+          'schoolName': wizardData.currentSchoolData.schoolName,
+          'city': wizardData.currentSchoolData.schoolCity,
+          'class': wizardData.currentSchoolData.schoolClasse,
+          'options': wizardData.currentSchoolData.schoolOption,
+          'lv1': wizardData.currentSchoolData.schoolLv1,
+          'lv2': wizardData.currentSchoolData.schoolLv2,
+          'lv3': wizardData.currentSchoolData.schoolLv3
+        },
+        'favoriteCourse': {
+          'strongCourses': wizardData.subjectData.bestSubject,
+          'mediumCourses': wizardData.subjectData.interestSubject,
+          'preferedCourses': wizardData.subjectData.weakSubject,
+        },
+        'interestCenters': {
+          'interestCenters': wizardData.hobbiesData.yourInterest,
+          'hobbies': wizardData.hobbiesData.practiceInterest,
+          'job': wizardData.hobbiesData.job
+        },
+        'frequentedSchool': {
+          'primarySchool': wizardData.establishmentData.primary,
+          'secondarySchool': wizardData.establishmentData.secondary
+        },
+        'desiredProfession': this.newProfessionList,
+        'diagnosis': {
+          'diagnosisReason': wizardData.diagnosticData.reasonDiagnostic,
+          'remarks': wizardData.diagnosticData.note
+        }
+      }
+    }
+    console.log('appointmentData..');
+    console.log(appointmentData);
+    return appointmentData;
   }
 
   setPageName(page) {

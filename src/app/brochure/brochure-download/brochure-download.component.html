@@ -5,7 +5,7 @@
 
     <ul class="files-to-download">
         <li *ngFor="let brochure of brochureList; let i=index">
-            <img src="http://13.229.117.64/cideapi/{{brochure.logo1}}" alt="" width="20" />
+            <img src="http://54.255.254.97:9080/cideapi/{{brochure.logo1}}" alt="" width="20" />
             <span>{{ brochure.nom }} / Cycle : {{ brochure.cycle.nom }} </span>
             <span class="remove" (click)="onRemoveBrochure(i)"
               style="cursor:pointer">X</span>
@@ -15,7 +15,7 @@
 
     <div *ngIf="brochureList[0]!==undefined" style="float : right">
 
-      <a href="http://13.229.117.64/cideapi/{{brochureList[0].brochure}}" 
+      <a href="http://54.255.254.97:9080/cideapi/{{brochureList[0].brochure}}" 
         class="btn btn-secondary" (click)="onSubmit()"
         download="1.pdf" target="blank">
         Télécharger

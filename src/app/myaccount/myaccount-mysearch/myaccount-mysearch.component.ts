@@ -76,7 +76,7 @@ export class MyaccountMysearchComponent implements OnInit {
     this.publicService.fromSearchHistory = true;
     const searchData = [data.class, data.link, data.school]
     this.publicService.storeSearchSchool(searchData);
-    this.router.navigate(['/ecole']);
+    this.router.navigate(['/' + data.type]);
     // if (data.code[0] !== '' && data.code.length === 1) {
     //   this.router.navigate(['/' + data.code[0]]);
     // }

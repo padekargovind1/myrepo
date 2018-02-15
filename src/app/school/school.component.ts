@@ -412,7 +412,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
       this.logSearch({'category': 'searches', 'details': {
         class: this.searchFilter[0],
         link: this.searchFilter[1],
-        school: this.searchFilter[2]
+        school: this.searchFilter[2],
+        type: this.pathName
       }}); // store the search to the service
     }
     this.publicService.fromSearchHistory = false;

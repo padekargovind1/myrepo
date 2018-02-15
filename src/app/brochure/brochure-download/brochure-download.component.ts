@@ -98,6 +98,7 @@ export class BrochureDownloadComponent implements OnInit {
         "link": this.brochureList[0].brochure.toString(),
         "placeholder": this.brochureList[0].nom.toString(),
         "title": this.brochureList[0].nom.toString(),
+        "logo": this.brochureList[0].logo1,
         "_id": this.brochureList[0]._id,
         "type": "brochure"
       // }
