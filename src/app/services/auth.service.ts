@@ -6,10 +6,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
-const REGISTER_API: string = "http://13.229.117.64/cideapi/api/register";
-const FORGOT_API : string = "http://13.229.117.64/cideapi/api/password";
-const LOGIN_API : string ="http://13.229.117.64/cideapi/api/login";
-const SEND_API : string = "http://13.229.117.64/cideapi/api/email/send";
+const REGISTER_API: string = "http://54.255.254.97:9080/cideapi/api/register";
+const FORGOT_API : string = "http://54.255.254.97:9080/cideapi/api/password";
+const LOGIN_API : string ="http://54.255.254.97:9080/cideapi/api/login";
+const SEND_API : string = "http://54.255.254.97:9080/cideapi/api/email/send";
 
 @Injectable()
 export class AuthService {

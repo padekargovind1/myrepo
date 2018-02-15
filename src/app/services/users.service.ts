@@ -6,14 +6,14 @@ import { AuthService } from './auth.service';
 import {MyAccountMdl} from '../model/myaccount.model';
 import { Subject } from 'rxjs/Subject';
 
-const PROFILE_API : string = "http://13.229.117.64/cideapi/api/profile";
-const APPOINTMENTS_API : string = "http://13.229.117.64/cideapi/api/public";
-const PACKAGE_API : string = "http://13.229.117.64/cideapi/api/public/package";
-const APPLICATION_API : string = "http://13.229.117.64/cideapi/api/users/apply";
-const BRONCHURE_API : string = "http://13.229.117.64/cideapi/api/users/media";
-const TRIPS_API: string = "http://13.229.117.64/cideapi/api/users/trips";
-const HISTORY_API : string = "http://13.229.117.64/cideapi/api/common/history";
-const MESSAGES_API : string = "http://13.229.117.64/cideapi/api/mails";
+const PROFILE_API : string = "http://54.255.254.97:9080/cideapi/api/profile";
+const APPOINTMENTS_API : string = "http://54.255.254.97:9080/cideapi/api/public";
+const PACKAGE_API : string = "http://54.255.254.97:9080/cideapi/api/public/package";
+const APPLICATION_API : string = "http://54.255.254.97:9080/cideapi/api/users/apply";
+const BRONCHURE_API : string = "http://54.255.254.97:9080/cideapi/api/users/media";
+const TRIPS_API: string = "http://54.255.254.97:9080/cideapi/api/users/trips";
+const HISTORY_API : string = "http://54.255.254.97:9080/cideapi/api/common/history";
+const MESSAGES_API : string = "http://54.255.254.97:9080/cideapi/api/mails";
 
 @Injectable()
 export class UsersService {
@@ -96,13 +96,13 @@ export class UsersService {
       .map((response)=>response.json());
   }
 
-  postCreateNewAppointment(data, packageId): Observable<any>{
-    return this.http.post('http://13.229.117.64/cideapi/api/users/appointments/'+packageId+'?token='+this.getToken(), data)
+  postCreateNewAppointment(data, packageId, userId): Observable<any>{
+    return this.http.post('http://54.255.254.97:9080/cideapi/api/school/'+userId+'/appointment/?availability_id=1&package_id='+packageId+'&token='+this.getToken(), data)
       .map((response)=>response.json());
   }
 
   putAppointmentData(appointmentId, data): Observable<any>{
-    return this.http.put('http://13.229.117.64/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
+    return this.http.put('http://54.255.254.97:9080/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
       .map(response=>response.json());
   }
 
