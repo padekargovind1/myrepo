@@ -14,6 +14,7 @@ import { SendMessageComponent } from '../shared/send-message/send-message.compon
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { Subscription } from 'rxjs/Subscription';
 import swal from 'sweetalert2';
+import {globalUrl} from '../common';
 import {HelperService} from "../services/helper.service";
 import { EtablissementComponent } from '../etablissement/etablissement.component';
 declare const jquery: any;
@@ -85,7 +86,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   lieuSelected = [];
 
   imageExtensions = ['png','gif','jpeg'];
-  imagePathPre = 'http://54.255.254.97:9080/cideapi/';
+  imagePathPre = globalUrl;
 
   selectedecole = 'Classe';
   config : any;

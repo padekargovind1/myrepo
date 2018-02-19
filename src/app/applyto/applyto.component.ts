@@ -6,6 +6,7 @@ import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { PublicService } from '../services/public.service';
 import swal from 'sweetalert2';
+import { globalUrl } from '../common';
 
 
 @Component({

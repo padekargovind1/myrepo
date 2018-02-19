@@ -109,7 +109,7 @@
             <div class="login-options">
               <div class="row">
                 <div class="col-md-3 col-sm-6">
-                  <a href="#" class="login-op-btn grad-btn ln-tr fb"><i class="fa fa-facebook"></i> Facebook</a>
+                  <a (click)="signIn('facebook')" class="login-op-btn grad-btn ln-tr fb"><i class="fa fa-facebook"></i> Facebook</a>
                 </div><!-- end FB login -->
                 <div class="col-md-3 col-sm-6">
                   <a href="#" class="login-op-btn grad-btn ln-tr in"><i class="fa fa-instagram"></i> Instagram</a>
@@ -118,7 +118,7 @@
                   <a href="#" class="login-op-btn grad-btn ln-tr tw"><i class="fa fa-twitter"></i> Twitter</a>
                 </div><!-- end TW login -->
                 <div class="col-md-3 col-sm-6">
-                  <a href="#" class="login-op-btn grad-btn ln-tr gp"><i class="fa fa-google-plus"> Google +</i></a>
+                  <a (click)="signIn('google')" class="login-op-btn grad-btn ln-tr gp"><i class="fa fa-google-plus"> Google +</i></a>
                 </div><!-- end YA login -->
                 <!--<div class="col-md-3 col-sm-6">
                   <a href="#" class="login-op-btn grad-btn ln-tr li"><i class="fa fa-linkedin"></i> LinkedIn</a>

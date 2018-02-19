@@ -4,16 +4,16 @@ import { Http, Headers,Jsonp } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 import {MyAccountMdl} from '../model/myaccount.model';
-import { Subject } from 'rxjs/Subject';
+import { globalUrl } from '../common';
 
-const PROFILE_API : string = "http://54.255.254.97:9080/cideapi/api/profile";
-const APPOINTMENTS_API : string = "http://54.255.254.97:9080/cideapi/api/public";
-const PACKAGE_API : string = "http://54.255.254.97:9080/cideapi/api/public/package";
-const APPLICATION_API : string = "http://54.255.254.97:9080/cideapi/api/users/apply";
-const BRONCHURE_API : string = "http://54.255.254.97:9080/cideapi/api/users/media";
-const TRIPS_API: string = "http://54.255.254.97:9080/cideapi/api/users/trips";
-const HISTORY_API : string = "http://54.255.254.97:9080/cideapi/api/common/history";
-const MESSAGES_API : string = "http://54.255.254.97:9080/cideapi/api/mails";
+const PROFILE_API : string = globalUrl + "/api/profile";
+const APPOINTMENTS_API : string = globalUrl + "/api/public";
+const PACKAGE_API : string = globalUrl + "/api/public/package";
+const APPLICATION_API : string = globalUrl + "/api/users/apply";
+const BRONCHURE_API : string = globalUrl + "/api/users/media";
+const TRIPS_API: string = globalUrl + "/api/users/trips";
+const HISTORY_API : string = globalUrl + "/api/common/history";
+const MESSAGES_API : string = globalUrl + "/api/mails";
 
 @Injectable()
 export class UsersService {
@@ -21,47 +21,6 @@ export class UsersService {
   private token : string='';
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  newMessage = new Subject<any[]>();
-  private messages: any = [
-    {
-      date: new Date(15, 10,2017),
-      school: 'Institution Jeanne d Arc-Saint-Aspais - Fontainebleau',
-      subject: 'Messo',
-      message: 'Outgoing message',
-      senderProperty: {
-        sender: "5a38f96b928d4c165938a800",
-        module: "candidate"
-      },
-      recipientProperty: {
-        recipient: ["0000000000000000000e2145"],
-        module: "school",
-        rank: ""
-      },
-      user: "5a38f96b928d4c165938a800",
-      attachments: "",
-      tags: "",
-      isSent: true
-    },
-    {
-      date: new Date(15, 10,2017),
-      school: 'Institution Jeanne d Arc-Saint-Aspais - Fontainebleau',
-      subject: 'Messo',
-      message: 'Outgoing message',
-      senderProperty: {
-        sender: "5a38f96b928d4c165938a800",
-        module: "candidate"
-      },
-      recipientProperty: {
-        recipient: ["0000000000000000000e2145"],
-        module: "school",
-        rank: ""
-      },
-      user: "5a38f96b928d4c165938a800",
-      attachments: "",
-      tags: "",
-      isSent: true
-    }
-  ];
 
   constructor(private http : Http,
               private jsonp :Jsonp,
@@ -97,12 +56,12 @@ export class UsersService {
   }
 
   postCreateNewAppointment(data, packageId, userId): Observable<any>{
-    return this.http.post('http://54.255.254.97:9080/cideapi/api/school/'+userId+'/appointment/?availability_id=1&package_id='+packageId+'&token='+this.getToken(), data)
+    return this.http.post(globalUrl + '/cideapi/api/school/'+userId+'/appointment/?availability_id=1&package_id='+packageId+'&token='+this.getToken(), data)
       .map((response)=>response.json());
   }
 
   putAppointmentData(appointmentId, data): Observable<any>{
-    return this.http.put('http://54.255.254.97:9080/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
+    return this.http.put(globalUrl + '/cideapi/api/users/appointments'+'?token='+this.getToken()+'&id='+appointmentId, data)
       .map(response=>response.json());
   }
 
@@ -148,13 +107,8 @@ export class UsersService {
   getMessages(data):Observable<any>{
     return this.http.get(MESSAGES_API+'?type='+data.type+'&token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
-    // return this.messages.slice();
   }
-  
-  // postToMessages(data) {
-    // this.messages.push(data);
-    // this.newMessage.next(this.messages.slice());
-  // }
+
   postToMessages(data): Observable<any>{
     console.log('Sending message..');
     // console.log(data);

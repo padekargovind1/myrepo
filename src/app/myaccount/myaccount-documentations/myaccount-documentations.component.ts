@@ -6,6 +6,7 @@ import { BrochpopupComponent } from '../../brochure/brochpopup/brochpopup.compon
 import { BrochureDownloadComponent } from '../../brochure/brochure-download/brochure-download.component';
 import { BrochureService } from '../../services/brochure.service';
 import { Http, Response } from '@angular/http';
+import { globalUrl } from '../../common';
 declare var saveAs:any;
 
 @Component({
@@ -33,6 +34,8 @@ export class MyaccountDocumentationsComponent implements OnInit {
       }
   };
   config2: any;
+  imagePathPre = globalUrl;
+  
   constructor(private usersService: UsersService,
               public dialog: MdDialog,
               private brochureService: BrochureService,
@@ -130,8 +133,8 @@ export class MyaccountDocumentationsComponent implements OnInit {
   }
   // Open the md dialog to download the brochure
   downloadDialog() {
-    this.http.get(
-      'http://54.255.254.97:9080/cideapi/uploads/brochure/1.pdf').subscribe(
+    var pdfUrl = globalUrl+'/uploads/brochure/1.pdf'   //'http://54.255.254.97:9090/cideapi/uploads/brochure/1.pdf'
+    this.http.get(pdfUrl).subscribe(
         (response:Response)=>{
           console.log(response['_body'])
           var mediaType = 'application/pdf';

@@ -118,6 +118,22 @@ import { Partnerships } from './partnerships/partnerships.component';
 import { ContactUs } from './contact-us/contact-us.component';
 import { CompareDialogComponent } from './compare-mode/compare-dialog/compare-dialog.component';
 
+import { Angular2SocialLoginModule } from "angular2-social-login";
+
+let providers = {
+  "facebook": {
+    "clientId": "2016001745338308",
+    "apiVersion": "v2.4" //like v2.4 
+  },
+  "linkedin": {
+    "clientId": "81ynupkf57gqpx"
+  },
+  "google": {
+    "clientId": "208497326928-sdbrj9jbjieob5o45iqp5frd4e9bvk3p.apps.googleusercontent.com"
+  }
+
+  
+  };
 @NgModule({
   declarations: [
     AppComponent,
@@ -231,7 +247,8 @@ import { CompareDialogComponent } from './compare-mode/compare-dialog/compare-di
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD_gjvXL9pHaSq50qqiKv73IodUxJh8NCU'
     }),
-    NgxPaginationModule
+    NgxPaginationModule,
+    Angular2SocialLoginModule
   ],
   providers: [
     SchoolService,
@@ -265,3 +282,5 @@ import { CompareDialogComponent } from './compare-mode/compare-dialog/compare-di
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+Angular2SocialLoginModule.loadProvidersScripts(providers);

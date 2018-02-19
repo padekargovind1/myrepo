@@ -11,6 +11,7 @@ import { SendService } from '../services/send.service';
 import { SchoolService } from '../services/school.service';
 declare var $ :any;
 import swal from 'sweetalert2';
+import { globalUrl } from '../common';
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
 import { AuthService } from 'app/services/auth.service';
@@ -29,7 +30,8 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   schoolLongName : string = "";
   canDisplay : boolean = false;
   config : any;
-
+  imagePathPre = globalUrl;
+  
   constructor(//private route : ActivatedRoute,
               //private publicService : PublicService,
               //private location : Location,

@@ -2,6 +2,7 @@
 import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
+import { globalUrl } from '../common';
 // import { AdvancedSearchMdl, SpecialityMdl,
 //         BoardingMdl, CurriculumMdl,
 //         CanteenMdl, ExternalMdl,
@@ -9,8 +10,8 @@ import { Observable } from 'rxjs/Observable';
 //         LanguageMdl, SectionMdl,
 //         DiplomaMdl, OptionMdl, SeatsMdl } from '../model/advanced-search.model';
 
-const TRIPS_API: string = "http://54.255.254.97:9080/cideapi/api/schools/trips";
-const STATISTICS_API: string = "http://54.255.254.97:9080/cideapi/api/schools/statictics";
+const TRIPS_API: string = globalUrl+"/api/schools/trips";
+const STATISTICS_API: string = globalUrl+"/api/schools/statictics";
 
 @Injectable()
 export class SchoolService {
@@ -26,7 +27,7 @@ export class SchoolService {
   selectedLieu = [];
   onCancel : boolean = false;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   getTrips() :  Observable<any>{
     return this.http.get(TRIPS_API)

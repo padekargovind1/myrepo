@@ -295,7 +295,7 @@
                                         <li><a><i class="fa fa-share" aria-hidden="true"></i></a></li>
                                         <li *ngIf="schoolBrochure.length!=0">
 
-                                          <a href="http://13.229.117.64/cideapi{{schoolBrochure[i].brochure}}" download="brochure.pdf" target="_self">
+                                          <a href="{{globalUrl}}{{schoolBrochure[i].brochure}}" download="brochure.pdf" target="_self">
 
                                             <i class="fa fa-download" aria-hidden="true"></i>
                                           </a>
@@ -303,7 +303,7 @@
                                       </ul>
 
 
-                                      <a href="javascript:void(0)" (click)="OpenSchoolSelect(i,school)" class="schoolPopUp"><img src="http://13.229.117.64/cideapi/{{school.cycles[0].logo1}}" alt="School 1" /></a>
+                                      <a href="javascript:void(0)" (click)="OpenSchoolSelect(i,school)" class="schoolPopUp"><img src="{{globalUrl}}/{{school.cycles[0].logo1}}" alt="School 1" /></a>
 
 
                                       <div class="card-content">

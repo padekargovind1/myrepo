@@ -1,5 +1,6 @@
 ﻿import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+//import { globalUrl } from './common';
 
 @Component({
   selector: 'app-root',

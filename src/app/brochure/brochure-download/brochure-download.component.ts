@@ -7,6 +7,7 @@ import { UsersService } from '../../services/users.service';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { globalUrl } from '../../common';
 
 declare var saveAs:any;
 
@@ -109,7 +110,7 @@ export class BrochureDownloadComponent implements OnInit {
       console.log(response);
     });
     // this.http.get(
-    //   'http://54.255.254.97:9080/cideapi/uploads/brochure/1.pdf').subscribe(
+    //   globalUrl + '/uploads/brochure/1.pdf').subscribe(
     //     (response:Response)=>{
     //       console.log(response['_body'])
     //       var mediaType = 'application/pdf';

@@ -9,6 +9,7 @@ import {HelperService} from "../services/helper.service";
 import swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { globalUrl } from '../common';
 
 @Component({
   selector: 'app-brochure',
