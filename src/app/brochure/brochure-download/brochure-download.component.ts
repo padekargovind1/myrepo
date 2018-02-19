@@ -109,7 +109,7 @@ export class BrochureDownloadComponent implements OnInit {
       console.log(response);
     });
     // this.http.get(
-    //   'http://13.229.117.64/cideapi/uploads/brochure/1.pdf').subscribe(
+    //   'http://54.255.254.97:9080/cideapi/uploads/brochure/1.pdf').subscribe(
     //     (response:Response)=>{
     //       console.log(response['_body'])
     //       var mediaType = 'application/pdf';
