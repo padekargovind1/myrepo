@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col-lg-1  col-xs-4" *ngIf="canDisplay">
-                    <img src="{{globalUrl}}/{{schoolData.cycles[0].logo1}}" 
+                    <img src="{{imagePathPre}}/{{schoolData.cycles[0].logo1}}"
                         class="img-responsive">
                 </div>
                 <div class="col-lg-5 col-xs-8">
@@ -44,7 +44,7 @@
 					<div class="col-md-12 slickjs" *ngIf="schoolData.pictures.length!=0">
 						<div *ngFor="let photo of schoolData.pictures">
 
-                            <img src="{{globalUrl}}{{photo}}" alt="">
+                            <img src="{{imagePathPre}}{{photo}}" alt="">
 
                         </div>
 					</div>

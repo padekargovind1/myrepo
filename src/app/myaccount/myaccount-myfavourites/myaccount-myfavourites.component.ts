@@ -30,7 +30,7 @@ export class MyaccountMyfavouritesComponent implements OnInit {
   compareList = [];
   compareListFilter = [];
   schoolListFilter = [];
-  imageExtensions = ['png','gif','jpeg']; 
+  imageExtensions = ['png','gif','jpeg'];
   imagePathPre = globalUrl;
   filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
                 'Internat', 'Stages', 'Restauration',

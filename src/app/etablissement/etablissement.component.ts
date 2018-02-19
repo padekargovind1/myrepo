@@ -30,7 +30,8 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
   schoolLongName : string = "";
   canDisplay : boolean = false;
   config : any;
-
+  imagePathPre = globalUrl;
+  
   constructor(//private route : ActivatedRoute,
               //private publicService : PublicService,
               //private location : Location,
