@@ -5,11 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
+import { globalUrl } from '../common';
 
-const REGISTER_API: string = "http://54.255.254.97:9080/cideapi/api/register";
-const FORGOT_API : string = "http://54.255.254.97:9080/cideapi/api/password";
-const LOGIN_API : string ="http://54.255.254.97:9080/cideapi/api/login";
-const SEND_API : string = "http://54.255.254.97:9080/cideapi/api/email/send";
+const REGISTER_API: string = globalUrl + "/api/register";
+const FORGOT_API : string = globalUrl + "/api/password";
+const LOGIN_API : string =globalUrl + "/api/login";
+const SEND_API : string = globalUrl + "/api/email/send";
 
 @Injectable()
 export class AuthService {

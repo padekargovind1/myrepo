@@ -1,13 +1,14 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { globalUrl } from '../common';
 
-const SCHOOLS_API : string = "http://54.255.254.97:9080/cideapi/api/public/schools/";
-const CITIES_API : string = "http://54.255.254.97:9080/cideapi/api/public/cities/autocomplete";
-const LINGUISTIC_API: string = "http://54.255.254.97:9080/cideapi/api/public/linguistic";
-const LANGUAGE_API: string = "http://54.255.254.97:9080/cideapi/api/public/language";
-const SEARCH_API : string = "http://54.255.254.97:9080/cideapi/api/public/search/";
-const RATE_API : string = "http://54.255.254.97:9080/cideapi/api/public/rate";
+const SCHOOLS_API : string = globalUrl + "/api/public/schools/";
+const CITIES_API : string = globalUrl + "/api/public/cities/autocomplete";
+const LINGUISTIC_API: string = globalUrl + "/api/public/linguistic";
+const LANGUAGE_API: string = globalUrl + "/api/public/language";
+const SEARCH_API : string = globalUrl + "/api/public/search/";
+const RATE_API : string = globalUrl + "/api/public/rate";
 const APB_API : string = "https://api2.apbprive.fr/";
 
 @Injectable()

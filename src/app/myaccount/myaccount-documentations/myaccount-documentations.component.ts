@@ -34,6 +34,8 @@ export class MyaccountDocumentationsComponent implements OnInit {
       }
   };
   config2: any;
+  imagePathPre = globalUrl;
+  
   constructor(private usersService: UsersService,
               public dialog: MdDialog,
               private brochureService: BrochureService,
