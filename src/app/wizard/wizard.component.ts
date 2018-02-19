@@ -9,6 +9,7 @@ import { DateAdapter } from '@angular/material';
 import swal from "sweetalert2";
 import {HelperService} from "../services/helper.service";
 import {WizardService} from "../services/wizard.service";
+import {globalUrl} from '../common';
 @Component({
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',

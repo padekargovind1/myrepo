@@ -14,7 +14,7 @@ import { MdDialog } from '@angular/material';
 import { SendMessageComponent } from '../../shared/send-message/send-message.component';
 import { CompareDialogComponent } from '../../compare-mode/compare-dialog/compare-dialog.component';
 import { SchoolChoiceComponent } from '../../shared/school-choice/school-choice.component';
-
+import { globalUrl } from '../../common';
 //const self = this;
 @Component({
   selector: 'app-myaccount-myfavourites',
@@ -31,7 +31,7 @@ export class MyaccountMyfavouritesComponent implements OnInit {
   compareListFilter = [];
   schoolListFilter = [];
   imageExtensions = ['png','gif','jpeg']; 
-  imagePathPre = 'http://13.229.117.64/cideapi/';
+  imagePathPre = globalUrl;
   filterList = ['Cycles & Classes', 'Langues', 'Spécialités',
                 'Internat', 'Stages', 'Restauration',
                 'Externat', 'Statut', 'Enseignement Confessionel',

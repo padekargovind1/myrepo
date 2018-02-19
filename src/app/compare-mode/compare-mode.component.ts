@@ -8,6 +8,7 @@ import { UsersService } from '../services/users.service';
 import { SendService } from '../services/send.service';
 import swal from 'sweetalert2';
 //var self = this;
+import { globalUrl } from '../common';
 import { SchoolChoiceComponent } from '../shared/school-choice/school-choice.component';
 import { SendMessageComponent } from '../shared/send-message/send-message.component';
 declare const jquery: any;

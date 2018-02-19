@@ -5,6 +5,8 @@ import { UsersService } from '../services/users.service';
 import { BookingService } from '../services/booking.service';
 import { AuthService } from '../services/auth.service';
 import swal from 'sweetalert2';
+import { globalUrl } from '../common';
+
 declare var $:any;
 declare var fullCalendar: any;
 

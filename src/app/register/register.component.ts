@@ -6,6 +6,7 @@ import { UsersService } from '../services/users.service';
 import { BookingService } from '../services/booking.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
+import * as social from "angular2-social-login";
 
 @Component({
   selector: 'app-register',
@@ -20,14 +21,16 @@ export class RegisterComponent implements OnInit {
   public digitFlag = false;
   public lowerFlag = false;
   public upperFlag = false;
-
+  public sub :any;
   errorMessage: string='';
 
   constructor(private fb: FormBuilder,
               private authService : AuthService,
               private router : Router,
               private usersService : UsersService,
-              private bookingService : BookingService) {
+              private bookingService : BookingService,
+              private _auth: social.AuthService
+            ) {
     this.buildFormGroup();
   }
 
@@ -99,7 +102,14 @@ export class RegisterComponent implements OnInit {
     console.log(this.cutomeErrorMessage);
   }
 
-  // Send data to API to create new account
+  signIn(provider){
+    this.sub = this._auth.login(provider).subscribe(
+      (data) => {
+                  console.log(data);
+                }
+    )
+  }
+
   save(){
     console.log("Register!");
     if (this.registerForm.valid){
