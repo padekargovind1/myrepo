@@ -27,6 +27,7 @@ export class WizardComponent implements OnInit {
   @ViewChild('tabGroup') tabGroup;
   onMobile:boolean=false;
   nbTab : number=0;
+  globalPath = globalUrl;
 
   constructor(private usersService: UsersService,
               private authService : AuthService,
