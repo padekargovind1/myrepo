@@ -261,7 +261,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
           if (this.pathName === 'ecole'){
             this.schoolComponentTitle = 'ECOLE Maternelle / Primaire';
             $('.filter-form-holder').css('background-image', "url('./assets/images/ecole.jpg')");
-            this.advancedSearch.code = ['maternelle', 'primaire'];
+            this.advancedSearch.code = [];
           } else if (this.pathName === 'college') {
             $('.filter-form-holder').css('background-image', "url('./assets/images/college.jpg')");
             this.advancedSearch.code = [this.pathName];
@@ -888,7 +888,6 @@ export class SchoolComponent implements OnInit, OnDestroy {
     this.publicService.cleanSearch();
     this.searchSubscription.unsubscribe();
     this.schoolService.cleanSearchResults();
-    console.log('component destroyed');
   }
 
 }
