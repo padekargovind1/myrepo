@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 
 import { CustomValidators } from 'ng2-validation';
 import { AuthService } from '../services/auth.service';
 import swal from 'sweetalert2';
+
+const password = new FormControl('', Validators.required);
+const repeated = new FormControl('', CustomValidators.equalTo(password));
 
 @Component({
   selector: 'app-forgotpassword',
@@ -18,23 +21,27 @@ export class ForgotpasswordComponent implements OnInit {
 
   constructor(private fb : FormBuilder,
               private authService : AuthService,
-              private location : Location) {
-    this.forgotPasswordForm = this.fb.group({
-      email : ['' , Validators.compose([Validators.required, CustomValidators.email])],
-    })
-  }
+              private location : Location) {  }
 
   ngOnInit() {
+    this.forgotPasswordForm = this.fb.group({
+      code : ['', Validators.required],
+      password : password,
+      repeated : repeated
+    })
   }
 
   // After click on the submit button -> call API -> sweet alert
   onSubmit(){
     if(this.forgotPasswordForm.valid){
       console.log(this.forgotPasswordForm);
+      
+      const data = ({
+        code: this.forgotPasswordForm.value.code.toString(),
+        password: this.forgotPasswordForm.value.password.toString(),
+        repeated: this.forgotPasswordForm.value.repeated.toString()
+      });
 
-      const email = this.forgotPasswordForm.value.email;
-
-      const data = ({ email });
       this.authService.postForgot(data)
         .subscribe(
           (data)=>{
@@ -49,11 +56,15 @@ export class ForgotpasswordComponent implements OnInit {
               console.log(response);
               swal({
                 title: "Merci d'avoir choisi CIDE",
-                text: response.data,
+                text: 'response.data',
                 type: 'success',
                 confirmButtonText: 'Ok'
-              })
-              this.location.back();
+              }).then(() => { this.location.back() },
+                (dismiss) => {
+                  if (dismiss === 'overlay') { this.location.back()  }
+                })
+              .catch((err) => console.log(err));
+              // this.location.back();
             }
           }
         )
