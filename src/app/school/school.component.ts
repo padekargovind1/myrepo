@@ -90,7 +90,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   selectedecole = 'Classe';
   config : any;
-  
+  searchSubscription: Subscription;
 
   constructor(private publicService: PublicService,
               private schoolService: SchoolService,
@@ -122,6 +122,9 @@ export class SchoolComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.runScript();
     });
+    this.searchSubscription = this.schoolService.nextResults.subscribe((results) => {
+      this.schoolListFilter = results;
+    })
   }
 
   runScriptOnInit() {
@@ -538,7 +541,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
             // console.log(response.message)
           } else {
             this.defaultSchoolList=data;
-            this.schoolListFilter=data;
+            // this.schoolListFilter = data;
+            this.schoolService.addSearchResults(data);
             this.totalRecords = response.total;
             console.log('school list filter..');
             console.log(this.schoolListFilter)
@@ -882,6 +886,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.schoolService.cleanSelectedLieu();
     this.publicService.cleanSearch();
+    this.searchSubscription.unsubscribe();
   }
 
 }
