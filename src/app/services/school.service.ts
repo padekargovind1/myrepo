@@ -41,6 +41,10 @@ export class SchoolService {
     this.nextResults.next(this.searchResults.slice());
   }
 
+  cleanSearchResults() {
+    this.searchResults.length = 0;
+  }
+
   getTrips() :  Observable<any>{
     return this.http.get(TRIPS_API)
       .map((response) => response.json());

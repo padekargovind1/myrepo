@@ -542,9 +542,9 @@ export class SchoolComponent implements OnInit, OnDestroy {
           } else {
             this.defaultSchoolList=data;
             // this.schoolListFilter = data;
-            this.schoolService.addSearchResults(data);
             this.totalRecords = response.total;
             console.log('school list filter..');
+            this.schoolService.addSearchResults(data);
             console.log(this.schoolListFilter)
             for(var j=0;j<data.length;j++)
             {
@@ -887,6 +887,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
     this.schoolService.cleanSelectedLieu();
     this.publicService.cleanSearch();
     this.searchSubscription.unsubscribe();
+    this.schoolService.cleanSearchResults();
+    console.log('component destroyed');
   }
 
 }
