@@ -12,6 +12,7 @@ import { globalUrl } from '../common';
 
 const TRIPS_API: string = globalUrl+"/api/schools/trips";
 const STATISTICS_API: string = globalUrl+"/api/schools/statictics";
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class SchoolService {
@@ -26,8 +27,23 @@ export class SchoolService {
   onApply : boolean =false;
   selectedLieu = [];
   onCancel : boolean = false;
+  searchResults = [];
+  nextResults = new Subject<any[]>();
 
   constructor(private http: Http) {}
+
+  getSchoolResults() {
+    this.searchResults.slice();
+  }
+
+  addSearchResults(results) {
+    this.searchResults.push(...results);
+    this.nextResults.next(this.searchResults.slice());
+  }
+
+  cleanSearchResults() {
+    this.searchResults.length = 0;
+  }
 
   getTrips() :  Observable<any>{
     return this.http.get(TRIPS_API)
