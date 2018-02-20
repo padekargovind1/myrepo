@@ -261,7 +261,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
           if (this.pathName === 'ecole'){
             this.schoolComponentTitle = 'ECOLE Maternelle / Primaire';
             $('.filter-form-holder').css('background-image', "url('./assets/images/ecole.jpg')");
-            this.advancedSearch.code = [];
+            this.advancedSearch.code = [this.pathName];
           } else if (this.pathName === 'college') {
             $('.filter-form-holder').css('background-image', "url('./assets/images/college.jpg')");
             this.advancedSearch.code = [this.pathName];
@@ -376,7 +376,8 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // Submit on the fast search
   onSubmitSearch() {
-  this.page=1;
+    this.schoolService.cleanSearchResults();
+    this.page=1;
     if (!this.forAdvancedSearch) {
       if ((this.searchForm.value.classe === '' || this.searchForm.value.lieu === '')
         && this.searchForm.value.etablissement === '') {
@@ -407,6 +408,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
       delete this.advancedSearch.place;
     }
     this.advancedSearch.name = data.name;
+    // this.advancedSearch.code = [this.pathName];
     this.publicService.storeSearchSchool(this.advancedSearch); // store the search to the service
     console.log('advanced search..');
     console.log(this.advancedSearch);
@@ -529,7 +531,16 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // get the school list
   postAdvancedFilter(){
-    //console.log(this.advancedSearch);
+    console.log(this.advancedSearch);
+    // console.log(this.advancedSearch.class.length);
+    // console.log(this.advancedSearch.code.length);
+    // console.log(this.advancedSearch.name);
+    // console.log(typeof this.advancedSearch.place === "undefined");
+    if ((typeof this.advancedSearch.class !== "undefined" && this.advancedSearch.class.length === 1) && (typeof this.advancedSearch.code !== "undefined" && this.advancedSearch.code.length === 1) && (typeof this.advancedSearch.name !== "undefined" && this.advancedSearch.name === '') && typeof this.advancedSearch.place === "undefined") {
+      delete this.advancedSearch.class;
+      delete this.advancedSearch.code;
+      delete this.advancedSearch.name;
+    }
     this.isLoader=true;
     this.publicService.postSearchSchool(this.advancedSearch, this.limit, this.page)
       .subscribe(
