@@ -25,9 +25,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   ngOnInit() {
     this.forgotPasswordForm = this.fb.group({
-      code : ['', Validators.required],
-      password : password,
-      repeated : repeated
+      email: [null, Validators.compose([Validators.required, CustomValidators.email])]
     })
   }
 
@@ -37,9 +35,7 @@ export class ForgotpasswordComponent implements OnInit {
       console.log(this.forgotPasswordForm);
       
       const data = ({
-        code: this.forgotPasswordForm.value.code.toString(),
-        password: this.forgotPasswordForm.value.password.toString(),
-        repeated: this.forgotPasswordForm.value.repeated.toString()
+        email: this.forgotPasswordForm.value.email
       });
 
       this.authService.postForgot(data)
@@ -56,7 +52,7 @@ export class ForgotpasswordComponent implements OnInit {
               console.log(response);
               swal({
                 title: "Merci d'avoir choisi CIDE",
-                text: 'response.data',
+                text: 'un e-mail a été envoyé à la boîte de réception',
                 type: 'success',
                 confirmButtonText: 'Ok'
               }).then(() => { this.location.back() },

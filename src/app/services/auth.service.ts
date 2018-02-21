@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import { globalUrl } from '../common';
 
 const REGISTER_API: string = globalUrl + "/api/register";
-const FORGOT_API : string = globalUrl + "/api/password/recovery";
+const FORGOT_API : string = globalUrl + "/api/password/forgot";
 const LOGIN_API : string =globalUrl + "/api/login";
 const SEND_API : string = globalUrl + "/api/email/send";
 
