@@ -261,7 +261,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
           if (this.pathName === 'ecole'){
             this.schoolComponentTitle = 'ECOLE Maternelle / Primaire';
             $('.filter-form-holder').css('background-image', "url('./assets/images/ecole.jpg')");
-            this.advancedSearch.code = [this.pathName];
+            this.advancedSearch.code = ['maternelle', 'primaire'];
           } else if (this.pathName === 'college') {
             $('.filter-form-holder').css('background-image', "url('./assets/images/college.jpg')");
             this.advancedSearch.code = [this.pathName];
