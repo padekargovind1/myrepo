@@ -106,7 +106,7 @@ export class SendMessageComponent implements OnInit {
         // sender : this.sendMessageForm.value.mel,
         // receiver : this.data.school.address,
         // user: this.profileData._id,
-        // school: "School Name",
+        school: "This School Name",
         mailType: "sent",
         subject : this.sendMessageForm.value.subject,
         message : this.sendMessageForm.value.message,

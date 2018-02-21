@@ -10,7 +10,7 @@
           <ul class="messageTabContent">
             <li *ngFor="let message of messages">
               <div class="col-md-2 msgBg">{{ message.createdAt | date }}</div>
-              <div class="col-md-3 msgBg">No school name</div>
+              <div class="col-md-3 msgBg" *ngIf="message.school !== 'undefined'">{{ message.school }}</div>
               <div class="col-md-6 msgBg">
                 <p>{{ message.subject }}</p>
                 <p>{{ message.message }}</p>
