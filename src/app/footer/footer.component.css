@@ -23,7 +23,7 @@
 }
 
 .footerCustom ul li {
-  margin: 0 0 6px;
+  /* margin: 0 0 6px; */
   padding: 0;
   list-style: none;
 }
@@ -47,10 +47,14 @@
 }
 
 .footerTopCont {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   width: 100%; 
   float: left; 
   padding: 15px 0 0;
+}
+
+.footerNavs li a:hover {
+  color: #393649; 
 }
 
 .footerBottomContent {
@@ -79,6 +83,9 @@
   font-size: 11px;
 }
 
+.footer[_ngcontent-c2] ul li a:hover {
+  color: #393649;
+}
 
 @media (max-width:1023px) {
   .footerBottomContent {
