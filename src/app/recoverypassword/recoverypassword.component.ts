@@ -30,7 +30,7 @@ export class RecoverypasswordComponent implements OnInit {
               private router: Router) {
                 this.subscription = this.route.url.subscribe(params => {
                     console.log(params)
-                    this.code = params[1].path;
+                    this.code = params[2].path;
                 });
               }
 
@@ -69,9 +69,9 @@ export class RecoverypasswordComponent implements OnInit {
                 text: 'Mot de passe changé',
                 type: 'success',
                 confirmButtonText: 'Ok'
-              }).then(() => { this.router.navigate(['login']) },
+              }).then(() => { this.router.navigate(['/login']) },
                 (dismiss) => {
-                  if (dismiss === 'overlay') { this.router.navigate(['login'])  }
+                  if (dismiss === 'overlay') { this.router.navigate(['/login'])  }
                 })
               .catch((err) => console.log(err));
             }

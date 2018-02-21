@@ -44,7 +44,7 @@ export const AppRoutes: Routes = [
     { path: 'register' , component: RegisterComponent },
     { path: 'login' , component: LoginComponent },
     { path: 'forgot-password' , component: ForgotpasswordComponent },
-    { path: 'recovery/:code' , component: RecoverypasswordComponent },
+    { path: 'password/recovery/:code' , component: RecoverypasswordComponent },
     { path: 'my-account' , component: MyaccountComponent },
     { path: 'school-calendar' , component: SchoolCalendarComponent },
     { path: 'brochure', component: BrochureComponent },
