@@ -31,6 +31,7 @@ import { LinguisticTripsComponent } from './linguistic/linguistic-trips/linguist
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { RecoverypasswordComponent } from './recoverypassword/recoverypassword.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { MyaccountParentsComponent } from './myaccount/myaccount-parents/myaccount-parents.component';
 import { MyaccountChildrenComponent } from './myaccount/myaccount-children/myaccount-children.component';
@@ -147,6 +148,7 @@ let providers = {
     RegisterComponent,
     LoginComponent,
     ForgotpasswordComponent,
+    RecoverypasswordComponent,
     MyaccountComponent,
     MyaccountParentsComponent,
     MyaccountChildrenComponent,
