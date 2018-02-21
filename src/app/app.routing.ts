@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { RecoverypasswordComponent } from './recoverypassword/recoverypassword.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { SchoolCalendarComponent } from './school-calendar/school-calendar.component';
 import { BrochureComponent } from './brochure/brochure.component';
@@ -45,6 +46,7 @@ export const AppRoutes: Routes = [
     { path: 'login' , component: LoginComponent },
     { path: 'forgot-password' , component: ForgotpasswordComponent },
     { path: 'password/recovery/:code' , component: RecoverypasswordComponent },
+    { path: 'password/change' , component: ChangepasswordComponent },
     { path: 'my-account' , component: MyaccountComponent },
     { path: 'school-calendar' , component: SchoolCalendarComponent },
     { path: 'brochure', component: BrochureComponent },

@@ -10,6 +10,7 @@ import { globalUrl } from '../common';
 const REGISTER_API: string = globalUrl + "/api/register";
 const FORGOT_API : string = globalUrl + "/api/password/forgot";
 const RECOVERY_API : string = globalUrl + "/api/password/recovery";
+const CHANGE_API : string = globalUrl + "/api/password/change";
 const LOGIN_API : string =globalUrl + "/api/login";
 const SEND_API : string = globalUrl + "/api/email/send";
 
@@ -37,6 +38,11 @@ export class AuthService {
 
   postRecovery(data): Observable<any>{
     return this.http.post(RECOVERY_API, data, {headers: this.headers})
+      .map((response: Response) => response.json());
+  }
+
+  changePassword(data): Observable<any>{
+    return this.http.put(CHANGE_API+"?token="+this.getToken(), data, {headers: this.headers})
       .map((response: Response) => response.json());
   }
 
