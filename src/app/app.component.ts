@@ -9,8 +9,19 @@ import { Router, NavigationEnd } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit{
+    constUrl:any;
+    constructor(private router: Router) {
 
-    constructor(private router: Router) { }
+        router.events.subscribe(event => {
+
+            if (event instanceof NavigationEnd ) {
+                this.constUrl = event.url;
+              console.log("current url",event.url); // event.url has current url
+              // your code will goes here
+            }
+          });
+
+     }
 
     ngOnInit() {
         this.router.events.subscribe((evt) => {

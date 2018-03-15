@@ -1,5 +1,23 @@
 ﻿<body>
-    <app-header></app-header>
-    <router-outlet class="main" role="main"></router-outlet>
-  <app-footer></app-footer>
+  <app-header></app-header>
+  <router-outlet class="main" role="main"></router-outlet>
+  <div *ngIf="constUrl!='/landing-page-1' && constUrl!='/landing-page-2' && constUrl!='/landing-page-3'">
+    <app-footer></app-footer>
+  </div>
+  <div *ngIf="constUrl=='/landing-page-1' || constUrl=='/landing-page-2' || constUrl=='/landing-page-3'">
+    <footer class="footer footerCustom">
+      <div class="footerBottomContent">
+        <p>Enseignement-prive.fr V1.1</p>
+        <p>CIDE 84, Boulevard Saint-Michel, 75006 Paris - Tél. : 01 53 10 33 20 -
+          <a href="www.enseignement-prive.fr" target="_parent">www.enseignement-prive.fr</a>
+        </p>
+        <p>CIDE Centre d'Information et de Documentation sur l'Enseignement privé. Site spécialisé sur les écoles privées en
+          France, avant Bac et après Bac</p>
+        <p>Mail :
+          <a href="mailto:contact@enseignement-prive.fr"> contact@enseignement-prive.fr</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
 </body>

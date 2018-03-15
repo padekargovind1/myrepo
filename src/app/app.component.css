@@ -1,0 +1,106 @@
+.footer {
+    background: #a2bc0f;
+    border-top: 1px solid #41719c;
+    bottom: 0;
+    float: left;
+    left: 0;
+    padding: 0;
+    position: static;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footerCustom  h3 { 
+    color: #fff; 
+    font-size: 12px; 
+    font-weight: bold; 
+    /* margin: 0 0 10px; */
+  }
+  
+  .footerCustom ul {
+    /* margin: 0 0 15px;  */
+    padding: 0; 
+    list-style: none;
+  }
+  
+  .footerCustom ul li {
+    /* margin: 0 0 6px; */
+    padding: 0;
+    list-style: none;
+  }
+  
+  .footerCustom ul li a {
+    display: block;
+    color: #0563c1; 
+    font-size: 12px;
+    padding: 0;
+  }
+  
+  .footerCustom p { 
+    font-size: 10px;
+    color: #fff;
+    margin: 0; 
+    text-align: center;
+  }
+  
+  .footerCustom a {
+    color: #0563c1;
+  }
+  
+  .footerTopCont {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .columnList {
+    padding-right: 5px;
+    width: auto;
+  }
+  
+  .footerNavs li a:hover {
+    color: #393649; 
+  }
+  
+  .footerBottomContent {
+    margin: 0;
+    width: 100%;
+    float: left;
+    background: #393649;
+    padding: 7px;
+  }
+  
+  .footerBottomContent p a {
+    text-decoration: none;
+    color: #00AFF0;
+  }
+  
+  .footer[_ngcontent-c2] {
+    background: #00bc50;
+  }
+  
+  .footerCustom[_ngcontent-c2] h3[_ngcontent-c2] {
+    font-size: 15px;
+  }
+  
+  .footer[_ngcontent-c2] ul li a {
+    color: #ffffff;
+    font-size: 11px;
+  }
+  
+  .footer[_ngcontent-c2] ul li a:hover {
+    color: #393649;
+  }
+  
+  @media (max-width:1023px) {
+    .footerBottomContent {
+      margin-bottom: 15px;
+    }
+  }
+  
+  @media (max-width:600px) {
+    .footerTopCont {
+      flex-direction: column;
+    }
+  }
