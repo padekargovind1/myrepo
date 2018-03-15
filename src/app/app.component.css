@@ -1,5 +1,5 @@
-.footer {
-    background: #a2bc0f;
+.footer1 {
+    background: #393649;
     border-top: 1px solid #41719c;
     bottom: 0;
     float: left;
@@ -12,40 +12,40 @@
     align-items: center;
   }
   
-  .footerCustom  h3 { 
+  .footerCustom1  h3 { 
     color: #fff; 
     font-size: 12px; 
     font-weight: bold; 
     /* margin: 0 0 10px; */
   }
   
-  .footerCustom ul {
+  .footerCustom1 ul {
     /* margin: 0 0 15px;  */
     padding: 0; 
     list-style: none;
   }
   
-  .footerCustom ul li {
+  .footerCustom1 ul li {
     /* margin: 0 0 6px; */
     padding: 0;
     list-style: none;
   }
   
-  .footerCustom ul li a {
+  .footerCustom1 ul li a {
     display: block;
     color: #0563c1; 
     font-size: 12px;
     padding: 0;
   }
   
-  .footerCustom p { 
+  .footerCustom1 p { 
     font-size: 10px;
     color: #fff;
     margin: 0; 
     text-align: center;
   }
   
-  .footerCustom a {
+  .footerCustom1 a {
     color: #0563c1;
   }
   
@@ -67,8 +67,9 @@
     margin: 0;
     width: 100%;
     float: left;
-    background: #393649;
+    background: #393649; 
     padding: 7px;
+    /* margin-bottom: 90px !important; */
   }
   
   .footerBottomContent p a {
@@ -80,19 +81,11 @@
     background: #00bc50;
   }
   
-  .footerCustom[_ngcontent-c2] h3[_ngcontent-c2] {
+  .footerCustom1[_ngcontent-c2] h3[_ngcontent-c2] {
     font-size: 15px;
   }
-  
-  .footer[_ngcontent-c2] ul li a {
-    color: #ffffff;
-    font-size: 11px;
-  }
-  
-  .footer[_ngcontent-c2] ul li a:hover {
-    color: #393649;
-  }
-  
+ 
+
   @media (max-width:1023px) {
     .footerBottomContent {
       margin-bottom: 15px;
