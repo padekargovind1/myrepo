@@ -15,13 +15,21 @@ import {HelperService} from "../../services/helper.service";
 })
 export class BrochpopupComponent implements OnInit {
   @ViewChild('tabGroup') tabGroup;
+  public errMsgLienParent : any;
+  public errMsgTitre : any;
   public errMsgMel : any;
   public errMsgTel : any;
   public errMsgChildLastName:any;
   public errMsgChildFirstName:any;
   public errMsgFirstName:any;
   public errMsgLastName:any;
-
+  public errMsgClasse:any;
+  public errMsgSexe:any;
+  public errMsgInvalidEmail=true;
+  public errMsgLastNameInvalidCharacter=false;
+  public errMsgFirstNameInvalidCharacter=false;
+  public errMsgChildLastNameInvalidCharacter=false;
+  public errMsgChildFirstNameInvalidCharacter=false;
   brochureForm : FormGroup;
 
   constructor(public dialogref:MdDialogRef<BrochpopupComponent>,
@@ -122,7 +130,66 @@ export class BrochpopupComponent implements OnInit {
     this.brochureService.storeResponse("submit")
     this.dialogref.close();
   }
+  //
+  ValidateEmail() 
+  {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.brochureForm.value.mel))
+    {
+      this.errMsgInvalidEmail=true;
+    }
+    else
+      {
+        this.errMsgInvalidEmail=false;
+      }   
+  }
 
+  //
+ validateText(name) {
+
+    if(name=='lname' && this.brochureForm.value.lastName!="")
+    {
+      if (!/^[a-zA-Z]*$/g.test(this.brochureForm.value.lastName)) {
+        this.errMsgLastNameInvalidCharacter=true;  
+      }   
+      else
+      {
+        this.errMsgLastNameInvalidCharacter=false;  
+      }
+    }
+
+    if(name=='fname' && this.brochureForm.value.firstName!="")
+    {
+      if (!/^[a-zA-Z]*$/g.test(this.brochureForm.value.firstName)) {
+        this.errMsgFirstNameInvalidCharacter=true;  
+      }   
+      else
+      {
+        this.errMsgFirstNameInvalidCharacter=false;  
+      }
+    }
+
+    if(name=='childLastName' && this.brochureForm.value.childLastName!="")
+    {
+      if (!/^[a-zA-Z]*$/g.test(this.brochureForm.value.childLastName)) {
+        this.errMsgChildLastNameInvalidCharacter=true;  
+      }   
+      else
+      {
+        this.errMsgChildLastNameInvalidCharacter=false;  
+      }
+    }
+
+    if(name=='childFirstName' && this.brochureForm.value.childFirstName!="")
+    {
+      if (!/^[a-zA-Z]*$/g.test(this.brochureForm.value.childFirstName)) {
+        this.errMsgChildFirstNameInvalidCharacter=true;  
+      }   
+      else
+      {
+        this.errMsgChildFirstNameInvalidCharacter=false;  
+      }
+    }
+}
   //After click on suivant
   toSecondTab(){
     console.log("lienParent===>",this.brochureForm.value.lienParent);
@@ -135,13 +202,44 @@ export class BrochpopupComponent implements OnInit {
     console.log("childFirstName===>",this.brochureForm.value.childFirstName);
     console.log("classe===>",this.brochureForm.value.classe);
     console.log("childTitle===>",this.brochureForm.value.childTitle);
+    this.errMsgLienParent = false;
+    this.errMsgTitre = false;
     this.errMsgMel = false;
     this.errMsgTel =  false;
     this.errMsgChildLastName =  false;
     this.errMsgChildFirstName =  false;
     this.errMsgFirstName =  false;
     this.errMsgLastName =  false;
-
+    this.errMsgClasse = false;
+    this.errMsgSexe = false;
+    if(this.brochureForm.value.lienParent==="" || this.brochureForm.value.lienParent=== "undefined" || this.brochureForm.value.lienParent===undefined)
+    {
+      this.errMsgLienParent = true;
+    }
+    else{
+      this.errMsgLienParent = false;
+    }
+    if(this.brochureForm.value.classe==="" || this.brochureForm.value.classe=== "undefined" || this.brochureForm.value.classe===undefined)
+    {
+      this.errMsgClasse = true;
+    }
+    else{
+      this.errMsgClasse = false;
+    }
+    if(this.brochureForm.value.childTitle==="" || this.brochureForm.value.childTitle=== "undefined" || this.brochureForm.value.childTitle===undefined)
+    {
+      this.errMsgSexe = true;
+    }
+    else{
+      this.errMsgSexe = false;
+    }
+    if(this.brochureForm.value.title==="" || this.brochureForm.value.title=== "undefined" || this.brochureForm.value.title===undefined)
+    {
+      this.errMsgTitre = true;
+    }
+    else{
+      this.errMsgTitre = false;
+    }
     if(this.brochureForm.value.mel==="" || this.brochureForm.value.mel=== "undefined" || this.brochureForm.value.mel===undefined)
     {
       this.errMsgMel = true;
@@ -190,10 +288,12 @@ export class BrochpopupComponent implements OnInit {
     else{
       this.errMsgLastName = false;
     }
-    
-    if(this.errMsgMel === false && this.errMsgTel === false && this.errMsgChildLastName === false && this.errMsgChildFirstName === false && this.errMsgFirstName === false && this.errMsgLastName === false)
+    //errMsgTitre
+    if(this.errMsgLienParent === false && this.errMsgSexe === false &&  this.errMsgClasse === false && this.errMsgTitre === false && this.errMsgMel === false && this.errMsgTel === false && this.errMsgChildLastName === false && this.errMsgChildFirstName === false && this.errMsgFirstName === false && this.errMsgLastName === false)
     {
       this.tabGroup.selectedIndex=1;
     }
+    console.log('this.errMsgTitre:- ',this.errMsgTitre);
+
 }
 }

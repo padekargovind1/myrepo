@@ -10,7 +10,8 @@
                 <div class="col-md-6">
                     <div class="select-custom">
                         <div class="titleClass">
-                            <span>Lien de Parenté</span>
+                            <span>Lien de Parenté*</span>
+                            <span class="err" *ngIf="errMsgLienParent">Required</span>
                         </div>
                         <select name="" class="form-control"
                             [formControl]="brochureForm.controls['lienParent']">
@@ -28,7 +29,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="titleClass">
-                        <span>Titre</span>
+                        <span>Titre*</span>
+                        <span class="err" *ngIf="errMsgTitre">Required</span>
                     </div>
                     <div class="form-group horizontal-radio clearfix">
 
@@ -46,10 +48,11 @@
                         <div class="titleClass">
                             <span>Nom de famille*</span>
                             <span class="err" *ngIf="errMsgLastName">Required</span>
+                            <span class="err" *ngIf="errMsgLastNameInvalidCharacter">Invalid character</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Nom"
                             [formControl]="brochureForm.controls['lastName']"
-                            maxlength="25">
+                            maxlength="25" (blur)="validateText('lname')">
                     </div>
                 </div>
                 <div class="col-sm-6  col-xs-6">
@@ -57,10 +60,11 @@
                         <div class="titleClass">
                             <span>Prénom*</span>
                             <span class="err" *ngIf="errMsgFirstName">Required</span>                            
+                            <span class="err" *ngIf="errMsgFirstNameInvalidCharacter">Invalid character</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Prénom"
                             [formControl]="brochureForm.controls['firstName']"
-                            maxlength="25">
+                            maxlength="25" (blur)="validateText('fname')">
                     </div>
                 </div>
             </div>
@@ -71,9 +75,13 @@
                         <div class="titleClass">
                             <span>Mél*</span>
                             <span class="err" *ngIf="errMsgMel">Required</span>
+                            <span class="err" *ngIf="errMsgInvalidEmail==false">Invalid Email</span>
+
                         </div>
                         <input type="email" class="form-control" placeholder="Email"
-                            [formControl]="brochureForm.controls['mel']">
+                            [formControl]="brochureForm.controls['mel']"
+                            (blur)="ValidateEmail()">
+                            
                     </div>
                     <div class="col-sm-6">
                         <div class="titleClass">
@@ -95,10 +103,11 @@
                         <div class="titleClass">
                             <span>Nom de famille*</span>
                             <span class="err" *ngIf="errMsgChildLastName">Required</span>
+                            <span class="err" *ngIf="errMsgChildLastNameInvalidCharacter">Invalid Character</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Nom"
                             [formControl]="brochureForm.controls['childLastName']"
-                            maxlength="25">
+                            maxlength="25" (blur)="validateText('childLastName')">
                     </div>
                 </div>
                 <div class="col-sm-6  col-xs-6">
@@ -106,10 +115,11 @@
                         <div class="titleClass">
                             <span>Prénom*</span>
                             <span class="err" *ngIf="errMsgChildFirstName">Required</span>
+                            <span class="err" *ngIf="errMsgChildFirstNameInvalidCharacter">Invalid Character</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Prénom"
                             [formControl]="brochureForm.controls['childFirstName']"
-                            maxlength="25">
+                            maxlength="25"  (blur)="validateText('childFirstName')">
                     </div>
                 </div>
             </div>
@@ -120,7 +130,8 @@
                         <div class="col-sm-6  col-xs-6">
                             <div class="select-custom">
                                 <div class="titleClass">
-                                    <span>Classe actuelle</span>
+                                    <span>Classe actuelle*</span>
+                                    <span class="err" *ngIf="errMsgClasse">Required</span>
                                 </div>
                                 <select name="" class="form-control"
                                     [formControl]="brochureForm.controls['classe']">
@@ -236,7 +247,8 @@
                             <div class="form-group">
                                 <div class="horizontal-radio">
                                     <div style="margin-bottom:0px">
-                                        <span>Sexe</span>
+                                        <span>Sexe*</span>
+                                        <span class="err" *ngIf="errMsgSexe">Required</span>
                                     </div>
                                     <md-radio-group [formControl]="brochureForm.controls['childTitle']"
                                         style="border-color:white">
