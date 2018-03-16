@@ -5,7 +5,12 @@
     padding: 15px 10px;
     position: relative;
 }
-
+.marginTop5{
+    margin-top:10px !important;
+}
+.marginTop2{
+    margin-top:2px !important;
+}
 .mobile-header{
     background: #444; 
     color: #fff; 
