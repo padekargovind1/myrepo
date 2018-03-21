@@ -82,6 +82,7 @@ export class UsersService {
   }
 
   getApplication():Observable<any>{
+    console.log("application: ",APPLICATION_API+'?token='+this.token);
     return this.http.get(APPLICATION_API+'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }

@@ -2,6 +2,7 @@
   <h2 class="title-page">Mon Compte</h2>
   <div class="my-account" style="width:100% !important">
     <md-tab-group #tabGroup>
+        <md-icon md-svg-icon="md-tabs-arrow"></md-icon>
       <md-tab label="Parents"  style="width:100% !important">
         <app-myaccount-parents (goToChild)="goToChild($event)" [userData]="userData"></app-myaccount-parents>
       </md-tab>
