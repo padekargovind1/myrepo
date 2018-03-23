@@ -27,6 +27,7 @@ export class UsersService {
               private authService : AuthService) { }
 
   putProfile(data) : Observable<any>{
+    console.log("putProfile data",data);
     this.getToken();
     return this.http.put(PROFILE_API+'?token='+this.token, data, {headers: this.headers})
     //return this.http.put( "http://13.229.81.1/cideapi/api/common/profile"+'?token='+this.token, data, {headers: this.headers})

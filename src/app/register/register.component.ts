@@ -154,7 +154,7 @@ export class RegisterComponent implements OnInit {
               this.sendVerificationEmail(email);
               console.log(response);
               swal({
-                title: 'Votre compte a été créé',
+                title: 'Nous vous avons envoyé un lien de confirmation à votre adresse email',
                 text: "",
                 type: 'success',
                 confirmButtonText: 'Ok'
@@ -175,7 +175,7 @@ export class RegisterComponent implements OnInit {
     }
     else{
       swal({
-        title: 'Please fill all the details',
+        title: 'Veuillez renseigner tous les champs requis pour pouvoir vous inscrire',
         text: "",
         type: 'success',
         confirmButtonText: 'Ok'

@@ -182,9 +182,9 @@ export class MyaccountParentsComponent implements OnInit, OnChanges {
         if (typeof this.userData.favoriteProfessions == 'undefined' || !(this.userData.favoriteProfessions instanceof Array)) {
             this.userData.favoriteProfessions = [];
         }
-        this.userData.address.address1 = this.parentAccountForm.controls['parents']['controls'][0].controls.adresse1.value;
-        this.userData.address.postCode = this.parentAccountForm.controls['parents']['controls'][0].controls.codepostal.value.toString();
-        this.userData.address.city = this.parentAccountForm.controls['parents']['controls'][0].controls.ville.value;
+        // this.userData.address.address1 = this.parentAccountForm.controls['parents']['controls'][0].controls.adresse1.value;
+        // this.userData.address.postCode = this.parentAccountForm.controls['parents']['controls'][0].controls.codepostal.value.toString();
+        // this.userData.address.city = this.parentAccountForm.controls['parents']['controls'][0].controls.ville.value;
 
         for (let i = 0; i < this.parentAccountForm.controls['parents']['controls'].length; i++) {
         //    console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)

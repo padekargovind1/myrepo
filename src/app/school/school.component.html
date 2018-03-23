@@ -10,7 +10,7 @@
   <div class="filter-form-holder">
 
     <form class="form-inline searchform  school-page">
-      <h2 class="featured-title" *ngIf="pathName==='college'; else notCollege">
+      <h2 class="featured-title" name="harish" *ngIf="pathName==='college'; else notCollege">
         Rechercher un collège (6<sup>ème</sup>-3<sup>ème</sup>)
       </h2>
       <ng-template #notCollege>
@@ -24,7 +24,7 @@
                       <div class="col-md-11">
                           <div class="row">
                               <form [formGroup]="searchForm">
-                                  <div class="col-md-4  col-xs-6"
+                                  <div class="col-md-3  col-xs-6"
                                       *ngIf="pathName=='ecole'">
                                       <div class="form-group">
                                           <label class="select-custom">
@@ -296,7 +296,7 @@
                                           </label>
                                       </div>
                                   </div><!-- .col-* -->
-
+                                  
                                   <div class="col-md-4  col-xs-6">
                                       <div class="form-group">
                                           <input type="text" class="form-control" placeholder="Lieu"
@@ -324,7 +324,11 @@
                                           </md-autocomplete>
                                       </div>
                                   </div>
-
+                                  <div class="col-md-1  col-xs-6">
+                                        <div class="form-group margin7">
+                                          ou
+                                        </div>
+                                    </div>
                                   <div class="col-md-4  col-xs-12">
                                       <div class="form-group">
                                           <input type="text" class="form-control"
