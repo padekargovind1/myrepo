@@ -18,7 +18,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   public forgotPasswordForm : FormGroup;
   errorMessage: string='';
-
+  public emailNotFound : boolean = false;
   constructor(private fb : FormBuilder,
               private authService : AuthService,
               private location : Location) {  }
@@ -50,6 +50,7 @@ export class ForgotpasswordComponent implements OnInit {
             }
             else {
               console.log(response);
+              this.emailNotFound = true;
               swal({
                 title: "Merci d'avoir choisi CIDE",
                 text: 'un e-mail a été envoyé à la boîte de réception',
@@ -59,11 +60,15 @@ export class ForgotpasswordComponent implements OnInit {
                 (dismiss) => {
                   if (dismiss === 'overlay') { this.location.back()  }
                 })
-              .catch((err) => console.log(err));
+              .catch((err) => console.log("hhhhhh",err));
               // this.location.back();
             }
           }
         )
+        if(this.emailNotFound==false)
+        {
+          this.errorMessage = "Please enter valid email";
+        }
     }
   }
 

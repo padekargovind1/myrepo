@@ -18,7 +18,7 @@
                             <div class="col-md-11">
                                 <div class="row">
                                     <form [formGroup]="searchForm">
-                                        <div class="col-md-4  col-xs-6">
+                                        <div class="col-md-3  col-xs-6">
                                             <div class="form-group">
                                                 <!--<input type="text" class="form-control" placeholder="Domaine d'activité professionnel"
                                                     [formControl]="searchForm.controls['domaine']"/>-->
@@ -54,7 +54,11 @@
                                                 </md-autocomplete>
                                             </div>
                                         </div>
-
+                                        <div class="col-md-1  col-xs-6 ou">
+                                                <div class="form-group margin7">
+                                                  ou
+                                                </div>
+                                            </div>
                                         <div class="col-md-4  col-xs-12">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" placeholder="Nom d'etablissement" [formControl]="searchForm.controls['etablissement']"
