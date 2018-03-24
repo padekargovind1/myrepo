@@ -21,7 +21,7 @@
           <div class="row">
               <div class="col-md-11">
                   <div class="form-wrap row">
-                      <div class="col-md-11">
+                      <div class="col-md-12">
                           <div class="row">
                               <form [formGroup]="searchForm">
                                   <div class="col-md-3  col-xs-6"
@@ -329,7 +329,7 @@
                                           ou
                                         </div>
                                     </div>
-                                  <div class="col-md-5  col-xs-12">
+                                  <div class="col-md-3 col-xs-12">
                                       <div class="form-group">
                                           <input type="text" class="form-control"
                                               placeholder="Nom d'etablissement"
@@ -344,26 +344,58 @@
                                           </md-autocomplete>
                                       </div>
                                   </div>
+                                  <div class="col-md-2">
+                                    <!-- <div class="form-group"> -->
+                                        <button class="btn  btn-search" type="submit"
+                                            (click)="onSubmitSearch()">
+                                            <i class="fa fa-search" style="margin:0px !important"></i>
+                                        </button>
+                                        
+                                        <button class="btn newSearch  btn-search" *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!=''
+                                        || searchFilter[1]!='' || languageAdvancedSearch.length!=0"
+                                        (click)="cleanAdvancedSearch()" style="margin:0px !important">
+                                            <i class="fa fa-repeat"></i>
+                                        </button>
+                                        <!-- <div class="btn btn-search">
+                                            <a class="newSearch"
+                                                *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!=''
+                                                || searchFilter[1]!='' || languageAdvancedSearch.length!=0"
+                                                (click)="cleanAdvancedSearch()">
+                                                <i class="fas fa-redo-alt"></i>
+                                            </a>
+                                        </div> -->
+                                        <!-- <button class="btn btn-search" type="submit"
+                                            (click)="onSubmitSearch()">
+                                            <i class="fa fa-search"></i>
+                                        </button> -->
+                                    <!-- </div> -->
+                                    </div>
+              
                               </form>
                           </div><!-- .row -->
                       </div><!-- .col-* -->
 
-                      <div class="col-md-1">
+                      <!-- <div class="col-md-1"> -->
                       <!-- <div class="form-group"> -->
-                          <button class="btn btn-search" type="submit"
+                          <!-- <button class="btn btn-search" type="submit"
                               (click)="onSubmitSearch()">
                               <i class="fa fa-search"></i>
                           </button>
+                          &nbsp;&nbsp;
+                          <button class="btn btn-search" type="submit"
+                              (click)="onSubmitSearch()">
+                              <i class="fa fa-search"></i>
+                          </button> -->
                       <!-- </div> -->
-                      </div>
-                      <div class="newSearchdiv">
+                      <!-- </div> -->
+                      <!-- <div class="newSearchdiv">
                           <a class="newSearch"
                               *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!=''
                               || searchFilter[1]!='' || languageAdvancedSearch.length!=0"
                               (click)="cleanAdvancedSearch()">
                               Nouvelle recherche
                           </a>
-                      </div>
+                      </div> -->
 
 
                   </div><!-- .form-wrap -->
