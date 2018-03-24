@@ -50,7 +50,7 @@ export class ForgotpasswordComponent implements OnInit {
             }
             else {
               console.log(response);
-              this.emailNotFound = true;
+              //this.emailNotFound = true;
               swal({
                 title: "Merci d'avoir choisi CIDE",
                 text: 'un e-mail a été envoyé à la boîte de réception',
@@ -65,10 +65,10 @@ export class ForgotpasswordComponent implements OnInit {
             }
           }
         )
-        if(this.emailNotFound==false)
-        {
-          this.errorMessage = "Please enter valid email";
-        }
+        // if(this.emailNotFound==false)
+        // {
+        //   this.errorMessage = "Please enter valid email";
+        // }
     }
   }
 
