@@ -149,7 +149,7 @@ export class MyaccountParentsComponent implements OnInit, OnChanges {
     // Complete the profile to send to the service with the data from API and after click on next to go to child form
     onSubmit() {
         delete this.userData._id; //userData is used when update profile and we only remove id to don't make conflict
-        this.userData.address = {};
+        this.userData.address = [];
         this.userData.parents = [];
         let parentData = {
             relationship : '',
@@ -182,9 +182,12 @@ export class MyaccountParentsComponent implements OnInit, OnChanges {
         if (typeof this.userData.favoriteProfessions == 'undefined' || !(this.userData.favoriteProfessions instanceof Array)) {
             this.userData.favoriteProfessions = [];
         }
-        // this.userData.address.address1 = this.parentAccountForm.controls['parents']['controls'][0].controls.adresse1.value;
-        // this.userData.address.postCode = this.parentAccountForm.controls['parents']['controls'][0].controls.codepostal.value.toString();
-        // this.userData.address.city = this.parentAccountForm.controls['parents']['controls'][0].controls.ville.value;
+        this.userData.address.address1 = this.parentAccountForm.controls['parents']['controls'][0].controls.adresse1.value;
+        this.userData.address.postCode = this.parentAccountForm.controls['parents']['controls'][0].controls.codepostal.value.toString();
+        this.userData.address.city = this.parentAccountForm.controls['parents']['controls'][0].controls.ville.value;
+        // this.userData.address.address1.push(this.parentAccountForm.controls['parents']['controls'][0].controls.adresse1.value);
+        // this.userData.address.postCode.push(this.parentAccountForm.controls['parents']['controls'][0].controls.codepostal.value.toString());
+        // this.userData.address.city.push(this.parentAccountForm.controls['parents']['controls'][0].controls.ville.value);
 
         for (let i = 0; i < this.parentAccountForm.controls['parents']['controls'].length; i++) {
         //    console.log(this.parentAccountForm.controls['parents']['controls'][i].controls)
@@ -238,7 +241,6 @@ export class MyaccountParentsComponent implements OnInit, OnChanges {
                 }
             }
             )
-
     }
 
     onCheckValid() {

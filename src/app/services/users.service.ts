@@ -87,6 +87,14 @@ export class UsersService {
     return this.http.get(APPLICATION_API+'?token='+this.token, {headers: this.headers})
       .map((response)=>response.json());
   }
+  getApplicationById(userid):Observable<any>{
+    //
+    console.log("globalUrl + /api/users/apply/");
+    // return userid;
+    // console.log("application: ",APPLICATION_API+'?token='+this.token);
+    return this.http.get(globalUrl + '/api/users/apply/'+userid+'?token='+this.token, {headers: this.headers})
+      .map((response)=>response.json());
+  }
   
   getHistory():Observable<any>{
     return this.http.get(HISTORY_API+'?token='+this.token, {headers: this.headers})

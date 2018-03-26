@@ -28,7 +28,9 @@ export class ForgotpasswordComponent implements OnInit {
       email: [null, Validators.compose([Validators.required, CustomValidators.email])]
     })
   }
-
+  clearMessage(){
+    this.emailNotFound = false;
+  }
   // After click on the submit button -> call API -> sweet alert
   onSubmit(){
     if(this.forgotPasswordForm.valid){
@@ -51,16 +53,31 @@ export class ForgotpasswordComponent implements OnInit {
             else {
               console.log(response);
               //this.emailNotFound = true;
-              swal({
-                title: "Merci d'avoir choisi CIDE",
-                text: 'un e-mail a été envoyé à la boîte de réception',
-                type: 'success',
-                confirmButtonText: 'Ok'
-              }).then(() => { this.location.back() },
-                (dismiss) => {
-                  if (dismiss === 'overlay') { this.location.back()  }
+              if (response.code == 404) {
+                this.emailNotFound = true;
+                let msg = response.message;
+                this.errorMessage = msg;
+                swal({
+                  title: "E-mail inconnu!",
+                  text: 'L’adresse e-mail que vous avez renseigné ne correspond à aucun compte.',
+                  type: 'warning',
+                  confirmButtonText: "Ok"
                 })
-              .catch((err) => console.log("hhhhhh",err));
+           //L’adresse e-mail que vous avez renseigné ne correspond à aucun compte.
+                console.log('message: ', this.errorMessage);
+              }
+              else{
+                swal({
+                  title: "Email validé !",
+                  text: 'Un email de réinitialisation vient d’être envoyé à votre adresse email.',
+                  type: 'success',
+                  confirmButtonText: 'Ok'
+                }).then(() => { this.location.back() },
+                  (dismiss) => {
+                    if (dismiss === 'overlay') { this.location.back()  }
+                  })
+                .catch((err) => console.log(err));  
+              }
               // this.location.back();
             }
           }

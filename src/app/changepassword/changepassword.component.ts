@@ -58,10 +58,10 @@ export class ChangepasswordComponent implements OnInit {
             else {
               console.log(response);
               swal({
-                title: "Merci d'avoir choisi CIDE",
-                text: 'Mot de passe changé',
+                title: "Mot de passe changé !",
+                text: 'Votre mot de passe a été changé avec succès.',
                 type: 'success',
-                confirmButtonText: 'Ok'
+                confirmButtonText: 'Se connecter'
               }).then(() => { this.router.navigate(['/login']) },
                 (dismiss) => {
                   if (dismiss === 'overlay') { this.router.navigate(['/login'])  }

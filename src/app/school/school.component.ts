@@ -375,20 +375,38 @@ export class SchoolComponent implements OnInit, OnDestroy {
   }
 
   // Submit on the fast search
+  displayAlert(){
+      swal({
+        title: 'Attention',
+        text: 'Vous devez choisir une classe et un lieu, ou entrer seulement le nom d\'un établissement pour pouvoir ' +
+        'effectuer une recherche rapide.',
+        type: 'warning',
+        confirmButtonText: 'J\'AI COMPRIS'
+      });
+      return;
+  }
   onSubmitSearch() {
     this.schoolService.cleanSearchResults();
     this.page=1;
     if (!this.forAdvancedSearch) {
       if ((this.searchForm.value.classe === '' || this.searchForm.value.lieu === '')
         && this.searchForm.value.etablissement === '') {
-        swal({
-          title: 'Attention',
-          text: 'Vous devez choisir une classe et un lieu ou entrer le nom d\'un établissement afin ' +
-          'd\'effectuer une recherche rapide. Merci',
-          type: 'warning',
-          confirmButtonText: 'J\'AI COMPRIS'
-        });
-        return;
+          this.displayAlert();
+      }
+      else if(this.searchForm.value.classe != '' && (this.searchForm.value.lieu === '' && this.searchForm.value.etablissement === '') ){
+        this.displayAlert();
+      }
+      else if((this.searchForm.value.classe != '' &&  this.searchForm.value.etablissement != '') && (this.searchForm.value.lieu === '') ){
+        this.displayAlert();
+      }
+      else if((this.searchForm.value.classe == '') && (this.searchForm.value.lieu != '' && this.searchForm.value.etablissement != '') ){
+        this.displayAlert();
+      }
+      else if((this.searchForm.value.lieu != '') && (this.searchForm.value.classe === '' && this.searchForm.value.etablissement === '') ){
+        this.displayAlert();
+      }
+      else if((this.searchForm.value.lieu != '') && (this.searchForm.value.classe != '') && (this.searchForm.value.etablissement != '') ){
+        this.displayAlert();
       }
     }
     const data = {
