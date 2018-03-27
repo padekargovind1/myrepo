@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-11">
                         <div class="form-wrap row">
-                            <div class="col-md-11">
+                            <div class="col-md-10">
                                 <div class="row">
                                     <form [formGroup]="searchForm">
                                         <div class="col-md-3  col-xs-6">
@@ -76,7 +76,7 @@
                             </div>
                             <!-- .col-* -->
 
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <!-- <div class="form-group"> -->
                                 <button class="btn btn-search" type="submit" [disabled]="searchForm.controls['etablissement'].value.length==0 &&
                                     searchForm.controls['lieu'].value.length==0 &&
@@ -84,13 +84,18 @@
                                     <i class="fa fa-search"></i>
                                 </button>
                                 <!-- </div> -->
+                                <button class="btn newSearch  btn-search" *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' ||
+                                searchFilter[0]!='' || searchFilter[1]!=''" (click)="cleanAdvancedSearch()" style="margin:0px !important">
+                                    <i class="fa fa-repeat"></i>
+                                </button>
                             </div>
-                            <div class="newSearchdiv">
+                            
+                            <!-- <div class="newSearchdiv">
                                 <a class="newSearch" *ngIf="advancedSearchToDisplay.length!=0 || searchFilter[2]!='' ||
                                         searchFilter[0]!='' || searchFilter[1]!=''" (click)="cleanAdvancedSearch()">
-                                    Nouvelle recherche
+                                   11 Nouvelle recherche
                                 </a>
-                            </div>
+                            </div> -->
 
                         </div>
                         <!-- .form-wrap -->

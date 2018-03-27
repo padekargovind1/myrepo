@@ -29,6 +29,7 @@ export class AccueilComponent implements OnInit {
   domaines=[];
   onMobile : boolean = false;
   lieuSelected = [];
+  showSweetAlert : boolean = true;
   constructor(private router: Router,
               //private route: ActivatedRoute,
               private publicService: PublicService,
@@ -278,7 +279,17 @@ export class AccueilComponent implements OnInit {
     this.options['villes']=[];
     console.log(this.options)
   }
-
+  displayAlert(){
+    swal({
+      title: 'Attention',
+      //text: 'Vous devez choisir une classe et un lieu ou entrer le nom d\'un établissement afin d\'effectuer une recherche rapide. Merci',
+      text: 'Vous devez choisir une classe et un lieu, ou entrer seulement le nom d\'un établissement pour pouvoir ' +
+      'effectuer une recherche rapide.',
+      type: 'warning',
+      confirmButtonText: "J'AI COMPRIS"
+    })
+    return 0;
+  }
   onSubmitSearch(path){
     console.log("on submit", this.searchForm.value)
     if((this.searchForm.value.classe=="" || this.searchForm.value.lieu=="") && this.searchForm.value.etablissement=="" && path!="enseignement"){
@@ -300,23 +311,87 @@ export class AccueilComponent implements OnInit {
       })
     }else{
       let data;
+      //console.log("====>",this.searchForm.value.classe,this.searchForm.controls.classe.value,this.searchForm.controls.classe.value);
       if(path!="enseignement"){
         data = [
           this.searchForm.controls.classe.value=='' || this.searchForm.controls.classe.value=='Indifférent' ? '' : this.searchForm.controls.classe.value,
           this.searchForm.controls.lieu.value,
           this.searchForm.controls.etablissement.value
         ]
+      if(this.searchForm.controls.classe.value != '' && this.searchForm.controls.lieu.value != '' && this.searchForm.controls.etablissement.value != ''){
+        console.log('harish 1');
+        this.showSweetAlert = false;
+        this.displayAlert();
+      }
+      else if(this.searchForm.controls.classe.value != '' && this.searchForm.controls.lieu.value == '' && this.searchForm.controls.etablissement.value != ''){
+        console.log('harish 2');
+        this.showSweetAlert = false;
+        this.displayAlert();
+      }  
+      else if(this.searchForm.controls.classe.value != '' && this.searchForm.controls.lieu.value == '' && this.searchForm.controls.etablissement.value == ''){
+        console.log('harish 3');
+        this.showSweetAlert = false;
+        this.displayAlert();
+      }  
+      else if(this.searchForm.controls.classe.value == '' && this.searchForm.controls.lieu.value != '' && this.searchForm.controls.etablissement.value != ''){
+        console.log('harish 4');
+        this.showSweetAlert = false;
+        this.displayAlert();
+      }  
+      else if(this.searchForm.controls.classe.value == '' && this.searchForm.controls.lieu.value != '' && this.searchForm.controls.etablissement.value == ''){
+        console.log('harish 5');
+        this.showSweetAlert = false;
+        this.displayAlert();
+      }  
+      else if(this.searchForm.controls.classe.value == '' && this.searchForm.controls.lieu.value == '' && this.searchForm.controls.etablissement.value != ''){
+        console.log('harish 5');
+        this.showSweetAlert = false;
+        this.displayAlert();
+      }  
       } else {
         data = [
           this.apbForm.controls.domaine.value,
           this.apbForm.controls.lieu.value,
           this.apbForm.controls.etablissement.value
         ]
+        if(this.apbForm.controls.domaine.value != '' && this.apbForm.controls.lieu.value != '' && this.apbForm.controls.etablissement.value != ''){
+          console.log('harish 1');
+          this.showSweetAlert = false;
+          this.displayAlert();
+        }
+        else if(this.apbForm.controls.domaine.value != '' && this.apbForm.controls.lieu.value == '' && this.apbForm.controls.etablissement.value != ''){
+          console.log('harish 2');
+          this.showSweetAlert = false;
+          this.displayAlert();
+        }  
+        else if(this.apbForm.controls.domaine.value != '' && this.apbForm.controls.lieu.value == '' && this.apbForm.controls.etablissement.value == ''){
+          console.log('harish 3');
+          this.showSweetAlert = false;
+          this.displayAlert();
+        }  
+        else if(this.apbForm.controls.domaine.value == '' && this.apbForm.controls.lieu.value != '' && this.apbForm.controls.etablissement.value != ''){
+          console.log('harish 4');
+          this.showSweetAlert = false;
+          this.displayAlert();
+        }  
+        else if(this.apbForm.controls.domaine.value == '' && this.apbForm.controls.lieu.value != '' && this.apbForm.controls.etablissement.value == ''){
+          console.log('harish 5');
+          this.showSweetAlert = false;
+          this.displayAlert();
+        }  
+        else if(this.apbForm.controls.domaine.value == '' && this.apbForm.controls.lieu.value == '' && this.apbForm.controls.etablissement.value != ''){
+          console.log('harish 5');
+          this.showSweetAlert = false;
+          this.displayAlert();
+        }  
+  
       }
-      this.schoolService.storeSelectedLieu(this.lieuSelected);
-      this.publicService.storeSearchSchool(data);
-      this.onNavigate(path);
-    }
+      if(this.showSweetAlert === true)
+      {      this.schoolService.storeSelectedLieu(this.lieuSelected);
+            this.publicService.storeSearchSchool(data);
+            this.onNavigate(path);
+      }    
+}
   }
 
   // navigateTo(index){
