@@ -23,5 +23,11 @@ export class FilterComponent implements OnInit {
   doTooltip() {
   	// (<any> $('[data-toggle="tooltip"]')).tooltip();
   }
-
+  closeFilter(){
+    const adv_filter = $('.advance-filter');
+    console.log("hide");
+    // filter 1
+        adv_filter.hide();
+    
+  }
 }

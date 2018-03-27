@@ -126,7 +126,13 @@ export class SchoolComponent implements OnInit, OnDestroy {
       this.schoolListFilter = results;
     })
   }
-
+  closeFilter(){
+    const adv_filter = $('.advance-filter');
+    console.log("hide");
+    // filter 1
+        adv_filter.hide();
+    
+  }
   runScriptOnInit() {
     // return scope value
     this.onMobile = this.helperService.detectmob();

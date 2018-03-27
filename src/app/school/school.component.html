@@ -417,7 +417,15 @@
                           </div>
                       </div>
                       <div class="advance-filter open" style="display:none">
-                          <ul>
+                        <div (click)="closeFilter()">
+                                <button type="button" class="btn" style="color: #FFFFFF;
+                                margin: 10px;background-color:#D9534F !important">
+                                    Fermer   <span class="fa-stack">
+                                            <i class="fa fa-close fa-stack-1x">
+                                                </i></span> 
+                                      </button>
+                                     </div>
+                        <ul>
                               <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Spécificités</a>
                                   <ul (click)="onAdvancedClick($event, 'speciality')"
                                       class="adv-filt left-popup"><!-- <li><input type="checkbox" name="handicapped" class="handicapped checkbox filled-in" id="filter-1" /><label for="filter-1">Accueil Handicapé, Dyslexie</label></li>  -->

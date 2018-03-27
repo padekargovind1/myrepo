@@ -202,7 +202,13 @@ export class SuperieurComponent implements OnInit {
     $('.filter-form-holder').css('background-image', "url('./assets/images/enseignement.jpg')")
     //$('.filter-form-holder').css('background-image', "url('./assets/images/primary-school.jpg')");
   }
-
+  closeFilter(){
+    const adv_filter = $('.advance-filter');
+    console.log("hide");
+    // filter 1
+        adv_filter.hide();
+    
+  }
   buildForm(){
     this.searchForm = this.fb.group({
       domaine : [''],

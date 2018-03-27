@@ -344,7 +344,7 @@ export class AccueilComponent implements OnInit {
         this.displayAlert();
       }  
       else if(this.searchForm.controls.classe.value == '' && this.searchForm.controls.lieu.value == '' && this.searchForm.controls.etablissement.value != ''){
-        console.log('harish 5');
+        console.log('harish 6');
         this.showSweetAlert = false;
         this.displayAlert();
       }  
@@ -380,7 +380,7 @@ export class AccueilComponent implements OnInit {
           this.displayAlert();
         }  
         else if(this.apbForm.controls.domaine.value == '' && this.apbForm.controls.lieu.value == '' && this.apbForm.controls.etablissement.value != ''){
-          console.log('harish 5');
+          console.log('harish 6');
           this.showSweetAlert = false;
           this.displayAlert();
         }  
