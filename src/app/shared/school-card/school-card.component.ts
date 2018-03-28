@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MdDialog } from '@angular/material';
 import { PublicService } from '../../services/public.service';
 import { EtablissementComponent } from '../../etablissement/etablissement.component';
-
+declare const jquery: any;
+declare const $: any;
 @Component({
   selector: 'app-school-card',
   templateUrl: './school-card.component.html',
@@ -17,7 +18,11 @@ export class SchoolCardComponent implements OnInit {
   schoolTag=[];
 
   constructor(private publicService : PublicService,
-              public dialog:MdDialog) { }
+              public dialog:MdDialog) { 
+                setTimeout(() => {
+                  this.runScript();
+                });
+              }
 
   ngOnInit() {
     setTimeout(()=>{
@@ -26,7 +31,14 @@ export class SchoolCardComponent implements OnInit {
       this.getSchoolTag();
     }, 500)
   }
+  runScript(){
+    $(".tiptext").mouseover(function() {
+    $(this).children(".description").show();
+}).mouseout(function() {
+    $(this).children(".description").hide();
+});
 
+  }
   onSchoolDetail(){
     console.log("Click on school detail")
     this.makeSchoolDetailProfil();

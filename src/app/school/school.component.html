@@ -417,14 +417,14 @@
                           </div>
                       </div>
                       <div class="advance-filter open" style="display:none">
-                        <div (click)="closeFilter()">
-                                <button type="button" class="btn" style="color: #FFFFFF;
-                                margin: 10px;background-color:#D9534F !important">
-                                    Fermer   <span class="fa-stack">
-                                            <i class="fa fa-close fa-stack-1x">
-                                                </i></span> 
-                                      </button>
-                                     </div>
+                            <div (click)="closeFilter()" class="text-center" style="margin-bottom: 10px;">
+                                    <button type="button" class="btn" style="color: #FFFFFF;
+                                    margin: 10px;background-color:#D9534F !important;padding-bottom: 0px !important;padding-top: 0px !important;">
+                                        Fermer   <span class="fa-stack">
+                                                <i class="fa fa-close fa-stack-1x">
+                                                    </i></span> 
+                                          </button>
+                                         </div>
                         <ul>
                               <li><a class="advancedFilter advancedFilterCenter advancedFilterPadding">Spécificités</a>
                                   <ul (click)="onAdvancedClick($event, 'speciality')"

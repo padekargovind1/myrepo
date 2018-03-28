@@ -1,0 +1,25 @@
+.card1{
+    margin-top: 10px;
+    text-align: center;
+    display: inline-table;
+    vertical-align: middle;
+}
+
+.cont{
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+   
+}
+.description {
+    display:none;
+    position:absolute;
+    width:100%;
+    height:auto;
+    margin: 0px;
+    background: white;
+    color: black;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}

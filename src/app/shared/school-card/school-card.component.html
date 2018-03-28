@@ -22,9 +22,19 @@
 
 
 <div class="card-content">
-  <h4 style="height:60px; line-height: 30px">
-      {{ SchoolData.longName | schoolName}}
-  </h4>
+        <!-- <div class="tiptext">Text
+                <div class="description"> Here is the big fat description box</div>
+                </div> -->
+  <div id="tiptext" class="tiptext">
+        <h4 class="description">
+                {{ SchoolData.longName | schoolName}}
+          </h4>
+      <div class="text-center">    
+        <h4 class="cont">          
+        {{ SchoolData.longName | schoolName}}
+        </h4>
+    </div>
+</div>
   <address class="school-card-address">
       {{ SchoolData.address.postcode }}
       <span>

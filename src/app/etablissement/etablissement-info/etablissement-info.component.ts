@@ -1,5 +1,9 @@
-import { Component, OnInit, Input, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, HostListener, Pipe, PipeTransform } from '@angular/core';
 import { AgmMap, AgmCoreModule } from '@agm/core';
+//import {  } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+@Pipe({ name: 'keepHtml', pure: false })
 
 @Component({
   selector: 'app-etablissement-info',
@@ -13,8 +17,9 @@ export class EtablissementInfoComponent implements OnInit {
   lat: number = 51.678418;
   lng: number = 7.809007;
   mapURL : string;
+ // testHtml:any;
   @ViewChild(AgmMap) private map: any;
-  constructor() {	}
+  constructor(private sanitizer: DomSanitizer) {	}
 
   // Set the google Map
   ngOnInit() {

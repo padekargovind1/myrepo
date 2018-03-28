@@ -29,9 +29,10 @@
                         <h5>Accès par Transport</h5>
                     </div>
                     <div class="ibox-content" *ngIf="canDisplay">
-                        <p *ngFor="let transport of schoolData.cycles[0].specifications.transports">
-                            {{transport}}
-                        </p>
+                        
+                        <div *ngFor="let transport of schoolData.cycles[0].specifications.transports">
+                                <p [innerHTML]="transport"></p>
+                        </div>
                     </div>
                 </div>
             </div>
