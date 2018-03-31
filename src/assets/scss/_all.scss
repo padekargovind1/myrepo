@@ -287,17 +287,26 @@ header .main-navigation li.courses-menu li .single-item a:hover {
 header .main-navigation li.courses-menu li .single-item .courses-num {
   color: #383c4b;
 }
-#md-tab-label-0-5{
-  min-width: 150px !important;
-  max-width: 100px !important;
-  line-height: inherit;
-  padding-top: 4px !important;
+// #md-tab-label-0-5{
+//   min-width: 150px !important;
+//   max-width: 100px !important;
+//   line-height: inherit;
+//   padding-top: 4px !important;
+// }
+// #md-tab-label-0-6{
+//   min-width: 145px !important;
+//   max-width: 100px !important;
+//   line-height: inherit;
+//   padding-top: 4px !important;
+// }
+::ng-deep .mat-tab-label{
+  justify-content: center !important; /* align items in Main Axis */
 }
-#md-tab-label-0-6{
-  min-width: 145px !important;
-  max-width: 100px !important;
-  line-height: inherit;
-  padding-top: 4px !important;
+.mat-tab-label{
+  //min-width: 150px !important;
+    //max-width: 100px !important;
+    // line-height: inherit;
+   // padding-top: 4px !important;
 }
 .header .social-media-list { float: right; padding-top: 12px;top:69px!important}
 .header .social-media-list a { font-size: 14px; padding: 3px 5px; position: relative; overflow: hidden; height: auto; width: auto; transition: ease .5 all;}

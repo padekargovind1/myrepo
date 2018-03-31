@@ -81,9 +81,11 @@
                 (click)="onCheckbox(school._id)">&nbsp;</label>
         </div-->
               <br>
+              <div *ngIf="school.cycles[0].logo1!=null">
               <img src="{{imagePathPre}}/{{school.cycles[0].logo1}}" alt="School 1"
                    class="img-responsive"
                    style="width:auto; height:80px; margin: 5px auto; margin-top: 25px;" />
+                   </div>
               <br>
               <div>
                 <app-wish-school-card [pathName]="pathName" [SchoolData]="school"></app-wish-school-card>
