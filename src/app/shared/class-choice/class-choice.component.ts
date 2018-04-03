@@ -41,8 +41,8 @@ export class ClassChoiceComponent implements OnInit {
     else {
         this.selectValue = false;
         swal({
-              title: 'Please select value of dropdown',
-              text: '',
+              title: 'Vous devez sélectionner une option !',
+              text: 'Veuillez choisir une option parmis les différentes proposées',
               type: 'success',
               confirmButtonText: 'Ok'
             });
