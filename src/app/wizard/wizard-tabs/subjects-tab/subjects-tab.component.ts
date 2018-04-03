@@ -18,6 +18,8 @@ export class SubjectsTabComponent implements OnInit {
   subjectList3:any;
   tempsubjectList1=[];
   tempsubjectList2=[];
+  tempsubjectList3=[];
+  
   constructor(private fb : FormBuilder,
               public wizardService : WizardService,
               private bookingService : BookingService ) { }
@@ -64,22 +66,42 @@ export class SubjectsTabComponent implements OnInit {
       weakSubject : this.userData.weakAtSubjects
     })
   }
-    subjectListData1(subject){
-    if(this.tempsubjectList1.indexOf(subject)<0)
-    this.tempsubjectList1.push(subject);
+
+  subjectListData3(subject){
+    if(this.tempsubjectList3.indexOf(subject)<0)
+    this.tempsubjectList3.push(subject);
     else
     {
-      var index = this.tempsubjectList1.indexOf(subject);
+      var index = this.tempsubjectList3.indexOf(subject);
       if (index > -1) {
-         this.tempsubjectList1.splice(index, 1);
+         this.tempsubjectList3.splice(index, 1);
       }
     }
 
-    var array1 = this.subjectList1;
-    var array2 = this.tempsubjectList1;
+    var array1 = this.subjectList3;
+    var array2 = this.tempsubjectList3;
     var array3 = array1.filter(function(obj) { return array2.indexOf(obj) == -1; });
 
-    this.subjectList2=array3;
+    this.subjectList1=array3;
+
+  }
+
+    subjectListData1(subject){
+      if(this.tempsubjectList1.indexOf(subject)<0)
+      this.tempsubjectList1.push(subject);
+      else
+      {
+        var index = this.tempsubjectList1.indexOf(subject);
+        if (index > -1) {
+          this.tempsubjectList1.splice(index, 1);
+        }
+      }
+
+      var array1 = this.subjectList1;
+      var array2 = this.tempsubjectList1;
+      var array3 = array1.filter(function(obj) { return array2.indexOf(obj) == -1; });
+
+      this.subjectList2=array3;
 
   }
     subjectListData2(subject){
@@ -97,7 +119,7 @@ export class SubjectsTabComponent implements OnInit {
     var array2 = this.tempsubjectList2;
     var array3 = array1.filter(function(obj) { return array2.indexOf(obj) == -1; });
 
-    this.subjectList3=array3;
+    //this.subjectList3=array3;
 
   }
 }

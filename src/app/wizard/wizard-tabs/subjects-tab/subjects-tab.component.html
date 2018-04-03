@@ -6,18 +6,49 @@
       <div class="form-group">
         <div class="row">
           <div class="col-sm-12">
+            <div class="select-custom-multiple-gout">
+              Matières préférées <span class="err">*</span>
+              <i class="fa fa-question-circle" aria-hidden="true"
+                 [mdTooltip]="tooltipText"
+                 mdTooltipPosition="after">
+              </i>
+              <!-- <select class="form-control matery"
+                      multiple="multiple"
+                      [formControl]="wizardForm.controls['interestSubject']">
+                <option *ngFor="let subject of subjectList3"
+                        [value]="subject">{{subject}}</option>
+              </select> -->
+              <md-select  multiple="true" name="" class="form-control matery"
+              multiple="multiple" [formControl]="wizardForm.controls['interestSubject']" placeholder="Matières préférées">
+                  <md-option *ngFor="let subject of subjectList3"
+                  [value]="subject" (click)="subjectListData3(subject)">{{subject}}</md-option>
+                </md-select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12">
             <div class="select-custom-multiple-forte">
               Matières fortes <span class="err">*</span>
               <i class="fa fa-question-circle" aria-hidden="true"
                  [mdTooltip]="tooltipText"
                  mdTooltipPosition="after">
               </i>
-              <select class="form-control matery"
+              <!-- <select class="form-control matery"
                       multiple="multiple"
                       [formControl]="wizardForm.controls['bestSubject']">
                 <option *ngFor="let subject of  this.subjectList1"
                         [value]="subject" (click)="subjectListData1(subject)">{{subject}}</option>
-              </select>
+              </select> -->
+              <md-select  multiple="true" name="" class="form-control matery"
+              multiple="multiple"
+              [formControl]="wizardForm.controls['bestSubject']" placeholder="Matières fortes">
+                  <md-option *ngFor="let subject of  this.subjectList1"
+                  [value]="subject" (click)="subjectListData1(subject)">{{subject}}</md-option>
+                </md-select>
             </div>
           </div>
         </div>
@@ -32,37 +63,24 @@
                  [mdTooltip]="tooltipText"
                  mdTooltipPosition="after">
               </i>
-              <select class="form-control matery"
+              <!-- <select class="form-control matery"
                       multiple="multiple"
                       [formControl]="wizardForm.controls['weakSubject']">
                 <option *ngFor="let subject of subjectList2" (click)="subjectListData2(subject)"
                         [value]="subject">{{subject}}</option>
-              </select>
+              </select> -->
+              <md-select class="form-control matery"
+              multiple="multiple"
+              [formControl]="wizardForm.controls['weakSubject']" placeholder="Matières faibles">
+                  <md-option *ngFor="let subject of subjectList2"
+                  [value]="subject">{{subject}}</md-option>
+                </md-select>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="select-custom-multiple-gout">
-              Matières préférées <span class="err">*</span>
-              <i class="fa fa-question-circle" aria-hidden="true"
-                 [mdTooltip]="tooltipText"
-                 mdTooltipPosition="after">
-              </i>
-              <select class="form-control matery"
-                      multiple="multiple"
-                      [formControl]="wizardForm.controls['interestSubject']">
-                <option *ngFor="let subject of subjectList3"
-                        [value]="subject">{{subject}}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
+     
     </div><!-- .col-* -->
   </div><!-- .row -->
   <div class="row">
