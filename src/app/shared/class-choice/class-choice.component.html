@@ -1,11 +1,11 @@
 <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
     <div class="row selectApplyClass"
     [ngClass]="(schoolData.cycles[schoolIndex].classes.length===1)?'customWidth300':(schoolData.cycles[schoolIndex].classes.length===2)?'customWidth300':'customWidth300'">
-      <h2 style="text-align:center">Je sélectionne ma classe :</h2>
-          <div [ngClass]="(schoolData.cycles[schoolIndex].classes.length===1)?'customWidth300 col-md-6 col-xs-12 col-lg-12 col-sm-12':(schoolData.cycles[schoolIndex].classes.length===2)?'customWidth300 col-md-6 col-xs-12 col-lg-6 col-sm-12':'customWidth600 col-md-6 col-xs-12 col-lg-4 col-sm-12'" *ngFor="let class of schoolData.cycles[schoolIndex].classes?.reverse(); let i = index">
+      <h2 style="text-align:center;margin-bottom:30px;">Je sélectionne ma classe :</h2>
+          <div id="maindiv" [ngClass]="(schoolData.cycles[schoolIndex].classes.length===1)?'customWidth300 col-md-6 col-xs-12 col-lg-12 col-sm-12':(schoolData.cycles[schoolIndex].classes.length===2)?'customWidth300 col-md-6 col-xs-12 col-lg-6 col-sm-12':'customWidth600 col-md-6 col-xs-12 col-lg-4 col-sm-12'" *ngFor="let class of schoolData.cycles[schoolIndex].classes?.reverse(); let i = index">
           <div *ngIf="class.name!=null && class.name!=''">
             <div class="row school-choice-height">
-              <h3 style="text-align : center; width:80%; margin-left:10%; height:50px" mdTooltip="{{class.name}}" mdTooltipClass="center-tooltip">
+              <h3 style="text-align : center; width:80%; margin-left:10%; height:40px;margin-top:15px" mdTooltip="{{class.name}}" mdTooltipClass="center-tooltip">
                 {{class.name | school:55}}
               </h3>
             </div>
@@ -28,7 +28,7 @@
           {{ option.name | capital }}
           </option>
         </select> 
-        
+ 
             </div>
             <!--<div class="row school-choice-height">
         <p style="text-align:center">{{cycle.address.ad1}}</p>
@@ -36,7 +36,7 @@
       <div class="row school-choice-height">
         <p style="text-align:center">{{cycle.address.postcode}} {{cycle.address.city}}</p>
       </div>-->
-            <div class="row school-choice-height">
+            <div class="row school-choice-height" style="margin-top:10px;margin-bottom:30px">
               <button class="btn btn-appointment" style="margin-left : 34%" (click)="onselect(i)">
           Je sélectionne
         </button>
@@ -48,7 +48,7 @@
 
 <div class="row customBtnClassClose">
   <section class="col-md-12">
-    <button type="button" class="btn button-return" (click)="navigateBack()" style="float:right; background-color: #ec4758">
+    <button type="button" class="btn button-return" (click)="navigateBack()" style="color:#FFF;float:right; background-color: #ec4758">
       Annuler
     </button>
   </section>

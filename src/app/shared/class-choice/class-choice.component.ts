@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Inject } from '@angular/core';
+﻿import { Component, OnInit, Inject, AnimationKeyframe } from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { SchoolService } from '../../services/school.service';
@@ -14,10 +14,13 @@ export class ClassChoiceComponent implements OnInit {
   schoolData : any;
   schoolIndex : any;
   selectValue:boolean;
+  public isShow:AnimationKeyframe;
   constructor(public dialogref:MdDialogRef<ClassChoiceComponent>,
               @Inject(MD_DIALOG_DATA) private data: {schoolData : any, schoolIndex : any},
               private router : Router,
-              private schoolService : SchoolService) { }
+              private schoolService : SchoolService) { 
+                this.isShow = false;
+              }
 
   ngOnInit() {
     //console.log(this.data.schoolData,"Harish lenght:- ", this.data.schoolIndex)
