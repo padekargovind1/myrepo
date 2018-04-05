@@ -5,6 +5,12 @@
     padding: 15px 10px;
     position: relative;
 }
+.margin-bottom0{
+    margin-bottom: 0px;
+}
+.custom-height{
+    height: 70px;
+}
 .marginTop5{
     margin-top:10px !important;
 }

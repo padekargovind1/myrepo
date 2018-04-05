@@ -1,7 +1,7 @@
 ﻿<form [formGroup]="wizardForm">
   <div class="col-md-4">
 
-    <h3>Etablissement Actuel</h3>
+    <h3 class="marginTop20">Etablissement Actuel</h3>
 
     <div class="form-group">
       <div class="row">
@@ -64,7 +64,7 @@
       </div>
     </div>
 
-    <h4>Langues Vivantes</h4>
+    <h3 class="marginTop20">Langues Vivantes</h3>
     <div class="form-group">
       <div class="row">
         <div class="col-sm-12">
@@ -138,11 +138,11 @@
   </div>
   <div class="col-md-8" *ngIf="onApplyPage">
     <div fxFlex.gt-sm="100" fxFlex.gt-xs="50" fxFlex="100">
-      <div *ngIf="onApplyPage">
-        <label>Déposer ici ses trois derniers bulletins scolaires</label>
+      <div *ngIf="onApplyPage" class="marginTop20">
+        <label><h3>Déposer ici ses trois derniers bulletins scolaires</h3></label>
         <input class="inputTypeFileCk" type="file" ng2FileSelect [uploader]="uploader"/>
       </div>
-      <h5 class="mt-0" fxLayout="row">
+      <h5 class="mt-0 marginTop10" fxLayout="row">
         <span fxFlex>File d'attente des téléchargements</span>
         <span>Nombre de fichier en attente: {{ uploader?.queue?.length }}</span>
       </h5>

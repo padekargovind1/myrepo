@@ -3,7 +3,7 @@
   <md-tab label="Mes Coordonnées">
      <div role="tabpanel" style="width:95%; margin-left:2%">
          <form [formGroup]="sendMessageForm" class="brouchreCls test">
-            <h3>Parents</h3>
+            <h3>Parents<span class="err">*</span></h3>
             <div class="row">
                 <div class="col-md-6">
                     <div class="select-custom">
@@ -28,8 +28,9 @@
                     <!--div style="margin-bottom:10px">
                         <span>Sexe*</span>
                     </div-->
+                    <div>Title<span class="err">*</span></div>
                     <div class="form-group horizontal-radio clearfix">
-
+                       
                         <md-radio-group [formControl]="sendMessageForm.controls['title']"
                     style="border-color:white" (click)="showSuivantBtn()">
                             <md-radio-button value="m" class="rdmark">M</md-radio-button>
@@ -70,6 +71,17 @@
                         </div>
                         <input type="email" class="form-control" placeholder="Email" (click)="showSuivantBtn()"
                             [formControl]="sendMessageForm.controls['mel']">
+                            <small *ngIf="sendMessageForm.controls['mel'].hasError('required') &&
+                            sendMessageForm.controls['mel'].touched"
+                            class="mat-text-warn err">
+                            Email Obligatoire
+                            </small>
+                            <small *ngIf="sendMessageForm.controls['mel'].errors?.email &&
+                                                        sendMessageForm.controls['mel'].touched"
+                            class="mat-text-warn err">
+                            Email Invalide
+                            </small>
+
                     </div>
                     <div class="col-sm-6">
                         <div style="margin-bottom:10px">
@@ -112,7 +124,7 @@
                     <div class="row"> -->
                         <div class="col-sm-6  col-xs-6">
                             <div class="select-custom">
-                                <div style="margin-bottom:10px">
+                                <div style="margin-bottom:5px;margin-top:5px">
                                     <span>Classe actuelle<span class="err">*</span></span>
                                 </div>
                                 <select name="" class="form-control" (change)="showSuivantBtn()"
@@ -228,7 +240,7 @@
                         <div class="col-sm-6  col-xs-6">
                             <div class="form-group">
                                 <div class="horizontal-radio">
-                                    <div style="margin-bottom:18px">
+                                    <div style="margin-bottom:10px;margin-top:5px">
                                         <span>Sexe<span class="err">*</span> </span>
                                     </div>
                                     <md-radio-group [formControl]="sendMessageForm.controls['childTitle']"

@@ -115,6 +115,7 @@ export class SendMessageComponent implements OnInit {
         isSent: true
       }
       this.sendService.sendMessage(data)
+      //window.location.reload();
       this.dialogref.close();
     } else {
       this.sendService.failSend();

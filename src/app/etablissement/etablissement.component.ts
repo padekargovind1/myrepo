@@ -162,7 +162,11 @@ export class EtablissementComponent implements OnInit, AfterViewInit{
       text: "Merci de vous connecter pour continuer",
       type: 'warning',
       confirmButtonText: "D'accord"
-    }).then(() => this.router.navigate(['/login']))
+    }).then(() => {
+        this.dialogref.close();
+        $('.cdk-overlay-pane').hide();
+        $('.cdk-overlay-backdrop').hide();
+        this.router.navigate(['/login'])})
       .catch((err) => console.log(err));
   }
 

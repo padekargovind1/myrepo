@@ -40,12 +40,18 @@ export class ClassChoiceComponent implements OnInit {
     }
     else {
         this.selectValue = false;
+        // swal({
+        //       title: 'Choisissez une option !',
+        //       text: 'Veuillez choisir une option parmis celles proposées',
+        //       type: 'warning',
+        //       confirmButtonText: 'Ok'
+        //     });
         swal({
-              title: 'Vous devez sélectionner une option !',
-              text: 'Veuillez choisir une option parmis les différentes proposées',
-              type: 'success',
-              confirmButtonText: 'Ok'
-            });
+          title: 'Complétez maintenant votre dossier !',
+          text: 'Veuillez remplir ces différents formulaires pour compléter votre dossier',
+          type: 'success',
+          confirmButtonText: 'Ok'
+        });
     }
   }
 

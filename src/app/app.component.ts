@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
 
             if (event instanceof NavigationEnd ) {
                 this.constUrl = event.url;
+               
               console.log("current url",event.url); // event.url has current url
               // your code will goes here
             }

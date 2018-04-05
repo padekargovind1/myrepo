@@ -23,11 +23,12 @@
         <select name="class" id="selectValue" (change)="onChange()" class="form-control" id="class" style="width:80%; margin-left:10%">
           <option value="" selected hidden>Liste des options disponibles</option>
           <option value="">Indifférent</option>
-          <option *ngFor="let option of class.option" 
+          <option  *ngFor="let option of class.option"
             value="{{option | capital}}">
-            {{ option.name | capital }}
+          {{ option.name | capital }}
           </option>
-        </select>
+        </select> 
+        
             </div>
             <!--<div class="row school-choice-height">
         <p style="text-align:center">{{cycle.address.ad1}}</p>

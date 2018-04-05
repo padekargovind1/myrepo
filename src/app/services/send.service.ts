@@ -50,6 +50,7 @@ export class SendService {
           })
         }
       });
+      return true;
       // this.usersService.postToMessages(data);
       // swal({
       //   title: "Merci d'avoir choisi CIDE",
