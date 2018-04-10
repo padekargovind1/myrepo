@@ -840,12 +840,15 @@
                               </div><br /> -->
                               <a href="compare-mode.html#compare" class="btn btn-appointment pull-right hide link-btn">Je Compare</a>
                               <!-- Button trigger modal -->
-                              <button type="button"
+                             <a data-toggle="tooltip" data-placement="left" title="Comparez les écoles de votre choix pour mieux choisir"> 
+                                 <button  type="button"
                                   class="btn btn-appointment-compare pull-right popup-btn"
                                   data-toggle="modal"
                                   data-target="#filter-popup"                                
                                   *ngIf="schoolListFilter.length!=0"
+                                  (click)="compare()"
                                   [disabled]="!canCompare" style="background: #00BC50 !important;color:#FFFFFF">Je Compare</button>
+                                </a>
                           </div>
 
 

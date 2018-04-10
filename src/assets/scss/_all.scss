@@ -1104,7 +1104,12 @@ input[type="radio"]:checked + span:before { background: #00BF53;}
 .content-compare-table a { color: #9d9e9e; position: relative;}
 .top-compare-table { position: sticky; height: 262px; border-bottom: 1px solid #e1e1e1; text-align: center; background: #fff; top: 0; z-index: 10;}
     .top-compare-table h4 { font-size: 16px; white-space: nowrap; text-overflow: ellipsis; width: 90%; overflow: hidden;}
-    .top-compare-table .school-action { position: absolute; top: 48px; width: 100%; display: table; margin: 0 auto 13px;}
+    .top-compare-table .school-action { position: absolute; 
+      // top: 48px;
+      z-index: 1;
+      margin-top:5px;
+      margin-right: 5px; 
+      width: 100%; display: table; margin: 0 auto 13px;}
       .top-compare-table .school-action a { color: #fff; }
     .top-compare-table:hover .school-action { visibility: visible; }
     .top-compare-table .close { opacity: 1; position: absolute; top: 0; right: 20px; z-index: 10; }
