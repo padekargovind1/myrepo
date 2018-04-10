@@ -12,6 +12,7 @@ import { globalUrl } from '../common';
 
 const TRIPS_API: string = globalUrl+"/api/schools/trips";
 const STATISTICS_API: string = globalUrl+"/api/schools/statictics";
+const ADS_API : string = globalUrl + "/api/public/ads";
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
@@ -49,7 +50,10 @@ export class SchoolService {
     return this.http.get(TRIPS_API)
       .map((response) => response.json());
   }
-
+  getAds() : Observable<any>{
+    return this.http.get(ADS_API)
+      .map((response) => response.json());
+  }
   // getStatistics() : Observable<any> {
   //   return this.http.get(STATISTICS_API)
   //     .map((response)=>response.json());

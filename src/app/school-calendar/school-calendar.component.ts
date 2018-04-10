@@ -22,7 +22,7 @@ export class SchoolCalendarComponent implements OnInit {
     data : '',
     school : ''
   }
-  buttonsBool : [boolean] = [false, false, false, false]
+  buttonsBool : [boolean] = [false, true, false, false]
 
   constructor(private publicService : PublicService,
               //private route : Router,
@@ -67,6 +67,7 @@ export class SchoolCalendarComponent implements OnInit {
 
   searchSubmit(){
     //wait for API
+    console.log("searchSubmit ....");
     this.getEvents();
   }
 

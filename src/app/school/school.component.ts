@@ -2,6 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MdDialog } from '@angular/material';
+import { Http } from '@angular/http';
 
 import { PublicService } from '../services/public.service';
 import { CompareService } from '../services/compare.service';
@@ -91,7 +92,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   selectedecole = 'Classe';
   config : any;
   searchSubscription: Subscription;
-
+  public adsData = {};
   constructor(private publicService: PublicService,
               private schoolService: SchoolService,
               private compareService: CompareService,
@@ -102,11 +103,17 @@ export class SchoolComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private sendService: SendService,
               public dialog: MdDialog,
-              public helperService : HelperService) { }
+              public helperService : HelperService,
+              public http: Http
+            ) { 
+               
+              }
 
 
   ngOnInit() {
     this.slickNb=this.publicService.getNbSlick(); // Slick number to have different class name for slick js
+    //this.adsData=this.publicService.getAds();
+    //console.log("addssss",this.adsData);
     this.setBackgroundImage(); // Set the background image (ecole, collège etc...)
     this.buildForm();
     // When user want to compare schools, he got a modal with multiple checkbox
@@ -392,6 +399,10 @@ export class SchoolComponent implements OnInit, OnDestroy {
       return;
   }
   onSubmitSearch() {
+    //this
+    //this.adsData = this.http.get("http://54.255.254.97:9090/api/public/ads").map((response)=>response.json())
+    this.adsData=this.schoolService.getAds();
+      console.log("addssss",this.adsData);
     this.schoolService.cleanSearchResults();
     this.page=1;
     if (!this.forAdvancedSearch) {

@@ -9,6 +9,7 @@ const LINGUISTIC_API: string = globalUrl + "/api/public/linguistic";
 const LANGUAGE_API: string = globalUrl + "/api/public/language";
 const SEARCH_API : string = globalUrl + "/api/public/search/";
 const RATE_API : string = globalUrl + "/api/public/rate";
+
 const APB_API : string = "https://api2.apbprive.fr/";
 
 @Injectable()
@@ -161,7 +162,10 @@ export class PublicService {
     return this.http.get(LINGUISTIC_API)
       .map((response)=>response.json());
   }
-
+  // getAds() : Observable<any> {
+  //   return this.http.get(ADS_API)
+  //     .map((response)=>response.json());
+  // }
   getLanguage() : Observable<any> {
     return this.http.get(LANGUAGE_API)
       .map((response)=>response.json());
