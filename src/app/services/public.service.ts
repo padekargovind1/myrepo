@@ -9,7 +9,7 @@ const LINGUISTIC_API: string = globalUrl + "/api/public/linguistic";
 const LANGUAGE_API: string = globalUrl + "/api/public/language";
 const SEARCH_API : string = globalUrl + "/api/public/search/";
 const RATE_API : string = globalUrl + "/api/public/rate";
-
+const STORE_SEARCH_SCHOOL : string = globalUrl + "api/common/history";
 const APB_API : string = "https://api2.apbprive.fr/";
 
 @Injectable()
@@ -145,8 +145,10 @@ export class PublicService {
   }
 
   storeSearchSchool(data){
-    // console.log(data);
+    console.log("storeSearchSchool:====",data);
     this.searchData=data;
+    return data;
+    //return this.http.post(STORE_SEARCH_SCHOOL,data).map((response)=>response.json());
   }
 
   getSearchSchool(){

@@ -1,12 +1,23 @@
 ﻿<div class="ecoleDataClass">
-  <div class="popup-ad-holder fadeInDown animated">
-    <img src="assets/images/ad/ad-336x280-st.jpg" alt="" />
+  <!-- <div *ngFor="let popupLogo of this.adsData['data']" class="popup-ad-holder fadeInDown animated">
+    <img src="http://54.255.254.97:9090/{{popupLogo.placement.logo[2].image}}" alt="image not available"/>
   </div>
+  <div  *ngFor="let popupLogo of this.adsData['data']" class="popup-ad-holder-mobile fadeInDown animated">
+    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <img src="http://54.255.254.97:9090/{{popupLogo.placement.logo[2].image}}" alt="image not available"/>    
+  </div> -->
+  
+  <!-- // For Dynamic Just uncomment the above code -->
 
+  <div class="popup-ad-holder fadeInDown animated">
+        <img src="assets/images/ad/ad-336x280-st.jpg" alt="" />
+    <!-- <img src="http://54.255.254.97:9090/{{popupLogo.placement.logo[2].image}}" alt="image not available"/> -->
+  </div>
   <div class="popup-ad-holder-mobile fadeInDown animated">
     <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <img src="assets/images/ad/ad-336x280-st.jpg" alt="" />
   </div>
+
   <div class="filter-form-holder">
 
     <form class="form-inline searchform  school-page">
@@ -717,7 +728,13 @@
 
       <main class="main" role="main">
           <div class="ads-area">
-              <img src="assets/images/ad/ads-728x90-sainte.jpg" alt="" class="ads-after-search-form">
+                <!-- <span *ngFor="let abc of this.adsData['data']; let i = index">
+                        {{abc.placement.Hbanner[i].image}}
+                    <img src="http://54.255.254.97:9090/{{abc.placement.Hbanner[i].image}}"alt="" class="ads-after-search-form">
+                </span> -->
+                
+                <!-- For Dynamic Just uncomment the above code -->
+                <img src="assets/images/ad/ads-728x90-sainte.jpg" alt="" class="ads-after-search-form">
               <section class="ads-left from-popup hidden">
                   <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <img src="assets/images/ad/ad-160x600-ipecom.jpg" alt="" />
@@ -732,6 +749,16 @@
               <section class="ads-right fixed-ad hidden">
                   <img src="assets/images/ad/ads-160x600-lespetis.jpg" alt="" />
               </section>
+                <!-- For Dynamic Just uncomment the above code and comment above code-->
+
+              <!-- <section *ngFor="let abc of this.adsData['data']" class="ads-left from-popup hidden">
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <img src="http://54.255.254.97:9090/{{abc.placement.Vbanner[0].image}}" alt="image not available" />
+              </section>
+              <section *ngFor="let abc of this.adsData['data']" class="ads-right from-popup hidden">
+                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <img src="http://54.255.254.97:9090/{{abc.placement.Vbanner[1].image}}" alt="image not available" />
+                </section> -->
           </div>
 
       <!--<div class="white-background">-->
@@ -960,6 +987,10 @@
                           <div class="row">
                               <div class="col-md-10 col-md-offset-1  wrapper"
                                   [class]="getSlickNb()">
+                                  <!-- <div  *ngFor="let carousalLogo of this.adsData['data']">
+                                    <img src="http://54.255.254.97:9090/{{carousalLogo.placement.logo[0].image}}" alt="ads"/>
+                                  </div> -->
+                                  <!-- For Dynamic Just uncomment the above code -->
                                   <div><img src="assets/images/ad/ads-footer_r1_c1.jpg" alt="ads" /></div>
                                   <div><img src="assets/images/ad/ads-footer_r1_c2.jpg" alt="ads" /></div>
                                   <div><img src="assets/images/ad/ads-footer_r1_c3.jpg" alt="ads" /></div>

@@ -29,6 +29,7 @@ export class SchoolService {
   selectedLieu = [];
   onCancel : boolean = false;
   searchResults = [];
+  result:any;
   nextResults = new Subject<any[]>();
 
   constructor(private http: Http) {}
@@ -50,9 +51,18 @@ export class SchoolService {
     return this.http.get(TRIPS_API)
       .map((response) => response.json());
   }
-  getAds() : Observable<any>{
-    return this.http.get(ADS_API)
-      .map((response) => response.json());
+  getAds(){
+    this.result = this.http.get(ADS_API)
+                  //.map(response => response.json())
+                  .subscribe(result => result.json());
+    return this.result;
+  //   return this.http.get(ADS_API).subscribe( 
+  //     response => {
+  //       response.json();
+  //     }, error => {
+  //   }
+  // );
+      //.map((response) => response.json());
   }
   // getStatistics() : Observable<any> {
   //   return this.http.get(STATISTICS_API)

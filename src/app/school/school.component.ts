@@ -92,7 +92,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   selectedecole = 'Classe';
   config : any;
   searchSubscription: Subscription;
-  public adsData = {};
+  public adsData : any;
   constructor(private publicService: PublicService,
               private schoolService: SchoolService,
               private compareService: CompareService,
@@ -112,8 +112,13 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.slickNb=this.publicService.getNbSlick(); // Slick number to have different class name for slick js
-    //this.adsData=this.publicService.getAds();
-    //console.log("addssss",this.adsData);
+        //this.adsData = this.http.get("http://54.255.254.97:9090/api/public/ads").map((response)=>response.json())
+        this.adsData = this.http.get("http://54.255.254.97:9090/api/public/ads")
+        //.map(response => response.json())
+        .subscribe(result => {
+          this.adsData = result.json();
+          console.log("addssss:- ",this.adsData['data']);              
+        });
     this.setBackgroundImage(); // Set the background image (ecole, collège etc...)
     this.buildForm();
     // When user want to compare schools, he got a modal with multiple checkbox
@@ -399,10 +404,14 @@ export class SchoolComponent implements OnInit, OnDestroy {
       return;
   }
   onSubmitSearch() {
-    //this
-    //this.adsData = this.http.get("http://54.255.254.97:9090/api/public/ads").map((response)=>response.json())
-    this.adsData=this.schoolService.getAds();
-      console.log("addssss",this.adsData);
+    //this.adsData=this.schoolService.getAds();
+    // this.adsData = this.http.get("http://54.255.254.97:9090/api/public/ads")
+    // //.map(response => response.json())
+    // .subscribe(result => {
+    //   this.adsData = result.json();
+    //   console.log("addssss:- ",this.adsData['data']);              
+    // });
+    //console.log("addssss1:- ",this.adsData); 
     this.schoolService.cleanSearchResults();
     this.page=1;
     if (!this.forAdvancedSearch) {
@@ -432,11 +441,21 @@ export class SchoolComponent implements OnInit, OnDestroy {
       place : this.searchForm.controls.lieu.value,
       name : this.searchForm.controls.etablissement.value
     };
-    // console.log(this.lieuSelected, this.advancedSearch);
+//     console.log(this.lieuSelected, this.advancedSearch);
+  
     // this.searchFilter = [this.publicService.getClassName(), data.place, data.name]; // Data to display on the website
     this.searchFilter = [data.class, data.place, data.name]; // Data to display on the website
     console.log('search filter');
     console.log(this.searchFilter);
+    // let searchData = {"category": "searches",
+    //       "details": {
+    //         class: this.searchFilter[0],
+    //         link: this.searchFilter[1],
+    //         school: this.searchFilter[2],
+    //         type: this.pathName
+    //       }
+    //   };
+    //   console.log("datas:...........................",searchData);
     this.fillAdvancedSearchClass(data); // fill the class of the advanced Search
     this.advancedSearch.place = this.lieuSelected;  // Right location to send to APi (ex 75001 and not Paris)
     if(this.advancedSearch.place.length === 0){
