@@ -18,6 +18,8 @@ import swal from 'sweetalert2';
 import {globalUrl} from '../common';
 import {HelperService} from "../services/helper.service";
 import { EtablissementComponent } from '../etablissement/etablissement.component';
+import {TimerObservable} from "rxjs/observable/TimerObservable";
+
 declare const jquery: any;
 declare const $: any;
 
@@ -28,7 +30,7 @@ declare const $: any;
   providers: []
 })
 export class SchoolComponent implements OnInit, OnDestroy {
-
+  private subscriptionTimer: Subscription;
   schoolListFilter = [];
   defaultSchoolList : any;
   compareList= [];
@@ -318,14 +320,26 @@ export class SchoolComponent implements OnInit, OnDestroy {
   // field the form
   fieldSearchForm(){
     const data = this.publicService.getSearchSchool(); // get data from service
-    // console.log(data)
+    console.log("fieldSearchForm:- ",data)
     this.searchForm.patchValue({ // Patch value even if it's empty
       classe : data[0],
       lieu : data[1],
       etablissement : data[2]
     });
+    
     this.forAdvancedSearch=true;
     this.lieuSelected=this.schoolService.getSelectedLieu(); // Get the right name to display on the page from the service
+    console.log("this.lieuSelected this.lieuSelected ", this.lieuSelected);
+    // let timer = TimerObservable.create(5000, 1000);
+    // this.subscriptionTimer = timer.subscribe(t => {
+      
+    // });
+    // setTimeout(()=>{
+    //   $('#searchSchools').click(); 
+    //   this.onSubmitSearch()
+    // }, 3000);
+    //$('#searchSchools').click(); 
+    // this.subscriptionTimer.unsubscribe();
     this.onSubmitSearch() // Submit a search to receive the school list
   }
 
@@ -441,7 +455,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
       place : this.searchForm.controls.lieu.value,
       name : this.searchForm.controls.etablissement.value
     };
-//     console.log(this.lieuSelected, this.advancedSearch);
+     console.log("harish mahajan ",this.lieuSelected, this.advancedSearch);
   
     // this.searchFilter = [this.publicService.getClassName(), data.place, data.name]; // Data to display on the website
     this.searchFilter = [data.class, data.place, data.name]; // Data to display on the website
@@ -517,7 +531,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
 
   // get the location list (after key down)
   filterLieu(event) {
-    // console.log(event.target.value);
+    console.log("filterLieu:::::::",event.target.value);
     const filter: string = event.target.value;
     if(filter.length >= 2) {
       this.getLieuFilter(filter);
@@ -558,6 +572,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
   // After select a location name (ex : 75001 Paris 01)
   onSelectLieu(type:string, index:number){
     this.lieuSelected=[];
+    //console.log("type index",type,index);
     if(type=='R'){
       this.lieuSelected=this.options.regions[index].departments;
     } else if(type=='D'){
@@ -565,7 +580,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
     }else {
       this.lieuSelected[0]=this.options.villes[index].postcode;
     }
-    console.log(this.lieuSelected);
+    console.log("type index", this.lieuSelected);
   }
 
   // Get before BAC school list from API
@@ -595,6 +610,7 @@ export class SchoolComponent implements OnInit, OnDestroy {
       delete this.advancedSearch.code;
       delete this.advancedSearch.name;
     }
+    console.log("this.advancedSearch this.advancedSearch....",this.advancedSearch);
     this.isLoader=true;
     this.publicService.postSearchSchool(this.advancedSearch, this.limit, this.page)
       .subscribe(

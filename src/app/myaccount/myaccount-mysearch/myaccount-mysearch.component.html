@@ -25,7 +25,9 @@
               </div>
             </li>
           </ul>
-          <pagination-controls (pageChange)="pageNum = $event"></pagination-controls>
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <pagination-controls class="pull-right" (pageChange)="pageNum = $event"></pagination-controls>
+          </div>
       </section><!-- .col-* -->
     </div><!-- .row -->
   </div><!-- .container-fluid -->
